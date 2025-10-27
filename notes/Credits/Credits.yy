@@ -3,8 +3,8 @@
   "%Name":"Credits",
   "name":"Credits",
   "parent":{
-    "name":"HarmonyGMS",
-    "path":"HarmonyGMS.yyp",
+    "name":"Cluster-Framework-MarkII",
+    "path":"Cluster-Framework-MarkII.yyp",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
