@@ -8,6 +8,6 @@ draw_text_transformed(CAMERA_WIDTH - 10, 43, $"Direction: {string_format(directi
 draw_text_transformed(CAMERA_WIDTH - 10, 61, $"Mask Direction: {mask_direction}", 0.5, 0.5, 0);
 draw_text_transformed(CAMERA_WIDTH - 10, 79, $"Control Lock: {control_lock_time}", 0.5, 0.5, 0);
 draw_text_transformed(CAMERA_WIDTH - 10, 97, $"Facing: {image_xscale}", 0.5, 0.5, 0);
-draw_text_transformed(CAMERA_WIDTH - 10, 115, $"Spindash Charge: {spindash_charge}", 0.5, 0.5, 0);
+draw_text_transformed(CAMERA_WIDTH - 10, 115, $"Spin Dash Charge: {spin_dash_charge}", 0.5, 0.5, 0);
 
 draw_set_halign(fa_left);

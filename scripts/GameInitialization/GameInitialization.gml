@@ -1,3 +1,4 @@
+/*
 // Macros
 #macro CAMERA_ID view_camera[0]
 #macro CAMERA_PADDING 64

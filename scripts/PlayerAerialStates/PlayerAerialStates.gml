@@ -11,21 +11,23 @@ function player_is_falling(phase)
 			
 			// Detach from ground
 			player_ground(noone);
+            
+            // Animate
+			animation_init(PLAYER_ANIMATION.FALL, 0, false, [PLAYER_ANIMATION.ROLL]);
 			break;
 		}
 		case PHASE.STEP:
 		{
 			// Accelerate
-			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
-			if (input_sign != 0)
+			if (input_axis_x != 0)
 			{
-				image_xscale = input_sign;
-				if (abs(x_speed) < speed_cap or sign(x_speed) != input_sign)
+				image_xscale = input_axis_x;
+				if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
 				{
-					x_speed += air_acceleration * input_sign;
-					if (abs(x_speed) > speed_cap and sign(x_speed) == input_sign)
+					x_speed += air_acceleration * input_axis_x;
+					if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
 					{
-						x_speed = speed_cap * input_sign;
+						x_speed = speed_cap * input_axis_x;
 					}
 				}
 			}
@@ -48,13 +50,6 @@ function player_is_falling(phase)
 			{
 				y_speed = min(y_speed + gravity_force, gravity_cap);
 			}
-			
-			// Straighten
-			if (image_angle != direction)
-			{
-				var diff = angle_difference(direction, image_angle);
-				image_angle += min(2.8125, abs(diff)) * sign(diff);
-			}
 			break;
 		}
 		case PHASE.EXIT:
@@ -72,7 +67,6 @@ function player_is_jumping(phase)
 		case PHASE.ENTER:
 		{
 			// Set flags
-			rolling = true;
 			jump_action = true;
 			
 			// Leap
@@ -85,9 +79,7 @@ function player_is_jumping(phase)
 			player_ground(noone);
 			
 			// Animate
-			player_animate("roll");
-			timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
-			image_angle = gravity_direction;
+			animation_init(PLAYER_ANIMATION.JUMP, 0);
 			
 			// Sound
 			sound_play(sfxJump);
@@ -96,16 +88,15 @@ function player_is_jumping(phase)
 		case PHASE.STEP:
 		{
 			// Accelerate
-			var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
-			if (input_sign != 0)
+			if (input_axis_x != 0)
 			{
-				image_xscale = input_sign;
-				if (abs(x_speed) < speed_cap or sign(x_speed) != input_sign)
+				image_xscale = input_axis_x;
+				if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
 				{
-					x_speed += air_acceleration * input_sign;
-					if (abs(x_speed) > speed_cap and sign(x_speed) == input_sign)
+					x_speed += air_acceleration * input_axis_x;
+					if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
 					{
-						x_speed = speed_cap * input_sign;
+						x_speed = speed_cap * input_axis_x;
 					}
 				}
 			}
@@ -118,7 +109,7 @@ function player_is_jumping(phase)
 			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
 			
 			// Lower height
-			if (input_check_released(INPUT.ACTION) and y_speed < -jump_release)
+			if (not input_button.jump.check and y_speed < -jump_release)
 			{
 				y_speed = -jump_release;
 			}

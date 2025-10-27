@@ -128,7 +128,6 @@ function player_ground(inst, height)
 	{
 		direction = gravity_direction;
 		mask_direction = gravity_direction;
-		objCamera.on_ground = false;
 	}
 	else
 	{
@@ -194,7 +193,7 @@ function player_in_bounds()
 		var y2 = y + y_radius;
 	}
 	
-	with (objCamera)
+	with (ctrlZone)
 	{
 		var left = bound_left;
 		var top = bound_top;

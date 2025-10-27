@@ -1,19 +1,40 @@
 /// @description Initialize
 image_speed = 0;
 
+// Constants
 enum PHASE
-{
-	ENTER, STEP, EXIT
+{ 
+    ENTER,
+    STEP,
+    EXIT
 }
+
+enum PLAYER_ANIMATION
+{ 
+    IDLE,
+    TEETER,
+    TURN,
+    RUN,
+    BRAKE,
+    LOOK,
+    CROUCH,
+    ROLL,
+    SPIN_DASH,
+    FALL,
+    JUMP,
+    SPRING,
+    SPRING_TWIRL
+}
+
+#macro PLAYER_HEIGHT 14
 
 // State machine
 state = player_is_ready;
 state_changed = false;
 
-rolling = false;
 jump_action = false;
 
-spindash_charge = 0;
+spin_dash_charge = 0;
 
 // Timers
 control_lock_time = 0;
@@ -58,23 +79,47 @@ cliff_sign = 0;
 solid_objects = ds_list_create();
 tile_layers = [];
 
-// Animations
-animations =
+// Input
+input_axis_x = 0;
+input_axis_y = 0;
+
+/// @function button(verb)
+/// @description Creates a button struct.
+/// @param {Enum.INPUT_VERB} verb Verb to check.
+function button(verb) constructor
 {
-	idle: animSonicIdle,
-	walk: animSonicWalk,
-	run: animSonicRun,
-	roll: animSonicRoll,
-	look: animSonicLook,
-	crouch: animSonicCrouch,
-	spindash: animSonicSpindash,
-	teeter: animSonicTeeter,
-	brake: animSonicBrake
+    index = verb;
+    check = false;
+    pressed = false;
+    released = false;
+}
+
+input_button =
+{
+    jump : new button(INPUT_VERB.JUMP),
+    aux : new button(INPUT_VERB.AUX),
+    swap : new button(INPUT_VERB.SWAP),
+    extra : new button(INPUT_VERB.EXTRA),
+    tag : new button(INPUT_VERB.ALT),
+    alt : new button(INPUT_VERB.START),
+    start : new button(INPUT_VERB.START),
+    select : new button(INPUT_VERB.SELECT)
 };
 
-// Misc.
-instance_create_layer(x, y, layer, objCamera, { gravity_direction });
+// Animation
+animation_data = new animation_core();
 
+// Effects
+spin_dash_effect = new effect();
+
+// Camera
+camera = global.main_camera;
+camera_offset_x = 0;
+camera_offset_y = 0;
+camera_padding_x = 0;
+camera_padding_y = 0;
+
+// Misc.
 /// @method player_perform(action)
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
@@ -115,14 +160,47 @@ player_resist_slope = function (force)
 	x_speed -= dsin(local_direction) * force;
 };
 
-/// @method player_animate(name)
-/// @description Sets the player's current animation to the given string, and their timeline to that which matches it.
-/// @param {String} name Animation to set.
-player_animate = function (name)
+/// @method player_animate()
+/// @description Sets the player's current animation.
+player_animate = function() {};
+
+/// @method player_set_run_variant()
+/// @description Sets the variant based on the player's horizontal speed.
+player_set_run_variant = function()
 {
-	animation = name;
-	timeline_index = animations[$ name];
-	timeline_position = 0;
+    // Abort if not grounded
+    if (not on_ground) exit;
+    
+    var variant = 5;
+    var abs_speed = abs(x_speed);
+    if (abs_speed <= 1.25) variant = 0;
+    else if (abs_speed <= 2.5) variant = 1;
+    else if (abs_speed <= 4.0) variant = 2;
+    else if (abs_speed <= 9.0) variant = 3;
+    else if (abs_speed <= 10.0) variant = 4;
+    
+    // Apply
+    animation_data.variant = variant;
+};
+
+/// @method player_set_radii(xrad, yrad)
+/// @description Sets the player's radii.
+/// @param {Real} xrad Horizontal radius to use.
+/// @param {Real} yrad Vertical radius to use.
+player_set_radii = function(xrad, yrad)
+{
+    // Abort if radii already match
+    if (x_radius == xrad and y_radius == yrad) exit;
+    
+    var old_x_radius = x_radius;
+    var old_y_radius = y_radius;
+    var sine = dsin(mask_direction);
+	var cosine = dcos(mask_direction);
+    x_radius = xrad;
+    x_wall_radius = x_radius + 2;
+    y_radius = yrad;
+    x += sine * (old_y_radius - y_radius);
+    y += cosine * (old_y_radius - y_radius);
 };
 
 /// @method player_gain_rings(num)

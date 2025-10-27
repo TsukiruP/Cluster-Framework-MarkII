@@ -1,10 +1,14 @@
 /// @description Initialize
-scale = 0;
+scale = 2;
 
-// Resize
+// STANNcam
+stanncam_init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
+global.main_camera = new stanncam();
+global.main_camera.room_constrain = true;
+global.main_camera.bounds_w = 8;
+global.main_camera.bounds_h = 32;
+global.main_camera.debug_draw = true;
+stanncam_debug_set_draw_zones(true);
+
+/* AUTHOR NOTE: scale is increased on creation. */
 event_perform(ev_keypress, vk_f4);
-display_set_gui_size(CAMERA_WIDTH, CAMERA_HEIGHT);
-
-/* AUTHOR NOTE: due to being created 1 frame after the start of the game,
-the Room Start event does not run, so it's invoked here. */
-event_perform(ev_other, ev_room_start);

@@ -14,8 +14,8 @@ function angle_wrap(ang)
 /// @returns {Bool}
 function instance_in_view(obj = id, padding = CAMERA_PADDING)
 {
-	var left = camera_get_view_x(CAMERA_ID);
-	var top = camera_get_view_y(CAMERA_ID);
+	var left = global.main_camera.get_x();
+	var top = global.main_camera.get_y();
 	var right = left + CAMERA_WIDTH;
 	var bottom = top + CAMERA_HEIGHT;
 	

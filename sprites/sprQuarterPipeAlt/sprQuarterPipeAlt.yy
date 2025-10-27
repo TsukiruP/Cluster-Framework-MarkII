@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"sprQuarterPipeAlt",
   "bboxMode":0,
   "bbox_bottom":95,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b7f11f54-be60-4d24-aaae-6106f4ab4a49","name":"b7f11f54-be60-4d24-aaae-6106f4ab4a49","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b7f11f54-be60-4d24-aaae-6106f4ab4a49","name":"b7f11f54-be60-4d24-aaae-6106f4ab4a49","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Terrain Shapes",
-    "path":"folders/Sprites/Terrain Shapes.yy",
+    "path":"folders/Sprites/Zone/Terrain Shapes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

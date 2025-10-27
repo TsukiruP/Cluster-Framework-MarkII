@@ -5,11 +5,8 @@ var y_int = y div 1;
 // Character sprite
 if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int, image_xscale, 1, round(image_angle / 45) * 45, c_white, image_alpha);
 
-// Dash smoke
-if (state == player_is_spindashing)
-{
-	draw_sprite_ext(sprDashSmoke, ctrlWindow.image_index div 2, x_int, y_int, image_xscale, 1, mask_direction, c_white, 1);
-}
+// Spin Dash
+with (spin_dash_effect) draw();
 
 // Virtual mask
 if (mask_direction mod 180 != 0)
