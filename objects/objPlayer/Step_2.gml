@@ -18,7 +18,7 @@ with (spin_dash_effect)
         animation_data.variant = (charge > 2);
         animation_set(variants);
     }
-    else
+    else if (not is_undefined(animation_data.ani))
     {
         animation_set(undefined);
     }
