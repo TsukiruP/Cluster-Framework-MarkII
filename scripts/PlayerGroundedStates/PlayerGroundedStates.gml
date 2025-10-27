@@ -214,9 +214,8 @@ function player_is_running(phase)
 				else if (ctrlWindow.image_index mod 4 == 0)
 				{
 					// Create brake dust
-					var offset = y_radius - 6;
-					var ox = x + dsin(direction) * offset;
-					var oy = y + dcos(direction) * offset;
+					var ox = x + dsin(direction) * y_radius;
+					var oy = y + dcos(direction) * y_radius;
 					particle_spawn("brake_dust", ox, oy);
 				}
 			}

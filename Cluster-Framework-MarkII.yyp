@@ -344,6 +344,7 @@
     {"id":{"name":"InputVirtualDestroyAll","path":"scripts/InputVirtualDestroyAll/InputVirtualDestroyAll.yy",},},
     {"id":{"name":"InputX","path":"scripts/InputX/InputX.yy",},},
     {"id":{"name":"InputY","path":"scripts/InputY/InputY.yy",},},
+    {"id":{"name":"ParticleInitialization","path":"scripts/ParticleInitialization/ParticleInitialization.yy",},},
     {"id":{"name":"PlayerAerialStates","path":"scripts/PlayerAerialStates/PlayerAerialStates.yy",},},
     {"id":{"name":"PlayerCollisionFunctions","path":"scripts/PlayerCollisionFunctions/PlayerCollisionFunctions.yy",},},
     {"id":{"name":"PlayerGetterFunctions","path":"scripts/PlayerGetterFunctions/PlayerGetterFunctions.yy",},},
