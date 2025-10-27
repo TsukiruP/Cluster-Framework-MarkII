@@ -46,17 +46,3 @@ function effect_create(ox, oy, od, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel =
     }
     return effect;
 }
-
-/// @function particle_spawn(name, x, y, [num])
-/// @description Creates the given sprite particle a given number of times at the given position.
-/// @param {String} name Name of the particle.
-/// @param {Real} x x-coordinate of the particle.
-/// @param {Real} y y-coordinate of the particle.
-/// @param {Real} [num] Number of particles to create (optional, default is 1).
-function particle_spawn(name, ox, oy, num = 1)
-{
-	with (global.sprite_particles)
-	{
-		part_particles_create(system, ox, oy, self[$ name], num);
-	}
-}
