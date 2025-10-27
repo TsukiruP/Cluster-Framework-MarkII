@@ -22,21 +22,21 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 	with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
 }
 
-/// @function effect_create(x, y, depth, ani, [xspd], [yspd], [xaccel], [yaccel])
-/// @description Creates an effect with the given animation.
-/// @param {Real} x x-coordinate of the effect.
-/// @param {Real} y y-coordinate of the effect.
-/// @param {Real} depth depth of the effect.
-/// @param {Struct.animation} ani animation of the effect.
-/// @param {Real} [xspd] x-speed of the effect.
+/// @function particle_create(x, y, depth, ani, [xspd], [yspd], [xaccel], [yaccel])
+/// @description Creates a particle with the given animation.
+/// @param {Real} x x-coordinate of the particle.
+/// @param {Real} y y-coordinate of the particle.
+/// @param {Real} depth depth of the particle.
+/// @param {Struct.animation} ani animation of the particle.
+/// @param {Real} [xspd] x-speed of the particle.
 /// @param {Real} [yspd] y-speed of the effect.
-/// @param {Real} [xaccel] x-acceleration of the effect.
-/// @param {Real} [yaccel] y-acceleration of the effect.
+/// @param {Real} [xaccel] x-acceleration of the particle.
+/// @param {Real} [yaccel] y-acceleration of the particle.
 /// @returns {Id.Instance}
-function effect_create(ox, oy, od, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
+function particle_create(ox, oy, od, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
-    var effect = instance_create_depth(ox, oy, od, objEffect);
-    with (effect)
+    var particle = instance_create_depth(ox, oy, od, objParticle);
+    with (particle)
     {
         animation_set(ani);
         x_speed = xspd;
@@ -44,5 +44,5 @@ function effect_create(ox, oy, od, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel =
         x_acceleration = xaccel;
         y_acceleration = yaccel;
     }
-    return effect;
+    return particle;
 }

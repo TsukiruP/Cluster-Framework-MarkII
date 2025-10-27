@@ -9,7 +9,7 @@ reaction = function (inst)
 	player_gain_rings(1);
 	with (inst)
 	{
-		effect_create(x, y, DEPTH_EFFECT_HIGH, global.ani_ring_sparkle_v0);
+		particle_create(x, y, DEPTH_EFFECT_HIGH, global.ani_ring_sparkle_v0);
 		instance_destroy();
 	}
 };
