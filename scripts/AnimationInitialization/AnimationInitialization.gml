@@ -1,5 +1,12 @@
 #region Effects
 
+global.ani_brake_dust_v0 = new animation(sprBrakeDust, 2, 0, -1);
+global.ani_ring_sparkle_v0 = new animation(sprRingSparkle, 4, 0, -1);
+
+#endregion
+
+#region Player
+
 global.ani_spin_dash_v0 = new animation(sprSpinDash0, 2);
 global.ani_spin_dash_v1 = new animation(sprSpinDash1, 2);
 

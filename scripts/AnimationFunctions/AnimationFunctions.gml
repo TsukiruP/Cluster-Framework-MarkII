@@ -1,5 +1,5 @@
 /// @function animation(sprite, duration, [start], [loop], [order])
-/// @description Creates an animation struct.
+/// @description Creates a new animation with a given sprite and given duration.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
 /// @param {Real} [start] Start frame. If a custom order is provided, this will be an index in that order.
@@ -15,7 +15,7 @@ function animation(sprite, duration, start = 0, loop = 0, order = []) constructo
 }
 
 /// @function animation_core()
-/// @description Creates an animation core struct.
+/// @description Creates a new animation core.
 function animation_core() constructor
 {
     index  = 0;

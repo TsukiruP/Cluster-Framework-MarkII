@@ -216,7 +216,7 @@ function player_is_running(phase)
 					// Create brake dust
 					var ox = x + dsin(direction) * y_radius;
 					var oy = y + dcos(direction) * y_radius;
-					particle_spawn("brake_dust", ox, oy);
+					effect_create(ox, oy, DEPTH_EFFECT_HIGH, global.ani_brake_dust_v0);
 				}
 			}
 			else

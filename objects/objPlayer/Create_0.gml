@@ -84,7 +84,7 @@ input_axis_x = 0;
 input_axis_y = 0;
 
 /// @function button(verb)
-/// @description Creates a button struct.
+/// @description Creates a new button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
 function button(verb) constructor
 {
@@ -110,7 +110,25 @@ input_button =
 animation_data = new animation_core();
 
 // Effects
-spin_dash_effect = new effect();
+/// @method player_effect()
+/// @description Creates a new player effect.
+function player_effect() constructor
+{
+    x = 0;
+    y = 0;
+    sprite_index = -1;
+    image_index = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    animation_data = new animation_core();
+    static draw = function()
+    {
+        if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
+    };
+}
+
+spin_dash_effect = new player_effect();
 
 // Camera
 camera = global.main_camera;
