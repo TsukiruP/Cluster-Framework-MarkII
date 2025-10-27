@@ -94,7 +94,7 @@
     "name":"sprSonicIdle",
     "playback":1,
     "playbackSpeed":1.0,
-    "playbackSpeedType":0,
+    "playbackSpeedType":1,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "seqHeight":40.0,

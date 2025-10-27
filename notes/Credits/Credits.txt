@@ -4,7 +4,7 @@ Joevan Salmon-Johnson (AKA VectorSatyr, formerly AeroGP) - Sonic Studio Engine, 
 * https://codeberg.org/vectorsatyr/sonic-for-gms
 
 DarkD04, joshyflip, Chopppers, KGLBombyPig - Harmony Framework.
-* https://github.com/DarkD04/Harmony-
+* https://github.com/DarkD04/Harmony-Framework
 
 monolith4007 - HarmonyGMS
 * https://github.com/monolith4007/HarmonyGMS
