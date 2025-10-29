@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"Notes","folderPath":"folders/Notes.yy","name":"Notes","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Libraries","folderPath":"folders/Libraries.yy","name":"Libraries","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Input Plug-Ins","folderPath":"folders/Libraries/Input Plug-Ins.yy","name":"Input Plug-Ins","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Binding Icons","folderPath":"folders/Libraries/Input Plug-Ins/Binding Icons.yy","name":"Binding Icons","resourceType":"GMFolder","resourceVersion":"2.0",},

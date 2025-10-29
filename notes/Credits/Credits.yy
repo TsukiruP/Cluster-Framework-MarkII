@@ -3,8 +3,8 @@
   "%Name":"Credits",
   "name":"Credits",
   "parent":{
-    "name":"Cluster-Framework-MarkII",
-    "path":"Cluster-Framework-MarkII.yyp",
+    "name":"Notes",
+    "path":"folders/Notes.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
