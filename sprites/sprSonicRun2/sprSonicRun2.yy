@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Run",
-    "path":"folders/Sprites/Zone/Player/Sonic/Run.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Run.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

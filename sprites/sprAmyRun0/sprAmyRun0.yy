@@ -41,7 +41,7 @@
   "origin":0,
   "parent":{
     "name":"Run",
-    "path":"folders/Sprites/Zone/Player/Amy/Run.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Amy/Run.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

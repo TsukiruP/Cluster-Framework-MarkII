@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"Jump",
-    "path":"folders/Sprites/Zone/Player/Amy/Jump.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Amy/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

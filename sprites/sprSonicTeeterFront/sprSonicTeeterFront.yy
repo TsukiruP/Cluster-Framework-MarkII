@@ -34,7 +34,7 @@
   "origin":9,
   "parent":{
     "name":"Teeter",
-    "path":"folders/Sprites/Zone/Player/Sonic/Teeter.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Teeter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

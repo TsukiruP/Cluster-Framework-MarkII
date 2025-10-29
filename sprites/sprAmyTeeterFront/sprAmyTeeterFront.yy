@@ -32,7 +32,7 @@
   "origin":0,
   "parent":{
     "name":"Teeter",
-    "path":"folders/Sprites/Zone/Player/Amy/Teeter.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Amy/Teeter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

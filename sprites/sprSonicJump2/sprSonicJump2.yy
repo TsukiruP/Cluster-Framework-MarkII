@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Jump",
-    "path":"folders/Sprites/Zone/Player/Sonic/Jump.yy",
+    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
