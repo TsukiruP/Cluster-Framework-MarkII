@@ -77,8 +77,8 @@ global.ani_amy_run_v2 = new animation(sprAmyRun2, 8);
 global.ani_amy_run_v3 = new animation(sprAmyRun3, 8);
 global.ani_amy_run_v4 = new animation(sprAmyRun4, 8);
 
-global.ani_amy_brake_v0 = new animation(sprAmyBrake, 2);
-global.ani_amy_brake_v1 = new animation(sprAmyBrakeFast, [1, 1, 3, 3, 3]);
+global.ani_amy_brake_v0 = new animation(sprAmyBrake, 2, 0, 1);
+global.ani_amy_brake_fast_v0 = new animation(sprAmyBrakeFast, [1, 1, 3, 3, 3], 0, 2);
 
 global.ani_amy_look_v0 = new animation(sprAmyLook0, [3, 3, 3, 60, 6, 8, 6], 0, 3);
 global.ani_amy_look_v1 = new animation(sprAmyLook1, 2, 0, -1);
@@ -90,16 +90,16 @@ global.ani_amy_roll_v0 = new animation(sprAmyRoll, 2);
 
 global.ani_amy_spin_dash_v0 = new animation(sprAmySpinDash, 3);
 
-global.ani_amy_fall_v0 = global.ani_sonic_fall_v0; // TODO: Amy falling.
-global.ani_amy_fall_v1 = global.ani_sonic_fall_v1;
+global.ani_amy_fall_v0 = new animation(sprAmySpring1, 2, 0, -1, [4, 5]);
+global.ani_amy_fall_v1 = new animation(sprAmySpring2, 2);
 
 global.ani_amy_jump_v0 = new animation(sprAmyJump0, [3, 2], 0, -1);
 global.ani_amy_jump_v1 = new animation(sprAmyJump1, 2);
-global.ani_amy_jump_v2 = new animation(sprAmyJump2, [1, 2, 2, 2]);
+global.ani_amy_jump_v2 = new animation(sprAmyJump2, [1, 2, 2, 2, 2]);
 
 global.ani_amy_spring_v0 = new animation(sprAmySpring0, 3);
 global.ani_amy_spring_v1 = new animation(sprAmySpring1, [3, 3, 3, 4, 4, 4], 0, -1);
-global.ani_amy_spring_v2 = new animation(sprAmyJump2, 3, 0, 1);
+global.ani_amy_spring_v2 = new animation(sprAmySpring2, 3, 0, 1);
 
 global.ani_amy_spring_twirl_v0 = new animation(sprAmySpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 0, 11);
 
