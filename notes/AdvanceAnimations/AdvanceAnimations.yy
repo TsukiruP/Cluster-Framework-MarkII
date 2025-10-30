@@ -1,7 +1,7 @@
 {
   "$GMNotes":"v1",
-  "%Name":"Animations",
-  "name":"Animations",
+  "%Name":"AdvanceAnimations",
+  "name":"AdvanceAnimations",
   "parent":{
     "name":"Notes",
     "path":"folders/Notes.yy",
