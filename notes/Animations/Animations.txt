@@ -1,0 +1,27 @@
+[Sonic Advance](https://github.com/SAT-R/sa1/blob/main/src/data/animations/animations.c)\
+[Sonic Advance 2](https://github.com/SAT-R/sa2/blob/main/src/data/animations/animations.c)\
+[Sonic Advance 3](https://github.com/SAT-R/sa3/blob/a54f220e3d64d2bb48c4844dfdbf78aec4e31217/src/data/animations.inc)
+
+# Sonic
+
+Source should be assumed to be Advance 3 unless stated otherwise.
+See Notes coulmn for more information.
+
+| Animation | Source | Notes |
+| --- | --- | --- |
+| Idle | 0-0 |
+| Teeter Front | 34-0 |
+| Teeter Back | 35-0 |
+| Turn | 12-0 |
+| Turn Brake | 6-0 | Sonic Advance 2
+| Run | 8-0, 8-1, 8-2, 8-3, 8-4
+| Brake | 16-0
+| Brake Fast | 17-0
+| Look | 1-0
+| Crouch | 2-0
+| Roll | 11-0
+| Spin Dash | 10-0, 10-1
+| Fall | 24-0 | Reuses assets from Spring
+| Jump | 19-0, 19-1, 19-2
+| Spring | 108-0, 108-1, 108-2
+| Spring Twirl | 109-0
