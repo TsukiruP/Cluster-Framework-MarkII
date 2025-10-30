@@ -5,7 +5,6 @@
 # Sonic
 
 Source should be assumed to be Advance 3 unless stated otherwise.
-See Notes coulmn for more information.
 
 | Animation | Source | Notes |
 | --- | --- | --- |
@@ -13,15 +12,61 @@ See Notes coulmn for more information.
 | Teeter Front | 34-0 |
 | Teeter Back | 35-0 |
 | Turn | 12-0 |
-| Turn Brake | 6-0 | Sonic Advance 2
+| Turn Brake | (SA2) 6-0 |
 | Run | 8-0, 8-1, 8-2, 8-3, 8-4
 | Brake | 16-0
 | Brake Fast | 17-0
-| Look | 1-0
-| Crouch | 2-0
+| Look | 1-0, 1-1
+| Crouch | 2-0, 2-1
 | Roll | 11-0
 | Spin Dash | 10-0, 10-1
-| Fall | 24-0 | Reuses assets from Spring
+| Fall | 24-0 | Reuses Spring sprites
 | Jump | 19-0, 19-1, 19-2
 | Spring | 108-0, 108-1, 108-2
 | Spring Twirl | 109-0
+
+# Miles
+
+Source should be assumed to be Advance 3 unless stated otherwise.
+
+| Animation | Source | Notes |
+| --- | --- | --- |
+| Idle | 326-0 |
+| Teeter Front | 360-0 |
+| Teeter Back | 361-0 |
+| Turn | 338-0 |
+| Turn Brake | (SA2) 188-0 |
+| Run | 334-0, 334-1, 334-2, 334-3, (SA2) 191-4, 334-4
+| Brake | 342-0
+| Brake Fast | 343-0
+| Look | 327-0, 327-1
+| Crouch | 328-0, 328-1
+| Roll | 337-0
+| Spin Dash | 336-0
+| Fall | 350-0 | Reuses Spring sprites
+| Jump | 345-0, 345-1, 345-2
+| Spring | 434-0, 434-1, 434-2
+| Spring Twirl | 435-0
+
+# Amy
+
+Source should be assumed to be Advance 3 unless stated otherwise.
+
+| Animation | Source | Notes |
+| --- | --- | --- |
+| Idle | 652-0 |
+| Teeter Front | 686-0 |
+| Teeter Back | 687-0 |
+| Turn | 664-0 |
+| Turn Brake | (SA2) 370-0 |
+| Run | 660-0, 660-1, 660-2, 660-3, 660-4
+| Brake | 668-0
+| Brake Fast | 669-0
+| Look | 653-0, 653-1
+| Crouch | 654-0, 654-1
+| Roll | 663-0
+| Spin Dash | 662-0
+| Fall | 676-0 | Reuses Spring sprites
+| Jump | 671-0, 671-1, 671-2
+| Spring | 760-0, 760-1, 760-2
+| Spring Twirl | 761-0
