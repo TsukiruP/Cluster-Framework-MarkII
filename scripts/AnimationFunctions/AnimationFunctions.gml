@@ -1,16 +1,16 @@
-/// @function animation(sprite, duration, [start], [loop], [order])
+/// @function animation(sprite, duration, [loop], [start], [order])
 /// @description Creates a new animation with a given sprite and given duration.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
-/// @param {Real} [start] Start frame. If a custom order is provided, this will be an index in that order.
 /// @param {Real} [loop] Loop frame. If a custom order is provided, this will be an index in that order.
+/// @param {Real} [start] Start frame. If a custom order is provided, this will be an index in that order.
 /// @param {Array} [order] Custom frame order.
-function animation(sprite, duration, start = 0, loop = 0, order = []) constructor
+function animation(sprite, duration, loop = 0, start = 0, order = []) constructor
 {
     sprite_index = sprite;
     duration_data = duration;
-    start_index = start;
     loop_index = loop;
+    start_index = start;
     image_order = order;
 }
 
@@ -26,25 +26,6 @@ function animation_core() constructor
     speed = 1;
     pos = 0;
 }
-
-/// @function effect()
-/// @description Creates an effect struct.
-function effect() constructor
-{
-    x = 0;
-    y = 0;
-    sprite_index = -1;
-    image_index = 0;
-    image_xscale = 1;
-    image_yscale = 1;
-    image_angle = 0;
-    animation_data = new animation_core();
-    static draw = function()
-    {
-        if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
-    };
-}
-
 
 /// @function animation_init(index, [variant], [force], [alternatives])
 /// @description Initializes the next animation. Resets the variant when applicable.
@@ -90,8 +71,8 @@ function animation_set(ani)
     {
         var sprite = ani.sprite_index;
         var duration = ani.duration_data;
-        var start = ani.start_index;
         var loop = ani.loop_index;
+        var start = ani.start_index;
         var order = ani.image_order;
         
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
