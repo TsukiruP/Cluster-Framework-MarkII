@@ -61,10 +61,8 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
-on_ground = true;
-ground_id = noone;
-
 landed = false;
+on_ground = true;
 ground_snap = true;
 
 direction = 0;
@@ -83,7 +81,7 @@ tilemaps =
 
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
-solid_objects = ds_list_create();
+solid_objects = [];
 
 // Input
 input_axis_x = 0;

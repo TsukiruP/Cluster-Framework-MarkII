@@ -10,7 +10,7 @@ function player_is_falling(phase)
 			x_speed *= dcos(local_direction);
 			
 			// Detach from ground
-			player_ground(noone);
+			player_ground(undefined);
             
             // Animate
 			animation_init(PLAYER_ANIMATION.FALL, 0, false, [PLAYER_ANIMATION.ROLL]);
@@ -76,7 +76,7 @@ function player_is_jumping(phase)
 			x_speed = cosine * x_speed - sine * jump_height;
 			
 			// Detach from ground
-			player_ground(noone);
+			player_ground(undefined);
 			
 			// Animate
 			animation_init(PLAYER_ANIMATION.JUMP, 0);

@@ -113,8 +113,7 @@ player_animate = function()
             	player_set_radii(6, 9);
                 if (y_speed > 0)
                 {
-                    var inst = player_get_floor(y_radius + 32);
-                    if (inst[0] != noone) animation_data.variant = 2;
+                    if (not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
                 }
             }
             animation_set(variants);
