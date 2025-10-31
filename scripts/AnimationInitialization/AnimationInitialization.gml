@@ -95,7 +95,7 @@ global.ani_amy_fall_v1 = new animation(sprAmySpring2, 2);
 
 global.ani_amy_jump_v0 = new animation(sprAmyJump0, [3, 2], -1);
 global.ani_amy_jump_v1 = new animation(sprAmyJump1, 2);
-global.ani_amy_jump_v2 = new animation(sprAmyJump2, [1, 2, 2, 2, 2]);
+global.ani_amy_jump_v2 = new animation(sprAmyJump2, [1, 2, 2, 2, 2], 2);
 
 global.ani_amy_spring_v0 = new animation(sprAmySpring0, 3);
 global.ani_amy_spring_v1 = new animation(sprAmySpring1, [3, 3, 3, 4, 4, 4], -1);
