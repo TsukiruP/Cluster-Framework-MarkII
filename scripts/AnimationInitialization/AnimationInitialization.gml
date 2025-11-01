@@ -84,6 +84,7 @@ global.ani_miles_crouch_v0 = new animation(sprMilesCrouch, [1, 1, 6, 6, 6, 6, 6,
 global.ani_miles_crouch_v1 = new animation(sprMilesCrouch, 1, -1, [1, 0]);
 
 global.ani_miles_roll_v0 = new animation(sprMilesRoll, 2);
+global.ani_miles_tails_v0 = new animation(sprMilesTails, 2);
 
 global.ani_miles_spin_dash_v0 = new animation(sprMilesSpinDash0, 2);
 global.ani_miles_spin_dash_v1 = new animation(sprMilesSpinDash1, 2, -1);

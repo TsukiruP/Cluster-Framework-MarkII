@@ -225,6 +225,14 @@ player_set_radii = function(xrad, yrad)
     y += cosine * (old_y_radius - y_radius);
 };
 
+/// @method player_draw_before()
+/// @description Draws player effects behind the character sprite.
+player_draw_before = function() {};
+
+/// @method player_draw_after()
+/// @description Draws player effects in front of the character sprite.
+player_draw_after = function() {};
+
 /// @method player_gain_rings(num)
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.

@@ -1,5 +1,9 @@
+/// @description Initialize
 // Inherit the parent event
 event_inherited();
+
+// Tails
+tails_effect = new player_effect();
 
 player_animate = function()
 {
@@ -149,4 +153,9 @@ player_animate = function()
             break;
         }
     }
+};
+
+player_draw_before = function()
+{
+    with (tails_effect) draw();
 };

@@ -447,6 +447,7 @@
     {"id":{"name":"sprMilesSpring1","path":"sprites/sprMilesSpring1/sprMilesSpring1.yy",},},
     {"id":{"name":"sprMilesSpring2","path":"sprites/sprMilesSpring2/sprMilesSpring2.yy",},},
     {"id":{"name":"sprMilesSpringTwirl","path":"sprites/sprMilesSpringTwirl/sprMilesSpringTwirl.yy",},},
+    {"id":{"name":"sprMilesTails","path":"sprites/sprMilesTails/sprMilesTails.yy",},},
     {"id":{"name":"sprMilesTeeterBack","path":"sprites/sprMilesTeeterBack/sprMilesTeeterBack.yy",},},
     {"id":{"name":"sprMilesTeeterFront","path":"sprites/sprMilesTeeterFront/sprMilesTeeterFront.yy",},},
     {"id":{"name":"sprMilesTurn","path":"sprites/sprMilesTurn/sprMilesTurn.yy",},},
