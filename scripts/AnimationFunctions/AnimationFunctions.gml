@@ -1,16 +1,14 @@
-/// @function animation(sprite, duration, [loop], [start], [order])
+/// @function animation(sprite, duration, [loop], [order])
 /// @description Creates a new animation with a given sprite and given duration.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
-/// @param {Real} [loop] Loop frame. If a custom order is provided, this will be an index in that order.
-/// @param {Real} [start] Start frame. If a custom order is provided, this will be an index in that order.
+/// @param {Real} [loop] Loop frame. If a custom order is provided, this will be an index in that order. Use -1 to mark that the animation doesn't loop.
 /// @param {Array} [order] Custom frame order.
-function animation(sprite, duration, loop = 0, start = 0, order = []) constructor
+function animation(sprite, duration, loop = 0, order = []) constructor
 {
     sprite_index = sprite;
     duration_data = duration;
     loop_index = loop;
-    start_index = start;
     image_order = order;
 }
 
@@ -63,7 +61,7 @@ function animation_set(ani)
     if (is_undefined(ani))
     {
         animation_data.alarm = 0;
-        animation_data.pos = 0;
+        animation_data.pos = -1;
         sprite_index = -1;
         image_index = 0;
     }
@@ -72,8 +70,8 @@ function animation_set(ani)
         var sprite = ani.sprite_index;
         var duration = ani.duration_data;
         var loop = ani.loop_index;
-        var start = ani.start_index;
         var order = ani.image_order;
+        var start = 0;
         
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
         animation_data.pos = start;

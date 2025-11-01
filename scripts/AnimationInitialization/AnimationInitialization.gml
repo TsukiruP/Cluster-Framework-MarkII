@@ -32,17 +32,17 @@ global.ani_sonic_brake_v0 = new animation(sprSonicBrake, [2, 4, 4], 1);
 global.ani_sonic_brake_fast_v0 = new animation(sprSonicBrakeFast, [1, 1, 3, 3], 2);
 
 global.ani_sonic_look_v0 = new animation(sprSonicLook, [4, 4, 12, 12, 12, 12], 2);
-global.ani_sonic_look_v1 = new animation(sprSonicLook, 2, -1, -0, [1, 0]);
+global.ani_sonic_look_v1 = new animation(sprSonicLook, 2, -1, [1, 0]);
 
 global.ani_sonic_crouch_v0 = new animation(sprSonicCrouch, 1, -1);
-global.ani_sonic_crouch_v1 = new animation(sprSonicCrouch, 1, -1, 0, [1, 0]);
+global.ani_sonic_crouch_v1 = new animation(sprSonicCrouch, 1, -1, [1, 0]);
 
 global.ani_sonic_roll_v0 = new animation(sprSonicRoll, 2);
 
 global.ani_sonic_spin_dash_v0 = new animation(sprSonicSpinDash0, 2);
 global.ani_sonic_spin_dash_v1 = new animation(sprSonicSpinDash1, 2, -1);
 
-global.ani_sonic_fall_v0 = new animation(sprSonicSpring1, 2, -1, 0, [4, 5]);
+global.ani_sonic_fall_v0 = new animation(sprSonicSpring1, 2, -1, [4, 5]);
 global.ani_sonic_fall_v1 = new animation(sprSonicSpring2, 2);
 
 global.ani_sonic_jump_v0 = new animation(sprSonicJump0, [3, 2], -1);
@@ -78,17 +78,17 @@ global.ani_miles_brake_v0 = new animation(sprMilesBrake, [2, 4, 4, 4], 1);
 global.ani_miles_brake_fast_v0 = new animation(sprMilesBrakeFast, [2, 3, 3], 1);
 
 global.ani_miles_look_v0 = new animation(sprMilesLook, [4, 4, 10, 10, 10, 10], 2);
-global.ani_miles_look_v1 = new animation(sprMilesLook, 2, -1, 0, [1, 0]);
+global.ani_miles_look_v1 = new animation(sprMilesLook, 2, -1, [1, 0]);
 
 global.ani_miles_crouch_v0 = new animation(sprMilesCrouch, [1, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], 2);
-global.ani_miles_crouch_v1 = new animation(sprMilesCrouch, 1, -1, 0, [1, 0]);
+global.ani_miles_crouch_v1 = new animation(sprMilesCrouch, 1, -1, [1, 0]);
 
 global.ani_miles_roll_v0 = new animation(sprMilesRoll, 2);
 
 global.ani_miles_spin_dash_v0 = new animation(sprMilesSpinDash0, 2);
 global.ani_miles_spin_dash_v1 = new animation(sprMilesSpinDash1, 2, -1);
 
-global.ani_miles_fall_v0 = new animation(sprMilesSpring1, 2, -1, 0, [4, 5]);
+global.ani_miles_fall_v0 = new animation(sprMilesSpring1, 2, -1, [4, 5]);
 global.ani_miles_fall_v1 = new animation(sprMilesSpring2, 2);
 
 global.ani_miles_jump_v0 = new animation(sprMilesJump0, 3, -1);
@@ -132,7 +132,7 @@ global.ani_amy_roll_v0 = new animation(sprAmyRoll, 2);
 
 global.ani_amy_spin_dash_v0 = new animation(sprAmySpinDash, 3);
 
-global.ani_amy_fall_v0 = new animation(sprAmySpring1, 2, -1, 0, [4, 5]);
+global.ani_amy_fall_v0 = new animation(sprAmySpring1, 2, -1, [4, 5]);
 global.ani_amy_fall_v1 = new animation(sprAmySpring2, 2);
 
 global.ani_amy_jump_v0 = new animation(sprAmyJump0, [3, 2], -1);
