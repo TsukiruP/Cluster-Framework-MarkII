@@ -59,6 +59,48 @@ global.ani_sonic_spring_twirl_v0 = new animation(sprSonicSpringTwirl, [4, 4, 4, 
 
 #region Miles
 
+global.ani_miles_idle_v0 = new animation(sprMilesIdle, 8);
+
+global.ani_miles_teeter_front_v0 = new animation(sprMilesTeeterFront, 3, 1);
+global.ani_miles_teeter_back_v0 = new animation(sprMilesTeeterBack, 4, 1);
+
+global.ani_miles_turn_v0 = new animation(sprMilesTurn, 1, -1);
+global.ani_miles_turn_brake_v0 = new animation(sprMilesTurnBrake, 2, -1);
+
+global.ani_miles_run_v0 = new animation(sprMilesRun0, 8);
+global.ani_miles_run_v1 = new animation(sprMilesRun1, 8);
+global.ani_miles_run_v2 = new animation(sprMilesRun2, 8);
+global.ani_miles_run_v3 = new animation(sprMilesRun3, 8);
+global.ani_miles_run_v4 = new animation(sprMilesRun4, 8);
+global.ani_miles_run_v5 = new animation(sprMilesRun5, 8);
+
+global.ani_miles_brake_v0 = new animation(sprMilesBrake, [2, 4, 4, 4], 1);
+global.ani_miles_brake_fast_v0 = new animation(sprMilesBrakeFast, [2, 3, 3], 1);
+
+global.ani_miles_look_v0 = new animation(sprMilesLook, [4, 4, 10, 10, 10, 10], 2);
+global.ani_miles_look_v1 = new animation(sprMilesLook, 2, -1, 0, [1, 0]);
+
+global.ani_miles_crouch_v0 = new animation(sprMilesCrouch, [1, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], 2);
+global.ani_miles_crouch_v1 = new animation(sprMilesCrouch, 1, -1, 0, [1, 0]);
+
+global.ani_miles_roll_v0 = new animation(sprMilesRoll, 2);
+
+global.ani_miles_spin_dash_v0 = new animation(sprMilesSpinDash0, 2);
+global.ani_miles_spin_dash_v1 = new animation(sprMilesSpinDash1, 2, -1);
+
+global.ani_miles_fall_v0 = new animation(sprMilesSpring1, 2, -1, 0, [4, 5]);
+global.ani_miles_fall_v1 = new animation(sprMilesSpring2, 2);
+
+global.ani_miles_jump_v0 = new animation(sprMilesJump0, 3, -1);
+global.ani_miles_jump_v1 = new animation(sprMilesJump1, 2);
+global.ani_miles_jump_v2 = new animation(sprMilesJump2, [1, 2, 2, 2, 2, 2]);
+
+global.ani_miles_spring_v0 = new animation(sprMilesSpring0, 2);
+global.ani_miles_spring_v1 = new animation(sprMilesSpring1, [2, 3, 3, 4, 4, 4], -1);
+global.ani_miles_spring_v2 = new animation(sprMilesSpring2, 3, 1);
+
+global.ani_miles_spring_twirl_v0 = new animation(sprMilesSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
 #endregion
 
 #region Amy
