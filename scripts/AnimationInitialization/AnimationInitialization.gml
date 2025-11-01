@@ -104,6 +104,51 @@ global.ani_miles_spring_twirl_v0 = new animation(sprMilesSpringTwirl, [4, 4, 4, 
 
 #endregion
 
+#region Knuckles
+
+global.ani_knuckles_idle_v0 = new animation(sprKnucklesIdle, [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 5, 5, 5, 5, 5, 5, 5, 12, 6, 5, 5, 5, 5, 5, 5]);
+
+global.ani_knuckles_teeter_front_v0 = new animation(sprKnucklesTeeterFront, 3, 1);
+global.ani_knuckles_teeter_back_v0 = new animation(sprKnucklesTeeterBack, [3, 4, 4, 4, 4, 4, 4], 1);
+
+global.ani_knuckles_turn_v0 = new animation(sprKnucklesTurn, 1, -1);
+global.ani_knuckles_turn_brake_v0 = new animation(sprKnucklesTurnBrake, 1, -1);
+
+global.ani_knuckles_run_v0 = new animation(sprKnucklesRun0, 8);
+global.ani_knuckles_run_v1 = new animation(sprKnucklesRun1, 8);
+global.ani_knuckles_run_v2 = new animation(sprKnucklesRun2, 8);
+global.ani_knuckles_run_v3 = new animation(sprKnucklesRun3, 8);
+global.ani_knuckles_run_v4 = new animation(sprKnucklesRun4, 8);
+
+global.ani_knuckles_brake_v0 = new animation(sprKnucklesBrake, 2, 1);
+global.ani_knuckles_brake_fast_v0 = new animation(sprKnucklesBrakeFast, [1, 1, 3, 3], 2);
+
+global.ani_knuckles_look_v0 = new animation(sprKnucklesLook, [4, 4, 2], -1);
+global.ani_knuckles_look_v1 = new animation(sprKnucklesLook, 2, -1, [1, 0]);
+
+global.ani_knuckles_crouch_v0 = new animation(sprKnucklesCrouch, 1, -1);
+global.ani_knuckles_crouch_v1 = new animation(sprKnucklesCrouch, 1, -1, [1, 0]);
+
+global.ani_knuckles_roll_v0 = new animation(sprKnucklesRoll, 2);
+
+global.ani_knuckles_spin_dash_v0 = new animation(sprKnucklesSpinDash0, 2);
+global.ani_knuckles_spin_dash_v1 = new animation(sprKnucklesSpinDash1, 2, -1);
+
+global.ani_knuckles_fall_v0 = new animation(sprKnucklesSpring1, 2, -1, [4, 5]);
+global.ani_knuckles_fall_v1 = new animation(sprKnucklesSpring2, 2);
+
+global.ani_knuckles_jump_v0 = new animation(sprKnucklesJump0, [3, 2], -1);
+global.ani_knuckles_jump_v1 = new animation(sprKnucklesJump1, 2);
+global.ani_knuckles_jump_v2 = new animation(sprKnucklesJump2, [1, 2, 2, 2], 1);
+
+global.ani_knuckles_spring_v0 = new animation(sprKnucklesSpring0, 3);
+global.ani_knuckles_spring_v1 = new animation(sprKnucklesSpring1, 3, -1);
+global.ani_knuckles_spring_v2 = new animation(sprKnucklesSpring2, 3);
+
+global.ani_knuckles_spring_twirl_v0 = new animation(sprKnucklesSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
+#endregion
+
 #region Amy
 
 global.ani_amy_idle_v0 = new animation(sprAmyIdle, 7);
