@@ -11,22 +11,24 @@ function player_calc_ground_normal(ox, oy, rot)
 	/// @param {Real} px x-coordinate of the point.
 	/// @param {Real} py y-coordinate of the point.
 	/// @returns {Bool}
-	var point_in_solid = function (px, py)
+	static point_in_solid = function (px, py)
 	{
 		for (var n = array_length(tilemaps) - 1; n > -1; --n)
 		{
 			if (collision_point(px, py, tilemaps[n], true, false) != noone) return true;
 		}
-        for (n = array_length(solid_objects) - 1; n > -1; --n)
+		
+		for (n = array_length(solid_objects) - 1; n > -1; --n)
 		{
 			if (collision_point(px, py, solid_objects[n], true, false) != noone) return true;
 		}
+		
 		return false;
 	};
 	
 	// Setup angle sensors
-	var sensor_x = [ox, ox];
-	var sensor_y = [oy, oy];
+	var sensor_x = array_create(2, ox);
+	var sensor_y = array_create(2, oy);
 	var sine = dsin(rot);
 	var cosine = dcos(rot);
 	
@@ -80,12 +82,12 @@ function player_detect_entities()
 	var xdia = x_wall_radius + 0.5;
 	var ydia = y_tile_reach + y_radius + 0.5;
 	
-    /* AUTHOR NOTE: the size of the bounding rectangle must be coordinates with the distances used for collision checking.
+	/* AUTHOR NOTE: the size of the bounding rectangle must be coordinates with the distances used for collision checking.
 	Wall collisions check for a distance of `x_wall_radius`, so this is the rectangle's width.
 	Floor collisions check for a distance of `y_tile_reach + y_radius`, so this is the rectangle's height.
 	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
 	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
-    
+	
 	// Detect instances intersecting the rectangle
 	var zone_objects = ds_list_create();
 	var total_objects = (mask_direction mod 180 != 0 ?

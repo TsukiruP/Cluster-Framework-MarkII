@@ -11,10 +11,10 @@ function player_move_on_ground()
 		if (dy != 0) other.y += dy;
 	}
 	
-    /* AUTHOR NOTE: using `instance_place` here is cheeky as the player's sprite mask is used
+	/* AUTHOR NOTE: using `instance_place` here is cheeky as the player's sprite mask is used
 	to check for collision instead of their virtual mask.
 	However, unless the player's virtual mask is wider than their sprite's, this is not an issue. */
-    
+	
 	// Calculate the number of steps for collision checking
 	var total_steps = 1 + abs(x_speed) div x_radius;
 	var step = x_speed / total_steps;
