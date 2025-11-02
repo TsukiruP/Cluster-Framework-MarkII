@@ -93,13 +93,7 @@ player_animate = function()
             }
             animation_set(variants);
             player_set_radii(6, 14);
-            
-            // Straighten
-			if (image_angle != direction)
-			{
-				var diff = angle_difference(direction, image_angle);
-				image_angle += min(2.8125, abs(diff)) * sign(diff);
-			}
+            image_angle = angle_straighten(direction, image_angle);
             break;
         }
         case PLAYER_ANIMATION.JUMP:

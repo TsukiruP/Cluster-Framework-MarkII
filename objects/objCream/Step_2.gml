@@ -18,12 +18,7 @@ with (ears_effect)
         }
         else
         {
-        	// Straighten
-			if (image_angle != other.gravity_direction)
-			{
-				var diff = angle_difference(other.gravity_direction, image_angle);
-				image_angle += min(2.8125, abs(diff)) * sign(diff);
-			}
+        	image_angle = angle_straighten(other.gravity_direction, image_angle);
         }
         
         animation_set(global.ani_cream_ears_v0);

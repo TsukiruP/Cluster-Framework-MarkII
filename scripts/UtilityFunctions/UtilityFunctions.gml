@@ -7,6 +7,21 @@ function angle_wrap(ang)
 	return (ang mod 360 + 360) mod 360;
 }
 
+/// @function angle_straighten(dest, src, [amt])
+/// @description Straightens out the source angle to the destination angle.
+/// @param {Real} dest Destination angle.
+/// @param {Real} src Source angle.
+/// @param {Real} amt The maximum amount to straighten by.
+/// @returns {Real}
+function angle_straighten(dest, src, amt = 2.8125)
+{
+	if (src != dest)
+	{
+		var diff = angle_difference(dest, src);
+		return src + min(amt, abs(diff)) * sign(diff);
+	}
+}
+
 /// @function instance_in_view([obj], [padding])
 /// @description Checks if the given instance is visible within the game view.
 /// @param {Asset.GMObject|Id.Instance} [obj] Object or instance to check (optional, default is the calling instance).
