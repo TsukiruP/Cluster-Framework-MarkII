@@ -20,6 +20,7 @@ function angle_straighten(dest, src, amt = 2.8125)
 		var diff = angle_difference(dest, src);
 		return src + min(amt, abs(diff)) * sign(diff);
 	}
+    return src;
 }
 
 /// @function instance_in_view([obj], [padding])
