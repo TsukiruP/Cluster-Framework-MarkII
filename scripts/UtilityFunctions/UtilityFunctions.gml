@@ -38,20 +38,19 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 	with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
 }
 
-/// @function particle_create(x, y, depth, ani, [xspd], [yspd], [xaccel], [yaccel])
+/// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel])
 /// @description Creates a particle with the given animation.
 /// @param {Real} x x-coordinate of the particle.
 /// @param {Real} y y-coordinate of the particle.
-/// @param {Real} depth depth of the particle.
 /// @param {Struct.animation} ani animation of the particle.
 /// @param {Real} [xspd] x-speed of the particle.
 /// @param {Real} [yspd] y-speed of the effect.
 /// @param {Real} [xaccel] x-acceleration of the particle.
 /// @param {Real} [yaccel] y-acceleration of the particle.
 /// @returns {Id.Instance}
-function particle_create(ox, oy, od, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
+function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
-    var particle = instance_create_depth(ox, oy, od, objParticle);
+    var particle = instance_create_depth(ox, oy, DEPTH_PARTICLE, objParticle);
     with (particle)
     {
         animation_set(ani);

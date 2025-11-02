@@ -212,12 +212,12 @@ function player_is_running(phase)
 						sound_play(sfxBrake);
 					}
 				}
-				else if (ctrlWindow.image_index mod 4 == 0)
+				else if (ctrlGame.image_index mod 4 == 0)
 				{
 					// Create brake dust
 					var ox = x + dsin(direction) * y_radius;
 					var oy = y + dcos(direction) * y_radius;
-					particle_create(ox, oy, DEPTH_EFFECT_HIGH, global.ani_brake_dust_v0);
+					particle_create(ox, oy, global.ani_brake_dust_v0);
 				}
 			}
 			else
