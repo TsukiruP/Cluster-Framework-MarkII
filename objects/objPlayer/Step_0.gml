@@ -69,6 +69,12 @@ with (camera)
     padding(px, py);
     center(false, other.on_ground);
     spd_max_y = (other.x_speed >= 8 or not other.on_ground ? 24 : 6);
+    
+    if (follow != other)
+    {
+        move(other.x, other.y);
+        follow = other;
+    }
 }
 
 #endregion
