@@ -1,12 +1,7 @@
 /// @description Initialize
-// Depths
-#macro DEPTH_AFTERIMAGE 75 
-#macro DEPTH_PLAYER 50
-#macro DEPTH_PARTICLE 25
-
 #region Camera
 
-// Camera macros
+// Constants
 #macro CAMERA_WIDTH 426
 #macro CAMERA_HEIGHT 240
 #macro CAMERA_PADDING 64
@@ -62,10 +57,29 @@ play_music = function (soundid)
 
 #endregion
 
+#region Player
+
+// Constants
+#macro DEPTH_AFTERIMAGE 75 
+#macro DEPTH_PLAYER 50
+#macro DEPTH_PARTICLE 25
+
+enum CHARACTER
+{
+    NONE = -1,
+    SONIC,
+    MILES,
+    KNUCKLES,
+    AMY,
+    CREAM
+}
+
 // Player values
 global.score = 0;
 global.lives = 3;
 global.rings = 0;
+
+#endregion
 
 // Fonts
 global.font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
