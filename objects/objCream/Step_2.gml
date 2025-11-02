@@ -1,0 +1,35 @@
+/// @description Effects
+// Inherit the parent event
+event_inherited();
+
+var rolling = (animation_data.ani == global.ani_cream_roll_v0 || animation_data.ani == global.ani_cream_jump_v1);
+
+with (ears_effect)
+{
+    if (rolling)
+    {
+        x = other.x;
+        y = other.y;
+        image_xscale = other.image_xscale;
+        
+        if (other.on_ground)
+        {
+            image_angle = angle_wrap(other.direction);
+        }
+        else
+        {
+        	// Straighten
+			if (image_angle != other.gravity_direction)
+			{
+				var diff = angle_difference(other.gravity_direction, image_angle);
+				image_angle += min(2.8125, abs(diff)) * sign(diff);
+			}
+        }
+        
+        animation_set(global.ani_cream_ears_v0);
+    }
+    else if (not is_undefined(animation_data.ani))
+    {
+        animation_set(undefined);
+    }
+}

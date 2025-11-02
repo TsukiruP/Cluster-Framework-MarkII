@@ -54,7 +54,7 @@
 | Brake Fast | 343-0 |
 | Look | 327-0, 327-1 |
 | Crouch | 328-0, 328-1 |
-| Roll | 337-0 |
+| Roll | 337-0, 337-1 | Variant 1 is for his tails
 | Spin Dash | 336-0 | Variant 1 by IceisNice
 | Fall | 350-0 | Reuses Spring sprites |
 | Jump | 345-0, 345-1, 345-2 |
@@ -111,3 +111,27 @@
 | Hurt | 754-0 | Need to compare with SA2
 | Stumble | 754-1 |
 | Death | 755-0 |
+
+# Cream
+
+| Animation | Source | Notes |
+| --- | --- | --- |
+| Idle | 163-0 |
+| Teeter Front | 197-0 |
+| Teeter Back | 198-0 |
+| Turn | 175-0 |
+| Turn Brake | (SA2) 97-0 | Uses SA3 offset
+| Run | 171-0, 171-1, 171-2, 171-3, 171-4 |
+| Brake | 179-0 |
+| Brake Fast | 180-0 |
+| Look | 164-0, 164-1 |
+| Crouch | 165-0, 165-1 |
+| Roll | 174-0, 174-1 | Variant 1 are her ears
+| Spin Dash | 173-0 |
+| Fall | 187-0 | Reuses Spring sprites |
+| Jump | 182-0, 182-1, 182-2 |
+| Spring | 271-0, 271-1, 271-2 |
+| Spring Twirl | 272-0 |
+| Hurt | 265-0 | Need to compare with SA2
+| Stumble | 265-1 |
+| Death | 266-0 |

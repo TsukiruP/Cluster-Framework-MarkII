@@ -270,6 +270,11 @@ function player_is_looking(phase)
 			if (x_speed != 0) return player_perform(player_is_running);
 			
 			// Stand
+            if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 1 and animation_is_finished())
+            {
+            	return player_perform(player_is_standing);
+            }
+            
 			if (input_axis_x == 0 and input_axis_y == 0)
             {
                 if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 0) animation_data.variant = 1;
@@ -277,11 +282,6 @@ function player_is_looking(phase)
             else if (input_axis_y != -1)
             {
                 return player_perform(player_is_standing);
-            }
-            
-            if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 1 and animation_is_finished())
-            {
-            	return player_perform(player_is_standing);
             }
 			
 			// Ascend camera
@@ -339,6 +339,11 @@ function player_is_crouching(phase)
 			if (x_speed != 0) return player_perform(player_is_running);
 			
 			// Stand
+            if (animation_data.index == PLAYER_ANIMATION.CROUCH and animation_data.variant == 1 and animation_is_finished())
+            {
+            	return player_perform(player_is_standing);
+            }
+            
 			if (input_axis_x == 0 and input_axis_y == 0)
             {
                 if (animation_data.index == PLAYER_ANIMATION.CROUCH and animation_data.variant == 0) animation_data.variant = 1;
@@ -346,11 +351,6 @@ function player_is_crouching(phase)
             else if (input_axis_y != 1)
             {
                 return player_perform(player_is_standing);
-            }
-            
-            if (animation_data.index == PLAYER_ANIMATION.CROUCH and animation_data.variant == 1 and animation_is_finished())
-            {
-            	return player_perform(player_is_standing);
             }
 			
 			// Descend camera
