@@ -44,5 +44,5 @@ call_later(1, time_source_units_frames, function ()
 });
 
 /* AUTHOR NOTE: this must be done one frame later as the first room will not have loaded yet.
- * also, variables here do not have the global prefix despite being recommended by the manual.
+ * also, while the manual recommends variables declared in scripts to have a global prefix, this is not done here.
  */
