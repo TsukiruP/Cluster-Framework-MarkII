@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"db_exists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"db_exists",
+  "parent":{
+    "name":"Access",
+    "path":"folders/Libraries/db/Access.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

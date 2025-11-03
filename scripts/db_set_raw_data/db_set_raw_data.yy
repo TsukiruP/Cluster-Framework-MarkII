@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"db_set_raw_data",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"db_set_raw_data",
+  "parent":{
+    "name":"Properties",
+    "path":"folders/Libraries/db/Properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

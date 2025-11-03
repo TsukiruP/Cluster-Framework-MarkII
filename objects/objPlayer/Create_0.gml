@@ -84,6 +84,7 @@ semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 solid_objects = [];
 
 // Input
+input_channel = -1;
 input_axis_x = 0;
 input_axis_y = 0;
 
@@ -135,7 +136,7 @@ function player_effect() constructor
 spin_dash_effect = new player_effect();
 
 // Camera
-camera = undefined;
+camera = noone;
 camera_offset_x = 0;
 camera_offset_y = 0;
 camera_padding_x = 0;

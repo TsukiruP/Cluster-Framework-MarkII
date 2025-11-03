@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__db_buffer_write_json",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__db_buffer_write_json",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Libraries/db/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

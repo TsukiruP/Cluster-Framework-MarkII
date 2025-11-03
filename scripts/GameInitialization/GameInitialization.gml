@@ -22,6 +22,7 @@ volume_sound = 1;
 volume_music = 1;
 
 // Player values
+players = -1;
 score = 0;
 lives = 3;
 rings = 0;
