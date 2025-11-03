@@ -88,7 +88,7 @@ player_animate = function()
             }
             animation_set(variants);
             player_set_radii(6, 14);
-            image_angle = angle_straighten(direction, image_angle);
+            image_angle = rotate_towards(direction, image_angle);
             break;
         }
         case PLAYER_ANIMATION.JUMP:

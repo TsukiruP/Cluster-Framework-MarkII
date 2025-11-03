@@ -18,7 +18,7 @@ with (ears_effect)
         }
         else
         {
-        	image_angle = angle_straighten(other.gravity_direction, image_angle);
+        	image_angle = rotate_towards(other.gravity_direction, image_angle);
         }
         
         animation_set(global.ani_cream_ears_v0);

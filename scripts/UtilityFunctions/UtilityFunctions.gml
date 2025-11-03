@@ -7,13 +7,13 @@ function angle_wrap(ang)
 	return (ang mod 360 + 360) mod 360;
 }
 
-/// @function angle_straighten(dest, src, [amt])
-/// @description Straightens out the source angle to the destination angle.
+/// @function rotate_towards(dest, src, [amt])
+/// @description Rotates the source angle to the destination angle.
 /// @param {Real} dest Destination angle.
 /// @param {Real} src Source angle.
 /// @param {Real} amt The maximum amount to straighten by.
 /// @returns {Real}
-function angle_straighten(dest, src, amt = 2.8125)
+function rotate_towards(dest, src, amt = 2.8125)
 {
 	if (src != dest)
 	{
