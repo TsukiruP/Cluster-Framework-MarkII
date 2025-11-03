@@ -109,7 +109,7 @@ player_animate = function()
             else
             {
             	player_set_radii(6, 9);
-                if (y_speed > 0)
+                if (animation_data.variant == 1 and y_speed > 0)
                 {
                     if (not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
                 }
