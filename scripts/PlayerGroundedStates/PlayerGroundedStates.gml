@@ -212,7 +212,7 @@ function player_is_running(phase)
 						sound_play(sfxBrake);
 					}
 				}
-				else if (ctrlGame.image_index mod 4 == 0)
+				else if (ctrlWindow.image_index mod 4 == 0)
 				{
 					// Create brake dust
 					var ox = x + dsin(direction) * y_radius;

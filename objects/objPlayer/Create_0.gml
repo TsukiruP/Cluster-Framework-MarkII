@@ -135,7 +135,7 @@ function player_effect() constructor
 spin_dash_effect = new player_effect();
 
 // Camera
-camera = global.main_camera;
+camera = undefined;
 camera_offset_x = 0;
 camera_offset_y = 0;
 camera_padding_x = 0;

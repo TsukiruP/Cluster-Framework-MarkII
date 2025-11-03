@@ -13,8 +13,8 @@
   "name":"ctrlGame",
   "overriddenProperties":[],
   "parent":{
-    "name":"Controllers",
-    "path":"folders/Objects/Controllers.yy",
+    "name":"Depreciated",
+    "path":"folders/Objects/Depreciated.yy",
   },
   "parentObjectId":null,
   "persistent":true,

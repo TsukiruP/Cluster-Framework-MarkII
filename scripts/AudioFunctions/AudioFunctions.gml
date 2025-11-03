@@ -13,7 +13,7 @@ function sound_play(soundid)
 /// @param {Asset.GMSound} soundid Sound asset to play.
 function music_overlay(soundid)
 {
-	with (ctrlGame)
+	with (ctrlMusic)
 	{
 		// Stop existing overlay, otherwise mute stream
 		if (overlay != -1) audio_stop_sound(overlay);
@@ -21,7 +21,7 @@ function music_overlay(soundid)
 		
 		// Play overlay
 		overlay = audio_play_sound(soundid, 2, false, global.volume_music);
-		alarm[1] = audio_sound_length(soundid) * room_speed;
+		alarm[0] = audio_sound_length(soundid) * room_speed;
 	}
 }
 
@@ -31,7 +31,7 @@ function music_overlay(soundid)
 /// @param {Real} priority Priority value to set.
 function music_enqueue(soundid, priority)
 {
-	with (ctrlGame)
+	with (ctrlMusic)
 	{
 		if (ds_priority_find_priority(queue, soundid) == undefined)
 		{
@@ -50,7 +50,7 @@ function music_enqueue(soundid, priority)
 /// @param {Asset.GMSound} soundid Sound asset to remove.
 function music_dequeue(soundid)
 {
-	with (ctrlGame)
+	with (ctrlMusic)
 	{
 		ds_priority_delete_value(queue, soundid);
 		if (audio_is_playing(soundid)) play_music(ds_priority_find_max(queue));

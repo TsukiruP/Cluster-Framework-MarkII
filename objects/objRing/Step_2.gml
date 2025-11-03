@@ -1,2 +1,2 @@
 /// @description Animate
-image_index = ctrlGame.image_index div 8;
+image_index = ctrlWindow.image_index div 8;
