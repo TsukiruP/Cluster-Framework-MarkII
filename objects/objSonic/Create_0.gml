@@ -2,7 +2,7 @@
 // Inherit the parent event
 event_inherited();
 
-player_animate = function()
+player_animate = function ()
 {
     switch (animation_data.index)
     {

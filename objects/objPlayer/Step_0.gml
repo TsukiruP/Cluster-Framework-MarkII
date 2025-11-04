@@ -4,7 +4,7 @@
 input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, input_channel);
 input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, input_channel);
 
-struct_foreach(input_button, function(name, value)
+struct_foreach(input_button, function (name, value)
 {
     var verb = value.index;
     value.check = InputCheck(verb, input_channel);
