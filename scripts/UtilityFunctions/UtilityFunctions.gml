@@ -1,3 +1,15 @@
+/// @function wrap(val, minimum, maximum)
+/// @description Wraps the given value between the minimum and maximum inclusively.
+/// @param {Real} val Value to wrap.
+/// @param {Real} maximum Maximum value.
+/// @param {Real} minimum Minimum value.
+function wrap(val, minimum, maximum)
+{
+    if (val < minimum) return minimum;
+    else if (val > maximum) return maximum;
+    else return val;
+}
+
 /// @function angle_wrap(ang)
 /// @description Wraps the given angle between 0 and 359 degrees inclusively.
 /// @param {Real} ang Angle to wrap.
