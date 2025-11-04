@@ -115,7 +115,7 @@ input_button =
 animation_data = new animation_core();
 
 // Effects
-/// @method player_effect()
+/// @function player_effect()
 /// @description Creates a new player effect.
 function player_effect() constructor
 {
@@ -127,7 +127,7 @@ function player_effect() constructor
     image_yscale = 1;
     image_angle = 0;
     animation_data = new animation_core();
-    static draw = function()
+    static draw = function ()
     {
         if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
     };
@@ -185,11 +185,11 @@ player_resist_slope = function (force)
 
 /// @method player_animate()
 /// @description Sets the player's current animation.
-player_animate = function() {};
+player_animate = function () {};
 
 /// @method player_set_run_variant()
 /// @description Sets the variant based on the player's horizontal speed.
-player_set_run_variant = function()
+player_set_run_variant = function ()
 {
     // Abort if not grounded
     if (not on_ground) exit;
@@ -210,7 +210,7 @@ player_set_run_variant = function()
 /// @description Sets the player's radii.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
-player_set_radii = function(xrad, yrad)
+player_set_radii = function (xrad, yrad)
 {
     // Abort if radii already match
     if (x_radius == xrad and y_radius == yrad) exit;
@@ -228,11 +228,11 @@ player_set_radii = function(xrad, yrad)
 
 /// @method player_draw_before()
 /// @description Draws player effects behind the character sprite.
-player_draw_before = function() {};
+player_draw_before = function () {};
 
 /// @method player_draw_after()
 /// @description Draws player effects in front of the character sprite.
-player_draw_after = function() {};
+player_draw_after = function () {};
 
 /// @method player_gain_rings(num)
 /// @description Increases the player's ring count by the given amount.
