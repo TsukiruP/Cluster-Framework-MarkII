@@ -76,7 +76,7 @@ function animation_set(ani)
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
         animation_data.pos = start;
         sprite_index = sprite;
-        image_index = (array_length(order) ? order[start] : start);
+        image_index = (array_length(order) > 0 ? order[start] : start);
     }
     
     animation_data.ani = ani;

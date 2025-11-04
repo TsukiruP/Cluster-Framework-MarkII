@@ -41,7 +41,7 @@ call_later(1, time_source_units_frames, function ()
 {
 	instance_create_layer(0, 0, "Controllers", ctrlWindow);
 	instance_create_layer(0, 0, "Controllers", ctrlMusic);
-    room_goto(rmTest);
+    //room_goto(rmTest);
 });
 
 /* AUTHOR NOTE: this must be done one frame later as the first room will not have loaded yet.
