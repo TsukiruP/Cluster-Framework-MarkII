@@ -1,19 +1,16 @@
 /// @description Render
-for (var i = 0; i < array_length(home_menu); i++)
+for (var i = 0; i < array_length(current_menu.items); i++)
 {
-    var text = home_menu[i].text_string;
-    var val = home_menu[i].value - home_menu[i].value_offset;
-    if (not is_undefined(val))
+    var item = current_menu.items[i];
+    var label = item.text;
+    
+    if (is_instanceof(item, option_value))
     {
-        var label = home_menu[i].value_labels;
-        if (array_length(label) > 0)
-        {
-            text = string_concat(text, ": " + label[val]);
-        }
-        else
-        {
-        	text = string_concat(text, ": " + string(val));
-        }
+        label = string_concat(label, ": ", item.toString());
     }
-    draw_text(10, 10, text);
+    
+    draw_set_color(current_menu.cursor == i ? c_white : c_gray);
+    draw_text(10, 10 * i, label);
 }
+
+draw_set_color(c_white);
