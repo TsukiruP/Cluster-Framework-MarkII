@@ -5,8 +5,8 @@
 /// @param {Real} minimum Minimum value.
 function wrap(val, minimum, maximum)
 {
-    if (val < minimum) return minimum;
-    else if (val > maximum) return maximum;
+    if (val < minimum) return maximum;
+    else if (val > maximum) return minimum;
     else return val;
 }
 
