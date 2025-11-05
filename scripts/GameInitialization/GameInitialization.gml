@@ -35,6 +35,7 @@ font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
 surface_depth_disable(true);
 randomize();
 audio_channel_num(16);
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, 2, false, INPUT_VERB.CANCEL, undefined);
 
 // Create global controllers
 call_later(1, time_source_units_frames, function ()

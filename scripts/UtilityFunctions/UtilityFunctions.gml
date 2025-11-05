@@ -73,3 +73,13 @@ function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0
     }
     return particle;
 }
+
+/// @function draw_reset()
+/// @description Resets draw color, alpha, and text alignment. Ported from GM8.2.
+function draw_reset()
+{
+    draw_set_color(c_white);
+    draw_set_alpha(1);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}

@@ -109,6 +109,9 @@ boost_option = new option_bool("Boost");
 boost_option.get = function () { return db_read(global.save_database, true, "boost"); };
 boost_option.set = function (val) { db_write(global.save_database, val, "boost"); };
 
+join_option = new option("Controller Setup");
+join_option.confirm = function () { InputPartySetJoin(true); }
+
 test_option = new option("Test Room");
 test_option.confirm = function ()
 {
@@ -116,5 +119,6 @@ test_option.confirm = function ()
     return true;
 };
 
-character_menu = new menu([player_0_option, player_1_option, boost_option, test_option]);
+
+character_menu = new menu([player_0_option, player_1_option, boost_option, join_option, test_option]);
 current_menu = character_menu;
