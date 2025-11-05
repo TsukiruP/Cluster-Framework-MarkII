@@ -1,3 +1,14 @@
+/// @function esign(val, def)
+/// @description Returns the sign of the value, or the default if the value is 0.
+/// @param {Real} val Value to get the sign of.
+/// @param {Real} def Default value to give if the value is 0.
+/// @returns {Real}
+function esign(val, def)
+{
+	if (val == 0) return def;
+	else return sign(val);
+}
+
 /// @function wrap(val, minimum, maximum)
 /// @description Wraps the given value between the minimum and maximum inclusively.
 /// @param {Real} val Value to wrap.
