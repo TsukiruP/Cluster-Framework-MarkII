@@ -14,6 +14,7 @@ function esign(val, def)
 /// @param {Real} val Value to wrap.
 /// @param {Real} maximum Maximum value.
 /// @param {Real} minimum Minimum value.
+/// @returns {Real}
 function wrap(val, minimum, maximum)
 {
     if (val < minimum) return maximum;
