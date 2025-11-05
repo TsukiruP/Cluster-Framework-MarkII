@@ -1,5 +1,5 @@
 /// @function esign(val, def)
-/// @description Returns the sign of the value, or the default if the value is 0.
+/// @description Returns the sign of the value, or the default if the value is 0. Ported from GM8.2.
 /// @param {Real} val Value to get the sign of.
 /// @param {Real} def Default value to give if the value is 0.
 /// @returns {Real}
