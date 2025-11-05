@@ -8,7 +8,7 @@ player_animate = function ()
     {
         case PLAYER_ANIMATION.IDLE:
         {
-            animation_set(global.ani_amy_idle_v0);
+            animation_set(global.players[0].object_index == objSonic ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
             break;
@@ -33,9 +33,10 @@ player_animate = function ()
         case PLAYER_ANIMATION.RUN:
         {
             var variants = [global.ani_amy_run_v0, global.ani_amy_run_v1, global.ani_amy_run_v2, global.ani_amy_run_v3, global.ani_amy_run_v4];
+            var variants_alt = [global.ani_amy_run_alt_v0, global.ani_amy_run_alt_v1, global.ani_amy_run_alt_v2, global.ani_amy_run_alt_v3];
             var run_speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
             player_set_run_variant();
-            animation_set(variants);
+            animation_set(global.players[0].object_index == objSonic ? variants_alt : variants);
             player_set_radii(6, 14);
             if (on_ground) animation_data.speed = run_speed;
             image_angle = direction;

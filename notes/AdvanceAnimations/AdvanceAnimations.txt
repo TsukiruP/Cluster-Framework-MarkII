@@ -111,6 +111,9 @@
 | Hurt | 754-0 | Need to compare with SA2
 | Stumble | 754-1 |
 | Death | 755-0 |
+| Idle Alt | 700-0 |
+| Run Alt | 701-0, 701-1, 701-2, 701-3 |
+| Wait Alt | 702-0 |
 
 # Cream
 
