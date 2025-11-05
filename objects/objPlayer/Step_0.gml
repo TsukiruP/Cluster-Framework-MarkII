@@ -13,6 +13,8 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	    value.pressed = InputPressed(verb, player_index);
 	    value.released = InputReleased(verb, player_index);
 	});
+    
+    if (input_cpu_gamepad_time > 0) input_cpu_gamepad_time--;
 }
 
 if (player_index != 0 and input_cpu_gamepad_time == 0)
@@ -132,6 +134,9 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
                 }
 			}
 		}
+        
+        // Swap to player
+        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = 600;
 	}
 }
 
