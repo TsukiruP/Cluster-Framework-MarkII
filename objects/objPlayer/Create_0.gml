@@ -26,6 +26,23 @@ enum PLAYER_ANIMATION
     SPRING_TWIRL
 }
 
+enum CPU_INPUT
+{
+	X,
+	Y,
+	JUMP,
+	JUMP_PRESSED,
+	MAX
+}
+
+enum CPU_STATE
+{
+	FOLLOW,
+    STAND,
+	CROUCH,
+	SPIN_DASH
+}
+
 #macro PLAYER_HEIGHT 14
 
 // State machine
@@ -111,8 +128,67 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
+/// @method player_reset_input()
+/// @description Resets all player input.
+player_reset_input = function ()
+{
+	input_axis_x = 0;
+	input_axis_y = 0;
+	
+	struct_foreach(input_button, function (name, value)
+	{
+	    var verb = value.index;
+	    value.check = false;
+	    value.pressed = false;
+	    value.released = false;
+	});
+};
+
+// CPU
+input_cpu_state = 0;
+input_cpu_state_time = 0;
+input_cpu_respawn_time = 0;
+input_cpu_gamepad_time = 0;
+input_cpu_history = array_create(CPU_INPUT.MAX);
+for (var i = 0; i < CPU_INPUT.MAX; i++) input_cpu_history[i] = array_create(16);
+
+/// @method player_record_cpu_input(cpu_input)
+/// @description Records the given CPU input.
+/// @param {Enum.CPU_INPUT} CPU input to record.
+player_record_cpu_input = function (cpu_input)
+{
+	var input;
+	switch (cpu_input)
+	{
+		case CPU_INPUT.X:
+		{
+			input = input_axis_x;
+			break;
+		}
+		case CPU_INPUT.Y:
+		{
+			input = input_axis_y;
+			break;
+		}
+		case CPU_INPUT.JUMP:
+		{
+			input = input_button.jump.check;
+			break;
+		}
+		case CPU_INPUT.JUMP_PRESSED:
+		{
+			input = input_button.jump.pressed;
+			break;
+		}
+	}
+	
+	array_shift(input_cpu_history[cpu_input]);
+	array_push(input_cpu_history[cpu_input], input);
+};
+
 // Animation
 animation_data = new animation_core();
+//animation_history = array_create(16);
 
 // Effects
 /// @function player_effect()
