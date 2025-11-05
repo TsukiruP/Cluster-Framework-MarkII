@@ -7,7 +7,7 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
     if (character_index != CHARACTER.NONE)
     {
         var player_inst = instance_create_depth(x, y, DEPTH_PLAYER + i, player_objects[character_index]);
-        with (player_inst) input_channel = i;
+        with (player_inst) player_index = i;
         array_set(global.players, i, player_inst);
     }
 }

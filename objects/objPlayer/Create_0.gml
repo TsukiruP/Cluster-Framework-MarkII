@@ -84,7 +84,6 @@ semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 solid_objects = [];
 
 // Input
-input_channel = -1;
 input_axis_x = 0;
 input_axis_y = 0;
 
@@ -143,6 +142,8 @@ camera_padding_x = 0;
 camera_padding_y = 0;
 
 // Misc.
+player_index = -1;
+
 /// @method player_perform(action)
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
