@@ -39,7 +39,7 @@ function option_bool(label) : option_value(label) constructor
 {
     get = function () { return false; };
     set = function (val) {};
-    update = function () { set(!get()); };
+    update = function () { set(not get()); };
     toString = function () { return (get() ? "True" : "False")};
 }
 
