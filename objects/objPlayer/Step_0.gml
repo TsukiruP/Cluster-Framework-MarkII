@@ -23,24 +23,27 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 	{
 		switch (input_cpu_state)
 		{
-			case CPU_STATE.STAND:
-            {
-                if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
-                {
-                    x_speed = 0;
-                    input_axis_y = 1;
-                    input_cpu_state = CPU_STATE.CROUCH;
-                    image_xscale = esign(leader_inst.x - x, leader_inst.image_xscale);
-                }
-                break;
-            }
-            case CPU_STATE.CROUCH:
+			case CPU_STATE.CROUCH:
 			{
-                input_axis_y = 1;
-                if (state == player_is_crouching)
+                if (input_cpu_state_time == 0)
                 {
-                    input_cpu_state = CPU_STATE.SPIN_DASH;
-					input_cpu_state_time = 128;
+                	input_cpu_state = CPU_STATE.FOLLOW;
+					input_cpu_state_time = 0;
+                }
+                else
+                {
+			        if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
+			        {
+			        	x_speed = 0;
+			        	input_axis_y = 1;
+			        	image_xscale = esign(leader_inst.x - x, leader_inst.image_xscale);
+			        	if (state == player_is_crouching)
+			        	{
+			            	input_cpu_state = CPU_STATE.SPIN_DASH;
+							input_cpu_state_time = 64;
+			        	}
+			        }
+			        --input_cpu_state_time;
                 }
 				break;
 			}
@@ -54,7 +57,7 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 				else
 				{
 					input_axis_y = 1;
-					input_button.jump.pressed = (input_cpu_state_time mod 32 == 0);
+					input_button.jump.pressed = (input_cpu_state_time mod 16 == 0);
 					--input_cpu_state_time;
 				}
 				break;
@@ -64,8 +67,8 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 				// Panic
 				if (abs(x_speed) < 0.5 and control_lock_time > 0)
 				{
-					input_cpu_state = CPU_STATE.STAND;
-					input_cpu_state_time = 0;
+					input_cpu_state = CPU_STATE.CROUCH;
+					input_cpu_state_time = 128;
 					break;
 				}
 				

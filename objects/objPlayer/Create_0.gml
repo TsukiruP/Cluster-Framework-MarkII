@@ -38,7 +38,6 @@ enum CPU_INPUT
 enum CPU_STATE
 {
 	FOLLOW,
-    STAND,
 	CROUCH,
 	SPIN_DASH
 }
