@@ -33,6 +33,7 @@ state = player_is_ready;
 state_changed = false;
 
 jump_action = false;
+jump_cap = true;
 
 spin_dash_charge = 0;
 

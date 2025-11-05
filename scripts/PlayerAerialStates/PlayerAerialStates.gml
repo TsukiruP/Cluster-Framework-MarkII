@@ -68,7 +68,8 @@ function player_is_jumping(phase)
 		{
 			// Set flags
 			jump_action = true;
-			
+			jump_cap = true;
+            
 			// Leap
 			var sine = dsin(local_direction);
 			var cosine = dcos(local_direction);
@@ -109,7 +110,7 @@ function player_is_jumping(phase)
 			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
 			
 			// Lower height
-			if (not input_button.jump.check and y_speed < -jump_release)
+			if (jump_cap and not input_button.jump.check and y_speed < -jump_release)
 			{
 				y_speed = -jump_release;
 			}
