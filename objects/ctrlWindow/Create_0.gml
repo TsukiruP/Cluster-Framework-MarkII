@@ -1,5 +1,5 @@
 /// @description Initialize
-scale = 2;
+scale = (os_type == os_linux ? 1 : 2);
 
 // STANNcam
 stanncam_init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
