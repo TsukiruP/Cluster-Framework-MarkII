@@ -25,7 +25,7 @@
 
 // Default values for the "opposing" checker functions. Please see that function for documentation
 // on behaviour.
-#macro INPUT_OPPOSING_DEFAULT_MOST_RECENT  true
+#macro INPUT_OPPOSING_DEFAULT_MOST_RECENT  false
 
 ///////////////////////////
 //                       //
