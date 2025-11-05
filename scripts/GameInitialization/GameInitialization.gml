@@ -35,14 +35,13 @@ font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
 surface_depth_disable(true);
 randomize();
 audio_channel_num(16);
-InputPartySetParams(INPUT_VERB.CONFIRM, 1, 2, false, INPUT_VERB.CANCEL, undefined);
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
 
 // Create global controllers
 call_later(1, time_source_units_frames, function ()
 {
 	instance_create_layer(0, 0, "Controllers", ctrlWindow);
 	instance_create_layer(0, 0, "Controllers", ctrlMusic);
-    //room_goto(rmTest);
 });
 
 /* AUTHOR NOTE: this must be done one frame later as the first room will not have loaded yet.

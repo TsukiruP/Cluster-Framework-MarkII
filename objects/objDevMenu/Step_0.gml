@@ -19,6 +19,8 @@ if (not InputPartyGetJoin())
     if (InputPressed(INPUT_VERB.CONFIRM))
     {
         confirm = item.confirm();
+        // TODO: Play a sound depending on the return value of confirm.
+        // undefined obviously doesn't play anything.
     }
 }
 else 
