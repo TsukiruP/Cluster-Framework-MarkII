@@ -56,9 +56,18 @@ spin_dash_charge = 0;
 // Timers
 control_lock_time = 0;
 superspeed_time = 0;
+invincibility_time = 0;
+invulnerability_time = 0;
+input_cpu_state_time = 0;
+input_cpu_respawn_time = 0;
+input_cpu_gamepad_time = 0;
 camera_look_time = 0;
 
 slide_duration = 30;
+spring_duration = 16;
+invulnerability_duration = 120;
+input_cpu_respawn_duration = 300;
+input_cpu_gamepad_duration = 600;
 
 // Physics
 x_speed = 0;
