@@ -91,8 +91,8 @@ cliff_sign = 0;
 
 tilemaps =
 [
-	//layer_tilemap_get_id("TilesLayer0"),
-	//layer_tilemap_get_id("TilesLayer1"),
+	layer_tilemap_get_id("TilesLayer0"),
+	layer_tilemap_get_id("TilesLayer1"),
 	layer_tilemap_get_id("TilesMain")
 ];
 
