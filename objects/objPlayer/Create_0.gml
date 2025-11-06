@@ -87,6 +87,9 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
+hurtbox = new rect(-6, -16, 6, 14);
+attackbox = new rect(-8, -8, 8, 8);
+
 landed = false;
 on_ground = true;
 ground_snap = true;
@@ -154,9 +157,6 @@ player_reset_input = function ()
 
 // CPU
 input_cpu_state = 0;
-input_cpu_state_time = 0;
-input_cpu_respawn_time = 0;
-input_cpu_gamepad_time = 0;
 input_cpu_history = array_create(CPU_INPUT.MAX);
 for (var i = 0; i < CPU_INPUT.MAX; i++) input_cpu_history[i] = array_create(16);
 

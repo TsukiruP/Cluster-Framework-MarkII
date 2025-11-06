@@ -1,3 +1,17 @@
+/// @function rect(left, top, right, bottom)
+/// @description Creates a rectangle with arguments assuming (0, 0) origin.
+/// @param {Real} left Left side of the rectangle.
+/// @param {Real} top Top side of the rectangle.
+/// @param {Real} right Right side of the rectangle.
+/// @param {Real} bottom Bottom side of the rectangle.
+function rect(left, top, right, bottom) constructor
+{
+	left_radius = left;
+	top_radius = top;
+	right_radius = right;
+	bottom_radius = bottom;
+}
+
 /// @function esign(val, def)
 /// @description Returns the sign of the value, or the default if the value is 0. Ported from GM8.2.
 /// @param {Real} val Value to get the sign of.

@@ -10,7 +10,29 @@ player_draw_after();
 // Spin Dash
 with (spin_dash_effect) draw();
 
+// Hurtbox
+var left = hurtbox.left_radius;
+var top = hurtbox.top_radius;
+var right = hurtbox.right_radius;
+var bottom = hurtbox.bottom_radius;
+var sine = dsin(mask_direction);
+var cosine = dcos(mask_direction);
+
+if (image_xscale == -1)
+{
+	left *= -1;
+	right *= -1;
+}
+
+var sx1 = x_int + cosine * left + sine * top;
+var sy1 = y_int - sine * right + cosine * top;
+var sx2 = x_int + cosine * right + sine * bottom;
+var sy2 = y_int - sine * left + cosine * bottom;
+
+draw_rectangle_color(sx1, sy1, sx2, sy2, c_maroon, c_maroon, c_maroon, c_maroon, true);
+
 // Virtual mask
+/*
 if (mask_direction mod 180 != 0)
 {
 	draw_rectangle_color(x_int - y_radius, y_int - x_radius, x_int + y_radius, y_int + x_radius, c_lime, c_lime, c_lime, c_lime, true);

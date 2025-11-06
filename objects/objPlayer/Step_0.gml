@@ -136,7 +136,7 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 		}
         
         // Swap to player
-        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = 600;
+        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = input_cpu_gamepad_duration;
 	}
 }
 

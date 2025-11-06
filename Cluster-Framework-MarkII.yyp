@@ -442,6 +442,7 @@
     {"id":{"name":"PlayerCollisionFunctions","path":"scripts/PlayerCollisionFunctions/PlayerCollisionFunctions.yy",},},
     {"id":{"name":"PlayerGetterFunctions","path":"scripts/PlayerGetterFunctions/PlayerGetterFunctions.yy",},},
     {"id":{"name":"PlayerGroundedStates","path":"scripts/PlayerGroundedStates/PlayerGroundedStates.yy",},},
+    {"id":{"name":"PlayerHitboxFunctions","path":"scripts/PlayerHitboxFunctions/PlayerHitboxFunctions.yy",},},
     {"id":{"name":"PlayerMovementFunctions","path":"scripts/PlayerMovementFunctions/PlayerMovementFunctions.yy",},},
     {"id":{"name":"PlayerSetterFunctions","path":"scripts/PlayerSetterFunctions/PlayerSetterFunctions.yy",},},
     {"id":{"name":"PlayerTerrainFunctions","path":"scripts/PlayerTerrainFunctions/PlayerTerrainFunctions.yy",},},
