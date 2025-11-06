@@ -249,5 +249,6 @@ function player_in_bounds()
 		y = top - y_radius;
 		return false;
 	}
+	
 	return true;
 }
