@@ -3,9 +3,13 @@
   "%Name":"tsSunsetHill",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+    "SerialiseHeight":61,
+    "SerialiseWidth":21,
+    "TileCompressedData":[
+      -63,0,6,390,0,391,0,350,351,-15,0,3,392,0,393,-39,0,3,390,0,391,-18,0,3,422,0,423,-18,0,3,454,0,455,
+      -39,0,3,322,0,323,-18,0,3,354,0,355,-1047,0,
+    ],
+    "TileDataFormat":1,
   },
   "name":"tsSunsetHill",
   "out_columns":27,
@@ -23,8 +27,8 @@
   },
   "spriteNoExport":false,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"SunsetHill",
+    "path":"texturegroups/SunsetHill",
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,
@@ -34,5 +38,5 @@
   "tileWidth":96,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":704,
+  "tile_count":714,
 }

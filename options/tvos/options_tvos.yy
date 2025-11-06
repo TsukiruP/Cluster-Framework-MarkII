@@ -20,7 +20,7 @@
   "option_tvos_splashscreen_2x":"${base_options_dir}/tvos/splash/splash_2x.png",
   "option_tvos_splash_time":0,
   "option_tvos_team_id":"",
-  "option_tvos_texture_page":"2048x2048",
+  "option_tvos_texture_page":"4096x4096",
   "option_tvos_topshelf":"${base_options_dir}/tvos/topshelf/topshelf.png",
   "option_tvos_topshelf_2x":"${base_options_dir}/tvos/topshelf/topshelf_2x.png",
   "option_tvos_topshelf_wide":"${base_options_dir}/tvos/topshelf/topshelf_wide.png",

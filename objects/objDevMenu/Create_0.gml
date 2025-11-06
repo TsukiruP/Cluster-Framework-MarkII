@@ -115,7 +115,7 @@ device_option.confirm = function () { InputPartySetJoin(true); }
 test_option = new option("Test Room");
 test_option.confirm = function ()
 {
-    room_goto(rmTest);
+    room_goto(rmTestNew);
     return true;
 };
 

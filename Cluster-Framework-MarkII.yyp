@@ -611,6 +611,7 @@
     {"id":{"name":"sprSonicTurnBrake","path":"sprites/sprSonicTurnBrake/sprSonicTurnBrake.yy",},},
     {"id":{"name":"sprSpinDash0","path":"sprites/sprSpinDash0/sprSpinDash0.yy",},},
     {"id":{"name":"sprSpinDash1","path":"sprites/sprSpinDash1/sprSpinDash1.yy",},},
+    {"id":{"name":"sprSunsetHillCollision","path":"sprites/sprSunsetHillCollision/sprSunsetHillCollision.yy",},},
     {"id":{"name":"sprSunsetHillTileset","path":"sprites/sprSunsetHillTileset/sprSunsetHillTileset.yy",},},
     {"id":{"name":"tsCollision","path":"tilesets/tsCollision/tsCollision.yy",},},
     {"id":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},},
@@ -635,5 +636,6 @@
   "templateType":"game",
   "TextureGroups":[
     {"$GMTextureGroup":"","%Name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"SunsetHill","autocrop":true,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"SunsetHill","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
   ],
 }
