@@ -134,3 +134,43 @@ function player_is_jumping(phase)
 		}
 	}
 }
+
+/// @function player_is_hurt(phase)
+function player_is_hurt(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			break;
+		}
+		case PHASE.STEP:
+		{
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
+
+/// @function player_is_dead(phase)
+function player_is_dead(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			break;
+		}
+		case PHASE.STEP:
+		{
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
