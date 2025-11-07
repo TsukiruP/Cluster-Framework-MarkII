@@ -292,8 +292,16 @@ player_set_run_variant = function ()
     animation_data.variant = variant;
 };
 
+/// player_animate_run(variants)
+/// @description Sets the player's current run animation.
+/// @param {Array} variants Animations to set.
+player_animate_run = function (variants)
+{
+    
+};
+
 /// @method player_set_radii(xrad, yrad)
-/// @description Sets the player's radii.
+/// @description Sets the player's virtual mask.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
 player_set_radii = function (xrad, yrad)

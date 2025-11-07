@@ -73,3 +73,65 @@ function player_beam_collision(obj, xoff, yrad)
 	
 	return collision_line(x1, y1, x2, y2, obj, true, false) != noone;
 }
+
+/// @function player_in_hitbox(obj, objhb, pla, [plahb])
+/// @description Checks if the given object's hitbox intersects the player's given hitbox.
+/// @param {Id.Instance} obj Object to check.
+/// @param {Real} objhb Index of the object's hitbox.
+/// @param {Id.Instance} pla Player to check.
+/// @param {Real} [plahb] Index of the player's hitbox. (optional, defaults to the player's virtual mask).
+/// @returns {Bool}
+function player_in_hitbox(obj, objhb, pla, plahb = -1)
+{
+    var x_int = pla.x div 1;
+    var y_int = pla.y div 1;
+    var sine = dsin(pla.mask_direction);
+	var cosine = dcos(pla.mask_direction);
+	
+	var ox_int = obj.x div 1;
+	var oy_int = obj.y div 1;
+	var osine = dsin(obj.gravity_direction);
+	var ocosine = dcos(obj.gravity_direction);
+	
+	var left = -pla.x_radius;
+    var top = -pla.y_radius;
+    var right = pla.x_radius;
+    var bottom = pla.y_radius;
+    
+    if (plahb > -1)
+    {
+        left = pla.hitboxes[plahb].left;
+        top = pla.hitboxes[plahb].top;
+        right = pla.hitboxes[plahb].right;
+        bottom = pla.hitboxes[plahb].bottom;
+        
+        if (pla.image_xscale == -1)
+        {
+            left *= -1;
+            right *= -1;
+        }
+    }
+	
+	var oleft = obj.hitboxes[objhb].left;
+	var otop = obj.hitboxes[objhb].top;
+	var oright = obj.hitboxes[objhb].right;
+	var obottom = obj.hitboxes[objhb].bottom;
+	
+	if (obj.image_xscale == -1)
+	{
+	    oleft *= -1;
+	    oright *= -1;
+	}
+	
+	var sx1 = x_int + cosine * left + sine * top;
+	var sy1 = y_int - sine * right + cosine * top;
+	var sx2 = x_int + cosine * right + sine * bottom;
+	var sy2 = y_int - sine * left + cosine * bottom;
+	
+	var dx1 = ox_int + ocosine * oleft + sine * otop;
+	var dy1 = oy_int - osine * oright + cosine * otop;
+	var dx2 = ox_int + ocosine * oright + sine * obottom;
+	var dy2 = oy_int - osine * oleft + cosine * obottom;
+	
+	return (rectangle_in_rectangle(sx1, sy1, sx2, sy2, dx1, dy1, dx2, dy2) != 0);
+}

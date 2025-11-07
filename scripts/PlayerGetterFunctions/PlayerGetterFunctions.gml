@@ -87,6 +87,8 @@ function player_detect_entities()
 	Floor collisions check for a distance of `y_tile_reach + y_radius`, so this is the rectangle's height.
 	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
 	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
+    
+    with (objZoneObject) reaction(other);
 	
 	// Detect instances intersecting the rectangle
 	var zone_objects = ds_list_create();
@@ -98,7 +100,7 @@ function player_detect_entities()
 	for (var n = 0; n < total_objects; ++n)
 	{
 		var inst = zone_objects[| n];
-		script_execute(inst.reaction, inst);
+		//script_execute(inst.reaction, inst);
 		
 		// Register solid instances; skip the current instance if...
 		if (not (instance_exists(inst) and object_is_ancestor(inst.object_index, objSolid))) continue; // It has been destroyed after its reaction, or is not solid
