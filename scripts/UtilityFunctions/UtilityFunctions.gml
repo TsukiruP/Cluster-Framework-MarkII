@@ -1,22 +1,34 @@
-/// @function rect(left, top, right, bottom)
+/// @function rect([left], [top], [right], [bottom])
 /// @description Creates a rectangle with arguments assuming (0, 0) origin.
-/// @param {Real} left Left side of the rectangle.
-/// @param {Real} top Top side of the rectangle.
-/// @param {Real} right Right side of the rectangle.
-/// @param {Real} bottom Bottom side of the rectangle.
-function rect(left = 0, top = 0, right = 0, bottom = 0) constructor
+/// @param {Real} left Left radius of the rectangle.
+/// @param {Real} top Top radius of the rectangle.
+/// @param {Real} right Right radius of the rectangle.
+/// @param {Real} bottom Bottom radius of the rectangle.
+function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
 {
-	left_radius = left;
-	top_radius = top;
-	right_radius = right;
-	bottom_radius = bottom;
-    static set = function(left = 0, top = 0, right = 0, bottom = 0)
+	left = _left;
+	top = _top;
+	right = _right;
+	bottom = _bottom;
+    static set = function(_left = 0, _top = 0, _right = 0, _bottom = 0)
     {
-        left_radius = left;
-        top_radius = top;
-        right_radius = right;
-        bottom_radius = bottom;
+        left = _left;
+        top = _top;
+        right = _right;
+        bottom = _bottom;
     }
+}
+
+/// @function hitbox(col, [left], [top], [right], [bottom])
+/// @description Creates a hitbox.
+/// @param {Constant.Colour} col Color of the hitbox.
+/// @param {Real} left Left radius of the hitbox.
+/// @param {Real} top Top radius of the hitbox.
+/// @param {Real} right Right radius of the hitbox.
+/// @param {Real} bottom Bottom radius of the hitbox.
+function hitbox(col, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
+{
+	color = col;
 }
 
 /// @function esign(val, def)
@@ -107,39 +119,41 @@ function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0
     return particle;
 }
 
-/// @function draw_hitbox(hb, color, [ang])
-/// @description Draws the given hitbox at the given angle.
-/// @param {Struct.rect} hb Hitbox to draw.
-/// @param {Constant.Colour} color Color of the hitbox.
-/// @param {Real} [ang] Angle of the hitbox. Defaults to gravity_dirction.
-function draw_hitbox(hb, color, ang = gravity_direction)
+/// @function draw_hitboxes([ang])
+/// @description Draws all hitboxes.
+/// @param {Real} [ang] Angle to draw the hitboxes. (optional, default is gravity_direction).
+function draw_hitboxes(ang = gravity_direction)
 {
-    var x_int = x div 1;
-    var y_int = y div 1;
-    
-    var left = hb.left_radius;
-    var top = hb.top_radius;
-    var right = hb.right_radius;
-    var bottom = hb.bottom_radius;
-    
-    if (not (left == 0 and top == 0 and right == 0 and bottom == 0))
-    {
-        var sine = dsin(ang);
-        var cosine = dcos(ang);
-        
-        if (image_xscale == -1)
-        {
-            left *= -1;
-            right *= -1;
-        }
-        
-        var sx1 = x_int + cosine * left + sine * top;
-        var sy1 = y_int - sine * right + cosine * top;
-        var sx2 = x_int + cosine * right + sine * bottom;
-        var sy2 = y_int - sine * left + cosine * bottom;
-        
-        draw_rectangle_color(sx1, sy1, sx2, sy2, color, color, color, color, true);
-    }
+	var x_int = x div 1;
+	var y_int = y div 1;
+	
+	for (var i = 0; i < array_length(hitboxes); i++)
+	{
+		var left = hitboxes[i].left;
+		var top = hitboxes[i].top;
+		var right = hitboxes[i].right;
+		var bottom = hitboxes[i].bottom;
+		
+		if (not (left == 0 and top == 0 and right == 0 and bottom == 0))
+		{
+			var sine = dsin(ang);
+        	var cosine = dcos(ang);
+        	var color = hitboxes[i].color;
+        	
+			if (image_xscale == -1)
+			{
+				left *= -1;
+				right *= -1;
+			}
+			
+			var x1 = x_int + cosine * left + sine * top;
+	        var y1 = y_int - sine * right + cosine * top;
+	        var x2 = x_int + cosine * right + sine * bottom;
+	        var y2 = y_int - sine * left + cosine * bottom;
+	        
+	        draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, true);
+		}
+	}
 }
 
 /// @function draw_reset()

@@ -87,8 +87,8 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
-hurtbox = new rect();
-attackbox = new rect();
+hitboxes[0] = new hitbox(c_maroon);
+hitboxes[1] = new hitbox(c_lime);
 
 landed = false;
 on_ground = true;
