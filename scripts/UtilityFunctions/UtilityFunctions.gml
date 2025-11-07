@@ -4,12 +4,19 @@
 /// @param {Real} top Top side of the rectangle.
 /// @param {Real} right Right side of the rectangle.
 /// @param {Real} bottom Bottom side of the rectangle.
-function rect(left, top, right, bottom) constructor
+function rect(left = 0, top = 0, right = 0, bottom = 0) constructor
 {
 	left_radius = left;
 	top_radius = top;
 	right_radius = right;
 	bottom_radius = bottom;
+    static set = function(left = 0, top = 0, right = 0, bottom = 0)
+    {
+        left_radius = left;
+        top_radius = top;
+        right_radius = right;
+        bottom_radius = bottom;
+    }
 }
 
 /// @function esign(val, def)
@@ -98,6 +105,41 @@ function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0
         y_acceleration = yaccel;
     }
     return particle;
+}
+
+/// @function draw_hitbox(hb, color, [ang])
+/// @description Draws the given hitbox at the given angle.
+/// @param {Struct.rect} hb Hitbox to draw.
+/// @param {Constant.Colour} color Color of the hitbox.
+/// @param {Real} [ang] Angle of the hitbox. Defaults to gravity_dirction.
+function draw_hitbox(hb, color, ang = gravity_direction)
+{
+    var x_int = x div 1;
+    var y_int = y div 1;
+    
+    var left = hb.left_radius;
+    var top = hb.top_radius;
+    var right = hb.right_radius;
+    var bottom = hb.bottom_radius;
+    
+    if (not (left == 0 and top == 0 and right == 0 and bottom == 0))
+    {
+        var sine = dsin(ang);
+        var cosine = dcos(ang);
+        
+        if (image_xscale == -1)
+        {
+            left *= -1;
+            right *= -1;
+        }
+        
+        var sx1 = x_int + cosine * left + sine * top;
+        var sy1 = y_int - sine * right + cosine * top;
+        var sx2 = x_int + cosine * right + sine * bottom;
+        var sy2 = y_int - sine * left + cosine * bottom;
+        
+        draw_rectangle_color(sx1, sy1, sx2, sy2, color, color, color, color, true);
+    }
 }
 
 /// @function draw_reset()

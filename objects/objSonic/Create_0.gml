@@ -10,6 +10,8 @@ player_animate = function ()
         {
             animation_set(global.ani_sonic_idle_v0);
             player_set_radii(6, 14);
+            hurtbox.set(-6, -16, 6, 16);
+            attackbox.set();
             image_angle = gravity_direction;
             break;
         }
@@ -35,6 +37,7 @@ player_animate = function ()
             animation_set(global.ani_sonic_run);
             player_set_radii(6, 14);
             if (on_ground) animation_data.speed = run_speed;
+            hurtbox.set(-6, -16, 6, 16);
             image_angle = direction;
             break;
         }
@@ -63,6 +66,7 @@ player_animate = function ()
         {
             animation_set(global.ani_sonic_roll_v0);
             player_set_radii(6, 9);
+            attackbox.set(-8, -8, 8, 8);
             image_angle = gravity_direction;
             break;
         }

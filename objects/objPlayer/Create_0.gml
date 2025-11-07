@@ -87,8 +87,8 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
-hurtbox = new rect(-6, -16, 6, 14);
-attackbox = new rect(-8, -8, 8, 8);
+hurtbox = new rect();
+attackbox = new rect();
 
 landed = false;
 on_ground = true;
