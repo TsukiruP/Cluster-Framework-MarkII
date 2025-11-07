@@ -113,23 +113,25 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
                     jump_auto = (input_cpu_state_time > 0 ? 1 : 0);
                 }
                 
-                // TODO: Check for leader's death
-                switch (jump_auto)
+                if (leader_inst.state != player_is_dead)
                 {
-                    case 0:
+                    switch (jump_auto)
                     {
-                        if (on_ground)
+                        case 0:
                         {
-                            if (not input_button.jump.check) input_button.jump.pressed = true;
-                            input_button.jump.check = true;
+                            if (on_ground)
+                            {
+                                if (not input_button.jump.check) input_button.jump.pressed = true;
+                                input_button.jump.check = true;
+                            }
+                            jump_cap = false;
+                            break;
                         }
-                        jump_cap = false;
-                        break;
-                    }
-                    case 1:
-                    {
-                        input_button.jump.check = true;
-                        break;
+                        case 1:
+                        {
+                            input_button.jump.check = true;
+                            break;
+                        }
                     }
                 }
 			}
