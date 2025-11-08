@@ -4,12 +4,12 @@
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
 /// @param {Real} [loop] Loop frame. If a custom order is provided, this will be an index in that order. Use -1 to mark that the animation doesn't loop.
 /// @param {Array} [order] Custom frame order.
-function animation(sprite, duration, loop = 0, order = []) constructor
+function animation(_sprite, _duration, _loop = 0, _order = []) constructor
 {
-    sprite_index = sprite;
-    duration_data = duration;
-    loop_index = loop;
-    image_order = order;
+    sprite = _sprite;
+    duration = _duration;
+    loop = _loop;
+    order = _order;
 }
 
 /// @function animation_core()
@@ -67,10 +67,10 @@ function animation_set(ani)
     }
     else if (animation_data.ani != ani or animation_data.force)
     {
-        var sprite = ani.sprite_index;
-        var duration = ani.duration_data;
-        var loop = ani.loop_index;
-        var order = ani.image_order;
+        var sprite = ani.sprite;
+        var duration = ani.duration;
+        var loop = ani.loop;
+        var order = ani.order;
         var start = 0;
         
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
@@ -97,9 +97,9 @@ function animation_update()
             if (animation_data.alarm <= 0)
             {
                 var ani = animation_data.ani;
-                var sprite = ani.sprite_index;
-                var duration = ani.duration_data;
-                var order = ani.image_order;
+                var sprite = ani.sprite;
+                var duration = ani.duration;
+                var order = ani.order;
                 var order_length = array_length(order);
                 var last = (order_length > 0 ? order_length - 1 : sprite_get_number(sprite) - 1);
                 
@@ -107,7 +107,7 @@ function animation_update()
                 
                 if (animation_data.pos > last)
                 {
-                    var loop = ani.loop_index;
+                    var loop = ani.loop;
                     animation_data.pos = loop;
                 }
                 
