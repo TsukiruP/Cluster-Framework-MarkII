@@ -93,14 +93,14 @@ function player_detect_entities()
 	// Detect instances intersecting the rectangle
 	var zone_objects = ds_list_create();
 	var total_objects = (mask_direction mod 180 != 0 ?
-		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objZoneObject, true, false, zone_objects, false) :
-		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objZoneObject, true, false, zone_objects, false));
+		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objSolid, true, false, zone_objects, false) :
+		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objSolid, true, false, zone_objects, false));
 	
 	// Execute the reaction of all instances
 	for (var n = 0; n < total_objects; ++n)
 	{
 		var inst = zone_objects[| n];
-		//script_execute(inst.reaction, inst);
+		with (inst) reaction(other);
 		
 		// Register solid instances; skip the current instance if...
 		if (not (instance_exists(inst) and object_is_ancestor(inst.object_index, objSolid))) continue; // It has been destroyed after its reaction, or is not solid
