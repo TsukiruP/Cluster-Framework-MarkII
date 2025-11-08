@@ -14,6 +14,11 @@ player_animate = function()
             animation_set(global.ani_miles_idle_v0);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TEETER:
@@ -22,6 +27,11 @@ player_animate = function()
             animation_set(global.ani_miles_teeter);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TURN:
@@ -29,6 +39,11 @@ player_animate = function()
             animation_set(global.ani_miles_turn);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.RUN:
@@ -36,6 +51,11 @@ player_animate = function()
             player_animate_run(global.ani_miles_run);
             player_set_radii(6, 14);
             image_angle = direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.BRAKE:
@@ -43,6 +63,11 @@ player_animate = function()
             animation_set(global.ani_miles_brake);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.LOOK:
@@ -50,6 +75,11 @@ player_animate = function()
             animation_set(global.ani_miles_look);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.CROUCH:
@@ -57,6 +87,11 @@ player_animate = function()
             animation_set(global.ani_miles_crouch);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -4, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.ROLL:
@@ -64,6 +99,11 @@ player_animate = function()
             animation_set(global.ani_miles_roll_v0);
             player_set_radii(6, 9);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-8, -8, 8, 8);
+                hitboxes[1].set_size(-8, -8, 8, 8);
+            }
             break;
         }
         case PLAYER_ANIMATION.SPIN_DASH:
@@ -72,6 +112,11 @@ player_animate = function()
             animation_set(global.ani_miles_spin_dash);
             player_set_radii(6, 9);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-8, -8, 8, 8);
+                hitboxes[1].set_size(-8, -8, 8, 8);
+            }
             break;
         }
         case PLAYER_ANIMATION.FALL:
@@ -83,6 +128,11 @@ player_animate = function()
             animation_set(global.ani_miles_fall);
             player_set_radii(6, 14);
             image_angle = rotate_towards(direction, image_angle);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -10, 6, 12);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.JUMP:
@@ -106,6 +156,56 @@ player_animate = function()
             }
             animation_set(global.ani_miles_jump);
             image_angle = gravity_direction;
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -18, 6, 4);
+                            hitboxes[1].set_size(-6, -18, 6, 4);
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-5, -6, 7, 16);
+                            hitboxes[1].set_size(-5, -6, 7, 16);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-8, -8, 8, 8);
+                        hitboxes[1].set_size(-8, -8, 8, 8);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 6);
+                            hitboxes[1].set_size(-10, -8, 10, 12);
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-8, -18, 6, 4);
+                            hitboxes[1].set_size(-9, -9, 9, 9);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING:
@@ -124,6 +224,55 @@ player_animate = function()
             animation_set(global.ani_miles_spring);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 10);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 8);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 4:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 6);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 5:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 6);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    hitboxes[0].set_size(-6, -16, 6, 6);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING_TWIRL:
@@ -131,6 +280,11 @@ player_animate = function()
             animation_set(global.ani_miles_spring_twirl);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -11, 6, 11);
+                hitboxes[1].set_size();
+            }
             break;
         }
     }

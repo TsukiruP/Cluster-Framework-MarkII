@@ -64,15 +64,20 @@ player_animate = function()
             {
                 case 0:
                 {
-                    if (image_index == 0)
+                    switch (image_index)
                     {
-                        hitboxes[0].set_size(-6, -16, 6, 16);
-                        hitboxes[1].set_size();
-                    }
-                    else
-                    {
-                        hitboxes[0].set_size(-6, -13, 6, 16);
-                        hitboxes[1].set_size();
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-6, -13, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
                     }
                     break;
                 }
