@@ -9,6 +9,7 @@ player_draw_after();
 
 // Spin Dash
 spin_dash_effect.draw();
+
 draw_hitboxes(mask_direction);
 
 // Virtual mask

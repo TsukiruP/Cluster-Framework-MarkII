@@ -88,7 +88,7 @@ y_radius = 15;
 y_tile_reach = 16;
 
 hitboxes[0] = new hitbox(c_maroon);
-hitboxes[1] = new hitbox(c_lime);
+hitboxes[1] = new hitbox(c_green);
 
 landed = false;
 on_ground = true;

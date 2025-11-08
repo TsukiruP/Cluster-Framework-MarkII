@@ -30,10 +30,10 @@
 | Brake Fast | 17-0 |
 | Look | 1-0, 1-1 |
 | Crouch | 2-0, 2-1 |
-| Roll | 11-0 |
-| Spin Dash | 10-0, 10-1 |
+| Roll | 11-0 | Uses SA2 hitbox
+| Spin Dash | 10-0, 10-1 | Uses SA2 hitbox
 | Fall | 24-0 | Reuses Spring sprites |
-| Jump | 19-0, 19-1, 19-2 |
+| Jump | 19-0, 19-1, 19-2 | Uses SA2 hitbox
 | Spring | 108-0, 108-1, 108-2 |
 | Spring Twirl | 109-0 |
 | Hurt | 102-0 | Need to compare with SA2
