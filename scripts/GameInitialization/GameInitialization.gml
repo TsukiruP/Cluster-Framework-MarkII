@@ -38,7 +38,7 @@ audio_channel_num(16);
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
 
 // Create global controllers
-call_later(1, time_source_units_frames, function ()
+call_later(1, time_source_units_frames, function()
 {
 	instance_create_layer(0, 0, "Controllers", ctrlWindow);
 	instance_create_layer(0, 0, "Controllers", ctrlMusic);

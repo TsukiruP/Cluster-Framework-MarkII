@@ -5,7 +5,7 @@ event_inherited();
 // Ears
 ears_effect = new player_effect();
 
-player_animate = function ()
+player_animate = function()
 {
     switch (animation_data.index)
     {
@@ -135,7 +135,7 @@ player_animate = function ()
     }
 };
 
-player_draw_before = function ()
+player_draw_before = function()
 {
     with (ears_effect) draw_effect();
 };

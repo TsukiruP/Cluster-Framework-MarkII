@@ -5,7 +5,7 @@ event_inherited();
 // Tails
 tails_effect = new player_effect();
 
-player_animate = function ()
+player_animate = function()
 {
     switch (animation_data.index)
     {
@@ -136,7 +136,7 @@ player_animate = function ()
     }
 };
 
-player_draw_before = function ()
+player_draw_before = function()
 {
     with (tails_effect) draw_effect();
 };

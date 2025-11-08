@@ -6,7 +6,7 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
 	input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
 	
-	struct_foreach(input_button, function (name, value)
+	struct_foreach(input_button, function(name, value)
 	{
 	    var verb = value.verb;
 	    value.check = InputCheck(verb, player_index);

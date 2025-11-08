@@ -1,7 +1,7 @@
 /// @description Initialize
 image_speed = 0;
 hitboxes[0] = new hitbox(c_maroon, -8, -8, 8, 8);
-reaction = function (pla)
+reaction = function(pla)
 {
 	if (collision_player(0, pla) != 0)
     {

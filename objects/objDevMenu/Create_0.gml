@@ -18,7 +18,7 @@ function menu(_options = []) constructor
 function option (_label) constructor
 {
     label = _label;
-    confirm = function () {};
+    confirm = function() {};
 }
 
 /// @function option_value(label)
@@ -26,10 +26,10 @@ function option (_label) constructor
 /// @param {String} label Label to display.
 function option_value(_label) : option(_label) constructor 
 {
-    get = function () {};
-    set = function () {};
-    update = function () {};
-    toString = function () {};
+    get = function() {};
+    set = function() {};
+    update = function() {};
+    toString = function() {};
 }
 
 /// @function option_bool(label)
@@ -37,10 +37,10 @@ function option_value(_label) : option(_label) constructor
 /// @param {String} label Label to display.
 function option_bool(_label) : option_value(_label) constructor
 {
-    get = function () { return false; };
-    set = function (val) {};
-    update = function () { set(not get()); };
-    toString = function () { return (get() ? "True" : "False")};
+    get = function() { return false; };
+    set = function(val) {};
+    update = function() { set(not get()); };
+    toString = function() { return (get() ? "True" : "False")};
 }
 
 /// @function option_real(label)
@@ -52,8 +52,8 @@ function option_real(_label) : option_value(_label) constructor
     can_wrap = false;
     minimum = 0;
     maximum = 0;
-    get = function () { return 0; };
-    update = function (dir)
+    get = function() { return 0; };
+    update = function(dir)
     {
         var value = get() + dir * increment;
         if (can_wrap) value = wrap(value, minimum, maximum);
@@ -61,7 +61,7 @@ function option_real(_label) : option_value(_label) constructor
         set(value);
         
     };
-    toString =  function () { return string(get()); };
+    toString =  function() { return string(get()); };
 }
 
 /// @function option_int(label)
@@ -71,7 +71,7 @@ function option_int(_label) : option_real(_label) constructor
 {
     specifiers = [];
     offset = 0;
-    toString = function ()
+    toString = function()
     {
         if (array_length(specifiers) > 0)
         {
@@ -96,8 +96,8 @@ function option_player(_player = 0) : option_int("Player " + string(_player)) co
     maximum = CHARACTER.CREAM;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
     offset = CHARACTER.NONE;
-    get = function () { return db_read(global.save_database, CHARACTER.NONE, "character", player); };
-    set = function (val) { db_write(global.save_database, val, "character", player); };
+    get = function() { return db_read(global.save_database, CHARACTER.NONE, "character", player); };
+    set = function(val) { db_write(global.save_database, val, "character", player); };
 }
 
 #endregion
@@ -106,14 +106,14 @@ player_0_option = new option_player();
 player_1_option = new option_player(1);
 
 boost_option = new option_bool("Boost");
-boost_option.get = function () { return db_read(global.save_database, true, "boost"); };
-boost_option.set = function (val) { db_write(global.save_database, val, "boost"); };
+boost_option.get = function() { return db_read(global.save_database, true, "boost"); };
+boost_option.set = function(val) { db_write(global.save_database, val, "boost"); };
 
 device_option = new option("Device Setup");
-device_option.confirm = function () { InputPartySetJoin(true); }
+device_option.confirm = function() { InputPartySetJoin(true); }
 
 test_option = new option("Test Room");
-test_option.confirm = function ()
+test_option.confirm = function()
 {
     room_goto(rmTestNew);
     return true;

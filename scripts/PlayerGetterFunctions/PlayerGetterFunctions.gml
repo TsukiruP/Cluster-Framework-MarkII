@@ -11,7 +11,7 @@ function player_calc_ground_normal(ox, oy, rot)
 	/// @param {Real} px x-coordinate of the point.
 	/// @param {Real} py y-coordinate of the point.
 	/// @returns {Bool}
-	static point_in_solid = function (px, py)
+	static point_in_solid = function(px, py)
 	{
 		for (var n = array_length(tilemaps) - 1; n > -1; --n)
 		{
