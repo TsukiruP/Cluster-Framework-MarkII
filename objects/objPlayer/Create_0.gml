@@ -87,6 +87,9 @@ x_wall_radius = 10;
 y_radius = 15;
 y_tile_reach = 16;
 
+hitboxes[0] = new hitbox(c_maroon);
+hitboxes[1] = new hitbox(c_lime);
+
 landed = false;
 on_ground = true;
 ground_snap = true;
@@ -116,9 +119,9 @@ input_axis_y = 0;
 /// @function button(verb)
 /// @description Creates a new button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
-function button(verb) constructor
+function button(_verb) constructor
 {
-    index = verb;
+    verb = _verb;
     check = false;
     pressed = false;
     released = false;
@@ -138,14 +141,14 @@ input_button =
 
 /// @method player_reset_input()
 /// @description Resets all player input.
-player_reset_input = function ()
+player_reset_input = function()
 {
 	input_axis_x = 0;
 	input_axis_y = 0;
 	
-	struct_foreach(input_button, function (name, value)
+	struct_foreach(input_button, function(name, value)
 	{
-	    var verb = value.index;
+	    var verb = value.verb;
 	    value.check = false;
 	    value.pressed = false;
 	    value.released = false;
@@ -154,16 +157,13 @@ player_reset_input = function ()
 
 // CPU
 input_cpu_state = 0;
-input_cpu_state_time = 0;
-input_cpu_respawn_time = 0;
-input_cpu_gamepad_time = 0;
 input_cpu_history = array_create(CPU_INPUT.MAX);
 for (var i = 0; i < CPU_INPUT.MAX; i++) input_cpu_history[i] = array_create(16);
 
 /// @method player_record_cpu_input(cpu_input)
 /// @description Records the given CPU input.
 /// @param {Enum.CPU_INPUT} CPU input to record.
-player_record_cpu_input = function (cpu_input)
+player_record_cpu_input = function(cpu_input)
 {
 	var input;
 	switch (cpu_input)
@@ -211,7 +211,7 @@ function player_effect() constructor
     image_yscale = 1;
     image_angle = 0;
     animation_data = new animation_core();
-    static draw = function ()
+    static draw_effect = function()
     {
         if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
     };
@@ -232,7 +232,7 @@ player_index = -1;
 /// @method player_perform(action)
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
-player_perform = function (action)
+player_perform = function(action)
 {
 	state(PHASE.EXIT);
 	state = action;
@@ -242,7 +242,7 @@ player_perform = function (action)
 
 /// @method player_rotate_mask()
 /// @description Rotates the player's virtual mask, if applicable.
-player_rotate_mask = function ()
+player_rotate_mask = function()
 {
 	static rotation_lock_time = 0;
 	if (rotation_lock_time > 0) then --rotation_lock_time;
@@ -258,7 +258,7 @@ player_rotate_mask = function ()
 /// @method player_resist_slope(force)
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
 /// @param {Real} force Friction value to use.
-player_resist_slope = function (force)
+player_resist_slope = function(force)
 {
 	// Abort if...
 	if (x_speed == 0 and control_lock_time == 0) exit; // Not moving
@@ -271,32 +271,34 @@ player_resist_slope = function (force)
 
 /// @method player_animate()
 /// @description Sets the player's current animation.
-player_animate = function () {};
+player_animate = function() {};
 
-/// @method player_set_run_variant()
-/// @description Sets the variant based on the player's horizontal speed.
-player_set_run_variant = function ()
+/// player_animate_run(ani)
+/// @description Sets the player's run animation.
+/// @param {Array} ani Animations to set.
+player_animate_run = function(ani)
 {
-    // Abort if not grounded
-    if (not on_ground) exit;
-    
-    var variant = 5;
-    var abs_speed = abs(x_speed);
-    if (abs_speed <= 1.25) variant = 0;
-    else if (abs_speed <= 2.5) variant = 1;
-    else if (abs_speed <= 4.0) variant = 2;
-    else if (abs_speed <= 9.0) variant = 3;
-    else if (abs_speed <= 10.0) variant = 4;
-    
-    // Apply
+    var variant = animation_data.variant;
+    if (on_ground)
+    {
+    	var abs_speed = abs(x_speed);
+        variant = 5;
+    	if (abs_speed <= 1.25) variant = 0;
+	    else if (abs_speed <= 2.5) variant = 1;
+	    else if (abs_speed <= 4.0) variant = 2;
+	    else if (abs_speed <= 9.0) variant = 3;
+	    else if (abs_speed <= 10.0) variant = 4;
+    }
+    animation_set(ani);
     animation_data.variant = variant;
+    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
 /// @method player_set_radii(xrad, yrad)
-/// @description Sets the player's radii.
+/// @description Sets the player's virtual mask.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
-player_set_radii = function (xrad, yrad)
+player_set_radii = function(xrad, yrad)
 {
     // Abort if radii already match
     if (x_radius == xrad and y_radius == yrad) exit;
@@ -314,16 +316,16 @@ player_set_radii = function (xrad, yrad)
 
 /// @method player_draw_before()
 /// @description Draws player effects behind the character sprite.
-player_draw_before = function () {};
+player_draw_before = function() {};
 
 /// @method player_draw_after()
 /// @description Draws player effects in front of the character sprite.
-player_draw_after = function () {};
+player_draw_after = function() {};
 
 /// @method player_gain_rings(num)
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
-player_gain_rings = function (num)
+player_gain_rings = function(num)
 {
 	global.rings = min(global.rings + num, 999);
 	sound_play(sfxRing);
@@ -341,7 +343,7 @@ player_gain_rings = function (num)
 /// @method player_gain_lives(num)
 /// @description Increases the player's life count by the given amount.
 /// @param {Real} num Amount of lives to give.
-player_gain_lives = function (num)
+player_gain_lives = function(num)
 {
 	lives = min(lives + num, 99);
 	music_overlay(bgmLife);

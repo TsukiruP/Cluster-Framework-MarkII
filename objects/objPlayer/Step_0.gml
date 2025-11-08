@@ -6,9 +6,9 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
 	input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
 	
-	struct_foreach(input_button, function (name, value)
+	struct_foreach(input_button, function(name, value)
 	{
-	    var verb = value.index;
+	    var verb = value.verb;
 	    value.check = InputCheck(verb, player_index);
 	    value.pressed = InputPressed(verb, player_index);
 	    value.released = InputReleased(verb, player_index);
@@ -113,30 +113,32 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
                     jump_auto = (input_cpu_state_time > 0 ? 1 : 0);
                 }
                 
-                // TODO: Check for leader's death
-                switch (jump_auto)
+                if (leader_inst.state != player_is_dead)
                 {
-                    case 0:
+                    switch (jump_auto)
                     {
-                        if (on_ground)
+                        case 0:
                         {
-                            if (not input_button.jump.check) input_button.jump.pressed = true;
-                            input_button.jump.check = true;
+                            if (on_ground)
+                            {
+                                if (not input_button.jump.check) input_button.jump.pressed = true;
+                                input_button.jump.check = true;
+                            }
+                            jump_cap = false;
+                            break;
                         }
-                        jump_cap = false;
-                        break;
-                    }
-                    case 1:
-                    {
-                        input_button.jump.check = true;
-                        break;
+                        case 1:
+                        {
+                            input_button.jump.check = true;
+                            break;
+                        }
                     }
                 }
 			}
 		}
         
         // Swap to player
-        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = 600;
+        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = input_cpu_gamepad_duration;
 	}
 }
 

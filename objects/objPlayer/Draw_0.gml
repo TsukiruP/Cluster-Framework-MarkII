@@ -8,9 +8,12 @@ if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x_int, y_int,
 player_draw_after();
 
 // Spin Dash
-with (spin_dash_effect) draw();
+with (spin_dash_effect) draw_effect();
+
+draw_hitboxes(mask_direction);
 
 // Virtual mask
+/*
 if (mask_direction mod 180 != 0)
 {
 	draw_rectangle_color(x_int - y_radius, y_int - x_radius, x_int + y_radius, y_int + x_radius, c_lime, c_lime, c_lime, c_lime, true);

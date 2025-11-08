@@ -11,7 +11,7 @@ function player_calc_ground_normal(ox, oy, rot)
 	/// @param {Real} px x-coordinate of the point.
 	/// @param {Real} py y-coordinate of the point.
 	/// @returns {Bool}
-	static point_in_solid = function (px, py)
+	static point_in_solid = function(px, py)
 	{
 		for (var n = array_length(tilemaps) - 1; n > -1; --n)
 		{
@@ -87,18 +87,20 @@ function player_detect_entities()
 	Floor collisions check for a distance of `y_tile_reach + y_radius`, so this is the rectangle's height.
 	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
 	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
+    
+    with (objZoneObject) reaction(other);
 	
 	// Detect instances intersecting the rectangle
 	var zone_objects = ds_list_create();
 	var total_objects = (mask_direction mod 180 != 0 ?
-		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objZoneObject, true, false, zone_objects, false) :
-		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objZoneObject, true, false, zone_objects, false));
+		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objSolid, true, false, zone_objects, false) :
+		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objSolid, true, false, zone_objects, false));
 	
 	// Execute the reaction of all instances
 	for (var n = 0; n < total_objects; ++n)
 	{
 		var inst = zone_objects[| n];
-		script_execute(inst.reaction, inst);
+		with (inst) reaction(other);
 		
 		// Register solid instances; skip the current instance if...
 		if (not (instance_exists(inst) and object_is_ancestor(inst.object_index, objSolid))) continue; // It has been destroyed after its reaction, or is not solid

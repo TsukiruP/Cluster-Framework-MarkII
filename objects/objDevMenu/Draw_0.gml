@@ -2,10 +2,10 @@
 var font_height = 15;
 if (not InputPartyGetJoin())
 {
-    for (var i = 0; i < array_length(current_menu.items); i++)
+    for (var i = 0; i < array_length(current_menu.options); i++)
     {
-        var item = current_menu.items[i];
-        var label = item.text;
+        var item = current_menu.options[i];
+        var label = item.label;
         
         if (is_instanceof(item, option_value))
         {

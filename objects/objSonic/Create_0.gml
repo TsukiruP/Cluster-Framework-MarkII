@@ -2,7 +2,7 @@
 // Inherit the parent event
 event_inherited();
 
-player_animate = function ()
+player_animate = function()
 {
     switch (animation_data.index)
     {
@@ -10,6 +10,8 @@ player_animate = function ()
         {
             animation_set(global.ani_sonic_idle_v0);
             player_set_radii(6, 14);
+            hitboxes[0].set(-6, -16, 6, 16);
+            hitboxes[1].set();
             image_angle = gravity_direction;
             break;
         }
@@ -30,11 +32,9 @@ player_animate = function ()
         }
         case PLAYER_ANIMATION.RUN:
         {
-            var run_speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
-            player_set_run_variant();
-            animation_set(global.ani_sonic_run);
+            player_animate_run(global.ani_sonic_run);
             player_set_radii(6, 14);
-            if (on_ground) animation_data.speed = run_speed;
+            hitboxes[0].set(-6, -16, 6, 16);
             image_angle = direction;
             break;
         }
@@ -63,6 +63,7 @@ player_animate = function ()
         {
             animation_set(global.ani_sonic_roll_v0);
             player_set_radii(6, 9);
+            hitboxes[1].set(-8, -8, 8, 8);
             image_angle = gravity_direction;
             break;
         }
