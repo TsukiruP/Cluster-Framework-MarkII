@@ -1,3 +1,3 @@
 /// @description Initialize
 image_speed = 0;
-reaction = function (player) {};
+reaction = function (pla) {};
