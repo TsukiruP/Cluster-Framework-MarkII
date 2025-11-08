@@ -30,13 +30,13 @@
 | Brake Fast | 17-0 |
 | Look | 1-0, 1-1 |
 | Crouch | 2-0, 2-1 |
-| Roll | 11-0 | Uses SA2 hitbox (4-0)
-| Spin Dash | 10-0, 10-1 | Uses SA2 hitbox (3-0, 3-1)
+| Roll | 11-0 | Uses SA2 hitbox (4-0) |
+| Spin Dash | 10-0, 10-1 | Uses SA2 hitbox (3-0, 3-1) |
 | Fall | 24-0 | Reuses Spring sprites |
-| Jump | 19-0, 19-1, 19-2 | Uses SA2 hitbox (10-0, 10-1, 10-2)
+| Jump | 19-0, 19-1, 19-2 | Uses SA2 hitbox (10-0, 10-1, 10-2) |
 | Spring | 108-0, 108-1, 108-2 |
 | Spring Twirl | 109-0 |
-| Hurt | 102-0 | Need to compare with SA2
+| Hurt | 102-0 | Need to compare with SA2 |
 | Stumble | 102-1 |
 | Death | 103-0 |
 
@@ -54,13 +54,13 @@
 | Brake Fast | 343-0 |
 | Look | 327-0, 327-1 |
 | Crouch | 328-0, 328-1 |
-| Roll | 337-0, 337-1 | Variant 1 is for his tails
-| Spin Dash | 336-0 | Variant 1 by IceisNice, uses SA2 hitbox (185-0)
+| Roll | 337-0, 337-1 | Variant 1 is for his tails |
+| Spin Dash | 336-0 | Variant 1 by IceisNice, uses SA2 hitbox (185-0) |
 | Fall | 350-0 | Reuses Spring sprites |
-| Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2)
+| Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2) |
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
-| Hurt | 428-0 | Need to compare with SA2
+| Hurt | 428-0 | Need to compare with SA2 |
 | Stumble | 428-1 |
 | Death | 329-0 |
 
@@ -78,10 +78,10 @@
 | Brake Fast | 506-0 |
 | Look | 490-0 |
 | Crouch | 491-0 |
-| Roll | 500-0 | Uses SA2 hitbox
-| Spin Dash | 499-0, 499-1 | Uses SA2 hitbox
+| Roll | 500-0 | Uses SA2 hitbox (277-0) |
+| Spin Dash | 499-0, 499-1 | Uses SA2 hitbox (276-0, 276-1) |
 | Fall | 513-0 | Reuses Spring sprites |
-| Jump | 508-0, 508-1, 508-2 | Uses SA2 hitbox (283-0, 283-1, 283-2)
+| Jump | 508-0, 508-1, 508-2 | Uses SA2 hitbox (283-0, 283-1, 283-2) |
 | Spring | 597-0, 597-1, 597-2 |
 | Spring Twirl | 598-0 |
 | Hurt | 591-0 |
@@ -102,13 +102,13 @@
 | Brake Fast | 669-0 |
 | Look | 653-0, 653-1 |
 | Crouch | 654-0, 654-1 |
-| Roll | 663-0 |
+| Roll | 663-0 | Uses SA2 hitbox (368-0) |
 | Spin Dash | 662-0 |
 | Fall | 676-0 | Reuses Spring sprites |
-| Jump | 671-0, 671-1, 671-2 |
+| Jump | 671-0, 671-1, 671-2 | Uses SA2 hitbox (374-0, 374-1, 374-2)
 | Spring | 760-0, 760-1, 760-2 |
 | Spring Twirl | 761-0 |
-| Hurt | 754-0 | Need to compare with SA2
+| Hurt | 754-0 | Need to compare with SA2 |
 | Stumble | 754-1 |
 | Death | 755-0 |
 | Idle Alt | 700-0 |
@@ -129,12 +129,12 @@
 | Brake Fast | 180-0 |
 | Look | 164-0, 164-1 |
 | Crouch | 165-0, 165-1 |
-| Roll | 174-0, 174-1 | Variant 1 are her ears, uses SA2 hitbox (94-0)
-| Spin Dash | 173-0 | Uses SA2 hitbox (95-0)
+| Roll | 174-0, 174-1 | Variant 1 are her ears, uses SA2 hitbox (95-0) |
+| Spin Dash | 173-0 | Uses SA2 hitbox (94-0) |
 | Fall | 187-0 | Reuses Spring sprites |
-| Jump | 182-0, 182-1, 182-2 | Uses SA2 hitbox (101-0)
+| Jump | 182-0, 182-1, 182-2 | Uses SA2 hitbox (101-0, 101-1, 101-2) |
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
-| Hurt | 265-0 | Need to compare with SA2
+| Hurt | 265-0 | Need to compare with SA2 |
 | Stumble | 265-1 |
 | Death | 266-0 |

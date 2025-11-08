@@ -11,6 +11,11 @@ player_animate = function()
             animation_set(global.players[0].object_index == objSonic ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TEETER:
@@ -19,6 +24,11 @@ player_animate = function()
             animation_set(global.ani_amy_teeter);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TURN:
@@ -26,6 +36,11 @@ player_animate = function()
             animation_set(global.ani_amy_turn);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.RUN:
@@ -33,6 +48,11 @@ player_animate = function()
             player_animate_run(global.players[0].object_index == objSonic ? global.ani_amy_run_alt : global.ani_amy_run);
             player_set_radii(6, 14);
             image_angle = direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.BRAKE:
@@ -40,6 +60,11 @@ player_animate = function()
             animation_set(global.ani_amy_brake);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.LOOK:
@@ -47,6 +72,11 @@ player_animate = function()
             animation_set(global.ani_amy_look);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.CROUCH:
@@ -54,6 +84,11 @@ player_animate = function()
             animation_set(global.ani_amy_crouch);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -6, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.ROLL:
@@ -61,6 +96,11 @@ player_animate = function()
             animation_set(global.ani_amy_roll_v0);
             player_set_radii(6, 9);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-10, -10, 10, 10);
+                hitboxes[1].set_size(-10, -10, 10, 10);
+            }
             break;
         }
         case PLAYER_ANIMATION.SPIN_DASH:
@@ -68,6 +108,11 @@ player_animate = function()
             animation_set(global.ani_amy_spin_dash_v0);
             player_set_radii(6, 9);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -18, 6, 10);
+                hitboxes[1].set_size(-6, -18, 6, 10);
+            }
             break;
         }
         case PLAYER_ANIMATION.FALL:
@@ -79,6 +124,11 @@ player_animate = function()
             animation_set(global.ani_amy_fall);
             player_set_radii(6, 14);
             image_angle = rotate_towards(direction, image_angle);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -14, 6, 12);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.JUMP:
@@ -102,6 +152,46 @@ player_animate = function()
             }
             animation_set(global.ani_amy_jump);
             image_angle = gravity_direction;
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-10, -10, 10, 10);
+                        hitboxes[1].set_size(-10, -10, 10, 10);
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-10, -10, 10, 10);
+                        hitboxes[1].set_size(-10, -10, 10, 10);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-10, -10, 10, 10);
+                            hitboxes[1].set_size(-10, -10, 10, 10);
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 10);
+                            hitboxes[1].set_size(-10, -7, 11, 15);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING:
@@ -120,6 +210,11 @@ player_animate = function()
             animation_set(global.ani_amy_spring);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING_TWIRL:
@@ -127,6 +222,11 @@ player_animate = function()
             animation_set(global.ani_amy_spring_twirl);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -13, 6, 13);
+                hitboxes[1].set_size();
+            }
             break;
         }
     }
