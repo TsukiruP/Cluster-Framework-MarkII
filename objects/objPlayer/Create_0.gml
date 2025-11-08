@@ -211,7 +211,7 @@ function player_effect() constructor
     image_yscale = 1;
     image_angle = 0;
     animation_data = new animation_core();
-    static draw = function ()
+    static draw_effect = function ()
     {
         if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
     };
@@ -273,31 +273,25 @@ player_resist_slope = function (force)
 /// @description Sets the player's current animation.
 player_animate = function () {};
 
-/// @method player_set_run_variant()
-/// @description Sets the variant based on the player's horizontal speed.
-player_set_run_variant = function ()
+/// player_animate_run(ani)
+/// @description Sets the player's run animation.
+/// @param {Array} ani Animations to set.
+player_animate_run = function (ani)
 {
-    // Abort if not grounded
-    if (not on_ground) exit;
-    
-    var variant = 5;
-    var abs_speed = abs(x_speed);
-    if (abs_speed <= 1.25) variant = 0;
-    else if (abs_speed <= 2.5) variant = 1;
-    else if (abs_speed <= 4.0) variant = 2;
-    else if (abs_speed <= 9.0) variant = 3;
-    else if (abs_speed <= 10.0) variant = 4;
-    
-    // Apply
+    var variant = animation_data.variant;
+    if (on_ground)
+    {
+    	var abs_speed = abs(x_speed);
+        variant = 5;
+    	if (abs_speed <= 1.25) variant = 0;
+	    else if (abs_speed <= 2.5) variant = 1;
+	    else if (abs_speed <= 4.0) variant = 2;
+	    else if (abs_speed <= 9.0) variant = 3;
+	    else if (abs_speed <= 10.0) variant = 4;
+    }
+    animation_set(ani);
     animation_data.variant = variant;
-};
-
-/// player_animate_run(variants)
-/// @description Sets the player's current run animation.
-/// @param {Array} variants Animations to set.
-player_animate_run = function (variants)
-{
-    
+    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
 /// @method player_set_radii(xrad, yrad)
