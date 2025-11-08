@@ -55,9 +55,9 @@
 | Look | 327-0, 327-1 |
 | Crouch | 328-0, 328-1 |
 | Roll | 337-0, 337-1 | Variant 1 is for his tails
-| Spin Dash | 336-0 | Variant 1 by IceisNice
+| Spin Dash | 336-0 | Variant 1 by IceisNice, uses SA2 hitbox (185-0)
 | Fall | 350-0 | Reuses Spring sprites |
-| Jump | 345-0, 345-1, 345-2 | Uses SA2 hotbox (192-0, 192-1, 192-2)
+| Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2)
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
 | Hurt | 428-0 | Need to compare with SA2
@@ -78,10 +78,10 @@
 | Brake Fast | 506-0 |
 | Look | 490-0 |
 | Crouch | 491-0 |
-| Roll | 500-0 |
-| Spin Dash | 499-0, 499-1 |
+| Roll | 500-0 | Uses SA2 hitbox
+| Spin Dash | 499-0, 499-1 | Uses SA2 hitbox
 | Fall | 513-0 | Reuses Spring sprites |
-| Jump | 508-0, 508-1, 508-2 |
+| Jump | 508-0, 508-1, 508-2 | Uses SA2 hitbox (283-0, 283-1, 283-2)
 | Spring | 597-0, 597-1, 597-2 |
 | Spring Twirl | 598-0 |
 | Hurt | 591-0 |
@@ -129,10 +129,10 @@
 | Brake Fast | 180-0 |
 | Look | 164-0, 164-1 |
 | Crouch | 165-0, 165-1 |
-| Roll | 174-0, 174-1 | Variant 1 are her ears
-| Spin Dash | 173-0 |
+| Roll | 174-0, 174-1 | Variant 1 are her ears, uses SA2 hitbox (94-0)
+| Spin Dash | 173-0 | Uses SA2 hitbox (95-0)
 | Fall | 187-0 | Reuses Spring sprites |
-| Jump | 182-0, 182-1, 182-2 |
+| Jump | 182-0, 182-1, 182-2 | Uses SA2 hitbox (101-0)
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
 | Hurt | 265-0 | Need to compare with SA2
