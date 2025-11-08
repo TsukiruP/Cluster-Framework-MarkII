@@ -6,25 +6,25 @@ image_speed = 0;
 /// @function menu(options)
 /// @description Creates a menu.
 /// @param {Array} options Options to display.
-function menu(options = []) constructor
+function menu(_options = []) constructor
 {
-    items = options;
+    options = _options;
     cursor = 0;
 }
 
 /// @function option(label)
 /// @description Creates a basic menu option.
 /// @param {String} label Label to display.
-function option (label) constructor
+function option (_label) constructor
 {
-    text = label;
+    label = _label;
     confirm = function () {};
 }
 
 /// @function option_value(label)
 /// @description Creates a menu option with a value.
 /// @param {String} label Label to display.
-function option_value(label) : option(label) constructor 
+function option_value(_label) : option(_label) constructor 
 {
     get = function () {};
     set = function () {};
@@ -35,7 +35,7 @@ function option_value(label) : option(label) constructor
 /// @function option_bool(label)
 /// @description Creates a menu option with a boolean.
 /// @param {String} label Label to display.
-function option_bool(label) : option_value(label) constructor
+function option_bool(_label) : option_value(_label) constructor
 {
     get = function () { return false; };
     set = function (val) {};
@@ -46,7 +46,7 @@ function option_bool(label) : option_value(label) constructor
 /// @function option_real(label)
 /// @description Creates a menu option with a real number.
 /// @param {String} label Label to display.
-function option_real(label) : option_value(label) constructor
+function option_real(_label) : option_value(_label) constructor
 {
     increment = 1;
     can_wrap = false;
@@ -67,7 +67,7 @@ function option_real(label) : option_value(label) constructor
 /// @function option_int(label)
 /// @description Creates a menu with an integer number.
 /// @param {String} label Label to display.
-function option_int(label) : option_real(label) constructor
+function option_int(_label) : option_real(_label) constructor
 {
     specifiers = [];
     offset = 0;
@@ -88,16 +88,16 @@ function option_int(label) : option_real(label) constructor
 /// @function option_player(player)
 /// @description Creates a menu with player data.
 /// @param {Real} player Player to display.
-function option_player(player = 0) : option_int("Player " + string(player)) constructor 
+function option_player(_player = 0) : option_int("Player " + string(_player)) constructor 
 {
-    player_index = player;
+    player = _player;
     can_wrap = true;
-    minimum = (player_index == 0 ? CHARACTER.SONIC : CHARACTER.NONE);
+    minimum = (player == 0 ? CHARACTER.SONIC : CHARACTER.NONE);
     maximum = CHARACTER.CREAM;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
     offset = CHARACTER.NONE;
-    get = function () { return db_read(global.save_database, CHARACTER.NONE, "character", player_index); };
-    set = function (val) { db_write(global.save_database, val, "character", player_index); };
+    get = function () { return db_read(global.save_database, CHARACTER.NONE, "character", player); };
+    set = function (val) { db_write(global.save_database, val, "character", player); };
 }
 
 #endregion

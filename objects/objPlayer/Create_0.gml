@@ -119,9 +119,9 @@ input_axis_y = 0;
 /// @function button(verb)
 /// @description Creates a new button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
-function button(verb) constructor
+function button(_verb) constructor
 {
-    index = verb;
+    verb = _verb;
     check = false;
     pressed = false;
     released = false;
@@ -148,7 +148,7 @@ player_reset_input = function ()
 	
 	struct_foreach(input_button, function (name, value)
 	{
-	    var verb = value.index;
+	    var verb = value.verb;
 	    value.check = false;
 	    value.pressed = false;
 	    value.released = false;

@@ -8,7 +8,7 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	
 	struct_foreach(input_button, function (name, value)
 	{
-	    var verb = value.index;
+	    var verb = value.verb;
 	    value.check = InputCheck(verb, player_index);
 	    value.pressed = InputPressed(verb, player_index);
 	    value.released = InputReleased(verb, player_index);
