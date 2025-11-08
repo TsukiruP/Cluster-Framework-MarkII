@@ -137,5 +137,5 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    with (ears_effect) draw_effect();
+    ears_effect.draw();
 };

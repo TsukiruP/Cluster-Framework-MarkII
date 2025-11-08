@@ -211,7 +211,7 @@ function player_effect() constructor
     image_yscale = 1;
     image_angle = 0;
     animation_data = new animation_core();
-    static draw_effect = function()
+    static draw = function()
     {
         if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
     };

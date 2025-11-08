@@ -138,5 +138,5 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    with (tails_effect) draw_effect();
+    tails_effect.draw();
 };
