@@ -2,7 +2,7 @@
 // Inherit the parent event
 event_inherited();
 
-hitboxes[0] = new hitbox(c_maroon, -8, -8, 8, 8);
+hitboxes[0].set_size(-8, -8, 8, 8);
 reaction = function(pla)
 {
 	if (collision_player(0, pla) != 0 and pla.invulnerability_time < 90)

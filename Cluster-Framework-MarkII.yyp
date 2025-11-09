@@ -181,6 +181,7 @@
     {"id":{"name":"objSonic","path":"objects/objSonic/objSonic.yy",},},
     {"id":{"name":"objSpring","path":"objects/objSpring/objSpring.yy",},},
     {"id":{"name":"objSpringDiagonal","path":"objects/objSpringDiagonal/objSpringDiagonal.yy",},},
+    {"id":{"name":"objSpringDiagonalAlt","path":"objects/objSpringDiagonalAlt/objSpringDiagonalAlt.yy",},},
     {"id":{"name":"objSpringHorizontal","path":"objects/objSpringHorizontal/objSpringHorizontal.yy",},},
     {"id":{"name":"objSpringVertical","path":"objects/objSpringVertical/objSpringVertical.yy",},},
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},

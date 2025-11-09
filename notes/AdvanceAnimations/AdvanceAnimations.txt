@@ -22,7 +22,7 @@
 | Vertical Spring | 866-0, 866-1 |
 | Horizontal Spring | 866-2, 866-3 |
 | Diagonal Spring | 866-4, 866-5 |
-| Diagonal Spring Low | 866-6, 866-7 |
+| Diagonal Spring Alt | 866-6, 866-7 |
 | Spring Pole | (SA2) 538-0 |
 | Spike | 869-0 |
 | Act Ring | 983-0, 983-1, 983-2 |
