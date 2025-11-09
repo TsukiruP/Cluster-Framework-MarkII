@@ -9,7 +9,10 @@
     "name":"Springs",
     "path":"folders/Objects/Zone/General/Springs.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"objSpring",
+    "path":"objects/objSpring/objSpring.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
