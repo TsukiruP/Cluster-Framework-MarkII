@@ -40,7 +40,6 @@ reaction = function(pla)
                 pla.y_speed = dsin(diff) * force;
             }
             active |= bit;
-            pla.player_gain_rings(1);
             animation_data.variant = 1;
             sound_play(sfxSpring);
         }
