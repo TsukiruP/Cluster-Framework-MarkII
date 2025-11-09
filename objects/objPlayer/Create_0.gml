@@ -153,8 +153,8 @@ input_button =
     aux : new button(INPUT_VERB.AUX),
     swap : new button(INPUT_VERB.SWAP),
     extra : new button(INPUT_VERB.EXTRA),
-    tag : new button(INPUT_VERB.ALT),
-    alt : new button(INPUT_VERB.START),
+    tag : new button(INPUT_VERB.TAG),
+    alt : new button(INPUT_VERB.ALT),
     start : new button(INPUT_VERB.START),
     select : new button(INPUT_VERB.SELECT)
 };
@@ -178,7 +178,7 @@ player_reset_input = function()
 // CPU
 input_cpu_state = 0;
 input_cpu_history = array_create(CPU_INPUT.MAX);
-for (var i = 0; i < CPU_INPUT.MAX; i++) input_cpu_history[i] = array_create(16);
+for (var i = 0; i < array_length(input_cpu_history); i++) input_cpu_history[i] = array_create(16);
 
 /// @method player_record_cpu_input(cpu_input)
 /// @description Records the given CPU input.
