@@ -13,13 +13,28 @@ reaction = function(pla)
     {
         if ((active & bit) == 0)
         {
-            pla.player_perform(player_is_sprung);
-            pla.x_speed = -force;
-            switch (direction)
+            switch (abs(angle_difference(direction, pla.gravity_direction)))
             {
                 case 0:
                 {
-                    
+                    pla.player_perform(player_is_sprung);
+                    pla.y_speed = -image_yscale * force;
+                    break;
+                }
+                case 90:
+                {
+                    if (not pla.on_ground) pla.player_perform(player_is_sprung);
+                    // TODO: Set Boost Mode
+                    pla.x_speed = image_xscale * force;
+                    pla.image_xscale = image_xscale;
+                    break;
+                }
+                case 45:
+                {
+                    pla.player_perform(player_is_sprung);
+                    pla.x_speed = image_xscale * force;
+                    pla.y_speed = -image_yscale * force;
+                    pla.image_xscale = image_xscale;
                     break;
                 }
             }

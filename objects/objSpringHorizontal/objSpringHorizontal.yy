@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"objSpringVertical",
+  "%Name":"objSpringHorizontal",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objSpringVertical",
+  "name":"objSpringHorizontal",
   "overriddenProperties":[],
   "parent":{
     "name":"Springs",
@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSpringVertical",
-    "path":"sprites/sprSpringVertical/sprSpringVertical.yy",
+    "name":"sprSpringHorizontal",
+    "path":"sprites/sprSpringHorizontal/sprSpringHorizontal.yy",
   },
   "spriteMaskId":null,
   "visible":true,

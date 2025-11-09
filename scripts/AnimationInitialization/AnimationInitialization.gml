@@ -11,6 +11,10 @@ global.ani_spring_vertical_v0 = new animation(sprSpringVertical, 0);
 global.ani_spring_vertical_v1 = new animation(sprSpringVertical, [2, 4, 2, 4, 2], -1, [1, 2, 3, 4, 5]);
 global.ani_spring_vertical = [global.ani_spring_vertical_v0, global.ani_spring_vertical_v1];
 
+global.ani_spring_horizontal_v0 = new animation(sprSpringHorizontal, 0);
+global.ani_spring_horizontal_v1 = new animation(sprSpringHorizontal, [2, 4, 2, 4, 2], -1, [1, 2, 3, 4, 5]);
+global.ani_spring_horizontal = [global.ani_spring_horizontal_v0, global.ani_spring_horizontal_v1];
+
 #endregion
 
 #region Player

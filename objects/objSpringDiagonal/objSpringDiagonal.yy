@@ -1,21 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"objSpringVertical",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"objSpringDiagonal",
+  "eventList":[],
   "managed":true,
-  "name":"objSpringVertical",
+  "name":"objSpringDiagonal",
   "overriddenProperties":[],
   "parent":{
     "name":"Springs",
     "path":"folders/Objects/Zone/General/Springs.yy",
   },
-  "parentObjectId":{
-    "name":"objSpring",
-    "path":"objects/objSpring/objSpring.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSpringVertical",
-    "path":"sprites/sprSpringVertical/sprSpringVertical.yy",
+    "name":"sprSpringDiagonal",
+    "path":"sprites/sprSpringDiagonal/sprSpringDiagonal.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -13,7 +13,7 @@ function player_is_falling(phase)
 			player_ground(undefined);
             
             // Animate
-			animation_init(PLAYER_ANIMATION.FALL, 0, false, [PLAYER_ANIMATION.ROLL]);
+			animation_init(PLAYER_ANIMATION.FALL, true, [PLAYER_ANIMATION.ROLL]);
 			break;
 		}
 		case PHASE.STEP:
@@ -80,7 +80,7 @@ function player_is_jumping(phase)
 			player_ground(undefined);
 			
 			// Animate
-			animation_init(PLAYER_ANIMATION.JUMP, 0);
+			animation_init(PLAYER_ANIMATION.JUMP, true);
 			
 			// Sound
 			sound_play(sfxJump);

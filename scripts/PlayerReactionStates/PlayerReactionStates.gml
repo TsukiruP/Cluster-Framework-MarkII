@@ -8,8 +8,9 @@ function player_is_sprung(phase)
 			// Detach from ground
 			player_ground(undefined);
             
-            // Animate
-			animation_init(PLAYER_ANIMATION.SPRING);
+            // Animate 
+            var ani_spring = (abs(x_speed) > 2.5 ? PLAYER_ANIMATION.SPRING_TWIRL : PLAYER_ANIMATION.SPRING);
+            animation_init(ani_spring, true);
             break;
 		}
 		case PHASE.STEP:

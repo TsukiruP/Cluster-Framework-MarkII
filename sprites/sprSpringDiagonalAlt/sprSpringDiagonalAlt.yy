@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Spring",
-    "path":"folders/Sprites/Zone/General/Spring.yy",
+    "name":"Springs",
+    "path":"folders/Sprites/Zone/General/Springs.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

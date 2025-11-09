@@ -1,2 +1,2 @@
-/// @description Animate
+/// @description Update
 animation_update();
