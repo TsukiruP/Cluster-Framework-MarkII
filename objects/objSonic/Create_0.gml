@@ -249,6 +249,18 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.TRICK_UP:
+        {
+            if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
+            animation_set(global.ani_sonic_trick_up);
+            image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size();
+                hitboxes[1].set_size();
+            }
+            break;
+        }
         case PLAYER_ANIMATION.SPRING:
         {
             if (animation_data.variant == 0)

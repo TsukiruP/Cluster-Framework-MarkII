@@ -85,9 +85,9 @@ global.ani_sonic_hurt = [global.ani_sonic_hurt_v0, global.ani_sonic_hurt_v1];
 
 global.ani_sonic_dead_v0 = new animation(sprSonicDead, [3, 3, 12, 2, 3, 3], 4);
 
-global.ani_sonic_trick_up_v0 = new animation(sprSonicTrickUp0, 2);
-global.ani_sonic_trick_up_v1 = new animation(sprSonicTrickUp0, 2);
-global.ani_sonic_trick_up_v2 = new animation(sprSonicTrickUp0, 2);
+global.ani_sonic_trick_up_v0 = new animation(sprSonicTrickUp0, [3, 6, 2], -1);
+global.ani_sonic_trick_up_v1 = new animation(sprSonicTrickUp1, [1, 1, 3, 3, 3], 2);
+global.ani_sonic_trick_up_v2 = new animation(sprSonicTrickUp2, [3, 3, 3, 2, 2, 2], 3);
 global.ani_sonic_trick_up = [global.ani_sonic_trick_up_v0, global.ani_sonic_trick_up_v1, global.ani_sonic_trick_up_v2];
 
 global.ani_sonic_spring_v0 = new animation(sprSonicSpring0, 3, 1);

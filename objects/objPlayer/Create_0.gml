@@ -32,6 +32,14 @@ enum PLAYER_ANIMATION
     SPRING_TWIRL
 }
 
+enum TRICK
+{
+	UP,
+	DOWN,
+	FRONT,
+	BACK
+}
+
 enum CPU_INPUT
 {
 	X,
@@ -59,8 +67,13 @@ jump_cap = true;
 
 spin_dash_charge = 0;
 
+trick_index = TRICK.FRONT;
+trick_speed = array_create(TRICK.BACK + 1);
+for (var i = 0; i < array_length(trick_speed); i++) trick_speed[i] = array_create(2);
+
 // Timers
 control_lock_time = 0;
+trick_time = 0;
 superspeed_time = 0;
 invincibility_time = 0;
 invulnerability_time = 0;
@@ -71,6 +84,7 @@ camera_look_time = 0;
 
 slide_duration = 30;
 spring_duration = 16;
+trick_lock_duration = 9;
 invulnerability_duration = 120;
 input_cpu_respawn_duration = 300;
 input_cpu_gamepad_duration = 600;
@@ -259,6 +273,24 @@ player_try_jump = function()
         return true;
     }
     return false;
+};
+
+/// @method player_try_trick()
+/// @desctiption Sets the player's current state to tricking, if applicable.
+/// @returns {Bool}
+player_try_trick = function()
+{
+	if (trick_time == 0 and input_button.tag.pressed)
+	{
+		if (input_axis_y == -1)
+		{
+			trick_index = TRICK.UP;
+			player_perform(player_is_trick_preparing);
+			// TODO: Increment score
+		}
+		return true;
+	}
+	return false;
 };
 
 /// @method player_rotate_mask()
