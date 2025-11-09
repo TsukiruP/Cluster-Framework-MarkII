@@ -12,32 +12,35 @@ reaction = function(pla)
     {
         if ((active & bit) == 0)
         {
-            switch (abs(angle_difference(direction, pla.gravity_direction)))
+            var diff = angle_wrap(direction - pla.gravity_direction);
+            if (diff == 90 or diff == 270)
             {
-                case 0:
+                pla.player_perform(player_is_sprung);
+                pla.y_speed = dsin(diff) * force;
+            }
+            else if (diff == 0 or diff == 180)
+            {
+                if (pla.on_ground)
                 {
-                    pla.player_perform(player_is_sprung);
-                    pla.y_speed = -image_yscale * force;
-                    break;
-                }
-                case 90:
-                {
-                    if (not pla.on_ground) pla.player_perform(player_is_sprung);
+                    pla.control_lock_time = pla.spring_duration;
                     // TODO: Set Boost Mode
-                    pla.x_speed = image_xscale * force;
-                    pla.image_xscale = image_xscale;
-                    break;
                 }
-                case 45:
+                else
                 {
                     pla.player_perform(player_is_sprung);
-                    pla.x_speed = image_xscale * force;
-                    pla.y_speed = -image_yscale * force;
-                    pla.image_xscale = image_xscale;
-                    break;
                 }
+                pla.image_xscale = image_xscale;
+                pla.x_speed = image_xscale * force;
+            }
+            else
+            {
+                pla.player_perform(player_is_sprung);
+                pla.image_xscale = image_xscale;
+                pla.x_speed = image_xscale * force;
+                pla.y_speed = dsin(diff) * force;
             }
             active |= bit;
+            pla.player_gain_rings(1);
             animation_data.variant = 1;
             sound_play(sfxSpring);
         }
