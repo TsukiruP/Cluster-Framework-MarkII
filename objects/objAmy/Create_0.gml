@@ -241,7 +241,7 @@ player_animate = function()
                     animation_data.variant = 1;
                 }
             }
-            else if (animation_is_finished())
+            else if (animation_data.variant == 1 and animation_is_finished())
             {
                 animation_data.variant = 2;
             }
