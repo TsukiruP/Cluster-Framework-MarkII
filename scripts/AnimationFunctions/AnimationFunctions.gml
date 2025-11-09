@@ -25,35 +25,28 @@ function animation_core() constructor
     pos = 0;
 }
 
-/// @function animation_init(index, [variant], [force], [alternatives])
-/// @description Initializes the next animation. Resets the variant when applicable.
-/// @param {Real} index Animation index to initialize.
-/// @param {Real} [variant] Animation variant to initialize.
+/// @function animation_init(index, [force], [alternatives])
+/// @description Initializes the next animation.
+/// @param {Real} index Animation index to set.
 /// @param {Bool} [force] Force the animation to restart.
 /// @param {Array} [alternatives] Alternative animations that will be treated as the given index. 
-function animation_init(index, variant = -1, force = false, alternatives = [])
+function animation_init(index, force = false, alternatives = [])
 {
     // Abort if...
     if (not force)
     {
-        if (animation_data.index == index && animation_data.variant == variant) exit; // Index is the same
+        if (animation_data.index == index) exit; // Index is the same
         if (array_contains(alternatives, animation_data.index)) exit; // Index is considered an alternative
     }
     
-    if (variant == -1)
-    {
-        if (animation_data.index != index) variant = 0;
-        else variant = animation_data.variant;
-    }
-    
     animation_data.index = index;
-    animation_data.variant = variant;
+    animation_data.variant = 0;
     animation_data.force = force;
 }
 
 /// @function animation_set(ani)
 /// @description Sets the animation core's animation.
-/// @param {Undefined|Struct.animation|Array} ani Animation to play. Accepts an array as animation variants.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 function animation_set(ani)
 {
     ani = (is_array(ani) ? ani[min(array_length(ani) - 1, animation_data.variant)] : ani);

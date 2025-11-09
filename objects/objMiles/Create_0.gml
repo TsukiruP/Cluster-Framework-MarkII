@@ -277,7 +277,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.SPRING_TWIRL:
         {
-            animation_set(global.ani_miles_spring_twirl);
+            animation_set(global.ani_miles_spring_twirl_v0);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
             if (image_index == 0)
