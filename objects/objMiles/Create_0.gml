@@ -108,7 +108,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.SPIN_DASH:
         {
-            if (animation_is_finished()) animation_data.variant = 0;
+            if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
             animation_set(global.ani_miles_spin_dash);
             player_set_radii(6, 9);
             image_angle = gravity_direction;
@@ -255,7 +255,7 @@ player_animate = function()
                     animation_data.variant = 1;
                 }
             }
-            else if (animation_is_finished())
+            else if (animation_data.variant == 1 and animation_is_finished())
             {
                 animation_data.variant = 2;
             }
