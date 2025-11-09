@@ -53,7 +53,7 @@ function player_is_standing(phase)
 		case PHASE.STEP:
 		{
 			// Jump
-			if (input_button.jump.pressed) return player_perform(player_is_jumping);
+			if (player_try_jump()) return true;
 			
 			// Move
 			player_move_on_ground();
@@ -122,7 +122,7 @@ function player_is_running(phase)
 		case PHASE.STEP:
 		{
 			// Jump
-			if (input_button.jump.pressed) return player_perform(player_is_jumping);
+			if (player_try_jump()) return true;
 			
 			// Handle ground motion
 			var can_brake = false;
@@ -251,7 +251,7 @@ function player_is_looking(phase)
 		case PHASE.STEP:
 		{
 			// Jump
-			if (input_button.jump.pressed) return player_perform(player_is_jumping);
+			if (player_try_jump()) return true;
 			
 			// Move
 			player_move_on_ground();
@@ -388,7 +388,7 @@ function player_is_rolling(phase)
 		case PHASE.STEP:
 		{
 			// Jump
-			if (input_button.jump.pressed) return player_perform(player_is_jumping);
+			if (player_try_jump()) return true;
 			
 			// Decelerate
 			if (control_lock_time == 0)

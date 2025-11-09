@@ -240,6 +240,20 @@ player_perform = function(action)
 	state(PHASE.ENTER);
 };
 
+/// @method player_try_jump()
+/// @description Sets the player's current state to jumping, if applicable.
+/// @returns {Bool}
+player_try_jump = function()
+{
+    if (input_button.jump.pressed)
+    {
+        player_perform(player_is_jumping);
+        animation_init(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+        return true;
+    }
+    return false;
+};
+
 /// @method player_rotate_mask()
 /// @description Rotates the player's virtual mask, if applicable.
 player_rotate_mask = function()
@@ -274,7 +288,7 @@ player_resist_slope = function(force)
 player_animate = function() {};
 
 /// player_animate_run(ani)
-/// @description Sets the player's run animation.
+/// @description Sets the given animation as the player's run animation.
 /// @param {Array} ani Animations to set.
 player_animate_run = function(ani)
 {
@@ -295,7 +309,7 @@ player_animate_run = function(ani)
 };
 
 /// @method player_set_radii(xrad, yrad)
-/// @description Sets the player's virtual mask.
+/// @description Sets the given radii as the player's virtual mask.
 /// @param {Real} xrad Horizontal radius to use.
 /// @param {Real} yrad Vertical radius to use.
 player_set_radii = function(xrad, yrad)
