@@ -1,5 +1,7 @@
 /// @description Initialize
-image_speed = 0;
+// Inherit the parent event
+event_inherited();
+
 hitboxes[0] = new hitbox(c_maroon, -8, -8, 8, 8);
 reaction = function(pla)
 {

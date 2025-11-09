@@ -5,6 +5,14 @@ global.ani_ring_sparkle_v0 = new animation(sprRingSparkle, 4, -1);
 
 #endregion
 
+#region Objects
+
+global.ani_spring_vertical_v0 = new animation(sprSpringVertical, 0);
+global.ani_spring_vertical_v1 = new animation(sprSpringVertical, [2, 4, 2, 4, 2], -1, [1, 2, 3, 4, 5]);
+global.ani_spring_vertical = [global.ani_spring_vertical_v0, global.ani_spring_vertical_v1];
+
+#endregion
+
 #region Player
 
 global.ani_spin_dash_v0 = new animation(sprSpinDash0, 2);
