@@ -20,8 +20,15 @@ reaction = function(pla)
             }
             else if (diff == 0 or diff == 180)
             {
-                if (not pla.on_ground) pla.player_perform(player_is_sprung);
-                // TODO: Set Boost Mode
+                if (pla.on_ground)
+                {
+                    pla.control_lock_time = pla.spring_duration;
+                    // TODO: Set Boost Mode
+                }
+                else
+                {
+                    pla.player_perform(player_is_sprung);
+                }
                 pla.image_xscale = image_xscale;
                 pla.x_speed = image_xscale * force;
             }
