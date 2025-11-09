@@ -2,6 +2,7 @@
 // Inherit the parent event
 event_inherited();
 
+/*
 switch (animation_data.variant)
 {
     case 0:

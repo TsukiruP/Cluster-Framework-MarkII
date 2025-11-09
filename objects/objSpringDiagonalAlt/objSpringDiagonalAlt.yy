@@ -3,7 +3,6 @@
   "%Name":"objSpringDiagonalAlt",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"objSpringDiagonalAlt",
@@ -13,8 +12,8 @@
     "path":"folders/Objects/Zone/General/Springs.yy",
   },
   "parentObjectId":{
-    "name":"objSpring",
-    "path":"objects/objSpring/objSpring.yy",
+    "name":"objSpringDiagonal",
+    "path":"objects/objSpringDiagonal/objSpringDiagonal.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
