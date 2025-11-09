@@ -22,6 +22,12 @@ enum PLAYER_ANIMATION
     SPIN_DASH,
     FALL,
     JUMP,
+    HURT,
+    DEAD,
+    TRICK_UP,
+    TRICK_DOWN,
+    TRICK_FRONT,
+    TRICK_BACK,
     SPRING,
     SPRING_TWIRL
 }
@@ -229,15 +235,16 @@ camera_padding_y = 0;
 // Misc.
 player_index = -1;
 
-/// @method player_perform(action)
+/// @method player_perform(action, [enter])
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
-player_perform = function(action)
+/// @param {Bool} enter Whether to perform the enter phase.
+player_perform = function(action, enter = true)
 {
 	state(PHASE.EXIT);
 	state = action;
 	state_changed = true;
-	state(PHASE.ENTER);
+	if (enter) state(PHASE.ENTER);
 };
 
 /// @method player_rotate_mask()

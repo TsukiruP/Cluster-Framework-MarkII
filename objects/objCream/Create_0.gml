@@ -187,6 +187,44 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.HURT:
+        {
+            animation_set(global.ani_sonic_hurt);
+            image_angle = gravity_direction;
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -8, 6, 24);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+        case PLAYER_ANIMATION.DEAD:
+        {
+            animation_set(global.ani_sonic_dead_v0);
+            image_angle = gravity_direction;
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size();
+                hitboxes[1].set_size();
+            }
+            break;
+        }
         case PLAYER_ANIMATION.SPRING:
         {
             if (animation_data.variant == 0)
