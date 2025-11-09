@@ -28,7 +28,7 @@ function animation_core() constructor
 /// @function animation_init(index, [force], [alternatives])
 /// @description Initializes the next animation.
 /// @param {Real} index Animation index to set.
-/// @param {Bool} [force] Force the animation to restart.
+/// @param {Bool} [force] Whether the animation should be forced to play.
 /// @param {Array} [alternatives] Alternative animations that will be treated as the given index. 
 function animation_init(index, force = false, alternatives = [])
 {
