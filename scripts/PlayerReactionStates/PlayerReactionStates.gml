@@ -15,6 +15,10 @@ function player_is_sprung(phase)
 		}
 		case PHASE.STEP:
 		{
+			// Skills
+			if (trick_time != 0) trick_time--;
+			if (player_try_trick()) return true;
+			
 			// Accelerate
 			if (input_axis_x != 0)
 			{
