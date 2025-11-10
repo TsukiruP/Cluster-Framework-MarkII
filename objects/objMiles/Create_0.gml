@@ -121,10 +121,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.FALL:
         {
-            if (animation_data.variant == 0 and animation_is_finished())
-            {
-                animation_data.variant = 1;
-            }
+            if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
             animation_set(global.ani_miles_fall);
             player_set_radii(6, 14);
             image_angle = rotate_towards(direction, image_angle);
@@ -137,29 +134,13 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.JUMP:
         {
-            if (animation_data.variant == 0)
-            {
-                player_set_radii(6, 14);
-                if (animation_is_finished())
-                {
-                    animation_data.variant = 1;
-                    player_set_radii(6, 9);
-                }
-            }
-            else
-            {
-            	player_set_radii(6, 9);
-                if (animation_data.variant == 1 and y_speed > 0)
-                {
-                    if (not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
-                }
-            }
-            animation_set(global.ani_miles_jump);
+            player_animate_jump(global.ani_miles_jump);
             image_angle = gravity_direction;
             switch (animation_data.variant)
             {
                 case 0:
                 {
+                    player_set_radii(6, 14);
                     switch (image_index)
                     {
                         case 0:
@@ -179,6 +160,7 @@ player_animate = function()
                 }
                 case 1:
                 {
+                    player_set_radii(6, 9);
                     if (image_index == 0)
                     {
                         hitboxes[0].set_size(-8, -8, 8, 8);
@@ -188,6 +170,7 @@ player_animate = function()
                 }
                 case 2:
                 {
+                    player_set_radii(6, 9);
                     switch (image_index)
                     {
                         case 0:
@@ -211,6 +194,7 @@ player_animate = function()
         case PLAYER_ANIMATION.HURT:
         {
             animation_set(global.ani_sonic_hurt);
+            player_set_radii(6, 14);
             image_angle = gravity_direction;
             switch (animation_data.variant)
             {
@@ -238,6 +222,7 @@ player_animate = function()
         case PLAYER_ANIMATION.DEAD:
         {
             animation_set(global.ani_sonic_dead_v0);
+            player_set_radii(6, 14);
             image_angle = gravity_direction;
             if (image_index == 0)
             {
@@ -248,18 +233,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.SPRING:
         {
-            if (animation_data.variant == 0)
-            {
-                if (y_speed > 0)
-                {
-                    animation_data.variant = 1;
-                }
-            }
-            else if (animation_data.variant == 1 and animation_is_finished())
-            {
-                animation_data.variant = 2;
-            }
-            animation_set(global.ani_miles_spring);
+            player_animate_spring(global.ani_miles_spring);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
             switch (animation_data.variant)

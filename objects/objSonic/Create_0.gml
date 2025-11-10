@@ -152,10 +152,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.FALL:
         {
-            if (animation_data.variant == 0 and animation_is_finished())
-            {
-                animation_data.variant = 1;
-            }
+            if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
             animation_set(global.ani_sonic_fall);
             player_set_radii(6, 14);
             image_angle = rotate_towards(direction, image_angle);
@@ -168,29 +165,13 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.JUMP:
         {
-            if (animation_data.variant == 0)
-            {
-                player_set_radii(6, 14);
-                if (animation_is_finished())
-                {
-                    animation_data.variant = 1;
-                    player_set_radii(6, 9);
-                }
-            }
-            else
-            {
-            	player_set_radii(6, 9);
-                if (animation_data.variant == 1 and y_speed > 0)
-                {
-                    if (not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
-                }
-            }
-            animation_set(global.ani_sonic_jump);
+            player_animate_jump(global.ani_sonic_jump);
             image_angle = gravity_direction;
             switch (animation_data.variant)
             {
                 case 0:
                 {
+                    player_set_radii(6, 14);
                     if (image_index == 0)
                     {
                         hitboxes[0].set_size(-6, -16, 6, 16);
@@ -200,6 +181,7 @@ player_animate = function()
                 }
                 case 1:
                 {
+                    player_set_radii(6, 9);
                     if (image_index == 0)
                     {
                         hitboxes[0].set_size(-8, -8, 8, 8);
@@ -209,6 +191,7 @@ player_animate = function()
                 }
                 case 2:
                 {
+                    player_set_radii(6, 9);
                     if (image_index == 0)
                     {
                         hitboxes[0].set_size(-6, -16, 6, 4);
@@ -222,6 +205,7 @@ player_animate = function()
         case PLAYER_ANIMATION.HURT:
         {
             animation_set(global.ani_sonic_hurt);
+            player_set_radii(6, 14);
             image_angle = gravity_direction;
             switch (animation_data.variant)
             {
@@ -249,6 +233,7 @@ player_animate = function()
         case PLAYER_ANIMATION.DEAD:
         {
             animation_set(global.ani_sonic_dead_v0);
+            player_set_radii(6, 14);
             image_angle = gravity_direction;
             if (image_index == 0)
             {
@@ -261,6 +246,7 @@ player_animate = function()
         {
             if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
             animation_set(global.ani_sonic_trick_up);
+            player_set_radii(6, 14);
             image_angle = gravity_direction;
             if (image_index == 0)
             {
@@ -269,20 +255,56 @@ player_animate = function()
             }
             break;
         }
-        case PLAYER_ANIMATION.SPRING:
+        case PLAYER_ANIMATION.TRICK_DOWN:
         {
-            if (animation_data.variant == 0)
+            animation_set(global.ani_sonic_trick_down);
+            player_set_radii(6, 9);
+            image_angle = gravity_direction;
+            switch (animation_data.variant)
             {
-                if (y_speed > 0)
+                case 0:
                 {
-                    animation_data.variant = 1;
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 14);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 5:
+                        {
+                            hitboxes[0].set_size(-8, -8, 8, 8);
+                            hitboxes[1].set_size(-8, -8, 8, 8);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-8, -8, 8, 8);
+                        hitboxes[1].set_size(-8, -8, 8, 8);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 14);
+                        hitboxes[1].set_size();
+                    }
+                    break;
                 }
             }
-            else if (animation_data.variant == 1 and animation_is_finished())
-            {
-                animation_data.variant = 2;
-            }
-            animation_set(global.ani_sonic_spring);
+            break;
+        }
+        case PLAYER_ANIMATION.SPRING:
+        {
+            player_animate_spring(global.ani_sonic_spring);
             player_set_radii(6, 14);
             image_angle = gravity_direction;
             if (image_index == 0)
