@@ -275,12 +275,13 @@ player_try_jump = function()
     return false;
 };
 
-/// @method player_try_trick()
+/// @method player_try_trick([time])
 /// @desctiption Sets the player's current state to tricking, if applicable.
+/// @param [time] Time to check (optional, defaults to trick_time).
 /// @returns {Bool}
-player_try_trick = function()
+player_try_trick = function(time = trick_time)
 {
-	if (trick_time == 0 and input_button.tag.pressed)
+	if (time == 0 and input_button.tag.pressed)
 	{
 		if (input_axis_y == -1)
 		{
