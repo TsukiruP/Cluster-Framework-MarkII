@@ -264,7 +264,7 @@ player_animate = function()
             image_angle = gravity_direction;
             if (image_index == 0)
             {
-                hitboxes[0].set_size();
+                hitboxes[0].set_size(-6, -16, 6, 14);
                 hitboxes[1].set_size();
             }
             break;
