@@ -283,12 +283,12 @@ player_try_trick = function(time = trick_time)
 {
 	if (time == 0 and input_button.tag.pressed)
 	{
-		if (input_axis_y == -1)
-		{
-			trick_index = TRICK.UP;
-			player_perform(player_is_trick_preparing);
-			// TODO: Increment score
-		}
+		trick_index = TRICK.BACK;
+		if (input_axis_y == -1) trick_index = TRICK.UP;
+		else if (input_axis_y == 1) trick_index = TRICK.DOWN;
+		else if (input_axis_x == image_xscale) trick_index = TRICK.FRONT;
+		player_perform(player_is_trick_preparing);
+		score += 100;
 		return true;
 	}
 	return false;
@@ -346,6 +346,48 @@ player_animate_run = function(ani)
     animation_set(ani);
     animation_data.variant = variant;
     if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
+};
+
+/// player_animate_jump(ani)
+/// @description Sets the given animation as the player's jump animation.
+/// @param {Array} ani Animations to set.
+player_animate_jump = function(ani)
+{
+	switch (animation_data.variant)
+    {
+        case 0:
+        {
+            if (animation_is_finished()) animation_data.variant = 1;
+            break;
+        }
+        case 1:
+        {
+            if (y_speed > 0 and not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
+            break;
+        }
+    }
+    animation_set(ani);
+};
+
+/// player_animate_spring(ani)
+/// @description Sets the given animation as the player's spring animation.
+/// @param {Array} ani Animations to set.
+player_animate_spring = function(ani)
+{
+	switch (animation_data.variant)
+    {
+        case 0:
+        {
+            if (y_speed > 0) animation_data.variant = 1;
+            break;
+        }
+        case 1:
+        {
+            if (animation_is_finished()) animation_data.variant = 2;
+            break;
+        }
+    }
+    animation_set(ani);
 };
 
 /// @method player_set_radii(xrad, yrad)
