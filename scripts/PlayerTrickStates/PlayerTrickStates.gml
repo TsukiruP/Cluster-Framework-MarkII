@@ -122,3 +122,43 @@ function player_is_tricking(phase)
 		}
 	}
 }
+
+/// @function player_is_trick_bound_preparing(phase)
+function player_is_trick_bound_preparing(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			break;
+		}
+		case PHASE.STEP:
+		{
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
+
+/// @function player_is_trick_bounding(phase)
+function player_is_trick_bounding(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			break;
+		}
+		case PHASE.STEP:
+		{
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
