@@ -16,8 +16,7 @@ player_animate = function()
     {
         case PLAYER_ANIMATION.IDLE:
         {
-            animation_set(global.players[0].object_index == objSonic ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
-            image_angle = gravity_direction;
+            player_set_animation(global.players[0].object_index == objSonic ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -28,9 +27,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TEETER:
         {
-            animation_data.variant = (cliff_sign != image_xscale);
-            animation_set(global.ani_amy_teeter);
-            image_angle = gravity_direction;
+            player_animate_teeter(global.ani_amy_teeter);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -41,8 +38,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TURN:
         {
-            animation_set(global.ani_amy_turn);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_turn);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -54,7 +50,6 @@ player_animate = function()
         case PLAYER_ANIMATION.RUN:
         {
             player_animate_run(global.players[0].object_index == objSonic ? global.ani_amy_run_alt : global.ani_amy_run);
-            image_angle = direction;
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -65,8 +60,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.BRAKE:
         {
-            animation_set(global.ani_amy_brake);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_brake);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -77,8 +71,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.LOOK:
         {
-            animation_set(global.ani_amy_look);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_look);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -89,8 +82,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.CROUCH:
         {
-            animation_set(global.ani_amy_crouch);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_crouch);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -101,8 +93,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.ROLL:
         {
-            animation_set(global.ani_amy_roll_v0);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_roll_v0);
             player_set_radii(6, 9);
             if (image_index == 0)
             {
@@ -113,8 +104,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.SPIN_DASH:
         {
-            animation_set(global.ani_amy_spin_dash_v0);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_spin_dash_v0);
             player_set_radii(6, 9);
             if (image_index == 0)
             {
@@ -125,9 +115,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.FALL:
         {
-            if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
-            animation_set(global.ani_amy_fall);
-            image_angle = rotate_towards(direction, image_angle);
+            player_animate_fall(global.ani_amy_fall);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -139,7 +127,6 @@ player_animate = function()
         case PLAYER_ANIMATION.JUMP:
         {
             player_animate_jump(global.ani_amy_jump);
-            image_angle = gravity_direction;
             switch (animation_data.variant)
             {
                 case 0:
@@ -187,8 +174,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.HURT:
         {
-            animation_set(global.ani_sonic_hurt);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_sonic_hurt);
             player_set_radii(6, 14);
             switch (animation_data.variant)
             {
@@ -215,8 +201,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.DEAD:
         {
-            animation_set(global.ani_sonic_dead_v0);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_sonic_dead_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -228,8 +213,7 @@ player_animate = function()
         case PLAYER_ANIMATION.TRICK_UP:
         {
             if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
-            animation_set(global.ani_amy_trick_up);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_trick_up);
             player_set_radii(6, 14);
             switch (animation_data.variant)
             {
@@ -275,8 +259,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TRICK_DOWN:
         {
-            animation_set(global.ani_amy_trick_down);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_trick_down);
             player_set_radii(6, 9);
             switch (animation_data.variant)
             {
@@ -313,7 +296,6 @@ player_animate = function()
         case PLAYER_ANIMATION.SPRING:
         {
             player_animate_spring(global.ani_amy_spring);
-            image_angle = gravity_direction;
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -324,8 +306,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.SPRING_TWIRL:
         {
-            animation_set(global.ani_amy_spring_twirl_v0);
-            image_angle = gravity_direction;
+            player_set_animation(global.ani_amy_spring_twirl_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {

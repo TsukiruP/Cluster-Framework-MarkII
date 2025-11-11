@@ -327,10 +327,30 @@ player_resist_slope = function(force)
 /// @description Sets the player's current animation.
 player_animate = function() {};
 
+/// player_set_animation(ani, [ang])
+/// @description Sets the given animation as the player's current animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+/// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
+player_set_animation = function(ani, ang = gravity_direction)
+{
+	animation_set(ani);
+	image_angle = ang;
+};
+
+/// player_animate_teeter(ani)
+/// @description Sets the given animation as the player's current teeter animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_teeter = function(ani)
+{
+	animation_data.variant = (cliff_sign != image_xscale);
+    player_set_animation(ani);
+};
+
 /// player_animate_run(ani)
-/// @description Sets the given animation as the player's run animation.
-/// @param {Array} ani Animations to set.
-player_animate_run = function(ani)
+/// @description Sets the given animation as the player's current run animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+/// @param {Real} [ang] Angle to set (optional, defaults to direction).
+player_animate_run = function(ani, ang = direction)
 {
     var variant = animation_data.variant;
     if (on_ground)
@@ -343,14 +363,23 @@ player_animate_run = function(ani)
 	    else if (abs_speed <= 9.0) variant = 3;
 	    else if (abs_speed <= 10.0) variant = 4;
     }
-    animation_set(ani);
+    player_set_animation(ani, ang);
     animation_data.variant = variant;
     if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
+/// player_animate_fall(ani)
+/// @description Sets the given animation as the player's current fall animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_fall = function(ani)
+{
+	if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
+    player_set_animation(ani, rotate_towards(direction, image_angle));
+};
+
 /// player_animate_jump(ani)
-/// @description Sets the given animation as the player's jump animation.
-/// @param {Array} ani Animations to set.
+/// @description Sets the given animation as the player's current jump animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_jump = function(ani)
 {
 	switch (animation_data.variant)
@@ -366,12 +395,12 @@ player_animate_jump = function(ani)
             break;
         }
     }
-    animation_set(ani);
+    player_set_animation(ani);
 };
 
 /// player_animate_spring(ani)
-/// @description Sets the given animation as the player's spring animation.
-/// @param {Array} ani Animations to set.
+/// @description Sets the given animation as the player's current spring animation.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(ani)
 {
 	switch (animation_data.variant)
@@ -387,7 +416,7 @@ player_animate_spring = function(ani)
             break;
         }
     }
-    animation_set(ani);
+    player_set_animation(ani);
 };
 
 /// @method player_set_radii(xrad, yrad)
