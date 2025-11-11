@@ -39,7 +39,7 @@ reaction = function(pla)
                 pla.x_speed = image_xscale * force;
                 pla.y_speed = dsin(diff) * force;
             }
-            pla.trick_time = max(2, 9 - (force / 1.5));
+            pla.trick_time = max(2, 9 - (force / 1.5) div 1);
             active |= bit;
             animation_data.variant = 1;
             sound_play(sfxSpring);
