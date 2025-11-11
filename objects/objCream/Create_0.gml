@@ -2,8 +2,13 @@
 // Inherit the parent event
 event_inherited();
 
-// Ears
-ears_effect = new player_effect();
+trick_speed =
+[
+    [0, -6],
+    [0, 0.5],
+    [4, -2.5],
+    [-3.5, -3]
+];
 
 player_animate = function()
 {
@@ -219,6 +224,8 @@ player_animate = function()
         }
     }
 };
+
+ears_effect = new player_effect();
 
 player_draw_before = function()
 {
