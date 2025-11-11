@@ -26,7 +26,7 @@ function animation_core() constructor
 }
 
 /// @function animation_init(index, [force], [alternatives])
-/// @description Initializes the next animation.
+/// @description Sets the given index as the animation core's current index.
 /// @param {Real} index Animation index to set.
 /// @param {Bool} [force] Whether the animation should be forced to play.
 /// @param {Array} [alternatives] Alternative animations that will be treated as the given index. 
@@ -45,7 +45,7 @@ function animation_init(index, force = false, alternatives = [])
 }
 
 /// @function animation_set(ani)
-/// @description Sets the animation core's animation.
+/// @description Sets the given animation as the animation core's current animation.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 function animation_set(ani)
 {
@@ -78,7 +78,7 @@ function animation_set(ani)
 }
 
 /// @function animation_update()
-/// @description Updates the given core.
+/// @description Updates the animation core.
 function animation_update()
 {
     if (not is_undefined(animation_data.ani))
@@ -115,7 +115,7 @@ function animation_update()
 }
 
 /// @function animation_is_finished()
-/// @description Checks if the animation core is finished animating.
+/// @description Checks if the animation is finished.
 /// @returns {Bool}
 function animation_is_finished()
 {
