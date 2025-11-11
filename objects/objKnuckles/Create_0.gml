@@ -3,6 +3,14 @@
 // Inherit the parent event
 event_inherited();
 
+trick_speed =
+[
+    [0, -6],
+    [0, 1],
+    [6, 0],
+    [-5, -0]
+];
+
 player_animate = function()
 {
     switch (animation_data.index)
