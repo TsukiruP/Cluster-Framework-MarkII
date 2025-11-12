@@ -296,7 +296,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-8, -16, 6, 14);
+                        hitboxes[0].set_size(-6, -16, 8, 14);
                         hitboxes[1].set_size();
                     }
                     break;

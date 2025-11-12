@@ -143,8 +143,8 @@ player_animate = function()
                         }
                         case 1:
                         {
-                            hitboxes[0].set_size(-5, -6, 7, 16);
-                            hitboxes[1].set_size(-5, -6, 7, 16);
+                            hitboxes[0].set_size(-7, -6, 5, 16);
+                            hitboxes[1].set_size(-7, -6, 5, 16);
                             break;
                         }
                     }
@@ -173,7 +173,7 @@ player_animate = function()
                         }
                         case 1:
                         {
-                            hitboxes[0].set_size(-8, -18, 6, 4);
+                            hitboxes[0].set_size(-6, -18, 8, 4);
                             hitboxes[1].set_size(-9, -9, 9, 9);
                             break;
                         }
@@ -193,7 +193,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-10, -12, 6, 16);
+                        hitboxes[0].set_size(-6, -12, 10, 16);
                         hitboxes[1].set_size();
                     }
                     break;
@@ -286,7 +286,7 @@ player_animate = function()
                         case 3:
                         {
                             hitboxes[0].set_size(-6, -12, 6, 10);
-                            hitboxes[1].set_size(-14, 0, 23, 10);
+                            hitboxes[1].set_size(-23, 0, 14, 10);
                             break;
                         }
                     }
