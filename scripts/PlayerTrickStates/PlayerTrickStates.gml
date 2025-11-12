@@ -47,7 +47,6 @@ function player_is_trick_preparing(phase)
 						case objAmy:
 						{
 							y_speed = 2;
-							animation_data.variant++;
 							return player_perform(player_is_trick_bounding);
 						}
 						
@@ -55,7 +54,6 @@ function player_is_trick_preparing(phase)
 						{
 							x_speed = image_xscale * trick_speed[trick_index][0];
 							y_speed = trick_speed[trick_index][1];
-							animation_data.variant++;
 							return player_perform(player_is_tricking);
 						}
 					}
@@ -64,7 +62,6 @@ function player_is_trick_preparing(phase)
 				{
 					x_speed = image_xscale * trick_speed[trick_index][0];
 					y_speed = trick_speed[trick_index][1];
-					animation_data.variant++;
 					return player_perform(player_is_tricking);
 				}
 			}
@@ -91,7 +88,9 @@ function player_is_tricking(phase)
 	{
 		case PHASE.ENTER:
 		{
-			break;
+			// Animate
+            animation_data.variant++;
+            break;
 		}
 		case PHASE.STEP:
 		{
@@ -156,7 +155,9 @@ function player_is_trick_bounding(phase)
 	{
 		case PHASE.ENTER:
 		{
-			break;
+			// Animate
+            animation_data.variant++;
+            break;
 		}
 		case PHASE.STEP:
 		{
