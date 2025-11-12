@@ -94,6 +94,14 @@ global.ani_sonic_trick_down_v0 = new animation(sprSonicTrickDown0, [3, 3, 6, 2, 
 global.ani_sonic_trick_down_v2 = new animation(sprSonicTrickDown2, [2, 2, 2, 2, 3, 3, 3], 4);
 global.ani_sonic_trick_down = [global.ani_sonic_trick_down_v0, global.ani_sonic_roll_v0, global.ani_sonic_trick_down_v2];
 
+global.ani_sonic_trick_front_v0 = new animation(sprSonicTrickFront0, [2, 4, 1], -1);
+global.ani_sonic_trick_front_v1 = new animation(sprSonicTrickFront1, 1);
+global.ani_sonic_trick_front = [global.ani_sonic_trick_front_v0, global.ani_sonic_trick_front_v1];
+
+global.ani_sonic_trick_back_v0 = new animation(sprSonicTrickBack, 1, -1, [0]);
+global.ani_sonic_trick_back_v1 = new animation(sprSonicTrickBack, [5, 4, 3, 2, 2, 2, 2, 2, 3, 3, 3], 8);
+global.ani_sonic_trick_back = [global.ani_sonic_trick_back_v0, global.ani_sonic_trick_back_v1];
+
 global.ani_sonic_spring_v0 = new animation(sprSonicSpring0, 3, 1);
 global.ani_sonic_spring_v1 = new animation(sprSonicSpring1, [2, 2, 2, 3, 3, 3], -1);
 global.ani_sonic_spring_v2 = new animation(sprSonicSpring2, 3);
