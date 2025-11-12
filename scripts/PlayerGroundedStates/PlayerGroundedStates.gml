@@ -212,13 +212,12 @@ function player_is_running(phase)
 					{
 						animation_init(PLAYER_ANIMATION.BRAKE);
                         animation_data.variant = (abs(x_speed) > 9.0);
-						image_xscale = -input_axis_x;
 						sound_play(sfxBrake);
 					}
 				}
 				else if (ctrlWindow.image_index mod 4 == 0)
 				{
-					// Create brake dust
+                    // Create brake dust
 					var ox = x + dsin(direction) * y_radius;
 					var oy = y + dcos(direction) * y_radius;
 					particle_create(ox, oy, global.ani_brake_dust_v0);
