@@ -302,6 +302,14 @@ global.ani_amy_trick_down_v1 = new animation(sprAmyTrickDown1, 2);
 global.ani_amy_trick_down_v2 = new animation(sprAmyTrickDown2, [2, 2, 2, 2, 3, 3, 3], 4);
 global.ani_amy_trick_down = [global.ani_amy_trick_down_v0, global.ani_amy_trick_down_v1, global.ani_amy_trick_down_v2];
 
+global.ani_amy_trick_front_v0 = new animation(sprAmyTrickFront0, [1, 2, 3, 1], -1);
+global.ani_amy_trick_front_v1 = new animation(sprAmyTrickFront1, 2);
+global.ani_amy_trick_front = [global.ani_amy_trick_front_v0, global.ani_amy_trick_front_v1];
+
+global.ani_amy_trick_back_v0 = new animation(sprAmyTrickBack0, [1, 2, 2, 3], -1);
+global.ani_amy_trick_back_v1 = new animation(sprAmyTrickBack1, [2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3], 14);
+global.ani_amy_trick_back = [global.ani_amy_trick_back_v0, global.ani_amy_trick_back_v1];
+
 global.ani_amy_spring_v0 = new animation(sprAmySpring0, 3);
 global.ani_amy_spring_v1 = new animation(sprAmySpring1, [3, 3, 3, 4, 4, 4], -1);
 global.ani_amy_spring_v2 = new animation(sprAmySpring2, 3, 1);

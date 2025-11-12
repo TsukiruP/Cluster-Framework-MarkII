@@ -293,6 +293,60 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.TRICK_FRONT:
+        {
+            player_set_animation(global.ani_amy_trick_front);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 10);
+                        hitboxes[1].set_size(-14, -16, 14, 10);
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+        case PLAYER_ANIMATION.TRICK_BACK:
+        {
+            player_set_animation(global.ani_amy_trick_back);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-8, -16, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+            }
+            break;
+        }
         case PLAYER_ANIMATION.SPRING:
         {
             player_animate_spring(global.ani_amy_spring);
