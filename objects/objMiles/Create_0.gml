@@ -264,6 +264,7 @@ player_animate = function()
             switch (animation_data.variant)
             {
                 case 0:
+                    case 2:
                 {
                     if (image_index == 0)
                     {
@@ -288,15 +289,6 @@ player_animate = function()
                             hitboxes[1].set_size(-14, 0, 23, 10);
                             break;
                         }
-                    }
-                    break;
-                }
-                case 2:
-                {
-                    if (image_index == 0)
-                    {
-                        hitboxes[0].set_size(-6, -12, 6, 10);
-                        hitboxes[1].set_size();
                     }
                     break;
                 }
