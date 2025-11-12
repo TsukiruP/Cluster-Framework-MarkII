@@ -6,7 +6,7 @@
 
 | Animation | Source | Notes |
 | --- | --- | --- |
-| Brake Dust | 1332-0 | Reduced size
+| Brake Dust | 1332-0 | Reduced size |
 | Ring Sparkle | 1334-0 |
 | Spin Dash | 1333-0, 1331-0 |
 | Shield | 1326-0 |
@@ -46,14 +46,14 @@
 | Spin Dash | 10-0, 10-1 | Uses SA2 hitbox (3-0, 3-1) |
 | Fall | 24-0 | Reuses Spring sprites |
 | Jump | 19-0, 19-1, 19-2 | Uses SA2 hitbox (10-0, 10-1, 10-2) |
+| Hurt | (SA2) 28-0, 28-1 |
+| Death | (SA2) 29-0 |
+| Trick Up | (SA2) 48-0, 48-1, 48-2 |
+| Trick Down | (SA2) 51-0, 51-1, 51-2, 51-3 | Variant 3 is bound effect |
+| Trick Front | (SA2) 49-0, 49-1, 49-2 | Variant 2 is humming top effect |
+| Trick Back | (SA2) 50-0, 50-1 |
 | Spring | 108-0, 108-1, 108-2 |
 | Spring Twirl | 109-0 |
-| Hurt | 102-0, 102-1 |
-| Death | 103-0 |
-| Trick Up | (SA2) 48-0, 48-1, 48-2 |
-| Trick Down | (SA2) 51-0, 51-1, 51-2, 51-3 | Variant 3 is bound effect
-| Trick Front | (SA2) 49-0, 49-1, 49-2 | Variant 2 is humming top effect
-| Trick Back | (SA2) 50-0, 50-1 |
 
 # Miles
 
@@ -73,10 +73,10 @@
 | Spin Dash | 336-0 | Variant 1 by IceisNice, uses SA2 hitbox (185-0) |
 | Fall | 350-0 | Reuses Spring sprites |
 | Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2) |
+| Hurt | 428-0, 428-1 |
+| Death | 429-0 | Uses an assumed offset |
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
-| Hurt | 428-0, 428-1 | Need to compare with SA2 |
-| Death | 329-0 |
 
 # Knuckles
 
@@ -96,10 +96,10 @@
 | Spin Dash | 499-0, 499-1 | Uses SA2 hitbox (276-0, 276-1) |
 | Fall | 513-0 | Reuses Spring sprites |
 | Jump | 508-0, 508-1, 508-2 | Uses SA2 hitbox (283-0, 283-1, 283-2) |
+| Hurt | 591-0, 591-1 | Uses SA2 hitbox (301-0, 301-1)
+| Death | (SA2) 302-0 | Uses an assumed offset |
 | Spring | 597-0, 597-1, 597-2 |
 | Spring Twirl | 598-0 |
-| Hurt | 591-0, 591-1 |
-| Death | 592-0 |
 
 # Amy
 
@@ -121,15 +121,15 @@
 | Roll | 663-0 | Uses SA2 hitbox (368-0) |
 | Spin Dash | 662-0 |
 | Fall | 676-0 | Reuses Spring sprites |
-| Jump | 671-0, 671-1, 671-2 | Uses SA2 hitbox (374-0, 374-1, 374-2)
-| Spring | 760-0, 760-1, 760-2 |
-| Spring Twirl | 761-0 |
-| Hurt | 754-0, 754-1  | Need to compare with SA2 |
-| Death | 755-0 |
-| Trick Up | (SA2) 412-0, 412-1, 412-2 | Uses SA3 hitbox (756-0, 756-1, 756-2)
+| Jump | 671-0, 671-1, 671-2 | Uses SA2 hitbox (374-0, 374-1, 374-2) |
+| Hurt | 754-0, 754-1 | Uses SA2 hitbox (392-0, 392-1) |
+| Death | 755-0 | Uses an assumed offset |
+| Trick Up | (SA2) 412-0, 412-1, 412-2 | Uses SA3 hitbox (756-0, 756-1, 756-2) |
 | Trick Down | (SA2) 415-0, 415-1, 415-2 |
 | Trick Front | (SA2) 413-0, 413-1 |
 | Trick Back | (SA2) 414-0, 414-1 |
+| Spring | 760-0, 760-1, 760-2 |
+| Spring Twirl | 761-0 |
 
 # Cream
 
@@ -149,7 +149,9 @@
 | Spin Dash | 173-0 | Uses SA2 hitbox (94-0) |
 | Fall | 187-0 | Reuses Spring sprites |
 | Jump | 182-0, 182-1, 182-2 | Uses SA2 hitbox (101-0, 101-1, 101-2) |
+| Hurt | 265-0, 265-1 | Uses SA2 hitbox (119-0, 119-1) |
+| Death | 266-0 | Uses an assumed offset |
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
-| Hurt | 265-0, 265-1 | Need to compare with SA2 |
-| Death | 266-0 |
+
+* Cream's eyelids were recolored in SA3, so use SA3 sprites.
