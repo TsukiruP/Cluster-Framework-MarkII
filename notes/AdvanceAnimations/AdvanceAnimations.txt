@@ -143,7 +143,7 @@
 | Teeter Front | 197-0 |
 | Teeter Back | 198-0 |
 | Turn | 175-0 |
-| Turn Brake | (SA2) 97-0 | Uses SA3 offset
+| Turn Brake | (SA2) 97-0 |
 | Run | 171-0, 171-1, 171-2, 171-3, 171-4 |
 | Brake | 179-0 |
 | Brake Fast | 180-0 |

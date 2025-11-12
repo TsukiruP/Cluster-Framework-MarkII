@@ -29,10 +29,26 @@ player_animate = function()
         {
             player_animate_teeter(global.ani_amy_teeter);
             player_set_radii(6, 14);
-            if (image_index == 0)
+            switch (animation_data.variant)
             {
-                hitboxes[0].set_size(-6, -12, 6, 16);
-                hitboxes[1].set_size();
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-9, -12, 3, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-11, -12, 1, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
             }
             break;
         }
@@ -163,7 +179,7 @@ player_animate = function()
                         case 1:
                         {
                             hitboxes[0].set_size(-6, -16, 6, 10);
-                            hitboxes[1].set_size(-10, -7, 11, 15);
+                            hitboxes[1].set_size(-11, -7, 10, 15);
                             break;
                         }
                     }
@@ -218,6 +234,7 @@ player_animate = function()
             switch (animation_data.variant)
             {
                 case 0:
+                case 2:
                 {
                     if (image_index == 0)
                     {
@@ -239,18 +256,9 @@ player_animate = function()
                         case 3:
                         {
                             hitboxes[0].set_size(-6, -16, 6, 10);
-                            hitboxes[1].set_size(-5, -25, 4, -17);
+                            hitboxes[1].set_size(-4, -25, 5, -17);
                             break;
                         }
-                    }
-                    break;
-                }
-                case 2:
-                {
-                    if (image_index == 0)
-                    {
-                        hitboxes[0].set_size(-6, -16, 6, 10);
-                        hitboxes[1].set_size();
                     }
                     break;
                 }
@@ -330,7 +338,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-8, -16, 6, 10);
+                        hitboxes[0].set_size(-6, -16, 8, 10);
                         hitboxes[1].set_size();
                     }
                     break;
