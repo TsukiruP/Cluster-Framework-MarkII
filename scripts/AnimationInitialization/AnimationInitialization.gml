@@ -165,6 +165,25 @@ global.ani_miles_hurt = [global.ani_miles_hurt_v0, global.ani_miles_hurt_v1];
 
 global.ani_miles_dead_v0 = new animation(sprMilesDead, [3, 3, 12, 2, 3, 3], 4);
 
+global.ani_miles_trick_up_v0 = new animation(sprMilesTrickUp0, [2, 1, 1, 8], -1);
+global.ani_miles_trick_up_v1 = new animation(sprMilesTrickUp1, [3, 4, 4, 4, 4], 2);
+global.ani_miles_trick_up_v2 = new animation(sprMilesTrickUp2, [2, 4, 4, 3, 3, 3], 3);
+global.ani_miles_trick_up = [global.ani_miles_trick_up_v0, global.ani_miles_trick_up_v1, global.ani_miles_trick_up_v2];
+
+global.ani_miles_trick_down_v0 = new animation(sprMilesTrickDown0, [2, 2, 4], -1);
+global.ani_miles_trick_down_v1 = new animation(sprMilesTrickDown1, [2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3], 3);
+global.ani_miles_trick_down = [global.ani_miles_trick_down_v0, global.ani_miles_trick_down_v1];
+
+global.ani_miles_trick_front_v0 = new animation(sprMilesTrickFront0, [2, 2, 2, 2, 4], -1);
+global.ani_miles_trick_front_v1 = new animation(sprMilesTrickFront1, [2, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3], 4);
+global.ani_miles_trick_front_v2 = new animation(sprMilesTrickFront2, 3, 1);
+global.ani_miles_trick_front = [global.ani_miles_trick_front_v0, global.ani_miles_trick_front_v1, global.ani_miles_trick_front_v2];
+
+global.ani_miles_trick_back_v0 = new animation(sprMilesTrickBack0, [2, 2, 2, 4], -1);
+global.ani_miles_trick_back_v1 = new animation(sprMilesTrickBack1, [2, 2, 2, 3, 3, 3, 3], 3);
+global.ani_miles_trick_back_v2 = new animation(sprMilesTrickBack2, [4, 4, 4, 4, 3, 3, 3, 3, 3, 3], 7);
+global.ani_miles_trick_back = [global.ani_miles_trick_back_v0, global.ani_miles_trick_back_v1, global.ani_miles_trick_back_v2];
+
 global.ani_miles_spring_v0 = new animation(sprMilesSpring0, 2);
 global.ani_miles_spring_v1 = new animation(sprMilesSpring1, [2, 3, 3, 4, 4, 4], -1);
 global.ani_miles_spring_v2 = new animation(sprMilesSpring2, 3, 1);

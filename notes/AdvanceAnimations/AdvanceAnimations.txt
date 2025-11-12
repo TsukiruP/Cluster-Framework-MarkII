@@ -75,6 +75,10 @@
 | Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2) |
 | Hurt | 428-0, 428-1 |
 | Death | 429-0 | Uses an assumed offset |
+| Trick Up | (SA2) 230-0, 230-1, 230-1 |
+| Trick Down | (SA2) 233-0, 233-1 |
+| Trick Front | (SA2) 231-0, 231-1, 231-2 |
+| Trick Back | (SA2) 232-0, 232-1, 232-2 |
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
 

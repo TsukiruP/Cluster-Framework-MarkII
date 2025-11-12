@@ -135,7 +135,10 @@ function player_is_tricking(phase)
 				// Fall
 				if (y_speed < gravity_cap)
 				{
-					y_speed = min(y_speed + gravity_force, gravity_cap);
+					var trick_force = gravity_force;
+                    var trick_float = ((object_index == objMiles or object_index == objCream) and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and y_speed < 0);
+                    if (trick_float) trick_force /= 2;
+                    y_speed = min(y_speed + trick_force, gravity_cap);
 				}
 			}
 			break;
