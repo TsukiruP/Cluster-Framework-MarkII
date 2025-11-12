@@ -47,7 +47,7 @@ function player_is_standing(phase)
 			
 			// Animate
             var ani_idle = (cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
-            animation_init(ani_idle, false, [PLAYER_ANIMATION.TURN]);
+            animation_init(ani_idle, 0, [PLAYER_ANIMATION.TURN]);
 			break;
 		}
 		case PHASE.STEP:
@@ -143,8 +143,7 @@ function player_is_running(phase)
                             if (image_xscale != input_axis_x)
                             {
                                 x_speed = 0;
-                                animation_init(PLAYER_ANIMATION.TURN);
-                                animation_data.variant = (animation_data.index == PLAYER_ANIMATION.BRAKE);
+                                animation_init(PLAYER_ANIMATION.TURN, animation_data.index == PLAYER_ANIMATION.BRAKE);
                                 image_xscale *= -1;
                                 return player_perform(player_is_standing);
                             }
@@ -210,8 +209,7 @@ function player_is_running(phase)
 				{
 					if (mask_direction == gravity_direction and abs(x_speed) >= 4)
 					{
-						animation_init(PLAYER_ANIMATION.BRAKE);
-                        animation_data.variant = (abs(x_speed) > 9.0);
+						animation_init(PLAYER_ANIMATION.BRAKE, abs(x_speed) > 9.0);
 						sound_play(sfxBrake);
 					}
 				}
@@ -488,8 +486,7 @@ function player_is_spin_dashing(phase)
 			if (input_button.jump.pressed)
 			{
 				spin_dash_charge = min(spin_dash_charge + 2, 8);
-                animation_init(PLAYER_ANIMATION.SPIN_DASH, true);
-                animation_data.variant = 1;
+                animation_init(PLAYER_ANIMATION.SPIN_DASH, 1);
                 
 				// Sound
 				var rev_sound = sound_play(sfxSpinRev);

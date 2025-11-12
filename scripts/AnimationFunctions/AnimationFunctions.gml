@@ -25,23 +25,20 @@ function animation_core() constructor
     pos = 0;
 }
 
-/// @function animation_init(index, [force], [alternatives])
+/// @function animation_init(index, [variant], [alternatives])
 /// @description Sets the given index as the animation core's current index.
 /// @param {Real} index Animation index to set.
-/// @param {Bool} [force] Whether the animation should be forced to play.
-/// @param {Array} [alternatives] Alternative animations that will be treated as the given index. 
-function animation_init(index, force = false, alternatives = [])
+/// @param {Real} [variant] Variant to set (optional, defaults to 0 if the indexes don't match).
+function animation_init(index, variant = -1, alternatives = [])
 {
     // Abort if...
-    if (not force)
-    {
-        if (animation_data.index == index) exit; // Index is the same
-        if (array_contains(alternatives, animation_data.index)) exit; // Index is considered an alternative
-    }
+    if (variant == -1 and animation_data.index == index) exit; // Index match with no given variant
+    if (array_contains(alternatives, animation_data.index)) exit; // Current index is an alternative
     
+    if (variant == -1) variant = 0;
+    animation_data.force = (animation_data.index == index);
     animation_data.index = index;
-    animation_data.variant = 0;
-    animation_data.force = force;
+    animation_data.variant = variant;
 }
 
 /// @function animation_set(ani)
