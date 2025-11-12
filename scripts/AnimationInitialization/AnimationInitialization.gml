@@ -245,7 +245,12 @@ global.ani_knuckles_hurt = [global.ani_knuckles_hurt_v0, global.ani_knuckles_hur
 
 global.ani_knuckles_dead_v0 = new animation(sprKnucklesDead, [3, 3, 12, 2, 3, 3], 4);
 
-global.ani_knuckles_spring_v0 = new animation(sprKnucklesSpring0, 3);
+global.ani_knuckles_trick_up_v0 = new animation(sprKnucklesTrickUp0, [1, 2, 1], -1);
+global.ani_knuckles_trick_up_v1 = new animation(sprKnucklesTrickUp1, [4, 4, 8, 8, 8], -1);
+global.ani_knuckles_trick_up_v2 = new animation(sprKnucklesTrickUp2, [7, 6, 3, 3, 3], 2);
+global.ani_knuckles_trick_up = [global.ani_knuckles_trick_up_v0, global.ani_knuckles_trick_up_v1, global.ani_knuckles_trick_up_v2];
+
+global.ani_knuckles_spring_v0 = new animation(sprKnucklesSpring0, 3, 1);
 global.ani_knuckles_spring_v1 = new animation(sprKnucklesSpring1, 3, -1);
 global.ani_knuckles_spring_v2 = new animation(sprKnucklesSpring2, 3);
 global.ani_knuckles_spring = [global.ani_knuckles_spring_v0, global.ani_knuckles_spring_v1, global.ani_knuckles_spring_v2];

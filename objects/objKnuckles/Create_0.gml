@@ -235,6 +235,41 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TRICK_UP:
         {
+            if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
+            player_set_animation(global.ani_knuckles_trick_up);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                case 2:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 14);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 14);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 2:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 14);
+                            hitboxes[1].set_size(-14, -28, 14, -2);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_DOWN:
