@@ -184,6 +184,22 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.TRICK_UP:
+        {
+            break;
+        }
+        case PLAYER_ANIMATION.TRICK_DOWN:
+        {
+            break;
+        }
+        case PLAYER_ANIMATION.TRICK_FRONT:
+        {
+            break;
+        }
+        case PLAYER_ANIMATION.TRICK_BACK:
+        {
+            break;
+        }
         case PLAYER_ANIMATION.SPRING:
         {
             player_animate_spring(global.ani_cream_spring);
