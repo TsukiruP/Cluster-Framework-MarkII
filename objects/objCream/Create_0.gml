@@ -166,16 +166,32 @@ player_animate = function()
         {
             player_set_animation(global.ani_sonic_hurt);
             player_set_radii(6, 14);
-            if (image_index == 0)
+            switch (animation_data.variant)
             {
-                hitboxes[0].set_size(-6, -13, 6, 13);
-                hitboxes[1].set_size();
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -8, 6, 24);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
             }
             break;
         }
         case PLAYER_ANIMATION.DEAD:
         {
-            player_set_animation(global.ani_cream_dead_v0);
+            player_set_animation(global.ani_sonic_dead_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {

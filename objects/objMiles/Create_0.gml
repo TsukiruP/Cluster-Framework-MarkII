@@ -185,7 +185,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.HURT:
         {
-            player_set_animation(global.ani_miles_hurt);
+            player_set_animation(global.ani_sonic_hurt);
             player_set_radii(6, 14);
             switch (animation_data.variant)
             {
@@ -193,7 +193,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-10, -12, 6, 16);
+                        hitboxes[0].set_size(-6, -16, 6, 16);
                         hitboxes[1].set_size();
                     }
                     break;
@@ -202,7 +202,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-8, -9, 8, 19);
+                        hitboxes[0].set_size(-6, -8, 6, 24);
                         hitboxes[1].set_size();
                     }
                     break;
@@ -212,7 +212,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.DEAD:
         {
-            player_set_animation(global.ani_miles_dead_v0);
+            player_set_animation(global.ani_sonic_dead_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
