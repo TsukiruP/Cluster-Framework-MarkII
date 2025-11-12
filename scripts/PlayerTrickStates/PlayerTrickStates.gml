@@ -105,7 +105,6 @@ function player_is_tricking(phase)
 			{
 				if (input_axis_x != 0)
 				{
-					image_xscale = input_axis_x;
 					if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
 					{
 						x_speed += air_acceleration * input_axis_x;
