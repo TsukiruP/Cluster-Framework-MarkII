@@ -186,7 +186,7 @@ function collision_player(hb, pla, plahb = -1)
 /// @returns {Id.Instance}
 function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
-    var particle = instance_create_depth(ox, oy, DEPTH_PARTICLE, objParticle);
+    var particle = instance_create_depth(ox, oy, layer_get_depth("StageObjects") - DEPTH_OFFSET_PARTICLE, objParticle);
     with (particle)
     {
         animation_set(ani);
