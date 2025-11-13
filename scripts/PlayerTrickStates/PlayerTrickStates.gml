@@ -52,9 +52,8 @@ function player_is_trick_preparing(phase)
 						
 						case objKnuckles:
 						{
-							x_speed = image_xscale * trick_speed[trick_index][0];
-							y_speed = trick_speed[trick_index][1];
-							return player_perform(player_is_tricking);
+							y_speed = 1;
+							return player_perform(player_is_trick_drill_clawing);
 						}
 					}
 				}
@@ -120,7 +119,11 @@ function player_is_tricking(phase)
 			if (state_changed) exit;
 			
 			// Land
-			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+			if (on_ground)
+            {
+                if (object_index == objKnuckles and trick_index == TRICK.FRONT) return player_perform(player_is_trick_somersaulting);
+                return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            }
 			
 			if (not trick_glide)
 			{
@@ -148,6 +151,8 @@ function player_is_tricking(phase)
 	}
 }
 
+#region Sonic/Amy
+
 /// @function player_is_trick_bounding(phase)
 function player_is_trick_bounding(phase)
 {
@@ -165,7 +170,7 @@ function player_is_trick_bounding(phase)
 			player_move_in_air();
 			if (state_changed) exit;
 			
-			// Land
+			// Rebound
 			if (on_ground) return player_perform(player_is_trick_rebounding);
 			
 			// Apply air resistance
@@ -239,3 +244,119 @@ function player_is_trick_rebounding(phase)
 		}
 	}
 }
+
+#endregion
+
+#region Knuckles
+
+/// @function player_is_trick_drill_clawing(phase)
+function player_is_trick_drill_clawing(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			// Animate
+            animation_data.variant++;
+            break;
+		}
+		case PHASE.STEP:
+		{
+			if (animation_data.variant == 2)
+            {
+                // Move
+                player_move_on_ground();
+                if (state_changed) exit;
+                
+                // Fall
+                if (not on_ground) return player_perform(player_is_falling);
+                
+                // Stand
+                if (animation_is_finished()) return player_perform(player_is_standing);
+            }
+            else
+            {
+                // Move
+    			player_move_in_air();
+    			if (state_changed) exit;
+    			
+    			// Land
+    			if (on_ground) return player_perform(player_is_trick_drill_clawing);
+    			
+    			// Apply air resistance
+    			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > air_drag_threshold)
+    			{
+    				x_speed *= air_drag;
+    			}
+    			
+    			// Fall
+    			if (y_speed < gravity_cap)
+    			{
+    				y_speed = min(y_speed + (42 / 256), gravity_cap);
+    			}
+            }
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
+
+/// @function player_is_trick_somersaulting(phase)
+function player_is_trick_somersaulting(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			// Animate
+            animation_data.variant++;
+            break;
+		}
+		case PHASE.STEP:
+		{
+			if (on_ground)
+            {
+                // Move
+                player_move_on_ground();
+                if (state_changed) exit;
+                
+                // Fall
+                if (not on_ground) return player_perform(player_is_trick_somersaulting, false);
+            }
+            else
+            {
+                // Move
+    			player_move_in_air();
+    			if (state_changed) exit;
+                
+                // Land
+                if (on_ground) return player_perform(player_is_trick_somersaulting, false);
+                
+                // Fall
+    			if (y_speed < gravity_cap)
+    			{
+    				y_speed = min(y_speed + gravity_force, gravity_cap);
+    			}
+            }
+            
+            // Roll
+            if (image_index == 6 and animation_data.alarm == 2) sound_play(sfxRoll);
+            
+            if (animation_is_finished())
+            {
+                animation_init(PLAYER_ANIMATION.ROLL);
+                return player_perform(on_ground ? player_is_rolling : player_is_falling);
+            }
+            break;
+		}
+		case PHASE.EXIT:
+		{
+			break;
+		}
+	}
+}
+
+#endregion

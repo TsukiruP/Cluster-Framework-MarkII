@@ -250,6 +250,20 @@ global.ani_knuckles_trick_up_v1 = new animation(sprKnucklesTrickUp1, [4, 4, 8, 8
 global.ani_knuckles_trick_up_v2 = new animation(sprKnucklesTrickUp2, [7, 6, 3, 3, 3], 2);
 global.ani_knuckles_trick_up = [global.ani_knuckles_trick_up_v0, global.ani_knuckles_trick_up_v1, global.ani_knuckles_trick_up_v2];
 
+global.ani_knuckles_trick_down_v0 = new animation(sprKnucklesTrickDown0, [2, 3, 2, 2], -1);
+global.ani_knuckles_trick_down_v1 = new animation(sprKnucklesTrickDown1, 2);
+global.ani_knuckles_trick_down_v2 = new animation(sprKnucklesTrickDown2, [1, 1, 1, 1, 4, 2, 2], -1);
+global.ani_knuckles_trick_down = [global.ani_knuckles_trick_down_v0, global.ani_knuckles_trick_down_v1, global.ani_knuckles_trick_down_v2];
+
+global.ani_knuckles_trick_front_v0 = new animation(sprKnucklesTrickFront0, [2, 2, 2, 2, 4], -1);
+global.ani_knuckles_trick_front_v1 = new animation(sprKnucklesTrickFront1, 2, 3);
+global.ani_knuckles_trick_front_v2 = new animation(sprKnucklesTrickFront2, 2, -1);
+global.ani_knuckles_trick_front = [global.ani_knuckles_trick_front_v0, global.ani_knuckles_trick_front_v1, global.ani_knuckles_trick_front_v2];
+
+global.ani_knuckles_trick_back_v0 = new animation(sprKnucklesTrickBack0, [2, 2, 4], -1);
+global.ani_knuckles_trick_back_v1 = new animation(sprKnucklesTrickBack1, [2, 2, 3, 3], 2);
+global.ani_knuckles_trick_back = [global.ani_knuckles_trick_back_v0, global.ani_knuckles_trick_back_v1];
+
 global.ani_knuckles_spring_v0 = new animation(sprKnucklesSpring0, 3, 1);
 global.ani_knuckles_spring_v1 = new animation(sprKnucklesSpring1, 3, -1);
 global.ani_knuckles_spring_v2 = new animation(sprKnucklesSpring2, 3);

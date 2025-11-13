@@ -274,14 +274,131 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TRICK_DOWN:
         {
+            player_set_animation(global.ani_knuckles_trick_down);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -16, 6, 14);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 18);
+                        hitboxes[1].set_size(-14, 0, 14, 30);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -14, 6, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_FRONT:
         {
+            player_set_animation(global.ani_knuckles_trick_front);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -14, 6, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 3:
+                        {
+                            hitboxes[0].set_size(-14, -9, 14, 6);
+                            hitboxes[1].set_size(4, -16, 19, 14);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 3:
+                        {
+                            hitboxes[0].set_size(-8, -8, 8, 8);
+                            hitboxes[1].set_size(-8, -8, 8, 8);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_BACK:
         {
+            player_set_animation(global.ani_knuckles_trick_back);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -14, 6, 16);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 2:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 14);
+                            hitboxes[1].set_size(-18, -16, 0, 14);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING:
