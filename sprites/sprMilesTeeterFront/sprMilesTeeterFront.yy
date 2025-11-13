@@ -34,7 +34,7 @@
   "origin":9,
   "parent":{
     "name":"Teeter",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles/Teeter.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Teeter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

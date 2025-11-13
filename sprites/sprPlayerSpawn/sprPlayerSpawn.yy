@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Player",
-    "path":"folders/Sprites/Zone/Player.yy",
+    "path":"folders/Sprites/Stage/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

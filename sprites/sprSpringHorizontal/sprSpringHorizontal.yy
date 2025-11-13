@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Springs",
-    "path":"folders/Sprites/Zone/General/Springs.yy",
+    "path":"folders/Sprites/Stage/General/Springs.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

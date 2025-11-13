@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Springs",
-    "path":"folders/Objects/Zone/General/Springs.yy",
+    "path":"folders/Objects/Stage/General/Springs.yy",
   },
   "parentObjectId":{
     "name":"objSpring",

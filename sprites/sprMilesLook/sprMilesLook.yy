@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Miles",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

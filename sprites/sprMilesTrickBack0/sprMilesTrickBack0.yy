@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Back",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles/Trick Back.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Trick Back.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

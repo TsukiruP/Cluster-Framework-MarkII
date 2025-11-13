@@ -42,7 +42,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Back",
-    "path":"folders/Sprites/Zone/Player/Characters/Amy/Trick Back.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Trick Back.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

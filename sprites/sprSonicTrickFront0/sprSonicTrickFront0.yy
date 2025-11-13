@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Front",
-    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Trick Front.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Sonic/Trick Front.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -82,7 +82,7 @@
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
-    "volume":1,
+    "volume":1.0,
     "xorigin":15,
     "yorigin":28,
   },

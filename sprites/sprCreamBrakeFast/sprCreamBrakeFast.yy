@@ -34,7 +34,7 @@
   "origin":9,
   "parent":{
     "name":"Brake",
-    "path":"folders/Sprites/Zone/Player/Characters/Cream/Brake.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Cream/Brake.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

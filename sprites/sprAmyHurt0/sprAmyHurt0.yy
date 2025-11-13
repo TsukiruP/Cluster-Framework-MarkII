@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Hurt",
-    "path":"folders/Sprites/Zone/Player/Characters/Amy/Hurt.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Hurt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

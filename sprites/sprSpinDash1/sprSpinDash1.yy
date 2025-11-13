@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Spin Dash",
-    "path":"folders/Sprites/Zone/Player/Effects/Spin Dash.yy",
+    "path":"folders/Sprites/Stage/Player/Effects/Spin Dash.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

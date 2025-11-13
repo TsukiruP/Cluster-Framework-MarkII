@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
-    "path":"folders/Objects/Zone/Parents.yy",
+    "path":"folders/Objects/Stage/Parents.yy",
   },
   "parentObjectId":{
     "name":"objStageObject",

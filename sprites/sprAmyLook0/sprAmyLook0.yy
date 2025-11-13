@@ -32,7 +32,7 @@
   "origin":9,
   "parent":{
     "name":"Look",
-    "path":"folders/Sprites/Zone/Player/Characters/Amy/Look.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Look.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

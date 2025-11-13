@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Turn",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles/Turn.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Turn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

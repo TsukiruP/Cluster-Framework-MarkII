@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Player",
-    "path":"folders/Objects/Zone/Player.yy",
+    "path":"folders/Objects/Stage/Player.yy",
   },
   "parentObjectId":null,
   "persistent":false,

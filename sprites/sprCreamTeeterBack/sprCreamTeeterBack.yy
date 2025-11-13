@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Teeter",
-    "path":"folders/Sprites/Zone/Player/Characters/Cream/Teeter.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Cream/Teeter.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

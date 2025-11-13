@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Brake",
-    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Brake.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Sonic/Brake.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

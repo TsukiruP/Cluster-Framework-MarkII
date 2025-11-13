@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Turn",
-    "path":"folders/Sprites/Zone/Player/Characters/Cream/Turn.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Cream/Turn.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

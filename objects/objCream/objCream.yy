@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Characters",
-    "path":"folders/Objects/Zone/Player/Characters.yy",
+    "path":"folders/Objects/Stage/Player/Characters.yy",
   },
   "parentObjectId":{
     "name":"objPlayer",

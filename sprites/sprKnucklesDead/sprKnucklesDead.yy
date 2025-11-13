@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Knuckles",
-    "path":"folders/Sprites/Zone/Player/Characters/Knuckles.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Knuckles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

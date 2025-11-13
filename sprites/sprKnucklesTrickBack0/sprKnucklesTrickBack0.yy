@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Back",
-    "path":"folders/Sprites/Zone/Player/Characters/Knuckles/Trick Back.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Knuckles/Trick Back.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -28,7 +28,7 @@
   "origin":9,
   "parent":{
     "name":"Trick Down",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles/Trick Down.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Trick Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Brake",
-    "path":"folders/Sprites/Zone/Player/Characters/Knuckles/Brake.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Knuckles/Brake.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

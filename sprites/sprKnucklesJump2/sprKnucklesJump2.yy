@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Jump",
-    "path":"folders/Sprites/Zone/Player/Characters/Knuckles/Jump.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Knuckles/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -29,7 +29,7 @@
   "origin":9,
   "parent":{
     "name":"Jump",
-    "path":"folders/Sprites/Zone/Player/Characters/Cream/Jump.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Cream/Jump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

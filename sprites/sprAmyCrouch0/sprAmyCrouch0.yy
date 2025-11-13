@@ -35,7 +35,7 @@
   "origin":9,
   "parent":{
     "name":"Crouch",
-    "path":"folders/Sprites/Zone/Player/Characters/Amy/Crouch.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Crouch.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

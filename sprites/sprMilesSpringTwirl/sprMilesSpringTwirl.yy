@@ -39,7 +39,7 @@
   "origin":9,
   "parent":{
     "name":"Spring",
-    "path":"folders/Sprites/Zone/Player/Characters/Miles/Spring.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Spring.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

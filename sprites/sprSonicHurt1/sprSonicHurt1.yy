@@ -30,7 +30,7 @@
   "origin":9,
   "parent":{
     "name":"Hurt",
-    "path":"folders/Sprites/Zone/Player/Characters/Sonic/Hurt.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Sonic/Hurt.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

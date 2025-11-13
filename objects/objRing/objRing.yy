@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"General",
-    "path":"folders/Objects/Zone/General.yy",
+    "path":"folders/Objects/Stage/General.yy",
   },
   "parentObjectId":{
     "name":"objStageObject",
