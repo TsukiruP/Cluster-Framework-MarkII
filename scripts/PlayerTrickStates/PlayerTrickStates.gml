@@ -343,8 +343,7 @@ function player_is_trick_somersaulting(phase)
             }
             
             // Roll
-            if (image_index == 6 and animation_data.alarm == 2) sound_play(sfxRoll);
-            
+            if (animation_is_starting(5)) sound_play(sfxRoll);
             if (animation_is_finished())
             {
                 animation_init(PLAYER_ANIMATION.ROLL);

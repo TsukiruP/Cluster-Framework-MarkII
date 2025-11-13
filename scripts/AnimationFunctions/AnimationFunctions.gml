@@ -111,6 +111,16 @@ function animation_update()
     }
 }
 
+/// @function animation_is_starting([index])
+/// @description Checks if the current animation has just started playing at the given index.
+/// @param {Real} [index] Index to check (optional, defaults to 0).
+/// @returns {Bool}
+function animation_is_starting(index = 0)
+{
+    var duration = animation_data.ani.duration;
+    return (image_index == index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
+}
+
 /// @function animation_is_finished()
 /// @description Checks if the animation is finished.
 /// @returns {Bool}
