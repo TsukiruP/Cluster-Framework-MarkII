@@ -186,18 +186,74 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.TRICK_UP:
         {
+            if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
+            player_set_animation(global.ani_cream_trick_up);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 10);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_DOWN:
         {
+            player_set_animation(global.ani_cream_trick_down);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 10);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 3:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 10);
+                            hitboxes[1].set_size(-6, 0, 6, 10);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_FRONT:
         {
+            player_set_animation(global.ani_cream_trick_front);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 10);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.TRICK_BACK:
         {
+            if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
+            player_set_animation(global.ani_cream_trick_back);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 10);
+                hitboxes[1].set_size();
+            }
             break;
         }
         case PLAYER_ANIMATION.SPRING:
