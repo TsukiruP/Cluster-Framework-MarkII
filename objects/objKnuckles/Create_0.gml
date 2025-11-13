@@ -50,6 +50,7 @@ player_animate = function()
                     break;
                 }
             }
+            break;
         }
         case PLAYER_ANIMATION.TURN:
         {
