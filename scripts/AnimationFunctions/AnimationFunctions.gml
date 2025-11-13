@@ -25,27 +25,24 @@ function animation_core() constructor
     pos = 0;
 }
 
-/// @function animation_init(index, [force], [alternatives])
-/// @description Initializes the next animation.
+/// @function animation_init(index, [variant], [alternatives])
+/// @description Sets the given index as the animation core's current index.
 /// @param {Real} index Animation index to set.
-/// @param {Bool} [force] Force the animation to restart.
-/// @param {Array} [alternatives] Alternative animations that will be treated as the given index. 
-function animation_init(index, force = false, alternatives = [])
+/// @param {Real} [variant] Variant to set (optional, defaults to 0 if the indexes don't match).
+function animation_init(index, variant = -1, alternatives = [])
 {
     // Abort if...
-    if (not force)
-    {
-        if (animation_data.index == index) exit; // Index is the same
-        if (array_contains(alternatives, animation_data.index)) exit; // Index is considered an alternative
-    }
+    if (variant == -1 and animation_data.index == index) exit; // Index match with no given variant
+    if (array_contains(alternatives, animation_data.index)) exit; // Current index is an alternative
     
+    if (variant == -1) variant = 0;
+    animation_data.force = (animation_data.index == index);
     animation_data.index = index;
-    animation_data.variant = 0;
-    animation_data.force = force;
+    animation_data.variant = variant;
 }
 
 /// @function animation_set(ani)
-/// @description Sets the animation core's animation.
+/// @description Sets the given animation as the animation core's current animation.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 function animation_set(ani)
 {
@@ -78,7 +75,7 @@ function animation_set(ani)
 }
 
 /// @function animation_update()
-/// @description Updates the given core.
+/// @description Updates the animation core.
 function animation_update()
 {
     if (not is_undefined(animation_data.ani))
@@ -114,8 +111,18 @@ function animation_update()
     }
 }
 
+/// @function animation_is_starting([index])
+/// @description Checks if the current animation has just started playing at the given index.
+/// @param {Real} [index] Index to check (optional, defaults to 0).
+/// @returns {Bool}
+function animation_is_starting(index = 0)
+{
+    var duration = animation_data.ani.duration;
+    return (image_index == index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
+}
+
 /// @function animation_is_finished()
-/// @description Checks if the animation core is finished animating.
+/// @description Checks if the animation is finished.
 /// @returns {Bool}
 function animation_is_finished()
 {

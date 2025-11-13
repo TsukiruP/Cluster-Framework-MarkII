@@ -10,11 +10,15 @@ function player_is_sprung(phase)
             
             // Animate 
             var ani_spring = (abs(x_speed) > 2.5 ? PLAYER_ANIMATION.SPRING_TWIRL : PLAYER_ANIMATION.SPRING);
-            animation_init(ani_spring, true);
+            animation_init(ani_spring, 0);
             break;
 		}
 		case PHASE.STEP:
 		{
+			// Skills
+			if (trick_time != 0) trick_time--;
+			if (player_try_trick()) return true;
+			
 			// Accelerate
 			if (input_axis_x != 0)
 			{

@@ -121,6 +121,7 @@ function collision_player(hb, pla, plahb = -1)
     	left *= -1;
     	right *= -1;
     }
+    
     if (image_yscale == -1)
     {
         top *= -1;
@@ -149,6 +150,7 @@ function collision_player(hb, pla, plahb = -1)
     		pleft *= -1;
     		pright *= -1;
     	}
+    	
         if (pla.image_yscale == -1)
     	{
     		ptop *= -1;
@@ -222,6 +224,7 @@ function draw_hitboxes(ang = gravity_direction)
 				left *= -1;
 				right *= -1;
 			}
+			
             if (image_yscale == -1)
             {
                 top *= -1;
