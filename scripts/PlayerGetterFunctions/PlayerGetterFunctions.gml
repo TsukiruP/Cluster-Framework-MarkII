@@ -88,18 +88,18 @@ function player_detect_entities()
 	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
 	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
     
-    with (objZoneObject) reaction(other);
+    with (objStageObject) reaction(other);
 	
 	// Detect instances intersecting the rectangle
-	var zone_objects = ds_list_create();
+	var stage_objects = ds_list_create();
 	var total_objects = (mask_direction mod 180 != 0 ?
-		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objSolid, true, false, zone_objects, false) :
-		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objSolid, true, false, zone_objects, false));
+		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objSolid, true, false, stage_objects, false) :
+		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objSolid, true, false, stage_objects, false));
 	
 	// Execute the reaction of all instances
 	for (var n = 0; n < total_objects; ++n)
 	{
-		var inst = zone_objects[| n];
+		var inst = stage_objects[| n];
 		with (inst) reaction(other);
 		
 		// Register solid instances; skip the current instance if...
@@ -108,7 +108,7 @@ function player_detect_entities()
 		
 		array_push(solid_objects, inst);
 	}
-	ds_list_destroy(zone_objects);
+	ds_list_destroy(stage_objects);
 	
 	// Evaluate semisolid tilemap collision
 	var valid = array_contains(tilemaps, semisolid_tilemap);

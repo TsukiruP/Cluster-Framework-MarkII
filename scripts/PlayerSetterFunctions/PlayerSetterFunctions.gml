@@ -194,7 +194,7 @@ function player_in_bounds()
 		var y2 = y + y_radius;
 	}
 	
-	with (ctrlZone)
+	with (ctrlStage)
 	{
 		var left = bound_left;
 		var top = bound_top;

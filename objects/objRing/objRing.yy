@@ -13,8 +13,8 @@
     "path":"folders/Objects/Zone/General.yy",
   },
   "parentObjectId":{
-    "name":"objZoneObject",
-    "path":"objects/objZoneObject/objZoneObject.yy",
+    "name":"objStageObject",
+    "path":"objects/objStageObject/objStageObject.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
