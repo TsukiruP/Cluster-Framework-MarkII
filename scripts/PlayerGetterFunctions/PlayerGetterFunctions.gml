@@ -111,10 +111,13 @@ function player_detect_entities()
 	ds_list_destroy(stage_objects);
 	
 	// Evaluate semisolid tilemap collision
-	var valid = array_contains(tilemaps, semisolid_tilemap);
-	if (not player_ray_collision(semisolid_tilemap))
-	{
-		if (not valid) array_push(tilemaps, semisolid_tilemap);
-	}
-	else if (valid) array_pop(tilemaps);
+    if (semisolid_tilemap != -1)
+    {
+   	    var valid = array_contains(tilemaps, semisolid_tilemap);
+   	    if (not player_ray_collision(semisolid_tilemap))
+   	    { 
+            if (not valid) array_push(tilemaps, semisolid_tilemap);
+   	    }
+   	    else if (valid) array_pop(tilemaps);
+    }
 }

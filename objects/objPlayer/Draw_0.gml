@@ -10,10 +10,10 @@ player_draw_after();
 // Spin Dash
 spin_dash_effect.draw();
 
+// Hitboxes
 draw_hitboxes(mask_direction);
 
 // Virtual mask
-/*
 if (mask_direction mod 180 != 0)
 {
 	draw_rectangle_color(x_int - y_radius, y_int - x_radius, x_int + y_radius, y_int + x_radius, c_lime, c_lime, c_lime, c_lime, true);

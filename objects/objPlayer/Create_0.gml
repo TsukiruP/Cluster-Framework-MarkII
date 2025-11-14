@@ -123,10 +123,14 @@ cliff_sign = 0;
 
 tilemaps =
 [
-	//layer_tilemap_get_id("TilesLayer0"),
-	//layer_tilemap_get_id("TilesLayer1"),
 	layer_tilemap_get_id("TilesMain")
 ];
+
+if (layer_exists("TilesLayer0"))
+{
+    array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
+    collision_layer = 0;
+}
 
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
