@@ -87,6 +87,10 @@ function player_is_tricking(phase)
 	{
 		case PHASE.ENTER:
 		{
+			// Set time:
+			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT) trick_time = 45;
+			else if (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK)) trick_time = 10;
+			
 			// Animate
             animation_data.variant++;
             break;
@@ -94,6 +98,7 @@ function player_is_tricking(phase)
 		case PHASE.STEP:
 		{
 			if (trick_time != 0) trick_time--;
+			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and trick_time == 0) animation_init(PLAYER_ANIMATION.FALL);
 			
 			var trick_spiral = (object_index == objKnuckles and trick_index == TRICK.UP);
 			var trick_glide = (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and trick_time > 0);
@@ -347,7 +352,7 @@ function player_is_trick_somersaulting(phase)
             if (animation_is_finished())
             {
                 animation_init(PLAYER_ANIMATION.ROLL);
-                return player_perform(on_ground ? player_is_rolling : player_is_falling);
+                return player_perform(on_ground ? player_is_rolling : player_is_falling, false);
             }
             break;
 		}
