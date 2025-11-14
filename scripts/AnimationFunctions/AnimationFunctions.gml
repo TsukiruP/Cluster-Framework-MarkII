@@ -118,7 +118,7 @@ function animation_update()
 function animation_is_starting(index = 0)
 {
     var duration = animation_data.ani.duration;
-    return (image_index == index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
+    return (animation_data.pos == index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
 }
 
 /// @function animation_is_finished()
