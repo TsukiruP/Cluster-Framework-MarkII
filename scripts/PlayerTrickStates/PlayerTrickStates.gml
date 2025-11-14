@@ -90,6 +90,7 @@ function player_is_tricking(phase)
 			// Set time:
 			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT) trick_time = 45;
 			else if (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK)) trick_time = 10;
+            else trick_time = 0;
 			
 			// Animate
             animation_data.variant++;
