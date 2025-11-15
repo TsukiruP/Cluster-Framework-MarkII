@@ -21,6 +21,9 @@ enum CHARACTER
 volume_sound = 1;
 volume_music = 1;
 
+// Music
+audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
+
 // Player values
 players = -1;
 score = 0;

@@ -1,8 +1,13 @@
 /// @description Initialize
 image_speed = 0;
-music = bgmMadGear;
+
+// Constants
+#macro MUTE_DROWN 1
+#macro MUTE_JINGLE 2
+#macro MUTE_STREAM 4 
+
+music = [];
 stream = -1;
 jingles = [];
-stream_mute = false;
-jingle_mute = false;
-drown_mute = false;
+mute = 0;
+swap = false;

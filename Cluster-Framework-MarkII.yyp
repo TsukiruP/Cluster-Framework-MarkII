@@ -161,7 +161,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.1.926",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"Cluster-Framework-MarkII",
   "resources":[
@@ -485,6 +485,7 @@
     {"id":{"name":"stanncam_shake","path":"scripts/stanncam_shake/stanncam_shake.yy",},},
     {"id":{"name":"stanncam","path":"scripts/stanncam/stanncam.yy",},},
     {"id":{"name":"UtilityFunctions","path":"scripts/UtilityFunctions/UtilityFunctions.yy",},},
+    {"id":{"name":"bgmExtraBattle1","path":"sounds/bgmExtraBattle1/bgmExtraBattle1.yy",},},
     {"id":{"name":"bgmLife","path":"sounds/bgmLife/bgmLife.yy",},},
     {"id":{"name":"bgmMadGear","path":"sounds/bgmMadGear/bgmMadGear.yy",},},
     {"id":{"name":"sfxBrake","path":"sounds/sfxBrake/sfxBrake.yy",},},

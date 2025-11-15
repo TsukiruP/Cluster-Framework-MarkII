@@ -83,7 +83,7 @@ function player_is_jumping(phase)
 			animation_init(PLAYER_ANIMATION.JUMP, 0);
 			
 			// Sound
-			audio_play_sound_single(sfxJump);
+			audio_play_single(sfxJump);
 			break;
 		}
 		case PHASE.STEP:

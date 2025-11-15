@@ -457,7 +457,7 @@ player_draw_after = function() {};
 player_gain_rings = function(num)
 {
 	global.rings = min(global.rings + num, 999);
-	audio_play_sound_single(sfxRing);
+	audio_play_single(sfxRing);
 	
 	// Gain lives
 	static ring_life_threshold = 99;
@@ -475,5 +475,5 @@ player_gain_rings = function(num)
 player_gain_lives = function(num)
 {
 	lives = min(lives + num, 99);
-	audio_play_sound_single(bgmLife);
+	audio_play_single(bgmLife);
 };

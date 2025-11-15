@@ -43,7 +43,7 @@ reaction = function(pla)
             active |= bit;
             animation_data.variant = 1;
             pla.player_gain_lives(1);
-            audio_play_sound_single(sfxSpring);
+            audio_play_single(sfxSpring);
         }
     }
     else 
