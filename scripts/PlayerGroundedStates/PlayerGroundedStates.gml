@@ -195,7 +195,7 @@ function player_is_running(phase)
 			// Roll
 			if (abs(x_speed) >= 1.03125 and input_axis_x == 0 and input_axis_y == 1)
 			{
-				sound_play(sfxRoll);
+				audio_play_sound_single(sfxRoll);
 				return player_perform(player_is_rolling);
 			}
 			
@@ -210,7 +210,7 @@ function player_is_running(phase)
 					if (mask_direction == gravity_direction and abs(x_speed) >= 4)
 					{
 						animation_init(PLAYER_ANIMATION.BRAKE, abs(x_speed) > 9.0);
-						sound_play(sfxBrake);
+						audio_play_sound_single(sfxBrake);
 					}
 				}
 				else if (ctrlWindow.image_index mod 4 == 0)
@@ -450,7 +450,7 @@ function player_is_spin_dashing(phase)
 		{
 			spin_dash_charge = 0;
             animation_init(PLAYER_ANIMATION.SPIN_DASH);
-			sound_play(sfxSpinRev);
+			audio_play_sound_single(sfxSpinRev);
 			break;
 		}
 		case PHASE.STEP:
@@ -478,7 +478,7 @@ function player_is_spin_dashing(phase)
 				x_speed = image_xscale * (8 + spin_dash_charge div 2);
 				with (camera) lag_x = 16;
 				audio_stop_sound(sfxSpinRev);
-				sound_play(sfxSpinDash);
+				audio_play_sound_single(sfxSpinDash);
 				return player_perform(player_is_rolling);
 			}
 			
@@ -489,7 +489,7 @@ function player_is_spin_dashing(phase)
                 animation_init(PLAYER_ANIMATION.SPIN_DASH, 1);
                 
 				// Sound
-				var rev_sound = sound_play(sfxSpinRev);
+				var rev_sound = audio_play_sound_single(sfxSpinRev);
 				audio_sound_pitch(rev_sound, 1 + spin_dash_charge * 0.0625);
 			}
 			else spin_dash_charge *= 0.96875;

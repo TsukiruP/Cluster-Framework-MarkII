@@ -1,5 +1,7 @@
 /// @description Cleanup
 audio_stop_all();
-ds_priority_clear(queue);
 stream = -1;
-overlay = -1;
+jingles = [];
+stream_mute = false;
+jingle_mute = false;
+drown_mute = false;

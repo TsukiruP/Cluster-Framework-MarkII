@@ -1,13 +1,23 @@
-/// @function sound_play(soundid)
+/// @function audio_play_sound_single(soundid)
 /// @description Plays the given sound effect, stopping any existing instances of it beforehand.
 /// @param {Asset.GMSound} soundid Sound asset to play.
 /// @returns {Id.Sound}
-function sound_play(soundid)
+function audio_play_sound_single(soundid)
 {
 	audio_stop_sound(soundid);
 	return audio_play_sound(soundid, 0, false, global.volume_sound);
 }
 
+/// @function audio_play_music(soundid)
+/// Plays the given background music.
+/// @param {Asset.GMSound} soundid Sound asset to play.
+/// @returns {Id.Sound}
+function audio_play_music(soundid)
+{
+    
+}
+
+/*
 /// @function music_overlay(soundid)
 /// @description Plays the given music track as an overlay, muting the stream until it has finished playing.
 /// @param {Asset.GMSound} soundid Sound asset to play.
