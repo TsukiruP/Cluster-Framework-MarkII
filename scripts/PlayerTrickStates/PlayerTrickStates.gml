@@ -328,9 +328,6 @@ function player_is_trick_somersaulting(phase)
                 // Move
                 player_move_on_ground();
                 if (state_changed) exit;
-                
-                // Fall
-                if (not on_ground) return player_perform(player_is_trick_somersaulting, false);
             }
             else
             {
@@ -338,14 +335,14 @@ function player_is_trick_somersaulting(phase)
     			player_move_in_air();
     			if (state_changed) exit;
                 
-                // Land
-                if (on_ground) return player_perform(player_is_trick_somersaulting, false);
-                
                 // Fall
-    			if (y_speed < gravity_cap)
-    			{
-    				y_speed = min(y_speed + gravity_force, gravity_cap);
-    			}
+                if (not on_ground)
+                {
+                    if (y_speed < gravity_cap)
+        			{
+        				y_speed = min(y_speed + gravity_force, gravity_cap);
+        			}
+                }
             }
             
             // Roll
