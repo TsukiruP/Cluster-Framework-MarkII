@@ -22,7 +22,6 @@ function audio_loop_points(soundid, loop_start = 0, loop_end = 0)
 /// @function audio_play_music(soundid)
 /// Plays the given background music.
 /// @param {Asset.GMSound} soundid Sound asset to play.
-/// @returns {Id.Sound}
 function audio_swap_music(soundid)
 {
     with (ctrlMusic)
