@@ -5,7 +5,7 @@
 function audio_play_single(soundid)
 {
 	audio_stop_sound(soundid);
-	return audio_play_sound(soundid, 0, false, global.volume_sound);
+	return audio_play_sound(soundid, PRIORITY_SOUND, false, global.volume_sound);
 }
 
 /// @function audio_loop_points(soundid, [loop_start], [loop_end])
@@ -75,5 +75,18 @@ function audio_play_life()
     with (ctrlMusic)
     {
         life_voice = audio_play_single(bgmLife);
+    }
+}
+
+/// @function audio_play_jingle(soundid)
+/// @description Plays the given music track, stopping previous instances and adding it to the array.
+/// @param {Asset.GMSound} soundid Sound asset to play.
+function audio_play_jingle(soundid)
+{
+    with (ctrlMusic)
+    {
+        audio_stop_sound(soundid);
+        if (array_length(jingle_voices) > 0) audio_sound_gain(array_last(jingle_voices), 0);
+        array_push(jingle_voices, audio_play_sound(soundid, PRIORITY_JINGLE, false, global.volume_music * ((mute & MUTE_JINGLE) == 0)));
     }
 }
