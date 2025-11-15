@@ -475,5 +475,5 @@ player_gain_rings = function(num)
 player_gain_lives = function(num)
 {
 	lives = min(lives + num, 99);
-	audio_play_single(bgmLife);
+	audio_play_life();
 };

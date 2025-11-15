@@ -1,2 +1,2 @@
 /// @description Start
-audio_swap_music(bgmMadGear);
+audio_enqueue_music(bgmMadGear, 0);
