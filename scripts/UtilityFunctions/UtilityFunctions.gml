@@ -98,7 +98,7 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 /// @function collision_player(hb, pla, [plahb])
 /// @description Checks if the given player is intersecting the given hitbox.
 /// @param {Real} hb Hitbox to check.
-/// @param {Id.Instance} pla Player to checl.
+/// @param {Id.Instance} pla Player to check.
 /// @param {Real} plahb Player hitbox to check (optional, defaults to virtual mask).
 /// @returns {Real}
 function collision_player(hb, pla, plahb = -1)

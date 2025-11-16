@@ -142,15 +142,30 @@ function player_is_hurt(phase)
 	{
 		case PHASE.ENTER:
 		{
-			break;
+			// Detach from ground
+			player_ground(undefined);
+            break;
 		}
 		case PHASE.STEP:
 		{
-			break;
+			// Move
+			player_move_in_air();
+			if (state_changed) exit;
+            
+            // Land
+			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
+            
+            // Fall
+			if (y_speed < gravity_cap)
+			{
+				y_speed = min(y_speed + hurt_force, gravity_cap);
+			}
+            break;
 		}
 		case PHASE.EXIT:
 		{
-			break;
+			invulnerability_time = invulnerability_duration;
+            break;
 		}
 	}
 }

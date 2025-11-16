@@ -477,3 +477,34 @@ player_gain_lives = function(num)
 	lives = min(lives + num, 99);
 	audio_play_life();
 };
+
+/// @method player_damage([inst])
+/// @description Sets the player to be either hurt or dead. Set inst to self to instantly kill the player.
+/// @param {Id.Instance} [inst] Instance to check (optional, defaults to the player).
+player_damage = function(inst = self)
+{
+    if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != self)) exit;
+    
+    if (inst == self)
+    {
+        return player_perform(player_is_dead);
+    }
+    else
+    {
+    	var hurt_speed = -2;
+        animation_init(PLAYER_ANIMATION.HURT);
+        if (abs(x_speed) <= 2.5)
+        {
+            if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
+            else x_speed = image_xscale * hurt_speed;
+            animation_data.variant = 0;
+        }
+        else
+        {
+            x_speed = sign(x_speed) * -hurt_speed;
+            animation_data.variant = 1;
+        }
+        y_speed = -4;
+        return player_perform(player_is_hurt);
+    }
+};

@@ -12,5 +12,6 @@ draw_text_transformed(CAMERA_WIDTH - 10, 97, $"Facing: {image_xscale}", 0.5, 0.5
 draw_text_transformed(CAMERA_WIDTH - 10, 115, $"Spin Dash Charge: {spin_dash_charge}", 0.5, 0.5, 0);
 draw_text_transformed(CAMERA_WIDTH - 10, 130, $"Step: {ctrlWindow.image_index}", 0.5, 0.5, 0);
 draw_text_transformed(CAMERA_WIDTH - 10, 145, $"Layer: {collision_layer}", 0.5, 0.5, 0);
+draw_text_transformed(CAMERA_WIDTH - 10, 160, $"Hurt: {invulnerability_time}", 0.5, 0.5, 0);
 
 draw_set_halign(fa_left);
