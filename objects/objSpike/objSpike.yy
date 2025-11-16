@@ -33,12 +33,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSpikeMask",
-    "path":"sprites/sprSpikeMask/sprSpikeMask.yy",
+    "name":"sprSpike0",
+    "path":"sprites/sprSpike0/sprSpike0.yy",
   },
-  "spriteMaskId":{
-    "name":"sprSpikeMask",
-    "path":"sprites/sprSpikeMask/sprSpikeMask.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

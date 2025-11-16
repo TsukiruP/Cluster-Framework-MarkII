@@ -3,7 +3,7 @@
 event_inherited();
 
 direction = image_angle;
-//hitboxes[0].set_size(-16, -24, 16, 0);
+hitboxes[0].set_size(-16, -24, 16, 0);
 reaction = function(pla)
 {
     if (pla.state != player_is_hurt and pla.invincibility_time <= 0 and
