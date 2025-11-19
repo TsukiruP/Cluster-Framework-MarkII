@@ -210,7 +210,7 @@ function player_is_trick_rebounding(phase)
 			var sine = dsin(local_direction);
 			var cosine = dcos(local_direction);
 			y_speed = -cosine * trick_bound_height;
-			x_speed = sine * trick_bound_height / 2;
+			x_speed = -sine * trick_bound_height / 2;
 			
 			// Detach from ground
 			player_ground(undefined);
