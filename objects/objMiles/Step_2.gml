@@ -19,7 +19,7 @@ with (tails_effect)
         }
         else
         {
-        	image_angle = angle_wrap(point_direction(0, 0, other.x_speed, other.y_speed) - 90);
+        	image_angle = angle_wrap(point_direction(0, 0, other.x_speed, other.y_speed) - 90) + other.gravity_direction;
         }
         
         animation_set(global.ani_miles_tails_v0);
