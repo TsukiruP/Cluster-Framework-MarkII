@@ -204,10 +204,10 @@ function collision_player(hb, pla, plahb = -1)
             result |= COLL_BOTTOM;
         }
         
-        if (abs(x_dist) < abs(y_dist)) result &= (COLL_RIGHT | COLL_LEFT);
+        if (abs(x_dist) < abs(y_dist_ext)) result &= (COLL_RIGHT | COLL_LEFT);
         else result &= (COLL_TOP | COLL_BOTTOM);
         
-        result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF))
+        result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF));
         if (result & 0xC0000)
         {
             if (!(result & 0xFF00)) result &= 0xFFF300FF;
@@ -218,6 +218,8 @@ function collision_player(hb, pla, plahb = -1)
         }
         
         if (not (result & (COLL_TOP | COLL_BOTTOM))) result &= ~0xFF;
+        
+        /* AUTHOR NOTE: This is copied wholesale from the sa2 decomp. */
     }
     
     return result;
