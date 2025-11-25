@@ -17,9 +17,11 @@ reaction = function(pla)
             pla.ground_id = self;
             pla.y -= dist div 1;
         }
-        else if (pla.ground_id == self)
+        else if (flags & COLL_BOTTOM)
         {
-            pla.ground_id = noone;
+            var dist = (flags & 0x000FF);
+            pla.y_speed = 0;
+            pla.y += dist div 1;
         }
     }
 };
