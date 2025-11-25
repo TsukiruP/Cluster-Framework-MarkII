@@ -23,12 +23,8 @@ reaction = function(pla)
             {
                 var dist = convert_hex(flags & 0x000FF);
                 pla.y += dist;
-                pla.y_speed = 0;
-                if (gravity_direction == 180 and (collision_player(1, pla) & COLL_BOTTOM))
-                {
-                    pla.player_damage(self);
-                    pla.y_speed = 0;
-                }
+                pla.ceiling_id = self;
+                if (gravity_direction == 180 and (collision_player(1, pla) & COLL_BOTTOM)) pla.player_damage(self);
             }
         }
         else if (flags & COLL_ANY)

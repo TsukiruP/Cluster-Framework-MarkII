@@ -133,6 +133,11 @@ function player_move_in_air()
 					break;
 				}
 			}
+            else if (instance_exists(ceiling_id))
+            {
+                landed = true;
+                on_ground = false;
+            }
 		}
 		
 		// Land

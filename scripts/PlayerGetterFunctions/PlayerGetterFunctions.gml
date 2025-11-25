@@ -68,8 +68,9 @@ function player_calc_ground_normal(ox, oy, rot)
 /// It also refreshes the player's local tilemaps by (de)listing the semisolid layer if applicable.
 function player_detect_entities()
 {
-	// Reset ground instance
+	// Reset instances
     ground_id = noone;
+    ceiling_id = noone;
     
     // Setup bounding rectangle
 	var x_int = x div 1;
