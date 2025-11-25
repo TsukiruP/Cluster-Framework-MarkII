@@ -187,20 +187,22 @@ function collision_player(hb, pla, plahb = -1)
         }
         else
         {
-        	x_dist = dx1 - sx2;
+        	x_dist = sx2 - dx1;
             result |= COLL_LEFT;
         }
         
         if (y_center > py_int)
         {
-            y_dist = dy1 - sy2;
-            y_dist_ext = min(y_dist + 5, 0);
+            y_dist = sy2 - dy1;
+            y_dist_ext = y_dist - 5;
+            if (y_dist_ext < 0) y_dist_ext = 0;
             result |= COLL_TOP;
         }
         else
         {
         	y_dist = dy2 - sy1;
-            y_dist_ext = max(0, y_dist + 2);
+            y_dist_ext = y_dist + 2;
+            if (y_dist_ext < 0) y_dist_ext = 0;
             result |= COLL_BOTTOM;
         }
         
