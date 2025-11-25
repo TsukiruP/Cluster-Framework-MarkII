@@ -135,6 +135,7 @@ if (layer_exists("TilesLayer0"))
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
 solid_objects = [];
+ground_id = noone;
 
 // Input
 input_axis_x = 0;

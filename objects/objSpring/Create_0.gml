@@ -8,7 +8,7 @@ ani_spring = global.ani_spring_vertical;
 reaction = function(pla)
 {
     var bit = 1 << pla.player_index;
-    if (collision_player(0, pla) != 0)
+    if (collision_player(0, pla))
     {
         if ((active & bit) == 0)
         {

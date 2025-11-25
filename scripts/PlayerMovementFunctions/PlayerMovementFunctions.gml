@@ -46,6 +46,13 @@ function player_move_on_ground()
 				player_ground(tile_data);
 				player_rotate_mask();
 			}
+            else if (instance_exists(ground_id))
+            {
+                on_ground = true;
+                direction = gravity_direction;
+                mask_direction = gravity_direction;
+                player_rotate_mask();
+            }
 			else on_ground = false;
 		}
 	}
@@ -90,6 +97,13 @@ function player_move_in_air()
 				player_ground(tile_data);
 				player_rotate_mask();
 			}
+            else if (instance_exists(ground_id))
+            {
+                landed = true;
+                direction = gravity_direction;
+                mask_direction = gravity_direction;
+                player_rotate_mask();
+            }
 		}
 		else
 		{

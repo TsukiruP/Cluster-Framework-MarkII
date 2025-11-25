@@ -9,12 +9,6 @@ function player_find_wall()
 		if (player_ray_collision(inst)) return inst;
 	}
 	
-	for (n = array_length(solid_objects) - 1; n > -1; --n)
-	{
-		inst = solid_objects[n];
-		if (player_ray_collision(inst)) return inst;
-	}
-	
 	return noone;
 }
 
@@ -29,11 +23,6 @@ function player_find_floor(radius)
 		for (var n = array_length(tilemaps) - 1; n > -1; --n)
 		{
 			if (player_ray_collision(tilemaps[n], x_radius, oy)) return oy;
-		}
-		
-		for (n = array_length(solid_objects) - 1; n > -1; --n)
-		{
-			if (player_ray_collision(solid_objects[n], x_radius, oy)) return oy;
 		}
 	}
 	
@@ -52,12 +41,6 @@ function player_find_ceiling(radius)
 		{
 			var inst = tilemaps[n];
 			if (player_ray_collision(inst, x_radius, -oy) and inst != semisolid_tilemap) return oy;
-		}
-		
-		for (n = array_length(solid_objects) - 1; n > -1; --n)
-		{
-			inst = solid_objects[n];
-			if (player_ray_collision(inst, x_radius, -oy) and not inst.semisolid) return oy;
 		}
 	}
 	
