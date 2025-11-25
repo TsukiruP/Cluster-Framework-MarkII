@@ -31,20 +31,22 @@ function player_is_standing(phase)
 			var edge = 0;
 			var height = y_radius + y_tile_reach;
 			
-			var total_solids = array_concat(tilemaps, solid_objects);
-			for (var n = array_length(total_solids) - 1; n > -1; --n)
-			{
-				var inst = total_solids[n];
-				
-				// Check sensors
-				if (player_beam_collision(inst, 0, height)) break; // Center collision means not on a cliff
-				if (player_beam_collision(inst, -x_radius, height)) edge |= 1; // Left
-				if (player_beam_collision(inst, x_radius, height)) edge |= 2; // Right
-			}
-			
-			// Check if only one sensor is grounded
-			if (n == -1 and edge != 3) cliff_sign = (edge == 1 ? 1 : -1);
-			
+            if (not instance_exists(ground_id))
+            {
+                for (var n = array_length(tilemaps) - 1; n > -1; --n) 
+                { 
+                    var inst = tilemaps[n];
+				    
+				    // Check sensors
+				    if (player_beam_collision(inst, 0, height)) break; // Center collision means not on a cliff
+				    if (player_beam_collision(inst, -x_radius, height)) edge |= 1; // Left
+				    if (player_beam_collision(inst, x_radius, height)) edge |= 2; // Right 
+                }
+                
+                // Check if only one sensor is grounded 
+                if (n == -1 and edge != 3) cliff_sign = (edge == 1 ? 1 : -1); 
+            }
+            
 			// Animate
             var ani_idle = (cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
             animation_init(ani_idle, 0, [PLAYER_ANIMATION.TURN]);

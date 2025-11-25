@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSpike0",
-    "path":"sprites/sprSpike0/sprSpike0.yy",
+    "name":"sprSpike",
+    "path":"sprites/sprSpike/sprSpike.yy",
   },
   "spriteMaskId":null,
   "visible":true,

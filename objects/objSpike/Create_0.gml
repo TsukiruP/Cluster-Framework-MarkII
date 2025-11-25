@@ -3,25 +3,40 @@
 event_inherited();
 
 gravity_direction = image_angle;
-hitboxes[0].set_size(-16, -24, 16, 0);
+hitboxes[0].set_size(-16, -24, 15, 0);
+hitboxes[1] = new hitbox(c_green, -15, -24, 14, 0);
 reaction = function(pla)
 {
-    if (pla.state != player_is_hurt and pla.invincibility_time <= 0 and
-        pla.invulnerability_time <= 0)
+    var flags = collision_player(0, pla);
+    if (flags)
     {
-        var flags = collision_player(0, pla);
-        if (flags & COLL_TOP)
+        if (flags & COLL_VERTICAL)
         {
-            var dist = (flags & 0x000FF);
-            pla.on_ground = true;
-            pla.ground_id = self;
-            pla.y -= dist div 1;
+            if (flags & COLL_TOP)
+            {
+                var dist = convert_hex(flags & 0x000FF);
+                pla.y += dist;
+                pla.ground_id = self;
+                if (gravity_direction == 0 and (collision_player(1, pla) & COLL_TOP)) pla.player_damage(self);
+            }
+            else if (flags & COLL_BOTTOM)
+            {
+                var dist = convert_hex(flags & 0x000FF);
+                pla.y += dist;
+                pla.y_speed = 0;
+                if (gravity_direction == 180 and (collision_player(1, pla) & COLL_BOTTOM))
+                {
+                    pla.player_damage(self);
+                    pla.y_speed = 0;
+                }
+            }
         }
-        else if (flags & COLL_BOTTOM)
+        else if (flags & COLL_ANY)
         {
-            var dist = (flags & 0x000FF);
-            pla.y_speed = 0;
-            pla.y += dist div 1;
+            var dist = convert_hex((flags & 0x0FF00) / 256);
+            pla.x += dist;
+            pla.x_speed = 0;
+            if ((gravity_direction == 90 and (flags & COLL_LEFT)) or (gravity_direction == 270 and (flags & COLL_RIGHT))) pla.player_damage(self);
         }
     }
 };
