@@ -170,7 +170,7 @@ function collision_player(hb, pla, plahb = -1)
         }
     	
         // Abort if hitbox is empty
-        if not ((pleft == 0 and ptop == 0 and pright == 0 and pbottom == 0))
+        if (not (pleft == 0 and ptop == 0 and pright == 0 and pbottom == 0))
         {
         	var sx1 = px_int + pcosine * pleft + psine * ptop;
         	var sy1 = py_int - psine * pright + pcosine * ptop;
