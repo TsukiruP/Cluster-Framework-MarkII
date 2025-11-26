@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GameInitialization",
+  "%Name":"AnimationSetup",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GameInitialization",
+  "name":"AnimationSetup",
   "parent":{
     "name":"Global",
     "path":"folders/Scripts/Global.yy",
