@@ -317,6 +317,7 @@
     {"id":{"name":"db_sort_by_timestamp","path":"scripts/db_sort_by_timestamp/db_sort_by_timestamp.yy",},},
     {"id":{"name":"db_write","path":"scripts/db_write/db_write.yy",},},
     {"id":{"name":"GameSetup","path":"scripts/GameSetup/GameSetup.yy",},},
+    {"id":{"name":"HitboxFunctions","path":"scripts/HitboxFunctions/HitboxFunctions.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},
     {"id":{"name":"InputBindingFindCollisions","path":"scripts/InputBindingFindCollisions/InputBindingFindCollisions.yy",},},
     {"id":{"name":"InputBindingGet","path":"scripts/InputBindingGet/InputBindingGet.yy",},},
