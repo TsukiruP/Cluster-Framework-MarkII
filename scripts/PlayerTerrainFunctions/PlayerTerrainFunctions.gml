@@ -6,7 +6,7 @@ function player_find_wall()
 	for (var n = array_length(tilemaps) - 1; n > -1; --n)
 	{
 		var inst = tilemaps[n];
-		if (player_ray_collision(inst)) return inst;
+		if (player_beam_collision(inst)) return inst;
 	}
 	
 	return noone;
@@ -20,14 +20,18 @@ function player_find_floor(radius)
 {
 	for (var oy = 0; oy <= radius; ++oy)
 	{
-		for (var n = array_length(tilemaps) - 1; n > -1; --n)
+		if (player_beam_collision(tilemaps, x_radius, oy))
 		{
-			if (player_ray_collision(tilemaps[n], x_radius, oy)) return oy;
+			return oy;
 		}
 	}
 	
 	return undefined;
 }
+
+/* TODO: since GameMaker's collision functions accept an array of entities to check against for collision,
+think about refactoring the player's collision functions to directly return the entity id; this would condense `player_find_wall`
+to one line of code. */
 
 /// @function player_find_ceiling(radius)
 /// @description Finds the minimum distance between the player and the first solid intersecting the upper half of their virtual mask.
@@ -40,7 +44,10 @@ function player_find_ceiling(radius)
 		for (var n = array_length(tilemaps) - 1; n > -1; --n)
 		{
 			var inst = tilemaps[n];
-			if (player_ray_collision(inst, x_radius, -oy) and inst != semisolid_tilemap) return oy;
+			if (player_beam_collision(inst, x_radius, -oy) and inst != semisolid_tilemap)
+			{
+				return oy;
+			}
 		}
 	}
 	

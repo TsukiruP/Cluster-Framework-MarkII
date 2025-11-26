@@ -121,18 +121,13 @@ mask_direction = 0;
 
 cliff_sign = 0;
 
-tilemaps =
-[
-	layer_tilemap_get_id("TilesMain")
-];
-
+tilemaps = [layer_tilemap_get_id("TilesMain")];
+semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 if (layer_exists("TilesLayer0"))
 {
-    array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
-    collision_layer = 0;
+	array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
+	collision_layer = 0;
 }
-
-semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
 solid_objects = [];
 ground_id = noone;

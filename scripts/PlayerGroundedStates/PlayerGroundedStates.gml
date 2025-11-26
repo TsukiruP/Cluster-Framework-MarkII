@@ -38,9 +38,9 @@ function player_is_standing(phase)
                     var inst = tilemaps[n];
 				    
 				    // Check sensors
-				    if (player_beam_collision(inst, 0, height)) break; // Center collision means not on a cliff
-				    if (player_beam_collision(inst, -x_radius, height)) edge |= 1; // Left
-				    if (player_beam_collision(inst, x_radius, height)) edge |= 2; // Right 
+				    if (player_ray_collision(inst, 0, height)) break; // Center collision means not on a cliff
+				    if (player_ray_collision(inst, -x_radius, height)) edge |= 1; // Left
+				    if (player_ray_collision(inst, x_radius, height)) edge |= 2; // Right 
                 }
                 
                 // Check if only one sensor is grounded 
