@@ -11,7 +11,6 @@ function player_calc_ground_normal(ox, oy, rot)
 	var sensor_y = array_create(2, oy);
 	var sine = dsin(rot);
 	var cosine = dcos(rot);
-	var total_solids = array_concat(tilemaps, solid_objects);
 	
 	if (rot mod 180 != 0)
 	{
@@ -31,12 +30,12 @@ function player_calc_ground_normal(ox, oy, rot)
 	{
 		repeat (y_tile_reach)
 		{
-			if (collision_point(sensor_x[n], sensor_y[n], total_solids, true, false) == noone)
+			if (collision_point(sensor_x[n], sensor_y[n], tilemaps, true, false) == noone)
 			{
 				sensor_x[n] += sine;
 				sensor_y[n] += cosine;
 			}
-			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, total_solids, true, false) != noone)
+			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, tilemaps, true, false) != noone)
 			{
 				sensor_x[n] -= sine;
 				sensor_y[n] -= cosine;
