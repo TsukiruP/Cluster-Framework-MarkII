@@ -10,20 +10,24 @@ reaction = function(pla)
     var flags = collision_player(0, pla);
     if (flags)
     {
+        with (pla)
+        {
+            if (player_beam_collision(other, x_radius, y_radius + 1)) ground_id = other;
+            if (player_beam_collision(other, x_radius, -y_radius - 1)) ceiling_id = other;
+        }
+        
         if (flags & COLL_VERTICAL)
         {
             if (flags & COLL_TOP)
             {
                 var dist = convert_hex(flags & 0x000FF);
                 pla.y += dist;
-                pla.ground_id = self;
                 if (gravity_direction == 0 and (collision_player(1, pla) & COLL_TOP)) pla.player_damage(self);
             }
             else if (flags & COLL_BOTTOM)
             {
                 var dist = convert_hex(flags & 0x000FF);
                 pla.y += dist;
-                pla.ceiling_id = self;
                 if (gravity_direction == 180 and (collision_player(1, pla) & COLL_BOTTOM)) pla.player_damage(self);
             }
         }

@@ -3,6 +3,15 @@
 #macro CAMERA_HEIGHT 240
 #macro CAMERA_PADDING 64
 
+#macro MUTE_MUSIC 1
+#macro MUTE_JINGLE 2
+#macro MUTE_DROWN 4
+
+#macro PRIORITY_SOUND 0 
+#macro PRIORITY_MUSIC 1
+#macro PRIORITY_JINGLE 2
+#macro PRIORITY_DROWN 3 
+
 #macro DEPTH_OFFSET_AFTERIMAGE 25
 #macro DEPTH_OFFSET_PLAYER 50
 #macro DEPTH_OFFSET_PARTICLE 75
@@ -14,6 +23,8 @@
 #macro COLL_LEFT 0x80000
 #macro COLL_VERTICAL 0x30000
 
+#macro PLAYER_HEIGHT 14
+
 enum CHARACTER
 {
     NONE = -1,
@@ -22,6 +33,60 @@ enum CHARACTER
     KNUCKLES,
     AMY,
     CREAM
+}
+
+enum PHASE
+{ 
+    ENTER,
+    STEP,
+    EXIT
+}
+
+enum PLAYER_ANIMATION
+{ 
+    IDLE,
+    TEETER,
+    TURN,
+    RUN,
+    BRAKE,
+    LOOK,
+    CROUCH,
+    ROLL,
+    SPIN_DASH,
+    FALL,
+    JUMP,
+    HURT,
+    DEAD,
+    TRICK_UP,
+    TRICK_DOWN,
+    TRICK_FRONT,
+    TRICK_BACK,
+    SPRING,
+    SPRING_TWIRL
+}
+
+enum TRICK
+{
+	UP,
+	DOWN,
+	FRONT,
+	BACK
+}
+
+enum CPU_INPUT
+{
+	X,
+	Y,
+	JUMP,
+	JUMP_PRESSED,
+	MAX
+}
+
+enum CPU_STATE
+{
+	FOLLOW,
+	CROUCH,
+	SPIN_DASH
 }
 
 // Volumes
@@ -43,8 +108,8 @@ font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
 
 // Misc.
 surface_depth_disable(true);
-randomize();
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
+randomize();
 
 // Create global controllers
 call_later(1, time_source_units_frames, function()

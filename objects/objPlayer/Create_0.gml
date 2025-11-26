@@ -1,63 +1,6 @@
 /// @description Initialize
 image_speed = 0;
 
-// Constants
-enum PHASE
-{ 
-    ENTER,
-    STEP,
-    EXIT
-}
-
-enum PLAYER_ANIMATION
-{ 
-    IDLE,
-    TEETER,
-    TURN,
-    RUN,
-    BRAKE,
-    LOOK,
-    CROUCH,
-    ROLL,
-    SPIN_DASH,
-    FALL,
-    JUMP,
-    HURT,
-    DEAD,
-    TRICK_UP,
-    TRICK_DOWN,
-    TRICK_FRONT,
-    TRICK_BACK,
-    SPRING,
-    SPRING_TWIRL
-}
-
-enum TRICK
-{
-	UP,
-	DOWN,
-	FRONT,
-	BACK
-}
-
-enum CPU_INPUT
-{
-	X,
-	Y,
-	JUMP,
-	JUMP_PRESSED,
-	MAX
-}
-
-enum CPU_STATE
-{
-	FOLLOW,
-	CROUCH,
-	SPIN_DASH
-}
-
-#macro PLAYER_HEIGHT 14
-
 // State machine
 state = player_is_ready;
 state_changed = false;
