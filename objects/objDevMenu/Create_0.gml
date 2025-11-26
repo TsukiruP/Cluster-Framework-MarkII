@@ -1,4 +1,4 @@
-/// @description Initialize
+/// @description Setup
 image_speed = 0;
 
 #region Constructor Hell

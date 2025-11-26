@@ -1,4 +1,4 @@
-/// @description Initialize
+/// @description Setup
 scale = (os_type == os_linux ? 1 : 2);
 
 // STANNcam

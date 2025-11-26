@@ -1,4 +1,4 @@
-/// @description Initialize
+/// @description Setup
 image_speed = 0;
 animation_data = new animation_core();
 x_speed = 0;
