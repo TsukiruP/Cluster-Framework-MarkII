@@ -33,9 +33,10 @@ function player_is_standing(phase)
 			
             if (not instance_exists(ground_id))
             {
-                for (var n = array_length(tilemaps) - 1; n > -1; --n) 
+                var total_solids = array_concat(tilemaps, solid_objects);
+                for (var n = array_length(total_solids) - 1; n > -1; --n) 
                 { 
-                    var inst = tilemaps[n];
+                    var inst = total_solids[n];
 				    
 				    // Check sensors
 				    if (player_ray_collision(inst, 0, height)) break; // Center collision means not on a cliff
