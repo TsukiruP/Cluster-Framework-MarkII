@@ -58,9 +58,6 @@ function player_detect_entities()
     ground_id = noone;
     ceiling_id = noone;
     
-    // Delist solid zone objects
-	array_resize(solid_objects, 0);
-    
     // Setup bounding rectangle
 	var x_int = x div 1;
 	var y_int = y div 1;
@@ -74,25 +71,6 @@ function player_detect_entities()
 	Floor collisions check for a distance of `y_tile_reach + y_radius`, so this is the rectangle's height.
 	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
 	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
-	
-	// Detect instances intersecting the rectangle
-	var stage_objects = ds_list_create();
-	var total_objects = (mask_direction mod 180 != 0 ?
-		collision_rectangle_list(x_int - ydia, y_int - xdia, x_int + ydia, y_int + xdia, objSolid, true, false, stage_objects, false) :
-		collision_rectangle_list(x_int - xdia, y_int - ydia, x_int + xdia, y_int + ydia, objSolid, true, false, stage_objects, false));
-	
-	// Execute the reaction of all instances
-	for (var n = 0; n < total_objects; ++n)
-	{
-		var inst = stage_objects[| n];
-		
-		// Register solid instances; skip the current instance if...
-		if (not (instance_exists(inst) and object_is_ancestor(inst.object_index, objSolid))) continue; // It has been destroyed after its reaction, or is not solid
-		if (inst.semisolid and player_beam_collision(inst)) continue; // Passing through
-		
-		array_push(solid_objects, inst);
-	}
-	ds_list_destroy(stage_objects);
     
 	// Evaluate semisolid tilemap collision
     if (semisolid_tilemap != -1)

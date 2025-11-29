@@ -12,8 +12,8 @@
     "path":"folders/Objects/Stage/General.yy",
   },
   "parentObjectId":{
-    "name":"objSolid",
-    "path":"objects/objSolid/objSolid.yy",
+    "name":"objStageObject",
+    "path":"objects/objStageObject/objStageObject.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

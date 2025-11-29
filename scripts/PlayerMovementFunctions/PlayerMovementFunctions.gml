@@ -41,18 +41,18 @@ function player_move_on_ground()
 		if (on_ground)
 		{
 			tile_data = player_find_floor(y_radius + (ground_snap ? y_tile_reach : 1));
-			if (tile_data != undefined)
-			{
-				player_ground(tile_data);
-				player_rotate_mask();
-			}
-            else if (instance_exists(ground_id))
+            if (instance_exists(ground_id))
             {
                 on_ground = true;
                 direction = gravity_direction;
                 mask_direction = gravity_direction;
-                player_rotate_mask();
+                local_direction = 0;
             }
+            else if (tile_data != undefined)
+			{
+				player_ground(tile_data);
+				player_rotate_mask();
+			}
 			else on_ground = false;
 		}
 	}
@@ -91,26 +91,32 @@ function player_move_in_air()
 		if (y_speed >= 0)
 		{
 			tile_data = player_find_floor(y_radius);
-			if (tile_data != undefined)
-			{
-				landed = true;
-				player_ground(tile_data);
-				player_rotate_mask();
-			}
-            else if (instance_exists(ground_id))
+			if (instance_exists(ground_id))
             {
                 landed = true;
                 on_ground = true;
                 direction = gravity_direction;
                 mask_direction = gravity_direction;
-                player_rotate_mask();
+                local_direction = 0;
             }
+            else if (tile_data != undefined)
+			{
+				landed = true;
+				player_ground(tile_data);
+				player_rotate_mask();
+			}
 		}
 		else
 		{
 			// Handle ceiling collision
 			tile_data = player_find_ceiling(y_radius);
-			if (tile_data != undefined)
+            if (instance_exists(ceiling_id))
+            {
+                landed = true;
+                on_ground = false;
+                local_direction = 0;
+            }
+			else if (tile_data != undefined)
 			{
 				// Flip mask and land on the ceiling
 				mask_direction = (mask_direction + 180) mod 360;
@@ -133,11 +139,6 @@ function player_move_in_air()
 					break;
 				}
 			}
-            else if (instance_exists(ceiling_id))
-            {
-                landed = true;
-                on_ground = false;
-            }
 		}
 		
 		// Land

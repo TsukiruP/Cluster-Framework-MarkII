@@ -128,12 +128,12 @@ function collision_player(hb, pla, plahb = -1)
                 
                 if (x_center <= px_int)
                 {
-                    x_dist = dx2 - sx1 + 1;
+                    x_dist = dx2 - sx1;
                     result |= COLL_RIGHT;
                 }
                 else
                 {
-                    x_dist = dx1 - sx2 - 1;
+                    x_dist = dx1 - sx2;
                     result |= COLL_LEFT;
                 }
                 
@@ -152,7 +152,7 @@ function collision_player(hb, pla, plahb = -1)
                     result |= COLL_BOTTOM;
                 }
                 
-                if (abs(x_dist) < abs(y_dist_ext)) result &= (COLL_RIGHT | COLL_LEFT);
+                if (abs(x_dist) <= abs(y_dist_ext)) result &= (COLL_RIGHT | COLL_LEFT);
                 else result &= (COLL_TOP | COLL_BOTTOM);
                 
                 result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF));
