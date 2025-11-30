@@ -120,8 +120,8 @@ function collision_player(hb, pla, plahb = -1)
         	
             if (rectangle_in_rectangle(sx1, sy1, sx2, sy2, dx1, dy1, dx2, dy2))
             {
-                var x_center = (dx1 + dx2) / 2;
-                var y_center = (dy1 + dy2) / 2;
+                var x_center = (dx1 + dx2) div 2;
+                var y_center = (dy1 + dy2) div 2;
                 var x_dist = 0;
                 var y_dist = 0;
                 var y_dist_ext = y_dist;
@@ -152,22 +152,18 @@ function collision_player(hb, pla, plahb = -1)
                     result |= COLL_BOTTOM;
                 }
                 
-                if (abs(x_dist) <= abs(y_dist_ext)) result &= (COLL_RIGHT | COLL_LEFT);
-                else result &= (COLL_TOP | COLL_BOTTOM);
-                
-                result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF));
-                if (result & 0xC0000)
+                if (abs(x_dist) <= abs(y_dist_ext))
                 {
-                    if (!(result & 0xFF00)) result &= 0xFFF300FF;
+                    result &= COLL_HORIZONTAL;
                 }
                 else
                 {
-                    result &= 0xFFFF00FF;
+                    result &= COLL_VERTICAL;
                 }
                 
-                if (not (result & (COLL_TOP | COLL_BOTTOM))) result &= ~0xFF;
-                
-                /* AUTHOR NOTE: This is mostly copied from the sa2 decomp. */
+                result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF));
+                if (not (result & COLL_VERTICAL)) result &= 0xFFF00;
+                if (not (result & COLL_HORIZONTAL)) result &= 0xF00FF;
             }
         }
     }

@@ -23,8 +23,7 @@ reaction = function(pla)
         }
         else if (flags & COLL_LEFT)
         {
-            if (pla.input_button.select.check) pla.y = 0;
-            pla.x_speed = 0;
+            if (pla.gravity_direction == 90) pla.ground_id = self;
         }
     }
 };
