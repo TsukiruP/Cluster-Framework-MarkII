@@ -110,13 +110,7 @@ function player_move_in_air()
 		{
 			// Handle ceiling collision
 			tile_data = player_find_ceiling(y_radius);
-            if (instance_exists(ceiling_id))
-            {
-                landed = true;
-                on_ground = false;
-                local_direction = 0;
-            }
-			else if (tile_data != undefined)
+            if (tile_data != undefined)
 			{
 				// Flip mask and land on the ceiling
 				mask_direction = (mask_direction + 180) mod 360;

@@ -64,6 +64,7 @@ mask_direction = 0;
 
 cliff_sign = 0;
 
+ground_id = noone;
 tilemaps = [layer_tilemap_get_id("TilesMain")];
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 if (layer_exists("TilesLayer0"))
@@ -73,8 +74,6 @@ if (layer_exists("TilesLayer0"))
 }
 
 solid_objects = [];
-ground_id = noone;
-ceiling_id = noone;
 
 // Input
 input_axis_x = 0;
