@@ -21,6 +21,7 @@
     {"name":"inst_475998B7","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_26DCC11C","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_64A85B88","path":"rooms/rmTestNew/rmTestNew.yy",},
+    {"name":"inst_2B629D79","path":"rooms/rmTestNew/rmTestNew.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -36,6 +37,7 @@
     {"$GMRInstanceLayer":"","%Name":"StageObjects","depth":300,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_24BAA77E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_24BAA77E","objectId":{"name":"objPlayerSpawn","path":"objects/objPlayerSpawn/objPlayerSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1232.0,},
         {"$GMRInstance":"v4","%Name":"inst_64A85B88","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_64A85B88","objectId":{"name":"objJumpPanel","path":"objects/objJumpPanel/objJumpPanel.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":376.0,"y":1248.0,},
+        {"$GMRInstance":"v4","%Name":"inst_2B629D79","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2B629D79","objectId":{"name":"objJumpPanel","path":"objects/objJumpPanel/objJumpPanel.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"x":56.0,"y":1248.0,},
       ],"layers":[],"name":"StageObjects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Triggers","depth":400,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_12D72A86","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_12D72A86","objectId":{"name":"objLayerSet","path":"objects/objLayerSet/objLayerSet.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1432.0,"y":1336.0,},
