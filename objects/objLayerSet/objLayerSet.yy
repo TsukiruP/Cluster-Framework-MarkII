@@ -42,5 +42,5 @@
     "path":"sprites/sprLayerSet/sprLayerSet.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
