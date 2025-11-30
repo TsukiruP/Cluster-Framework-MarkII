@@ -73,8 +73,6 @@ if (layer_exists("TilesLayer0"))
 	collision_layer = 0;
 }
 
-solid_objects = [];
-
 // Input
 input_axis_x = 0;
 input_axis_y = 0;

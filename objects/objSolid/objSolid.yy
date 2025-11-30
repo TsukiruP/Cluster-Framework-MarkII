@@ -6,8 +6,8 @@
   "name":"objSolid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Objects/Stage/Parents.yy",
+    "name":"Depreciated",
+    "path":"folders/Objects/Depreciated.yy",
   },
   "parentObjectId":{
     "name":"objStageObject",

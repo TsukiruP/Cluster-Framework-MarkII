@@ -11,8 +11,7 @@ function player_calc_ground_normal(ox, oy, rot)
 	var sensor_y = array_create(2, oy);
 	var sine = dsin(rot);
 	var cosine = dcos(rot);
-	var total_solids = array_concat(tilemaps, solid_objects);
-
+	
 	if (rot mod 180 != 0)
 	{
 		var right = (rot == 90);
@@ -31,12 +30,12 @@ function player_calc_ground_normal(ox, oy, rot)
 	{
 		repeat (y_tile_reach)
 		{
-			if (collision_point(sensor_x[n], sensor_y[n], total_solids, true, false) == noone)
+			if (collision_point(sensor_x[n], sensor_y[n], tilemaps, true, false) == noone)
 			{
 				sensor_x[n] += sine;
 				sensor_y[n] += cosine;
 			}
-			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, total_solids, true, false) != noone)
+			else if (collision_point(sensor_x[n] - sine, sensor_y[n] - cosine, tilemaps, true, false) != noone)
 			{
 				sensor_x[n] -= sine;
 				sensor_y[n] -= cosine;
@@ -56,20 +55,8 @@ function player_detect_entities()
 {
 	// Reset ground instance
     ground_id = noone;
-    
-    // Setup bounding rectangle
-	var x_int = x div 1;
-	var y_int = y div 1;
-	var xdia = x_wall_radius + 0.5;
-	var ydia = y_radius + y_tile_reach + 0.5;
 	
 	with (objStageObject) reaction(other);
-	
-	/* AUTHOR NOTE: the size of the bounding rectangle must be coordinated with the distances used for collision checking.
-	Wall collisions check for a distance of `x_wall_radius`, so this is the rectangle's width.
-	Floor collisions check for a distance of `y_tile_reach + y_radius`, so this is the rectangle's height.
-	The additional 0.5 pixels is there to address a quirk with GameMaker's collision functions where, with the exception of
-	`collision_line` and `collision_point`, the colliding shapes must intersect by at least 0.5 pixels for a collision to be registered. */
     
 	// Evaluate semisolid tilemap collision
     if (semisolid_tilemap != -1)
