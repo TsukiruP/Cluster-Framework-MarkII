@@ -435,7 +435,7 @@ player_damage = function(inst)
         if (abs(x_speed) <= 2.5)
         {
             if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
-            else x_speed = esign(inst.x - x, image_xscale) * hurt_speed;
+            else x_speed = image_xscale * hurt_speed;
             animation_data.variant = 0;
         }
         else
