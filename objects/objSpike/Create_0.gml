@@ -4,205 +4,190 @@ event_inherited();
 
 gravity_direction = image_angle;
 hitboxes[0].set_size(-16, -24, 15, 0);
+hidden_fix = false;
 reaction = function(pla)
 {
-    if (sprite_exists(sprite_index) and image_index == 0)
+    // Abort if the spike is hidden
+    if (not sprite_exists(sprite_index) or image_index != 0) exit;
+    
+    var flags = collision_player(0, pla);
+    if (flags)
     {
-        var flags = collision_player(0, pla);
-        if (flags)
+        var x_dist = convert_hex((flags & 0x0FF00) >> 8);
+        var y_dist = convert_hex(flags & 0x000FF);
+        pla.x += x_dist;
+        pla.y += y_dist;
+        
+        if (flags & COLL_FLAG_VERTICAL)
         {
-            var x_dist = convert_hex((flags & 0x0FF00) >> 8);
-            var y_dist = convert_hex(flags & 0x000FF);
-            pla.x += x_dist;
-            pla.y += y_dist;
-            
-            if (flags & COLL_FLAG_VERTICAL)
+            if (flags & COLL_FLAG_TOP)
             {
-                if (flags & COLL_FLAG_TOP)
+                switch (pla.gravity_direction)
                 {
-                    switch (pla.gravity_direction)
+                    case 0:
                     {
-                        case 0:
+                        if (pla.y_speed >= 0)
                         {
-                            if (pla.y_speed >= 0)
-                            {
-                                pla.ground_id = self;
-                                if (gravity_direction == 0) pla.player_damage(self);
-                            }
-                            break;
+                            pla.ground_id = self;
+                            if (gravity_direction == 0) pla.player_damage(self);
                         }
-                        case 90:
-                        {
-                            if (pla.x_speed <= 0)
-                            {
-                                pla.x_speed = 0;
-                                if (gravity_direction == 0) pla.player_damage(self);
-                            }
-                            break;
-                        }
-                        case 180:
-                        {
-                            if (pla.y_speed <= 0) 
-                            {
-                                if (gravity_direction == 0) pla.player_damage(self);
-                                pla.y_speed = 0;
-                            }
-                            break;
-                        }
-                        case 270:
-                        {
-                            if (pla.x_speed >= 0)
-                            {
-                                pla.x_speed = 0;
-                                if (gravity_direction == 0) pla.player_damage(self);
-                            }
-                            break;
-                        }
+                        break;
                     }
-                }
-                else if (flags & COLL_FLAG_BOTTOM)
-                {
-                    switch (pla.gravity_direction)
+                    case 90:
                     {
-                        case 0:
+                        if (pla.x_speed <= 0)
                         {
-                            if (pla.y_speed <= 0) 
-                            {
-                                if (gravity_direction == 180) pla.player_damage(self);
-                                pla.y_speed = 0;
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 0 or (gravity_direction mod 180 != 0 and hidden_fix)) pla.player_damage(self);
                         }
-                        case 90:
+                        break;
+                    }
+                    case 180:
+                    {
+                        if (pla.y_speed <= 0) 
                         {
-                            if (pla.x_speed >= 0) 
-                            {
-                                pla.x_speed = 0;
-                                if (gravity_direction == 180) pla.player_damage(self);
-                            }
-                            break;
+                            if (gravity_direction == 0) pla.player_damage(self);
+                            pla.y_speed = 0;
                         }
-                        case 180:
+                        break;
+                    }
+                    case 270:
+                    {
+                        if (pla.x_speed >= 0)
                         {
-                            if (pla.y_speed >= 0) 
-                            {
-                                pla.ground_id = self;
-                                if (gravity_direction == 180) pla.player_damage(self);
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 0 or (gravity_direction mod 180 != 0 and hidden_fix)) pla.player_damage(self);
                         }
-                        case 270:
-                        {
-                            if (pla.x_speed <= 0) 
-                            {
-                                pla.x_speed = 0;
-                                if (gravity_direction == 180) pla.player_damage(self);
-                            }
-                            break;
-                        }
+                        break;
                     }
                 }
             }
-            else if (flags & COLL_FLAG_HORIZONTAL)
+            else if (flags & COLL_FLAG_BOTTOM)
             {
-                if (flags & COLL_FLAG_RIGHT)
+                switch (pla.gravity_direction)
                 {
-                    switch (pla.gravity_direction)
+                    case 0:
                     {
-                        case 0:
+                        if (pla.y_speed <= 0) 
                         {
-                            if (pla.x_speed <= 0) 
-                            {
-                                pla.x_speed = 0;
-                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist > 6) or
-                                    gravity_direction == 270) 
-                                {
-                                    pla.player_damage(self); 
-                                }
-                            }
-                            break;
+                            if (gravity_direction == 180) pla.player_damage(self);
+                            pla.y_speed = 0;
                         }
-                        case 90:
+                        break;
+                    }
+                    case 90:
+                    {
+                        if (pla.x_speed >= 0) 
                         {
-                            if (pla.y_speed <= 0) 
-                            {
-                                if (gravity_direction == 270) pla.player_damage(self); 
-                                pla.y_speed = 0;
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 180 or (gravity_direction mod 180 != 0 and hidden_fix)) pla.player_damage(self);
                         }
-                        case 180:
+                        break;
+                    }
+                    case 180:
+                    {
+                        if (pla.y_speed >= 0) 
                         {
-                            if (pla.x_speed >= 0) 
-                            {
-                                pla.x_speed = 0;
-                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist > 6) or
-                                    gravity_direction == 270) 
-                                {
-                                    pla.player_damage(self); 
-                                }
-                            }
-                            break;
+                            pla.ground_id = self;
+                            if (gravity_direction == 180) pla.player_damage(self);
                         }
-                        case 270:
+                        break;
+                    }
+                    case 270:
+                    {
+                        if (pla.x_speed <= 0) 
                         {
-                            if (pla.y_speed >= 0)
-                            {
-                                pla.ground_id = self;
-                                if (gravity_direction == 270) pla.player_damage(self);
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 180 or (gravity_direction mod 180 != 0 and hidden_fix)) pla.player_damage(self);
                         }
+                        break;
                     }
                 }
-                else if (flags & COLL_FLAG_LEFT)
+            }
+        }
+        else if (flags & COLL_FLAG_HORIZONTAL)
+        {
+            if (flags & COLL_FLAG_RIGHT)
+            {
+                switch (pla.gravity_direction)
                 {
-                    switch (pla.gravity_direction)
+                    case 0:
                     {
-                        case 0:
+                        if (pla.x_speed <= 0) 
                         {
-                            if (pla.x_speed >= 0)
-                            {
-                                pla.x_speed = 0;
-                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist < -6) or
-                                    gravity_direction == 90) 
-                                {
-                                    pla.player_damage(self); 
-                                }
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 270 or (gravity_direction mod 180 == 0 and hidden_fix)) pla.player_damage(self);
                         }
-                        case 90:
+                        break;
+                    }
+                    case 90:
+                    {
+                        if (pla.y_speed <= 0) 
                         {
-                            if (pla.y_speed >= 0)
-                            {
-                                pla.ground_id = self;
-                                if (gravity_direction == 90) pla.player_damage(self);
-                            }
-                            break;
+                            if (gravity_direction == 270) pla.player_damage(self); 
+                            pla.y_speed = 0;
                         }
-                        case 180:
+                        break;
+                    }
+                    case 180:
+                    {
+                        if (pla.x_speed >= 0) 
                         {
-                            if (pla.x_speed <= 0)
-                            {
-                                pla.x_speed = 0;
-                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist < -6) or
-                                    gravity_direction == 90) 
-                                {
-                                    pla.player_damage(self); 
-                                }
-                            }
-                            break;
+                            pla.x_speed = 0;
+                            if (gravity_direction == 270 or (gravity_direction mod 180 == 0 and hidden_fix)) pla.player_damage(self);
                         }
-                        case 270:
+                        break;
+                    }
+                    case 270:
+                    {
+                        if (pla.y_speed >= 0)
                         {
-                            if (pla.y_speed <= 0)
-                            {
-                                if (gravity_direction == 90) pla.player_damage(self);
-                                pla.y_speed = 0;
-                            }
-                            break;
+                            pla.ground_id = self;
+                            if (gravity_direction == 270) pla.player_damage(self);
                         }
+                        break;
+                    }
+                }
+            }
+            else if (flags & COLL_FLAG_LEFT)
+            {
+                switch (pla.gravity_direction)
+                {
+                    case 0:
+                    {
+                        if (pla.x_speed >= 0)
+                        {
+                            pla.x_speed = 0;
+                            if (gravity_direction == 90 or (gravity_direction mod 180 == 0 and hidden_fix)) pla.player_damage(self);
+                        }
+                        break;
+                    }
+                    case 90:
+                    {
+                        if (pla.y_speed >= 0)
+                        {
+                            pla.ground_id = self;
+                            if (gravity_direction == 90) pla.player_damage(self);
+                        }
+                        break;
+                    }
+                    case 180:
+                    {
+                        if (pla.x_speed <= 0)
+                        {
+                            pla.x_speed = 0;
+                            if (gravity_direction == 90 or (gravity_direction mod 180 == 0 and hidden_fix)) pla.player_damage(self);
+                        }
+                        break;
+                    }
+                    case 270:
+                    {
+                        if (pla.y_speed <= 0)
+                        {
+                            if (gravity_direction == 90) pla.player_damage(self);
+                            pla.y_speed = 0;
+                        }
+                        break;
                     }
                 }
             }

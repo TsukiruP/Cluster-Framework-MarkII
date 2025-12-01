@@ -9,6 +9,7 @@ if (hidden)
     else
     {
         sprite_index = sprSpike;
+        hidden_fix = (image_index != 0);
         if (time < 62) image_index = 1;
         else if (time < 64) image_index = 2;
         else if (time < 124) image_index = 0;
