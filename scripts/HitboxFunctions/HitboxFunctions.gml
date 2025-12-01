@@ -129,12 +129,12 @@ function collision_player(hb, pla, plahb = -1)
                 if (x_center <= px_int)
                 {
                     x_dist = dx2 - sx1;
-                    result |= COLL_RIGHT;
+                    result |= COLL_FLAG_RIGHT;
                 }
                 else
                 {
                     x_dist = dx1 - sx2;
-                    result |= COLL_LEFT;
+                    result |= COLL_FLAG_LEFT;
                 }
                 
                 if (y_center > py_int)
@@ -142,28 +142,28 @@ function collision_player(hb, pla, plahb = -1)
                     y_dist = dy1 - sy2;
                     y_dist_ext = y_dist + 5;
                     if (y_dist_ext > 0) y_dist_ext = 0;
-                    result |= COLL_TOP;
+                    result |= COLL_FLAG_TOP;
                 }
                 else
                 {
                 	y_dist = dy2 - sy1;
                     y_dist_ext = y_dist + 2;
                     if (y_dist_ext < 0) y_dist_ext = 0;
-                    result |= COLL_BOTTOM;
+                    result |= COLL_FLAG_BOTTOM;
                 }
                 
                 if (abs(x_dist) <= abs(y_dist_ext))
                 {
-                    result &= COLL_HORIZONTAL;
+                    result &= COLL_FLAG_HORIZONTAL;
                 }
                 else
                 {
-                    result &= COLL_VERTICAL;
+                    result &= COLL_FLAG_VERTICAL;
                 }
                 
                 result |= (((x_dist << 8) & 0xFF00) | (y_dist & 0xFF));
-                if (not (result & COLL_VERTICAL)) result &= 0xFFF00;
-                if (not (result & COLL_HORIZONTAL)) result &= 0xF00FF;
+                if (not (result & COLL_FLAG_VERTICAL)) result &= 0xFFF00;
+                if (not (result & COLL_FLAG_HORIZONTAL)) result &= 0xF00FF;
             }
         }
     }
