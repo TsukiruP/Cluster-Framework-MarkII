@@ -114,7 +114,11 @@ reaction = function(pla)
                             if (pla.x_speed <= 0) 
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 270) pla.player_damage(self); 
+                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist > 6) or
+                                    gravity_direction == 270) 
+                                {
+                                    pla.player_damage(self); 
+                                }
                             }
                             break;
                         }
@@ -132,7 +136,11 @@ reaction = function(pla)
                             if (pla.x_speed >= 0) 
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 270) pla.player_damage(self); 
+                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist > 6) or
+                                    gravity_direction == 270) 
+                                {
+                                    pla.player_damage(self); 
+                                }
                             }
                             break;
                         }
@@ -156,7 +164,11 @@ reaction = function(pla)
                             if (pla.x_speed >= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 90) pla.player_damage(self);
+                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist < -6) or
+                                    gravity_direction == 90) 
+                                {
+                                    pla.player_damage(self); 
+                                }
                             }
                             break;
                         }
@@ -174,7 +186,11 @@ reaction = function(pla)
                             if (pla.x_speed <= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 90) pla.player_damage(self);
+                                if (((gravity_direction == 0 or gravity_direction == 180) and x_dist < -6) or
+                                    gravity_direction == 90) 
+                                {
+                                    pla.player_damage(self); 
+                                }
                             }
                             break;
                         }
