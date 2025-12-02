@@ -38,7 +38,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed <= 0)
                         {
-                            if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
+                            if (gravity_direction == 180 and y_dist < 0 and hidden_fix)
+                            {
+                                pla.y = y - hitboxes[0].top + pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                                 (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
@@ -69,7 +75,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed >= 0)
                         {
-                            if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
+                            if (gravity_direction == 180 and y_dist < 0 and hidden_fix)
+                            {
+                                pla.y = y - hitboxes[0].top + pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                                 (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
@@ -106,7 +118,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed >= 0) 
                         {
-                            if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
+                            if (gravity_direction == 0 and y_dist > 0 and hidden_fix)
+                            {
+                                pla.y = y + hitboxes[0].top - pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                                 (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
@@ -137,7 +155,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed <= 0) 
                         {
-                            if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
+                            if (gravity_direction == 0 and y_dist > 0 and hidden_fix)
+                            {
+                                pla.y = y + hitboxes[0].top - pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                                 (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
@@ -167,7 +191,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed <= 0) 
                         {
-                            if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
+                            if (gravity_direction == 90 and x_dist > 0 and hidden_fix)
+                            {
+                                pla.x = x + hitboxes[0].top - pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
                                 (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
@@ -198,7 +228,13 @@ reaction = function(pla)
                     {
                         if (pla.x_speed >= 0) 
                         {
-                            if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
+                            if (gravity_direction == 90 and x_dist > 0 and hidden_fix)
+                            {
+                                pla.x = x + hitboxes[0].top - pla.x_radius;
+                                pla.x_speed = 0;
+                                pla.player_damage(self);
+                            }
+                            else if  (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
                                 (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
                                 hidden_fix)
                             {
