@@ -1,5 +1,5 @@
 /// @description Cull
-instance_deactivate_object(objStageObject);
+instance_deactivate_object(objInteractable);
 
 // Activate instances inside the view
 var vx = global.main_camera.get_x();

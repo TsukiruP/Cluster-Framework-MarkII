@@ -70,11 +70,20 @@ reaction = function(pla)
                     }
                     case 180:
                     {
-                        pla.y += y_dist;
-                        if (pla.y_speed <= 0) 
+                        if ((gravity_direction == 90 or gravity_direction == 180 or gravity_direction == 270) and hidden_fix)
                         {
-                            if (gravity_direction == 0) pla.player_damage(self);
-                            pla.y_speed = 0;
+                            if (gravity_direction == pla.gravity_direction) pla.y = y - hitboxes[0].top + pla.y_radius;
+                            else pla.x = x + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 90 ? 1 : -1));
+                            pla.player_damage(self);
+                        }
+                        else
+                        {
+                            pla.y += y_dist;
+                            if (pla.y_speed <= 0) 
+                            {
+                                if (gravity_direction == 0) pla.player_damage(self);
+                                pla.y_speed = 0;
+                            }
                         }
                         break;
                     }
@@ -120,11 +129,20 @@ reaction = function(pla)
                 {
                     case 0:
                     {
-                        pla.y += y_dist;
-                        if (pla.y_speed <= 0) 
+                        if ((gravity_direction == 0 or gravity_direction == 90 or gravity_direction == 270) and hidden_fix)
                         {
-                            if (gravity_direction == 180) pla.player_damage(self);
-                            pla.y_speed = 0;
+                            if (gravity_direction == pla.gravity_direction) pla.y = y + hitboxes[0].top - pla.y_radius;
+                            else pla.x = x + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 90 ? 1 : -1));
+                            pla.player_damage(self);
+                        }
+                        else
+                        {
+                            pla.y += y_dist;
+                            if (pla.y_speed <= 0) 
+                            {
+                                if (gravity_direction == 180) pla.player_damage(self);
+                                pla.y_speed = 0;
+                            }
                         }
                         break;
                     }
@@ -295,11 +313,20 @@ reaction = function(pla)
                     }
                     case 270:
                     {
-                        pla.x += x_dist;
-                        if (pla.y_speed <= 0)
+                        if ((gravity_direction == 0 or gravity_direction == 180 or gravity_direction == 270) and hidden_fix)
                         {
-                            if (gravity_direction == 90) pla.player_damage(self);
-                            pla.y_speed = 0;
+                            if (gravity_direction == pla.gravity_direction) pla.x = x - hitboxes[0].top + pla.y_radius;
+                            else pla.y = y + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 0 ? 1 : -1));
+                            pla.player_damage(self);
+                        }
+                        else
+                        {
+                            pla.x += x_dist;
+                            if (pla.y_speed <= 0)
+                            {
+                                if (gravity_direction == 90) pla.player_damage(self);
+                                pla.y_speed = 0;
+                            }
                         }
                         break;
                     }
@@ -345,11 +372,20 @@ reaction = function(pla)
                     }
                     case 90:
                     {
-                        pla.x += x_dist;
-                        if (pla.y_speed <= 0) 
+                        if ((gravity_direction == 0 or gravity_direction == 90 or gravity_direction == 180) and hidden_fix)
                         {
-                            if (gravity_direction == 270) pla.player_damage(self); 
-                            pla.y_speed = 0;
+                            if (gravity_direction == pla.gravity_direction) pla.x = x + hitboxes[0].top - pla.y_radius;
+                            else pla.y = y + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 0 ? 1 : -1));
+                            pla.player_damage(self);
+                        }
+                        else
+                        {
+                            pla.x += x_dist;
+                            if (pla.y_speed <= 0) 
+                            {
+                                if (gravity_direction == 270) pla.player_damage(self); 
+                                pla.y_speed = 0;
+                            }
                         }
                         break;
                     }

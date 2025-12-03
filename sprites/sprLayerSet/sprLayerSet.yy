@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"General",
-    "path":"folders/Sprites/Stage/General.yy",
+    "name":"Triggers",
+    "path":"folders/Sprites/Stage/General/Triggers.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

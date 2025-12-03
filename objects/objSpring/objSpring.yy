@@ -14,8 +14,8 @@
     "path":"folders/Objects/Stage/Parents.yy",
   },
   "parentObjectId":{
-    "name":"objStageObject",
-    "path":"objects/objStageObject/objStageObject.yy",
+    "name":"objInteractable",
+    "path":"objects/objInteractable/objInteractable.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

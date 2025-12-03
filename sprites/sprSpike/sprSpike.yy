@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"General",
-    "path":"folders/Sprites/Stage/General.yy",
+    "name":"Misc",
+    "path":"folders/Sprites/Stage/General/Misc.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

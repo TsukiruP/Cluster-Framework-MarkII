@@ -49,14 +49,14 @@ function player_calc_ground_normal(ox, oy, rot)
 }
 
 /// @function player_detect_entities()
-/// @description Finds any instances intersecting a minimum bounding rectangle centered on the player, executes their reaction, and registers their solidity.
+/// @description Executes the reactions of all interactable objects.
 /// It also refreshes the player's local tilemaps by (de)listing the semisolid layer if applicable.
 function player_detect_entities()
 {
 	// Reset ground instance
     ground_id = noone;
 	
-	with (objStageObject) reaction(other);
+	with (objInteractable) reaction(other);
     
 	// Evaluate semisolid tilemap collision
     if (semisolid_tilemap != -1)

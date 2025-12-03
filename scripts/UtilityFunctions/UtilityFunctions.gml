@@ -105,7 +105,7 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 /// @returns {Id.Instance}
 function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
-    var particle = instance_create_depth(ox, oy, layer_get_depth("StageObjects") - DEPTH_OFFSET_PARTICLE, objParticle);
+    var particle = instance_create_depth(ox, oy, layer_get_depth("Interactables") - DEPTH_OFFSET_PARTICLE, objParticle);
     with (particle)
     {
         animation_set(ani);
