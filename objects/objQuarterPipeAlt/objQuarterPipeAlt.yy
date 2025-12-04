@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Terrain Shapes",
-    "path":"folders/Objects/Stage/Terrain Shapes.yy",
+    "path":"folders/Objects/Depreciated/Terrain Shapes.yy",
   },
   "parentObjectId":{
     "name":"objSolid",

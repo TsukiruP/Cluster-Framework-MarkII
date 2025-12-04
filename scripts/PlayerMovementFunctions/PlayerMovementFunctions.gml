@@ -3,17 +3,13 @@
 function player_move_on_ground()
 {
 	// Ride moving platforms
-	with (instance_place(x div 1 + dsin(mask_direction), y div 1 + dcos(mask_direction), objSolid))
+	with (ground_id)
 	{
 		var dx = x - xprevious;
 		var dy = y - yprevious;
 		if (dx != 0) other.x += dx;
 		if (dy != 0) other.y += dy;
 	}
-	
-	/* AUTHOR NOTE: using `instance_place` here is cheeky as the player's sprite mask is used
-	to check for collision instead of their virtual mask.
-	However, unless the player's virtual mask is wider than their sprite's, this is not an issue. */
 	
 	// Calculate the number of steps for collision checking
 	var total_steps = 1 + abs(x_speed) div x_radius;
@@ -41,18 +37,18 @@ function player_move_on_ground()
 		if (on_ground)
 		{
 			tile_data = player_find_floor(y_radius + (ground_snap ? y_tile_reach : 1));
-            if (instance_exists(ground_id))
+            if (tile_data != undefined)
+			{
+				player_ground(tile_data);
+				player_rotate_mask();
+			}
+            else if (instance_exists(ground_id))
             {
                 on_ground = true;
                 direction = gravity_direction;
                 mask_direction = gravity_direction;
                 local_direction = 0;
             }
-            else if (tile_data != undefined)
-			{
-				player_ground(tile_data);
-				player_rotate_mask();
-			}
 			else on_ground = false;
 		}
 	}
@@ -91,7 +87,13 @@ function player_move_in_air()
 		if (y_speed >= 0)
 		{
 			tile_data = player_find_floor(y_radius);
-			if (instance_exists(ground_id))
+			if (tile_data != undefined)
+			{
+				landed = true;
+				player_ground(tile_data);
+				player_rotate_mask();
+			}
+            else if (instance_exists(ground_id))
             {
                 landed = true;
                 on_ground = true;
@@ -99,12 +101,6 @@ function player_move_in_air()
                 mask_direction = gravity_direction;
                 local_direction = 0;
             }
-            else if (tile_data != undefined)
-			{
-				landed = true;
-				player_ground(tile_data);
-				player_rotate_mask();
-			}
 		}
 		else
 		{

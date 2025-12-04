@@ -1,13 +1,16 @@
 {
   "$GMObject":"",
   "%Name":"objSolid",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"objSolid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Depreciated",
-    "path":"folders/Objects/Depreciated.yy",
+    "name":"Parents",
+    "path":"folders/Objects/Stage/Parents.yy",
   },
   "parentObjectId":{
     "name":"objInteractable",
@@ -28,6 +31,9 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"semisolid","filters":[],"listItems":[],"multiselect":false,"name":"semisolid","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"frame_speed","filters":[],"listItems":[],"multiselect":false,"name":"frame_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"xdistance","filters":[],"listItems":[],"multiselect":false,"name":"xdistance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"ydistance","filters":[],"listItems":[],"multiselect":false,"name":"ydistance","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
