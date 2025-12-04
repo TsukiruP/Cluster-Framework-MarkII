@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"objSpring",
+  "%Name":"objSemisolid",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objSpring",
+  "name":"objSemisolid",
   "overriddenProperties":[],
   "parent":{
     "name":"Parents",
     "path":"folders/Objects/Stage/Parents.yy",
   },
   "parentObjectId":{
-    "name":"objInteractable",
-    "path":"objects/objInteractable/objInteractable.yy",
+    "name":"objSolid",
+    "path":"objects/objSolid/objSolid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -30,9 +28,7 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"force","filters":[],"listItems":[],"multiselect":false,"name":"force","rangeEnabled":true,"rangeMax":12.0,"rangeMin":7.5,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"7.5","varType":0,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
