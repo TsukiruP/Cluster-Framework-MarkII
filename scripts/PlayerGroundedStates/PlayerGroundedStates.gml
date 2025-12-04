@@ -128,6 +128,7 @@ function player_is_running(phase)
 			
 			// Handle ground motion
 			var can_brake = false;
+            var can_turn = false;
 			
 			if (control_lock_time == 0)
 			{
@@ -142,14 +143,7 @@ function player_is_running(phase)
                         if (sign(x_speed) == input_axis_x)
                         {
                             // Turn
-                            if (image_xscale != input_axis_x)
-                            {
-                                x_speed = 0;
-                                animation_init(PLAYER_ANIMATION.TURN, animation_data.index == PLAYER_ANIMATION.BRAKE);
-                                image_xscale *= -1;
-                                return player_perform(player_is_standing);
-                            }
-                            
+                            if (image_xscale != input_axis_x) can_turn = true;
                             x_speed = deceleration * input_axis_x;
                         }
 					}
@@ -205,7 +199,14 @@ function player_is_running(phase)
 			if (x_speed == 0 and input_axis_x == 0) return player_perform(player_is_standing);
 			
 			// Animate
-			if (can_brake)
+            if (can_turn)
+            {
+                x_speed = 0;
+                animation_init(PLAYER_ANIMATION.TURN, animation_data.index == PLAYER_ANIMATION.BRAKE);
+                image_xscale *= -1;
+                return player_perform(player_is_standing);
+            }
+			else if (can_brake)
 			{
 				if (animation_data.index != PLAYER_ANIMATION.BRAKE)
 				{
