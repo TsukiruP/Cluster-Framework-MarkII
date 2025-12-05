@@ -61,11 +61,15 @@ function player_detect_entities()
 	// Evaluate semisolid tilemap collision
     if (semisolid_tilemap != -1)
     {
-   	    var valid = array_contains(tilemaps, semisolid_tilemap);
-   	    if (not player_beam_collision(semisolid_tilemap))
-   	    { 
-            if (not valid) array_push(tilemaps, semisolid_tilemap);
-   	    }
-   	    else if (valid) array_pop(tilemaps);
+        var valid = array_contains(tilemaps, semisolid_tilemap);
+        if (not player_beam_collision(semisolid_tilemap))
+        { 
+            if (not valid) array_push(tilemaps, semisolid_tilemap); 
+        } 
+        else if (valid) array_pop(tilemaps);
     }
+    
+    /* AUTHOR NOTE:
+	There is a limitation with the semisolid tilemap detection where, if the player passes through a semisolid tilemap whilst standing on one,
+	they will fall as it will be delisted from their `solid_entities` array. */
 }

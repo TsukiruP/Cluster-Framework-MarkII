@@ -26,7 +26,7 @@ function player_is_standing(phase)
 	{
 		case PHASE.ENTER:
 		{
-			// Check if on a cliff
+			// Check if standing on a cliff
 			cliff_sign = 0;
 			var height = y_radius + y_tile_reach;
 			

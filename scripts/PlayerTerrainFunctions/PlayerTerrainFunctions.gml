@@ -3,11 +3,10 @@
 /// @returns {Id.TileMapElement|Id.Instance}
 function player_find_wall()
 {
-	for (var n = array_length(tilemaps) - 1; n > -1; --n)
+	var n = array_find_index(tilemaps, function (inst)
 	{
-		var inst = tilemaps[n];
-		if (player_beam_collision(inst)) return inst;
-	}
+		return player_beam_collision(inst);
+	});
 	
 	return (n != -1 ? tilemaps[n] : noone);
 }
