@@ -5,14 +5,13 @@ event_inherited();
 reaction = function(pla)
 {
     // Abort if the player is not falling
-    if (pla.y_speed < 0) exit;
+    if (pla.gravity_direction != gravity_direction or pla.y_speed < 0) exit;
         
     var flags0 = collision_player(0, pla);
     if (flags0)
     {
         var x_dist = convert_hex((flags0 & 0x0FF00) >> 8);
         var y_dist = convert_hex(flags0 & 0x000FF);
-        //pla.x += x_dist;
         
         if (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM))
         {
