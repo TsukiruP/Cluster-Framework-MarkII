@@ -2,6 +2,9 @@
 // Inherit the parent event
 event_inherited();
 
+active = false;
+offset = 0;
+offset_divisor = 128;
 reaction = function(pla)
 {
     // Abort if the player is not falling
@@ -18,6 +21,7 @@ reaction = function(pla)
             if (((flags0 & COLL_FLAG_TOP) and pla.gravity_direction == 0) or 
                 ((flags0 & COLL_FLAG_BOTTOM) and pla.gravity_direction == 180))
             {
+                active = true;
                 pla.y += y_dist;
                 pla.ground_id = self;
             }
@@ -27,6 +31,7 @@ reaction = function(pla)
             if (((flags0 & COLL_FLAG_LEFT) and pla.gravity_direction == 90) or 
                 ((flags0 & COLL_FLAG_RIGHT) and pla.gravity_direction == 270))
             {
+                active = true;
                 pla.x += x_dist;
                 pla.ground_id = self;
             }

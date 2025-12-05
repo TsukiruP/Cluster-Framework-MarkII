@@ -1,4 +1,4 @@
-/// @description Draw
+/// @description Render
 var x_int = x div 1;
 var y_int = y div 1;
 

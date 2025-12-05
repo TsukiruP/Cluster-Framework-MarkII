@@ -12,6 +12,8 @@
     {"name":"inst_287E0DAA","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_3B8FD67A","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_1ED2BFDA","path":"rooms/rmTestNew/rmTestNew.yy",},
+    {"name":"inst_753A555D","path":"rooms/rmTestNew/rmTestNew.yy",},
+    {"name":"inst_7120EAFB","path":"rooms/rmTestNew/rmTestNew.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -26,6 +28,8 @@
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Interactables","depth":300,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_24BAA77E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_24BAA77E","objectId":{"name":"objPlayerSpawn","path":"objects/objPlayerSpawn/objPlayerSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1232.0,},
+        {"$GMRInstance":"v4","%Name":"inst_753A555D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_753A555D","objectId":{"name":"objSunsetHillSemisolid","path":"objects/objSunsetHillSemisolid/objSunsetHillSemisolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":336.0,"y":1200.0,},
+        {"$GMRInstance":"v4","%Name":"inst_7120EAFB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7120EAFB","objectId":{"name":"objSunsetHillSolid0","path":"objects/objSunsetHillSolid0/objSunsetHillSolid0.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":432.0,"y":1192.0,},
       ],"layers":[],"name":"Interactables","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Triggers","depth":400,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_7871C729","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7871C729","objectId":{"name":"objLayerSet","path":"objects/objLayerSet/objLayerSet.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":6.0,"x":1424.0,"y":1248.0,},

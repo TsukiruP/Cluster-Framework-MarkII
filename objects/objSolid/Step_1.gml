@@ -1,4 +1,4 @@
-///@description Update
+/// @description Update
 if (xdistance != 0 or ydistance != 0)
 {
     var time = ctrlStage.stage_time;
