@@ -9,7 +9,7 @@ function player_find_wall()
 		if (player_beam_collision(inst)) return inst;
 	}
 	
-	return noone;
+	return (n != -1 ? tilemaps[n] : noone);
 }
 
 /// @function player_find_floor(radius)
@@ -39,15 +39,20 @@ to one line of code. */
 /// @returns {Real|Undefined}
 function player_find_ceiling(radius)
 {
+	var total = array_length(tilemaps);
 	for (var oy = 0; oy <= radius; ++oy)
 	{
-		for (var n = array_length(tilemaps) - 1; n > -1; --n)
+		for (var n = 0; n < total; ++n)
 		{
 			var inst = tilemaps[n];
-			if (player_beam_collision(inst, x_radius, -oy) and inst != semisolid_tilemap)
+			
+			// Skip the solid if passing through it
+			if (inst == semisolid_tilemap or not player_beam_collision(inst, x_radius, -oy))
 			{
-				return oy;
+				continue;
 			}
+			
+			return oy;
 		}
 	}
 	
