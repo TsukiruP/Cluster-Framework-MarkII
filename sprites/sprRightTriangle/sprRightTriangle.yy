@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Terrain Shapes",
-    "path":"folders/Sprites/Stage/Terrain Shapes.yy",
+    "path":"folders/Sprites/Depreciated/Terrain Shapes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

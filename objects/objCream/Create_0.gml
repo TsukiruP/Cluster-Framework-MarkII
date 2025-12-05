@@ -1,4 +1,4 @@
-/// @description Initialize
+/// @description Setup
 // Inherit the parent event
 event_inherited();
 
@@ -285,5 +285,6 @@ ears_effect = new player_effect();
 
 player_draw_before = function()
 {
+    ears_effect.image_alpha = image_alpha;
     ears_effect.draw();
 };

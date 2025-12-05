@@ -26,24 +26,21 @@ function player_is_standing(phase)
 	{
 		case PHASE.ENTER:
 		{
-			// Check if on a cliff
+			// Check if standing on a cliff
 			cliff_sign = 0;
-			var edge = 0;
 			var height = y_radius + y_tile_reach;
 			
-			var total_solids = array_concat(tilemaps, solid_objects);
-			for (var n = array_length(total_solids) - 1; n > -1; --n)
+			if (not player_ray_collision(tilemaps, 0, height))
 			{
-				var inst = total_solids[n];
-				
-				// Check sensors
-				if (player_beam_collision(inst, 0, height)) break; // Center collision means not on a cliff
-				if (player_beam_collision(inst, -x_radius, height)) edge |= 1; // Left
-				if (player_beam_collision(inst, x_radius, height)) edge |= 2; // Right
+				if (player_ray_collision(tilemaps, -x_radius, height))
+				{
+					cliff_sign = 1;
+				}
+				else if (player_ray_collision(tilemaps, x_radius, height))
+				{
+					cliff_sign = -1;
+				}
 			}
-			
-			// Check if only one sensor is grounded
-			if (n == -1 and edge != 3) cliff_sign = (edge == 1 ? 1 : -1);
 			
 			// Animate
             var ani_idle = (cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
@@ -126,6 +123,7 @@ function player_is_running(phase)
 			
 			// Handle ground motion
 			var can_brake = false;
+            var can_turn = false;
 			
 			if (control_lock_time == 0)
 			{
@@ -140,14 +138,7 @@ function player_is_running(phase)
                         if (sign(x_speed) == input_axis_x)
                         {
                             // Turn
-                            if (image_xscale != input_axis_x)
-                            {
-                                x_speed = 0;
-                                animation_init(PLAYER_ANIMATION.TURN, animation_data.index == PLAYER_ANIMATION.BRAKE);
-                                image_xscale *= -1;
-                                return player_perform(player_is_standing);
-                            }
-                            
+                            if (image_xscale != input_axis_x) can_turn = true;
                             x_speed = deceleration * input_axis_x;
                         }
 					}
@@ -203,7 +194,14 @@ function player_is_running(phase)
 			if (x_speed == 0 and input_axis_x == 0) return player_perform(player_is_standing);
 			
 			// Animate
-			if (can_brake)
+            if (can_turn)
+            {
+                x_speed = 0;
+                animation_init(PLAYER_ANIMATION.TURN, animation_data.index == PLAYER_ANIMATION.BRAKE);
+                image_xscale *= -1;
+                return player_perform(player_is_standing);
+            }
+			else if (can_brake)
 			{
 				if (animation_data.index != PLAYER_ANIMATION.BRAKE)
 				{

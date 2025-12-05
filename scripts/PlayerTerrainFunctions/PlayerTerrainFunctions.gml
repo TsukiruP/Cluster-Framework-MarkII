@@ -3,19 +3,12 @@
 /// @returns {Id.TileMapElement|Id.Instance}
 function player_find_wall()
 {
-	for (var n = array_length(tilemaps) - 1; n > -1; --n)
+	var n = array_find_index(tilemaps, function (inst)
 	{
-		var inst = tilemaps[n];
-		if (player_ray_collision(inst)) return inst;
-	}
+		return player_beam_collision(inst);
+	});
 	
-	for (n = array_length(solid_objects) - 1; n > -1; --n)
-	{
-		inst = solid_objects[n];
-		if (player_ray_collision(inst)) return inst;
-	}
-	
-	return noone;
+	return (n != -1 ? tilemaps[n] : noone);
 }
 
 /// @function player_find_floor(radius)
@@ -26,19 +19,18 @@ function player_find_floor(radius)
 {
 	for (var oy = 0; oy <= radius; ++oy)
 	{
-		for (var n = array_length(tilemaps) - 1; n > -1; --n)
+		if (player_beam_collision(tilemaps, x_radius, oy))
 		{
-			if (player_ray_collision(tilemaps[n], x_radius, oy)) return oy;
-		}
-		
-		for (n = array_length(solid_objects) - 1; n > -1; --n)
-		{
-			if (player_ray_collision(solid_objects[n], x_radius, oy)) return oy;
+			return oy;
 		}
 	}
 	
 	return undefined;
 }
+
+/* TODO: since GameMaker's collision functions accept an array of entities to check against for collision,
+think about refactoring the player's collision functions to directly return the entity id; this would condense `player_find_wall`
+to one line of code. */
 
 /// @function player_find_ceiling(radius)
 /// @description Finds the minimum distance between the player and the first solid intersecting the upper half of their virtual mask.
@@ -46,18 +38,20 @@ function player_find_floor(radius)
 /// @returns {Real|Undefined}
 function player_find_ceiling(radius)
 {
+	var total = array_length(tilemaps);
 	for (var oy = 0; oy <= radius; ++oy)
 	{
-		for (var n = array_length(tilemaps) - 1; n > -1; --n)
+		for (var n = 0; n < total; ++n)
 		{
 			var inst = tilemaps[n];
-			if (player_ray_collision(inst, x_radius, -oy) and inst != semisolid_tilemap) return oy;
-		}
-		
-		for (n = array_length(solid_objects) - 1; n > -1; --n)
-		{
-			inst = solid_objects[n];
-			if (player_ray_collision(inst, x_radius, -oy) and not inst.semisolid) return oy;
+			
+			// Skip the solid if passing through it
+			if (inst == semisolid_tilemap or not player_beam_collision(inst, x_radius, -oy))
+			{
+				continue;
+			}
+			
+			return oy;
 		}
 	}
 	

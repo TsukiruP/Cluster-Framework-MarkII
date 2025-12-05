@@ -1,2 +1,2 @@
-/// @description Hitboxes
-with (objStageObject) draw_hitboxes();
+/// @description Debug
+with (objInteractable) draw_hitboxes();

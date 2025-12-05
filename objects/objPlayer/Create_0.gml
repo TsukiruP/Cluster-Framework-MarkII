@@ -1,62 +1,5 @@
-/// @description Initialize
+/// @description Setup
 image_speed = 0;
-
-// Constants
-enum PHASE
-{ 
-    ENTER,
-    STEP,
-    EXIT
-}
-
-enum PLAYER_ANIMATION
-{ 
-    IDLE,
-    TEETER,
-    TURN,
-    RUN,
-    BRAKE,
-    LOOK,
-    CROUCH,
-    ROLL,
-    SPIN_DASH,
-    FALL,
-    JUMP,
-    HURT,
-    DEAD,
-    TRICK_UP,
-    TRICK_DOWN,
-    TRICK_FRONT,
-    TRICK_BACK,
-    SPRING,
-    SPRING_TWIRL
-}
-
-enum TRICK
-{
-	UP,
-	DOWN,
-	FRONT,
-	BACK
-}
-
-enum CPU_INPUT
-{
-	X,
-	Y,
-	JUMP,
-	JUMP_PRESSED,
-	MAX
-}
-
-enum CPU_STATE
-{
-	FOLLOW,
-	CROUCH,
-	SPIN_DASH
-}
-
-#macro PLAYER_HEIGHT 14
 
 // State machine
 state = player_is_ready;
@@ -121,20 +64,15 @@ mask_direction = 0;
 
 cliff_sign = 0;
 
-tilemaps =
-[
-	layer_tilemap_get_id("TilesMain")
-];
-
+tilemaps = [layer_tilemap_get_id("TilesMain")];
 if (layer_exists("TilesLayer0"))
 {
-    array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
-    collision_layer = 0;
+	array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
+	collision_layer = 0;
 }
-
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
-solid_objects = [];
+ground_id = noone;
 
 // Input
 input_axis_x = 0;
@@ -234,10 +172,11 @@ function player_effect() constructor
     image_xscale = 1;
     image_yscale = 1;
     image_angle = 0;
+    image_alpha = 1;
     animation_data = new animation_core();
     static draw = function()
     {
-        if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
+        if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
     };
 }
 

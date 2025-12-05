@@ -15,6 +15,7 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	});
     
     if (input_cpu_gamepad_time > 0) input_cpu_gamepad_time--;
+    if (input_button.start.pressed) gravity_direction = angle_wrap(gravity_direction + 90);
 }
 
 if (player_index != 0 and input_cpu_gamepad_time == 0)
@@ -188,8 +189,8 @@ var py = 0;
 
 camera_padding_y = PLAYER_HEIGHT - y_radius;
 
-px += cosine * camera_padding_x + sine * camera_padding_y;
-py += sine * camera_padding_x + cosine * camera_padding_y;
+px += (gravity_direction mod 180 == 0) * camera_padding_x + (gravity_direction mod 180 != 0) * camera_padding_y;
+py += (gravity_direction mod 180 == 0) * camera_padding_y + (gravity_direction mod 180 != 0) * camera_padding_x;
 
 #endregion
 

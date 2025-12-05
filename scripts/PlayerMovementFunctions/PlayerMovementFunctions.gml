@@ -3,17 +3,13 @@
 function player_move_on_ground()
 {
 	// Ride moving platforms
-	with (instance_place(x div 1 + dsin(mask_direction), y div 1 + dcos(mask_direction), objSolid))
+	with (ground_id)
 	{
 		var dx = x - xprevious;
 		var dy = y - yprevious;
 		if (dx != 0) other.x += dx;
 		if (dy != 0) other.y += dy;
 	}
-	
-	/* AUTHOR NOTE: using `instance_place` here is cheeky as the player's sprite mask is used
-	to check for collision instead of their virtual mask.
-	However, unless the player's virtual mask is wider than their sprite's, this is not an issue. */
 	
 	// Calculate the number of steps for collision checking
 	var total_steps = 1 + abs(x_speed) div x_radius;
@@ -40,12 +36,19 @@ function player_move_on_ground()
 		// Handle floor collision
 		if (on_ground)
 		{
-			tile_data = player_find_floor(ground_snap ? y_radius + y_tile_reach : y_radius + 1);
-			if (tile_data != undefined)
+			tile_data = player_find_floor(y_radius + (ground_snap ? y_tile_reach : 1));
+            if (tile_data != undefined)
 			{
 				player_ground(tile_data);
 				player_rotate_mask();
 			}
+            else if (instance_exists(ground_id))
+            {
+                on_ground = true;
+                direction = gravity_direction;
+                mask_direction = gravity_direction;
+                local_direction = 0;
+            }
 			else on_ground = false;
 		}
 	}
@@ -90,12 +93,20 @@ function player_move_in_air()
 				player_ground(tile_data);
 				player_rotate_mask();
 			}
+            else if (instance_exists(ground_id))
+            {
+                landed = true;
+                on_ground = true;
+                direction = gravity_direction;
+                mask_direction = gravity_direction;
+                local_direction = 0;
+            }
 		}
 		else
 		{
 			// Handle ceiling collision
 			tile_data = player_find_ceiling(y_radius);
-			if (tile_data != undefined)
+            if (tile_data != undefined)
 			{
 				// Flip mask and land on the ceiling
 				mask_direction = (mask_direction + 180) mod 360;

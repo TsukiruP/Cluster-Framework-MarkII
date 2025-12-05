@@ -19,16 +19,14 @@ function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
     }
 }
 
-/// @function hitbox(col, [left], [top], [right], [bottom])
-/// @description Creates a hitbox.
-/// @param {Constant.Colour} col Color of the hitbox.
-/// @param {Real} left Left radius of the hitbox.
-/// @param {Real} top Top radius of the hitbox.
-/// @param {Real} right Right radius of the hitbox.
-/// @param {Real} bottom Bottom radius of the hitbox.
-function hitbox(col, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
+/// @function convert_hex(val)
+/// @description Converts an 8-bit signed hex value into a decimal number.
+/// @param {Real} val Value to convert.
+/// @returns {Real}
+function convert_hex(val)
 {
-	color = col;
+    if (val >= 128) val -= 256;
+    return val;
 }
 
 /// @function esign(val, def)
@@ -95,85 +93,6 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 	with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
 }
 
-/// @function collision_player(hb, pla, [plahb])
-/// @description Checks if the given player is intersecting the given hitbox.
-/// @param {Real} hb Hitbox to check.
-/// @param {Id.Instance} pla Player to check.
-/// @param {Real} plahb Player hitbox to check (optional, defaults to virtual mask).
-/// @returns {Real}
-function collision_player(hb, pla, plahb = -1)
-{
-    var x_int = x div 1;
-    var y_int = y div 1;
-    var sine = dsin(gravity_direction);
-    var cosine = dcos(gravity_direction);
-    
-    var left = hitboxes[hb].left;
-    var top = hitboxes[hb].top;
-    var right = hitboxes[hb].right;
-    var bottom = hitboxes[hb].bottom;
-    
-    // Abort if hitbox is empty
-    if (left == 0 and top == 0 and right == 0 and bottom == 0) return 0;
-    
-    if (image_xscale == -1)
-    {
-    	left *= -1;
-    	right *= -1;
-    }
-    
-    if (image_yscale == -1)
-    {
-        top *= -1;
-        bottom *= -1;
-    }
-    
-    var px_int = pla.x div 1;
-    var py_int = pla.y div 1;
-    var psine = dsin(pla.mask_direction);
-    var pcosine = dcos(pla.mask_direction);
-    
-    var pleft = -pla.x_radius;
-    var ptop = -pla.y_radius;
-    var pright = pla.y_radius;
-    var pbottom = pla.y_radius;
-    
-    if (plahb > -1)
-    {
-    	pleft = pla.hitboxes[plahb].left;
-    	ptop = pla.hitboxes[plahb].top;
-    	pright = pla.hitboxes[plahb].right;
-    	pbottom = pla.hitboxes[plahb].bottom;
-    	
-    	if (pla.image_xscale == -1)
-    	{
-    		pleft *= -1;
-    		pright *= -1;
-    	}
-    	
-        if (pla.image_yscale == -1)
-    	{
-    		ptop *= -1;
-    		pbottom *= -1;
-    	}
-    }
-	
-    // Abort if hitbox is empty
-    if (pleft == 0 and ptop == 0 and pright == 0 and pbottom == 0) return 0;
-    
-	var sx1 = px_int + pcosine * pleft + psine * ptop;
-	var sy1 = py_int - psine * pright + pcosine * ptop;
-	var sx2 = px_int + pcosine * pright + psine * pbottom;
-	var sy2 = py_int - psine * pleft + pcosine * pbottom;
-	
-	var dx1 = x_int + cosine * left + sine * top;
-	var dy1 = y_int - sine * right + cosine * top;
-	var dx2 = x_int + cosine * right + sine * bottom;
-	var dy2 = y_int - sine * left + cosine * bottom;
-	
-	return rectangle_in_rectangle(sx1, sy1, sx2, sy2, dx1, dy1, dx2, dy2);
-}
-
 /// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel])
 /// @description Creates a particle with the given animation.
 /// @param {Real} x x-coordinate of the particle.
@@ -186,7 +105,7 @@ function collision_player(hb, pla, plahb = -1)
 /// @returns {Id.Instance}
 function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
-    var particle = instance_create_depth(ox, oy, layer_get_depth("StageObjects") - DEPTH_OFFSET_PARTICLE, objParticle);
+    var particle = instance_create_depth(ox, oy, layer_get_depth("Interactables") - DEPTH_OFFSET_PARTICLE, objParticle);
     with (particle)
     {
         animation_set(ani);
@@ -196,49 +115,6 @@ function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0
         y_acceleration = yaccel;
     }
     return particle;
-}
-
-/// @function draw_hitboxes([ang])
-/// @description Draws all hitboxes.
-/// @param {Real} [ang] Angle to draw the hitboxes. (optional, default is gravity_direction).
-function draw_hitboxes(ang = gravity_direction)
-{
-	var x_int = x div 1;
-	var y_int = y div 1;
-	
-	for (var i = 0; i < array_length(hitboxes); i++)
-	{
-		var left = hitboxes[i].left;
-		var top = hitboxes[i].top;
-		var right = hitboxes[i].right;
-		var bottom = hitboxes[i].bottom;
-		
-		if (not (left == 0 and top == 0 and right == 0 and bottom == 0))
-		{
-			var sine = dsin(ang);
-        	var cosine = dcos(ang);
-        	var color = hitboxes[i].color;
-        	
-			if (image_xscale == -1)
-			{
-				left *= -1;
-				right *= -1;
-			}
-			
-            if (image_yscale == -1)
-            {
-                top *= -1;
-                bottom *= -1;
-            }
-			
-			var x1 = x_int + cosine * left + sine * top;
-	        var y1 = y_int - sine * right + cosine * top;
-	        var x2 = x_int + cosine * right + sine * bottom;
-	        var y2 = y_int - sine * left + cosine * bottom;
-	        
-	        draw_rectangle_color(x1, y1, x2, y2, color, color, color, color, true);
-		}
-	}
 }
 
 /// @function draw_reset()

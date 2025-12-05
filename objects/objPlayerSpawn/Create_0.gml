@@ -1,4 +1,4 @@
-/// @description Initialize
+/// @description Setup
 var player_objects = [objSonic, objMiles, objKnuckles, objAmy, objCream];
 global.players = array_create(INPUT_MAX_PLAYERS, noone);
 for (var i = 0; i < INPUT_MAX_PLAYERS; i++)

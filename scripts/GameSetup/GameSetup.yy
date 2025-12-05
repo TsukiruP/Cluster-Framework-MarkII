@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GameSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GameSetup",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Scripts/Global.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

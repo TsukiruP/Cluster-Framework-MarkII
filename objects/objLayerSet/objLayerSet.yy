@@ -12,8 +12,8 @@
     "path":"folders/Objects/Stage/General/Triggers.yy",
   },
   "parentObjectId":{
-    "name":"objStageObject",
-    "path":"objects/objStageObject/objStageObject.yy",
+    "name":"objInteractable",
+    "path":"objects/objInteractable/objInteractable.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -42,5 +42,5 @@
     "path":"sprites/sprLayerSet/sprLayerSet.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
