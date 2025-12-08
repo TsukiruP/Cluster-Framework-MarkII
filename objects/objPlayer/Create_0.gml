@@ -419,13 +419,13 @@ player_gain_lives = function(num)
 };
 
 /// @method player_damage(inst)
-/// @description Sets the player to be either hurt or dead. Set inst to self to instantly kill the player.
-/// @param {Id.Instance} [inst] Instance to check.
+/// @description Sets the player to be either hurt or dead. Set inst to id to instantly kill the player.
+/// @param {Id.Instance} inst Instance to check.
 player_damage = function(inst)
 {
-    if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != self)) exit;
+    if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != id)) exit;
     
-    if (inst == self)
+    if (inst == id)
     {
         return player_perform(player_is_dead);
     }

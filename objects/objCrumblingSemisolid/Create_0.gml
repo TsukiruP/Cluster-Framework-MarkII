@@ -2,14 +2,14 @@
 // Inherit the parent event
 event_inherited();
 
-crumble = false;
-is_crumbled = false;
+is_crumbling = false;
+crumbled = false;
 crumble_time = 0;
 reset = false;
 reaction = function(pla)
 {
     // Abort if the player is not falling
-    if (pla.gravity_direction != gravity_direction or pla.y_speed < 0 or is_crumbled) exit;
+    if (pla.gravity_direction != gravity_direction or pla.y_speed < 0 or crumbled) exit;
         
     var flags0 = collision_player(0, pla);
     if (flags0)
@@ -22,9 +22,9 @@ reaction = function(pla)
             if (((flags0 & COLL_FLAG_TOP) and pla.gravity_direction == 0) or 
                 ((flags0 & COLL_FLAG_BOTTOM) and pla.gravity_direction == 180))
             {
-                crumble = true;
+                is_crumbling = true;
                 pla.y += y_dist;
-                pla.ground_id = self;
+                pla.ground_id = id;
             }
         }
         else if (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT))
@@ -32,9 +32,9 @@ reaction = function(pla)
             if (((flags0 & COLL_FLAG_LEFT) and pla.gravity_direction == 90) or 
                 ((flags0 & COLL_FLAG_RIGHT) and pla.gravity_direction == 270))
             {
-                crumble = true;
+                is_crumbling = true;
                 pla.x += x_dist;
-                pla.ground_id = self;
+                pla.ground_id = id;
             }
         }
     }

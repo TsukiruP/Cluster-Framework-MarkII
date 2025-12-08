@@ -29,8 +29,8 @@ reaction = function(pla)
                         pla.y += y_dist;
                         if (pla.y_speed >= 0)
                         {
-                            pla.ground_id = self;
-                            if (gravity_direction == 0) pla.player_damage(self);
+                            pla.ground_id = id;
+                            if (gravity_direction == 0) pla.player_damage(id);
                         }
                         break;
                     }
@@ -40,7 +40,7 @@ reaction = function(pla)
                         {
                             pla.y = y - hitboxes[0].top + pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                             (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
@@ -49,13 +49,13 @@ reaction = function(pla)
                             if (gravity_direction == 90) 
                             {
                                 pla.x = x + hitboxes[0].top - pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
                             else 
                             {
                                 pla.x = x - hitboxes[0].top + pla.y_radius;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -63,7 +63,7 @@ reaction = function(pla)
                             if (pla.x_speed <= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 0) pla.player_damage(self);
+                                if (gravity_direction == 0) pla.player_damage(id);
                             }
                         }
                         break;
@@ -74,14 +74,14 @@ reaction = function(pla)
                         {
                             if (gravity_direction == pla.gravity_direction) pla.y = y - hitboxes[0].top + pla.y_radius;
                             else pla.x = x + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 90 ? 1 : -1));
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
                             pla.y += y_dist;
                             if (pla.y_speed <= 0) 
                             {
-                                if (gravity_direction == 0) pla.player_damage(self);
+                                if (gravity_direction == 0) pla.player_damage(id);
                                 pla.y_speed = 0;
                             }
                         }
@@ -93,7 +93,7 @@ reaction = function(pla)
                         {
                             pla.y = y - hitboxes[0].top + pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                             (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
@@ -106,9 +106,9 @@ reaction = function(pla)
                             else 
                             {
                                 pla.x = x - hitboxes[0].top + pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -116,7 +116,7 @@ reaction = function(pla)
                             if (pla.x_speed >= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 0) pla.player_damage(self);
+                                if (gravity_direction == 0) pla.player_damage(id);
                             }
                         }
                         break;
@@ -133,14 +133,14 @@ reaction = function(pla)
                         {
                             if (gravity_direction == pla.gravity_direction) pla.y = y + hitboxes[0].top - pla.y_radius;
                             else pla.x = x + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 90 ? 1 : -1));
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
                             pla.y += y_dist;
                             if (pla.y_speed <= 0) 
                             {
-                                if (gravity_direction == 180) pla.player_damage(self);
+                                if (gravity_direction == 180) pla.player_damage(id);
                                 pla.y_speed = 0;
                             }
                         }
@@ -152,7 +152,7 @@ reaction = function(pla)
                         {
                             pla.y = y + hitboxes[0].top - pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                             (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
@@ -161,13 +161,13 @@ reaction = function(pla)
                             if (gravity_direction == 90) 
                             {
                                 pla.x = x + hitboxes[0].top - pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
                             else 
                             {
                                 pla.x = x - hitboxes[0].top + pla.y_radius;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -175,7 +175,7 @@ reaction = function(pla)
                             if (pla.x_speed >= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 180) pla.player_damage(self);
+                                if (gravity_direction == 180) pla.player_damage(id);
                             }
                         }
                         break;
@@ -185,8 +185,8 @@ reaction = function(pla)
                         pla.y += y_dist;
                         if (pla.y_speed >= 0) 
                         {
-                            pla.ground_id = self;
-                            if (gravity_direction == 180) pla.player_damage(self);
+                            pla.ground_id = id;
+                            if (gravity_direction == 180) pla.player_damage(id);
                         }
                         break;
                     }
@@ -196,7 +196,7 @@ reaction = function(pla)
                         {
                             pla.y = y + hitboxes[0].top - pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 90 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_LEFT))) or 
                             (gravity_direction == 270 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM | COLL_FLAG_RIGHT)))) and
@@ -209,9 +209,9 @@ reaction = function(pla)
                             else 
                             {
                                 pla.x = x - hitboxes[0].top + pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -219,7 +219,7 @@ reaction = function(pla)
                             if (pla.x_speed <= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 180) pla.player_damage(self);
+                                if (gravity_direction == 180) pla.player_damage(id);
                             }
                         }
                         break;
@@ -239,7 +239,7 @@ reaction = function(pla)
                         {
                             pla.x = x - hitboxes[0].top + pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
                             (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
@@ -248,13 +248,13 @@ reaction = function(pla)
                             if (gravity_direction == 0)
                             {
                                 pla.y = y + hitboxes[0].top - pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
                             else
                             {
                                 pla.y = y - hitboxes[0].top + pla.y_radius;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -262,7 +262,7 @@ reaction = function(pla)
                             if (pla.x_speed >= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 90) pla.player_damage(self);
+                                if (gravity_direction == 90) pla.player_damage(id);
                             }
                         }
                         break;
@@ -272,8 +272,8 @@ reaction = function(pla)
                         pla.x += x_dist;
                         if (pla.y_speed >= 0)
                         {
-                            pla.ground_id = self;
-                            if (gravity_direction == 90) pla.player_damage(self);
+                            pla.ground_id = id;
+                            if (gravity_direction == 90) pla.player_damage(id);
                         }
                         break;
                     }
@@ -283,7 +283,7 @@ reaction = function(pla)
                         {
                             pla.x = x - hitboxes[0].top + pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or
                             (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
@@ -296,9 +296,9 @@ reaction = function(pla)
                             else 
                             {
                                 pla.y = y - hitboxes[0].top + pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -306,7 +306,7 @@ reaction = function(pla)
                             if (pla.x_speed <= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 90) pla.player_damage(self);
+                                if (gravity_direction == 90) pla.player_damage(id);
                             }
                         }
                         break;
@@ -317,14 +317,14 @@ reaction = function(pla)
                         {
                             if (gravity_direction == pla.gravity_direction) pla.x = x - hitboxes[0].top + pla.y_radius;
                             else pla.y = y + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 0 ? 1 : -1));
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
                             pla.x += x_dist;
                             if (pla.y_speed <= 0)
                             {
-                                if (gravity_direction == 90) pla.player_damage(self);
+                                if (gravity_direction == 90) pla.player_damage(id);
                                 pla.y_speed = 0;
                             }
                         }
@@ -342,7 +342,7 @@ reaction = function(pla)
                         {
                             pla.x = x + hitboxes[0].top - pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
                             (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
@@ -351,13 +351,13 @@ reaction = function(pla)
                             if (gravity_direction == 0)
                             {
                                 pla.y = y + hitboxes[0].top - pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
                             else
                             {
                                 pla.y = y - hitboxes[0].top + pla.y_radius;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -365,7 +365,7 @@ reaction = function(pla)
                             if (pla.x_speed <= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 270) pla.player_damage(self);
+                                if (gravity_direction == 270) pla.player_damage(id);
                             }
                         }
                         break;
@@ -376,14 +376,14 @@ reaction = function(pla)
                         {
                             if (gravity_direction == pla.gravity_direction) pla.x = x + hitboxes[0].top - pla.y_radius;
                             else pla.y = y + ((hitboxes[0].top - pla.x_radius) * (gravity_direction == 0 ? 1 : -1));
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
                             pla.x += x_dist;
                             if (pla.y_speed <= 0) 
                             {
-                                if (gravity_direction == 270) pla.player_damage(self); 
+                                if (gravity_direction == 270) pla.player_damage(id); 
                                 pla.y_speed = 0;
                             }
                         }
@@ -395,7 +395,7 @@ reaction = function(pla)
                         {
                             pla.x = x + hitboxes[0].top - pla.x_radius;
                             pla.x_speed = 0;
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else if  (((gravity_direction == 0 and (flags1 & (COLL_FLAG_TOP | COLL_FLAG_LEFT | COLL_FLAG_RIGHT))) or 
                             (gravity_direction == 180 and (flags1 & (COLL_FLAG_BOTTOM | COLL_FLAG_LEFT | COLL_FLAG_RIGHT)))) and
@@ -408,9 +408,9 @@ reaction = function(pla)
                             else 
                             {
                                 pla.y = y - hitboxes[0].top + pla.y_radius;
-                                pla.ground_id = self;
+                                pla.ground_id = id;
                             }
-                            pla.player_damage(self);
+                            pla.player_damage(id);
                         }
                         else
                         {
@@ -418,7 +418,7 @@ reaction = function(pla)
                             if (pla.x_speed >= 0)
                             {
                                 pla.x_speed = 0;
-                                if (gravity_direction == 270) pla.player_damage(self);
+                                if (gravity_direction == 270) pla.player_damage(id);
                             }
                         }
                         break;
@@ -428,8 +428,8 @@ reaction = function(pla)
                         pla.x += x_dist;
                         if (pla.y_speed >= 0)
                         {
-                            pla.ground_id = self;
-                            if (gravity_direction == 270) pla.player_damage(self);
+                            pla.ground_id = id;
+                            if (gravity_direction == 270) pla.player_damage(id);
                         }
                         break;
                     }

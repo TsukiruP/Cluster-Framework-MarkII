@@ -39,13 +39,13 @@ reaction = function(pla)
                         else
                         {
                             pla.y += hb_floor - pla_bottom;
-                            pla.ground_id = self;
+                            pla.ground_id = id;
                         }
                     }
                     else if (pla.on_ground)
                     {
                         pla.y += hb_floor - pla_bottom;
-                        pla.ground_id = self;
+                        pla.ground_id = id;
                     }
                 }
             }

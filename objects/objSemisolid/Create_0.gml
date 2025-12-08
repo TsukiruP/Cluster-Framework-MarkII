@@ -20,7 +20,7 @@ reaction = function(pla)
             {
                 sink_direction |= (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM));
                 pla.y += y_dist;
-                pla.ground_id = self;
+                pla.ground_id = id;
             }
         }
         else if (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT))
@@ -30,7 +30,7 @@ reaction = function(pla)
             {
                 sink_direction |= (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT));
                 pla.x += x_dist;
-                pla.ground_id = self;
+                pla.ground_id = id;
             }
         }
     }

@@ -30,7 +30,7 @@ reaction = function(pla)
                         if (pla.y_speed >= 0)
                         {
                             sink_direction |= COLL_FLAG_TOP;
-                            pla.ground_id = self;
+                            pla.ground_id = id;
                         }
                         break;
                     }
@@ -70,7 +70,7 @@ reaction = function(pla)
                         if (pla.y_speed >= 0)
                         {
                             sink_direction |= COLL_FLAG_BOTTOM;
-                            pla.ground_id = self;
+                            pla.ground_id = id;
                         }
                         break;
                     }
@@ -98,7 +98,7 @@ reaction = function(pla)
                         if (pla.y_speed >= 0)
                         {
                             sink_direction |= COLL_FLAG_LEFT;
-                            pla.ground_id = self;
+                            pla.ground_id = id;
                         }
                         break;
                     }
@@ -138,7 +138,7 @@ reaction = function(pla)
                         if (pla.y_speed >= 0)
                         {
                             sink_direction |= COLL_FLAG_RIGHT;
-                            pla.ground_id = self;
+                            pla.ground_id = id;
                         }
                         break;
                     }
