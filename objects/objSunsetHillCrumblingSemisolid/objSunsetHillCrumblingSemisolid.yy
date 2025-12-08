@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"objSemisolid",
+  "%Name":"objSunsetHillCrumblingSemisolid",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objSemisolid",
+  "name":"objSunsetHillCrumblingSemisolid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Objects/Stage/Parents.yy",
+    "name":"Semisolids",
+    "path":"folders/Objects/Stage/Sunset Hill/Semisolids.yy",
   },
   "parentObjectId":{
-    "name":"objSolid",
-    "path":"objects/objSolid/objSolid.yy",
+    "name":"objCrumblingSemisolid",
+    "path":"objects/objCrumblingSemisolid/objCrumblingSemisolid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sprSunsetHillCrumblingSemisolid",
+    "path":"sprites/sprSunsetHillCrumblingSemisolid/sprSunsetHillCrumblingSemisolid.yy",
+  },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

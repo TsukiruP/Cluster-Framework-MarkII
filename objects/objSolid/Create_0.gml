@@ -3,6 +3,12 @@
 event_inherited();
 
 gravity_direction = angle_wrap(image_angle);
+sink_direction = 0;
+sink_shift = 7;
+sink_left = 0;
+sink_top = 0;
+sink_right = 0;
+sink_bottom = 0;
 reaction = function(pla)
 {
     var flags0 = collision_player(0, pla);
@@ -21,7 +27,11 @@ reaction = function(pla)
                 {
                     case 0:
                     {
-                        if (pla.y_speed >= 0) pla.ground_id = self;
+                        if (pla.y_speed >= 0)
+                        {
+                            sink_direction |= COLL_FLAG_TOP;
+                            pla.ground_id = self;
+                        }
                         break;
                     }
                     case 90:
@@ -57,12 +67,16 @@ reaction = function(pla)
                     }
                     case 180:
                     {
-                        if (pla.y_speed >= 0) pla.y_speed = 0;
+                        if (pla.y_speed >= 0)
+                        {
+                            sink_direction |= COLL_FLAG_BOTTOM;
+                            pla.ground_id = self;
+                        }
                         break;
                     }
                     case 270:
                     {
-                        if (pla.x_speed <= 0) pla.ground_id = self;
+                        if (pla.x_speed <= 0) pla.x_speed = 0;
                         break;
                     }
                 }
@@ -81,7 +95,11 @@ reaction = function(pla)
                     }
                     case 90:
                     {
-                        if (pla.y_speed >= 0) pla.ground_id = self;
+                        if (pla.y_speed >= 0)
+                        {
+                            sink_direction |= COLL_FLAG_LEFT;
+                            pla.ground_id = self;
+                        }
                         break;
                     }
                     case 180:
@@ -117,7 +135,11 @@ reaction = function(pla)
                     }
                     case 270:
                     {
-                        if (pla.y_speed >= 0) pla.ground_id = self;
+                        if (pla.y_speed >= 0)
+                        {
+                            sink_direction |= COLL_FLAG_RIGHT;
+                            pla.ground_id = self;
+                        }
                         break;
                     }
                 }

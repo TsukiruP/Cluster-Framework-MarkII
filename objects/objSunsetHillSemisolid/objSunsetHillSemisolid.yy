@@ -8,8 +8,8 @@
   "name":"objSunsetHillSemisolid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Sunset Hill",
-    "path":"folders/Objects/Stage/Sunset Hill.yy",
+    "name":"Semisolids",
+    "path":"folders/Objects/Stage/Sunset Hill/Semisolids.yy",
   },
   "parentObjectId":{
     "name":"objSemisolid",

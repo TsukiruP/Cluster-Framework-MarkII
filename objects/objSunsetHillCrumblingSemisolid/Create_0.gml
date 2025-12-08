@@ -2,4 +2,4 @@
 // Inherit the parent event
 event_inherited();
 
-hitboxes[0].set_size(-39, -15, 39, 15);
+hitboxes[0].set_size(-23, -11, 23, 11);
