@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Sunset Hill",
-    "path":"folders/Sprites/Stage/Sunset Hill.yy",
+    "name":"Semisolids",
+    "path":"folders/Sprites/Stage/Sunset Hill/Semisolids.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
