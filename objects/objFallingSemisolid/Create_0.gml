@@ -3,15 +3,14 @@
 event_inherited();
 
 state = 0; // 0 - idle, 1 - delay, 2 - falling
-usable = true;
-fall_time = 0;
+state_time = 0;
 reset = false;
 gravity_force = 42 / 256;
 y_speed = 0;
 reaction = function(pla)
 {
     // Abort if the player is not falling
-    if (pla.y_speed < 0 or not usable) exit;
+    if (pla.y_speed < 0 or state == 3 or reset) exit;
         
     var flags0 = collision_player(0, pla);
     if (flags0)
@@ -31,7 +30,7 @@ reaction = function(pla)
                 if (state == 0)
                 {
                     state = 1;
-                    fall_time = 30;
+                    state_time = 30;
                 }
             }
         }
@@ -47,16 +46,16 @@ reaction = function(pla)
                 if (state == 0)
                 {
                     state = 1;
-                    fall_time = 30;
+                    state_time = 30;
                 }
             }
         }
-    }
-    
-    if (usable and state == 2 and pla.ground_id == id and fall_time > 32)
-    {
-        usable = false;
-        pla.ground_id = noone;
-        pla.y_speed = y_speed;
+        
+        if (pla.ground_id == id and state_time >= 32)
+        {
+            state = 3;
+            pla.ground_id = false;
+            pla.y_speed = y_speed;
+        }
     }
 }

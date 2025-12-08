@@ -6,12 +6,12 @@ if (not reset)
     
     if (state == 1)
     {
-        fall_time--;
-        if (fall_time <= 0) state = 2;
+        state_time--;
+        if (state_time <= 0) state = 2;
     }
-    else if (state == 2)
+    else if (state == 2 or state == 3)
     {
-        fall_time++;
+        state_time++;
         y_speed += gravity_force;
         y = y + y_speed;
     }

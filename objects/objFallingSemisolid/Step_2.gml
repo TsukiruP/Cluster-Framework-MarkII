@@ -14,7 +14,6 @@ if (not reset)
 else if (not instance_in_view(id, 128))
 {
     state = 0;
-    usable = true;
     y_speed = 0;
     reset = false;
 }
