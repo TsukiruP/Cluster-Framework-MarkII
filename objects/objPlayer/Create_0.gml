@@ -5,10 +5,12 @@ image_speed = 0;
 state = player_is_ready;
 state_changed = false;
 
+spin_dash_charge = 0;
+
+fall_speed_reset = true;
+
 jump_action = false;
 jump_cap = true;
-
-spin_dash_charge = 0;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
@@ -17,9 +19,9 @@ for (var i = 0; i < array_length(trick_speed); i++) trick_speed[i] = array_creat
 // Timers
 control_lock_time = 0;
 trick_time = 0;
+invulnerability_time = 0;
 superspeed_time = 0;
 invincibility_time = 0;
-invulnerability_time = 0;
 input_cpu_state_time = 0;
 input_cpu_respawn_time = 0;
 input_cpu_gamepad_time = 0;

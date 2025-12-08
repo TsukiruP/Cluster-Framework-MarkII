@@ -51,11 +51,12 @@ reaction = function(pla)
             }
         }
         
-        if (pla.ground_id == id and state_time >= 32)
+        if (state == 2 and pla.ground_id == id and state_time >= 32)
         {
             state = 3;
-            pla.ground_id = false;
+            pla.fall_speed_reset = false;
             pla.y_speed = y_speed;
+            pla.ground_id = noone;
         }
     }
 }
