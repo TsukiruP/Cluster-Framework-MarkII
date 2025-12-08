@@ -16,6 +16,7 @@
     {"name":"inst_7120EAFB","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_7BF906B2","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_278252D6","path":"rooms/rmTestNew/rmTestNew.yy",},
+    {"name":"inst_1F8E42FC","path":"rooms/rmTestNew/rmTestNew.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -36,6 +37,7 @@
         {"$GMRInstance":"v4","%Name":"inst_278252D6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_278252D6","objectId":{"name":"objSunsetHillCrumblingSemisolid","path":"objects/objSunsetHillCrumblingSemisolid/objSunsetHillCrumblingSemisolid.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},"propertyId":{"name":"xdistance","path":"objects/objSolid/objSolid.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"128",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":432.0,"y":1104.0,},
+        {"$GMRInstance":"v4","%Name":"inst_1F8E42FC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1F8E42FC","objectId":{"name":"objRoute99CrumblingSemisolid","path":"objects/objRoute99CrumblingSemisolid/objRoute99CrumblingSemisolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1184.0,},
       ],"layers":[],"name":"Interactables","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Triggers","depth":400,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_7871C729","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7871C729","objectId":{"name":"objLayerSet","path":"objects/objLayerSet/objLayerSet.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":6.0,"x":1424.0,"y":1248.0,},
