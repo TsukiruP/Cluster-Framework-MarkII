@@ -56,6 +56,7 @@ reaction = function(pla)
             state = 3;
             pla.fall_speed_reset = false;
             pla.y_speed = y_speed;
+            pla.on_ground = false;
             pla.ground_id = noone;
         }
     }
