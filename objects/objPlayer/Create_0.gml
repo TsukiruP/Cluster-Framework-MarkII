@@ -174,12 +174,9 @@ function player_effect() constructor
     image_xscale = 1;
     image_yscale = 1;
     image_angle = 0;
+    image_blend = c_white;
     image_alpha = 1;
     animation_data = new animation_core();
-    static draw = function()
-    {
-        if (sprite_index != -1) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_white, image_alpha);
-    };
 }
 
 spin_dash_effect = new player_effect();

@@ -126,3 +126,10 @@ function draw_reset()
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
+
+/// @function draw_self_floored()
+/// @description Draws the instance at a floored position. Ported from GM8.2.
+function draw_self_floored()
+{
+    if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+}

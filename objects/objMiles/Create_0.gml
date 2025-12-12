@@ -369,5 +369,5 @@ tails_effect = new player_effect();
 player_draw_before = function()
 {
     tails_effect.image_alpha = image_alpha;
-    tails_effect.draw();
+    with (tails_effect) draw_self_floored();
 };

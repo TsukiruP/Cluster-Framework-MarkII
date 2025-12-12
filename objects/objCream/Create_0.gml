@@ -286,5 +286,5 @@ ears_effect = new player_effect();
 player_draw_before = function()
 {
     ears_effect.image_alpha = image_alpha;
-    ears_effect.draw();
+    with (ears_effect) draw_self_floored();
 };
