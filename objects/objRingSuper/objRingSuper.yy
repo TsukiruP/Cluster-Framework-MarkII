@@ -1,22 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"objRing",
+  "%Name":"objRingSuper",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objRing",
+  "name":"objRingSuper",
   "overriddenProperties":[],
   "parent":{
     "name":"Rings",
     "path":"folders/Objects/Stage/General/Rings.yy",
   },
   "parentObjectId":{
-    "name":"objInteractable",
-    "path":"objects/objInteractable/objInteractable.yy",
+    "name":"objRing",
+    "path":"objects/objRing/objRing.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -36,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprRing",
-    "path":"sprites/sprRing/sprRing.yy",
+    "name":"sprRingSuper",
+    "path":"sprites/sprRingSuper/sprRingSuper.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -408,6 +408,41 @@ player_gain_rings = function(num)
 	}
 };
 
+/// @method player_lose_rings()
+/// @description Creates up to 32 lost rings in circles of 16 at the given position.
+player_lose_rings = function()
+{
+    var total = min(global.rings, 32);
+    var len = 4;
+    var dir = 101.25;
+    var flip = false;
+    
+    for (var ring = 0; ring < total; ring++)
+    {
+        if (ring == 16)
+        {
+            len = 2;
+            dir = 101.25;
+        }
+        
+        with (instance_create_layer(x div 1, y div 1, "Interactables", objRing))
+        {
+            x_speed = lengthdir_x(len, dir);
+            y_speed = lengthdir_y(len, dir);
+            scattered = true;
+            if (flip)
+            {
+                x_speed *= -1;
+                dir += 22.5;
+            }
+        }
+        
+        flip = !flip;
+    }
+    
+    global.rings = 0;
+};
+
 /// @method player_gain_lives(num)
 /// @description Increases the player's life count by the given amount.
 /// @param {Real} num Amount of lives to give.
@@ -424,7 +459,7 @@ player_damage = function(inst)
 {
     if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != id)) exit;
     
-    if (inst == id)
+    if (inst == id or (global.rings == 0 and player_index == 0))
     {
         return player_perform(player_is_dead);
     }
@@ -444,6 +479,10 @@ player_damage = function(inst)
             animation_data.variant = 1;
         }
         y_speed = -4;
+        if (player_index == 0)
+        {
+            player_lose_rings();
+        }
         return player_perform(player_is_hurt);
     }
 };
