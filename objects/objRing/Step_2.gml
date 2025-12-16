@@ -3,7 +3,7 @@ if (magnetized)
 {
     
 }
-else if (scattered)
+else if (lost)
 {
     var x_int = x div 1;
     var y_int = y div 1;
@@ -58,4 +58,4 @@ else if (scattered)
     }
 }
 
-image_index = ctrlWindow.image_index div (scattered ? frame_speed div 2 : frame_speed);
+image_index = ctrlWindow.image_index div (lost ? frame_speed div 2 : frame_speed);

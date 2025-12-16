@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxRingScatter",
+  "%Name":"sfxHurtSpike",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.501814,
+  "duration":0.7016553,
   "exportDir":"",
-  "name":"sfxRingScatter",
+  "name":"sfxHurtSpike",
   "parent":{
     "name":"Player",
     "path":"folders/Sounds/SFX/Player.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxRingScatter.wav",
+  "soundFile":"sfxHurtSpike.wav",
   "volume":1.0,
 }

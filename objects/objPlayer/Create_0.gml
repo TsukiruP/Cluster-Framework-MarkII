@@ -434,7 +434,7 @@ player_lose_rings = function()
             gravity_direction = other.gravity_direction;
             x_speed = lengthdir_x(len, dir);
             y_speed = lengthdir_y(len, dir);
-            scattered = true;
+            lost = true;
             if (flip)
             {
                 x_speed *= -1;
@@ -446,7 +446,7 @@ player_lose_rings = function()
     }
     
     global.rings = 0;
-    audio_play_single(sfxRingScatter);
+    audio_play_single(sfxLoseRings);
 };
 
 /// @method player_gain_lives(num)
@@ -469,7 +469,7 @@ player_damage = function(inst)
     {
         y_speed = -7;
         if (inst == id) audio_play_single(sfxHurt);
-        else audio_play_single(inst.object_index == objSpike ? sfxSpike : sfxHurt);
+        else audio_play_single(inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
@@ -492,7 +492,7 @@ player_damage = function(inst)
         {
             player_lose_rings();
         }
-        audio_play_single(inst.object_index == objSpike ? sfxSpike : sfxHurt);
+        audio_play_single(inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_hurt);
     }
 };

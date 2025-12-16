@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxSpike",
+  "%Name":"sfxLoseRings",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.7016553,
+  "duration":1.501814,
   "exportDir":"",
-  "name":"sfxSpike",
+  "name":"sfxLoseRings",
   "parent":{
     "name":"Player",
     "path":"folders/Sounds/SFX/Player.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxSpike.wav",
+  "soundFile":"sfxLoseRings.wav",
   "volume":1.0,
 }
