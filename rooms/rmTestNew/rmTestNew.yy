@@ -66,7 +66,7 @@
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"TilesSemisolid","depth":600,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"TilesSemisolid","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":30,"SerialiseWidth":100,"TileCompressedData":[
           -100,-2147483648,-5,0,-695,-2147483648,-10,0,-196,-2147483648,-4,0,1,-2147483648,-4,0,1,126,-4,0,4,2,
-          3,0,0,-78,-2147483648,2,0,-2147483648,-16,0,4,66,67,0,0,-80,-2147483648,2,0,-2147483648,-18,0,-79,-2147483648,
+          3,0,0,-78,-2147483648,2,0,-2147483648,-16,0,4,66,67,0,0,-80,-2147483648,2,30,-2147483648,-18,0,-79,-2147483648,
           -20,0,2,476,33,-79,-2147483648,-17,0,4,29,30,30,33,-79,-2147483648,-17,0,3,61,0,0,-80,-2147483648,-17,
           0,3,61,0,0,-80,-2147483648,-20,0,-82,-2147483648,-18,0,-82,-2147483648,-8,0,-1086,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},

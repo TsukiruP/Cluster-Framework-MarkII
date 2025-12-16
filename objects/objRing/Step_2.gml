@@ -42,12 +42,12 @@ else if (scattered)
         var coll_top = (y_speed < 0 and collision_point(x_int + sine * hitboxes[0].top, y_int + cosine * hitboxes[0].top, inst, true, false));
         var coll_bottom = (y_speed > 0 and collision_point(x_int + sine * hitboxes[0].bottom, y_int + cosine * hitboxes[0].bottom, inst, true, false));
         
-        if (coll_left or coll_right)
+        if (inst != semisolid_tilemap and (coll_left or coll_right))
         {
             x_speed *= -1;
         }
         
-        if (coll_top)
+        if (inst != semisolid_tilemap and coll_top)
         {
             y_speed *= -1;
         }

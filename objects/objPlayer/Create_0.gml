@@ -231,7 +231,10 @@ player_try_trick = function(time = trick_time)
 		else if (input_axis_x == image_xscale) trick_index = TRICK.FRONT;
         score += 100;
 		player_perform(player_is_trick_preparing);
-        if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and trick_index == TRICK.DOWN)) audio_play_single(sfxTrick);
+        if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and trick_index == TRICK.DOWN))
+        {
+            audio_play_single(sfxTrick);
+        }
 		return true;
 	}
 	return false;
@@ -390,13 +393,14 @@ player_draw_before = function() {};
 /// @description Draws player effects in front of the character sprite.
 player_draw_after = function() {};
 
-/// @method player_gain_rings(num)
+/// @method player_gain_rings(num, [is_super_ring])
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
-player_gain_rings = function(num)
+/// @param {Bool} [is_super_ring] Whether to play the Super Ring sfx (optional, defaults to false).
+player_gain_rings = function(num, is_super_ring = false)
 {
 	global.rings = min(global.rings + num, 999);
-	audio_play_single(sfxRing);
+	audio_play_single(is_super_ring ? sfxRingSuper : sfxRing);
 	
 	// Gain lives
 	static ring_life_threshold = 99;
@@ -427,6 +431,7 @@ player_lose_rings = function()
         
         with (instance_create_layer(x div 1, y div 1, "Interactables", objRing))
         {
+            gravity_direction = other.gravity_direction;
             x_speed = lengthdir_x(len, dir);
             y_speed = lengthdir_y(len, dir);
             scattered = true;
@@ -441,6 +446,7 @@ player_lose_rings = function()
     }
     
     global.rings = 0;
+    audio_play_single(sfxRingScatter);
 };
 
 /// @method player_gain_lives(num)
@@ -461,6 +467,9 @@ player_damage = function(inst)
     
     if (inst == id or (global.rings == 0 and player_index == 0))
     {
+        y_speed = -7;
+        if (inst == id) audio_play_single(sfxHurt);
+        else audio_play_single(inst.object_index == objSpike ? sfxSpike : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
@@ -483,6 +492,7 @@ player_damage = function(inst)
         {
             player_lose_rings();
         }
+        audio_play_single(inst.object_index == objSpike ? sfxSpike : sfxHurt);
         return player_perform(player_is_hurt);
     }
 };

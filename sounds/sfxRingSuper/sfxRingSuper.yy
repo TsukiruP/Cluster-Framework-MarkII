@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxSpring",
+  "%Name":"sfxRingSuper",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.84836733,
+  "duration":1.4996145,
   "exportDir":"",
-  "name":"sfxSpring",
+  "name":"sfxRingSuper",
   "parent":{
     "name":"Stage",
     "path":"folders/Sounds/SFX/Stage.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxSpring.wav",
+  "soundFile":"sfxRingSuper.wav",
   "volume":1.0,
 }

@@ -201,10 +201,17 @@ with (camera)
     center(false, other.on_ground);
     spd_max_y = (other.x_speed >= 8 or not other.on_ground ? 24 : 6);
     
-    if (follow != other)
+    if (other.state != player_is_dead)
     {
-        move(other.x, other.y);
-        follow = other;
+        if (follow != other)
+        {
+            move(other.x, other.y);
+            follow = other;
+        }
+    }
+    else if (follow == other)
+    {
+        follow = noone;
     }
 }
 

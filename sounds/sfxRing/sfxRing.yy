@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxRing",
   "parent":{
-    "name":"Zone Objects",
-    "path":"folders/Sounds/SFX/Zone Objects.yy",
+    "name":"Stage",
+    "path":"folders/Sounds/SFX/Stage.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

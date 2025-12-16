@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxSpring",
+  "%Name":"sfxRingScatter",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.84836733,
+  "duration":1.501814,
   "exportDir":"",
-  "name":"sfxSpring",
+  "name":"sfxRingScatter",
   "parent":{
-    "name":"Stage",
-    "path":"folders/Sounds/SFX/Stage.yy",
+    "name":"Player",
+    "path":"folders/Sounds/SFX/Player.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxSpring.wav",
+  "soundFile":"sfxRingScatter.wav",
   "volume":1.0,
 }

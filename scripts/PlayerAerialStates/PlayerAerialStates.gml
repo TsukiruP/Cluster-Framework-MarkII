@@ -183,10 +183,6 @@ function player_is_dead(phase)
 	{
 		case PHASE.ENTER:
 		{
-			// Stop
-			x_speed = 0;
-			y_speed = 0;
-			
 			// Detach from ground
 			player_ground(undefined);
 			
@@ -196,12 +192,11 @@ function player_is_dead(phase)
 		}
 		case PHASE.STEP:
 		{
-			break;
-		}
-		case PHASE.EXIT:
-		{
 			// Move
-			y += y_speed;
+			var sine = dsin(gravity_direction);
+			var cosine = dcos(gravity_direction);
+            x += sine * y_speed;
+            y += cosine * y_speed;
 			
 			// TODO: SonicForGMS checks if the player is 48 below bound_bottom.
 			
@@ -211,6 +206,10 @@ function player_is_dead(phase)
 				y_speed = min(y_speed + gravity_force, gravity_cap);
 			}
 			break;
+		}
+		case PHASE.EXIT:
+		{
+            break;
 		}
 	}
 }
