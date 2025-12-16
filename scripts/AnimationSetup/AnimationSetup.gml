@@ -406,7 +406,7 @@ global.ani_cream_hurt_v0 = new animation(sprCreamHurt0, [3, 8, 8, 8, 8], -1);
 global.ani_cream_hurt_v1 = new animation(sprCreamHurt1, 5, -1);
 global.ani_cream_hurt = [global.ani_cream_hurt_v0, global.ani_cream_hurt_v1];
 
-global.ani_cream_dead_v0 = new animation(sprCreamDead, [6, 12, 2, 3, 3], 4);
+global.ani_cream_dead_v0 = new animation(sprCreamDead, [6, 12, 2, 3, 3], 3);
 
 global.ani_cream_trick_up_v0 = new animation(sprCreamTrickUp0, [1, 4, 4, 4, 2], -1);
 global.ani_cream_trick_up_v1 = new animation(sprCreamTrickUp1, [2, 2, 2, 3, 3, 3], 3);
