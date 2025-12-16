@@ -6,7 +6,7 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
     var character_index = db_read(global.save_database, CHARACTER.NONE, "character", i);
     if (character_index != CHARACTER.NONE)
     {
-        var player_inst = instance_create_depth(x - 32 * i, y, depth - DEPTH_OFFSET_PLAYER + i, player_objects[character_index]);
+        var player_inst = instance_create_depth(x - i * 32, y, depth - i + DEPTH_OFFSET_PLAYER, player_objects[character_index]);
         with (player_inst) player_index = i;
         array_set(global.players, i, player_inst);
     }

@@ -13,14 +13,14 @@ if (not InputPartyGetJoin())
         }
         
         draw_set_color(current_menu.cursor == i ? c_white : c_gray);
-        draw_text(10, font_height * i, label);
+        draw_text(10, i * font_height, label);
     }
 }
 else
 {
 	for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
     {
-        draw_text(10, font_height * i, string_concat("Player", string(i), ": ", InputPlayerGetDevice(i)));
+        draw_text(10, i * font_height, string_concat("Player", string(i), ": ", InputPlayerGetDevice(i)));
     }
 }
 draw_reset();
