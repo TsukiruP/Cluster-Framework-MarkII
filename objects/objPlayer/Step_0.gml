@@ -15,7 +15,6 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	});
     
     if (input_cpu_gamepad_time > 0) input_cpu_gamepad_time--;
-    if (input_button.start.pressed) gravity_direction = angle_wrap(gravity_direction + 90);
 }
 
 if (player_index != 0 and input_cpu_gamepad_time == 0)

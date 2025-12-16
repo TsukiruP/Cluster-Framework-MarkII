@@ -1,7 +1,43 @@
 /// @description Animate
+with (objPlayer)
+{
+	if (other.target == noone and (shield == SHIELD.MAGNETIC or shield == SHIELD.LIGHTNING))
+	{
+		if (abs(point_distance(other.x, other.y, x, y)) <= other.magnet_range)
+		{
+			other.target = id;
+			other.magnetized = true;
+			other.lost = false;
+		}
+	}
+	else if (other.target == id and not (shield == SHIELD.MAGNETIC or shield == SHIELD.LIGHTNING))
+	{
+		other.target = noone;
+        other.magnetized = false;
+		other.lost = true;
+	}
+}
+
 if (magnetized)
 {
+    if (x_speed != 0) x += x_speed;
+    if (y_speed != 0) y += y_speed;
     
+    if (instance_exists(target))
+    {
+    	var ox = sign(target.x - x);
+    	var oy = sign(target.y - y);
+    	if (ox != 0)
+    	{
+    		var move_x = (ox != sign(x_speed) ? turn_speed : follow_speed);
+    		x_speed = x_speed + (move_x * ox);
+    	}
+    	if (oy != 0)
+    	{
+    		var move_y = (oy != sign(y_speed) ? turn_speed : follow_speed);
+    		y_speed = y_speed + (move_y * oy);
+    	}
+    }
 }
 else if (lost)
 {

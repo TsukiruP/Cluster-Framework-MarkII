@@ -25,12 +25,22 @@
 
 enum CHARACTER
 {
-    NONE = -1,
-    SONIC,
-    MILES,
-    KNUCKLES,
-    AMY,
-    CREAM
+	NONE = -1,
+	SONIC,
+	MILES,
+	KNUCKLES,
+	AMY,
+	CREAM
+}
+
+enum SHIELD
+{
+	NONE,
+	BASIC,
+	MAGNETIC,
+	BUBBLE,
+	FIRE,
+	LIGHTNING
 }
 
 enum PHASE
@@ -41,26 +51,26 @@ enum PHASE
 }
 
 enum PLAYER_ANIMATION
-{ 
-    IDLE,
-    TEETER,
-    TURN,
-    RUN,
-    BRAKE,
-    LOOK,
-    CROUCH,
-    ROLL,
-    SPIN_DASH,
-    FALL,
-    JUMP,
-    HURT,
-    DEAD,
-    TRICK_UP,
-    TRICK_DOWN,
-    TRICK_FRONT,
-    TRICK_BACK,
-    SPRING,
-    SPRING_TWIRL
+{
+	IDLE,
+	TEETER,
+	TURN,
+	RUN,
+	BRAKE,
+	LOOK,
+	CROUCH,
+	ROLL,
+	SPIN_DASH,
+	FALL,
+	JUMP,
+	HURT,
+	DEAD,
+	TRICK_UP,
+	TRICK_DOWN,
+	TRICK_FRONT,
+	TRICK_BACK,
+	SPRING,
+	SPRING_TWIRL
 }
 
 enum TRICK

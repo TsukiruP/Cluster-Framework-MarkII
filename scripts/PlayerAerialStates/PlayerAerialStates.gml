@@ -73,7 +73,6 @@ function player_is_jumping(phase)
 		case PHASE.ENTER:
 		{
 			// Set flags
-			jump_action = true;
 			jump_cap = true;
             
 			// Leap

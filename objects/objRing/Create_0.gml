@@ -8,7 +8,13 @@ value = 1;
 is_super_ring = false;
 x_speed = 0;
 y_speed = 0;
+
+target = noone;
+magnet_range = 128;
 magnetized = false;
+follow_speed = 0.1875;
+turn_speed = 0.75;
+
 lost = false;
 lifespan = 256;
 gravity_force = 0.09375;

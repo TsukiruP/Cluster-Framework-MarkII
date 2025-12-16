@@ -8,13 +8,14 @@ state_changed = false;
 spin_dash_charge = 0;
 
 fall_speed_reset = true;
-
-jump_action = false;
 jump_cap = true;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
 for (var i = 0; i < array_length(trick_speed); i++) trick_speed[i] = array_create(2);
+
+shield = SHIELD.NONE;
+shield_action = false;
 
 // Timers
 control_lock_time = 0;
@@ -441,7 +442,6 @@ player_lose_rings = function()
                 dir += 22.5;
             }
         }
-        
         flip = !flip;
     }
     
