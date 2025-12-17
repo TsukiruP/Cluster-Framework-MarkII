@@ -2,6 +2,8 @@
 // Inherit the parent event
 event_inherited();
 
+character_index = CHARACTER.KNUCKLES;
+
 trick_speed =
 [
     [0, -6],
@@ -9,8 +11,6 @@ trick_speed =
     [6, 0],
     [-5, -0]
 ];
-
-character_index = CHARACTER.KNUCKLES;
 
 player_animate = function()
 {

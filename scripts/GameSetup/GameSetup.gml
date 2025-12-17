@@ -105,6 +105,8 @@ volume_music = 1;
 audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
 
 // Player values
+stage_characters = -1;
+character_reset = true;
 players = -1;
 score = 0;
 lives = 2;

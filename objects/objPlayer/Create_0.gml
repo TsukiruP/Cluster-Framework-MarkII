@@ -1,6 +1,10 @@
 /// @description Setup
 image_speed = 0;
 
+
+character_index = CHARACTER.NONE;
+player_index = -1;
+
 // State machine
 state = player_is_ready;
 state_changed = false;
@@ -191,9 +195,6 @@ camera_padding_x = 0;
 camera_padding_y = 0;
 
 // Misc.
-player_index = -1;
-character_index = CHARACTER.NONE;
-
 /// @method player_perform(action, [enter])
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.

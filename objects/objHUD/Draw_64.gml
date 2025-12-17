@@ -32,8 +32,8 @@ draw_text(center_x + 3, 0, ":");
 draw_text(center_x + 12, 0, string_pad(centiseconds, 2));
 
 // Lives
-var character_index = global.players[0].character_index;
-draw_sprite(sprLivesAdvance2, character_index, 6, CAMERA_HEIGHT - 18);
+var pla_character = global.players[0].character_index;
+draw_sprite(sprLivesAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
 draw_text(30, CAMERA_HEIGHT - 20, $"{lives}");
 
 draw_reset();

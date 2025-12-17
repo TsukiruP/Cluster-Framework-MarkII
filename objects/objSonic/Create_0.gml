@@ -2,6 +2,8 @@
 // Inherit the parent event
 event_inherited();
 
+character_index = CHARACTER.SONIC;
+
 trick_speed =
 [
     [0, -6],
@@ -9,8 +11,6 @@ trick_speed =
     [6, 0],
     [-5, -3.5]
 ];
-
-character_index = CHARACTER.SONIC;
 
 player_animate = function()
 {

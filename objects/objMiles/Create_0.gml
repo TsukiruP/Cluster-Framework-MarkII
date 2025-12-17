@@ -2,6 +2,8 @@
 // Inherit the parent event
 event_inherited();
 
+character_index = CHARACTER.MILES;
+
 trick_speed =
 [
     [0, -6],
@@ -9,8 +11,6 @@ trick_speed =
     [4, -2.5],
     [-3.5, -3]
 ];
-
-character_index = CHARACTER.MILES;
 
 player_animate = function()
 {
