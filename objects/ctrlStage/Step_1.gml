@@ -1,7 +1,12 @@
 /// @description Time
+if (ctrlGame.game_paused) exit;
+
 if (time_enabled and ++stage_time == time_limit)
 {
 	time_over = true;
 	time_enabled = false;
-	// TODO: kill player
+	if (db_read(global.config_database, true, "time_over"))
+    {
+        with (objPlayer) player_damage(id);
+    }
 }

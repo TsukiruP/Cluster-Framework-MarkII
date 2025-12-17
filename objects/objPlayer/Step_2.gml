@@ -1,4 +1,6 @@
 /// @description Effects
+if (ctrlGame.game_paused) exit;
+
 var sine = dsin(gravity_direction);
 var cosine = dcos(gravity_direction);
 var action = state;

@@ -10,6 +10,7 @@
 | Ring | 1127-0, 1127-1, 1127-2, ... |
 | Life Icon | 1125-0, 1125-1, 1125-2, 1125-3, 1125-4 | Swapped Amy and Cream |
 | SP Ring | 1128-0 |
+| Pause | 1026-0, ... |
 
 # Advance 3 HUD
 | Animation | Source | Notes |

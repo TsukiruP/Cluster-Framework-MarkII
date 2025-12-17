@@ -1,4 +1,8 @@
 // Constants
+#macro PAUSE_TEXT 1
+#macro PAUSE_TRANSITION 2
+#macro PAUSE_MENU 4
+
 #macro CAMERA_WIDTH 426
 #macro CAMERA_HEIGHT 240
 #macro CAMERA_PADDING 64
@@ -126,8 +130,9 @@ randomize();
 // Create global controllers
 call_later(1, time_source_units_frames, function()
 {
-	instance_create_layer(0, 0, "Controllers", ctrlWindow);
-	instance_create_layer(0, 0, "Controllers", ctrlMusic);
+    instance_create_layer(0, 0, "Controllers", ctrlGame);
+    instance_create_layer(0, 0, "Controllers", ctrlWindow);
+    instance_create_layer(0, 0, "Controllers", ctrlMusic);
 });
 
 /* AUTHOR NOTE: this must be done one frame later as the first room will not have loaded yet.

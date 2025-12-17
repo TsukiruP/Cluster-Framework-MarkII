@@ -1,4 +1,6 @@
 /// @description Animate
+if (ctrlGame.game_paused) exit;
+
 with (objPlayer)
 {
 	if (other.target == noone and (shield == SHIELD.MAGNETIC or shield == SHIELD.LIGHTNING))
@@ -94,4 +96,4 @@ else if (lost)
     }
 }
 
-image_index = ctrlWindow.image_index div (lost ? frame_speed div 2 : frame_speed);
+image_index = ctrlGame.game_time div (lost ? frame_speed div 2 : frame_speed);

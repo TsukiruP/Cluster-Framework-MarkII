@@ -1,4 +1,6 @@
 /// @description Behave
+if (ctrlGame.game_paused) exit;
+
 if (hidden)
 {
     var time = ctrlStage.stage_time mod 128;

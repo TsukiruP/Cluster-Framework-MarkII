@@ -1,4 +1,6 @@
 /// @description Animate
+if (ctrlGame.game_paused) exit;
+
 if (not reset)
 {
     if (is_crumbling or crumbled)

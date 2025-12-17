@@ -1,4 +1,6 @@
 /// @description Update
+if (ctrlGame.game_paused) exit;
+
 if (not reset)
 {
     // Inherit the parent event

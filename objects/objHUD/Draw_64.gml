@@ -107,7 +107,8 @@ switch (hud)
         else
         {
         	var pla_character = global.players[0].character_index;
-            draw_sprite(sprLifeIconAdvance3, pla_character, 10, CAMERA_HEIGHT - 20);
+            draw_sprite(sprLifeIconAdvance3, pla_character, 5, CAMERA_HEIGHT - 20);
+            draw_text(22, CAMERA_HEIGHT - 20, "x");
         }
         draw_text(32, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;

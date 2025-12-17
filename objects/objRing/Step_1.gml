@@ -1,4 +1,6 @@
 /// @description Update
+if (ctrlGame.game_paused) exit;
+
 if (lost and lifespan > 0)
 {
     lifespan--;

@@ -1,2 +1,2 @@
 /// @description Animate
-image_index = ctrlWindow.image_index div 3;
+image_index = ctrlGame.game_time div 3;

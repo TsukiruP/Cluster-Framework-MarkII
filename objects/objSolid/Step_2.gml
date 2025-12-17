@@ -1,4 +1,6 @@
 /// @description Animate
+if (ctrlGame.game_paused) exit;
+
 if (sink_direction & COLL_FLAG_TOP)
 {
     if (sink_top < 256) sink_top += 16;

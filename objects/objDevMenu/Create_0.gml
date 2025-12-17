@@ -88,7 +88,7 @@ function option_int(_label) : option_real(_label) constructor
 /// @function option_player(player)
 /// @description Creates a menu with player data.
 /// @param {Real} player Player to display.
-function option_player(_player = 0) : option_int($"Player {_player}") constructor 
+function option_player(_player) : option_int($"Player {_player}") constructor 
 {
     player = _player;
     can_wrap = true;
@@ -102,7 +102,7 @@ function option_player(_player = 0) : option_int($"Player {_player}") constructo
 
 #endregion
 
-player_0_option = new option_player();
+player_0_option = new option_player(0);
 player_1_option = new option_player(1);
 
 boost_option = new option_bool("Boost");

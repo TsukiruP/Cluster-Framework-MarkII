@@ -1,5 +1,4 @@
 /// @description Behave
-
 if (not InputPartyGetJoin())
 {
     var input_axis_y = InputOpposingRepeat(INPUT_VERB.UP, INPUT_VERB.DOWN);

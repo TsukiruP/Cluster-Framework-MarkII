@@ -1,7 +1,6 @@
 /// @description Setup
 image_speed = 0;
 
-
 character_index = CHARACTER.NONE;
 player_index = -1;
 

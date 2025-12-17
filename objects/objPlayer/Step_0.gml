@@ -1,4 +1,6 @@
 /// @description Behave
+if (ctrlGame.game_paused) exit;
+
 #region Input
 
 if (player_index == 0 or input_cpu_gamepad_time > 0)
