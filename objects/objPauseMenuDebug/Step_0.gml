@@ -1,6 +1,6 @@
 if (InputPressed(INPUT_VERB.START))
 {
-    ctrlGame.game_paused &= ~PAUSE_MENU;
+    ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;
     InputVerbConsume(INPUT_VERB.START);
     instance_destroy();
 }

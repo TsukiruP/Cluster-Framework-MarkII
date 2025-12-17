@@ -19,9 +19,9 @@ reaction = function(pla)
         pla.x += x_dist;
         pla.y += y_dist;
         
-        if (flags0 & (COLL_TOP | COLL_BOTTOM))
+        if (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM))
         {
-            if (flags0 & COLL_TOP)
+            if (flags0 & COLL_FLAG_TOP)
             {
                 switch (pla.gravity_direction)
                 {
@@ -29,7 +29,7 @@ reaction = function(pla)
                     {
                         if (pla.y_speed >= 0)
                         {
-                            sink_direction |= COLL_TOP;
+                            sink_direction |= COLL_FLAG_TOP;
                             pla.ground_id = id;
                         }
                         break;
@@ -51,7 +51,7 @@ reaction = function(pla)
                     }
                 }
             }
-            else if (flags0 & COLL_BOTTOM)
+            else if (flags0 & COLL_FLAG_BOTTOM)
             {
                 switch (pla.gravity_direction)
                 {
@@ -69,7 +69,7 @@ reaction = function(pla)
                     {
                         if (pla.y_speed >= 0)
                         {
-                            sink_direction |= COLL_BOTTOM;
+                            sink_direction |= COLL_FLAG_BOTTOM;
                             pla.ground_id = id;
                         }
                         break;
@@ -82,9 +82,9 @@ reaction = function(pla)
                 }
             }
         }
-        else if (flags0 & (COLL_LEFT | COLL_RIGHT))
+        else if (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT))
         {
-            if (flags0 & COLL_LEFT)
+            if (flags0 & COLL_FLAG_LEFT)
             {
                 switch (pla.gravity_direction)
                 {
@@ -97,7 +97,7 @@ reaction = function(pla)
                     {
                         if (pla.y_speed >= 0)
                         {
-                            sink_direction |= COLL_LEFT;
+                            sink_direction |= COLL_FLAG_LEFT;
                             pla.ground_id = id;
                         }
                         break;
@@ -114,7 +114,7 @@ reaction = function(pla)
                     }
                 }
             }
-            else if (flags0 & COLL_RIGHT)
+            else if (flags0 & COLL_FLAG_RIGHT)
             {
                 switch (pla.gravity_direction)
                 {
@@ -137,7 +137,7 @@ reaction = function(pla)
                     {
                         if (pla.y_speed >= 0)
                         {
-                            sink_direction |= COLL_RIGHT;
+                            sink_direction |= COLL_FLAG_RIGHT;
                             pla.ground_id = id;
                         }
                         break;
