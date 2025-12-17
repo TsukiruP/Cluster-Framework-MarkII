@@ -40,7 +40,7 @@ switch (hud)
         // Lives
         var pla_character = global.players[0].character_index;
         draw_sprite(sprLivesAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
-        draw_text(30, CAMERA_HEIGHT - 20, $"{lives}");
+        draw_text(30, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;
     }
     case HUD.ADVANCE_3:
@@ -103,14 +103,13 @@ switch (hud)
                 var pla_character = global.players[i].character_index;
                 draw_sprite(sprLivesAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
             }
-            draw_text(32, CAMERA_HEIGHT - 20, $"{lives}");
         }
         else
         {
         	var pla_character = global.players[0].character_index;
-            draw_sprite(sprLivesAdvance3, pla_character, 6, CAMERA_HEIGHT - 20);
-            draw_text(30, CAMERA_HEIGHT - 20, $"{lives}");
+            draw_sprite(sprLivesAdvance3, pla_character, 10, CAMERA_HEIGHT - 20);
         }
+        draw_text(32, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;
     }
 }
