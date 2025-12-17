@@ -1,6 +1,7 @@
 /// @description Render
 var time = ctrlStage.stage_time;
-var flash = time mod 32 < 16; // mod 16 < 8
+var time_over = (time == ctrlStage.time_limit);
+var flash = time mod 32 < 16;
 var minutes = time div 3600;
 var seconds = (time div 60) mod 60;
 var centiseconds = floor(time / 0.6) mod 100;
@@ -21,15 +22,15 @@ draw_text(28, 0, string_pad(global.rings, 3));
 draw_reset();
 
 // Score
-draw_text(28, 14, string_pad(score, 6));
+draw_text(28, 14, (score >= 999999 ? "999999" : string_pad(score, 6)));
 
 // Time
 var center_x = (CAMERA_WIDTH / 2);
-draw_text(center_x - 28, 0, $"{minutes}");
+draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
 draw_text(center_x - 21, 0, ":");
-draw_text(center_x - 12, 0, string_pad(seconds, 2));
+draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
 draw_text(center_x + 3, 0, ":");
-draw_text(center_x + 12, 0, string_pad(centiseconds, 2));
+draw_text(center_x + 12, 0, time_over ? "99" : string_pad(centiseconds, 2));
 
 // Lives
 var pla_character = global.players[0].character_index;
