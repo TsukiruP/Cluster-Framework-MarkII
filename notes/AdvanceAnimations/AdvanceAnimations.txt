@@ -5,16 +5,21 @@
 # Advance 2 HUD
 | Animation | Source | Notes |
 | --- | --- | --- |
-| Font | 1119-16, 1119-17, 1119-18, ... |
+| Font | 1119-0, 1119-1, ..., 1119-94 |
 | Container | 1126-0 | Reduced size |
 | Ring | 1127-0, 1127-1, 1127-2, ... |
 | Life Icon | 1125-0, 1125-1, 1125-2, 1125-3, 1125-4 | Swapped Amy and Cream |
+| SP Ring | 1128-0 |
 
 # Advance 3 HUD
 | Animation | Source | Notes |
 | --- | --- | --- |
+| Font | 1122-0, 1122-1, ..., 1122-94 |
 | Type | 1420-0, 1420-1, 1420-2 |
+| Time | 1421-0 |
+| Special Key | 1422-0 |
 | Life Icon | 1423-0, 1423-1, 1423-2, 1423-3, 1423-4 |
+| Pause | 1425-0, ... |
 
 # Effects
 
