@@ -3,7 +3,7 @@ if (ctrlGame.game_paused) exit;
 
 if (hidden)
 {
-    var time = ctrlStage.stage_time mod 128;
+    var time = ctrlGame.game_time mod 128;
     if (time < 60)
     {
         sprite_index = -1;
