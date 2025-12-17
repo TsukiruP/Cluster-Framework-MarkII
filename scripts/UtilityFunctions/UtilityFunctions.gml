@@ -133,3 +133,13 @@ function draw_self_floored()
 {
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
+
+/// @function string_pad(val, digits)
+/// @description Returns a string of value padded with zeroes to occupy the specified dimensions. Ported from GM8.2.
+/// @param {Real} val Value to pad.
+/// @param {Real} digits Number of spaces to occupy.
+/// @returns {String} description
+function string_pad(val, digits)
+{
+    return string_repeat("-", val < 0) + string_replace_all(string_format(abs(val), digits, 0), " ", "0");
+}

@@ -10,6 +10,8 @@ trick_speed =
     [-3.5, -3]
 ];
 
+character_index = CHARACTER.CREAM;
+
 player_animate = function()
 {
     switch (animation_data.index)

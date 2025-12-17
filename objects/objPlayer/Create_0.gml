@@ -192,6 +192,7 @@ camera_padding_y = 0;
 
 // Misc.
 player_index = -1;
+character_index = CHARACTER.NONE;
 
 /// @method player_perform(action, [enter])
 /// @description Sets the given function as the player's current state.

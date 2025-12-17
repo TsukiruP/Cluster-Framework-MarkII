@@ -107,12 +107,13 @@ audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
 // Player values
 players = -1;
 score = 0;
-lives = 3;
+lives = 2;
 rings = 0;
 
 // Fonts
 font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
 font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
+font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
 
 // Misc.
 surface_depth_disable(true);

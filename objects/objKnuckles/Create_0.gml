@@ -10,6 +10,8 @@ trick_speed =
     [-5, -0]
 ];
 
+character_index = CHARACTER.KNUCKLES;
+
 player_animate = function()
 {
     switch (animation_data.index)

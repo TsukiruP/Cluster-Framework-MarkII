@@ -10,6 +10,8 @@ trick_speed =
     [-5, -3.5]
 ];
 
+character_index = CHARACTER.SONIC;
+
 player_animate = function()
 {
     switch (animation_data.index)
