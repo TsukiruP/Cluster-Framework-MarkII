@@ -49,9 +49,9 @@ function player_resolve_angle()
 {
 	// Check for ground collision using all vertical sensors
 	var edge = 0;
-	if (player_ray_collision(solid_entities, -x_radius, y_radius + 1)) edge |= 1;
-	if (player_ray_collision(solid_entities, x_radius, y_radius + 1)) edge |= 2;
-	if (player_ray_collision(solid_entities, 0, y_radius + 1)) edge |= 4;
+	if (player_ray_collision(tilemaps, -x_radius, y_radius + 1)) edge |= 1;
+	if (player_ray_collision(tilemaps, x_radius, y_radius + 1)) edge |= 2;
+	if (player_ray_collision(tilemaps, 0, y_radius + 1)) edge |= 4;
 	
 	// Abort on no collision
 	if (edge == 0) exit;
@@ -64,9 +64,9 @@ function player_resolve_angle()
 	
 	// Check for steep angle ranges at ramp edges
 	ground_snap = true;
-	if (not (landed or player_ray_collision(solid_entities, 0, y_radius + y_tile_reach)) and
-		(player_ray_collision(solid_entities, -x_radius, y_radius + y_tile_reach) xor
-		player_ray_collision(solid_entities, x_radius, y_radius + y_tile_reach)))
+	if (not (landed or player_ray_collision(tilemaps, 0, y_radius + y_tile_reach)) and
+		(player_ray_collision(tilemaps, -x_radius, y_radius + y_tile_reach) xor
+		player_ray_collision(tilemaps, x_radius, y_radius + y_tile_reach)))
 	{
 		// Calculate...
 		var perp_dir = player_calc_tile_normal(ox + sine, oy + cosine, mask_direction + (edge == 2 ? 90 : 270)); // The normal of the ramp edge

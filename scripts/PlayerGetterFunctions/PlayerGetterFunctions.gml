@@ -71,5 +71,5 @@ function player_detect_entities()
     
     /* AUTHOR NOTE:
 	There is a limitation with the semisolid tilemap detection where, if the player passes through a semisolid tilemap whilst standing on one,
-	they will fall as it will be delisted from their `solid_entities` array. */
+	they will fall as it will be delisted from their `tilemaps` array. */
 }
