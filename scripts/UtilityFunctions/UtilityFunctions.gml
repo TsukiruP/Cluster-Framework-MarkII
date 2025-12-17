@@ -43,8 +43,8 @@ function esign(val, def)
 /// @function wrap(val, minimum, maximum)
 /// @description Wraps the given value between the minimum and maximum inclusively.
 /// @param {Real} val Value to wrap.
-/// @param {Real} maximum Maximum value.
 /// @param {Real} minimum Minimum value.
+/// @param {Real} maximum Maximum value.
 /// @returns {Real}
 function wrap(val, minimum, maximum)
 {
