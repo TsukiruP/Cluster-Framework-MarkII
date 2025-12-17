@@ -8,4 +8,4 @@ enum HUD
 }
 
 global.config_database = db_create();
-db_write(global.config_database, HUD.ADVANCE_3, "HUD");
+db_write(global.config_database, HUD.ADVANCE_3, "hud");
