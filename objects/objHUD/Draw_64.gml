@@ -39,7 +39,7 @@ switch (hud)
         
         // Lives
         var pla_character = global.players[0].character_index;
-        draw_sprite(sprLivesAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
+        draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
         draw_text(30, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;
     }
@@ -101,13 +101,13 @@ switch (hud)
             for (var i = INPUT_MAX_PLAYERS - 1; i >= 0; i--)
             {
                 var pla_character = global.players[i].character_index;
-                draw_sprite(sprLivesAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
+                draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
             }
         }
         else
         {
         	var pla_character = global.players[0].character_index;
-            draw_sprite(sprLivesAdvance3, pla_character, 10, CAMERA_HEIGHT - 20);
+            draw_sprite(sprLifeIconAdvance3, pla_character, 5, CAMERA_HEIGHT - 20);
         }
         draw_text(32, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;
