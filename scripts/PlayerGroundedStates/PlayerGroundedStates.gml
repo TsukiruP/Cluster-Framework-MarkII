@@ -32,7 +32,8 @@ function player_is_standing(phase)
 			
 			if (not player_ray_collision(tilemaps, 0, height))
 			{
-				cliff_sign = player_ray_collision(tilemaps, -x_radius, height) - player_ray_collision(tilemaps, x_radius, height);
+				cliff_sign = player_ray_collision(tilemaps, -x_radius, height) -
+                    player_ray_collision(tilemaps, x_radius, height);
 			}
 			
 			// Animate
