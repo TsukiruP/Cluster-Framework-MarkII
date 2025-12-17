@@ -18,6 +18,7 @@ shield = SHIELD.NONE;
 shield_action = false;
 
 // Timers
+rotation_lock_time = 0;
 control_lock_time = 0;
 trick_time = 0;
 invulnerability_time = 0;
@@ -245,7 +246,6 @@ player_try_trick = function(time = trick_time)
 /// @description Rotates the player's virtual mask, if applicable.
 player_rotate_mask = function()
 {
-	static rotation_lock_time = 0;
 	if (rotation_lock_time > 0) then --rotation_lock_time;
 	
 	var new_rotation = (round(direction / 90) mod 4) * 90;
