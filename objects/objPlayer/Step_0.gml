@@ -3,7 +3,7 @@ if (ctrlGame.game_paused) exit;
 
 #region Input
 
-if (player_index == 0 or input_cpu_gamepad_time > 0)
+if (player_index == 0 or cpu_gamepad_time > 0)
 {
 	input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
 	input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
@@ -16,23 +16,23 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 	    value.released = InputReleased(verb, player_index);
 	});
     
-    if (input_cpu_gamepad_time > 0) input_cpu_gamepad_time--;
+    if (cpu_gamepad_time > 0) cpu_gamepad_time--;
 }
 
-if (player_index != 0 and input_cpu_gamepad_time == 0)
+if (player_index != 0 and cpu_gamepad_time == 0)
 {
 	player_reset_input();
 	var leader_inst = ctrlStage.stage_players[0];
 	if (instance_exists(leader_inst))
 	{
-		switch (input_cpu_state)
+		switch (cpu_state)
 		{
 			case CPU_STATE.CROUCH:
 			{
-                if (input_cpu_state_time == 0)
+                if (cpu_state_time == 0)
                 {
-                	input_cpu_state = CPU_STATE.FOLLOW;
-					input_cpu_state_time = 0;
+                	cpu_state = CPU_STATE.FOLLOW;
+					cpu_state_time = 0;
                 }
                 else
                 {
@@ -43,26 +43,26 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 			        	image_xscale = esign(leader_inst.x - x, leader_inst.image_xscale);
 			        	if (state == player_is_crouching)
 			        	{
-			            	input_cpu_state = CPU_STATE.SPIN_DASH;
-							input_cpu_state_time = 64;
+			            	cpu_state = CPU_STATE.SPIN_DASH;
+							cpu_state_time = 64;
 			        	}
 			        }
-			        --input_cpu_state_time;
+			        --cpu_state_time;
                 }
 				break;
 			}
 			case CPU_STATE.SPIN_DASH:
 			{
-				if (input_cpu_state_time == 0)
+				if (cpu_state_time == 0)
 				{
-					input_cpu_state = CPU_STATE.FOLLOW;
-					input_cpu_state_time = 0;
+					cpu_state = CPU_STATE.FOLLOW;
+					cpu_state_time = 0;
 				}
 				else
 				{
 					input_axis_y = 1;
-					input_button.jump.pressed = (input_cpu_state_time mod 16 == 0);
-					--input_cpu_state_time;
+					input_button.jump.pressed = (cpu_state_time mod 16 == 0);
+					--cpu_state_time;
 				}
 				break;
 			}
@@ -71,15 +71,15 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 				// Panic
 				if (abs(x_speed) < 0.5 and control_lock_time > 0)
 				{
-					input_cpu_state = CPU_STATE.CROUCH;
-					input_cpu_state_time = 128;
+					cpu_state = CPU_STATE.CROUCH;
+					cpu_state_time = 128;
 					break;
 				}
 				
-				var leader_axis_x = leader_inst.input_cpu_history[CPU_INPUT.X][0];
-				var leader_axis_y = leader_inst.input_cpu_history[CPU_INPUT.Y][0];
-				var leader_button_jump = leader_inst.input_cpu_history[CPU_INPUT.JUMP][0];
-				var leader_button_jump_pressed = leader_inst.input_cpu_history[CPU_INPUT.JUMP_PRESSED][0];
+				var leader_axis_x = leader_inst.cpu_history[CPU_INPUT.X][0];
+				var leader_axis_y = leader_inst.cpu_history[CPU_INPUT.Y][0];
+				var leader_button_jump = leader_inst.cpu_history[CPU_INPUT.JUMP][0];
+				var leader_button_jump_pressed = leader_inst.cpu_history[CPU_INPUT.JUMP_PRESSED][0];
 		        var leader_extra_distance = 32 * (abs(leader_inst.x_speed) < 4);
                 input_axis_x = leader_axis_x;
                 input_axis_y = leader_axis_y;
@@ -107,12 +107,12 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
                 if (y - leader_inst.y < 32)
                 {
                     jump_auto = 2;
-                    input_cpu_state_time = 64;
+                    cpu_state_time = 64;
                 }
                 else
                 {
-                	if (input_cpu_state_time > 0) input_cpu_state_time--;
-                    jump_auto = (input_cpu_state_time > 0 ? 1 : 0);
+                	if (cpu_state_time > 0) cpu_state_time--;
+                    jump_auto = (cpu_state_time > 0 ? 1 : 0);
                 }
                 
                 if (leader_inst.state != player_is_dead)
@@ -140,7 +140,7 @@ if (player_index != 0 and input_cpu_gamepad_time == 0)
 		}
         
         // Swap to player
-        if (InputCheckMany(-1, player_index)) input_cpu_gamepad_time = input_cpu_gamepad_duration;
+        if (InputCheckMany(-1, player_index)) cpu_gamepad_time = cpu_gamepad_duration;
 	}
 }
 

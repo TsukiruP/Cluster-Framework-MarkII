@@ -27,17 +27,17 @@ trick_time = 0;
 invulnerability_time = 0;
 superspeed_time = 0;
 invincibility_time = 0;
-input_cpu_state_time = 0;
-input_cpu_respawn_time = 0;
-input_cpu_gamepad_time = 0;
 camera_look_time = 0;
+cpu_state_time = 0;
+cpu_respawn_time = 0;
+cpu_gamepad_time = 0;
 
 slide_duration = 30;
 spring_duration = 16;
 trick_lock_duration = 9;
 invulnerability_duration = 120;
-input_cpu_respawn_duration = 300;
-input_cpu_gamepad_duration = 600;
+cpu_respawn_duration = 300;
+cpu_gamepad_duration = 600;
 
 // Physics
 x_speed = 0;
@@ -124,45 +124,6 @@ player_reset_input = function()
 	});
 };
 
-// CPU
-input_cpu_state = 0;
-input_cpu_history = array_create(CPU_INPUT.MAX);
-for (var i = 0; i < array_length(input_cpu_history); i++) input_cpu_history[i] = array_create(16);
-
-/// @method player_record_cpu_input(cpu_input)
-/// @description Records the given CPU input.
-/// @param {Enum.CPU_INPUT} CPU input to record.
-player_record_cpu_input = function(cpu_input)
-{
-	var input;
-	switch (cpu_input)
-	{
-		case CPU_INPUT.X:
-		{
-			input = input_axis_x;
-			break;
-		}
-		case CPU_INPUT.Y:
-		{
-			input = input_axis_y;
-			break;
-		}
-		case CPU_INPUT.JUMP:
-		{
-			input = input_button.jump.check;
-			break;
-		}
-		case CPU_INPUT.JUMP_PRESSED:
-		{
-			input = input_button.jump.pressed;
-			break;
-		}
-	}
-	
-	array_shift(input_cpu_history[cpu_input]);
-	array_push(input_cpu_history[cpu_input], input);
-};
-
 // Animation
 animation_data = new animation_core();
 //animation_history = array_create(16);
@@ -192,6 +153,45 @@ camera_offset_x = 0;
 camera_offset_y = 0;
 camera_padding_x = 0;
 camera_padding_y = 0;
+
+// CPU
+cpu_state = 0;
+cpu_history = array_create(CPU_INPUT.MAX);
+for (var i = 0; i < array_length(cpu_history); i++) cpu_history[i] = array_create(16);
+
+/// @method cpu_record_input(cpu_input)
+/// @description Records the given CPU input.
+/// @param {Enum.CPU_INPUT} cpu_input input to record.
+cpu_record_input = function(cpu_input)
+{
+	var input;
+	switch (cpu_input)
+	{
+		case CPU_INPUT.X:
+		{
+			input = input_axis_x;
+			break;
+		}
+		case CPU_INPUT.Y:
+		{
+			input = input_axis_y;
+			break;
+		}
+		case CPU_INPUT.JUMP:
+		{
+			input = input_button.jump.check;
+			break;
+		}
+		case CPU_INPUT.JUMP_PRESSED:
+		{
+			input = input_button.jump.pressed;
+			break;
+		}
+	}
+	
+	array_shift(cpu_history[cpu_input]);
+	array_push(cpu_history[cpu_input], input);
+};
 
 // Misc.
 /// @method player_perform(action, [enter])

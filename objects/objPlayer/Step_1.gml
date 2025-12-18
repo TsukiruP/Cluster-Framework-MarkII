@@ -17,8 +17,8 @@ with (spin_dash_effect) animation_update();
 // Record
 if (player_index == 0)
 {
-	player_record_cpu_input(CPU_INPUT.X);
-	player_record_cpu_input(CPU_INPUT.Y);
-	player_record_cpu_input(CPU_INPUT.JUMP);
-	player_record_cpu_input(CPU_INPUT.JUMP_PRESSED);
+	cpu_record_input(CPU_INPUT.X);
+	cpu_record_input(CPU_INPUT.Y);
+	cpu_record_input(CPU_INPUT.JUMP);
+	cpu_record_input(CPU_INPUT.JUMP_PRESSED);
 }
