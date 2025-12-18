@@ -76,15 +76,11 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 					break;
 				}
 				
-				var leader_axis_x = leader_inst.cpu_history[CPU_INPUT.X][0];
-				var leader_axis_y = leader_inst.cpu_history[CPU_INPUT.Y][0];
-				var leader_button_jump = leader_inst.cpu_history[CPU_INPUT.JUMP][0];
-				var leader_button_jump_pressed = leader_inst.cpu_history[CPU_INPUT.JUMP_PRESSED][0];
-		        var leader_extra_distance = 32 * (abs(leader_inst.x_speed) < 4);
-                input_axis_x = leader_axis_x;
-                input_axis_y = leader_axis_y;
-                input_button.jump.check = leader_button_jump;
-                input_button.jump.pressed = leader_button_jump_pressed;
+                var leader_extra_distance = 32 * (abs(leader_inst.x_speed) < 4);
+                input_axis_x = leader_inst.cpu_axis_x[0];
+                input_axis_y = leader_inst.cpu_axis_y[0];
+                input_button.jump.check = leader_inst.cpu_input_jump[0];
+                input_button.jump.pressed = leader_inst.cpu_input_jump_pressed[0];
                 
                 // TODO: Check for propeller flight
                 

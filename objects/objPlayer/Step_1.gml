@@ -17,8 +17,15 @@ with (spin_dash_effect) animation_update();
 // Record
 if (player_index == 0)
 {
-	cpu_record_input(CPU_INPUT.X);
-	cpu_record_input(CPU_INPUT.Y);
-	cpu_record_input(CPU_INPUT.JUMP);
-	cpu_record_input(CPU_INPUT.JUMP_PRESSED);
+    array_push(cpu_axis_x, input_axis_x);
+    array_shift(cpu_axis_x);
+    
+    array_push(cpu_axis_y, input_axis_y);
+    array_shift(cpu_axis_y);
+    
+    array_push(cpu_input_jump, input_button.jump.check);
+    array_shift(cpu_input_jump);
+    
+    array_push(cpu_input_jump_pressed, input_button.jump.pressed);
+    array_shift(cpu_input_jump_pressed);
 }

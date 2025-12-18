@@ -15,7 +15,10 @@ jump_cap = true;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
-for (var i = 0; i < array_length(trick_speed); ++i) trick_speed[i] = array_create(2);
+for (var i = 0; i < array_length(trick_speed); ++i)
+{
+    trick_speed[i] = array_create(2);
+}
 
 shield = SHIELD.NONE;
 shield_action = false;
@@ -124,6 +127,13 @@ player_reset_input = function()
 	});
 };
 
+// CPU
+cpu_state = 0;
+cpu_axis_x = array_create(16);
+cpu_axis_y = array_create(16);
+cpu_input_jump = array_create(16);
+cpu_input_jump_pressed = array_create(16);
+
 // Animation
 animation_data = new animation_core();
 //animation_history = array_create(16);
@@ -153,45 +163,6 @@ camera_offset_x = 0;
 camera_offset_y = 0;
 camera_padding_x = 0;
 camera_padding_y = 0;
-
-// CPU
-cpu_state = 0;
-cpu_history = array_create(CPU_INPUT.MAX);
-for (var i = 0; i < array_length(cpu_history); ++i) cpu_history[i] = array_create(16);
-
-/// @method cpu_record_input(cpu_input)
-/// @description Records the given CPU input.
-/// @param {Enum.CPU_INPUT} cpu_input input to record.
-cpu_record_input = function(cpu_input)
-{
-	var input;
-	switch (cpu_input)
-	{
-		case CPU_INPUT.X:
-		{
-			input = input_axis_x;
-			break;
-		}
-		case CPU_INPUT.Y:
-		{
-			input = input_axis_y;
-			break;
-		}
-		case CPU_INPUT.JUMP:
-		{
-			input = input_button.jump.check;
-			break;
-		}
-		case CPU_INPUT.JUMP_PRESSED:
-		{
-			input = input_button.jump.pressed;
-			break;
-		}
-	}
-	
-	array_shift(cpu_history[cpu_input]);
-	array_push(cpu_history[cpu_input], input);
-};
 
 // Misc.
 /// @method player_perform(action, [enter])
