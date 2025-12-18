@@ -1,6 +1,8 @@
 /// @description Setup
 image_speed = 0;
 
+stage_players = [];
+
 // Boundary
 bound_left = 0;
 bound_top = 0;
@@ -12,8 +14,6 @@ stage_time = 0;
 time_limit = 36000;
 time_over = false;
 time_enabled = true;
-
-stage_players = [];
 
 // alarm[0] = 5;
 
