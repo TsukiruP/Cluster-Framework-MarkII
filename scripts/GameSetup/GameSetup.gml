@@ -122,7 +122,7 @@ audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
 global.characters = [];
 global.score_count = 0;
 global.ring_count = 0;
-global.life_count = 2;
+global.life_count = 3;
 
 // Fonts
 global.font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
