@@ -95,15 +95,6 @@ enum TRICK
 	BACK
 }
 
-enum CPU_INPUT
-{
-	X,
-	Y,
-	JUMP,
-	JUMP_PRESSED,
-	MAX
-}
-
 enum CPU_STATE
 {
 	FOLLOW,
