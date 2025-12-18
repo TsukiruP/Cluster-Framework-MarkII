@@ -15,7 +15,7 @@ jump_cap = true;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
-for (var i = 0; i < array_length(trick_speed); i++) trick_speed[i] = array_create(2);
+for (var i = 0; i < array_length(trick_speed); ++i) trick_speed[i] = array_create(2);
 
 shield = SHIELD.NONE;
 shield_action = false;
@@ -157,7 +157,7 @@ camera_padding_y = 0;
 // CPU
 cpu_state = 0;
 cpu_history = array_create(CPU_INPUT.MAX);
-for (var i = 0; i < array_length(cpu_history); i++) cpu_history[i] = array_create(16);
+for (var i = 0; i < array_length(cpu_history); ++i) cpu_history[i] = array_create(16);
 
 /// @method cpu_record_input(cpu_input)
 /// @description Records the given CPU input.
@@ -424,7 +424,7 @@ player_lose_rings = function()
     var dir = 101.25;
     var flip = false;
     
-    for (var ring = 0; ring < total; ring++)
+    for (var ring = 0; ring < total; ++ring)
     {
         if (ring == 16)
         {

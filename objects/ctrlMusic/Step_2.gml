@@ -31,7 +31,7 @@ else if (mute & MUTE_FLAG_DROWN)
 
 #region Jingles
 
-for (var i = 0; i < array_length(jingle_voices); i++)
+for (var i = 0; i < array_length(jingle_voices); ++i)
 {
     if (not audio_is_playing(jingle_voices[i])) array_delete(jingle_voices, i, 1);
 }

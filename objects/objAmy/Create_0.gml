@@ -14,7 +14,7 @@ trick_speed =
 
 player_animate = function()
 {
-    var lovely_couple = (ctrlStage.stage_players[0].object_index == objSonic);
+    var lovely_couple = (global.characters[0] == CHARACTER.SONIC);
     switch (animation_data.index)
     {
         case PLAYER_ANIMATION.IDLE:

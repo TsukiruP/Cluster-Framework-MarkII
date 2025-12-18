@@ -2,7 +2,7 @@
 var font_height = 15;
 if (not InputPartyGetJoin())
 {
-    for (var i = 0; i < array_length(current_menu.options); i++)
+    for (var i = 0; i < array_length(current_menu.options); ++i)
     {
         var item = current_menu.options[i];
         var label = item.label;
@@ -21,7 +21,7 @@ if (not InputPartyGetJoin())
 }
 else
 {
-	for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
+	for (var i = 0; i < INPUT_MAX_PLAYERS; ++i)
     {
         draw_text(10, i * font_height, $"Player {i}: {InputPlayerGetDevice(i)}");
     }

@@ -45,7 +45,7 @@ switch (hud)
         // Lives
         if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
         {
-            var pla_character = ctrlStage.stage_players[0].character_index;
+            var pla_character = global.characters[0];
             draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
             draw_text(30, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
         }
@@ -59,34 +59,9 @@ switch (hud)
         draw_set_color(c_white);
         
         // Type
-        var type;
-        if (instance_exists(ctrlStage.stage_players[1]))
-        {
-            if (instance_exists(objSonic)) type = 0;
-            else if (instance_exists(objMiles) or instance_exists(objCream)) type = 1;
-            else type = 2;
-        }
-        else
-        {
-            switch (ctrlStage.stage_players[0].object_index)
-            {
-                case objMiles:
-                case objCream:
-                {
-                    type = 1;
-                    break;
-                }
-                case objKnuckles:
-                {
-                    type = 2;
-                    break;
-                }
-                default:
-                {
-                    type = 0;
-                }
-            }
-        }
+        var type = 2;
+        if (array_contains(global.characters, CHARACTER.SONIC)) type = 0;
+        else if (array_contains(global.characters, CHARACTER.MILES) or array_contains(global.characters, CHARACTER.CREAM)) type = 1;
         draw_sprite(sprHUDTypeAdvance3, type, 8, 0);
         
         // Rings
@@ -109,20 +84,12 @@ switch (hud)
         // Lives
         if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
         {
-            if (instance_exists(ctrlStage.stage_players[1]))
+            for (var i = array_length(global.characters) - 1; i >= 0; --i)
             {
-                for (var i = INPUT_MAX_PLAYERS - 1; i >= 0; i--)
-                {
-                    var pla_character = ctrlStage.stage_players[i].character_index;
-                    draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
-                }
+                var pla_character = global.characters[i];
+                draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
             }
-            else
-            {
-            	var pla_character = ctrlStage.stage_players[0].character_index;
-                draw_sprite(sprLifeIconAdvance3, pla_character, 5, CAMERA_HEIGHT - 20);
-                draw_text(22, CAMERA_HEIGHT - 20, "x");
-            }
+            if (array_length(global.characters) == 1) draw_text(22, CAMERA_HEIGHT - 20, "x");
             draw_text(32, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
         }
         break;
