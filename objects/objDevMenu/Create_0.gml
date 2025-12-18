@@ -125,7 +125,7 @@ hud_option.set = function(val) { db_write(global.config_database, val, "hud"); }
 hud_option.can_wrap = true;
 hud_option.minimum = HUD.NONE;
 hud_option.maximum = HUD.ADVANCE_3;
-hud_option.specifiers = ["None", "Cluster", "Advance 2", "Advance 3"];
+hud_option.specifiers = ["None", "Cluster", "Advance 2", "Advance 3", "Adventure"];
 hud_option.offset = HUD.NONE;
 
 device_option = new option("Device Setup");

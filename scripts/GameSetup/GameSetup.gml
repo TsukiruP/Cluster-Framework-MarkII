@@ -120,6 +120,7 @@ global.font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
 global.font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
 global.font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
 global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
+global.font_hud_adventure = font_add_sprite(sprFontHUDAdventure, ord("0"), false, -1);
 
 // Misc.
 surface_depth_disable(true);
