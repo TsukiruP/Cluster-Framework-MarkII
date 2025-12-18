@@ -18,7 +18,7 @@ switch (hud)
         
         // Rings
         var pla_speed = global.players[0].x_speed;
-        image_index += (pla_speed / 8) + 0.25;
+        if (not ctrlGame.game_paused) image_index += (pla_speed / 8) + 0.25;
         image_index = image_index mod 256;
         draw_sprite(sprHUDAdvance2, 0, 0, 0);
         draw_sprite(sprHUDRingAdvance2, image_index, 7, 8);
@@ -60,7 +60,7 @@ switch (hud)
         }
         else
         {
-            switch (global.players[0].character_index)
+            switch (global.players[0].object_index)
             {
                 case objMiles:
                 case objCream:
@@ -116,5 +116,6 @@ switch (hud)
 }
 
 draw_reset();
+draw_set_font(-1);
 
 /* AUTHOR NOTE: for obvious reasons, the divisions for the timestamp do not respect the game framerate. */
