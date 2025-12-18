@@ -1,5 +1,5 @@
 /// @description Setup
-if (not (ctrlGame.game_flags & GAME_FLAG_CONSERVE_CHAR))
+if (not (ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS))
 {
     global.characters = array_create(INPUT_MAX_PLAYERS);
     for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
@@ -20,6 +20,6 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
         ctrlStage.stage_players[i] = player_inst;
     }
 }
-ctrlGame.game_flags &= ~GAME_FLAG_CONSERVE_CHAR;
+ctrlGame.game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
 ctrlStage.stage_players[0].camera = global.main_camera;
 instance_destroy();
