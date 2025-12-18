@@ -1,4 +1,4 @@
-if (InputPressed(INPUT_VERB.START))
+if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
 {
     menu_close();
 }
@@ -14,6 +14,7 @@ else
             case 1:
             {
                 ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;
+                global.main_camera.set_paused(false);
                 room_goto(rmInit);
                 break;
             }
