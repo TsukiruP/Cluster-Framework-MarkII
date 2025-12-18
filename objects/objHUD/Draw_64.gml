@@ -1,8 +1,9 @@
 /// @description Render
 var hud = db_read(global.config_database, HUD.CLUSTER, "hud");
 var time = ctrlStage.stage_time;
+var time_flash = (((ctrlStage.time_limit - time) / 60) < 60);
 var time_over = (time == ctrlStage.time_limit);
-var flash = time mod 32 < 16;
+var flash = ctrlGame.game_time mod 32 < 16;
 var minutes = time div 3600;
 var seconds = (time div 60) mod 60;
 var centiseconds = floor(time / 0.6) mod 100;
@@ -22,6 +23,7 @@ switch (hud)
         image_index = image_index mod 256;
         draw_sprite(sprHUDAdvance2, 0, 0, 0);
         draw_sprite(sprHUDRingAdvance2, image_index, 7, 8);
+        
         draw_set_color(global.rings == 0 and flash ? c_red : c_white);
         draw_text(28, 0, string_pad(global.rings, 3));
         draw_reset();
@@ -31,11 +33,14 @@ switch (hud)
         
         // Time
         var center_x = (CAMERA_WIDTH / 2);
-        draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 21, 0, ":");
-        draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 3, 0, ":");
+        
+        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
+        draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 12, 0, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_reset();
         
         // Lives
         var pla_character = global.players[0].character_index;
@@ -89,11 +94,14 @@ switch (hud)
         // Time
         var center_x = (CAMERA_WIDTH / 2);
         draw_sprite(sprHUDTimeAdvance3, 0, center_x - 32, 7);
-        draw_text(center_x - 14, 2, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 7, 1, "'");
-        draw_text(center_x - 2, 2, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 13, 1, "\"");
+        
+        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_text(center_x - 14, 2, $"{time_over ? "9" : minutes}");
+        draw_text(center_x - 2, 2, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 20, 2, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_reset();
         
         // Lives
         if (instance_exists(global.players[1]))
