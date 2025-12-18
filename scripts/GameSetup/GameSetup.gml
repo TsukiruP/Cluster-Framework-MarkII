@@ -1,4 +1,6 @@
 // Constants
+#macro GAME_FLAG_CONSERVE_CHAR 1
+
 #macro PAUSE_FLAG_TEXT 1
 #macro PAUSE_FLAG_TRANSITION 2
 #macro PAUSE_FLAG_MENU 4
@@ -26,6 +28,13 @@
 #macro COLL_FLAG_RIGHT 0x80000
 
 #macro PLAYER_HEIGHT 14
+
+enum GAME_MODE
+{
+    SINGLE,
+    MARATHON,
+    TIME_ATTACK
+}
 
 enum CHARACTER
 {
@@ -102,25 +111,23 @@ enum CPU_STATE
 }
 
 // Volumes
-volume_sound = 1;
-volume_music = 1;
+global.volume_sound = 1;
+global.volume_music = 1;
 
 // Music
 audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
 
 // Player values
-stage_characters = -1;
-character_reset = true;
-players = -1;
-score = 0;
-lives = 2;
-rings = 0;
+global.characters = [];
+global.score_count = 0;
+global.ring_count = 0;
+global.life_count = 2;
 
 // Fonts
-font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
-font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
-font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
-font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
+global.font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
+global.font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
+global.font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
+global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
 
 // Misc.
 surface_depth_disable(true);
@@ -134,7 +141,3 @@ call_later(1, time_source_units_frames, function()
     instance_create_layer(0, 0, "Controllers", ctrlWindow);
     instance_create_layer(0, 0, "Controllers", ctrlMusic);
 });
-
-/* AUTHOR NOTE: this must be done one frame later as the first room will not have loaded yet.
- * also, while the manual recommends variables declared in scripts to have a global prefix, this is not done here.
- */

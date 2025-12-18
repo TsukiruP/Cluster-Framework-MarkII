@@ -22,7 +22,7 @@ if (player_index == 0 or input_cpu_gamepad_time > 0)
 if (player_index != 0 and input_cpu_gamepad_time == 0)
 {
 	player_reset_input();
-	var leader_inst = global.players[0];
+	var leader_inst = ctrlStage.stage_players[0];
 	if (instance_exists(leader_inst))
 	{
 		switch (input_cpu_state)

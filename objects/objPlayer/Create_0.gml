@@ -232,7 +232,7 @@ player_try_trick = function(time = trick_time)
 		if (input_axis_y == -1) trick_index = TRICK.UP;
 		else if (input_axis_y == 1) trick_index = TRICK.DOWN;
 		else if (input_axis_x == image_xscale) trick_index = TRICK.FRONT;
-        score += 100;
+        global.score_count += 100;
 		player_perform(player_is_trick_preparing);
         if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
             trick_index == TRICK.DOWN))
@@ -402,14 +402,14 @@ player_draw_after = function() {};
 /// @param {Bool} [is_super_ring] Whether to play the Super Ring sfx (optional, defaults to false).
 player_gain_rings = function(num, is_super_ring = false)
 {
-	global.rings = min(global.rings + num, 999);
+	global.ring_count = min(global.ring_count + num, 999);
 	audio_play_single(is_super_ring ? sfxRingSuper : sfxRing);
 	
 	// Gain lives
 	static ring_life_threshold = 99;
-	if (global.rings > ring_life_threshold)
+	if (global.ring_count > ring_life_threshold)
 	{
-		var change = global.rings div 100;
+		var change = global.ring_count div 100;
 		player_gain_lives(change - ring_life_threshold div 100);
 		ring_life_threshold = change * 100 + 99;
 	}
@@ -419,7 +419,7 @@ player_gain_rings = function(num, is_super_ring = false)
 /// @description Creates up to 32 lost rings in circles of 16 at the given position.
 player_lose_rings = function()
 {
-    var total = min(global.rings, 32);
+    var total = min(global.ring_count, 32);
     var len = 4;
     var dir = 101.25;
     var flip = false;
@@ -447,7 +447,7 @@ player_lose_rings = function()
         flip = !flip;
     }
     
-    global.rings = 0;
+    global.ring_count = 0;
     audio_play_single(sfxLoseRings);
 };
 
@@ -456,7 +456,7 @@ player_lose_rings = function()
 /// @param {Real} num Amount of lives to give.
 player_gain_lives = function(num)
 {
-	lives = min(lives + num, 99);
+	global.life_count = min(global.life_count + num, 99);
 	audio_play_life();
 };
 
@@ -467,7 +467,7 @@ player_damage = function(inst)
 {
     if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != id)) exit;
     
-    if (inst == id or (global.rings == 0 and player_index == 0))
+    if (inst == id or (global.ring_count == 0 and player_index == 0))
     {
         y_speed = -7;
         if (inst == id) audio_play_single(sfxHurt);

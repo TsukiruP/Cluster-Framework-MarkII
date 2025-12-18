@@ -14,11 +14,12 @@ trick_speed =
 
 player_animate = function()
 {
+    var lovely_couple = (ctrlStage.stage_players[0].object_index == objSonic);
     switch (animation_data.index)
     {
         case PLAYER_ANIMATION.IDLE:
         {
-            player_set_animation(global.players[0].object_index == objSonic ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
+            player_set_animation(lovely_couple ? global.ani_amy_idle_alt_v0 : global.ani_amy_idle_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
@@ -67,7 +68,7 @@ player_animate = function()
         }
         case PLAYER_ANIMATION.RUN:
         {
-            player_animate_run(global.players[0].object_index == objSonic ? global.ani_amy_run_alt : global.ani_amy_run);
+            player_animate_run(lovely_couple ? global.ani_amy_run_alt : global.ani_amy_run);
             player_set_radii(6, 14);
             if (image_index == 0)
             {

@@ -13,6 +13,8 @@ time_limit = 36000;
 time_over = false;
 time_enabled = true;
 
+stage_players = [];
+
 // alarm[0] = 5;
 
 // Identify stage

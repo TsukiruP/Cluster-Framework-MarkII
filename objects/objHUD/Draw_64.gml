@@ -18,18 +18,18 @@ switch (hud)
         draw_set_color(c_white);
         
         // Rings
-        var pla_speed = global.players[0].x_speed;
+        var pla_speed = ctrlStage.stage_players[0].x_speed;
         if (not ctrlGame.game_paused) image_index += (pla_speed / 8) + 0.25;
         image_index = image_index mod 256;
         draw_sprite(sprHUDAdvance2, 0, 0, 0);
         draw_sprite(sprHUDRingAdvance2, image_index, 7, 8);
         
-        draw_set_color(global.rings == 0 and flash ? c_red : c_white);
-        draw_text(28, 0, string_pad(global.rings, 3));
+        draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
+        draw_text(28, 0, string_pad(global.ring_count, 3));
         draw_reset();
         
         // Score
-        draw_text(28, 14, (score >= 999999 ? "999999" : string_pad(score, 6)));
+        draw_text(28, 14, (global.score_count >= 999999 ? "999999" : string_pad(global.score_count, 6)));
         
         // Time
         var center_x = (CAMERA_WIDTH / 2);
@@ -43,9 +43,12 @@ switch (hud)
         draw_reset();
         
         // Lives
-        var pla_character = global.players[0].character_index;
-        draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
-        draw_text(30, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
+        if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
+        {
+            var pla_character = ctrlStage.stage_players[0].character_index;
+            draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
+            draw_text(30, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
+        }
         break;
     }
     case HUD.ADVANCE_3:
@@ -57,7 +60,7 @@ switch (hud)
         
         // Type
         var type;
-        if (instance_exists(global.players[1]))
+        if (instance_exists(ctrlStage.stage_players[1]))
         {
             if (instance_exists(objSonic)) type = 0;
             else if (instance_exists(objMiles) or instance_exists(objCream)) type = 1;
@@ -65,7 +68,7 @@ switch (hud)
         }
         else
         {
-            switch (global.players[0].object_index)
+            switch (ctrlStage.stage_players[0].object_index)
             {
                 case objMiles:
                 case objCream:
@@ -87,8 +90,8 @@ switch (hud)
         draw_sprite(sprHUDTypeAdvance3, type, 8, 0);
         
         // Rings
-        draw_set_color(global.rings == 0 and flash ? c_red : c_white);
-        draw_text(36, 2, string_pad(global.rings, 3));
+        draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
+        draw_text(36, 2, string_pad(global.ring_count, 3));
         draw_reset();
         
         // Time
@@ -104,21 +107,24 @@ switch (hud)
         draw_reset();
         
         // Lives
-        if (instance_exists(global.players[1]))
+        if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
         {
-            for (var i = INPUT_MAX_PLAYERS - 1; i >= 0; i--)
+            if (instance_exists(ctrlStage.stage_players[1]))
             {
-                var pla_character = global.players[i].character_index;
-                draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
+                for (var i = INPUT_MAX_PLAYERS - 1; i >= 0; i--)
+                {
+                    var pla_character = ctrlStage.stage_players[i].character_index;
+                    draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
+                }
             }
+            else
+            {
+            	var pla_character = ctrlStage.stage_players[0].character_index;
+                draw_sprite(sprLifeIconAdvance3, pla_character, 5, CAMERA_HEIGHT - 20);
+                draw_text(22, CAMERA_HEIGHT - 20, "x");
+            }
+            draw_text(32, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
         }
-        else
-        {
-        	var pla_character = global.players[0].character_index;
-            draw_sprite(sprLifeIconAdvance3, pla_character, 5, CAMERA_HEIGHT - 20);
-            draw_text(22, CAMERA_HEIGHT - 20, "x");
-        }
-        draw_text(32, CAMERA_HEIGHT - 20, $"{lives > 9 ? "9" : lives}");
         break;
     }
 }
