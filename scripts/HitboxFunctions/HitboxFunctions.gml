@@ -30,7 +30,7 @@ function collision_player(hb, pla, plahb = -1)
     var bottom = hitboxes[hb].bottom;
     
     // Abort if hitbox is empty
-    if (not (left == 0 and top == 0 and right == 0 and bottom == 0)) return 0;
+    if ((left == 0 and top == 0 and right == 0 and bottom == 0)) return 0;
     
     if (image_xscale == -1)
     {
