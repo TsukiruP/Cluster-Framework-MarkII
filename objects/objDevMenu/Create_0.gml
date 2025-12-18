@@ -1,6 +1,8 @@
 /// @description Setup
 image_speed = 0;
 
+history = [];
+
 #region Constructor Hell
 
 /// @function menu(options)
@@ -19,6 +21,15 @@ function option (_label) constructor
 {
     label = _label;
     confirm = function() {};
+}
+
+/// @function option_goto(label)
+/// @description Creates a menu with a 
+/// @param {String} label Label to display.
+function option_goto(_label) : option(_label) constructor 
+{
+    option_next = undefined;
+    confirm = function() { array_push(objDevMenu.history, objDevMenu.current_menu); objDevMenu.current_menu = option_next; };
 }
 
 /// @function option_value(label)
@@ -102,6 +113,26 @@ function option_player(_player) : option_int($"Player {_player}") constructor
 
 #endregion
 
+#region Config
+
+hud_option = new option_int("HUD");
+hud_option.get = function() { return db_read(global.config_database, HUD.DEFAULT, "hud"); };
+hud_option.set = function(val) { db_write(global.config_database, val, "hud"); };
+hud_option.can_wrap = true;
+hud_option.minimum = HUD.NONE;
+hud_option.maximum = HUD.ADVANCE_3;
+hud_option.specifiers = ["None", "Default", "Advance 2", "Advance 3"];
+hud_option.offset = HUD.NONE;
+
+device_option = new option("Device Setup");
+device_option.confirm = function() { InputPartySetJoin(true); };
+
+config_menu = new menu([hud_option, device_option]);
+
+#endregion
+
+#region Home
+
 player_0_option = new option_player(0);
 player_1_option = new option_player(1);
 
@@ -109,8 +140,8 @@ boost_option = new option_bool("Boost");
 boost_option.get = function() { return db_read(global.save_database, true, "boost"); };
 boost_option.set = function(val) { db_write(global.save_database, val, "boost"); };
 
-device_option = new option("Device Setup");
-device_option.confirm = function() { InputPartySetJoin(true); }
+config_option = new option_goto("Config");
+config_option.option_next = config_menu;
 
 test_option = new option("Test Room");
 test_option.confirm = function()
@@ -119,6 +150,8 @@ test_option.confirm = function()
     return true;
 };
 
+home_menu = new menu([player_0_option, player_1_option, boost_option, config_option, test_option]);
 
-character_menu = new menu([player_0_option, player_1_option, boost_option, device_option, test_option]);
-current_menu = character_menu;
+#endregion
+
+current_menu = home_menu;

@@ -17,9 +17,15 @@ if (not InputPartyGetJoin())
     // Confirm
     if (InputPressed(INPUT_VERB.CONFIRM))
     {
-        confirm = item.confirm();
+        var confirm = item.confirm();
         // TODO: Play a sound depending on the return value of confirm
         // undefined obviously doesn't play anything.
+    }
+    
+    // Cancel
+    if (array_length(history) > 0 and InputPressed(INPUT_VERB.CANCEL))
+    {
+        current_menu = array_pop(history);
     }
 }
 else 
