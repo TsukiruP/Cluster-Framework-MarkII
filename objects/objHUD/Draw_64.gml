@@ -1,5 +1,5 @@
 /// @description Render
-var hud = db_read(global.config_database, HUD.DEFAULT, "hud");
+var hud = db_read(global.config_database, HUD.CLUSTER, "hud");
 var time = ctrlStage.stage_time;
 var time_over = (time == ctrlStage.time_limit);
 var flash = time mod 32 < 16;

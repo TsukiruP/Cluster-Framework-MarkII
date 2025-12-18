@@ -120,7 +120,7 @@ time_over_option.get = function() { return db_read(global.config_database, true,
 time_over_option.set = function(val) { db_write(global.config_database, val, "time_over"); };
 
 hud_option = new option_int("HUD");
-hud_option.get = function() { return db_read(global.config_database, HUD.DEFAULT, "hud"); };
+hud_option.get = function() { return db_read(global.config_database, HUD.CLUSTER, "hud"); };
 hud_option.set = function(val) { db_write(global.config_database, val, "hud"); };
 hud_option.can_wrap = true;
 hud_option.minimum = HUD.NONE;

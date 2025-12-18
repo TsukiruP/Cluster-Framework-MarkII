@@ -2,7 +2,7 @@
 enum HUD
 {
     NONE = -1,
-    DEFAULT,
+    CLUSTER,
     ADVANCE_2,
     ADVANCE_3
 }
