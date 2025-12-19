@@ -1,32 +1,32 @@
 /// @description Behave
 // Invisible
-if (InputPressed(INPUT_VERB.VISIBLE))
+if (InputPressed(INPUT_VERB.HIDE))
 {
-    if (not (ctrlGame.game_flags & GAME_FLAG_INVISIBLE_PAUSE))
+    if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE))
     {
-        ctrlGame.game_flags |= GAME_FLAG_INVISIBLE_PAUSE;
+        ctrlGame.game_flags |= GAME_FLAG_HIDE_PAUSE;
     }
     else
     {
-    	if (not (ctrlGame.game_flags & GAME_FLAG_INVISIBLE_HUD))
+    	if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_HUD))
         {
-            ctrlGame.game_flags |= GAME_FLAG_INVISIBLE_HUD;
+            ctrlGame.game_flags |= GAME_FLAG_HIDE_HUD;
         }
         else
         {
-            ctrlGame.game_flags &= ~(GAME_FLAG_INVISIBLE_PAUSE | GAME_FLAG_INVISIBLE_HUD);
+            ctrlGame.game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
         }
     }
     
     InputVerbConsumeAll();
 }
 
-if (ctrlGame.game_flags & GAME_FLAG_INVISIBLE_PAUSE)
+if (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE)
 {
     // Visible
     if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
     {
-        ctrlGame.game_flags &= ~(GAME_FLAG_INVISIBLE_PAUSE | GAME_FLAG_INVISIBLE_HUD);
+        ctrlGame.game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
     }
 }
 else
