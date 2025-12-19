@@ -3,7 +3,7 @@
 /// @returns {Id.TileMapElement|Id.Instance}
 function player_find_wall()
 {
-	var n = array_find_index(tilemaps, function (inst)
+	var n = array_find_index(tilemaps, function(inst)
 	{
 		return player_beam_collision(inst);
 	});
