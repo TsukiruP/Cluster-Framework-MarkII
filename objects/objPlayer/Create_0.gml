@@ -377,13 +377,13 @@ player_gain_rings = function(num, is_super_ring = false)
 	audio_play_single(is_super_ring ? sfxRingSuper : sfxRing);
 	
 	// Gain lives
-	static ring_life_threshold = 99;
-	if (global.ring_count > ring_life_threshold)
-	{
-		var change = global.ring_count div 100;
-		player_gain_lives(change - ring_life_threshold div 100);
-		ring_life_threshold = change * 100 + 99;
-	}
+    static ring_life_threshold = 99;
+    if (global.ring_count > ring_life_threshold)
+    {
+        var change = global.ring_count div 100;
+        player_gain_lives(change - ring_life_threshold div 100);
+        ring_life_threshold = change * 100 + 99;
+    }
 };
 
 /// @method player_lose_rings()
@@ -427,8 +427,11 @@ player_lose_rings = function()
 /// @param {Real} num Amount of lives to give.
 player_gain_lives = function(num)
 {
-	global.life_count = min(global.life_count + num, 99);
-	audio_play_life();
+	if (LIVES_ENABLED)
+    {
+        global.life_count = min(global.life_count + num, 99);
+        audio_play_life();
+    }
 };
 
 /// @method player_damage(inst)

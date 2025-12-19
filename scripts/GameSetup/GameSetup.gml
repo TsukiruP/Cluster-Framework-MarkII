@@ -30,6 +30,8 @@
 #macro COLL_FLAG_LEFT 0x40000
 #macro COLL_FLAG_RIGHT 0x80000
 
+#macro LIVES_ENABLED db_read(global.config_database, true, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
+
 #macro PLAYER_HEIGHT 14
 
 enum GAME_MODE

@@ -115,6 +115,10 @@ function option_player(_player) : option_int($"Player {_player}") constructor
 
 #region Config
 
+lives_option = new option_bool("Lives");
+lives_option.get = function() { return db_read(global.config_database, true, "lives"); };
+lives_option.set = function(val) { db_write(global.config_database, val, "lives"); };
+
 time_over_option = new option_bool("Time Over");
 time_over_option.get = function() { return db_read(global.config_database, true, "time_over"); };
 time_over_option.set = function(val) { db_write(global.config_database, val, "time_over"); };
@@ -131,7 +135,7 @@ hud_option.offset = HUD.NONE;
 device_option = new option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-config_menu = new menu([time_over_option, hud_option, device_option]);
+config_menu = new menu([lives_option, time_over_option, hud_option, device_option]);
 
 #endregion
 

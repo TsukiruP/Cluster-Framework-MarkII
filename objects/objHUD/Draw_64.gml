@@ -157,7 +157,7 @@ switch (hud)
 }
 
 // Lives
-if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
+if (LIVES_ENABLED)
 {
     switch (hud)
     {
