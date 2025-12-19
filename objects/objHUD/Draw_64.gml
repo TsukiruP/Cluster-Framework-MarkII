@@ -23,7 +23,6 @@ switch (hud)
         image_index = image_index mod 256;
         draw_sprite(sprHUDAdvance2, 0, 0, 0);
         draw_sprite(sprHUDRingAdvance2, image_index, 7, 8);
-        
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(28, 0, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
@@ -35,7 +34,6 @@ switch (hud)
         var center_x = (CAMERA_WIDTH / 2);
         draw_text(center_x - 21, 0, ":");
         draw_text(center_x + 3, 0, ":");
-        
         draw_set_color(time_flash and flash ? c_red : c_white);
         draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
@@ -66,7 +64,6 @@ switch (hud)
         draw_sprite(sprHUDTimeAdvance3, 0, center_x - 32, 7);
         draw_text(center_x - 7, 1, "'");
         draw_text(center_x + 13, 1, "\"");
-        
         draw_set_color(time_flash and flash ? c_red : c_white);
         draw_text(center_x - 14, 2, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 2, 2, time_over ? "59" : string_pad(seconds, 2));
@@ -83,14 +80,12 @@ switch (hud)
         
         // Time
         draw_sprite(sprHUDTimeAdventure, 0, 10, 13);
-        
         draw_set_color(time_flash and flash ? c_red : c_white);
         draw_text(43, 13, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
         draw_set_color(c_white);
         
         // Rings
         draw_sprite(sprHUDRingAdventure, 0, 10, 22);
-        
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(27, 26, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
@@ -117,7 +112,6 @@ switch (hud)
         
         // Rings
         draw_sprite(sprHUDRingAdventure2, 0, 5, 33);
-        
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(16, 38, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
