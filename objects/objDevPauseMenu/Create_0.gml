@@ -4,12 +4,13 @@ ctrlGame.game_paused |= PAUSE_FLAG_MENU;
 global.main_camera.set_paused(true);
 cursor = 0;
 
-/// @method menu_close()
+/// @method menu_close([destroy])
 /// @description Closes the pause menu.
-menu_close = function()
+/// @param {Bool} [destroy] Destroy the menu (optional, defaults to true).
+menu_close = function(destroy = true)
 {
     ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;
     global.main_camera.set_paused(false);
     InputVerbConsumeAll();
-    instance_destroy();
+    if (destroy) instance_destroy();
 };

@@ -17,6 +17,7 @@ function __InputConfigVerbs()
         SELECT,
         CONFIRM,
         CANCEL,
+        VISIBLE
     }
     
     enum INPUT_CLUSTER
@@ -42,6 +43,7 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.SELECT,  "select",      vk_rshift,     gp_select);
         InputDefineVerb(INPUT_VERB.CONFIRM, "confirm",     "A",           gp_face1);
         InputDefineVerb(INPUT_VERB.CANCEL,  "cancel",      "S",           gp_face2);
+        InputDefineVerb(INPUT_VERB.VISIBLE, "visible",     "W",           gp_face4);
     }
     else // Flip A/B over on Switch
     {
@@ -59,6 +61,7 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.SELECT,  "select",  undefined,   gp_select);
         InputDefineVerb(INPUT_VERB.CONFIRM, "confirm", undefined,   gp_face2);
         InputDefineVerb(INPUT_VERB.CANCEL,  "cancel",  undefined,   gp_face1);
+        InputDefineVerb(INPUT_VERB.VISIBLE, "visible", undefined,   gp_face4);
     }
     
     // Define a cluster of verbs for moving around
