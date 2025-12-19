@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprFontLivesAdventure2",
+  "%Name":"sprFontHUDAdventure2Lives",
   "bboxMode":0,
   "bbox_bottom":9,
   "bbox_left":0,
@@ -30,7 +30,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"b8441800-f45e-4ff4-b8da-0fcff525196c","blendMode":0,"displayName":"default","isLocked":false,"name":"b8441800-f45e-4ff4-b8da-0fcff525196c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprFontLivesAdventure2",
+  "name":"sprFontHUDAdventure2Lives",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -42,7 +42,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprFontLivesAdventure2",
+    "%Name":"sprFontHUDAdventure2Lives",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -66,7 +66,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprFontLivesAdventure2",
+    "name":"sprFontHUDAdventure2Lives",
     "playback":1,
     "playbackSpeed":1.0,
     "playbackSpeedType":1,
@@ -78,34 +78,34 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"34833ec9-9ab7-44b3-84a4-fd567c0de8a0","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"34833ec9-9ab7-44b3-84a4-fd567c0de8a0","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"4c9069d8-3401-489e-898e-aee62641be98","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4dee784d-0585-464d-b2b8-a5e0d1faaadd","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4dee784d-0585-464d-b2b8-a5e0d1faaadd","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"1aa4b7a7-5cdd-4766-a4d9-af7bdbeb4072","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3414444c-7cf5-4996-979d-23ee40cdd8ea","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3414444c-7cf5-4996-979d-23ee40cdd8ea","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"73a3dfc3-c9ce-4643-8fde-a5c197a195a0","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9688059e-bfb1-4086-9239-e3d66b81dadb","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9688059e-bfb1-4086-9239-e3d66b81dadb","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"909b4c6d-6be6-4364-a77c-de06b72e99db","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d84960a2-e847-4c2a-bb2a-9cfdd0d49ee7","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d84960a2-e847-4c2a-bb2a-9cfdd0d49ee7","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2b9c48d8-5b55-4f5f-bfce-f7b00421070f","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"05154bda-62d6-4868-a2e6-473e964fc0e5","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"05154bda-62d6-4868-a2e6-473e964fc0e5","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"68ec0d32-2eb6-4d37-91be-b3e90b9fd073","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7e21b44a-8b8f-4748-8ec3-fc4d07d7a1f3","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7e21b44a-8b8f-4748-8ec3-fc4d07d7a1f3","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"d29602d9-f834-43f6-81ac-4b85b40df2b4","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"aa70b91b-da76-4fbe-8962-65b2e883d5ed","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"aa70b91b-da76-4fbe-8962-65b2e883d5ed","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f149b7d6-49d0-462d-bd33-f11209d29cd0","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"67cdafc9-9dfe-497c-93ac-0961721ca8c3","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"67cdafc9-9dfe-497c-93ac-0961721ca8c3","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"3ba517b0-345a-4ff6-ba71-7faa9c1d9806","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"16403181-f228-420f-8254-24df7d4a5e81","path":"sprites/sprFontLivesAdventure2/sprFontLivesAdventure2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"16403181-f228-420f-8254-24df7d4a5e81","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"7d1af9c5-950f-4fd4-bbfa-52466ea052b8","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

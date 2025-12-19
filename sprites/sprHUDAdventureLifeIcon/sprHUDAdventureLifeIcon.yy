@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprLifeIconAdventure",
+  "%Name":"sprHUDAdventureLifeIcon",
   "bboxMode":0,
   "bbox_bottom":15,
   "bbox_left":0,
@@ -25,7 +25,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"a5b80253-4a93-4c05-9cf2-5e808d8cfb47","blendMode":0,"displayName":"default","isLocked":false,"name":"a5b80253-4a93-4c05-9cf2-5e808d8cfb47","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprLifeIconAdventure",
+  "name":"sprHUDAdventureLifeIcon",
   "nineSlice":null,
   "origin":0,
   "parent":{
@@ -37,7 +37,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprLifeIconAdventure",
+    "%Name":"sprHUDAdventureLifeIcon",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -61,7 +61,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprLifeIconAdventure",
+    "name":"sprHUDAdventureLifeIcon",
     "playback":1,
     "playbackSpeed":100.0,
     "playbackSpeedType":0,
@@ -73,19 +73,19 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c9d2e76d-2f31-4040-9320-58635460b334","path":"sprites/sprLifeIconAdventure/sprLifeIconAdventure.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c9d2e76d-2f31-4040-9320-58635460b334","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"cb7cb22e-cdce-4bb4-a68b-7cb2a701a2c6","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea020549-d956-4590-9709-4af5a79731ae","path":"sprites/sprLifeIconAdventure/sprLifeIconAdventure.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea020549-d956-4590-9709-4af5a79731ae","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"30f12b31-f67f-4df3-b9f4-895bc28bb157","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"846cb8bd-cbac-49b7-8856-9d581c75227d","path":"sprites/sprLifeIconAdventure/sprLifeIconAdventure.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"846cb8bd-cbac-49b7-8856-9d581c75227d","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"048608b0-d3d8-47b0-b7da-2312ae37cf69","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"629178c5-d721-461c-a999-a18da0abd31a","path":"sprites/sprLifeIconAdventure/sprLifeIconAdventure.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"629178c5-d721-461c-a999-a18da0abd31a","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"1f6d8896-1c00-411b-a708-fca2c8b296a5","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3d3f610f-6698-4d72-a128-0cdefe23bf64","path":"sprites/sprLifeIconAdventure/sprLifeIconAdventure.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3d3f610f-6698-4d72-a128-0cdefe23bf64","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"28305dd2-3177-43b7-9bdd-2dd0926760f1","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

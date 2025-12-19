@@ -124,7 +124,7 @@ global.font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false,
 global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
 global.font_hud_adventure = font_add_sprite_ext(sprFontHUDAdventure, "0123456789:.", false, -1);
 global.font_hud_adventure_2 = font_add_sprite_ext(sprFontHUDAdventure2, "0123456789:.", false, -1);
-global.font_lives_adventure_2 = font_add_sprite_ext(sprFontLivesAdventure2, "0123456789", false, 0);
+global.font_hud_adventure_2_lives = font_add_sprite_ext(sprFontHUDAdventure2Lives, "0123456789", false, 0);
 
 // Misc.
 surface_depth_disable(true);
