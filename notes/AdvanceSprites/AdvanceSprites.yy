@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"AdvanceSprites",
+  "name":"AdvanceSprites",
+  "parent":{
+    "name":"Notes",
+    "path":"folders/Notes.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
