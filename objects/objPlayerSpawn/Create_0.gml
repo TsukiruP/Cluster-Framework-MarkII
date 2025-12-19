@@ -16,7 +16,7 @@ for (var i = 0; i < array_length(global.characters); ++i)
 {
     var character_index = global.characters[i];
     if (character_index == CHARACTER.NONE) break;
-    var player_inst = instance_create_depth(x - i * 32, y, depth - i + DEPTH_OFFSET_PLAYER, player_objects[character_index]);
+    var player_inst = instance_create_depth(x - i * 32, y, depth + i + DEPTH_OFFSET_PLAYER, player_objects[character_index]);
     with (player_inst) player_index = i;
     ctrlStage.stage_players[i] = player_inst;
 }
