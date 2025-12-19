@@ -26,7 +26,7 @@ switch (hud)
         
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(28, 0, string_pad(global.ring_count, 3));
-        draw_reset();
+        draw_set_color(c_white);
         
         // Score
         draw_text(28, 14, (global.score_count >= 999999 ? "999999" : string_pad(global.score_count, 6)));
@@ -40,15 +40,7 @@ switch (hud)
         draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 12, 0, time_over ? "99" : string_pad(centiseconds, 2));
-        draw_reset();
-        
-        // Lives
-        if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
-        {
-            var pla_character = global.characters[0];
-            draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
-            draw_text(30, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
-        }
+        draw_set_color(c_white);
         break;
     }
     case HUD.ADVANCE_3:
@@ -67,7 +59,7 @@ switch (hud)
         // Rings
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(36, 2, string_pad(global.ring_count, 3));
-        draw_reset();
+        draw_set_color(c_white);
         
         // Time
         var center_x = (CAMERA_WIDTH / 2);
@@ -79,19 +71,7 @@ switch (hud)
         draw_text(center_x - 14, 2, $"{time_over ? "9" : minutes}");
         draw_text(center_x - 2, 2, time_over ? "59" : string_pad(seconds, 2));
         draw_text(center_x + 20, 2, time_over ? "99" : string_pad(centiseconds, 2));
-        draw_reset();
-        
-        // Lives
-        if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
-        {
-            for (var i = array_length(global.characters) - 1; i >= 0; --i)
-            {
-                var pla_character = global.characters[i];
-                draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
-            }
-            if (array_length(global.characters) == 1) draw_text(22, CAMERA_HEIGHT - 20, "x");
-            draw_text(32, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
-        }
+        draw_set_color(c_white);
         break;
     }
     case HUD.ADVENTURE:
@@ -106,28 +86,86 @@ switch (hud)
         
         draw_set_color(time_flash and flash ? c_red : c_white);
         draw_text(43, 13, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
-        draw_reset();
+        draw_set_color(c_white);
         
         // Rings
         draw_sprite(sprHUDRingAdventure, 0, 10, 22);
         
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(27, 26, string_pad(global.ring_count, 3));
-        draw_reset();
-        
-        // Lives
-        if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
-        {
-            var pla_character = global.characters[0];
-            draw_sprite(sprLifeIconAdventure, pla_character, 11, CAMERA_HEIGHT - 26);
-            draw_text(28, CAMERA_HEIGHT - 19, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
-        }
+        draw_set_color(c_white);
         break;
     }
     case HUD.ADVENTURE_2:
     {
+        // Text
+        draw_set_font(global.font_hud_adventure_2);
+        draw_set_halign(fa_left);
+        draw_set_color(c_white);
         
+        // Score
+        draw_text(8, 8, (global.score_count >= 99999999 ? "99999999" : string_pad(global.score_count, 8)));
+        
+        // Time
+        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_text(8, 21, $"{time_over ? "09" : string_pad(minutes, 2)}");
+        draw_text(24, 21, ":");
+        draw_text(32, 21, time_over ? "59" : string_pad(seconds, 2));
+        draw_text(48, 21, ".");
+        draw_text(56, 21, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_set_color(c_white);
+        
+        // Rings
+        draw_sprite(sprHUDRingAdventure2, 0, 5, 33);
+        
+        draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
+        draw_text(16, 38, string_pad(global.ring_count, 3));
+        draw_set_color(c_white);
         break;
+    }
+}
+
+// Lives
+if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
+{
+    switch (hud)
+    {
+        case HUD.ADVANCE_2:
+        {
+            var pla_character = global.characters[0];
+            draw_set_font(global.font_hud_advance_2);
+            draw_sprite(sprLifeIconAdvance2, pla_character, 6, CAMERA_HEIGHT - 18);
+            draw_text(30, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
+            break;
+        }
+        case HUD.ADVANCE_3:
+        {
+            draw_set_font(global.font_hud_advance_3);
+            for (var i = array_length(global.characters) - 1; i >= 0; --i)
+            {
+                var pla_character = global.characters[i];
+                draw_sprite(sprLifeIconAdvance3, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
+            }
+            if (array_length(global.characters) == 1) draw_text(22, CAMERA_HEIGHT - 20, "x");
+            draw_text(32, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
+            break;
+        }
+        case HUD.ADVENTURE:
+        {
+            var pla_character = global.characters[0];
+            draw_set_font(global.font_hud_adventure);
+            draw_sprite(sprLifeIconAdventure, pla_character, 11, CAMERA_HEIGHT - 26);
+            draw_text(28, CAMERA_HEIGHT - 19, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
+            break;
+        }
+        case HUD.ADVENTURE_2:
+        {
+            var pla_character = global.characters[0];
+            draw_set_font(global.font_lives_adventure_2);
+            draw_sprite(sprLifeIconAdvance3, pla_character, 12, CAMERA_HEIGHT - 20);
+            draw_text(29, CAMERA_HEIGHT - 14, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
+            break;
+        }
     }
 }
 
