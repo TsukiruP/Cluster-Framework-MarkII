@@ -4,8 +4,8 @@ event_inherited();
 
 hitboxes[0].set_size(-8, -8, 8, 8);
 frame_speed = 8;
+super = false;
 value = 1;
-is_super_ring = false;
 x_speed = 0;
 y_speed = 0;
 
@@ -24,7 +24,7 @@ reaction = function(pla)
 {
 	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.invulnerability_time < 90)
     {
-        pla.player_gain_rings(value, is_super_ring);
+        pla.player_gain_rings(value, super);
         particle_create(x, y, global.ani_ring_sparkle_v0);
 		instance_destroy();
     }
