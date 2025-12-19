@@ -124,8 +124,8 @@ hud_option.get = function() { return db_read(global.config_database, HUD.CLUSTER
 hud_option.set = function(val) { db_write(global.config_database, val, "hud"); };
 hud_option.can_wrap = true;
 hud_option.minimum = HUD.NONE;
-hud_option.maximum = HUD.ADVENTURE_2;
-hud_option.specifiers = ["None", "Cluster", "Advance 2", "Advance 3", "Adventure", "Adventure 2"];
+hud_option.maximum = HUD.EPISODE_II;
+hud_option.specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
 hud_option.offset = HUD.NONE;
 
 device_option = new option("Device Setup");
