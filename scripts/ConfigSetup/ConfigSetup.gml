@@ -5,7 +5,8 @@ enum HUD
     CLUSTER,
     ADVANCE_2,
     ADVANCE_3,
-    ADVENTURE
+    ADVENTURE,
+    MAX
 }
 
 global.config_database = db_create();
