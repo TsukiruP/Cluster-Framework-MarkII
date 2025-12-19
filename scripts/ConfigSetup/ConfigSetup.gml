@@ -6,6 +6,7 @@ enum HUD
     ADVANCE_2,
     ADVANCE_3,
     ADVENTURE,
+    ADVENTURE_2,
     MAX
 }
 

@@ -122,6 +122,11 @@ switch (hud)
         }
         break;
     }
+    case HUD.ADVENTURE_2:
+    {
+        
+        break;
+    }
 }
 
 draw_reset();
