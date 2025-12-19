@@ -18,15 +18,15 @@ switch (hud)
         draw_set_color(c_white);
         
         // Time
-        draw_sprite(sprHUDAdventureTime, 0, 10, 13);
+        draw_sprite(sprHUDAdventureTime, 0, hud_x, hud_y);
         draw_set_color(time_flash and flash ? c_red : c_white);
-        draw_text(43, 13, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
+        draw_text(hud_x + 33, hud_y, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
         draw_set_color(c_white);
         
         // Rings
-        draw_sprite(sprHUDAdventureRing, 0, 10, 22);
+        draw_sprite(sprHUDAdventureRing, 0, hud_x, hud_y + 9);
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
-        draw_text(27, 26, string_pad(global.ring_count, 3));
+        draw_text(hud_x + 17, hud_y + 13, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
         break;
     }
@@ -39,21 +39,22 @@ switch (hud)
         
         // Score
         var score_max = 99999999;
-        draw_text(8, 8, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 6)}");
+        draw_text(hud_x, hud_y, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 8)}");
         
         // Time
+        var time_y = hud_y + 13;
         draw_set_color(time_flash and flash ? c_red : c_white);
-        draw_text(8, 21, $"{time_over ? "09" : string_pad(minutes, 2)}");
-        draw_text(24, 21, ":");
-        draw_text(32, 21, time_over ? "59" : string_pad(seconds, 2));
-        draw_text(48, 21, ".");
-        draw_text(56, 21, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_text(hud_x, time_y, $"{time_over ? "09" : string_pad(minutes, 2)}");
+        draw_text(hud_x + 16, time_y, ":");
+        draw_text(hud_x + 24, time_y, time_over ? "59" : string_pad(seconds, 2));
+        draw_text(hud_x + 40, time_y, ".");
+        draw_text(hud_x + 48, time_y, time_over ? "99" : string_pad(centiseconds, 2));
         draw_set_color(c_white);
         
         // Rings
-        draw_sprite(sprHUDAdventure2Ring, 0, 5, 33);
+        draw_sprite(sprHUDAdventure2Ring, 0, hud_x - 3, hud_y + 25);
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
-        draw_text(16, 38, string_pad(global.ring_count, 3));
+        draw_text(hud_x + 8, hud_y + 30, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
         break;
     }
@@ -68,24 +69,25 @@ switch (hud)
         var pla_speed = ctrlStage.stage_players[0].x_speed;
         if (not ctrlGame.game_paused) image_index += (pla_speed / 8) + 0.25;
         image_index = image_index mod 256;
-        draw_sprite(sprHUDAdvance2, 0, 0, 0);
-        draw_sprite(sprHUDAdvance2Ring, image_index, 7, 8);
+        draw_sprite(sprHUDAdvance2, 0, hud_x, hud_y);
+        draw_sprite(sprHUDAdvance2Ring, image_index, hud_x + 6, hud_y + 5);
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
-        draw_text(28, 0, string_pad(global.ring_count, 3));
+        draw_text(hud_x + 27, 0, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
         
         // Score
         var score_max = 999999;
-        draw_text(28, 14, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 6)}");
+        draw_text(hud_x + 27, hud_y + 11, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 6)}");
         
         // Time
-        var center_x = (CAMERA_WIDTH / 2);
-        draw_text(center_x - 21, 0, ":");
-        draw_text(center_x + 3, 0, ":");
+        var time_x = (CAMERA_WIDTH / 2);
+        var time_y = 0;
+        draw_text(time_x - 21, time_y, ":");
+        draw_text(time_x + 3, time_y, ":");
         draw_set_color(time_flash and flash ? c_red : c_white);
-        draw_text(center_x - 28, 0, $"{time_over ? "9" : minutes}");
-        draw_text(center_x - 12, 0, time_over ? "59" : string_pad(seconds, 2));
-        draw_text(center_x + 12, 0, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_text(time_x - 28, time_y, $"{time_over ? "9" : minutes}");
+        draw_text(time_x - 12, time_y, time_over ? "59" : string_pad(seconds, 2));
+        draw_text(time_x + 12, time_y, time_over ? "99" : string_pad(centiseconds, 2));
         draw_set_color(c_white);
         break;
     }
@@ -100,22 +102,23 @@ switch (hud)
         var type = 2;
         if (array_contains(global.characters, CHARACTER.SONIC)) type = 0;
         else if (array_contains(global.characters, CHARACTER.MILES) or array_contains(global.characters, CHARACTER.CREAM)) type = 1;
-        draw_sprite(sprHUDAdvance3Type, type, 8, 0);
+        draw_sprite(sprHUDAdvance3Type, type, hud_x, hud_y);
         
         // Rings
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
-        draw_text(36, 2, string_pad(global.ring_count, 3));
+        draw_text(hud_x + 28, hud_y + 2, string_pad(global.ring_count, 3));
         draw_set_color(c_white);
         
         // Time
-        var center_x = (CAMERA_WIDTH / 2);
-        draw_sprite(sprHUDAdvance3Time, 0, center_x - 32, 7);
-        draw_text(center_x - 7, 1, "'");
-        draw_text(center_x + 13, 1, "\"");
+        var time_x = (CAMERA_WIDTH / 2);
+        var time_y = 2;
+        draw_sprite(sprHUDAdvance3Time, 0, time_x - 32, 7);
+        draw_text(time_x - 7, time_y - 1, "'");
+        draw_text(time_x + 13, time_y - 1, "\"");
         draw_set_color(time_flash and flash ? c_red : c_white);
-        draw_text(center_x - 14, 2, $"{time_over ? "9" : minutes}");
-        draw_text(center_x - 2, 2, time_over ? "59" : string_pad(seconds, 2));
-        draw_text(center_x + 20, 2, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_text(time_x - 14, time_y, $"{time_over ? "9" : minutes}");
+        draw_text(time_x - 2, time_y, time_over ? "59" : string_pad(seconds, 2));
+        draw_text(time_x + 20, time_y, time_over ? "99" : string_pad(centiseconds, 2));
         draw_set_color(c_white);
         break;
     }
@@ -125,21 +128,25 @@ switch (hud)
         draw_set_halign(fa_left);
         draw_set_color(c_white);
         
+        // Rings
+        draw_sprite(sprHUDEpisodeII, 0, hud_x, hud_y);
+        
         // Score
         var score_max = 999999999;
-        draw_sprite(sprHUDEpisodeII, 0, 25, 26);
         draw_set_font(global.font_hud_episode_ii_score);
-        draw_text(62, 29, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 9)}");
+        draw_text(hud_x + 37, hud_y + 3, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 9)}");
         
         // Time
-        draw_sprite_ext(sprHUDEpisodeII, 1, 25, 26, 1, 1, 0, time_flash and flash ? c_red : c_white, 1);
+        var time_x = hud_x + 58;
+        var time_y = 44;
+        draw_sprite_ext(sprHUDEpisodeII, 1, hud_x, hud_y, 1, 1, 0, time_flash and flash ? c_red : c_white, 1);
         draw_set_font(global.font_hud_episode_ii_time);
         draw_set_color(time_flash and flash ? c_red : c_white);
-        draw_text(83, 44, $"{time_over ? "9" : minutes}");
-        draw_text(91, 44, "'");
-        draw_text(99, 44, time_over ? "59" : string_pad(seconds, 2));
-        draw_text(117, 44, "\"");
-        draw_text(127, 44, time_over ? "99" : string_pad(centiseconds, 2));
+        draw_text(time_x, time_y, $"{time_over ? "9" : minutes}");
+        draw_text(time_x + 8, time_y, "'");
+        draw_text(time_x + 16, time_y, time_over ? "59" : string_pad(seconds, 2));
+        draw_text(time_x + 34, time_y, "\"");
+        draw_text(time_x + 44, time_y, time_over ? "99" : string_pad(centiseconds, 2));
         draw_set_color(c_white);
         break;
     }
@@ -152,38 +159,46 @@ if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
     {
         case HUD.ADVENTURE:
         {
+            var lives_x = 11;
+            var lives_y = CAMERA_HEIGHT - 26;
             var pla_character = global.characters[0];
             draw_set_font(global.font_hud_adventure);
-            draw_sprite(sprHUDAdventureLifeIcon, pla_character, 11, CAMERA_HEIGHT - 26);
-            draw_text(28, CAMERA_HEIGHT - 19, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
+            draw_sprite(sprHUDAdventureLifeIcon, pla_character, lives_x, lives_y);
+            draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
             break;
         }
         case HUD.ADVENTURE_2:
         {
+            var lives_x = 12;
+            var lives_y = CAMERA_HEIGHT - 20;
             var pla_character = global.characters[0];
             draw_set_font(global.font_hud_adventure_2_lives);
-            draw_sprite(sprHUDAdvance3LifeIcon, pla_character, 12, CAMERA_HEIGHT - 20);
-            draw_text(29, CAMERA_HEIGHT - 14, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
+            draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y);
+            draw_text(lives_x + 17, lives_y + 6, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
             break;
         }
         case HUD.ADVANCE_2:
         {
+            var lives_x = 6;
+            var lives_y = CAMERA_HEIGHT - 18;
             var pla_character = global.characters[0];
             draw_set_font(global.font_hud_advance_2);
-            draw_sprite(sprHUDAdvance2LifeIcon, pla_character, 6, CAMERA_HEIGHT - 18);
-            draw_text(30, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
+            draw_sprite(sprHUDAdvance2LifeIcon, pla_character, lives_x, lives_y);
+            draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > 9 ? "9" : global.life_count}");
             break;
         }
         case HUD.ADVANCE_3:
         {
+            var lives_x = 5;
+            var lives_y = CAMERA_HEIGHT - 20;
             draw_set_font(global.font_hud_advance_3);
             for (var i = array_length(global.characters) - 1; i >= 0; --i)
             {
                 var pla_character = global.characters[i];
-                draw_sprite(sprHUDAdvance3LifeIcon, pla_character, 5 + i * 10, CAMERA_HEIGHT - 20);
+                draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y);
             }
-            if (array_length(global.characters) == 1) draw_text(22, CAMERA_HEIGHT - 20, "x");
-            draw_text(32, CAMERA_HEIGHT - 20, $"{global.life_count > 9 ? "9" : global.life_count}");
+            if (array_length(global.characters) == 1) draw_text(lives_x + 17, lives_y, "x");
+            draw_text(lives_x + 27, lives_y, $"{global.life_count > 9 ? "9" : global.life_count}");
             break;
         }
     }
