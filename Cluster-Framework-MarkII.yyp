@@ -634,6 +634,7 @@
     {"id":{"name":"sprFontHUDAdventure","path":"sprites/sprFontHUDAdventure/sprFontHUDAdventure.yy",},},
     {"id":{"name":"sprFontHUDAdventure2","path":"sprites/sprFontHUDAdventure2/sprFontHUDAdventure2.yy",},},
     {"id":{"name":"sprFontHUDAdventure2Lives","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},},
+    {"id":{"name":"sprFontHUDEpisodeII","path":"sprites/sprFontHUDEpisodeII/sprFontHUDEpisodeII.yy",},},
     {"id":{"name":"sprFontHUDEpisodeIIScore","path":"sprites/sprFontHUDEpisodeIIScore/sprFontHUDEpisodeIIScore.yy",},},
     {"id":{"name":"sprFontHUDEpisodeIITime","path":"sprites/sprFontHUDEpisodeIITime/sprFontHUDEpisodeIITime.yy",},},
     {"id":{"name":"sprFontLives","path":"sprites/sprFontLives/sprFontLives.yy",},},

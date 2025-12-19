@@ -130,6 +130,10 @@ switch (hud)
         
         // Rings
         draw_sprite(sprHUDEpisodeII, 0, hud_x, hud_y);
+        draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
+        draw_set_font(global.font_hud_episode_ii);
+        draw_text(hud_x - 5, hud_y + 11, string_pad(global.ring_count, 3));
+        draw_set_color(c_white);
         
         // Score
         var score_max = 999999999;
@@ -162,8 +166,8 @@ if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
             var lives_x = 11;
             var lives_y = CAMERA_HEIGHT - 26;
             var pla_character = global.characters[0];
-            draw_set_font(global.font_hud_adventure);
             draw_sprite(sprHUDAdventureLifeIcon, pla_character, lives_x, lives_y);
+            draw_set_font(global.font_hud_adventure);
             draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
             break;
         }
@@ -172,8 +176,8 @@ if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
             var lives_x = 12;
             var lives_y = CAMERA_HEIGHT - 20;
             var pla_character = global.characters[0];
-            draw_set_font(global.font_hud_adventure_2_lives);
             draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y);
+            draw_set_font(global.font_hud_adventure_2_lives);
             draw_text(lives_x + 17, lives_y + 6, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
             break;
         }
@@ -182,8 +186,8 @@ if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
             var lives_x = 6;
             var lives_y = CAMERA_HEIGHT - 18;
             var pla_character = global.characters[0];
-            draw_set_font(global.font_hud_advance_2);
             draw_sprite(sprHUDAdvance2LifeIcon, pla_character, lives_x, lives_y);
+            draw_set_font(global.font_hud_advance_2);
             draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > 9 ? "9" : global.life_count}");
             break;
         }
@@ -191,13 +195,13 @@ if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
         {
             var lives_x = 5;
             var lives_y = CAMERA_HEIGHT - 20;
-            draw_set_font(global.font_hud_advance_3);
             for (var i = array_length(global.characters) - 1; i >= 0; --i)
             {
                 var pla_character = global.characters[i];
                 draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y);
             }
             if (array_length(global.characters) == 1) draw_text(lives_x + 17, lives_y, "x");
+            draw_set_font(global.font_hud_advance_3);
             draw_text(lives_x + 27, lives_y, $"{global.life_count > 9 ? "9" : global.life_count}");
             break;
         }
