@@ -101,17 +101,19 @@ switch (hud)
         draw_set_halign(fa_left);
         draw_set_color(c_white);
         
+        // Time
+        draw_sprite(sprHUDTimeAdventure, 0, 10, 13);
+        
+        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_text(43, 13, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
+        draw_reset();
+        
         // Rings
-        draw_sprite(sprHUDAdventure, 0, 10, 13);
+        draw_sprite(sprHUDRingAdventure, 0, 10, 22);
         
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
         draw_text(27, 26, string_pad(global.ring_count, 3));
         draw_reset();
-        
-        // Time
-        draw_text(43, 13, time_over ? "09" : string_pad(minutes, 2));
-        draw_text(67, 13, time_over ? "59" : string_pad(seconds, 2));
-        draw_text(91, 13, time_over ? "99" : string_pad(centiseconds, 2));
         
         // Lives
         if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
