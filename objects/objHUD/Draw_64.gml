@@ -117,7 +117,7 @@ switch (hud)
         if (ctrlGame.game_mode != GAME_MODE.TIME_ATTACK)
         {
             var pla_character = global.characters[0];
-            draw_sprite(sprLifeIconAdventure, pla_character, 12, CAMERA_HEIGHT - 26);
+            draw_sprite(sprLifeIconAdventure, pla_character, 11, CAMERA_HEIGHT - 26);
             draw_text(28, CAMERA_HEIGHT - 19, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
         }
         break;
