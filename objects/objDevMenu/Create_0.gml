@@ -1,6 +1,5 @@
 /// @description Setup
 image_speed = 0;
-
 history = [];
 
 #region Constructor Hell

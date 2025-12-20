@@ -1,4 +1,5 @@
 /// @description Setup
+image_speed = 0;
 scale = (os_type == os_linux ? 1 : 2);
 
 // STANNcam

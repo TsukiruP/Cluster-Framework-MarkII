@@ -1,6 +1,5 @@
 /// @description Setup
 image_speed = 0;
-
 stage_players = [];
 
 // Boundary
