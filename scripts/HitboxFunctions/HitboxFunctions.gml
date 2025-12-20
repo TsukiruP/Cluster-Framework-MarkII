@@ -1,6 +1,6 @@
 /// @function hitbox(col, [left], [top], [right], [bottom])
 /// @description Creates a hitbox.
-/// @param {Constant.Colour} col Color of the hitbox.
+/// @param {Constant.Color} col Color of the hitbox.
 /// @param {Real} left Left radius of the hitbox.
 /// @param {Real} top Top radius of the hitbox.
 /// @param {Real} right Right radius of the hitbox.

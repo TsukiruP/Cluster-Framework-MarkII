@@ -13,3 +13,9 @@ stanncam_debug_set_draw_zones(true);
 
 /* AUTHOR NOTE: scale is increased on creation. */
 event_perform(ev_keypress, vk_f4);
+
+background_ngh = function()
+{
+    draw_sprite_repeat(sprNeoGreenHillBackground, 0, 0, 0, 0, 1, 32, 16);
+    //draw_sprite(sprNeoGreenHillBackground, 0, 0, 0);
+}
