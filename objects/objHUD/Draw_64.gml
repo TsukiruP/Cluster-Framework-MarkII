@@ -8,6 +8,7 @@ var minutes = time div 3600;
 var seconds = (time div 60) mod 60;
 var centiseconds = floor(time / 0.6) mod 100;
 
+// HUD
 switch (hud)
 {
     case HUD.ADVENTURE:
