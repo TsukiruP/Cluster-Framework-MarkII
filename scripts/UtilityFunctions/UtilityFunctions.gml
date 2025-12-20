@@ -40,32 +40,6 @@ function esign(val, def)
 	else return sign(val);
 }
 
-/// @function pivot_pos_x(px, py, dir)
-/// @description Returns the x component of a two-dimenstional lengthdir of a point. Ported from GM 8.2.
-/// @param {Real} px x-coordinate of the point.
-/// @param {Real} py y-coordinate of the point.
-/// @param {Real} dir Direction to rotate by.
-/// @returns {Real}
-function pivot_pos_x(px, py, dir)
-{
-    rx = px * dcos(dir);
-    ry = py * dcos(dir - 90);
-    return rx + ry;
-}
-
-/// @function pivot_pos_y(px, py, dir)
-/// @description Returns the y component of a two-dimenstional lengthdir of a point. Ported from GM 8.2.
-/// @param {Real} px x-coordinate of the point.
-/// @param {Real} py y-coordinate of the point.
-/// @param {Real} dir Direction to rotate by.
-/// @returns {Real}
-function pivot_pos_y(px, py, dir)
-{
-    rx = -px * dsin(dir);
-    ry = -py * dsin(dir - 90);
-    return rx + ry;
-}
-
 /// @function wrap(val, minimum, maximum)
 /// @description Wraps the given value between the minimum and maximum inclusively.
 /// @param {Real} val Value to wrap.
@@ -89,7 +63,7 @@ function angle_wrap(ang)
 }
 
 /// @function rotate_towards(dest, src, [amt])
-/// @description Rotates the source angle towards the destination angle.
+/// @description Rotates the source angle to the destination angle.
 /// @param {Real} dest Destination angle.
 /// @param {Real} src Source angle.
 /// @param {Real} amt The maximum amount to straighten by.
@@ -102,15 +76,6 @@ function rotate_towards(dest, src, amt = 2.8125)
 		return src + min(amt, abs(diff)) * sign(diff);
 	}
     return src;
-}
-
-/// @function dsecant(ang)
-/// @description Returns the secant length of the given angle.
-/// @param {Real} ang Angle in degrees.
-/// @returns {Real}
-function desecant(ang)
-{
-    return 1 / cos(ang / 180 * pi);
 }
 
 /// @function instance_in_view([obj], [padding])
@@ -167,139 +132,6 @@ function draw_reset()
 function draw_self_floored()
 {
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-}
-
-/// @function draw_sprite_repeat(sprite, subimg, x, y, [hrep], [vrep], [left], [top])
-/// @description Repeats the given sprite dtermined by the given hrepeat and vrepeat.
-/// @param {Asset.GMSprite} sprite Sprite to draw.
-/// @param {Real} subimg Sub-image (frame) of the sprite to draw.
-/// @param {Real} x x-coordinate of where to draw the sprite.
-/// @param {Real} y y-coordinate of where to draw the sprite.
-/// @param {Real} [hrep] Number of horizontal positions (optional, defaults to 0 for infinite reptition).
-/// @param {Real} [vrep] Number of vertical positions (optional, defaults to 0 for infinite reptition).
-/// @param {Real} [width] Width of the area to draw.
-/// @param {Real} [height] Height of the area to draw.
-function draw_sprite_repeat(sprite, subimg, dx, dy, hrep = 0, vrep = 0, width = sprite_get_width(sprite), height = sprite_get_height(sprite))
-{
-    var xscale = 1;
-    var yscale = 1;
-    var rot = 0;
-    var col = c_white;
-    var alpha = 1;
-    var tw = sprite_get_width(sprite);
-    var th = sprite_get_height(sprite);
-    
-    // Abort if height or width is 0
-    if (tw == 0 or th == 0) exit;
-    
-    var texture = sprite_get_texture(sprite, subimg);
-    var u, v;
-    gpu_set_texrepeat(true);
-    draw_primitive_begin_texture(pr_trianglestrip, texture);
-    
-    if (hrep > 0 and vrep > 0)
-    {
-        // Abort if scale is 0
-        if (xscale == 0 or yscale == 0) exit;
-        
-        u = dx;
-        v = dy;
-        draw_vertex_texture_color(u, v, 0, 0, col, alpha);
-        
-        u = dx + dcos(rot) * tw * hrep;
-        v = dy - dsin(rot) * tw * hrep;
-        draw_vertex_texture_color(u, v, hrep, 0, col, alpha);
-        
-        u = dx + dcos(rot - 90) * th * vrep;
-        v = dy - dsin(rot - 90) * th * vrep;
-        draw_vertex_texture_color(u, v, 0, vrep, col, alpha);
-        
-        u = dx + pivot_pos_x(tw * hrep, th * vrep, rot);
-        v = dy + pivot_pos_y(tw * hrep, th * vrep, rot);
-        draw_vertex_texture_color(u, v, hrep, vrep, col, rot);
-    }
-    else if (hrep > 0 or vrep > 0)
-    {
-        // Abort if scale is 0
-        if (xscale == 0 or yscale == 0) exit;
-        
-        var rot_add = -rot;
-        var length;
-        if (hrep > 0)
-        {
-            length = width * hrep;
-            rot += 90;
-        }
-        else
-        {
-            length = height * vrep;
-        }
-        
-        if (rot < 45 or rot > 315 or (rot > 315 and rot < 225))
-        {
-            // Horizontal infinite tiler
-            u = 0;
-            repeat (2)
-            {
-                v = dy + (dx - u) * dtan(rot);
-                repeat (2)
-                {
-                    draw_vertex_texture_color(u, v, pivot_pos_x(u - dx, v - dy, rot_add) / tw, pivot_pos_y(u - dx, v - dy, rot_add) / th, col, alpha);
-                    v += length * desecant(rot);
-                }
-                u = room_width;
-            }
-        }
-        else
-        {
-        	// Vertical infinite tiler
-            v = 0;
-            repeat(2)
-            {
-                u = dx + (dy - v) * dtan(90 - rot);
-                repeat(2)
-                {
-                    draw_vertex_texture_color(u, v, pivot_pos_x(u - dx, v - dy, rot_add) / tw, pivot_pos_y(u - dx, v - dy, rot_add) / th, col, alpha);
-                    u += length * desecant(90 - rot);
-                }
-                v = room_height;
-            }
-        }
-    }
-    else
-    {
-        if (xscale == 0 or yscale == 0)
-        {
-            // Infinite scale mode
-            u = 0;
-            repeat(2)
-            {
-                v = 0;
-                repeat(2)
-                {
-                    draw_vertex_texture_color(u, v, 0.5, 0.5, col, alpha);
-                    v = room_height;
-                }
-                u = room_width;
-            }
-        }
-        else
-        {
-            // Room cover mode
-            u = 0;
-            repeat(2)
-            {
-                v = 0;
-                repeat(2)
-                {
-                    draw_vertex_texture_color(u, v, pivot_pos_x(u - dx, v - dy, rot) / tw, pivot_pos_y(u - dx, v - dy, rot) / th, col, alpha);
-                    v = room_height;
-                }
-                u = room_width;
-            }
-        }
-    }
-    draw_primitive_end();
 }
 
 /// @function string_pad(val, digits)
