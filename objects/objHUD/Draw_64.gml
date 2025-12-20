@@ -200,9 +200,32 @@ if (LIVES_ENABLED)
                 var pla_character = global.characters[i];
                 draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y);
             }
-            if (array_length(global.characters) == 1) draw_text(lives_x + 17, lives_y, "x");
+            if (array_length(global.characters) <= 1) draw_text(lives_x + 17, lives_y, "x");
             draw_set_font(global.font_hud_advance_3);
             draw_text(lives_x + 27, lives_y, $"{global.life_count > 9 ? "9" : global.life_count}");
+            break;
+        }
+        case HUD.EPISODE_II:
+        {
+            var lives_x = 27;
+            var lives_y = CAMERA_HEIGHT - 45;
+            
+            if (array_length(global.characters) > 1)
+            {
+                for (var i = 0; i < array_length(global.characters); ++i)
+                {
+                    var pla_character = global.characters[i];
+                    draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);
+                }
+            }
+            else 
+            {
+            	var pla_character = global.characters[0];
+                draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
+            }
+            
+            draw_set_font(global.font_hud_episode_ii);
+            draw_text(lives_x + 11, lives_y + 6, $"x{global.life_count > 999 ? "999" : string_pad(global.life_count, 3)}");
             break;
         }
     }
