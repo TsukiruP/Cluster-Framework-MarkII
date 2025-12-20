@@ -173,12 +173,12 @@ if (LIVES_ENABLED)
         }
         case HUD.ADVENTURE_2:
         {
-            var lives_x = 12;
+            var lives_x = 27;
             var lives_y = CAMERA_HEIGHT - 20;
             var pla_character = global.characters[0];
-            draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y, -1, 1, 0, c_white, 1);
             draw_set_font(global.font_hud_adventure_2_lives);
-            draw_text(lives_x + 17, lives_y + 6, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
+            draw_text(lives_x + 2, lives_y + 6, $"{global.life_count > 99 ? "99" : string_pad(global.life_count, 2)}");
             break;
         }
         case HUD.ADVANCE_2:
