@@ -209,7 +209,6 @@ if (LIVES_ENABLED)
         {
             var lives_x = 27;
             var lives_y = CAMERA_HEIGHT - 45;
-            
             if (array_length(global.characters) > 1)
             {
                 for (var i = 0; i < array_length(global.characters); ++i)
