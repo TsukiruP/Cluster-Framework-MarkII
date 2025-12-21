@@ -1,6 +1,7 @@
 /// @description Setup
 image_speed = 0;
 scale = (os_type == os_linux ? 1 : 2);
+background = draw_background_none;
 
 // STANNcam
 stanncam_init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
@@ -13,10 +14,3 @@ stanncam_debug_set_draw_zones(true);
 
 /* AUTHOR NOTE: scale is increased on creation. */
 event_perform(ev_keypress, vk_f4);
-
-background_ngh = function()
-{
-    var time = ctrlGame.game_time;
-    var cam_x = global.main_camera.x;
-    var cam_y = global.main_camera.y;
-};

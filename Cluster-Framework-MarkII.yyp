@@ -323,6 +323,7 @@
     {"id":{"name":"AnimationFunctions","path":"scripts/AnimationFunctions/AnimationFunctions.yy",},},
     {"id":{"name":"AnimationSetup","path":"scripts/AnimationSetup/AnimationSetup.yy",},},
     {"id":{"name":"AudioFunctions","path":"scripts/AudioFunctions/AudioFunctions.yy",},},
+    {"id":{"name":"BackgroundSetup","path":"scripts/BackgroundSetup/BackgroundSetup.yy",},},
     {"id":{"name":"ConfigSetup","path":"scripts/ConfigSetup/ConfigSetup.yy",},},
     {"id":{"name":"db_buffer_read","path":"scripts/db_buffer_read/db_buffer_read.yy",},},
     {"id":{"name":"db_buffer_write","path":"scripts/db_buffer_write/db_buffer_write.yy",},},

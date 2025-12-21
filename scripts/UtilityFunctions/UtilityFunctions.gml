@@ -149,10 +149,10 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h)
     var sw = sprite_get_width(sprite);
     var sh = sprite_get_height(sprite);
     
-    var i = ox - ((ox mod sw) + (xorig mod sw)) - sw * ((ox mod sw) < (xorig mod sw));
-    var j = oy - ((oy mod sh) + (yorig mod sh)) - sh * ((oy mod sh) < (yorig mod sh));
-    
+    var i = ox - ((xorig mod sw)) - sw * ((ox mod sw) < (xorig mod sw));
+    var j = oy - ((yorig mod sh)) - sh * ((oy mod sh) < (yorig mod sh));
     var jj = j;
+    
     var left, top, width, height, px, py;
     var right = ox + w;
     var bottom = oy + h;
@@ -166,8 +166,8 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h)
             top = (j <= oy) ? oy - j : 0;
             py = j + top;
             
-            width = (right <= i + sw) ? (sw - (i + sw - right) + 1) - left : sw - left;
-            height = (bottom <= j + sh) ? (sh - (j + sh - bottom) + 1) - top : sh - top;
+            width = (right <= i + sw) ? (sw - (i + sw - right)) - left : sw - left;
+            height = (bottom <= j + sh) ? (sh - (j + sh - bottom)) - top : sh - top;
             
             draw_sprite_part(sprite, subimg, left, top, width, height, px, py);
         }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BackgroundSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BackgroundSetup",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Scripts/Global.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
