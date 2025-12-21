@@ -134,6 +134,47 @@ function draw_self_floored()
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 
+/// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h)
+/// @description Draws a sprite tiled to fill a region at given offset. Originally by EyeGuy and xot from GMLScripts.com.
+/// @param {Asset.GMSprite} sprite Sprite to draw.
+/// @param {Real} subimg Sub-image (frame) of the sprite to draw.
+/// @param {Real} xorig x-coordinate of the origin offset.
+/// @param {Real} yorig y-coordinate of the origin offset.
+/// @param {Real} ox x-coordinate of the top left corner of the tiled area.
+/// @param {Real} oy y-coordinate of the top left corner of the tiled area.
+/// @param {Real} w Width of the tiled area.
+/// @param {Real} h Height of the tiled area.
+function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h)
+{
+    var sw = sprite_get_width(sprite);
+    var sh = sprite_get_height(sprite);
+    
+    var i = ox - ((ox mod sw) + (xorig mod sw)) - sw * ((ox mod sw) < (xorig mod sw));
+    var j = oy - ((oy mod sh) + (yorig mod sh)) - sh * ((oy mod sh) < (yorig mod sh));
+    
+    var jj = j;
+    var left, top, width, height, px, py;
+    var right = ox + w;
+    var bottom = oy + h;
+    for (i = i; i <= right; i += sw)
+    {
+        for (j = j; j <= bottom; j += sh)
+        {
+            left = (i <= ox) ? ox - i : 0;
+            px = i + left;
+            
+            top = (j <= oy) ? oy - j : 0;
+            py = j + top;
+            
+            width = (right <= i + sw) ? (sw - (i + sw - right) + 1) - left : sw - left;
+            height = (bottom <= j + sh) ? (sh - (j + sh - bottom) + 1) - top : sh - top;
+            
+            draw_sprite_part(sprite, subimg, left, top, width, height, px, py);
+        }
+        j = jj;
+    }
+}
+
 /// @function string_pad(val, digits)
 /// @description Returns a string of value padded with zeroes to occupy the specified dimensions. Ported from GM8.2.
 /// @param {Real} val Value to pad.

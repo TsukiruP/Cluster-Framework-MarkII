@@ -13,3 +13,10 @@ stanncam_debug_set_draw_zones(true);
 
 /* AUTHOR NOTE: scale is increased on creation. */
 event_perform(ev_keypress, vk_f4);
+
+background_ngh = function()
+{
+    var time = ctrlGame.game_time;
+    var cam_x = global.main_camera.x;
+    var cam_y = global.main_camera.y;
+};
