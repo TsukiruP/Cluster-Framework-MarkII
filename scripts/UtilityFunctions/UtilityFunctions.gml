@@ -98,10 +98,10 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 /// @param {Real} x x-coordinate of the particle.
 /// @param {Real} y y-coordinate of the particle.
 /// @param {Struct.animation} ani animation of the particle.
-/// @param {Real} [xspd] x-speed of the particle.
-/// @param {Real} [yspd] y-speed of the effect.
-/// @param {Real} [xaccel] x-acceleration of the particle.
-/// @param {Real} [yaccel] y-acceleration of the particle.
+/// @param {Real} [xspd] x-speed of the particle (optional, defaults to 0).
+/// @param {Real} [yspd] y-speed of the particle (optional, defaults to 0).
+/// @param {Real} [xaccel] x-acceleration of the particle (optional, defaults to 0).
+/// @param {Real} [yaccel] y-acceleration of the particle (optional, defaults to 0).
 /// @returns {Id.Instance}
 function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
 {
