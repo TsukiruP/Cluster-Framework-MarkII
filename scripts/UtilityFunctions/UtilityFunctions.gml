@@ -29,6 +29,16 @@ function convert_hex(val)
     return val;
 }
 
+/// @function convert_time(minutes, seconds);
+/// @description Returns the given time in frames.
+/// @param {Real} minutes Minutes to convert.
+/// @param {Real} seconds Seconds to convert.
+/// @returns {Real}
+function convert_time(minutes, seconds)
+{
+    return (minutes * 3600) + (seconds * 60);
+}
+
 /// @function esign(val, def)
 /// @description Returns the sign of the value, or the default if the value is 0. Ported from GM8.2.
 /// @param {Real} val Value to get the sign of.
@@ -134,7 +144,7 @@ function draw_self_floored()
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 
-/// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h)
+/// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h, [xoff], [yoff], [hsep], [vsep])
 /// @description Draws a sprite tiled to fill a region at given offset. Originally by EyeGuy and xot from GMLScripts.com.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real} subimg Sub-image (frame) of the sprite to draw.
@@ -144,7 +154,11 @@ function draw_self_floored()
 /// @param {Real} oy y-coordinate of the top left corner of the tiled area.
 /// @param {Real} w Width of the tiled area.
 /// @param {Real} h Height of the tiled area.
-function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h)
+/// @param {Real} [xoff] Distance in pixels to offset the sprite horizontally(optional, defaults to 0).
+/// @param {Real} [yoff] Distance in pixels to offset the sprite vertically (optional, defaults to 0).
+/// @param {Real} [hsep] Horizontal separation between each tile (optional, defaults to 0).
+/// @param {Real} [vsep] Vertical separation between each tile (optional, defaults to 0).
+function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, xoff = 0, yoff = 0, hsep = 0, vsep = 0)
 {
     var sw = sprite_get_width(sprite);
     var sh = sprite_get_height(sprite);
@@ -156,9 +170,9 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h)
     var left, top, width, height, px, py;
     var right = ox + w;
     var bottom = oy + h;
-    for (i = i; i <= right; i += sw)
+    for (i = i; i <= right; i += sw + hsep)
     {
-        for (j = j; j <= bottom; j += sh)
+        for (j = j; j <= bottom; j += sh + vsep)
         {
             left = (i <= ox) ? ox - i : 0;
             px = i + left;
