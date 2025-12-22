@@ -6,6 +6,7 @@ is_crumbling = false;
 crumbled = false;
 crumble_time = 0;
 reset = false;
+
 reaction = function(pla)
 {
     // Abort if the player is not falling

@@ -6,6 +6,7 @@ gravity_direction = angle_wrap(image_angle);
 hitboxes[0].set_size(-16, -24, 15, 0);
 hitboxes[1] = new hitbox(c_green, -15, -24, 14, 0);
 hidden_fix = false;
+
 reaction = function(pla)
 {
     // Abort if the spike is hidden

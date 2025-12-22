@@ -18,8 +18,18 @@ turn_speed = 0.75;
 lost = false;
 lifespan = 256;
 gravity_force = 0.09375;
-tilemaps = [layer_tilemap_get_id("TilesMain")];
+
+tilemaps = variable_clone(ctrlStage.tilemaps, 0);
+tilemap_count = array_length(tilemaps);
 semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
+
+// Discard the "TilesLayer1" layer tilemap, if it exists
+if (tilemap_count >= 3)
+{
+    array_delete(tilemaps, 2, 1);
+    tilemap_count = array_length(tilemaps);
+}
+
 reaction = function(pla)
 {
 	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.invulnerability_time < 90)

@@ -9,6 +9,7 @@ sink_left = 0;
 sink_top = 0;
 sink_right = 0;
 sink_bottom = 0;
+
 reaction = function(pla)
 {
     var flags0 = collision_player(0, pla);

@@ -7,6 +7,7 @@ state_time = 0;
 reset = false;
 gravity_force = 42 / 256;
 y_speed = 0;
+
 reaction = function(pla)
 {
     // Abort if the player is not falling

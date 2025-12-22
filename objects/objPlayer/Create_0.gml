@@ -74,11 +74,20 @@ mask_direction = 0;
 
 cliff_sign = 0;
 
-tilemaps = [layer_tilemap_get_id("TilesMain")];
-if (layer_exists("TilesLayer0"))
+collision_layer = 0;
+
+// Copy the stage's tilemaps
+tilemaps = variable_clone(ctrlStage.tilemaps, 0);
+tilemap_count = array_length(tilemaps);
+
+// Validate semisolid tilemap; if it exists, the tilemap count is even
+semisolid_tilemap = ((tilemap_count & 1) == 0 ? array_last(tilemaps) : -1);
+
+// Discard the "TilesLayer1" layer tilemap, if it exists
+if (tilemap_count >= 3)
 {
-	array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
-	collision_layer = 0;
+    array_delete(tilemaps, 2, 1);
+    tilemap_count = array_length(tilemaps);
 }
 
 ground_id = noone;
