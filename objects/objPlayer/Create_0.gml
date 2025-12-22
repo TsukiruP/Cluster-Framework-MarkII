@@ -65,7 +65,7 @@ hitboxes[1] = new hitbox(c_green);
 
 landed = false;
 on_ground = true;
-ground_snap = true;
+//ground_snap = true;
 
 direction = 0;
 gravity_direction = 0;
@@ -80,7 +80,6 @@ if (layer_exists("TilesLayer0"))
 	array_push(tilemaps, layer_tilemap_get_id("TilesLayer0"));
 	collision_layer = 0;
 }
-semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
 
 ground_id = noone;
 
