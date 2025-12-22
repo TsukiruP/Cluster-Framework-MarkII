@@ -29,8 +29,8 @@ function draw_background_seaside_hill()
     
     var rock_height;
     rock_height[0] = sprite_get_height(sprSeasideHillBackgroundRock0);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundRock0, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[0], 14, 78, 256);
+    //draw_sprite_tiled_area(sprSeasideHillBackgroundRock0, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[0], 14, 78, 256);
     
     rock_height[1] = sprite_get_height(sprSeasideHillBackgroundRock1);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundRock1, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[1], 231 + cam_x, 98, 256);
+    draw_sprite_tiled_area(sprSeasideHillBackgroundRock1, 0, 231 + cam_x, 0, 0, 0, CAMERA_WIDTH, rock_height[1], 231 + cam_x, 98, 256);
 }
