@@ -163,16 +163,18 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, xoff
     var sw = sprite_get_width(sprite);
     var sh = sprite_get_height(sprite);
     
-    var i = ox - hsep - (xorig mod (sw + hsep)) - (sw + hsep) * ((ox mod (sw + hsep)) < (xorig mod (sw + hsep)));
+    var i = ox - (xorig mod sw) - sw * ((ox mod sw) < (xorig mod sw));
     var j = oy - (yorig mod sh) - sh * ((oy mod sh) < (yorig mod sh));
     var jj = j;
+    
+    draw_text(0, 0, $"{i}");
     
     var left, top, width, height, px, py;
     var right = ox + w;
     var bottom = oy + h;
     for (i = i; i <= right; i += sw + hsep)
     {
-        for (j = j; j <= bottom; j += sh)
+        for (j = j; j <= bottom; j += sh + vsep)
         {
             left = (i <= ox) ? ox - i : 0;
             px = i + left;

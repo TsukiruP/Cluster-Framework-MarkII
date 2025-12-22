@@ -22,15 +22,15 @@ function draw_background_seaside_hill()
     
     var sky_y = 160;
     var sky_height = sprite_get_height(sprSeasideHillBackgroundSky) - sky_y;
-    draw_sprite_tiled_area(sprSeasideHillBackgroundSky, 0, 0, sky_y, 0, 0, CAMERA_WIDTH, sky_height);
+    //draw_sprite_tiled_area(sprSeasideHillBackgroundSky, 0, 0, sky_y, 0, 0, CAMERA_WIDTH, sky_height);
     
     var sea_height = sprite_get_height(sprSeasideHillBackgroundSea);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, 0, 0, 0, sky_height, CAMERA_WIDTH, sea_height);
+    //draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, 0, 0, 0, sky_height, CAMERA_WIDTH, sea_height);
     
     var rock_height;
     rock_height[0] = sprite_get_height(sprSeasideHillBackgroundRock0);
     //draw_sprite_tiled_area(sprSeasideHillBackgroundRock0, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[0], 14, 78, 256);
     
     rock_height[1] = sprite_get_height(sprSeasideHillBackgroundRock1);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundRock1, 0, 231 + cam_x, 0, 0, 0, CAMERA_WIDTH, rock_height[1], 231 + cam_x, 98, 256);
+    draw_sprite_tiled_area(sprSeasideHillBackgroundRock1, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[1], cam_x + 232, 98, 256);
 }

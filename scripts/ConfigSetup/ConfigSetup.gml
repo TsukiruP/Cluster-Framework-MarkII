@@ -14,4 +14,4 @@ global.config_database = db_create();
 db_write(global.config_database, true, "lives");
 db_write(global.config_database, true, "time_over");
 db_write(global.config_database, true, "shield_flicker");
-db_write(global.config_database, HUD.ADVENTURE, "hud");
+db_write(global.config_database, HUD.NONE, "hud");
