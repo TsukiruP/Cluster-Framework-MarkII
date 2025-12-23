@@ -3,7 +3,7 @@ if (not InputPartyGetJoin())
 {
     var input_axis_y = InputOpposingRepeat(INPUT_VERB.UP, INPUT_VERB.DOWN);
     current_menu.cursor += input_axis_y;
-    current_menu.cursor = wrap(current_menu.cursor, 0, array_length(current_menu.options) - 1);
+    current_menu.cursor = clamp_inverse(current_menu.cursor, 0, array_length(current_menu.options) - 1);
     
     var item = current_menu.options[current_menu.cursor];
 

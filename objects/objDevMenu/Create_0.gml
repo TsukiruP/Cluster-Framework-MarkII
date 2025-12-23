@@ -59,15 +59,15 @@ function option_bool(_label) : option_value(_label) constructor
 function option_real(_label) : option_value(_label) constructor
 {
     increment = 1;
-    can_wrap = false;
+    clampinv = false;
     minimum = 0;
     maximum = 0;
     get = function() { return 0; };
     update = function(dir)
     {
         var value = get() + dir * increment;
-        if (can_wrap) value = wrap(value, minimum, maximum);
-        else value = clamp (value, minimum, maximum);
+        if (clampinv) value = clamp_inverse(value, minimum, maximum);
+        else value = clamp(value, minimum, maximum);
         set(value);
         
     };
@@ -101,7 +101,7 @@ function option_int(_label) : option_real(_label) constructor
 function option_player(_player) : option_int($"Player {_player}") constructor 
 {
     player = _player;
-    can_wrap = true;
+    clampinv = true;
     minimum = (player == 0 ? CHARACTER.SONIC : CHARACTER.NONE);
     maximum = CHARACTER.CREAM;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
@@ -125,7 +125,7 @@ time_over_option.set = function(val) { db_write(global.config_database, val, "ti
 hud_option = new option_int("HUD");
 hud_option.get = function() { return db_read(global.config_database, HUD.CLUSTER, "hud"); };
 hud_option.set = function(val) { db_write(global.config_database, val, "hud"); };
-hud_option.can_wrap = true;
+hud_option.clampinv = true;
 hud_option.minimum = HUD.NONE;
 hud_option.maximum = HUD.EPISODE_II;
 hud_option.specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];

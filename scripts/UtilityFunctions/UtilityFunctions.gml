@@ -19,22 +19,24 @@ function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
     }
 }
 
-/// @function convert_hex(val)
-/// @description Converts an 8-bit signed hex value into a decimal number.
+/// @function hexadecimal_to_decimal(val, [bits])
+/// @description Interprets the given value as a signed hexadecimal value.
 /// @param {Real} val Value to convert.
+/// @param {Real} [bits] Number of bits (optional, defaults to 8).
 /// @returns {Real}
-function convert_hex(val)
+function hexadecimal_to_decimal(val, bits = 8)
 {
-    if (val >= 128) val -= 256;
+    var maximum = 2 ^ bits;
+    if (val >= maximum / 2) val -= maximum;
     return val;
 }
 
-/// @function convert_time(minutes, seconds);
+/// @function time_to_frames(minutes, seconds);
 /// @description Returns the given time in frames.
 /// @param {Real} minutes Minutes to convert.
 /// @param {Real} seconds Seconds to convert.
 /// @returns {Real}
-function convert_time(minutes, seconds)
+function time_to_frames(minutes, seconds)
 {
     return (minutes * 3600) + (seconds * 60);
 }
@@ -50,13 +52,13 @@ function esign(val, def)
 	else return sign(val);
 }
 
-/// @function wrap(val, minimum, maximum)
+/// @function clamp_inverse(val, minimum, maximum)
 /// @description Returns the given value wrapped within the given minimum and maximum - max inclusive.
 /// @param {Real} val Value to wrap.
 /// @param {Real} minimum Minimum value.
 /// @param {Real} maximum Maximum value.
 /// @returns {Real}
-function wrap(val, minimum, maximum)
+function clamp_inverse(val, minimum, maximum)
 {
     if (val < minimum) return maximum;
     else if (val > maximum) return minimum;
@@ -206,7 +208,7 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, hsep
 /// @description Returns a string of value padded with zeroes to occupy the specified dimensions. Ported from GM8.2.
 /// @param {Real} val Value to pad.
 /// @param {Real} digits Number of spaces to occupy.
-/// @returns {String} description
+/// @returns {String}
 function string_pad(val, digits)
 {
     return string_repeat("-", val < 0) + string_replace_all(string_format(abs(val), digits, 0), " ", "0");

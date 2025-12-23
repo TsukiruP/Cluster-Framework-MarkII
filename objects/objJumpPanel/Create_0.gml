@@ -12,7 +12,7 @@ reaction = function(pla)
         if (((flags0 & COLL_FLAG_RIGHT) and image_xscale == 1 and pla.x_speed <= 0) or 
             ((flags0 & COLL_FLAG_LEFT) and image_xscale == -1 and pla.x_speed >= 0))
         {
-            var x_dist = convert_hex((flags0 & 0x0FF00) >> 8);
+            var x_dist = hexadecimal_to_decimal((flags0 & 0x0FF00) >> 8);
             pla.x += x_dist;
             pla.x_speed = 0;
         }

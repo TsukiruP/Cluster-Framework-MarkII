@@ -39,7 +39,7 @@ else
     
     // Update
     var input_axis_y = InputOpposingRepeat(INPUT_VERB.UP, INPUT_VERB.DOWN);
-    if (input_axis_y != 0) cursor = wrap(cursor + input_axis_y, 0, 1);
+    if (input_axis_y != 0) cursor = clamp_inverse(cursor + input_axis_y, 0, 1);
     if (InputPressed(INPUT_VERB.CONFIRM))
     {
         switch (cursor)
