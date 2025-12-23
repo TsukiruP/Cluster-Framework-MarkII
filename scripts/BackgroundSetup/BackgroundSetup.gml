@@ -18,19 +18,47 @@ function draw_background_neo_green_hill()
 /// @function draw_background_seaside_hill()
 function draw_background_seaside_hill()
 {
+    var time = ctrlGame.game_time;
     var cam_x = -global.main_camera.get_x();
     
+    // Sky
     var sky_y = 160;
     var sky_height = sprite_get_height(sprSeasideHillBackgroundSky) - sky_y;
-    draw_sprite_tiled_area(sprSeasideHillBackgroundSky, 0, 0, sky_y, 0, 0, CAMERA_WIDTH, sky_height);
+    draw_sprite_tiled_area(sprSeasideHillBackgroundSky, 0, (time >> 4), sky_y, 0, 0, CAMERA_WIDTH, sky_height);
     
+    // Sea
     var sea_height = sprite_get_height(sprSeasideHillBackgroundSea);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, 0, 0, 0, sky_height, CAMERA_WIDTH, sea_height);
+    var sea_color = make_colour_rgb(63, 138, 223);
+    draw_rectangle_colour(0, sky_height, CAMERA_WIDTH, CAMERA_HEIGHT, sea_color, sea_color, sea_color, sea_color, false);
+    for (var i = 0; i < sea_height; ++i)
+    {
+        draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, (i + 2) * time div 256, i, 0, i + sky_height, CAMERA_WIDTH, 1);
+    }
     
+    // Rocks
+    var rock_index;
     var rock_height;
-    rock_height[0] = sprite_get_height(sprSeasideHillBackgroundRock0);
-    //draw_sprite_tiled_area(sprSeasideHillBackgroundRock0, 0, 0, 0, 0, 0, CAMERA_WIDTH, rock_height[0], 14, 78, 256);
+    var rock_oy;
+    var rock_hsep;
+    var rock_xoffset;
     
-    rock_height[1] = sprite_get_height(sprSeasideHillBackgroundRock1);
-    draw_sprite_tiled_area(sprSeasideHillBackgroundRock1, 0, 232, 0, 0, 98, CAMERA_WIDTH, rock_height[1], 256, 0, cam_x);
+    rock_index[0] = sprSeasideHillBackgroundRock0;
+    rock_oy[0] = 78;
+    rock_hsep[0] = 94;
+    rock_xoffset[0] = (cam_x >> 6) + 15;
+    
+    rock_index[1] = sprSeasideHillBackgroundRock1;
+    rock_oy[1] = 98;
+    rock_hsep[1] = 215;
+    rock_xoffset[1] = (cam_x >> 7) + 232;
+    
+    rock_index[2] = sprSeasideHillBackgroundRock2;
+    rock_oy[2] = 94;
+    rock_hsep[2] = 155;
+    rock_xoffset[2] = (cam_x >> 8) + 153;
+    
+    for (var i = 0; i < array_length(rock_index); ++i)
+    {
+        draw_sprite_tiled_area(rock_index[i], 0, 0, 0, 0, rock_oy[i], CAMERA_WIDTH, sprite_get_height(rock_index[i]), rock_hsep[i], 0, rock_xoffset[i]);
+    }
 }
