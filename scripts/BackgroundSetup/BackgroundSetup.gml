@@ -45,7 +45,7 @@ function draw_background_seaside_hill()
     rock_index[0] = sprSeasideHillBackgroundRock0;
     rock_oy[0] = 78;
     rock_hsep[0] = 94;
-    rock_xoffset[0] = (cam_x >> 5) + 15;
+    rock_xoffset[0] = (cam_x >> 7) + 15;
     
     rock_index[1] = sprSeasideHillBackgroundRock1;
     rock_oy[1] = 98;
@@ -55,7 +55,7 @@ function draw_background_seaside_hill()
     rock_index[2] = sprSeasideHillBackgroundRock2;
     rock_oy[2] = 94;
     rock_hsep[2] = 155;
-    rock_xoffset[2] = (cam_x >> 7) + 153;
+    rock_xoffset[2] = (cam_x >> 5) + 153;
     
     for (var i = 0; i < array_length(rock_index); ++i)
     {
