@@ -26,7 +26,7 @@ function player_find_ceiling(height)
 		var inst = player_beam_collision(tilemaps, x_radius, -oy);
 		
 		// Skip the solid if passing through it
-		if (inst == semisolid_tilemap)
+		if (inst == noone or inst == semisolid_tilemap)
 		{
 			continue;
 		}
@@ -38,5 +38,5 @@ function player_find_ceiling(height)
 }
 
 /* AUTHOR NOTE:
-(1) Wall collisions are checked by calling `player_beam_collision(solid_entities)`.
-(2) If you simply wanted to check for the presence of a floor or ceiling, you can pass the `solid_entities` array to the `player_part_collision` function alongside your desired height. */
+(1) Wall collisions are checked by calling `player_beam_collision(tilemaps)`.
+(2) If you simply wanted to check for the presence of a floor or ceiling, you can pass the `tilemaps` array to the `player_part_collision` function alongside your desired height. */
