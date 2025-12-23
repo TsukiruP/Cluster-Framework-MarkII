@@ -26,7 +26,7 @@ function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
 /// @returns {Real}
 function hex_to_dec(val, bits = 8)
 {
-    var maximum = 2 ^ bits;
+    var maximum = power(2, bits);
     if (val >= maximum / 2) val -= maximum;
     return val;
 }
