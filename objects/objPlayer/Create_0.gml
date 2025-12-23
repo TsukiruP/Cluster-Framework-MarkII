@@ -87,7 +87,7 @@ semisolid_tilemap = ((tilemap_count & 1) == 0 ? array_last(tilemaps) : -1);
 if (tilemap_count >= 3)
 {
     array_delete(tilemaps, 2, 1);
-    tilemap_count = array_length(tilemaps);
+    --tilemap_count
 }
 
 ground_id = noone;
@@ -227,10 +227,14 @@ player_try_trick = function(time = trick_time)
 /// @description Rotates the player's virtual mask, if applicable.
 player_rotate_mask = function()
 {
-	if (rotation_lock_time > 0) then --rotation_lock_time;
+	if (rotation_lock_time > 0 and not landed)
+	{
+		--rotation_lock_time;
+		exit;
+	}
 	
 	var new_rotation = (round(direction / 90) mod 4) * 90;
-	if (mask_direction != new_rotation and (landed or rotation_lock_time == 0))
+	if (mask_direction != new_rotation)
 	{
 		mask_direction = new_rotation;
 		rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);

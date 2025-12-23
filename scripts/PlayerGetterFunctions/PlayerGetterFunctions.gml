@@ -12,7 +12,7 @@ function player_calc_tile_normal(ox, oy, rot)
 	var sine = dsin(rot);
 	var cosine = dcos(rot);
 	
-	if (rot mod 180 == 0)
+	if (sine == 0)
 	{
 		var up = (rot == 180);
 		sensor_x[up] = ox div 16 * 16;
@@ -50,7 +50,7 @@ function player_calc_tile_normal(ox, oy, rot)
 
 /// @function player_detect_entities()
 /// @description Executes the reactions of all interactable objects.
-/// It also refreshes the player's local tilemaps by (de)listing the semisolid layer if applicable.
+/// It also records any solid tilemaps for terrain collision detection.
 function player_detect_entities()
 {
 	// Reset ground instance
@@ -62,7 +62,7 @@ function player_detect_entities()
     if (semisolid_tilemap != -1)
     {
         var valid = array_contains(tilemaps, semisolid_tilemap);
-        if (not player_beam_collision(semisolid_tilemap))
+        if (player_beam_collision(semisolid_tilemap) == noone)
         { 
             if (not valid) array_push(tilemaps, semisolid_tilemap); 
         } 

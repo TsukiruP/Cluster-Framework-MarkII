@@ -27,7 +27,7 @@ function player_move_on_ground()
 		player_detect_entities();
 		
 		// Handle wall collision
-		var tile_data = player_find_wall();
+		var tile_data = player_beam_collision(solid_entities);
 		if (tile_data != noone and sign(x_speed) == player_eject_wall(tile_data))
 		{
 			x_speed = 0;
@@ -80,7 +80,7 @@ function player_move_in_air()
 		player_detect_entities();
 		
 		// Handle wall collision
-		var tile_data = player_find_wall();
+		var tile_data = player_beam_collision(solid_entities);
 		if (tile_data != noone and sign(x_speed) == player_eject_wall(tile_data))
 		{
 			x_speed = 0;
