@@ -19,12 +19,12 @@ function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
     }
 }
 
-/// @function hexadecimal_to_decimal(val, [bits])
+/// @function hex_to_dec(val, [bits])
 /// @description Interprets the given value as a signed hexadecimal value.
 /// @param {Real} val Value to convert.
 /// @param {Real} [bits] Number of bits (optional, defaults to 8).
 /// @returns {Real}
-function hexadecimal_to_decimal(val, bits = 8)
+function hex_to_dec(val, bits = 8)
 {
     var maximum = 2 ^ bits;
     if (val >= maximum / 2) val -= maximum;
@@ -48,8 +48,8 @@ function time_to_frames(minutes, seconds)
 /// @returns {Real}
 function esign(val, def)
 {
-	if (val == 0) return def;
-	else return sign(val);
+    if (val == 0) return def;
+    return sign(val);
 }
 
 /// @function clamp_inverse(val, minimum, maximum)
@@ -62,7 +62,7 @@ function clamp_inverse(val, minimum, maximum)
 {
     if (val < minimum) return maximum;
     else if (val > maximum) return minimum;
-    else return val;
+    return val;
 }
 
 /// @function modwrap(val, minimum, maximum)
@@ -73,9 +73,9 @@ function clamp_inverse(val, minimum, maximum)
 /// @returns {Real}
 function modwrap(val, minimum, maximum)
 {
-    var f = val - minimum;
-    var w = maximum - minimum;
-    return f - floor(f /  w) * w + minimum;
+    var diff = val - minimum;
+    var range = maximum - minimum;
+    return diff - floor(diff / range) * range + minimum;
 }
 
 /// @function angle_wrap(ang)
@@ -110,12 +110,12 @@ function rotate_towards(dest, src, amt = 2.8125)
 /// @returns {Bool}
 function instance_in_view(obj = id, padding = CAMERA_PADDING)
 {
-	var left = global.main_camera.get_x();
-	var top = global.main_camera.get_y();
-	var right = left + CAMERA_WIDTH;
-	var bottom = top + CAMERA_HEIGHT;
-	
-	with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
+    var left = global.main_camera.get_x();
+    var top = global.main_camera.get_y();
+    var right = left + CAMERA_WIDTH;
+    var bottom = top + CAMERA_HEIGHT;
+    
+    with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
 }
 
 /// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel])

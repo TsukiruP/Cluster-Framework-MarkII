@@ -16,8 +16,8 @@ reaction = function(pla)
     var flags1 = collision_player(1, pla);
     if (flags0)
     {
-        var x_dist = hexadecimal_to_decimal((flags0 & 0x0FF00) >> 8);
-        var y_dist = hexadecimal_to_decimal(flags0 & 0x000FF);
+        var x_dist = hex_to_dec((flags0 & 0x0FF00) >> 8);
+        var y_dist = hex_to_dec(flags0 & 0x000FF);
         
         if (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM))
         {
