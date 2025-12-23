@@ -51,7 +51,7 @@ function esign(val, def)
 }
 
 /// @function wrap(val, minimum, maximum)
-/// @description Wraps the given value between the minimum and maximum inclusively.
+/// @description Returns the given value wrapped within the given minimum and maximum - max inclusive.
 /// @param {Real} val Value to wrap.
 /// @param {Real} minimum Minimum value.
 /// @param {Real} maximum Maximum value.
@@ -61,6 +61,19 @@ function wrap(val, minimum, maximum)
     if (val < minimum) return maximum;
     else if (val > maximum) return minimum;
     else return val;
+}
+
+/// @function modwrap(val, minimum, maximum)
+/// @description Returns the given value wrapped within the given minimum and maximum - max exclusive. Ported from GM8.2.
+/// @param {Real} val Value to wrap.
+/// @param {Real} minimum Minimum value.
+/// @param {Real} maximum Maximum value.
+/// @returns {Real}
+function modwrap(val, minimum, maximum)
+{
+    var f = val - minimum;
+    var w = maximum - minimum;
+    return f - floor(f /  w) * w + minimum;
 }
 
 /// @function angle_wrap(ang)
