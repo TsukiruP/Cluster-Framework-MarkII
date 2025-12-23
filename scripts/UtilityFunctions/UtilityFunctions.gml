@@ -157,7 +157,7 @@ function draw_self_floored()
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 
-/// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h, [xoff], [yoff], [hsep], [vsep])
+/// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h, [hsep], [vsep], [xoff], [yoff])
 /// @description Draws a sprite tiled to fill a region at given offset. Originally by EyeGuy and xot from GMLScripts.com.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real} subimg Sub-image (frame) of the sprite to draw.
@@ -167,20 +167,18 @@ function draw_self_floored()
 /// @param {Real} oy y-coordinate of the top left corner of the tiled area.
 /// @param {Real} w Width of the tiled area.
 /// @param {Real} h Height of the tiled area.
-/// @param {Real} [xoff] Distance in pixels to offset the sprite horizontally(optional, defaults to 0).
-/// @param {Real} [yoff] Distance in pixels to offset the sprite vertically (optional, defaults to 0).
 /// @param {Real} [hsep] Horizontal separation between each tile (optional, defaults to 0).
 /// @param {Real} [vsep] Vertical separation between each tile (optional, defaults to 0).
-function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, xoff = 0, yoff = 0, hsep = 0, vsep = 0)
+/// @param {Real} [xoff] Distance in pixels to offset the sprite horizontally(optional, defaults to 0).
+/// @param {Real} [yoff] Distance in pixels to offset the sprite vertically (optional, defaults to 0).
+function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, hsep = 0, vsep = 0, xoff = 0, yoff = 0)
 {
     var sw = sprite_get_width(sprite);
     var sh = sprite_get_height(sprite);
     
-    var i = ox - (xorig mod sw) - sw * ((ox mod sw) < (xorig mod sw)) + modwrap(xoff, w - hsep - sw - hsep, w - hsep);
-    var j = oy - (yorig mod sh) - sh * ((oy mod sh) < (yorig mod sh));
+    var i = ox - (xorig mod sw) - sw * ((ox mod sw) < (xorig mod sw)) + modwrap(xoff, 0, sw + hsep);
+    var j = oy - (yorig mod sh) - sh * ((oy mod sh) < (yorig mod sh)) + modwrap(yoff, 0, sh + vsep);
     var jj = j;
-    
-    draw_text(0, 0, $"{i}");
     
     var left, top, width, height, px, py;
     var right = ox + w;
