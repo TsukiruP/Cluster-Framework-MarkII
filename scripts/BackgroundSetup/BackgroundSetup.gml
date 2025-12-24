@@ -32,7 +32,7 @@ function draw_background_seaside_hill()
     draw_rectangle_colour(0, sky_height, CAMERA_WIDTH, CAMERA_HEIGHT, sea_color, sea_color, sea_color, sea_color, false);
     for (var i = 0; i < sea_height; ++i)
     {
-        draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, (i + 2) * time div 256, i, 0, i + sky_height, CAMERA_WIDTH, 1);
+        draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, ((i + 2) * time div 256) - cam_x div 512, i, 0, i + sky_height, CAMERA_WIDTH, 1);
     }
     
     // Rocks
