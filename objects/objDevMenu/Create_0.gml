@@ -5,7 +5,7 @@ history = [];
 #region Constructor Hell
 
 /// @function menu(options)
-/// @description Creates a menu.
+/// @description Creates a new menu.
 /// @param {Array} options Options to display.
 function menu(_options = []) constructor
 {
@@ -14,7 +14,7 @@ function menu(_options = []) constructor
 }
 
 /// @function option(label)
-/// @description Creates a basic menu option.
+/// @description Creates a new option.
 /// @param {String} label Label to display.
 function option (_label) constructor
 {
@@ -23,7 +23,7 @@ function option (_label) constructor
 }
 
 /// @function option_goto(label)
-/// @description Creates a menu with a 
+/// @description Creates a new goto option.
 /// @param {String} label Label to display.
 function option_goto(_label) : option(_label) constructor 
 {
@@ -32,7 +32,7 @@ function option_goto(_label) : option(_label) constructor
 }
 
 /// @function option_value(label)
-/// @description Creates a menu option with a value.
+/// @description Creates a new value option.
 /// @param {String} label Label to display.
 function option_value(_label) : option(_label) constructor 
 {
@@ -43,7 +43,7 @@ function option_value(_label) : option(_label) constructor
 }
 
 /// @function option_bool(label)
-/// @description Creates a menu option with a boolean.
+/// @description Creates a new boolean option.
 /// @param {String} label Label to display.
 function option_bool(_label) : option_value(_label) constructor
 {
@@ -54,7 +54,7 @@ function option_bool(_label) : option_value(_label) constructor
 }
 
 /// @function option_real(label)
-/// @description Creates a menu option with a real number.
+/// @description Creates a new real number option.
 /// @param {String} label Label to display.
 function option_real(_label) : option_value(_label) constructor
 {
@@ -75,7 +75,7 @@ function option_real(_label) : option_value(_label) constructor
 }
 
 /// @function option_int(label)
-/// @description Creates a menu with an integer number.
+/// @description Creates a new integer option.
 /// @param {String} label Label to display.
 function option_int(_label) : option_real(_label) constructor
 {
@@ -96,7 +96,7 @@ function option_int(_label) : option_real(_label) constructor
 }
 
 /// @function option_player(player)
-/// @description Creates a menu with player data.
+/// @description Creates a new player option.
 /// @param {Real} player Player to display.
 function option_player(_player) : option_int($"Player {_player}") constructor 
 {

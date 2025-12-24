@@ -1,10 +1,10 @@
 /// @function hitbox(col, [left], [top], [right], [bottom])
-/// @description Creates a hitbox.
+/// @description Creates a new hitbox with a color and dimensions assuming (0, 0) origin.
 /// @param {Constant.Colour} col Color of the hitbox.
-/// @param {Real} left Left radius of the hitbox.
-/// @param {Real} top Top radius of the hitbox.
-/// @param {Real} right Right radius of the hitbox.
-/// @param {Real} bottom Bottom radius of the hitbox.
+/// @param {Real} left Left radius of the hitbox (optional, default is 0).
+/// @param {Real} top Top radius of the hitbox (optional, default is 0).
+/// @param {Real} right Right radius of the hitbox (optional, default is 0).
+/// @param {Real} bottom Bottom radius of the hitbox (optional, default is 0).
 function hitbox(col, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
 {
 	color = col;
@@ -170,8 +170,8 @@ function collision_player(hb, pla, plahb = -1)
 }
 
 /// @function draw_hitboxes([ang])
-/// @description Draws all hitboxes.
-/// @param {Real} [ang] Angle to draw the hitboxes. (optional, default is gravity_direction).
+/// @description Draws all hitboxes assigned to the instance.
+/// @param {Real} [ang] Angle to draw the hitboxes (optional, default is gravity_direction).
 function draw_hitboxes(ang = gravity_direction)
 {
 	var x_int = x div 1;

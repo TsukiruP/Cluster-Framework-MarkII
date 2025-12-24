@@ -9,14 +9,14 @@ if (not InputPartyGetJoin())
         
         if (is_instanceof(item, option_value))
         {
-            label = $"{label}: {item.toString()}"
+            label = $"{label}: {item.toString()}";
         }
         draw_set_color(current_menu.cursor == i ? c_white : c_gray);
         draw_text(10, i * font_height, label);
         draw_reset();
     }
     
-    draw_set_valign(fa_bottom)
+    draw_set_valign(fa_bottom);
     draw_text(10, CAMERA_HEIGHT - 10, $"Confirm: {InputVerbGetBindingName(INPUT_VERB.CONFIRM)}\nCancel: {InputVerbGetBindingName(INPUT_VERB.CANCEL)}");
 }
 else
@@ -26,7 +26,7 @@ else
         draw_text(10, i * font_height, $"Player {i}: {InputPlayerGetDevice(i)}");
     }
     
-    draw_set_valign(fa_bottom)
+    draw_set_valign(fa_bottom);
     draw_text(10, CAMERA_HEIGHT - 10, $"Hold {InputVerbGetBindingName(INPUT_VERB.CONFIRM)} to Exit");
 }
 

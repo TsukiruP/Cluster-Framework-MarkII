@@ -97,7 +97,7 @@ input_axis_x = 0;
 input_axis_y = 0;
 
 /// @function button(verb)
-/// @description Creates a new button.
+/// @description Creates a new player button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
 function button(_verb) constructor
 {
@@ -260,7 +260,7 @@ player_resist_slope = function(force)
 player_animate = function() {};
 
 /// player_set_animation(ani, [ang])
-/// @description Sets the given animation as the player's current animation.
+/// @description Sets the given animation within the player's animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
 player_set_animation = function(ani, ang = gravity_direction)
@@ -270,7 +270,7 @@ player_set_animation = function(ani, ang = gravity_direction)
 };
 
 /// player_animate_teeter(ani)
-/// @description Sets the given animation as the player's current teeter animation.
+/// @description Sets the given animation within the player's animation core based on teeter conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_teeter = function(ani)
 {
@@ -279,7 +279,7 @@ player_animate_teeter = function(ani)
 };
 
 /// player_animate_run(ani)
-/// @description Sets the given animation as the player's current run animation.
+/// @description Sets the given animation within the player's animation core based on running conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
 player_animate_run = function(ani, ang = direction)
@@ -301,7 +301,7 @@ player_animate_run = function(ani, ang = direction)
 };
 
 /// player_animate_fall(ani)
-/// @description Sets the given animation as the player's current fall animation.
+/// @description Sets the given animation within the player's animation core based on falling conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_fall = function(ani)
 {
@@ -310,7 +310,7 @@ player_animate_fall = function(ani)
 };
 
 /// player_animate_jump(ani)
-/// @description Sets the given animation as the player's current jump animation.
+/// @description Sets the given animation within the player's animation core based on jumping conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_jump = function(ani)
 {
@@ -331,7 +331,7 @@ player_animate_jump = function(ani)
 };
 
 /// player_animate_spring(ani)
-/// @description Sets the given animation as the player's current spring animation.
+/// @description Sets the given animation within the player's animation core based on spring conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(ani)
 {
@@ -399,7 +399,7 @@ player_gain_rings = function(num, is_super_ring = false)
 };
 
 /// @method player_lose_rings()
-/// @description Creates up to 32 lost rings in circles of 16 at the given position.
+/// @description Creates up to 32 lost rings in circles of 16 at the player's position.
 player_lose_rings = function()
 {
     var total = min(global.ring_count, 32);

@@ -1,5 +1,5 @@
 /// @function animation(sprite, duration, [loop], [order])
-/// @description Creates a new animation with a given sprite and given duration.
+/// @description Creates a new animation with the given sprite and given duration.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
 /// @param {Real} [loop] Loop frame. If a custom order is provided, this will be an index in that order. Use -1 to mark that the animation doesn't loop.
@@ -26,7 +26,7 @@ function animation_core() constructor
 }
 
 /// @function animation_init(index, [variant], [alternatives])
-/// @description Sets the given index as the animation core's current index.
+/// @description Initializes the given index within the animation core.
 /// @param {Real} index Animation index to set.
 /// @param {Real} [variant] Variant to set (optional, defaults to 0 if the indexes don't match).
 function animation_init(index, variant = -1, alternatives = [])
@@ -42,7 +42,7 @@ function animation_init(index, variant = -1, alternatives = [])
 }
 
 /// @function animation_set(ani)
-/// @description Sets the given animation as the animation core's current animation.
+/// @description Sets the given animation within the animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 function animation_set(ani)
 {

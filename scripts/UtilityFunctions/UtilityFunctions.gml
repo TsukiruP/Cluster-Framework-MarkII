@@ -1,9 +1,9 @@
 /// @function rect([left], [top], [right], [bottom])
-/// @description Creates a rectangle with arguments assuming (0, 0) origin.
-/// @param {Real} left Left radius of the rectangle.
-/// @param {Real} top Top radius of the rectangle.
-/// @param {Real} right Right radius of the rectangle.
-/// @param {Real} bottom Bottom radius of the rectangle.
+/// @description Creates a new rectangle with dimensions assuming (0, 0) origin.
+/// @param {Real} left Left radius of the rectangle (optional, default is 0).
+/// @param {Real} top Top radius of the rectangle (optional, default is 0).
+/// @param {Real} right Right radius of the rectangle (optional, default is 0).
+/// @param {Real} bottom Bottom radius of the rectangle (optional, default is 0).
 function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
 {
 	left = _left;
@@ -20,7 +20,7 @@ function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
 }
 
 /// @function hex_to_dec(val, [bits])
-/// @description Interprets the given value as a signed hexadecimal value.
+/// @description Converts the given hexadecimal value to decimal, assuming the value is signed.
 /// @param {Real} val Value to convert.
 /// @param {Real} [bits] Number of bits (optional, defaults to 8).
 /// @returns {Real}
@@ -32,7 +32,7 @@ function hex_to_dec(val, bits = 8)
 }
 
 /// @function time_to_frames(minutes, seconds);
-/// @description Returns the given time in frames.
+/// @description Converts the given time to frames.
 /// @param {Real} minutes Minutes to convert.
 /// @param {Real} seconds Seconds to convert.
 /// @returns {Real}
@@ -42,7 +42,7 @@ function time_to_frames(minutes, seconds)
 }
 
 /// @function esign(val, def)
-/// @description Returns the sign of the value, or the default if the value is 0. Ported from GM8.2.
+/// @description Check if the given value is 0, returning the given default if applicable. Ported from GM8.2.
 /// @param {Real} val Value to get the sign of.
 /// @param {Real} def Default value to give if the value is 0.
 /// @returns {Real}
@@ -53,7 +53,7 @@ function esign(val, def)
 }
 
 /// @function clamp_inverse(val, minimum, maximum)
-/// @description Returns the given value wrapped within the given minimum and maximum - max inclusive.
+/// @description Maintains the given value between the given range by overflowing or underflowing, if applicable.
 /// @param {Real} val Value to wrap.
 /// @param {Real} minimum Minimum value.
 /// @param {Real} maximum Maximum value.
@@ -66,7 +66,7 @@ function clamp_inverse(val, minimum, maximum)
 }
 
 /// @function modwrap(val, minimum, maximum)
-/// @description Returns the given value wrapped within the given minimum and maximum - max exclusive. Ported from GM8.2.
+/// @description Wraps the given value between the given range - maximum exclusive. Ported from GM8.2.
 /// @param {Real} val Value to wrap.
 /// @param {Real} minimum Minimum value.
 /// @param {Real} maximum Maximum value.
@@ -91,7 +91,7 @@ function angle_wrap(ang)
 /// @description Rotates the source angle to the destination angle.
 /// @param {Real} dest Destination angle.
 /// @param {Real} src Source angle.
-/// @param {Real} amt The maximum amount to straighten by.
+/// @param {Real} amt The maximum amount to straighten by (optional, default is 2.8125).
 /// @returns {Real}
 function rotate_towards(dest, src, amt = 2.8125)
 {
@@ -119,7 +119,7 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 }
 
 /// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel])
-/// @description Creates a particle with the given animation.
+/// @description Creates a new particle with the given animation.
 /// @param {Real} x x-coordinate of the particle.
 /// @param {Real} y y-coordinate of the particle.
 /// @param {Struct.animation} ani animation of the particle.
@@ -153,7 +153,7 @@ function draw_reset()
 }
 
 /// @function draw_self_floored()
-/// @description Draws the instance at a floored position. Ported from GM8.2.
+/// @description Draws the instance at its floored position. Ported from GM8.2.
 function draw_self_floored()
 {
     if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
@@ -205,7 +205,7 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, hsep
 }
 
 /// @function string_pad(val, digits)
-/// @description Returns a string of value padded with zeroes to occupy the specified dimensions. Ported from GM8.2.
+/// @description Pads the given value with zeros to occupy the specified dimensions.  Ported from GM8.2.
 /// @param {Real} val Value to pad.
 /// @param {Real} digits Number of spaces to occupy.
 /// @returns {String}
