@@ -112,6 +112,9 @@ function player_is_running(phase)
 		}
 		case PHASE.STEP:
 		{
+			var facing = sign(x_speed);
+			var velocity = abs(x_speed);
+			
 			// Jump
 			if (player_try_jump()) return true;
 			
@@ -124,12 +127,12 @@ function player_is_running(phase)
 				if (input_axis_x != 0)
 				{
 					// If moving in the opposite direction...
-					if (x_speed != 0 and sign(x_speed) != input_axis_x)
+					if (x_speed != 0 and facing != input_axis_x)
 					{
 						// Decelerate and reverse direction
 						can_brake = true;
 						x_speed += deceleration * input_axis_x;
-                        if (sign(x_speed) == input_axis_x)
+                        if (facing == input_axis_x)
                         {
                             // Turn
                             if (image_xscale != input_axis_x) can_turn = true;
@@ -141,9 +144,9 @@ function player_is_running(phase)
 						// Accelerate
 						can_brake = false;
 						image_xscale = input_axis_x;
-						if (abs(x_speed) < speed_cap)
+						if (velocity < speed_cap)
 						{
-							x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_axis_x;
+							x_speed = min(velocity + acceleration, speed_cap) * input_axis_x;
 						}
 					}
 				}
@@ -180,7 +183,7 @@ function player_is_running(phase)
 			player_resist_slope(0.125);
 			
 			// Roll
-			if (abs(x_speed) >= 1.03125 and input_axis_x == 0 and input_axis_y == 1)
+			if (velocity >= 1.03125 and input_axis_x == 0 and input_axis_y == 1)
 			{
 				audio_play_single(sfxRoll);
 				return player_perform(player_is_rolling);
@@ -201,9 +204,9 @@ function player_is_running(phase)
 			{
 				if (animation_data.index != PLAYER_ANIMATION.BRAKE)
 				{
-					if (mask_direction == gravity_direction and abs(x_speed) >= 4)
+					if (mask_direction == gravity_direction and velocity >= 4)
 					{
-						animation_init(PLAYER_ANIMATION.BRAKE, abs(x_speed) > 9.0);
+						animation_init(PLAYER_ANIMATION.BRAKE, velocity > 9.0);
 						audio_play_single(sfxBrake);
 					}
 				}

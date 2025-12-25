@@ -81,7 +81,12 @@ tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
 
 // Validate semisolid tilemap; if it exists, the tilemap count is even
-semisolid_tilemap = ((tilemap_count & 1) == 0 ? array_last(tilemaps) : -1);
+semisolid_tilemap = -1;
+if ((tilemap_count & 1) == 0)
+{
+	semisolid_tilemap = array_last(tilemaps);
+	--tilemap_count;
+}
 
 // Discard the "TilesLayer1" layer tilemap, if it exists
 if (tilemap_count >= 3)
