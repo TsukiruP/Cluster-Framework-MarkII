@@ -46,6 +46,5 @@ switch (hud)
 
 // Active
 hud_active = true;
-active_channel = animcurve_get_channel(acEase, "in_out");
 active_time = 0;
 active_duration = 10;
