@@ -14,7 +14,7 @@ switch (hud)
     {
         var hud_xstart = -sprite_get_width(sprHUDCluster);
         var hud_xend = 4;
-        hud_x = interpolate(hud_xstart, hud_xend, active_time / active_duration, EASE_INOUT_QUAD);
+        hud_x = interpolate(hud_xstart, hud_xend, active_time / active_duration, EASE_SMOOTHSTEP);
         
         // Text
         draw_set_font(global.font_hud_cluster);
@@ -194,7 +194,7 @@ if (LIVES_ENABLED)
         {
             var lives_xstart = CAMERA_WIDTH;
             var lives_xend = CAMERA_WIDTH - 60;
-            var lives_x = interpolate(lives_xstart, lives_xend, active_time / active_duration, EASE_INOUT_QUAD);
+            var lives_x = interpolate(lives_xstart, lives_xend, active_time / active_duration, EASE_SMOOTHSTEP);
             var lives_y = hud_y;
             var lives_max = 99;
             var pla_character = global.characters[0];
