@@ -188,14 +188,16 @@ if (LIVES_ENABLED)
     {
         case HUD.CLUSTER:
         {
-            var lives_x = hud_x + 19;
-            var lives_y = hud_y + 55;
+            var lives_xstart = CAMERA_WIDTH;
+            var lives_xend = CAMERA_WIDTH - 60;
+            var lives_x = lives_xstart + (lives_xend - lives_xstart) * animcurve_channel_evaluate(active_channel, active_time / active_duration);
+            var lives_y = hud_y;
             var lives_max = 99;
             var pla_character = global.characters[0];
-            draw_sprite(sprHUDCluster, 2, hud_x, hud_y + 26 * 2);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x - 1, lives_y + 1, -1, 1, 0, c_black, 1);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y, -1, 1, 0, c_white, 1);
-            draw_text(hud_x + 29, hud_y + 57, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
+            draw_sprite(sprHUDCluster, 2, lives_x, lives_y);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
+            draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
         }
         case HUD.ADVENTURE:
@@ -248,7 +250,7 @@ if (LIVES_ENABLED)
         }
         case HUD.EPISODE_II:
         {
-            var lives_x = 27;
+            var lives_x = 36;
             var lives_y = CAMERA_HEIGHT - 45;
             var lives_max = 999;
             if (array_length(global.characters) > 1)

@@ -12,9 +12,9 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Adventure 2","folderPath":"folders/Fonts/Adventure 2.yy","name":"Adventure 2","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Depreciated","folderPath":"folders/Fonts/Depreciated.yy","name":"Depreciated","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Episode II","folderPath":"folders/Fonts/Episode II.yy","name":"Episode II","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Adventure 2","folderPath":"folders/Fonts/Adventure 2.yy","name":"Adventure 2","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Libraries","folderPath":"folders/Libraries.yy","name":"Libraries","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"db","folderPath":"folders/Libraries/db.yy","name":"db","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Libraries/db/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},

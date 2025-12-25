@@ -5,12 +5,6 @@ hud = db_read(global.config_database, HUD.CLUSTER, "hud");
 hud_x = 0;
 hud_y = 0;
 
-hud_xstart = 0;
-hud_ystart = 0;
-
-hud_xend = 0;
-hud_yend = 0;
-
 // Active
 hud_active = true;
 active_channel = animcurve_get_channel(acEase, "in_out");
@@ -21,9 +15,7 @@ switch (hud)
 {
     case HUD.CLUSTER:
     {
-        hud_xstart = -sprite_get_width(sprHUDCluster);
-        hud_xend = 4;
-        hud_x = hud_xstart;
+        hud_x = 0;
         hud_y = 6;
         break;
     }
