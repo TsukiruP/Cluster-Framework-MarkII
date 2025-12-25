@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Adventure 2",
-    "path":"folders/Sprites/Display/Adventure 2.yy",
+    "name":"Display",
+    "path":"folders/Sprites/Display.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
