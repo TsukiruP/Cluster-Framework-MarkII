@@ -10,7 +10,6 @@
   },
   "defaultScriptType":1,
   "Folders":[
-    {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Adventure 2","folderPath":"folders/Fonts/Adventure 2.yy","name":"Adventure 2","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Depreciated","folderPath":"folders/Fonts/Depreciated.yy","name":"Depreciated","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -192,7 +191,6 @@
   },
   "name":"Cluster-Framework-MarkII",
   "resources":[
-    {"id":{"name":"acEase","path":"animcurves/acEase/acEase.yy",},},
     {"id":{"name":"stanncam_ac_bouncy","path":"animcurves/stanncam_ac_bouncy/stanncam_ac_bouncy.yy",},},
     {"id":{"name":"stanncam_ac_ease","path":"animcurves/stanncam_ac_ease/stanncam_ac_ease.yy",},},
     {"id":{"name":"stanncam_ac_linear","path":"animcurves/stanncam_ac_linear/stanncam_ac_linear.yy",},},
@@ -356,6 +354,7 @@
     {"id":{"name":"db_set_timestamp","path":"scripts/db_set_timestamp/db_set_timestamp.yy",},},
     {"id":{"name":"db_sort_by_timestamp","path":"scripts/db_sort_by_timestamp/db_sort_by_timestamp.yy",},},
     {"id":{"name":"db_write","path":"scripts/db_write/db_write.yy",},},
+    {"id":{"name":"easings","path":"scripts/easings/easings.yy",},},
     {"id":{"name":"GameSetup","path":"scripts/GameSetup/GameSetup.yy",},},
     {"id":{"name":"HitboxFunctions","path":"scripts/HitboxFunctions/HitboxFunctions.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},

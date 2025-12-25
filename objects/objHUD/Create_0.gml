@@ -1,15 +1,8 @@
 /// @description Setup
 image_speed = 0;
 hud = db_read(global.config_database, HUD.CLUSTER, "hud");
-
 hud_x = 0;
 hud_y = 0;
-
-// Active
-hud_active = true;
-active_channel = animcurve_get_channel(acEase, "in_out");
-active_time = 0;
-active_duration = 10;
 
 switch (hud)
 {
@@ -50,3 +43,9 @@ switch (hud)
         break;
     }
 }
+
+// Active
+hud_active = true;
+active_channel = animcurve_get_channel(acEase, "in_out");
+active_time = 0;
+active_duration = 10;

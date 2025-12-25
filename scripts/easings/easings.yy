@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"easings",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"easings",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
