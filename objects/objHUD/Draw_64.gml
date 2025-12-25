@@ -139,10 +139,13 @@ switch (hud)
         
         // Rings
         draw_sprite(sprHUDEpisodeII, 0, hud_x, hud_y);
-        draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
-        draw_set_font(global.font_hud_episode_ii);
-        draw_text(hud_x - 5, hud_y + 11, string_pad(global.ring_count, 3));
-        draw_set_color(c_white);
+        if (global.ring_count > 0 or flash)
+        {
+            draw_set_color(global.ring_count == 0 ? c_red : c_white);
+            draw_set_font(global.font_hud_episode_ii);
+            draw_text(hud_x - 5, hud_y + 11, string_pad(global.ring_count, 3));
+            draw_set_color(c_white);
+        }
         
         // Score
         var score_max = 999999999;
