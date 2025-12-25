@@ -12,7 +12,7 @@ hud_xend = 0;
 hud_yend = 0;
 
 // Active
-hud_active = false;
+hud_active = true;
 active_channel = animcurve_get_channel(acEase, "in_out");
 active_time = 0;
 active_duration = 10;
@@ -21,7 +21,6 @@ switch (hud)
 {
     case HUD.CLUSTER:
     {
-        hud_active = false;
         hud_xstart = -sprite_get_width(sprHUDCluster);
         hud_xend = 4;
         hud_x = hud_xstart;

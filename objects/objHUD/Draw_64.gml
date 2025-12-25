@@ -1,7 +1,7 @@
 /// @description Render
 var time = ctrlStage.stage_time;
-var time_flash = (((ctrlStage.time_limit - time) / 60) < 60);
-var time_over = (time == ctrlStage.time_limit);
+var time_over = ctrlStage.time_over;
+var time_alert = (ctrlStage.time_limit - time) < time_to_frames(1, 0);
 var flash = ctrlGame.game_time mod 32 < 16;
 var minutes = time div 3600;
 var seconds = (time div 60) mod 60;
@@ -12,11 +12,24 @@ switch (hud)
 {
     case HUD.CLUSTER:
     {
+        // Text
+        draw_set_font(global.font_hud_cluster);
+        draw_set_halign(fa_left);
+        draw_set_color(c_white);
+        
         // Time
         draw_sprite(sprHUDCluster, 0, hud_x, hud_y);
+        if (not time_alert or (time_alert and flash))
+        {
+            var time_y = hud_y + 5;
+            draw_text(hud_x + 29, time_y, time_over ? "09" : string_pad(minutes, 2));
+            draw_text(hud_x + 54, time_y, time_over ? "59" : string_pad(seconds, 2));
+            draw_text(hud_x + 79, time_y, time_over ? "99" : string_pad(centiseconds, 2));
+        }
         
         // Rings
-        draw_sprite(sprHUDCluster, 1, hud_x, hud_y + 31);
+        draw_sprite(sprHUDCluster, 1, hud_x, hud_y + 26);
+        if (global.ring_count > 0 or flash) draw_text(hud_x + 29, hud_y + 31, string_pad(global.ring_count, 3));
         break;
     }
     case HUD.ADVENTURE:
@@ -28,7 +41,7 @@ switch (hud)
         
         // Time
         draw_sprite(sprHUDAdventureTime, 0, hud_x, hud_y);
-        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_set_color(time_alert and flash ? c_red : c_white);
         draw_text(hud_x + 33, hud_y, time_over ? "09:59:99" : $"{string_pad(minutes, 2)}:{string_pad(seconds, 2)}.{string_pad(centiseconds, 2)}");
         draw_set_color(c_white);
         
@@ -52,7 +65,7 @@ switch (hud)
         
         // Time
         var time_y = hud_y + 13;
-        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_set_color(time_alert and flash ? c_red : c_white);
         draw_text(hud_x, time_y, $"{time_over ? "09" : string_pad(minutes, 2)}");
         draw_text(hud_x + 16, time_y, ":");
         draw_text(hud_x + 24, time_y, time_over ? "59" : string_pad(seconds, 2));
@@ -93,7 +106,7 @@ switch (hud)
         var time_y = 0;
         draw_text(time_x - 21, time_y, ":");
         draw_text(time_x + 3, time_y, ":");
-        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_set_color(time_alert and flash ? c_red : c_white);
         draw_text(time_x - 28, time_y, $"{time_over ? "9" : minutes}");
         draw_text(time_x - 12, time_y, time_over ? "59" : string_pad(seconds, 2));
         draw_text(time_x + 12, time_y, time_over ? "99" : string_pad(centiseconds, 2));
@@ -124,7 +137,7 @@ switch (hud)
         draw_sprite(sprHUDAdvance3Time, 0, time_x - 32, 7);
         draw_text(time_x - 7, time_y - 1, "'");
         draw_text(time_x + 13, time_y - 1, "\"");
-        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_set_color(time_alert and flash ? c_red : c_white);
         draw_text(time_x - 14, time_y, $"{time_over ? "9" : minutes}");
         draw_text(time_x - 2, time_y, time_over ? "59" : string_pad(seconds, 2));
         draw_text(time_x + 20, time_y, time_over ? "99" : string_pad(centiseconds, 2));
@@ -155,9 +168,9 @@ switch (hud)
         // Time
         var time_x = hud_x + 58;
         var time_y = 44;
-        draw_sprite_ext(sprHUDEpisodeII, 1, hud_x, hud_y, 1, 1, 0, time_flash and flash ? c_red : c_white, 1);
+        draw_sprite_ext(sprHUDEpisodeII, 1, hud_x, hud_y, 1, 1, 0, time_alert and flash ? c_red : c_white, 1);
         draw_set_font(global.font_hud_episode_ii_time);
-        draw_set_color(time_flash and flash ? c_red : c_white);
+        draw_set_color(time_alert and flash ? c_red : c_white);
         draw_text(time_x, time_y, $"{time_over ? "9" : minutes}");
         draw_text(time_x + 8, time_y, "'");
         draw_text(time_x + 16, time_y, time_over ? "59" : string_pad(seconds, 2));
@@ -173,6 +186,18 @@ if (LIVES_ENABLED)
 {
     switch (hud)
     {
+        case HUD.CLUSTER:
+        {
+            var lives_x = hud_x + 19;
+            var lives_y = hud_y + 55;
+            var lives_max = 99;
+            var pla_character = global.characters[0];
+            draw_sprite(sprHUDCluster, 2, hud_x, hud_y + 26 * 2);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x - 1, lives_y + 1, -1, 1, 0, c_black, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y, -1, 1, 0, c_white, 1);
+            draw_text(hud_x + 29, hud_y + 57, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
+            break;
+        }
         case HUD.ADVENTURE:
         {
             var lives_x = 11;

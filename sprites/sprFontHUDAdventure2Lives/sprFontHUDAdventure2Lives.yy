@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "name":"Adventure 2",
+    "path":"folders/Fonts/Adventure 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

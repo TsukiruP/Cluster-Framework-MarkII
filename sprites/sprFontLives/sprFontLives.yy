@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "name":"Depreciated",
+    "path":"folders/Fonts/Depreciated.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

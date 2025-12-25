@@ -12,6 +12,9 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Depreciated","folderPath":"folders/Fonts/Depreciated.yy","name":"Depreciated","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Episode II","folderPath":"folders/Fonts/Episode II.yy","name":"Episode II","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Adventure 2","folderPath":"folders/Fonts/Adventure 2.yy","name":"Adventure 2","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Libraries","folderPath":"folders/Libraries.yy","name":"Libraries","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"db","folderPath":"folders/Libraries/db.yy","name":"db","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"(System)","folderPath":"folders/Libraries/db/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -641,6 +644,7 @@
     {"id":{"name":"sprFontHUDAdventure","path":"sprites/sprFontHUDAdventure/sprFontHUDAdventure.yy",},},
     {"id":{"name":"sprFontHUDAdventure2","path":"sprites/sprFontHUDAdventure2/sprFontHUDAdventure2.yy",},},
     {"id":{"name":"sprFontHUDAdventure2Lives","path":"sprites/sprFontHUDAdventure2Lives/sprFontHUDAdventure2Lives.yy",},},
+    {"id":{"name":"sprFontHUDCluster","path":"sprites/sprFontHUDCluster/sprFontHUDCluster.yy",},},
     {"id":{"name":"sprFontHUDEpisodeII","path":"sprites/sprFontHUDEpisodeII/sprFontHUDEpisodeII.yy",},},
     {"id":{"name":"sprFontHUDEpisodeIIScore","path":"sprites/sprFontHUDEpisodeIIScore/sprFontHUDEpisodeIIScore.yy",},},
     {"id":{"name":"sprFontHUDEpisodeIITime","path":"sprites/sprFontHUDEpisodeIITime/sprFontHUDEpisodeIITime.yy",},},

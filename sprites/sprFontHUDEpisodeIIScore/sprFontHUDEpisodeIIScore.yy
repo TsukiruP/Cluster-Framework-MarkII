@@ -34,8 +34,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Fonts.yy",
+    "name":"Episode II",
+    "path":"folders/Fonts/Episode II.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
