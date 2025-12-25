@@ -1,12 +1,31 @@
 /// @description Setup
 image_speed = 0;
+hud = db_read(global.config_database, HUD.CLUSTER, "hud");
+
 hud_x = 0;
 hud_y = 0;
 
-switch (db_read(global.config_database, HUD.CLUSTER, "hud"))
+hud_xstart = 0;
+hud_ystart = 0;
+
+hud_xend = 0;
+hud_yend = 0;
+
+// Active
+hud_active = false;
+active_channel = animcurve_get_channel(acEase, "in_out");
+active_time = 0;
+active_duration = 10;
+
+switch (hud)
 {
     case HUD.CLUSTER:
     {
+        hud_active = false;
+        hud_xstart = -sprite_get_width(sprHUDCluster);
+        hud_xend = 4;
+        hud_x = hud_xstart;
+        hud_y = 6;
         break;
     }
     case HUD.ADVENTURE:

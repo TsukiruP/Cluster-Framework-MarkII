@@ -1,5 +1,4 @@
 /// @description Render
-var hud = db_read(global.config_database, HUD.CLUSTER, "hud");
 var time = ctrlStage.stage_time;
 var time_flash = (((ctrlStage.time_limit - time) / 60) < 60);
 var time_over = (time == ctrlStage.time_limit);
@@ -11,6 +10,15 @@ var centiseconds = floor(time / 0.6) mod 100;
 // HUD
 switch (hud)
 {
+    case HUD.CLUSTER:
+    {
+        // Time
+        draw_sprite(sprHUDCluster, 0, hud_x, hud_y);
+        
+        // Rings
+        draw_sprite(sprHUDCluster, 1, hud_x, hud_y + 31);
+        break;
+    }
     case HUD.ADVENTURE:
     {
         // Text

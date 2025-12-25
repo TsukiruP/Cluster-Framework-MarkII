@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Libraries","folderPath":"folders/Libraries.yy","name":"Libraries","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"db","folderPath":"folders/Libraries/db.yy","name":"db","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -96,6 +97,7 @@
     {"$GMFolder":"","%Name":"Advance 3","folderPath":"folders/Sprites/Display/Advance 3.yy","name":"Advance 3","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Adventure 2","folderPath":"folders/Sprites/Display/Adventure 2.yy","name":"Adventure 2","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Adventure","folderPath":"folders/Sprites/Display/Adventure.yy","name":"Adventure","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Cluster","folderPath":"folders/Sprites/Display/Cluster.yy","name":"Cluster","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Episode II","folderPath":"folders/Sprites/Display/Episode II.yy","name":"Episode II","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Stage","folderPath":"folders/Sprites/Stage.yy","name":"Stage","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"General","folderPath":"folders/Sprites/Stage/General.yy","name":"General","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -183,10 +185,11 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.1400.2.941",
   },
   "name":"Cluster-Framework-MarkII",
   "resources":[
+    {"id":{"name":"acEase","path":"animcurves/acEase/acEase.yy",},},
     {"id":{"name":"stanncam_ac_bouncy","path":"animcurves/stanncam_ac_bouncy/stanncam_ac_bouncy.yy",},},
     {"id":{"name":"stanncam_ac_ease","path":"animcurves/stanncam_ac_ease/stanncam_ac_ease.yy",},},
     {"id":{"name":"stanncam_ac_linear","path":"animcurves/stanncam_ac_linear/stanncam_ac_linear.yy",},},
@@ -653,6 +656,7 @@
     {"id":{"name":"sprHUDAdventureLifeIcon","path":"sprites/sprHUDAdventureLifeIcon/sprHUDAdventureLifeIcon.yy",},},
     {"id":{"name":"sprHUDAdventureRing","path":"sprites/sprHUDAdventureRing/sprHUDAdventureRing.yy",},},
     {"id":{"name":"sprHUDAdventureTime","path":"sprites/sprHUDAdventureTime/sprHUDAdventureTime.yy",},},
+    {"id":{"name":"sprHUDCluster","path":"sprites/sprHUDCluster/sprHUDCluster.yy",},},
     {"id":{"name":"sprHUDEpisodeII","path":"sprites/sprHUDEpisodeII/sprHUDEpisodeII.yy",},},
     {"id":{"name":"Sprite249","path":"sprites/Sprite249/Sprite249.yy",},},
     {"id":{"name":"sprJumpPanel","path":"sprites/sprJumpPanel/sprJumpPanel.yy",},},
