@@ -21,13 +21,20 @@ gravity_force = 0.09375;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);
-semisolid_tilemap = layer_tilemap_get_id("TilesSemisolid");
+
+// Validate semisolid tilemap; if it exists, the tilemap count is even
+semisolid_tilemap = -1;
+if ((tilemap_count & 1) == 0)
+{
+	semisolid_tilemap = array_last(tilemaps);
+	--tilemap_count;
+}
 
 // Discard the "TilesLayer1" layer tilemap, if it exists
 if (tilemap_count >= 3)
 {
     array_delete(tilemaps, 2, 1);
-    tilemap_count = array_length(tilemaps);
+    --tilemap_count;
 }
 
 reaction = function(pla)

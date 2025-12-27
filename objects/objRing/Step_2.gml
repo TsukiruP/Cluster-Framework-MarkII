@@ -62,15 +62,8 @@ else if (lost)
     
     y_speed += gravity_force;
     
-    if (semisolid_tilemap != -1)
-    {
-        var valid = array_contains(tilemaps, semisolid_tilemap);
-        if (y_speed > 0)
-        {
-            if (not valid) array_push(tilemaps, semisolid_tilemap);
-        }
-        else if (valid) array_pop(tilemaps);
-    }
+    array_resize(tilemaps, tilemap_count);
+    if (semisolid_tilemap != -1 and y_speed > 0) array_push(tilemaps, semisolid_tilemap);
     
     for (var n = array_length(tilemaps) - 1; n > -1; --n)
     {

@@ -62,7 +62,7 @@ function player_detect_entities()
 	// Evaluate semisolid tilemap collision
     if (semisolid_tilemap != -1 and player_beam_collision(semisolid_tilemap) == noone)
     {
-        array_push(tilemaps, semisolid_tilemap); 
+        array_push(tilemaps, semisolid_tilemap);
     }
     
     /* AUTHOR NOTE:

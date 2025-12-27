@@ -257,6 +257,26 @@ player_set_animation = function(ani, ang = gravity_direction)
 	image_angle = ang;
 };
 
+/// @method player_set_radii(xrad, yrad)
+/// @description Sets the given radii as the player's virtual mask.
+/// @param {Real} xrad Horizontal radius to use.
+/// @param {Real} yrad Vertical radius to use.
+player_set_radii = function(xrad, yrad)
+{
+    // Abort if radii already match
+    if (x_radius == xrad and y_radius == yrad) exit;
+    
+    var old_x_radius = x_radius;
+    var old_y_radius = y_radius;
+    var sine = dsin(mask_direction);
+	var cosine = dcos(mask_direction);
+    x_radius = xrad;
+    x_wall_radius = x_radius + 2;
+    y_radius = yrad;
+    x += sine * (old_y_radius - y_radius);
+    y += cosine * (old_y_radius - y_radius);
+};
+
 /// @method player_animate_teeter(ani)
 /// @description Sets the given animation within the player's animation core based on teeter conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
@@ -338,34 +358,6 @@ player_animate_spring = function(ani)
     }
     player_set_animation(ani);
 };
-
-/// @method player_set_radii(xrad, yrad)
-/// @description Sets the given radii as the player's virtual mask.
-/// @param {Real} xrad Horizontal radius to use.
-/// @param {Real} yrad Vertical radius to use.
-player_set_radii = function(xrad, yrad)
-{
-    // Abort if radii already match
-    if (x_radius == xrad and y_radius == yrad) exit;
-    
-    var old_x_radius = x_radius;
-    var old_y_radius = y_radius;
-    var sine = dsin(mask_direction);
-	var cosine = dcos(mask_direction);
-    x_radius = xrad;
-    x_wall_radius = x_radius + 2;
-    y_radius = yrad;
-    x += sine * (old_y_radius - y_radius);
-    y += cosine * (old_y_radius - y_radius);
-};
-
-/// @method player_draw_before()
-/// @description Draws player effects behind the character sprite.
-player_draw_before = function() {};
-
-/// @method player_draw_after()
-/// @description Draws player effects in front of the character sprite.
-player_draw_after = function() {};
 
 /// @method player_gain_rings(num, [is_super_ring])
 /// @description Increases the player's ring count by the given amount.
@@ -472,3 +464,11 @@ player_damage = function(inst)
         return player_perform(player_is_hurt);
     }
 };
+
+/// @method player_draw_before()
+/// @description Draws player effects behind the character sprite.
+player_draw_before = function() {};
+
+/// @method player_draw_after()
+/// @description Draws player effects in front of the character sprite.
+player_draw_after = function() {};
