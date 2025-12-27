@@ -16,7 +16,7 @@ function menu(_options = []) constructor
 /// @function option(label)
 /// @description Creates a new option.
 /// @param {String} label Label to display.
-function option (_label) constructor
+function option(_label) constructor
 {
     label = _label;
     confirm = function() {};
