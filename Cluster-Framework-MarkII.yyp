@@ -79,6 +79,7 @@
     {"$GMFolder":"","%Name":"Stages","folderPath":"folders/Rooms/Stages.yy","name":"Stages","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Global","folderPath":"folders/Scripts/Global.yy","name":"Global","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Misc.","folderPath":"folders/Scripts/Misc..yy","name":"Misc.","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Scripts/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Physics","folderPath":"folders/Scripts/Player/Physics.yy","name":"Physics","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"States","folderPath":"folders/Scripts/Player/States.yy","name":"States","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -184,7 +185,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.2.941",
+    "IDEVersion":"2024.14.2.213",
   },
   "name":"Cluster-Framework-MarkII",
   "resources":[
@@ -351,6 +352,7 @@
     {"id":{"name":"db_set_timestamp","path":"scripts/db_set_timestamp/db_set_timestamp.yy",},},
     {"id":{"name":"db_sort_by_timestamp","path":"scripts/db_sort_by_timestamp/db_sort_by_timestamp.yy",},},
     {"id":{"name":"db_write","path":"scripts/db_write/db_write.yy",},},
+    {"id":{"name":"DevMenuFunctions","path":"scripts/DevMenuFunctions/DevMenuFunctions.yy",},},
     {"id":{"name":"easings","path":"scripts/easings/easings.yy",},},
     {"id":{"name":"GameSetup","path":"scripts/GameSetup/GameSetup.yy",},},
     {"id":{"name":"HitboxFunctions","path":"scripts/HitboxFunctions/HitboxFunctions.yy",},},

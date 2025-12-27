@@ -8,7 +8,7 @@ if (not InputPartyGetJoin())
     var item = current_menu.options[current_menu.cursor];
 
     // Update
-    if (is_instanceof(item, option_value))
+    if (is_instanceof(item, dev_option_value))
     {
         var input_axis_x = InputOpposingRepeat(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
         if (input_axis_x != 0) item.update(input_axis_x);

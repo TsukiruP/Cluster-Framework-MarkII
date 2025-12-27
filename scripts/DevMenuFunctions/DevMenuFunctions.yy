@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DevMenuFunctions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DevMenuFunctions",
+  "parent":{
+    "name":"Misc.",
+    "path":"folders/Scripts/Misc..yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

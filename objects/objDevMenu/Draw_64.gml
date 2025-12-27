@@ -7,7 +7,7 @@ if (not InputPartyGetJoin())
         var item = current_menu.options[i];
         var label = item.label;
         
-        if (is_instanceof(item, option_value))
+        if (is_instanceof(item, dev_option_value))
         {
             label = $"{label}: {item.toString()}";
         }
