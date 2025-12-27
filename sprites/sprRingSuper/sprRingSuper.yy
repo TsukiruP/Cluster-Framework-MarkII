@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Ring",
-    "path":"folders/Sprites/Stage/General/Ring.yy",
+    "name":"Rings",
+    "path":"folders/Sprites/Stage/General/Rings.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

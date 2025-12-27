@@ -106,6 +106,24 @@ enum CPU_STATE
 	SPIN_DASH
 }
 
+enum ITEM
+{
+    LIFE,
+    RING_BONUS,
+    SUPER_RING_BONUS,
+    RANDOM_RING_BONUS,
+    BASIC,
+    MAGNETIC,
+    BUBBLE,
+    FIRE,
+    LIGHTNING,
+    INVINCIBILITY,
+    SPEED_UP,
+    EGGMAN,
+    SLOW_DOWN,
+    PANIC
+}
+
 // Volumes
 global.volume_sound = 1;
 global.volume_music = 1;
