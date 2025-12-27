@@ -12,6 +12,9 @@ trick_speed =
     [-3.5, -3]
 ];
 
+
+ears = new sprite_animation();
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -282,8 +285,6 @@ player_animate = function()
         }
     }
 };
-
-ears = new sprite_animation();
 
 player_draw_before = function()
 {

@@ -124,22 +124,6 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
-/// @method player_reset_input()
-/// @description Resets all player input.
-player_reset_input = function()
-{
-	input_axis_x = 0;
-	input_axis_y = 0;
-	
-	struct_foreach(input_button, function(name, value)
-	{
-	    var verb = value.verb;
-	    value.check = false;
-	    value.pressed = false;
-	    value.released = false;
-	});
-};
-
 // CPU
 cpu_state = 0;
 cpu_axis_x = array_create(16);
@@ -171,6 +155,22 @@ player_perform = function(action, enter = true)
 	state = action;
 	state_changed = true;
 	if (enter) state(PHASE.ENTER);
+};
+
+/// @method player_reset_input()
+/// @description Resets all player input.
+player_reset_input = function()
+{
+	input_axis_x = 0;
+	input_axis_y = 0;
+	
+	struct_foreach(input_button, function(name, value)
+	{
+	    var verb = value.verb;
+	    value.check = false;
+	    value.pressed = false;
+	    value.released = false;
+	});
 };
 
 /// @method player_try_jump()
@@ -247,7 +247,7 @@ player_resist_slope = function(force)
 /// @description Sets the player's current animation.
 player_animate = function() {};
 
-/// player_set_animation(ani, [ang])
+/// @method player_set_animation(ani, [ang])
 /// @description Sets the given animation within the player's animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
@@ -257,7 +257,7 @@ player_set_animation = function(ani, ang = gravity_direction)
 	image_angle = ang;
 };
 
-/// player_animate_teeter(ani)
+/// @method player_animate_teeter(ani)
 /// @description Sets the given animation within the player's animation core based on teeter conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_teeter = function(ani)
@@ -266,7 +266,7 @@ player_animate_teeter = function(ani)
     player_set_animation(ani);
 };
 
-/// player_animate_run(ani)
+/// @method player_animate_run(ani)
 /// @description Sets the given animation within the player's animation core based on running conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
@@ -288,7 +288,7 @@ player_animate_run = function(ani, ang = direction)
     if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
-/// player_animate_fall(ani)
+/// @method player_animate_fall(ani)
 /// @description Sets the given animation within the player's animation core based on falling conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_fall = function(ani)
@@ -297,7 +297,7 @@ player_animate_fall = function(ani)
     player_set_animation(ani, rotate_towards(direction, image_angle));
 };
 
-/// player_animate_jump(ani)
+/// @method player_animate_jump(ani)
 /// @description Sets the given animation within the player's animation core based on jumping conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_jump = function(ani)
@@ -318,7 +318,7 @@ player_animate_jump = function(ani)
     player_set_animation(ani);
 };
 
-/// player_animate_spring(ani)
+/// @method player_animate_spring(ani)
 /// @description Sets the given animation within the player's animation core based on spring conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(ani)

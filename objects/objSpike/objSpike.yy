@@ -9,8 +9,8 @@
   "name":"objSpike",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc",
-    "path":"folders/Objects/Stage/General/Misc.yy",
+    "name":"Misc.",
+    "path":"folders/Objects/Stage/General/Misc..yy",
   },
   "parentObjectId":{
     "name":"objInteractable",

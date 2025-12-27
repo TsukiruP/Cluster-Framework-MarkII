@@ -12,6 +12,8 @@ trick_speed =
     [-3.5, -3]
 ];
 
+tails = new sprite_animation();
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -365,8 +367,6 @@ player_animate = function()
         }
     }
 };
-
-tails = new sprite_animation();
 
 player_draw_before = function()
 {

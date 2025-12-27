@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Spin Dash",
-    "path":"folders/Sprites/Stage/Player/Effects/Spin Dash.yy",
+    "name":"Spin Dash Dust",
+    "path":"folders/Sprites/Stage/Player/Effects/Spin Dash Dust.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
