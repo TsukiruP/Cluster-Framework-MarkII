@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Episode II",
-    "path":"folders/Sprites/Display/Episode II.yy",
+    "name":"Display",
+    "path":"folders/Sprites/Display.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

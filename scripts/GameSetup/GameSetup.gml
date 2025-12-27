@@ -120,14 +120,17 @@ global.ring_count = 0;
 global.life_count = 3;
 
 // Fonts
-global.font_hud = font_add_sprite(sprFontHUD, ord("0"), false, 1);
-global.font_lives = font_add_sprite(sprFontLives, ord("0"), false, 0);
 global.font_hud_cluster = font_add_sprite_ext(sprFontHUDCluster, "0123456789", false, 1);
+
 global.font_hud_adventure = font_add_sprite_ext(sprFontHUDAdventure, "0123456789:.", false, -1);
+
 global.font_hud_adventure_2 = font_add_sprite_ext(sprFontHUDAdventure2, "0123456789:.", false, -1);
 global.font_hud_adventure_2_lives = font_add_sprite_ext(sprFontHUDAdventure2Lives, "0123456789", false, 0);
+
 global.font_hud_advance_2 = font_add_sprite(sprFontHUDAdvance2, ord("!"), false, 0);
+
 global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false, 0);
+
 global.font_hud_episode_ii = font_add_sprite_ext(sprFontHUDEpisodeII, "0123456789x", false, 1);
 global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord("0"), false, 1);
 global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
