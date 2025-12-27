@@ -283,10 +283,10 @@ player_animate = function()
     }
 };
 
-ears_effect = new player_effect();
+ears = new sprite_animation();
 
 player_draw_before = function()
 {
-    ears_effect.image_alpha = image_alpha;
-    with (ears_effect) draw_self_floored();
+    ears.image_alpha = image_alpha;
+    with (ears) draw_self_floored();
 };

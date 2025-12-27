@@ -128,3 +128,19 @@ function animation_is_finished()
 {
     return animation_data.pos == -1;
 }
+
+/// @function sprite_animation()
+/// @description Creates a new player effect.
+function sprite_animation() constructor
+{
+    x = 0;
+    y = 0;
+    sprite_index = -1;
+    image_index = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    image_blend = c_white;
+    image_alpha = 1;
+    animation_data = new animation_core();
+}

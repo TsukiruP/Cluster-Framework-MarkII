@@ -9,7 +9,7 @@ draw_self_floored();
 player_draw_after();
 
 // Spin Dash
-with (spin_dash_effect) draw_self_floored();
+with (spin_dash_dust) draw_self_floored();
 
 // Hitboxes
 draw_hitboxes(mask_direction);

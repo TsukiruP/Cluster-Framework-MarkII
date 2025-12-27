@@ -101,10 +101,10 @@ ground_id = noone;
 input_axis_x = 0;
 input_axis_y = 0;
 
-/// @function button(verb)
-/// @description Creates a new player button.
+/// @method button(verb)
+/// @description Creates a new button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
-function button(_verb) constructor
+button = function(_verb) constructor
 {
     verb = _verb;
     check = false;
@@ -152,23 +152,7 @@ animation_data = new animation_core();
 //animation_history = array_create(16);
 
 // Effects
-/// @function player_effect()
-/// @description Creates a new player effect.
-function player_effect() constructor
-{
-    x = 0;
-    y = 0;
-    sprite_index = -1;
-    image_index = 0;
-    image_xscale = 1;
-    image_yscale = 1;
-    image_angle = 0;
-    image_blend = c_white;
-    image_alpha = 1;
-    animation_data = new animation_core();
-}
-
-spin_dash_effect = new player_effect();
+spin_dash_dust = new sprite_animation();
 
 // Camera
 camera = noone;

@@ -366,10 +366,10 @@ player_animate = function()
     }
 };
 
-tails_effect = new player_effect();
+tails = new sprite_animation();
 
 player_draw_before = function()
 {
-    tails_effect.image_alpha = image_alpha;
-    with (tails_effect) draw_self_floored();
+    tails.image_alpha = image_alpha;
+    with (tails) draw_self_floored();
 };
