@@ -41,7 +41,8 @@ reaction = function(pla)
 {
 	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.invulnerability_time < 90)
     {
-        pla.player_gain_rings(value, super);
+        pla.player_gain_rings(value);
+        audio_play_single(super ? sfxRingSuper : sfxRing);
         particle_create(x, y, global.ani_ring_sparkle_v0);
 		instance_destroy();
     }

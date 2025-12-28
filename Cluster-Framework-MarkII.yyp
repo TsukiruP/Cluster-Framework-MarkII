@@ -541,6 +541,7 @@
     {"id":{"name":"bgmMadGear","path":"sounds/bgmMadGear/bgmMadGear.yy",},},
     {"id":{"name":"bgmSpeedUp","path":"sounds/bgmSpeedUp/bgmSpeedUp.yy",},},
     {"id":{"name":"sfxBrake","path":"sounds/sfxBrake/sfxBrake.yy",},},
+    {"id":{"name":"sfxDestroy","path":"sounds/sfxDestroy/sfxDestroy.yy",},},
     {"id":{"name":"sfxHurt","path":"sounds/sfxHurt/sfxHurt.yy",},},
     {"id":{"name":"sfxHurtSpike","path":"sounds/sfxHurtSpike/sfxHurtSpike.yy",},},
     {"id":{"name":"sfxJump","path":"sounds/sfxJump/sfxJump.yy",},},

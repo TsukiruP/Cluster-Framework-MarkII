@@ -359,14 +359,12 @@ player_animate_spring = function(ani)
     player_set_animation(ani);
 };
 
-/// @method player_gain_rings(num, [is_super_ring])
+/// @method player_gain_rings(num)
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
-/// @param {Bool} [is_super_ring] Whether to play the Super Ring sfx (optional, defaults to false).
-player_gain_rings = function(num, is_super_ring = false)
+player_gain_rings = function(num)
 {
 	global.ring_count = min(global.ring_count + num, 999);
-	audio_play_single(is_super_ring ? sfxRingSuper : sfxRing);
 	
 	// Gain lives
     static ring_life_threshold = 99;
@@ -508,18 +506,19 @@ player_obtain_item = function(item)
 /// @param {Id.Instance} inst Instance to check.
 player_damage = function(inst)
 {
+    // Abort if the player is already dead or hurt
     if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != id)) exit;
     
-    if (inst == id or (global.ring_count == 0 and player_index == 0))
+    if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
     {
         y_speed = -7;
-        if (inst == id) audio_play_single(sfxHurt);
-        else audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
     {
     	var hurt_speed = -2;
+        var ring_loss = false;
         animation_init(PLAYER_ANIMATION.HURT);
         if (inst == noone or abs(x_speed) <= 2.5)
         {
@@ -535,9 +534,17 @@ player_damage = function(inst)
         y_speed = -4;
         if (player_index == 0)
         {
-            player_lose_rings();
+            if (shield != SHIELD.NONE)
+            {
+                shield = SHIELD.NONE;
+            }
+            else
+            {
+                ring_loss = true;
+                player_lose_rings();
+            }
         }
-        audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_hurt);
     }
 };
