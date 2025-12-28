@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxHurtSpike",
+  "%Name":"sfxHurtSpikes",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.7016553,
   "exportDir":"",
-  "name":"sfxHurtSpike",
+  "name":"sfxHurtSpikes",
   "parent":{
     "name":"Player",
     "path":"folders/Sounds/SFX/Player.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxHurtSpike.wav",
+  "soundFile":"sfxHurtSpikes.wav",
   "volume":1.0,
 }

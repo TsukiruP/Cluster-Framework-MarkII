@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"objSpike",
+  "%Name":"objSpikes",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objSpike",
+  "name":"objSpikes",
   "overriddenProperties":[],
   "parent":{
     "name":"Misc.",
@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSpike",
-    "path":"sprites/sprSpike/sprSpike.yy",
+    "name":"sprSpikes",
+    "path":"sprites/sprSpikes/sprSpikes.yy",
   },
   "spriteMaskId":null,
   "visible":true,

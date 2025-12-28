@@ -512,7 +512,7 @@ player_damage = function(inst)
     if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
     {
         y_speed = -7;
-        audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
@@ -544,7 +544,7 @@ player_damage = function(inst)
                 player_lose_rings();
             }
         }
-        if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_hurt);
     }
 };
