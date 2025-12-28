@@ -186,7 +186,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.2.941",
+    "IDEVersion":"2024.14.2.213",
   },
   "name":"Cluster-Framework-MarkII",
   "resources":[
@@ -658,9 +658,9 @@
     {"id":{"name":"sprHUDAdventureTime","path":"sprites/sprHUDAdventureTime/sprHUDAdventureTime.yy",},},
     {"id":{"name":"sprHUDCluster","path":"sprites/sprHUDCluster/sprHUDCluster.yy",},},
     {"id":{"name":"sprHUDEpisodeII","path":"sprites/sprHUDEpisodeII/sprHUDEpisodeII.yy",},},
-    {"id":{"name":"Sprite258","path":"sprites/Sprite258/Sprite258.yy",},},
     {"id":{"name":"sprItemBox","path":"sprites/sprItemBox/sprItemBox.yy",},},
     {"id":{"name":"sprItemBoxIcon","path":"sprites/sprItemBoxIcon/sprItemBoxIcon.yy",},},
+    {"id":{"name":"sprItemIcons","path":"sprites/sprItemIcons/sprItemIcons.yy",},},
     {"id":{"name":"sprJumpPanel","path":"sprites/sprJumpPanel/sprJumpPanel.yy",},},
     {"id":{"name":"sprKnucklesBrake","path":"sprites/sprKnucklesBrake/sprKnucklesBrake.yy",},},
     {"id":{"name":"sprKnucklesBrakeFast","path":"sprites/sprKnucklesBrakeFast/sprKnucklesBrakeFast.yy",},},

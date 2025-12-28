@@ -119,9 +119,9 @@ enum ITEM
     LIGHTNING,
     INVINCIBILITY,
     SPEED_UP,
-    EGGMAN,
     SLOW_DOWN,
-    PANIC
+    PANIC,
+    EGGMAN
 }
 
 // Volumes
