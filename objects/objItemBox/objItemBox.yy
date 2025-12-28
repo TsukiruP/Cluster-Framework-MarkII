@@ -9,8 +9,8 @@
   "name":"objItemBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Item Box",
-    "path":"folders/Objects/Stage/General/Item Box.yy",
+    "name":"Misc.",
+    "path":"folders/Objects/Stage/General/Misc..yy",
   },
   "parentObjectId":{
     "name":"objInteractable",

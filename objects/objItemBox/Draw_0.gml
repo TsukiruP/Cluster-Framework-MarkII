@@ -1,3 +1,3 @@
 /// @description Render
-draw_sprite(sprItemBoxIcon, index, x, y - image_yscale * 3);
+if (image_index == 0) draw_sprite(sprItemBoxIcon, index, x, y - image_yscale * 3);
 draw_self();
