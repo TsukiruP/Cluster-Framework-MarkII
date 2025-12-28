@@ -23,6 +23,7 @@
     {"name":"inst_768BA2C6","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_38F71935","path":"rooms/rmTestNew/rmTestNew.yy",},
     {"name":"inst_66886592","path":"rooms/rmTestNew/rmTestNew.yy",},
+    {"name":"inst_34418458","path":"rooms/rmTestNew/rmTestNew.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -56,6 +57,7 @@
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":1232.0,},
         {"$GMRInstance":"v4","%Name":"inst_38F71935","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_38F71935","objectId":{"name":"objRingSuper","path":"objects/objRingSuper/objRingSuper.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":480.0,"y":1232.0,},
         {"$GMRInstance":"v4","%Name":"inst_66886592","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_66886592","objectId":{"name":"objSpike","path":"objects/objSpike/objSpike.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":256.0,"y":1248.0,},
+        {"$GMRInstance":"v4","%Name":"inst_34418458","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_34418458","objectId":{"name":"objSpringVertical","path":"objects/objSpringVertical/objSpringVertical.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":1232.0,},
       ],"layers":[],"name":"Interactables","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Triggers","depth":400,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_5035D9E0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5035D9E0","objectId":{"name":"objLayerSet","path":"objects/objLayerSet/objLayerSet.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":6.0,"x":1136.0,"y":1152.0,},
