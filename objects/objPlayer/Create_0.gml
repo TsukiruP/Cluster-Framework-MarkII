@@ -426,8 +426,85 @@ player_gain_lives = function(num)
     }
 };
 
+/// @method player_obtain_item(item)
+/// @description Gives the player the given item.
+/// @param {Enum.ITEM} item Item to obtain.
+player_obtain_item = function(item)
+{
+    switch (item)
+    {
+        case ITEM.LIFE:
+        {
+            player_gain_lives(1);
+            break;
+        }
+        case ITEM.RING_BONUS:
+        {
+            player_gain_rings(5);
+            break;
+        }
+        case ITEM.SUPER_RING_BONUS:
+        {
+            player_gain_rings(10);
+            break;
+        }
+        case ITEM.RANDOM_RING_BONUS:
+        {
+            player_gain_rings(choose(1, 5, 10, 20, 30, 40));
+            break;
+        }
+        case ITEM.BASIC:
+        {
+            shield = SHIELD.BASIC;
+            break;
+        }
+        case ITEM.MAGNETIC:
+        {
+            shield = SHIELD.MAGNETIC;
+            break;
+        }
+        case ITEM.FIRE:
+        {
+            shield = SHIELD.FIRE;
+            break;
+        }
+        case ITEM.BUBBLE:
+        {
+            shield = SHIELD.BUBBLE;
+            break;
+        }
+        case ITEM.LIGHTNING:
+        {
+            shield = SHIELD.LIGHTNING;
+            break;
+        }
+        case ITEM.INVINCIBILITY:
+        {
+            break;
+        }
+        case ITEM.SPEED_UP:
+        {
+            break;
+        }
+        case ITEM.SLOW_DOWN:
+        {
+            break;
+        }
+        case ITEM.PANIC:
+        {
+            break;
+        }
+        case ITEM.EGGMAN:
+        {
+            player_damage(noone);
+            break;
+        }
+    }
+}
+
 /// @method player_damage(inst)
-/// @description Sets the player to be either hurt or dead. Set inst to id to instantly kill the player.
+/// @description Sets the player to be either hurt or dead.
+/// Setting inst to the player's id will force a death, while setting it to noone will just hurt the player.
 /// @param {Id.Instance} inst Instance to check.
 player_damage = function(inst)
 {
@@ -437,14 +514,14 @@ player_damage = function(inst)
     {
         y_speed = -7;
         if (inst == id) audio_play_single(sfxHurt);
-        else audio_play_single(inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        else audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
     {
     	var hurt_speed = -2;
         animation_init(PLAYER_ANIMATION.HURT);
-        if (abs(x_speed) <= 2.5)
+        if (inst == noone or abs(x_speed) <= 2.5)
         {
             if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
             else x_speed = image_xscale * hurt_speed;
@@ -460,7 +537,7 @@ player_damage = function(inst)
         {
             player_lose_rings();
         }
-        audio_play_single(inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
+        audio_play_single(inst != noone and inst.object_index == objSpike ? sfxHurtSpike : sfxHurt);
         return player_perform(player_is_hurt);
     }
 };
