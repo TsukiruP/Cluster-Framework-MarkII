@@ -134,9 +134,9 @@ function player_is_tricking(phase)
 			if (not trick_glide)
 			{
 				// Apply air resistance
-				if (y_speed < 0 and y_speed > -4 and abs(x_speed) > air_drag_threshold)
+				if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
 				{
-					x_speed *= air_drag;
+					x_speed *= AIR_DRAG;
 				}
 				
 				// Fall
@@ -180,9 +180,9 @@ function player_is_trick_bounding(phase)
 			if (on_ground) return player_perform(player_is_trick_rebounding);
 			
 			// Apply air resistance
-			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > air_drag_threshold)
+			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
 			{
-				x_speed *= air_drag;
+				x_speed *= AIR_DRAG;
 			}
 			
 			// Fall
@@ -226,9 +226,9 @@ function player_is_trick_rebounding(phase)
 			if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
 			
 			// Apply air resistance
-			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > air_drag_threshold)
+			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
 			{
-				x_speed *= air_drag;
+				x_speed *= AIR_DRAG;
 			}
 			
 			// Fall
@@ -290,9 +290,9 @@ function player_is_trick_drill_clawing(phase)
     			if (on_ground) return player_perform(player_is_trick_drill_clawing);
     			
     			// Apply air resistance
-    			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > air_drag_threshold)
+    			if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
     			{
-    				x_speed *= air_drag;
+    				x_speed *= AIR_DRAG;
     			}
     			
     			// Fall

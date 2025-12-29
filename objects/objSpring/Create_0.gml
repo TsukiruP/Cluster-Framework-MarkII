@@ -23,7 +23,7 @@ reaction = function(pla)
             {
                 if (pla.on_ground)
                 {
-                    pla.control_lock_time = pla.spring_duration;
+                    pla.control_lock_time = SPRING_DURATION;
                     // TODO: Set Boost Mode
                 }
                 else
@@ -40,7 +40,7 @@ reaction = function(pla)
                 pla.x_speed = image_xscale * force;
                 pla.y_speed = -dsin(diff) * force;
             }
-            pla.trick_time = max(2, 9 - (force / 1.5) div 1);
+            pla.trick_time = max(2, TRICK_LOCK_DURATION - (force / 1.5) div 1);
             active |= bit;
             animation_data.variant = 1;
             audio_play_single(sfxSpring);

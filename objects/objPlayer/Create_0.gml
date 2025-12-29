@@ -29,30 +29,22 @@ rotation_lock_time = 0;
 control_lock_time = 0;
 trick_time = 0;
 invuln_time = 0;
+
 superspeed_time = 0;
 invin_time = 0;
+
 camera_look_time = 0;
+
 cpu_state_time = 0;
 cpu_respawn_time = 0;
 cpu_gamepad_time = 0;
 
-slide_duration = 30;
-spring_duration = 16;
-trick_lock_duration = 9;
-invulnerability_duration = 120;
-cpu_respawn_duration = 300;
-cpu_gamepad_duration = 600;
 
 // Physics
 x_speed = 0;
 y_speed = 0;
 
 player_refresh_physics();
-
-slide_threshold = 2.5;
-
-air_drag_threshold = 0.125;
-air_drag = 0.96875;
 
 // Collision detection
 x_radius = 8;

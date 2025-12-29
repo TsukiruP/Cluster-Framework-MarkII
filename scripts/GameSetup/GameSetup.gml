@@ -32,6 +32,18 @@
 
 #macro LIVES_ENABLED db_read(global.config_database, true, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
 
+#macro SLIDE_DURATION 30
+#macro INVULN_DURATION 120
+#macro SPRING_DURATION 16
+#macro TRICK_LOCK_DURATION 9
+
+#macro CPU_RESPAWN_DURATION 300
+#macro CPU_GAMEPAD_DURATION 600
+
+#macro SLIDE_THRESHOLD 2.5
+#macro AIR_DRAG_THRESHOLD 0.125
+#macro AIR_DRAG 0.96875
+
 #macro PLAYER_HEIGHT 14
 
 enum GAME_MODE
