@@ -21,10 +21,18 @@ hud_option.maximum = HUD.EPISODE_II;
 hud_option.specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
 hud_option.offset = HUD.NONE;
 
+flicker_option = new dev_option_int("Flicker");
+flicker_option.get = function() { return db_read(global.config_database, FLICKER.OFF, "flicker"); };
+flicker_option.set = function(val) { db_write(global.config_database, val, "flicker"); };
+flicker_option.clampinv = true;
+flicker_option.minimum = FLICKER.OFF;
+flicker_option.maximum = FLICKER.VIRTUAL_CONSOLE_ALT;
+flicker_option.specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Alt)"];
+
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-config_menu = new dev_menu([lives_option, time_over_option, hud_option, device_option]);
+config_menu = new dev_menu([lives_option, time_over_option, hud_option, flicker_option, device_option]);
 
 #endregion
 

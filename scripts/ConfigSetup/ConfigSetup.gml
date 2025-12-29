@@ -14,12 +14,12 @@ enum FLICKER
 {
     OFF,
     ORIGINAL,
-    VC,
-    VC_ADVANCE_3
+    VIRTUAL_CONSOLE,
+    VIRTUAL_CONSOLE_ALT
 }
 
 global.config_database = db_create();
 db_write(global.config_database, true, "lives");
 db_write(global.config_database, true, "time_over");
-db_write(global.config_database, true, "shield_flicker");
 db_write(global.config_database, HUD.CLUSTER, "hud");
+db_write(global.config_database, FLICKER.OFF, "flicker");
