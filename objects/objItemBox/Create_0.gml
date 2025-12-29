@@ -6,8 +6,8 @@ hitboxes[0].set_size(-15, -17, 15, 15);
 
 reaction = function(pla)
 {
-    // Abort if broken
-    if (image_index != 0) exit;
+    // Abort if broken or player is a cpu
+    if (image_index != 0 or pla.player_index != 0) exit;
     
     if (collision_player(0, pla) or collision_player(0, pla, 0) or collision_player(0, pla, 1))
     {
