@@ -8,8 +8,12 @@ player_draw_before();
 draw_self_floored();
 player_draw_after();
 
-// Spin Dash
+// Accessories
 with (spin_dash_accessory) draw_self_floored();
+with (shield_accessory)
+{
+    if (visible) draw_self_floored();
+}
 
 // Hitboxes
 draw_hitboxes(mask_direction);

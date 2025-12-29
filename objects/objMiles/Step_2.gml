@@ -1,4 +1,4 @@
-/// @description Effects
+/// @description Tails
 // Inherit the parent event
 event_inherited();
 

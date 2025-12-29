@@ -22,6 +22,12 @@
 | Life Icon | 1423-0, 1423-1, 1423-2, 1423-3, 1423-4 |
 | Pause | 1425-0, ... |
 
+# Shields
+| Animation | Source | Notes |
+| Shield | 1326-0 |
+| Magnetic Shield | 1324-0 |
+| Invincibility | 1325-0 |
+
 # Effects
 
 | Animation | Source | Notes |
@@ -29,9 +35,6 @@
 | Brake Dust | 1332-0 | Reduced size |
 | Ring Sparkle | 1334-0 |
 | Spin Dash | 1333-0, 1331-0 |
-| Shield | 1326-0 |
-| Magnetic Shield | 1324-0 |
-| Invincibility | 1325-0 |
 | Boost Particle | 1327-0, 1327-1 |
 | Rail Spark | 1329-0 |
 | Tag Action | 1340-0, 1340-1 |

@@ -20,6 +20,7 @@ for (var i = 0; i < array_length(trick_speed); ++i)
     trick_speed[i] = array_create(2);
 }
 
+// Shield
 shield = SHIELD.NONE;
 shield_action = false;
 
@@ -456,30 +457,36 @@ player_obtain_item = function(item)
         case ITEM.BASIC:
         {
             shield = SHIELD.BASIC;
+            audio_play_single(sfxItemBasic);
             break;
         }
         case ITEM.MAGNETIC:
         {
             shield = SHIELD.MAGNETIC;
+            audio_play_single(sfxItemBasic);
             break;
         }
         case ITEM.FIRE:
         {
             shield = SHIELD.FIRE;
+            audio_play_single(sfxItemFire);
             break;
         }
         case ITEM.BUBBLE:
         {
             shield = SHIELD.BUBBLE;
+            audio_play_single(sfxItemBubble);
             break;
         }
         case ITEM.LIGHTNING:
         {
             shield = SHIELD.LIGHTNING;
+            audio_play_single(sfxItemLightning);
             break;
         }
         case ITEM.INVINCIBILITY:
         {
+            invincibility_time = 120;
             break;
         }
         case ITEM.SPEED_UP:

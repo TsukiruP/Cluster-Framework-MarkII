@@ -1,4 +1,4 @@
-/// @description Effects
+/// @description Ears
 // Inherit the parent event
 event_inherited();
 

@@ -133,6 +133,7 @@ function animation_is_finished()
 /// @description Creates a new accessory.
 function accessory() constructor
 {
+    visible = true;
     x = 0;
     y = 0;
     sprite_index = -1;
