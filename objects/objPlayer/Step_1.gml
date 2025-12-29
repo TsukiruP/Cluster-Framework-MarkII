@@ -12,7 +12,7 @@ if (invulnerability_time > 0)
 }
 
 animation_update();
-with (spin_dash_dust) animation_update();
+with (spin_dash_accessory) animation_update();
 
 // Record
 if (player_index == 0)

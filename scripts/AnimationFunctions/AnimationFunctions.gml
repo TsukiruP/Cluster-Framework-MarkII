@@ -129,9 +129,9 @@ function animation_is_finished()
     return animation_data.pos == -1;
 }
 
-/// @function sprite_animation()
-/// @description Creates a new player effect.
-function sprite_animation() constructor
+/// @function accessory()
+/// @description Creates a new accessory.
+function accessory() constructor
 {
     x = 0;
     y = 0;

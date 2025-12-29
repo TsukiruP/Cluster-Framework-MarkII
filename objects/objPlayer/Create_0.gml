@@ -135,7 +135,9 @@ cpu_input_jump_pressed = array_create(16);
 animation_data = new animation_core();
 //animation_history = array_create(16);
 
-spin_dash_dust = new sprite_animation();
+// Accessories
+spin_dash_accessory = new accessory();
+shield_accessory = new accessory();
 
 // Camera
 camera = noone;

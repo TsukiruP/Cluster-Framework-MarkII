@@ -13,7 +13,7 @@ trick_speed =
 ];
 
 
-ears = new sprite_animation();
+ears_accessory = new accessory();
 
 player_animate = function()
 {
@@ -288,6 +288,6 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    ears.image_alpha = image_alpha;
-    with (ears) draw_self_floored();
+    ears_accessory.image_alpha = image_alpha;
+    with (ears_accessory) draw_self_floored();
 };

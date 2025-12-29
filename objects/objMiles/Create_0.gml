@@ -12,7 +12,7 @@ trick_speed =
     [-3.5, -3]
 ];
 
-tails = new sprite_animation();
+tails_accessory = new accessory();
 
 player_animate = function()
 {
@@ -370,6 +370,6 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    tails.image_alpha = image_alpha;
-    with (tails) draw_self_floored();
+    tails_accessory.image_alpha = image_alpha;
+    with (tails_accessory) draw_self_floored();
 };

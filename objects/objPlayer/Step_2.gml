@@ -7,7 +7,7 @@ var action = state;
 
 #region Spin Dash
 
-with (spin_dash_dust)
+with (spin_dash_accessory)
 {
     if (action == player_is_spin_dashing)
     {
