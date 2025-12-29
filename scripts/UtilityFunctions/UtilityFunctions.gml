@@ -165,7 +165,7 @@ function draw_self_as(sprite, subimg = image_index)
 /// @description Draws the instance at its floored position. Ported from GM8.2.
 function draw_self_floored()
 {
-    if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x div 1, y div 1, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 }
 
 /// @function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, x, y, w, h, [hsep], [vsep], [xoff], [yoff])

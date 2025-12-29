@@ -1,6 +1,6 @@
 /// @description Accessories
-if (ctrlGame.game_paused) exit;
-
+var x_int = x div 1;
+var y_int = y div 1;
 var sine = dsin(gravity_direction);
 var cosine = dcos(gravity_direction);
 var action = state;
@@ -12,8 +12,8 @@ with (spin_dash_accessory)
     if (action == player_is_spin_dashing)
     {
         var charge = floor(other.spin_dash_charge);
-        x = other.x + sine * other.y_radius;
-        y = other.y + cosine * other.y_radius;
+        x = x_int + sine * other.y_radius;
+        y = y_int + cosine * other.y_radius;
         image_xscale = other.image_xscale;
         image_angle = other.mask_direction;
         animation_data.variant = (charge > 2);
@@ -35,8 +35,8 @@ with (shield_accessory)
     var invincible = (other.invin_time > 0);
     if (shield != SHIELD.NONE or invincible)
     {
-        x = other.x;
-        y = other.y;
+        x = x_int div 1;
+        y = y_int div 1;
         image_angle = other.gravity_direction;
         
         if (invincible)
@@ -55,6 +55,22 @@ with (shield_accessory)
                 case SHIELD.MAGNETIC:
                 {
                     animation_set(global.ani_shield_magnetic_v0);
+                    break;
+                }
+                case SHIELD.FIRE:
+                {
+                    animation_set(global.ani_shield_fire);
+                    break;
+                }
+                case SHIELD.BUBBLE:
+                {
+                    animation_set(global.ani_shield_bubble);
+                    visible = ctrlGame.game_time mod 4 < 2;
+                    break;
+                }
+                case SHIELD.LIGHTNING:
+                {
+                    animation_set(global.ani_shield_lightning_v0);
                     break;
                 }
             }

@@ -1,6 +1,17 @@
 /// @description Render
 var x_int = x div 1;
 var y_int = y div 1;
+var shield_behind = false;
+
+// Shield
+with (shield_accessory)
+{
+    if ((animation_data.ani == global.ani_shield_fire_v0 and image_index mod 2 != 0) or (animation_data.ani == global.ani_shield_lightning_v0 and animation_data.pos > 15))
+    {
+        shield_behind = true;
+        draw_self_floored();
+    }
+}
 
 // Character sprite
 image_alpha = (invuln_time <= 0) ? 1 : ((invuln_time div 2) mod 2);
@@ -12,7 +23,17 @@ player_draw_after();
 with (spin_dash_accessory) draw_self_floored();
 with (shield_accessory)
 {
-    if (visible) draw_self_floored();
+    if (not shield_behind)
+    {
+        if (visible)
+        {
+            draw_self_floored();
+        }
+        else if (animation_data.ani == global.ani_shield_bubble_wave_v0)
+        {
+            draw_self_as(sprShieldBubbleShell, animation_data.time div 12);
+        }
+    }
 }
 
 // Hitboxes
