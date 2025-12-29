@@ -2,8 +2,8 @@
 if (ctrlGame.game_paused) exit;
 
 if (control_lock_time > 0 and on_ground) control_lock_time--;
-if (invulnerability_time > 0) invulnerability_time--;
-if (invincibility_time > 0) invincibility_time--;
+if (invuln_time > 0) invuln_time--;
+if (invin_time > 0) invin_time--;
 
 animation_update();
 with (spin_dash_accessory) animation_update();

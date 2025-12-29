@@ -169,7 +169,7 @@ function player_is_hurt(phase)
 		}
 		case PHASE.EXIT:
 		{
-			invulnerability_time = invulnerability_duration;
+			invuln_time = invulnerability_duration;
             break;
 		}
 	}

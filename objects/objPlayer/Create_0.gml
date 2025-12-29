@@ -28,9 +28,9 @@ shield_action = false;
 rotation_lock_time = 0;
 control_lock_time = 0;
 trick_time = 0;
-invulnerability_time = 0;
+invuln_time = 0;
 superspeed_time = 0;
-invincibility_time = 0;
+invin_time = 0;
 camera_look_time = 0;
 cpu_state_time = 0;
 cpu_respawn_time = 0;
@@ -486,7 +486,7 @@ player_obtain_item = function(item)
         }
         case ITEM.INVINCIBILITY:
         {
-            invincibility_time = 120;
+            invin_time = 120;
             break;
         }
         case ITEM.SPEED_UP:
@@ -516,7 +516,7 @@ player_obtain_item = function(item)
 player_damage = function(inst)
 {
     // Abort if the player is already dead or hurt
-    if (state == player_is_dead or ((state == player_is_hurt or invincibility_time > 0 or invulnerability_time > 0) and inst != id)) exit;
+    if (state == player_is_dead or ((state == player_is_hurt or invin_time > 0 or invuln_time > 0) and inst != id)) exit;
     
     if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
     {

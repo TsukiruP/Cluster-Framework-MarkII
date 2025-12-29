@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprShieldInvincibility",
+  "%Name":"sprShieldInvin",
   "bboxMode":0,
   "bbox_bottom":46,
   "bbox_left":0,
@@ -26,7 +26,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"43e9bc22-686c-4568-a380-d483fb651a6c","blendMode":0,"displayName":"default","isLocked":false,"name":"43e9bc22-686c-4568-a380-d483fb651a6c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprShieldInvincibility",
+  "name":"sprShieldInvin",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -38,7 +38,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprShieldInvincibility",
+    "%Name":"sprShieldInvin",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -62,7 +62,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprShieldInvincibility",
+    "name":"sprShieldInvin",
     "playback":1,
     "playbackSpeed":1.0,
     "playbackSpeedType":1,
@@ -74,22 +74,22 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"97f16923-0076-4fcb-83c7-6306573c1c5f","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"97f16923-0076-4fcb-83c7-6306573c1c5f","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e5f58c25-182e-43fb-9ad4-86ba1fcd007a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f49495c3-8434-498e-8e13-9e5b61012410","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f49495c3-8434-498e-8e13-9e5b61012410","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"03d0d6e3-855e-4768-adb5-3a135273aa60","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a3b73bbd-d27b-47e9-8724-d432b0830166","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a3b73bbd-d27b-47e9-8724-d432b0830166","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f463e203-6a33-414d-9b4f-b90d97b62f91","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5cdb1298-5305-42bc-8297-55cc2834ab31","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5cdb1298-5305-42bc-8297-55cc2834ab31","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"dad81281-4607-4ebe-b9e0-3581d8c8fa7a","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2ef8827d-17f2-4c4f-9b58-a584c3dd1609","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2ef8827d-17f2-4c4f-9b58-a584c3dd1609","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"a964649c-b839-41f9-b031-b080e6f85d65","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6be50784-65b4-42f6-9988-6b144a5b841e","path":"sprites/sprShieldInvincibility/sprShieldInvincibility.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6be50784-65b4-42f6-9988-6b144a5b841e","path":"sprites/sprShieldInvin/sprShieldInvin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e043e1fd-c3f8-4cfc-ae1b-49c1d873507b","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

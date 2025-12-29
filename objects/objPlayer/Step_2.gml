@@ -32,7 +32,7 @@ with (spin_dash_accessory)
 with (shield_accessory)
 {
     var shield = other.shield;
-    var invincible = (other.invincibility_time > 0);
+    var invincible = (other.invin_time > 0);
     if (shield != SHIELD.NONE or invincible)
     {
         x = other.x;
@@ -41,7 +41,7 @@ with (shield_accessory)
         
         if (invincible)
         {
-            animation_set(global.ani_shield_invincibility_v0);
+            animation_set(global.ani_shield_invin_v0);
         }
         else 
         {
