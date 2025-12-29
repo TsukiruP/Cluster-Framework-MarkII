@@ -132,9 +132,9 @@ function animation_is_finished()
     return animation_data.pos == -1;
 }
 
-/// @function accessory()
-/// @description Creates a new accessory.
-function accessory() constructor
+/// @function stamp()
+/// @description Creates a new stamp.
+function stamp() constructor
 {
     visible = true;
     x = 0;

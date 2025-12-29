@@ -121,9 +121,9 @@ input_button =
 animation_data = new animation_core();
 //animation_history = array_create(16);
 
-// Accessories
-spin_dash_accessory = new accessory();
-shield_accessory = new accessory();
+// Stamps
+spin_dash_stamp = new stamp();
+shield_stamp = new stamp();
 
 // Camera
 camera = noone;

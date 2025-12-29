@@ -1,4 +1,4 @@
-/// @description Accessories
+/// @description Stamps
 var x_int = x div 1;
 var y_int = y div 1;
 var sine = dsin(gravity_direction);
@@ -7,7 +7,7 @@ var action = state;
 
 #region Spin Dash Dust
 
-with (spin_dash_accessory)
+with (spin_dash_stamp)
 {
     if (action == player_is_spin_dashing)
     {
@@ -29,7 +29,7 @@ with (spin_dash_accessory)
 
 #region Shield
 
-with (shield_accessory)
+with (shield_stamp)
 {
     var shield = other.shield;
     var invincible = (other.invin_time > 0);

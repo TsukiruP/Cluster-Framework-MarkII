@@ -12,7 +12,7 @@ trick_speed =
     [-3.5, -3]
 ];
 
-tails_accessory = new accessory();
+tails_stamp = new stamp();
 
 player_animate = function()
 {
@@ -370,6 +370,6 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    tails_accessory.image_alpha = image_alpha;
-    with (tails_accessory) draw_self_floored();
+    tails_stamp.image_alpha = image_alpha;
+    with (tails_stamp) draw_self_floored();
 };
