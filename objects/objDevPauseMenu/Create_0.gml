@@ -2,6 +2,7 @@
 image_speed = 0;
 ctrlGame.game_paused |= PAUSE_FLAG_MENU;
 global.main_camera.set_paused(true);
+audio_pause_all();
 cursor = 0;
 
 /// @method menu_close([destroy])

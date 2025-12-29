@@ -1,5 +1,5 @@
 /// @description Behave
-// Invisible
+// Hide
 if (InputPressed(INPUT_VERB.HIDE))
 {
     if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE))
@@ -23,7 +23,7 @@ if (InputPressed(INPUT_VERB.HIDE))
 
 if (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE)
 {
-    // Visible
+    // Show
     if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
     {
         ctrlGame.game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
@@ -34,6 +34,7 @@ else
     // Close
     if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
     {
+        audio_resume_all();
         menu_close();
     }
     
@@ -47,6 +48,8 @@ else
             // Back
             case 1:
             {
+                audio_stop_all();
+                audio_clear_music();
                 menu_close(false);
                 room_goto(rmInit);
                 break;
@@ -55,6 +58,7 @@ else
             // Continue
             default:
             {
+                audio_resume_all();
                 menu_close();
             }
         }

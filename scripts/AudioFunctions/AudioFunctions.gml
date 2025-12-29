@@ -32,10 +32,10 @@ function audio_enqueue_music(soundid, priority)
             ds_priority_add(music, soundid, priority);
         }
         
-        if (ds_priority_find_max(music) == soundid) 
+        if (not audio_is_playing(soundid) and ds_priority_find_max(music) == soundid) 
         {
             swap = true;
-            if (music_voice != -1) audio_sound_gain(music_voice, 0, 1000);
+            if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
         }
     }
 }
@@ -51,7 +51,7 @@ function audio_dequeue_music(soundid)
 		if (audio_is_playing(soundid))
         {
             swap = true;
-            if (music_voice != -1) audio_sound_gain(music_voice, 0, 1000);
+            if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
         }
 	}
 }
@@ -62,9 +62,10 @@ function audio_clear_music()
 {
     with (ctrlMusic)
     {
-        ds_priority_clear(music);
+        mute = 0;
         swap = true;
-        if (music_voice != -1) audio_sound_gain(music_voice, 0, 1000);
+        ds_priority_clear(music);
+        if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
     }
 }
 
