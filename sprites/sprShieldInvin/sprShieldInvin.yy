@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Shields",
-    "path":"folders/Sprites/Stage/Player/Shields.yy",
+    "name":"Invin",
+    "path":"folders/Sprites/Stage/Player/Shields/Invin.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

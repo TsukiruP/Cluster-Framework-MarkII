@@ -20,6 +20,7 @@ function animation_core() constructor
     variant = 0;
     ani = undefined;
     force = false;
+    time = 0;
     alarm = 0;
     speed = 1;
     pos = 0;
@@ -71,6 +72,7 @@ function animation_set(ani)
     
     animation_data.ani = ani;
     animation_data.force = false;
+    animation_data.time = 0;
     animation_data.speed = 1;
 }
 
@@ -108,6 +110,7 @@ function animation_update()
                 }
             }
         }
+        animation_data.time++;
     }
 }
 
