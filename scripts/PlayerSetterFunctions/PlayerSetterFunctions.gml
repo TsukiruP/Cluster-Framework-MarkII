@@ -8,7 +8,7 @@ function player_eject_wall(inst)
 	var cosine = dcos(mask_direction);
 	var inside = collision_point(x div 1, y div 1, inst, true, false) != noone;
 	
-	for (var ox = 1; ox <= x_wall_radius; ++ox)
+	for (var ox = 1; ox <= x_wall_radius; ox++)
 	{
 		if (not inside)
 		{

@@ -6,6 +6,8 @@ if (ctrlGame.game_paused) exit;
 if (player_index == 0 or cpu_gamepad_time > 0)
 {
     input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
+    input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
+    if (confusion_time > 0) input_axis_x *= -1;
     
     struct_foreach(input_button, function(name, value)
     {
@@ -13,6 +15,7 @@ if (player_index == 0 or cpu_gamepad_time > 0)
         value.check = InputCheck(verb, player_index);
         value.pressed = InputPressed(verb, player_index);
         value.released = InputReleased(verb, player_index);
+    });
     
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
 }
@@ -45,7 +48,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 							cpu_state_time = 64;
 			        	}
 			        }
-			        --cpu_state_time;
+			        cpu_state_time--;
                 }
 				break;
 			}
@@ -60,7 +63,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 				{
 					input_axis_y = 1;
 					input_button.jump.pressed = (cpu_state_time mod 16 == 0);
-					--cpu_state_time;
+					cpu_state_time--;
 				}
 				break;
 			}

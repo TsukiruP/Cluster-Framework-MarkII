@@ -15,7 +15,7 @@ jump_cap = true;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
-for (var i = 0; i < array_length(trick_speed); ++i)
+for (var i = 0; i < array_length(trick_speed); i++)
 {
     trick_speed[i] = array_create(2);
 }
@@ -78,14 +78,14 @@ semisolid_tilemap = -1;
 if ((tilemap_count & 1) == 0)
 {
 	semisolid_tilemap = array_last(tilemaps);
-	--tilemap_count;
+	tilemap_count--;
 }
 
 // Discard the "TilesLayer1" layer tilemap, if it exists
 if (tilemap_count >= 3)
 {
     array_delete(tilemaps, 2, 1);
-    --tilemap_count;
+    tilemap_count--;
 }
 
 ground_id = noone;
@@ -212,7 +212,7 @@ player_rotate_mask = function()
 {
 	if (rotation_lock_time > 0 and not landed)
 	{
-		--rotation_lock_time;
+		rotation_lock_time--;
 		exit;
 	}
 	
@@ -380,7 +380,7 @@ player_lose_rings = function()
     var dir = 101.25;
     var flip = false;
     
-    for (var ring = 0; ring < total; ++ring)
+    for (var ring = 0; ring < total; ring++)
     {
         if (ring == 16)
         {

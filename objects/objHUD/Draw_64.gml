@@ -242,7 +242,7 @@ if (LIVES_ENABLED)
             var lives_x = 5;
             var lives_y = CAMERA_HEIGHT - 20;
             var lives_max = 9;
-            for (var i = array_length(global.characters) - 1; i >= 0; --i)
+            for (var i = array_length(global.characters) - 1; i >= 0; i--)
             {
                 var pla_character = global.characters[i];
                 draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y);
@@ -259,7 +259,7 @@ if (LIVES_ENABLED)
             var lives_max = 999;
             if (array_length(global.characters) > 1)
             {
-                for (var i = 0; i < array_length(global.characters); ++i)
+                for (var i = 0; i < array_length(global.characters); i++)
                 {
                     var pla_character = global.characters[i];
                     draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);

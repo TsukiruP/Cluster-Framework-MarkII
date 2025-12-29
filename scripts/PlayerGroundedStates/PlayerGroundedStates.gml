@@ -285,7 +285,7 @@ function player_is_looking(phase)
 			// Ascend camera
 			if (camera_look_time > 0)
 			{
-				--camera_look_time;
+				camera_look_time--;
 			}
 			else
 			{
@@ -354,7 +354,7 @@ function player_is_crouching(phase)
 			// Descend camera
 			if (camera_look_time > 0)
 			{
-				--camera_look_time;
+				camera_look_time--;
 			}
 			else
 			{

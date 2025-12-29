@@ -65,7 +65,7 @@ else if (lost)
     array_resize(tilemaps, tilemap_count);
     if (semisolid_tilemap != -1 and y_speed > 0) array_push(tilemaps, semisolid_tilemap);
     
-    for (var n = array_length(tilemaps) - 1; n > -1; --n)
+    for (var n = array_length(tilemaps) - 1; n > -1; n--)
     {
         var inst = tilemaps[n];
         var coll_left = (x_speed < 0 and collision_point(x_int + cosine * hitboxes[0].left, y_int - sine * hitboxes[0].left, inst, true, false));

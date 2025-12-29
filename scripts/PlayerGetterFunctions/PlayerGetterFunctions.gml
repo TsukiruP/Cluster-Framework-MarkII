@@ -24,7 +24,7 @@ function player_calc_tile_normal(ox, oy, rot)
 	}
 	
 	// Extend / regress angle sensors
-	for (var n = 0; n < 2; ++n)
+	for (var n = 0; n < 2; n++)
 	{
 		repeat (y_tile_reach)
 		{

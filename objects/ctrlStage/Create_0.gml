@@ -44,7 +44,7 @@ switch (room)
 {
     case rmTestNew:
     {
-        for (var i = 0; i < array_length(tilemaps); ++i)
+        for (var i = 0; i < array_length(tilemaps); i++)
         {
             layer_tilemap_set_colmask(tilemaps[i], sprSunsetHillCollision);
         }

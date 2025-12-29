@@ -177,7 +177,7 @@ function draw_hitboxes(ang = gravity_direction)
 	var x_int = x div 1;
 	var y_int = y div 1;
 	
-	for (var i = 0; i < array_length(hitboxes); ++i)
+	for (var i = 0; i < array_length(hitboxes); i++)
 	{
 		var left = hitboxes[i].left;
 		var top = hitboxes[i].top;

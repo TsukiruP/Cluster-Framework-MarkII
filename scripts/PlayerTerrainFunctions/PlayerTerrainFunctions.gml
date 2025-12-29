@@ -4,7 +4,7 @@
 /// @returns {Real|Undefined}
 function player_find_floor(height)
 {
-	for (var oy = 0; oy <= height; ++oy)
+	for (var oy = 0; oy <= height; oy++)
 	{
 		if (player_beam_collision(tilemaps, x_radius, oy) != noone)
 		{
@@ -21,7 +21,7 @@ function player_find_floor(height)
 /// @returns {Real|Undefined}
 function player_find_ceiling(height)
 {
-	for (var oy = 0; oy <= height; ++oy)
+	for (var oy = 0; oy <= height; oy++)
 	{
 		var inst = player_beam_collision(tilemaps, x_radius, -oy);
 		
