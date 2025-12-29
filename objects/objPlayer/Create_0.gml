@@ -30,15 +30,15 @@ control_lock_time = 0;
 trick_time = 0;
 invuln_time = 0;
 
-superspeed_time = 0;
 invin_time = 0;
+superspeed_time = 0;
+confusion_time = 0;
 
 camera_look_time = 0;
 
 cpu_state_time = 0;
 cpu_respawn_time = 0;
 cpu_gamepad_time = 0;
-
 
 // Physics
 x_speed = 0;
@@ -117,13 +117,6 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
-// CPU
-cpu_state = 0;
-cpu_axis_x = array_create(16);
-cpu_axis_y = array_create(16);
-cpu_input_jump = array_create(16);
-cpu_input_jump_pressed = array_create(16);
-
 // Animation
 animation_data = new animation_core();
 //animation_history = array_create(16);
@@ -138,6 +131,13 @@ camera_offset_x = 0;
 camera_offset_y = 0;
 camera_padding_x = 0;
 camera_padding_y = 0;
+
+// CPU
+cpu_state = 0;
+cpu_axis_x = array_create(16);
+cpu_axis_y = array_create(16);
+cpu_input_jump = array_create(16);
+cpu_input_jump_pressed = array_create(16);
 
 // Misc.
 /// @method player_perform(action, [enter])
@@ -478,19 +478,41 @@ player_obtain_item = function(item)
         }
         case ITEM.INVINCIBILITY:
         {
-            invin_time = 120;
+            invin_time = INVIN_DURATION;
+            if (superspeed_time < 0)
+            {
+                superspeed_time = 0;
+                player_refresh_physics();
+            }
+            if (confusion_time > 0) confusion_time = 0;
+            audio_play_jingle(bgmInvincibility);
             break;
         }
         case ITEM.SPEED_UP:
         {
+            superspeed_time = SPEED_UP_DURATION;
+            player_refresh_physics();
+            audio_play_jingle(bgmSpeedUp);
             break;
         }
         case ITEM.SLOW_DOWN:
         {
+            if (invin_time == 0)
+            {
+                superspeed_time = -DEBUFF_DURAION;
+                player_refresh_physics();
+                audio_stop_sound(bgmSpeedUp);
+                audio_play_single(sfxItemDebuff);
+            }
             break;
         }
-        case ITEM.PANIC:
+        case ITEM.CONFUSION:
         {
+            if (invin_time == 0)
+            {
+                confusion_time = DEBUFF_DURAION;
+                audio_play_single(sfxItemDebuff);
+            }
             break;
         }
         case ITEM.EGGMAN:

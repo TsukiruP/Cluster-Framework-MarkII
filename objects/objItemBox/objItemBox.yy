@@ -43,7 +43,7 @@
         "ITEM.INVINCIBILITY",
         "ITEM.SPEED_UP",
         "ITEM.SLOW_DOWN",
-        "ITEM.PANIC",
+        "ITEM.CONFUSION",
         "ITEM.EGGMAN",
       ],"multiselect":false,"name":"index","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"ITEM.LIFE","varType":6,},
   ],
