@@ -210,7 +210,7 @@ function player_is_running(phase)
 						audio_play_single(sfxBrake);
 					}
 				}
-				else if (ctrlGame.game_time mod 4 == 0)
+				else if (animation_data.time mod 4 == 0)
 				{
                     // Create brake dust
 					var ox = x + dsin(direction) * y_radius;
