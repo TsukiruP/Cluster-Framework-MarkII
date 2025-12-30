@@ -39,41 +39,54 @@ with (shield_stamp)
         y = y_int div 1;
         image_angle = other.gravity_direction;
         
-        if (invincible)
+        animation_init(invincible ? -1 : shield);
+        switch (animation_data.index)
         {
-            animation_set(global.ani_shield_invin_v0);
-        }
-        else 
-        {
-        	switch (shield)
+            case -1:
             {
-                case SHIELD.BASIC:
+                animation_set(global.ani_shield_invin_v0);
+                break;
+            }
+            case SHIELD.BASIC:
+            {
+                animation_set(global.ani_shield_basic_v0);
+                break;
+            }
+            case SHIELD.MAGNETIC:
+            {
+                animation_set(global.ani_shield_magnetic_v0);
+                break;
+            }
+            case SHIELD.FIRE:
+            {
+                if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+                animation_set(global.ani_shield_fire);
+                break;
+            }
+            case SHIELD.BUBBLE:
+            {
+                switch (animation_data.variant)
                 {
-                    animation_set(global.ani_shield_basic_v0);
-                    break;
+                    case 1:
+                    {
+                        animation_data.variant = 2;
+                        break;
+                    }
+                    case 3:
+                    {
+                        animation_data.variant = 0;
+                        break;
+                    }
                 }
-                case SHIELD.MAGNETIC:
-                {
-                    animation_set(global.ani_shield_magnetic_v0);
-                    break;
-                }
-                case SHIELD.FIRE:
-                {
-                    animation_set(global.ani_shield_fire);
-                    break;
-                }
-                case SHIELD.BUBBLE:
-                {
-                    animation_set(global.ani_shield_bubble);
-                    visible = ctrlGame.game_time mod 4 < 2;
-                    break;
-                }
-                case SHIELD.LIGHTNING:
-                {
-                    if (animation_is_finished()) animation_data.variant = (animation_data.variant == 0 ? 1 : 0);
-                    animation_set(global.ani_shield_lightning);
-                    break;
-                }
+                animation_set(global.ani_shield_bubble);
+                visible = (animation_data.variant == 0 ? animation_data.time mod 4 < 2 : true);
+                break;
+            }
+            case SHIELD.LIGHTNING:
+            {
+                if (animation_is_finished()) animation_data.variant = (animation_data.variant == 0 ? 1 : 0);
+                animation_set(global.ani_shield_lightning);
+                break;
             }
         }
         
