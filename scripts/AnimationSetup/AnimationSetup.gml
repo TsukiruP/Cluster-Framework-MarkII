@@ -35,6 +35,7 @@ global.ani_spin_dash_dust_v1 = new animation(sprSpinDashDust1, 2);
 global.ani_spin_dash_dust = [global.ani_spin_dash_dust_v0, global.ani_spin_dash_dust_v1];
 
 global.ani_shield_basic_v0 = new animation(sprShieldBasic, 3);
+
 global.ani_shield_magnetic_v0 = new animation(sprShieldMagnetic, 3);
 
 global.ani_shield_fire_v0 = new animation(sprShieldFire, 2);
@@ -44,8 +45,8 @@ global.ani_shield_fire = [global.ani_shield_fire_v0, global.ani_shield_fire_dash
 global.ani_shield_bubble_wave_v0 = new animation(sprShieldBubbleWave, 12);
 global.ani_shield_bubble_bound_v0 = new animation(sprShieldBubbleShell, 6, -1, [0]);
 global.ani_shield_bubble_bound_v1 = new animation(sprShieldBubbleBound, 0);
-global.ani_shield_bubble_bound_v2 = new animation(sprShieldBubbleBound, [12, 6], -1, [1, 0]);
-global.ani_shield_bubble = [global.ani_shield_bubble_wave_v0, global.ani_shield_bubble_bound_v0, global.ani_shield_bubble_bound_v1, global.ani_shield_bubble_bound_v2];
+global.ani_shield_bubble_rebound_v0 = new animation(sprShieldBubbleBound, [12, 6], -1, [1, 0]);
+global.ani_shield_bubble = [global.ani_shield_bubble_wave_v0, global.ani_shield_bubble_bound_v0, global.ani_shield_bubble_bound_v1, global.ani_shield_bubble_rebound_v0];
 
 global.ani_shield_lightning_v0 = new animation(sprShieldLightning, [2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2], -1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2]);
 global.ani_shield_lightning_v1 = new animation(sprShieldLightning, 4, -1, [11, 10, 9, 8, 7, 6, 5, 4, 3]);
@@ -54,6 +55,7 @@ global.ani_shield_lightning = [global.ani_shield_lightning_v0, global.ani_shield
 global.ani_shield_lightning_spark_v0 = new animation(sprShieldLightningSpark, [1, 2], -1);
 
 global.ani_shield_invin_v0 = new animation(sprShieldInvin, 2);
+
 global.ani_shield_invin_sparkle_v0 = new animation(sprShieldInvinSparkle, 2, -1);
 
 #endregion

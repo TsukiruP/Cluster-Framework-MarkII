@@ -20,10 +20,10 @@ function animation_core() constructor
     variant = 0;
     ani = undefined;
     force = false;
-    time = 0;
     alarm = 0;
     speed = 1;
     pos = 0;
+    time = 0;
 }
 
 /// @function animation_init(index, [variant], [alternatives])
@@ -33,7 +33,7 @@ function animation_core() constructor
 function animation_init(index, variant = -1, alternatives = [])
 {
     // Abort if...
-    if (variant == -1 and animation_data.index == index) exit; // Index match with no given variant
+    if (variant == -1 and animation_data.index == index) exit; // Indexes match with no given variant
     if (array_contains(alternatives, animation_data.index)) exit; // Current index is an alternative
     
     if (variant == -1) variant = 0;
@@ -53,6 +53,7 @@ function animation_set(ani)
     {
         animation_data.alarm = 0;
         animation_data.pos = -1;
+        animation_data.time = 0;
         sprite_index = -1;
         image_index = 0;
     }
@@ -66,13 +67,13 @@ function animation_set(ani)
         
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
         animation_data.pos = start;
+        animation_data.time = 0;
         sprite_index = sprite;
         image_index = (array_length(order) > 0 ? order[start] : start);
     }
     
     animation_data.ani = ani;
     animation_data.force = false;
-    animation_data.time = 0;
     animation_data.speed = 1;
 }
 

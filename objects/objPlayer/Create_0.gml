@@ -461,14 +461,12 @@ player_obtain_item = function(item)
         case ITEM.FIRE:
         {
             shield = SHIELD.FIRE;
-            shield_stamp.animation_data.variant = 0;
             audio_play_single(sfxItemFire);
             break;
         }
         case ITEM.BUBBLE:
         {
             shield = SHIELD.BUBBLE;
-            shield_stamp.animation_data.variant = 0;
             audio_play_single(sfxItemBubble);
             break;
         }
