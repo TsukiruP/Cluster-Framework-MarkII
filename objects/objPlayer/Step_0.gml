@@ -187,8 +187,8 @@ var py = 0;
 
 camera_padding_y = PLAYER_HEIGHT - y_radius;
 
-px += (gravity_direction mod 180 == 0) * camera_padding_x + (gravity_direction mod 180 != 0) * camera_padding_y;
-py += (gravity_direction mod 180 == 0) * camera_padding_y + (gravity_direction mod 180 != 0) * camera_padding_x;
+px += (sine == 0) * camera_padding_x + (sine != 0) * camera_padding_y;
+py += (sine == 0) * camera_padding_y + (sine != 0) * camera_padding_x;
 
 #endregion
 
