@@ -35,9 +35,11 @@ with (shield_stamp)
     var invincible = (other.invin_time > 0);
     if (shield != SHIELD.NONE or invincible)
     {
+        var advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
+        var flicker = db_read(global.config_database, FLICKER.OFF, "flicker");
+        
         x = x_int div 1;
         y = y_int div 1;
-        image_angle = other.gravity_direction;
         
         animation_init(invincible ? -1 : shield);
         switch (animation_data.index)
@@ -90,7 +92,35 @@ with (shield_stamp)
             }
         }
         
-        if (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible) visible = ctrlGame.game_time mod 4 < 2;
+        // Visible
+        if (advance)
+        {
+            switch (flicker)
+            {
+                case FLICKER.ORIGINAL:
+                {
+                    visible = animation_data.time mod 4 < 2;
+                    break;
+                }
+                case FLICKER.VIRTUAL_CONSOLE:
+                case FLICKER.VIRTUAL_CONSOLE_ADVANCE_3:
+                {
+                    visible = animation_data.time mod 6 < (flicker == FLICKER.VIRTUAL_CONSOLE_ADVANCE_3 ? 4 : 2);
+                    break;
+                }
+            }
+        }
+        else if (animation_data.index == SHIELD.BUBBLE and animation_data.variant == 0)
+        {
+            visible = animation_data.time mod 4 < 2;
+        }
+        else
+        {
+            visible = true;
+        }
+        if (not (advance or (animation_data.index == SHIELD.FIRE and animation_data.variant == 1))) image_xscale = other.image_xscale;
+        image_angle = other.gravity_direction;
+        image_alpha = (advance and flicker == FLICKER.OFF ? 0.8 : 1);
     }
     else if (not is_undefined(animation_data.ani))
     {

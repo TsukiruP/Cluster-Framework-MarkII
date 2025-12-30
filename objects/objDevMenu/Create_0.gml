@@ -26,8 +26,8 @@ flicker_option.get = function() { return db_read(global.config_database, FLICKER
 flicker_option.set = function(val) { db_write(global.config_database, val, "flicker"); };
 flicker_option.clampinv = true;
 flicker_option.minimum = FLICKER.OFF;
-flicker_option.maximum = FLICKER.VIRTUAL_CONSOLE_ALT;
-flicker_option.specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Alt)"];
+flicker_option.maximum = FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
+flicker_option.specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Advance 3)"];
 
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };

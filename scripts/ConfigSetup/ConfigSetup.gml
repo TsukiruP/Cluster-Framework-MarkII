@@ -15,7 +15,7 @@ enum FLICKER
     OFF,
     ORIGINAL,
     VIRTUAL_CONSOLE,
-    VIRTUAL_CONSOLE_ALT
+    VIRTUAL_CONSOLE_ADVANCE_3
 }
 
 global.config_database = db_create();
