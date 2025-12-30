@@ -183,7 +183,7 @@ function player_is_running(phase)
 			player_resist_slope(0.125);
 			
 			// Roll
-			if (velocity >= 1.03125 and input_axis_x == 0 and input_axis_y == 1)
+			if (input_axis_y == 1 and velocity >= 1.03125 and input_axis_x == 0)
 			{
 				audio_play_single(sfxRoll);
 				return player_perform(player_is_rolling);
