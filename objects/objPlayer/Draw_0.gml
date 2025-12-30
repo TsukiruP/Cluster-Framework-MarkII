@@ -6,7 +6,8 @@ var shield_behind = false;
 // Shield
 with (shield_stamp)
 {
-    if ((animation_data.ani == global.ani_shield_fire_v0 and image_index mod 2 != 0) or (animation_data.ani == global.ani_shield_lightning_v0 and animation_data.pos > 15))
+    if ((animation_data.ani == global.ani_shield_fire_v0 and image_index mod 2 != 0) or
+        animation_data.ani == global.ani_shield_lightning_v1)
     {
         shield_behind = true;
         draw_self_floored();

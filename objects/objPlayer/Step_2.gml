@@ -70,7 +70,8 @@ with (shield_stamp)
                 }
                 case SHIELD.LIGHTNING:
                 {
-                    animation_set(global.ani_shield_lightning_v0);
+                    if (animation_is_finished()) animation_data.variant = (animation_data.variant == 0 ? 1 : 0)
+                    animation_set(global.ani_shield_lightning);
                     break;
                 }
             }
