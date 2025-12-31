@@ -8,7 +8,7 @@ var seconds = (time div 60) mod 60;
 var centiseconds = floor(time / 0.6) mod 100;
 
 // HUD
-switch (hud)
+switch (hud_config)
 {
     case HUD.CLUSTER:
     {
@@ -125,10 +125,10 @@ switch (hud)
         draw_set_color(c_white);
         
         // Type
-        var type = 2;
-        if (array_contains(global.characters, CHARACTER.SONIC)) type = 0;
-        else if (array_contains(global.characters, CHARACTER.MILES) or array_contains(global.characters, CHARACTER.CREAM)) type = 1;
-        draw_sprite(sprHUDAdvance3Type, type, hud_x, hud_y);
+        var type_index = 2;
+        if (array_contains(global.characters, CHARACTER.SONIC)) type_index = 0;
+        else if (array_contains(global.characters, CHARACTER.MILES) or array_contains(global.characters, CHARACTER.CREAM)) type_index = 1;
+        draw_sprite(sprHUDAdvance3Type, type_index, hud_x, hud_y);
         
         // Rings
         draw_set_color(global.ring_count == 0 and flash ? c_red : c_white);
@@ -188,7 +188,7 @@ switch (hud)
 // Lives
 if (LIVES_ENABLED)
 {
-    switch (hud)
+    switch (hud_config)
     {
         case HUD.CLUSTER:
         {
@@ -197,10 +197,10 @@ if (LIVES_ENABLED)
             var lives_x = interpolate(lives_xstart, lives_xend, active_time / active_duration, EASE_SMOOTHSTEP);
             var lives_y = hud_y;
             var lives_max = 99;
-            var pla_character = global.characters[0];
+            var character_index = global.characters[0];
             draw_sprite(sprHUDCluster, 2, lives_x, lives_y);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
             draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
         }
@@ -209,8 +209,8 @@ if (LIVES_ENABLED)
             var lives_x = 11;
             var lives_y = CAMERA_HEIGHT - 26;
             var lives_max = 99;
-            var pla_character = global.characters[0];
-            draw_sprite(sprHUDAdventureLifeIcon, pla_character, lives_x, lives_y);
+            var character_index = global.characters[0];
+            draw_sprite(sprHUDAdventureLifeIcon, character_index, lives_x, lives_y);
             draw_set_font(global.font_hud_adventure);
             draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
@@ -220,8 +220,8 @@ if (LIVES_ENABLED)
             var lives_x = 22;
             var lives_y = CAMERA_HEIGHT - 20;
             var lives_max = 99;
-            var pla_character = global.characters[0];
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x, lives_y, -1, 1, 0, c_white, 1);
+            var character_index = global.characters[0];
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x, lives_y, -1, 1, 0, c_white, 1);
             draw_set_font(global.font_hud_adventure_2_lives);
             draw_text(lives_x + 4, lives_y + 6, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
@@ -231,8 +231,8 @@ if (LIVES_ENABLED)
             var lives_x = 6;
             var lives_y = CAMERA_HEIGHT - 18;
             var lives_max = 9;
-            var pla_character = global.characters[0];
-            draw_sprite(sprHUDAdvance2LifeIcon, pla_character, lives_x, lives_y);
+            var character_index = global.characters[0];
+            draw_sprite(sprHUDAdvance2LifeIcon, character_index, lives_x, lives_y);
             draw_set_font(global.font_hud_advance_2);
             draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > lives_max ? lives_max : global.life_count}");
             break;
@@ -244,8 +244,8 @@ if (LIVES_ENABLED)
             var lives_max = 9;
             for (var i = array_length(global.characters) - 1; i >= 0; i--)
             {
-                var pla_character = global.characters[i];
-                draw_sprite(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y);
+                var character_index = global.characters[i];
+                draw_sprite(sprHUDAdvance3LifeIcon, character_index, lives_x + i * 10, lives_y);
             }
             if (array_length(global.characters) <= 1) draw_text(lives_x + 17, lives_y, "x");
             draw_set_font(global.font_hud_advance_3);
@@ -261,14 +261,14 @@ if (LIVES_ENABLED)
             {
                 for (var i = 0; i < array_length(global.characters); i++)
                 {
-                    var pla_character = global.characters[i];
-                    draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);
+                    var character_index = global.characters[i];
+                    draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);
                 }
             }
             else 
             {
-            	var pla_character = global.characters[0];
-                draw_sprite_ext(sprHUDAdvance3LifeIcon, pla_character, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
+            	var character_index = global.characters[0];
+                draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
             }
             draw_set_font(global.font_hud_episode_ii);
             draw_text(lives_x + 11, lives_y + 6, $"x{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 3)}");
@@ -278,20 +278,22 @@ if (LIVES_ENABLED)
 }
 
 // Status
-if (hud == HUD.CLUSTER)
+if (hud_config == HUD.CLUSTER)
 {
-    var status_x = CAMERA_WIDTH - 16;
-    var status_y = hud_y + 36;
+    var status_xstart = CAMERA_WIDTH + 18 * array_length(status_bar);
+    var status_xend = CAMERA_WIDTH - 16;
+    var status_x = interpolate(status_xstart, status_xend, active_time / active_duration, EASE_SMOOTHSTEP);
+    var status_y = hud_y + (LIVES_ENABLED ? 36 : 8);
     for (var i = 0; i < array_length(status_bar); i++)
     {
-        var status_icon = status_bar[i];
-        if (status_icon.condition)
+        var status_index = status_bar[i];
+        if (status_index.active)
         {
-            if (status_icon.visible)
+            if (status_index.visible)
             {
-                var subimg = status_icon.subimg;
-                draw_sprite_ext(sprHUDItemIcon, subimg, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
-                draw_sprite(sprHUDItemIcon, subimg, status_x, status_y);
+                var icon_index = status_index.icon;
+                draw_sprite_ext(sprHUDItemIcon, icon_index, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
+                draw_sprite(sprHUDItemIcon, icon_index, status_x, status_y);
             }
             status_x -= 18;
         }

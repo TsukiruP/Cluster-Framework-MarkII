@@ -1,7 +1,7 @@
 /// @description Time
 if (ctrlGame.game_paused) exit;
 
-if (hud == HUD.CLUSTER)
+if (hud_config == HUD.CLUSTER)
 {
     if (hud_active)
     {

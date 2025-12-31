@@ -1,10 +1,10 @@
 /// @description Setup
 image_speed = 0;
-hud = db_read(global.config_database, HUD.CLUSTER, "hud");
+hud_config = db_read(global.config_database, HUD.CLUSTER, "hud");
 hud_x = 0;
 hud_y = 0;
 
-switch (hud)
+switch (hud_config)
 {
     case HUD.CLUSTER:
     {
@@ -50,12 +50,12 @@ active_time = 0;
 active_duration = 10;
 
 // Status
-/// @method status(update)
+/// @method status()
 /// @description Creates a new status.
 status = function() constructor
 {
-    subimg = ITEM.EGGMAN;
-    condition = false;
+    icon = ITEM.EGGMAN;
+    active = true;
     visible = true;
     update = function() {};
 };
@@ -66,21 +66,35 @@ with (status_shield)
     update = function()
     {
         var shield = ctrlStage.stage_players[0].shield;
-        subimg = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
-        condition = shield != SHIELD.NONE;
-    }
+        icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
+        active = shield != SHIELD.NONE;
+    };
 }
 
 status_invin = new status();
 with (status_invin)
 {
-    subimg = ITEM.INVINCIBILITY;
+    icon = ITEM.INVINCIBILITY;
     update = function()
     {
         var time = ctrlStage.stage_players[0].invin_time;
-        condition = (time > 0);
+        active = (time > 0);
         visible = (time < 120 ? time mod 4 < 2 : true);
-    }
+    };
 }
 
-status_bar = [status_invin, status_shield];
+status_speed = new status();
+with (status_speed)
+{
+    icon = ITEM.SPEED_UP;
+    update = function()
+    {
+        var time = ctrlStage.stage_players[0].superspeed_time;
+        var time_abs = abs(time);
+        icon = (time < 0 ? ITEM.SLOW_DOWN : ITEM.SPEED_UP);
+        active = (time != 0);
+        visible = (time_abs < 120 ? time_abs mod 4 < 2 : true);
+    };
+}
+
+status_bar = [status_speed, status_invin, status_shield];
