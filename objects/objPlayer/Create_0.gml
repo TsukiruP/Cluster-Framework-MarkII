@@ -103,7 +103,7 @@ button = function(_verb) constructor
     check = false;
     pressed = false;
     released = false;
-}
+};
 
 input_button =
 {

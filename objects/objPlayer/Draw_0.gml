@@ -15,7 +15,7 @@ with (shield_stamp)
 }
 
 // Character sprite
-image_alpha = (invuln_time > 0 ? ((invuln_time div 2) mod 2) : 1);
+image_alpha = (invuln_time > 0 ? (invuln_time mod 4 < 2) : 1);
 player_draw_before();
 draw_self_floored();
 player_draw_after();

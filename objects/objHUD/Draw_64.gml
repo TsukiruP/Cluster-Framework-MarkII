@@ -277,6 +277,27 @@ if (LIVES_ENABLED)
     }
 }
 
+// Status
+if (hud == HUD.CLUSTER)
+{
+    var status_x = CAMERA_WIDTH - 16;
+    var status_y = hud_y + 36;
+    for (var i = 0; i < array_length(status_bar); i++)
+    {
+        var status_icon = status_bar[i];
+        if (status_icon.condition)
+        {
+            if (status_icon.visible)
+            {
+                var subimg = status_icon.subimg;
+                draw_sprite_ext(sprHUDItemIcon, subimg, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
+                draw_sprite(sprHUDItemIcon, subimg, status_x, status_y);
+            }
+            status_x -= 18;
+        }
+    }
+}
+
 draw_reset();
 draw_set_font(-1);
 
