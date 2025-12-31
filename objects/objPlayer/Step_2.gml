@@ -47,6 +47,12 @@ with (shield_stamp)
             case -1:
             {
                 animation_set(global.ani_shield_invin_v0);
+                if (animation_data.time mod 8 == 0)
+                {
+                    var x_off = irandom_range(-16, 16);
+                    var y_off = irandom_range(-16, 16);
+                    particle_create(x + x_off, y + y_off, global.ani_shield_invin_sparkle_v0);
+                }
                 break;
             }
             case SHIELD.BASIC:
