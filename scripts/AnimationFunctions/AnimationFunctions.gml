@@ -137,7 +137,6 @@ function animation_is_finished()
 /// @description Creates a new stamp.
 function stamp() constructor
 {
-    visible = true;
     x = 0;
     y = 0;
     sprite_index = -1;
@@ -148,4 +147,5 @@ function stamp() constructor
     image_blend = c_white;
     image_alpha = 1;
     animation_data = new animation_core();
+    visible = true;
 }
