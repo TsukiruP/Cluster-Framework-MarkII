@@ -74,4 +74,4 @@ home_menu = new dev_menu([player_0_option, player_1_option, boost_option, config
 
 #endregion
 
-current_menu = home_menu;
+menu_index = home_menu;

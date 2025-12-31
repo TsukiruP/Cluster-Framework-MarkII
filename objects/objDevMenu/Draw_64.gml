@@ -2,16 +2,16 @@
 var font_height = 15;
 if (not InputPartyGetJoin())
 {
-    for (var i = 0; i < array_length(current_menu.options); i++)
+    for (var i = 0; i < array_length(menu_index.options); i++)
     {
-        var item = current_menu.options[i];
-        var label = item.label;
+        var option_index = menu_index.options[i];
+        var label = option_index.label;
         
-        if (is_instanceof(item, dev_option_value))
+        if (is_instanceof(option_index, dev_option_value))
         {
-            label = $"{label}: {item.toString()}";
+            label = $"{label}: {option_index.toString()}";
         }
-        draw_set_color(current_menu.cursor == i ? c_white : c_gray);
+        draw_set_color(menu_index.cursor == i ? c_white : c_gray);
         draw_text(10, i * font_height, label);
         draw_reset();
     }
