@@ -290,13 +290,13 @@ player_animate_run = function(ani, ang = direction)
     var variant = animation_data.variant;
     if (on_ground)
     {
-    	var abs_speed = abs(x_speed);
+    	var speed_abs = abs(x_speed);
         variant = 5;
-    	if (abs_speed <= 1.25) variant = 0;
-	    else if (abs_speed <= 2.5) variant = 1;
-	    else if (abs_speed <= 4.0) variant = 2;
-	    else if (abs_speed <= 9.0) variant = 3;
-	    else if (abs_speed <= 10.0) variant = 4;
+    	if (speed_abs <= 1.25) variant = 0;
+	    else if (speed_abs <= 2.5) variant = 1;
+	    else if (speed_abs <= 4.0) variant = 2;
+	    else if (speed_abs <= 9.0) variant = 3;
+	    else if (speed_abs <= 10.0) variant = 4;
     }
     player_set_animation(ani, ang);
     animation_data.variant = variant;
