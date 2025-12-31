@@ -35,8 +35,14 @@ else if (mute & MUTE_FLAG_DROWN)
 
 for (var i = 0; i < array_length(jingle_voices); i++)
 {
-    if (not audio_is_playing(jingle_voices[i])) array_delete(jingle_voices, i, 1);
+    if (not audio_is_playing(jingle_voices[i]))
+    {
+        array_delete(jingle_voices, i, 1);
+    }
 }
+
+var jingle_length = array_length(jingle_voices);
+var jingle_last = array_last(jingle_voices);
 
 // TODO: Check if drowning is playing
 if (mute & MUTE_FLAG_DROWN)
@@ -44,13 +50,20 @@ if (mute & MUTE_FLAG_DROWN)
     if ((mute & MUTE_FLAG_JINGLE) == 0)
     {
         mute |= MUTE_FLAG_JINGLE;
-        if (array_length(jingle_voices) > 0) audio_sound_gain(array_last(jingle_voices), 0);
+        if (jingle_length > 0)
+        {
+            audio_sound_gain(jingle_last, 0);
+        }
     }
 }
 else if (mute & MUTE_FLAG_JINGLE)
 {
     mute &= ~MUTE_FLAG_JINGLE;
-    if (array_length(jingle_voices) > 0) audio_sound_gain(array_last(jingle_voices), global.volume_music, 1000);
+}
+
+if ((mute & MUTE_FLAG_JINGLE) == 0 and jingle_length > 0 and audio_sound_get_gain(jingle_last) == 0)
+{
+    audio_sound_gain(jingle_last, global.volume_music, 1000);
 }
 
 #endregion
@@ -61,24 +74,33 @@ if (swap)
 {
     if (not music_playing or audio_sound_get_gain(music_voice) <= 0)
     {
-        if (music_playing) audio_stop_sound(music_voice);
-        if (ds_priority_size(music) > 0) music_voice = audio_play_sound(ds_priority_find_max(music), PRIORITY_MUSIC, true, global.volume_music * (mute == 0));
         swap = false;
+        if (music_playing) audio_stop_sound(music_voice);
+        if (ds_priority_size(music) > 0)
+        {
+            music_voice = audio_play_sound(ds_priority_find_max(music), PRIORITY_MUSIC, true, global.volume_music * (mute == 0));
+        }
     }
 }
 
-if (array_length(jingle_voices) > 0 or mute & MUTE_FLAG_JINGLE)
+if (jingle_length > 0 or mute & MUTE_FLAG_JINGLE)
 {
     if ((mute & MUTE_FLAG_MUSIC) == 0)
     {
         mute |= MUTE_FLAG_MUSIC;
-        if (music_playing) audio_sound_gain(music_voice, 0);
+        if (music_playing)
+        {
+            audio_sound_gain(music_voice, 0);
+        }
     }
 }
 else if (mute & MUTE_FLAG_MUSIC)
 {
     mute &= ~MUTE_FLAG_MUSIC;
-    if (music_playing and not swap) audio_sound_gain(music_voice, global.volume_music, 1000);
+    if (music_playing and not swap)
+    {
+        audio_sound_gain(music_voice, global.volume_music, 1000);
+    }
 }
 
 #endregion
