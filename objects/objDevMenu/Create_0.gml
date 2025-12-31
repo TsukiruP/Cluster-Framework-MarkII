@@ -5,29 +5,41 @@ history = [];
 #region Config
 
 lives_option = new dev_option_bool("Lives");
-lives_option.get = function() { return db_read(global.config_database, true, "lives"); };
-lives_option.set = function(val) { db_write(global.config_database, val, "lives"); };
+with (lives_option)
+{
+    get = function() { return db_read(global.config_database, true, "lives"); };
+    set = function(val) { db_write(global.config_database, val, "lives"); };
+}
 
 time_over_option = new dev_option_bool("Time Over");
-time_over_option.get = function() { return db_read(global.config_database, true, "time_over"); };
-time_over_option.set = function(val) { db_write(global.config_database, val, "time_over"); };
+with (time_over_option)
+{
+    get = function() { return db_read(global.config_database, true, "time_over"); };
+    set = function(val) { db_write(global.config_database, val, "time_over"); };
+}
 
 hud_option = new dev_option_int("HUD");
-hud_option.get = function() { return db_read(global.config_database, HUD.CLUSTER, "hud"); };
-hud_option.set = function(val) { db_write(global.config_database, val, "hud"); };
-hud_option.clampinv = true;
-hud_option.minimum = HUD.NONE;
-hud_option.maximum = HUD.EPISODE_II;
-hud_option.specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
-hud_option.offset = HUD.NONE;
+with (hud_option)
+{
+    clampinv = true;
+    minimum = HUD.NONE;
+    maximum = HUD.EPISODE_II;
+    specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
+    offset = HUD.NONE;
+    get = function() { return db_read(global.config_database, HUD.CLUSTER, "hud"); };
+    set = function(val) { db_write(global.config_database, val, "hud"); };
+}
 
 flicker_option = new dev_option_int("Flicker");
-flicker_option.get = function() { return db_read(global.config_database, FLICKER.OFF, "flicker"); };
-flicker_option.set = function(val) { db_write(global.config_database, val, "flicker"); };
-flicker_option.clampinv = true;
-flicker_option.minimum = FLICKER.OFF;
-flicker_option.maximum = FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
-flicker_option.specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Advance 3)"];
+with (flicker_option)
+{
+    clampinv = true;
+    minimum = FLICKER.OFF;
+    maximum = FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
+    specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Advance 3)"];
+    get = function() { return db_read(global.config_database, FLICKER.OFF, "flicker"); };
+    set = function(val) { db_write(global.config_database, val, "flicker"); };
+}
 
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
@@ -42,8 +54,11 @@ player_0_option = new dev_option_player(0);
 player_1_option = new dev_option_player(1);
 
 boost_option = new dev_option_bool("Boost");
-boost_option.get = function() { return db_read(global.save_database, true, "boost"); };
-boost_option.set = function(val) { db_write(global.save_database, val, "boost"); };
+with (boost_option)
+{
+    get = function() { return db_read(global.save_database, true, "boost"); };
+    set = function(val) { db_write(global.save_database, val, "boost"); };
+}
 
 config_option = new dev_option("Config");
 config_option.confirm = function() { dev_menu_goto(config_menu); }
