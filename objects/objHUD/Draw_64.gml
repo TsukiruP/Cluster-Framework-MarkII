@@ -10,7 +10,7 @@ var centiseconds = floor(time / 0.6) mod 100;
 // HUD
 switch (hud_config)
 {
-    case HUD.CLUSTER:
+    case CONFIG_HUD.CLUSTER:
     {
         var hud_xstart = -sprite_get_width(sprHUDCluster);
         var hud_xend = 4;
@@ -36,7 +36,7 @@ switch (hud_config)
         if (global.ring_count > 0 or flash) draw_text(hud_x + 29, hud_y + 31, string_pad(global.ring_count, 3));
         break;
     }
-    case HUD.ADVENTURE:
+    case CONFIG_HUD.ADVENTURE:
     {
         // Text
         draw_set_font(global.font_hud_adventure);
@@ -56,7 +56,7 @@ switch (hud_config)
         draw_set_color(c_white);
         break;
     }
-    case HUD.ADVENTURE_2:
+    case CONFIG_HUD.ADVENTURE_2:
     {
         // Text
         draw_set_font(global.font_hud_adventure_2);
@@ -84,7 +84,7 @@ switch (hud_config)
         draw_set_color(c_white);
         break;
     }
-    case HUD.ADVANCE_2:
+    case CONFIG_HUD.ADVANCE_2:
     {
         // Text
         draw_set_font(global.font_hud_advance_2);
@@ -117,7 +117,7 @@ switch (hud_config)
         draw_set_color(c_white);
         break;
     }
-    case HUD.ADVANCE_3:
+    case CONFIG_HUD.ADVANCE_3:
     {
         // Text
         draw_set_font(global.font_hud_advance_3);
@@ -148,7 +148,7 @@ switch (hud_config)
         draw_set_color(c_white);
         break;
     }
-    case HUD.EPISODE_II:
+    case CONFIG_HUD.EPISODE_II:
     {
         // Text
         draw_set_halign(fa_left);
@@ -190,7 +190,7 @@ if (LIVES_ENABLED)
 {
     switch (hud_config)
     {
-        case HUD.CLUSTER:
+        case CONFIG_HUD.CLUSTER:
         {
             var lives_xstart = CAMERA_WIDTH;
             var lives_xend = CAMERA_WIDTH - 60;
@@ -204,7 +204,7 @@ if (LIVES_ENABLED)
             draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
         }
-        case HUD.ADVENTURE:
+        case CONFIG_HUD.ADVENTURE:
         {
             var lives_x = 11;
             var lives_y = CAMERA_HEIGHT - 26;
@@ -215,7 +215,7 @@ if (LIVES_ENABLED)
             draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
         }
-        case HUD.ADVENTURE_2:
+        case CONFIG_HUD.ADVENTURE_2:
         {
             var lives_x = 22;
             var lives_y = CAMERA_HEIGHT - 20;
@@ -226,7 +226,7 @@ if (LIVES_ENABLED)
             draw_text(lives_x + 4, lives_y + 6, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
             break;
         }
-        case HUD.ADVANCE_2:
+        case CONFIG_HUD.ADVANCE_2:
         {
             var lives_x = 6;
             var lives_y = CAMERA_HEIGHT - 18;
@@ -237,7 +237,7 @@ if (LIVES_ENABLED)
             draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > lives_max ? lives_max : global.life_count}");
             break;
         }
-        case HUD.ADVANCE_3:
+        case CONFIG_HUD.ADVANCE_3:
         {
             var lives_x = 5;
             var lives_y = CAMERA_HEIGHT - 20;
@@ -252,7 +252,7 @@ if (LIVES_ENABLED)
             draw_text(lives_x + 27, lives_y, $"{global.life_count > lives_max ? lives_max : global.life_count}");
             break;
         }
-        case HUD.EPISODE_II:
+        case CONFIG_HUD.EPISODE_II:
         {
             var lives_x = 36;
             var lives_y = CAMERA_HEIGHT - 45;
@@ -278,7 +278,7 @@ if (LIVES_ENABLED)
 }
 
 // Status
-if (hud_config == HUD.CLUSTER)
+if (hud_config == CONFIG_HUD.CLUSTER and status_config != CONFIG_STATUS_BAR.OFF)
 {
     var status_xstart = CAMERA_WIDTH + 18 * array_length(status_bar);
     var status_xend = CAMERA_WIDTH - 16;
@@ -287,13 +287,15 @@ if (hud_config == HUD.CLUSTER)
     for (var i = 0; i < array_length(status_bar); i++)
     {
         var status_index = status_bar[i];
-        if (status_index.active)
+        var status_active = status_index.active;
+        if (status_config == CONFIG_STATUS_BAR.ALL or status_active)
         {
             if (status_index.visible)
             {
                 var icon_index = status_index.icon;
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
-                draw_sprite(sprHUDItemIcon, icon_index, status_x, status_y);
+                draw_sprite_ext(sprHUDItemIcon, icon_index, status_x, status_y, 1, 1, 0, status_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
+                //draw_sprite(sprHUDItemIcon, icon_index, status_x, status_y);
             }
             status_x -= 18;
         }

@@ -36,7 +36,7 @@ with (shield_stamp)
     if (shield != SHIELD.NONE or invincible)
     {
         var shield_advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
-        var flicker_config = db_read(global.config_database, FLICKER.OFF, "flicker");
+        var flicker_config = db_read(global.config_database, CONFIG_FLICKER.OFF, "flicker");
         
         x = x_int div 1;
         y = y_int div 1;
@@ -103,15 +103,15 @@ with (shield_stamp)
         {
             switch (flicker_config)
             {
-                case FLICKER.ORIGINAL:
+                case CONFIG_FLICKER.ORIGINAL:
                 {
                     visible = animation_data.time mod 4 < 2;
                     break;
                 }
-                case FLICKER.VIRTUAL_CONSOLE:
-                case FLICKER.VIRTUAL_CONSOLE_ADVANCE_3:
+                case CONFIG_FLICKER.VIRTUAL_CONSOLE:
+                case CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3:
                 {
-                    visible = animation_data.time mod 6 < (flicker_config == FLICKER.VIRTUAL_CONSOLE_ADVANCE_3 ? 4 : 2);
+                    visible = animation_data.time mod 6 < (flicker_config == CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3 ? 4 : 2);
                     break;
                 }
             }
@@ -129,7 +129,7 @@ with (shield_stamp)
             image_xscale = (shield_advance ? 1 : other.image_xscale);
         }
         image_angle = other.gravity_direction;
-        image_alpha = (shield_advance and flicker_config == FLICKER.OFF ? 0.8 : 1);
+        image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.8 : 1);
     }
     else if (not is_undefined(animation_data.ani))
     {

@@ -22,29 +22,40 @@ hud_option = new dev_option_int("HUD");
 with (hud_option)
 {
     clampinv = true;
-    minimum = HUD.NONE;
-    maximum = HUD.EPISODE_II;
+    minimum = CONFIG_HUD.NONE;
+    maximum = CONFIG_HUD.EPISODE_II;
     specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
-    offset = HUD.NONE;
-    get = function() { return db_read(global.config_database, HUD.CLUSTER, "hud"); };
+    offset = CONFIG_HUD.NONE;
+    get = function() { return db_read(global.config_database, CONFIG_HUD.CLUSTER, "hud"); };
     set = function(val) { db_write(global.config_database, val, "hud"); };
+}
+
+status_bar_option = new dev_option_int("Status Bar");
+with (status_bar_option)
+{
+    clampinv = true;
+    minimum = CONFIG_STATUS_BAR.OFF;
+    maximum = CONFIG_STATUS_BAR.ALL;
+    specifiers = ["Off", "Active", "All"];
+    get = function() { return db_read(global.config_database, CONFIG_STATUS_BAR.ALL, "status"); };
+    set = function(val) { db_write(global.config_database, val, "status"); };
 }
 
 flicker_option = new dev_option_int("Flicker");
 with (flicker_option)
 {
     clampinv = true;
-    minimum = FLICKER.OFF;
-    maximum = FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
+    minimum = CONFIG_FLICKER.OFF;
+    maximum = CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
     specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Advance 3)"];
-    get = function() { return db_read(global.config_database, FLICKER.OFF, "flicker"); };
+    get = function() { return db_read(global.config_database, CONFIG_FLICKER.OFF, "flicker"); };
     set = function(val) { db_write(global.config_database, val, "flicker"); };
 }
 
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-config_menu = new dev_menu([lives_option, time_over_option, hud_option, flicker_option, device_option]);
+config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_bar_option, flicker_option, device_option]);
 
 #endregion
 

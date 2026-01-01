@@ -1,42 +1,45 @@
 /// @description Setup
 image_speed = 0;
-hud_config = db_read(global.config_database, HUD.CLUSTER, "hud");
+hud_config = db_read(global.config_database, CONFIG_HUD.CLUSTER, "hud");
+status_config = db_read(global.config_database, CONFIG_STATUS_BAR.ALL, "status");
+
+// HUD
 hud_x = 0;
 hud_y = 0;
 
 switch (hud_config)
 {
-    case HUD.CLUSTER:
+    case CONFIG_HUD.CLUSTER:
     {
         hud_x = 0;
         hud_y = 6;
         break;
     }
-    case HUD.ADVENTURE:
+    case CONFIG_HUD.ADVENTURE:
     {
         hud_x = 10;
         hud_y = 13;
         break;
     }
-    case HUD.ADVENTURE_2:
+    case CONFIG_HUD.ADVENTURE_2:
     {
         hud_x = 8;
         hud_y = 8;
         break;
     }
-    case HUD.ADVANCE_2:
+    case CONFIG_HUD.ADVANCE_2:
     {
         hud_x = 1;
         hud_y = 3;
         break;
     }
-    case HUD.ADVANCE_3:
+    case CONFIG_HUD.ADVANCE_3:
     {
         hud_x = 8;
         hud_y = 0;
         break;
     }
-    case HUD.EPISODE_II:
+    case CONFIG_HUD.EPISODE_II:
     {
         hud_x = 25;
         hud_y = 26;
@@ -50,51 +53,66 @@ active_time = 0;
 active_duration = 10;
 
 // Status
-/// @method status()
-/// @description Creates a new status.
-status = function() constructor
+if (status_config != CONFIG_STATUS_BAR.OFF)
 {
-    icon = ITEM.EGGMAN;
-    active = true;
-    visible = true;
-    update = function() {};
-};
-
-status_shield = new status();
-with (status_shield)
-{
-    update = function()
+    /// @method status()
+    /// @description Creates a new status.
+    status = function() constructor
     {
-        var shield = ctrlStage.stage_players[0].shield;
-        icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
-        active = shield != SHIELD.NONE;
+        icon = ITEM.EGGMAN;
+        active = true;
+        visible = true;
+        update = function() {};
     };
-}
-
-status_invin = new status();
-with (status_invin)
-{
-    icon = ITEM.INVINCIBILITY;
-    update = function()
+    
+    status_shield = new status();
+    with (status_shield)
     {
-        var time = ctrlStage.stage_players[0].invin_time;
-        active = (time > 0);
-        visible = (time < 120 ? time mod 4 < 2 : true);
-    };
-}
-
-status_speed = new status();
-with (status_speed)
-{
-    icon = ITEM.SPEED_UP;
-    update = function()
+        update = function()
+        {
+            var shield = ctrlStage.stage_players[0].shield;
+            icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
+            active = shield != SHIELD.NONE;
+        };
+    }
+    
+    status_invin = new status();
+    with (status_invin)
     {
-        var time = ctrlStage.stage_players[0].superspeed_time;
-        var time_abs = abs(time);
-        icon = (time < 0 ? ITEM.SLOW_DOWN : ITEM.SPEED_UP);
-        active = (time != 0);
-        visible = (time_abs < 120 ? time_abs mod 4 < 2 : true);
-    };
+        icon = ITEM.INVINCIBILITY;
+        update = function()
+        {
+            var time = ctrlStage.stage_players[0].invin_time;
+            active = (time > 0);
+            visible = (time < 120 ? time mod 4 < 2 : true);
+        };
+    }
+    
+    status_speed = new status();
+    with (status_speed)
+    {
+        icon = ITEM.SPEED_UP;
+        update = function()
+        {
+            var time = ctrlStage.stage_players[0].superspeed_time;
+            var time_abs = abs(time);
+            icon = (time < 0 ? ITEM.SLOW_DOWN : ITEM.SPEED_UP);
+            active = (time != 0);
+            visible = (time_abs < 120 ? time_abs mod 4 < 2 : true);
+        };
+    }
+    
+    status_confusion = new status();
+    with (status_confusion)
+    {
+        icon = ITEM.CONFUSION;
+        update = function()
+        {
+            var time = ctrlStage.stage_players[0].confusion_time;
+            active = (time > 0);
+            visible = (time < 120 ? time mod 4 < 2 : true);
+        }
+    }
+    
+    status_bar = [status_confusion, status_speed, status_invin, status_shield];
 }
-
-status_bar = [status_speed, status_invin, status_shield];

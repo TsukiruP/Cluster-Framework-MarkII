@@ -1,5 +1,5 @@
 // Constants
-enum HUD
+enum CONFIG_HUD
 {
     NONE = -1,
     CLUSTER,
@@ -10,7 +10,14 @@ enum HUD
     EPISODE_II
 }
 
-enum FLICKER
+enum CONFIG_STATUS_BAR
+{
+    OFF,
+    ACTIVE,
+    ALL
+}
+
+enum CONFIG_FLICKER
 {
     OFF,
     ORIGINAL,
@@ -18,8 +25,10 @@ enum FLICKER
     VIRTUAL_CONSOLE_ADVANCE_3
 }
 
+
 global.config_database = db_create();
 db_write(global.config_database, true, "lives");
 db_write(global.config_database, true, "time_over");
-db_write(global.config_database, HUD.CLUSTER, "hud");
-db_write(global.config_database, FLICKER.OFF, "flicker");
+db_write(global.config_database, CONFIG_HUD.CLUSTER, "hud");
+db_write(global.config_database, CONFIG_STATUS_BAR.ALL, "status");
+db_write(global.config_database, CONFIG_FLICKER.OFF, "flicker");
