@@ -41,7 +41,7 @@ for (var i = 0; i < array_length(jingle_voices); i++)
     }
 }
 
-var jingle_length = array_length(jingle_voices);
+var jingle_count = array_length(jingle_voices);
 var jingle_last = array_last(jingle_voices);
 
 // TODO: Check if drowning is playing
@@ -50,7 +50,7 @@ if (mute & MUTE_FLAG_DROWN)
     if ((mute & MUTE_FLAG_JINGLE) == 0)
     {
         mute |= MUTE_FLAG_JINGLE;
-        if (jingle_length > 0)
+        if (jingle_count > 0)
         {
             audio_sound_gain(jingle_last, 0);
         }
@@ -61,7 +61,7 @@ else if (mute & MUTE_FLAG_JINGLE)
     mute &= ~MUTE_FLAG_JINGLE;
 }
 
-if ((mute & MUTE_FLAG_JINGLE) == 0 and jingle_length > 0 and audio_sound_get_gain(jingle_last) == 0)
+if ((mute & MUTE_FLAG_JINGLE) == 0 and jingle_count > 0 and audio_sound_get_gain(jingle_last) == 0)
 {
     audio_sound_gain(jingle_last, global.volume_music, 1000);
 }
@@ -83,7 +83,7 @@ if (swap)
     }
 }
 
-if (jingle_length > 0 or mute & MUTE_FLAG_JINGLE)
+if (jingle_count > 0 or mute & MUTE_FLAG_JINGLE)
 {
     if ((mute & MUTE_FLAG_MUSIC) == 0)
     {
