@@ -295,7 +295,6 @@ if (hud_config == CONFIG_HUD.CLUSTER and status_config != CONFIG_STATUS_BAR.OFF)
                 var icon_index = status_index.icon;
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_x, status_y, 1, 1, 0, status_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
-                //draw_sprite(sprHUDItemIcon, icon_index, status_x, status_y);
             }
             status_x -= 18;
         }
