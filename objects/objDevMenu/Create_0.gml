@@ -52,10 +52,17 @@ with (flicker_option)
     set = function(val) { db_write(global.config_database, val, "flicker"); };
 }
 
+debuffs_option = new dev_option_bool("Debuffs");
+with (debuffs_option)
+{
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_TIME_OVER, "debuffs"); };
+    set = function(val) { db_write(global.config_database, val, "debuffs"); };
+}
+
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_bar_option, flicker_option, device_option]);
+config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_bar_option, flicker_option, debuffs_option, device_option]);
 
 #endregion
 
