@@ -1,7 +1,7 @@
 /// @description Setup
 image_speed = 0;
-hud_config = db_read(global.config_database, CONFIG_HUD.CLUSTER, "hud");
-status_config = db_read(global.config_database, CONFIG_STATUS_BAR.ALL, "status");
+hud_config = db_read(global.config_database, CONFIG_DEFAULT_HUD, "hud");
+status_config = db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status");
 
 // HUD
 hud_x = 0;
@@ -115,4 +115,6 @@ if (status_config != CONFIG_STATUS_BAR.OFF)
     }
     
     status_bar = [status_confusion, status_speed, status_invin, status_shield];
+    if (not db_read(global.config_database, CONFIG_DEFAULT_DEBUFFS, "debuffs")) array_shift(status_bar);
+    status_bar_count = array_length(status_bar);
 }

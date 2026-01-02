@@ -36,7 +36,7 @@ with (shield_stamp)
     if (shield != SHIELD.NONE or invincible)
     {
         var shield_advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
-        var flicker_config = db_read(global.config_database, CONFIG_FLICKER.OFF, "flicker");
+        var flicker_config = db_read(global.config_database, CONFIG_DEFAULT_FLICKER, "flicker");
         
         x = x_int div 1;
         y = y_int div 1;

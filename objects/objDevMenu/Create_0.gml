@@ -7,14 +7,14 @@ history = [];
 lives_option = new dev_option_bool("Lives");
 with (lives_option)
 {
-    get = function() { return db_read(global.config_database, true, "lives"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_LIVES, "lives"); };
     set = function(val) { db_write(global.config_database, val, "lives"); };
 }
 
 time_over_option = new dev_option_bool("Time Over");
 with (time_over_option)
 {
-    get = function() { return db_read(global.config_database, true, "time_over"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_TIME_OVER, "time_over"); };
     set = function(val) { db_write(global.config_database, val, "time_over"); };
 }
 
@@ -26,7 +26,7 @@ with (hud_option)
     maximum = CONFIG_HUD.EPISODE_II;
     specifiers = ["None", "Cluster", "Adventure", "Adventure 2", "Advance 2", "Advance 3", "Episode II"];
     offset = CONFIG_HUD.NONE;
-    get = function() { return db_read(global.config_database, CONFIG_HUD.CLUSTER, "hud"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_HUD, "hud"); };
     set = function(val) { db_write(global.config_database, val, "hud"); };
 }
 
@@ -37,7 +37,7 @@ with (status_bar_option)
     minimum = CONFIG_STATUS_BAR.OFF;
     maximum = CONFIG_STATUS_BAR.ALL;
     specifiers = ["Off", "Active", "All"];
-    get = function() { return db_read(global.config_database, CONFIG_STATUS_BAR.ALL, "status"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status"); };
     set = function(val) { db_write(global.config_database, val, "status"); };
 }
 
@@ -48,7 +48,7 @@ with (flicker_option)
     minimum = CONFIG_FLICKER.OFF;
     maximum = CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3;
     specifiers = ["Off", "Original", "Virtual Console", "Virtual Console (Advance 3)"];
-    get = function() { return db_read(global.config_database, CONFIG_FLICKER.OFF, "flicker"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_FLICKER, "flicker"); };
     set = function(val) { db_write(global.config_database, val, "flicker"); };
 }
 

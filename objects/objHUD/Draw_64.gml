@@ -280,11 +280,11 @@ if (LIVES_ENABLED)
 // Status
 if (hud_config == CONFIG_HUD.CLUSTER and status_config != CONFIG_STATUS_BAR.OFF)
 {
-    var status_xstart = CAMERA_WIDTH + 18 * array_length(status_bar);
+    var status_xstart = CAMERA_WIDTH + 18 * status_bar_count;
     var status_xend = CAMERA_WIDTH - 16;
     var status_x = interpolate(status_xstart, status_xend, active_time / active_duration, EASE_SMOOTHSTEP);
     var status_y = hud_y + (LIVES_ENABLED ? 36 : 8);
-    for (var i = 0; i < array_length(status_bar); i++)
+    for (var i = 0; i < status_bar_count; i++)
     {
         var status_index = status_bar[i];
         var status_active = status_index.active;
