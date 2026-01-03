@@ -2,13 +2,6 @@
 image_speed = 0;
 stage_players = [];
 
-// Boundary
-bound_left = 0;
-bound_top = 0;
-bound_right = room_width;
-bound_bottom = room_height;
-
-// Timing
 stage_time = 0;
 time_limit = time_to_frames(10, 0);
 time_over = false;
