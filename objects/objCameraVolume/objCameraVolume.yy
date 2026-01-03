@@ -25,7 +25,12 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"included_volume1","filters":[],"listItems":[],"multiselect":false,"name":"included_volume1","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"included_volume2","filters":[],"listItems":[],"multiselect":false,"name":"included_volume2","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"included_volume3","filters":[],"listItems":[],"multiselect":false,"name":"included_volume3","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"included_volume4","filters":[],"listItems":[],"multiselect":false,"name":"included_volume4","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
