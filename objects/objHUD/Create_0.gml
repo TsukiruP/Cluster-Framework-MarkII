@@ -95,10 +95,10 @@ if (status_config != CONFIG_STATUS_BAR.OFF)
         update = function()
         {
             var time = ctrlStage.stage_players[0].superspeed_time;
-            var time_abs = abs(time);
+            var abs_time = abs(time);
             icon = (time < 0 ? ITEM.SLOW_DOWN : ITEM.SPEED_UP);
             active = (time != 0);
-            visible = (time_abs < 120 ? time_abs mod 4 < 2 : true);
+            visible = (abs_time < 120 ? abs_time mod 4 < 2 : true);
         };
     }
     
