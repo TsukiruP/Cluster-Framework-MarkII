@@ -8,6 +8,7 @@
 #macro PAUSE_FLAG_TRANSITION 2
 #macro PAUSE_FLAG_MENU 4
 
+#macro CAMERA_ID view_camera[0]
 #macro CAMERA_WIDTH 426
 #macro CAMERA_HEIGHT 240
 #macro CAMERA_PADDING 64

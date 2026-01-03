@@ -3,10 +3,10 @@ var vx = camera_get_view_x(CAMERA_ID);
 var vy = camera_get_view_y(CAMERA_ID);
 
 // Calculate offset from view center
-var ox = x - (vx + CAMERA_WIDTH * 0.5);
-var oy = y - (vy + CAMERA_HEIGHT * 0.5);
+var ox = x - (vx + CAMERA_WIDTH / 2);
+var oy = y - (vy + CAMERA_HEIGHT / 2);
 
-// Apply panning offsets
+// Apply offsets
 if (x_offset != 0 or y_offset != 0)
 {
 	var sine = dsin(gravity_direction);

@@ -127,10 +127,6 @@ shield_stamp = new stamp();
 
 // Camera
 camera = noone;
-camera_offset_x = 0;
-camera_offset_y = 0;
-camera_padding_x = 0;
-camera_padding_y = 0;
 
 // CPU
 cpu_state = 0;

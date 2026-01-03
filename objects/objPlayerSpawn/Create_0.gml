@@ -21,5 +21,4 @@ for (var i = 0; i < array_length(global.characters); i++)
     ctrlStage.stage_players[i] = player_inst;
 }
 ctrlGame.game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
-ctrlStage.stage_players[0].camera = global.main_camera;
 instance_destroy();
