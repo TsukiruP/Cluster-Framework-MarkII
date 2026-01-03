@@ -9,9 +9,9 @@ bound_top = 0;
 bound_right = room_width;
 bound_bottom = room_height;
 
-// Offsets
-x_offset = 0;
-y_offset = 0;
+// Scroll
+x_scroll = 0;
+y_scroll = 0;
 
 // Lag
 x_lag = 0;

@@ -1,4 +1,6 @@
 /// @description Ears
+if (ctrlGame.game_paused) exit;
+
 // Inherit the parent event
 event_inherited();
 

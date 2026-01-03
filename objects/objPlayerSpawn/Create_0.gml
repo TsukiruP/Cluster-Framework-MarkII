@@ -21,4 +21,5 @@ for (var i = 0; i < array_length(global.characters); i++)
     ctrlStage.stage_players[i] = player_inst;
 }
 ctrlGame.game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
+ctrlStage.stage_players[0].camera = instance_create_depth(x, y, depth - DEPTH_OFFSET_PLAYER, objCamera);
 instance_destroy();

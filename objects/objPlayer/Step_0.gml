@@ -151,66 +151,162 @@ player_animate();
 
 #endregion
 
-#region Camera
+#region Spin Dash Dust
 
-var sine = dsin(gravity_direction);
-var cosine = dcos(gravity_direction);
-
-#region Offset
-
-var ox = 0;
-var oy = 0;
-
-if (mask_direction == gravity_direction and abs(x_speed) > 6)
+with (spin_dash_stamp)
 {
-    if (camera_offset_x != 64 * sign(x_speed)) camera_offset_x += 2 * sign(x_speed);
+    var action = other.state;
+    if (action == player_is_spin_dashing)
+    {
+        var x_int = other.x div 1;
+        var y_int = other.y div 1;
+        var sine = dsin(other.gravity_direction);
+        var cosine = dcos(other.gravity_direction);
+        var charge = floor(other.spin_dash_charge);
+        x = x_int + sine * other.y_radius;
+        y = y_int + cosine * other.y_radius;
+        image_xscale = other.image_xscale;
+        image_angle = other.mask_direction;
+        animation_data.variant = (charge > 2);
+        animation_set(global.ani_spin_dash_dust);
+    }
+    else if (not is_undefined(animation_data.ani))
+    {
+        animation_set(undefined);
+    }
 }
-else if (camera_offset_x != 0)
-{
-    camera_offset_x -= 2 * sign(camera_offset_x);
-}
-
-if (camera_offset_y != 0 and ((state != player_is_looking and state != player_is_crouching) or camera_look_time > 0))
-{
-    camera_offset_y -= 2 * sign(camera_offset_y);
-}
-
-ox += cosine * camera_offset_x + sine * camera_offset_y;
-oy += -sine * camera_offset_x + cosine * camera_offset_y;
 
 #endregion
 
-#region Padding
+#region Shield
 
-var px = 0;
-var py = 0;
-
-camera_padding_y = PLAYER_HEIGHT - y_radius;
-
-px += (sine == 0) * camera_padding_x + (sine != 0) * camera_padding_y;
-py += (sine == 0) * camera_padding_y + (sine != 0) * camera_padding_x;
+with (shield_stamp)
+{
+    var shield = other.shield;
+    var invincible = (other.invin_time > 0);
+    if (shield != SHIELD.NONE or invincible)
+    {
+        var x_int = other.x div 1;
+        var y_int = other.y div 1;
+        var sine = dsin(other.gravity_direction);
+        var cosine = dcos(other.gravity_direction);
+        x = x_int;
+        y = y_int;
+        
+        var shield_advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
+        var flicker_config = db_read(global.config_database, CONFIG_DEFAULT_FLICKER, "flicker");
+        animation_init(invincible ? -1 : shield);
+        switch (animation_data.index)
+        {
+            case -1:
+            {
+                animation_set(global.ani_shield_invin_v0);
+                if (animation_data.time mod 8 == 0)
+                {
+                    var x_off = irandom_range(-16, 16);
+                    var y_off = irandom_range(-16, 16);
+                    particle_create(x + x_off, y + y_off, global.ani_shield_invin_sparkle_v0);
+                }
+                break;
+            }
+            case SHIELD.BASIC:
+            {
+                animation_set(global.ani_shield_basic_v0);
+                break;
+            }
+            case SHIELD.MAGNETIC:
+            {
+                animation_set(global.ani_shield_magnetic_v0);
+                break;
+            }
+            case SHIELD.FIRE:
+            {
+                if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+                animation_set(global.ani_shield_fire);
+                break;
+            }
+            case SHIELD.BUBBLE:
+            {
+                switch (animation_data.variant)
+                {
+                    case 1:
+                    {
+                        animation_data.variant = 2;
+                        break;
+                    }
+                    case 3:
+                    {
+                        animation_data.variant = 0;
+                        break;
+                    }
+                }
+                animation_set(global.ani_shield_bubble);
+                visible = (animation_data.variant == 0 ? animation_data.time mod 4 < 2 : true);
+                break;
+            }
+            case SHIELD.LIGHTNING:
+            {
+                if (animation_is_finished()) animation_data.variant = (animation_data.variant == 0 ? 1 : 0);
+                animation_set(global.ani_shield_lightning);
+                break;
+            }
+        }
+        
+        // Visible
+        if (shield_advance)
+        {
+            switch (flicker_config)
+            {
+                case CONFIG_FLICKER.ORIGINAL:
+                {
+                    visible = animation_data.time mod 4 < 2;
+                    break;
+                }
+                case CONFIG_FLICKER.VIRTUAL_CONSOLE:
+                case CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3:
+                {
+                    visible = animation_data.time mod 6 < (flicker_config == CONFIG_FLICKER.VIRTUAL_CONSOLE_ADVANCE_3 ? 4 : 2);
+                    break;
+                }
+            }
+        }
+        else if (animation_data.index == SHIELD.BUBBLE and animation_data.variant == 0)
+        {
+            visible = animation_data.time mod 4 < 2;
+        }
+        else
+        {
+            visible = true;
+        }
+        if (not (animation_data.index == SHIELD.FIRE and animation_data.variant == 1))
+        {
+            image_xscale = (shield_advance ? 1 : other.image_xscale);
+        }
+        image_angle = other.gravity_direction;
+        image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.8 : 1);
+    }
+    else if (not is_undefined(animation_data.ani))
+    {
+        animation_set(undefined);
+    }
+}
 
 #endregion
 
+// Direct camera
 with (camera)
 {
-    offset(ox, oy);
-    padding(px, py);
-    center(false, other.on_ground);
-    spd_max_y = (other.x_speed >= 8 or not other.on_ground ? 24 : 6);
+    x = other.x div 1;
+    y = other.y div 1;
+    gravity_direction = other.gravity_direction;
     
-    if (other.state != player_is_dead)
-    {
-        if (follow != other)
-        {
-            move(other.x, other.y);
-            follow = other;
-        }
-    }
-    else if (follow == other)
-    {
-        follow = noone;
-    }
+    // Center
+    if (y_scroll != 0)
+	{
+		var action = other.state;
+		if ((action != player_is_looking and action != player_is_crouching) or other.camera_look_time > 0)
+		{
+			y_scroll -= 2 * sign(y_scroll);
+		}
+	}
 }
-
-#endregion

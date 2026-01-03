@@ -287,9 +287,9 @@ function player_is_looking(phase)
 			{
 				camera_look_time--;
 			}
-			else
+			else with (camera)
 			{
-				if (camera_offset_y > -104) camera_offset_y -= 2;
+				if (y_scroll > -104) y_scroll -= 2;
 			}
 			break;
 		}
@@ -356,9 +356,9 @@ function player_is_crouching(phase)
 			{
 				camera_look_time--;
 			}
-			else
+			else with (camera)
 			{
-				if (camera_offset_y < 88) camera_offset_y += 2;
+				if (y_scroll < 88) y_scroll += 2;
 			}
 			break;
 		}
@@ -473,7 +473,7 @@ function player_is_spin_dashing(phase)
 			if (input_axis_y != 1)
 			{
 				x_speed = image_xscale * (8 + spin_dash_charge div 2);
-				with (camera) lag_x = 16;
+				with (camera) x_lag = 16;
 				audio_stop_sound(sfxSpinRev);
 				audio_play_single(sfxSpinDash);
 				return player_perform(player_is_rolling);
