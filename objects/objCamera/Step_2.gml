@@ -189,3 +189,5 @@ if (ox != 0 or oy != 0)
 	oy = clamp(vy + oy, bound_top, bound_bottom - CAMERA_HEIGHT);
 	camera_set_view_pos(CAMERA_ID, ox, oy);
 }
+
+if (volume_list != noone) ds_list_destroy(volume_list);
