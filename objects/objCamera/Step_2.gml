@@ -1,4 +1,6 @@
 /// @description Scroll
+if (ctrlGame.game_paused) exit;
+
 var vx = camera_get_view_x(CAMERA_ID);
 var vy = camera_get_view_y(CAMERA_ID);
 var width_step = CAMERA_WIDTH;
