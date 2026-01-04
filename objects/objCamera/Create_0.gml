@@ -18,14 +18,13 @@ x_lag = 0;
 y_lag = 0;
 
 // Volumes
+volume_x = 0;
+volume_y = 0;
+volume_speed = 0.05;
+
 volume_lists = [noone];
 volume_lists_cap = 4;
 volume_lists_strength = [1];
-
-// Constrain
-constrain_x = 0;
-constrain_y = 0;
-constrain_speed = 1/60;
 
 // Center view
 camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);

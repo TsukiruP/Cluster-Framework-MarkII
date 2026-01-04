@@ -299,6 +299,7 @@ with (camera)
     x = other.x div 1;
     y = other.y div 1;
     gravity_direction = other.gravity_direction;
+    on_ground = other.on_ground;
     
     // Center
     if (y_scroll != 0)
@@ -309,4 +310,7 @@ with (camera)
 			y_scroll -= 2 * sign(y_scroll);
 		}
 	}
+    
+    // Padding
+    if (on_ground) y -= dcos(other.mask_direction) * (PLAYER_HEIGHT - other.y_radius);
 }

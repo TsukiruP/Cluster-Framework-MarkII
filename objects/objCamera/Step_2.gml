@@ -58,11 +58,11 @@ for (var k = 0; k <= strength_count; k++)
 {
     if (k != strength_count)
     {
-        volume_lists_strength[k] = lerp(volume_lists_strength[k], 0, constrain_speed);
+        volume_lists_strength[k] = lerp(volume_lists_strength[k], 0, volume_speed);
     }
     else
     {
-        volume_lists_strength[k] = lerp(volume_lists_strength[k], 1, constrain_speed);
+        volume_lists_strength[k] = lerp(volume_lists_strength[k], 1, volume_speed);
     }
     
     if (volume_lists_strength[k] == 0)
@@ -75,8 +75,8 @@ for (var k = 0; k <= strength_count; k++)
 }
 
 // Apply volume
-var volume_offset_x = array_create(array_length(volume_lists), 0);
-var volume_offset_y = array_create(array_length(volume_lists), 0);
+var x_constraint = array_create(array_length(volume_lists), 0);
+var y_constraint = array_create(array_length(volume_lists), 0);
 
 for (var i = 0; i < array_length(volume_lists); i++)
 {
@@ -84,8 +84,8 @@ for (var i = 0; i < array_length(volume_lists); i++)
     {
         var view_left = (x - width_step / 2);
         var view_right = view_left + width_step;
-        var view_top = vy + 1;
-        var view_bottom = vy + height_step + 1;
+        var view_top = (y - height_step / 2);
+        var view_bottom = view_top + height_step;
         
         var volume_left = undefined;
         var volume_right = undefined;
@@ -109,38 +109,59 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_width > volume_width)
                 {
                     var volume_center = ((volume_left + volume_right) / 2) - 1;
-                    volume_offset_x[i] = volume_center - x;
+                    x_constraint[i] = volume_center - x;
                     center_h = true;
                 }
             }
             
             if (not center_h and (volume_left != undefined or volume_right != undefined))
             {
-                if (volume_left != undefined) volume_offset_x[i] -= min(view_left - volume_left, 0);
-                if (volume_right != undefined) volume_offset_x[i] -= max(view_right - volume_right, 0);
+                if (volume_left != undefined) x_constraint[i] -= min(view_left - volume_left, 0);
+                if (volume_right != undefined) x_constraint[i] -= max(view_right - volume_right, 0);
+            }
+            
+            // Vertical constraint
+            var center_v = false;
+            if (volume_top != undefined and volume_bottom != undefined)
+            {
+                var volume_height = volume_bottom - volume_top;
+                var view_height = view_bottom - view_top;
+                if (view_height > volume_height)
+                {
+                    var volume_middle = ((volume_top + volume_bottom) / 2) - 1;
+                    y_constraint[i] = volume_middle - y;
+                    center_v = true;
+                }
+            }
+            
+            if (not center_v and (volume_top != undefined or volume_bottom != undefined))
+            {
+                if (volume_top != undefined) y_constraint[i] -= min(view_top - volume_top, 0);
+                if (volume_bottom != undefined) y_constraint[i] -= max(view_bottom - volume_bottom, 9);
             }
         }
     }
 }
 
-constrain_x = 0;
-constrain_y = 0;
+volume_x = 0;
+volume_y = 0;
 
 for (var i = 0; i < array_length(volume_lists_strength); i++)
 {
-    constrain_x += volume_offset_x[i] * volume_lists_strength[i];
+    volume_x += x_constraint[i] * volume_lists_strength[i];
+    volume_y += y_constraint[i] * volume_lists_strength[i];
 }
 
-constrain_x = constrain_x div 1;
-ox += constrain_x;
+ox += volume_x;
+oy += volume_y;
 
 // Apply scroll
 if (x_scroll != 0 or y_scroll != 0)
 {
-	var sine = dsin(gravity_direction);
-	var cosine = dcos(gravity_direction);
-	ox += cosine * x_scroll + sine * y_scroll;
-	oy += -sine * x_scroll + cosine * y_scroll;
+    var sine = dsin(gravity_direction);
+    var cosine = dcos(gravity_direction);
+    ox += cosine * x_scroll + sine * y_scroll;
+    oy += -sine * x_scroll + cosine * y_scroll;
 }
 
 // Confine to borders
