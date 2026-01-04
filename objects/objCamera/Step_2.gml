@@ -3,12 +3,15 @@ if (ctrlGame.game_paused) exit;
 
 var vx = camera_get_view_x(CAMERA_ID);
 var vy = camera_get_view_y(CAMERA_ID);
-var width_step = CAMERA_WIDTH;
-var height_step = CAMERA_HEIGHT;
 
 // Calculate from view center
-var ox = x - (vx + width_step / 2);
-var oy = y - (vy + height_step / 2);
+var ox = x - (vx + CAMERA_WIDTH / 2);
+var oy = y - (vy + CAMERA_HEIGHT / 2);
+
+// Apply zoom
+var zoom_whole = (zoom_amount - 1) div 1;
+ox -= (CAMERA_WIDTH / 2) * zoom_whole;
+oy -= (CAMERA_HEIGHT / 2) * zoom_whole;
 
 // List volumes
 var volume_list = ds_list_create();
@@ -84,10 +87,10 @@ for (var i = 0; i < array_length(volume_lists); i++)
 {
     if (volume_lists[i] != noone)
     {
-        var view_left = (x - width_step / 2);
-        var view_right = view_left + width_step;
-        var view_top = (y - height_step / 2);
-        var view_bottom = view_top + height_step;
+        var view_left = view_to_room_x(0) + 1;
+        var view_right = view_to_room_x(CAMERA_WIDTH) + 1;
+        var view_top = view_to_room_y(0) + 1;
+        var view_bottom = view_to_room_y(CAMERA_HEIGHT) + 1;
         
         var volume_left = undefined;
         var volume_right = undefined;
@@ -182,7 +185,7 @@ if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
 // Move the view
 if (ox != 0 or oy != 0)
 {
-	ox = clamp(vx + ox, bound_left, bound_right - width_step);
-	oy = clamp(vy + oy, bound_top, bound_bottom - height_step);
+	ox = clamp(vx + ox, bound_left, bound_right - CAMERA_WIDTH);
+	oy = clamp(vy + oy, bound_top, bound_bottom - CAMERA_HEIGHT);
 	camera_set_view_pos(CAMERA_ID, ox, oy);
 }
