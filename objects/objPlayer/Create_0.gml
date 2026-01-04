@@ -234,10 +234,6 @@ player_resist_slope = function(force)
 	x_speed -= dsin(local_direction) * force;
 };
 
-/// @method player_animate()
-/// @description Sets the player's current animation.
-player_animate = function() {};
-
 /// @method player_set_animation(ani, [ang])
 /// @description Sets the given animation within the player's animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
@@ -517,7 +513,7 @@ player_obtain_item = function(item)
             break;
         }
     }
-}
+};
 
 /// @method player_damage(inst)
 /// @description Sets the player to be either hurt or dead.
@@ -567,6 +563,10 @@ player_damage = function(inst)
         return player_perform(player_is_hurt);
     }
 };
+
+/// @method player_animate()
+/// @description Sets the player's current animation.
+player_animate = function() {};
 
 /// @method player_draw_before()
 /// @description Draws player effects behind the character sprite.

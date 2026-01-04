@@ -111,7 +111,7 @@ if (status_config != CONFIG_STATUS_BAR.OFF)
             var time = ctrlStage.stage_players[0].confusion_time;
             active = (time > 0);
             visible = (time < 120 ? time mod 4 < 2 : true);
-        }
+        };
     }
     
     status_bar = [status_confusion, status_speed, status_invin, status_shield];
