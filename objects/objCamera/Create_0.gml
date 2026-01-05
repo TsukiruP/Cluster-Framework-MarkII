@@ -1,6 +1,5 @@
 /// @description Setup
 image_speed = 0;
-zoom_amount = 1;
 on_ground = true;
 
 // Boundary
@@ -9,13 +8,17 @@ bound_top = 0;
 bound_right = room_width;
 bound_bottom = room_height;
 
-// Scroll
-x_scroll = 0;
-y_scroll = 0;
-
 // Lag
 x_lag = 0;
 y_lag = 0;
+
+// Zoom
+zoom_active = false;
+zoom_time = 0;
+zoom_duration = 0;
+zoom_amount = 1;
+zoom_start = 0;
+zoom_end = 0;
 
 // Volumes
 volume_x = 0;
@@ -26,8 +29,51 @@ volume_lists = [noone];
 volume_lists_cap = 4;
 volume_lists_strength = [1];
 
+// Scroll
+x_scroll = 0;
+y_scroll = 0;
+
 // Center view
 camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);
+
+// Misc.
+/// @method camera_resize()
+/// @description Resizes the camera, accounting for zoom.
+camera_resize = function()
+{
+	var view_width = camera_get_view_width(CAMERA_ID);
+    var view_height = camera_get_view_height(CAMERA_ID);
+    
+    var zoom = zoom_amount div 1;
+    var new_width = CAMERA_WIDTH * zoom_amount;
+    var new_height = CAMERA_HEIGHT * zoom_amount;
+    camera_set_view_size(CAMERA_ID, new_width, new_height);
+    
+    var x_shift = camera_get_view_x(CAMERA_ID) - (new_width - view_width) / 2;
+    var y_shift = camera_get_view_y(CAMERA_ID) - (new_height - view_height) / 2;
+    camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
+};
+
+/// @method camera_zoom(z, [duration])
+/// @description Zooms the camera.
+/// @param {Real} z Amount to zoom.
+/// @param {Real} [duration] Duration to zoom.
+camera_zoom = function(oz, duration = 0)
+{
+    if (duration == 0)
+    {
+    	zoom_amount = oz;
+    	camera_resize();
+    }
+    else
+    {
+    	zoom_active = true;
+    	zoom_time = 0;
+    	zoom_duration = duration;
+    	zoom_start = zoom_amount;
+    	zoom_end = oz;
+    }
+}
 
 /// @method view_to_room_x(x)
 /// @description Camera view to room position.
@@ -52,14 +98,3 @@ view_to_room_y = function(oy)
     oy += zoom_offset + (y - CAMERA_HEIGHT / 2) - 1;
     return oy;
 };
-
-/// @method zoom(z)
-/// @description Zooms the camera.
-/// @param {Real} z Amount to zoom.
-zoom = function(oz)
-{
-    zoom_amount = oz div 1;
-    var new_width = CAMERA_WIDTH * zoom_amount;
-    var new_height = CAMERA_HEIGHT * zoom_amount;
-    camera_set_view_size(CAMERA_ID, new_width, new_height);
-}

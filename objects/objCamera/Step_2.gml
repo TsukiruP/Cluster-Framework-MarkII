@@ -3,15 +3,12 @@ if (ctrlGame.game_paused) exit;
 
 var vx = camera_get_view_x(CAMERA_ID);
 var vy = camera_get_view_y(CAMERA_ID);
+var width_step = CAMERA_WIDTH * zoom_amount;
+var height_step = CAMERA_HEIGHT * zoom_amount;
 
 // Calculate from view center
-var ox = x - (vx + CAMERA_WIDTH / 2);
-var oy = y - (vy + CAMERA_HEIGHT / 2);
-
-// Apply zoom
-var zoom_whole = (zoom_amount - 1) div 1;
-ox -= (CAMERA_WIDTH / 2) * zoom_whole;
-oy -= (CAMERA_HEIGHT / 2) * zoom_whole;
+var ox = x - (vx + width_step / 2);
+var oy = y - (vy + height_step / 2);
 
 // List volumes
 var volume_list = ds_list_create();
@@ -185,9 +182,7 @@ if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
 // Move the view
 if (ox != 0 or oy != 0)
 {
-	ox = clamp(vx + ox, bound_left, bound_right - CAMERA_WIDTH);
-	oy = clamp(vy + oy, bound_top, bound_bottom - CAMERA_HEIGHT);
+	ox = clamp(vx + ox, bound_left, bound_right - width_step);
+	oy = clamp(vy + oy, bound_top, bound_bottom - height_step);
 	camera_set_view_pos(CAMERA_ID, ox, oy);
 }
-
-if (volume_list != noone) ds_list_destroy(volume_list);
