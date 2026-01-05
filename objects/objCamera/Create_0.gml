@@ -44,7 +44,6 @@ camera_resize = function()
 	var view_width = camera_get_view_width(CAMERA_ID);
     var view_height = camera_get_view_height(CAMERA_ID);
     
-    var zoom = zoom_amount div 1;
     var new_width = CAMERA_WIDTH * zoom_amount;
     var new_height = CAMERA_HEIGHT * zoom_amount;
     camera_set_view_size(CAMERA_ID, new_width, new_height);
