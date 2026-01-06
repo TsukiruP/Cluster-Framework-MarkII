@@ -19,7 +19,7 @@ if (fade_out)
 
 if (audio_is_playing(life_voice))
 {
-    if ((mute & MUTE_FLAG_DROWN) == 0)
+    if (mute & MUTE_FLAG_DROWN == 0)
     {
         mute |= MUTE_FLAG_DROWN;
     }
@@ -47,7 +47,7 @@ var jingle_last = array_last(jingle_voices);
 // TODO: Check if drowning is playing
 if (mute & MUTE_FLAG_DROWN)
 {
-    if ((mute & MUTE_FLAG_JINGLE) == 0)
+    if (mute & MUTE_FLAG_JINGLE == 0)
     {
         mute |= MUTE_FLAG_JINGLE;
         if (jingle_count > 0)
@@ -61,7 +61,7 @@ else if (mute & MUTE_FLAG_JINGLE)
     mute &= ~MUTE_FLAG_JINGLE;
 }
 
-if ((mute & MUTE_FLAG_JINGLE) == 0 and jingle_count > 0 and audio_sound_get_gain(jingle_last) == 0)
+if (mute & MUTE_FLAG_JINGLE == 0 and jingle_count > 0 and audio_sound_get_gain(jingle_last) == 0)
 {
     audio_sound_gain(jingle_last, global.volume_music, 1000);
 }
@@ -85,7 +85,7 @@ if (swap)
 
 if (jingle_count > 0 or mute & MUTE_FLAG_JINGLE)
 {
-    if ((mute & MUTE_FLAG_MUSIC) == 0)
+    if (mute & MUTE_FLAG_MUSIC == 0)
     {
         mute |= MUTE_FLAG_MUSIC;
         if (music_playing)

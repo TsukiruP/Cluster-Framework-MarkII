@@ -1,5 +1,5 @@
 /// @description Setup
-if (not (ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS))
+if (not ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS)
 {
     global.characters = [];
     for (var i = 0; i < INPUT_MAX_PLAYERS; i++)

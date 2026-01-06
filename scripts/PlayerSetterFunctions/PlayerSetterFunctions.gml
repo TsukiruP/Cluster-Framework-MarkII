@@ -52,7 +52,6 @@ function player_ground(height)
 	if (height == undefined)
 	{
 		on_ground = false;
-		objCamera.on_ground = false;
 		mask_direction = gravity_direction;
 	}
 	else
@@ -60,7 +59,6 @@ function player_ground(height)
 		var offset = y_radius - height + 1;
 		x -= dsin(mask_direction) * offset;
 		y -= dcos(mask_direction) * offset;
-		
 		player_detect_angle();
 	}
 }
@@ -226,10 +224,8 @@ function player_refresh_physics()
 	// Aerial values
 	gravity_cap = 16;
 	gravity_force = 0.21875;
-	
 	jump_height = 6.5;
     jump_release = 4;
-    
     hurt_force = 0.1875;
     
     trick_bound_force = 0.21875;

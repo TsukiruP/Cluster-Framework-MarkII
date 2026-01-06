@@ -2,13 +2,13 @@
 // Hide
 if (InputPressed(INPUT_VERB.HIDE))
 {
-    if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE))
+    if (not ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE)
     {
         ctrlGame.game_flags |= GAME_FLAG_HIDE_PAUSE;
     }
     else
     {
-    	if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_HUD))
+    	if (not ctrlGame.game_flags & GAME_FLAG_HIDE_HUD)
         {
             ctrlGame.game_flags |= GAME_FLAG_HIDE_HUD;
         }

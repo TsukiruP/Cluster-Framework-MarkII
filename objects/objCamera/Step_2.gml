@@ -186,7 +186,6 @@ oy += volume_y_offset;
 
 // Limit to view border
 var x_border = 8;
-
 ox = max(abs(ox) - x_border, 0) * sign(ox);
 if (not on_ground)
 {

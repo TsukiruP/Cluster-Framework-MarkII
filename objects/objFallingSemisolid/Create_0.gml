@@ -21,8 +21,8 @@ reaction = function(pla)
         
         if (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM))
         {
-            if (((flags0 & COLL_FLAG_TOP) and pla.gravity_direction == 0) or 
-                ((flags0 & COLL_FLAG_BOTTOM) and pla.gravity_direction == 180))
+            if ((flags0 & COLL_FLAG_TOP and pla.gravity_direction == 0) or 
+                (flags0 & COLL_FLAG_BOTTOM and pla.gravity_direction == 180))
             {
                 sink_direction |= (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM));
                 pla.y += y_dist;
@@ -37,8 +37,8 @@ reaction = function(pla)
         }
         else if (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT))
         {
-            if (((flags0 & COLL_FLAG_LEFT) and pla.gravity_direction == 90) or 
-                ((flags0 & COLL_FLAG_RIGHT) and pla.gravity_direction == 270))
+            if ((flags0 & COLL_FLAG_LEFT and pla.gravity_direction == 90) or 
+                (flags0 & COLL_FLAG_RIGHT and pla.gravity_direction == 270))
             {
                 sink_direction |= (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT));
                 pla.x += x_dist;
