@@ -77,7 +77,8 @@ if (active_list_compare != volume_list_compare)
     array_push(volume_lists_strength, 0);
     if (array_length(volume_lists) > volume_lists_cap)
     {
-        array_shift(volume_lists);
+        var volume_head = array_shift(volume_lists);
+        if (ds_exists(volume_head, ds_type_list)) ds_list_destroy(volume_head);
         array_shift(volume_lists_strength);
     }
 }
@@ -96,6 +97,7 @@ for (var k = 0; k <= strength_count; k++)
     
     if (volume_lists_strength[k] == 0)
     {
+        if (ds_exists(volume_lists[k], ds_type_list)) ds_list_destroy(volume_lists[k]);
         array_delete(volume_lists, k, 1);
         array_delete(volume_lists_strength, k, 1);
         strength_count = array_length(volume_lists_strength) - 1;
