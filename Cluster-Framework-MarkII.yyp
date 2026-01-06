@@ -63,7 +63,6 @@
     {"$GMFolder":"","%Name":"Misc.","folderPath":"folders/Objects/Stage/General/Misc..yy","name":"Misc.","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rings","folderPath":"folders/Objects/Stage/General/Rings.yy","name":"Rings","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Springs","folderPath":"folders/Objects/Stage/General/Springs.yy","name":"Springs","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Triggers","folderPath":"folders/Objects/Stage/General/Triggers.yy","name":"Triggers","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Parents","folderPath":"folders/Objects/Stage/Parents.yy","name":"Parents","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Objects/Stage/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Characters","folderPath":"folders/Objects/Stage/Player/Characters.yy","name":"Characters","resourceType":"GMFolder","resourceVersion":"2.0",},
