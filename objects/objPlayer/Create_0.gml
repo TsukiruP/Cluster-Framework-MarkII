@@ -303,7 +303,7 @@ player_animate_run = function(ani, ang = direction)
 player_animate_fall = function(ani)
 {
 	if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
-    player_set_animation(ani, rotate_towards(direction, image_angle));
+    player_set_animation(ani, rotate_towards(mask_direction, image_angle));
 };
 
 /// @method player_animate_jump(ani)
