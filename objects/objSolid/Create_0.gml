@@ -15,135 +15,38 @@ reaction = function(pla)
     var flags0 = collision_player(0, pla);
     if (flags0)
     {
+        var side_direction = collision_to_direction(flags0);
+        var diff = angle_wrap(side_direction - pla.gravity_direction);
         var x_dist = hex_to_dec((flags0 & 0x0FF00) >> 8);
         var y_dist = hex_to_dec(flags0 & 0x000FF);
         pla.x += x_dist;
         pla.y += y_dist;
         
-        if (flags0 & (COLL_FLAG_TOP | COLL_FLAG_BOTTOM))
+        switch (diff)
         {
-            if (flags0 & COLL_FLAG_TOP)
+            case 90:
             {
-                switch (pla.gravity_direction)
+                if (pla.y_speed >= 0)
                 {
-                    case 0:
-                    {
-                        if (pla.y_speed >= 0)
-                        {
-                            sink_direction |= COLL_FLAG_TOP;
-                            pla.ground_id = id;
-                        }
-                        break;
-                    }
-                    case 90:
-                    {
-                        if (pla.x_speed <= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 180:
-                    {
-                        if (pla.y_speed <= 0) pla.y_speed = 0;
-                        break;
-                    }
-                    case 270:
-                    {
-                        if (pla.x_speed >= 0) pla.x_speed = 0;
-                        break;
-                    }
+                    sink_direction |= (flags0 & 0xF0000);
+                    pla.ground_id = id;
                 }
+                break;
             }
-            else if (flags0 & COLL_FLAG_BOTTOM)
+            case 180:
             {
-                switch (pla.gravity_direction)
-                {
-                    case 0:
-                    {
-                        if (pla.y_speed <= 0) pla.y_speed = 0;
-                        break;
-                    }
-                    case 90:
-                    {
-                        if (pla.x_speed >= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 180:
-                    {
-                        if (pla.y_speed >= 0)
-                        {
-                            sink_direction |= COLL_FLAG_BOTTOM;
-                            pla.ground_id = id;
-                        }
-                        break;
-                    }
-                    case 270:
-                    {
-                        if (pla.x_speed <= 0) pla.x_speed = 0;
-                        break;
-                    }
-                }
+                if (pla.x_speed >= 0) pla.x_speed = 0;
+                break;
             }
-        }
-        else if (flags0 & (COLL_FLAG_LEFT | COLL_FLAG_RIGHT))
-        {
-            if (flags0 & COLL_FLAG_LEFT)
+            case 270:
             {
-                switch (pla.gravity_direction)
-                {
-                    case 0:
-                    {
-                        if (pla.x_speed >= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 90:
-                    {
-                        if (pla.y_speed >= 0)
-                        {
-                            sink_direction |= COLL_FLAG_LEFT;
-                            pla.ground_id = id;
-                        }
-                        break;
-                    }
-                    case 180:
-                    {
-                        if (pla.x_speed <= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 270:
-                    {
-                        if (pla.y_speed <= 0) pla.y_speed = 0;
-                        break;
-                    }
-                }
+                if (pla.y_speed <= 0) pla.y_speed = 0;
+                break;
             }
-            else if (flags0 & COLL_FLAG_RIGHT)
+            case 0:
             {
-                switch (pla.gravity_direction)
-                {
-                    case 0:
-                    {
-                        if (pla.x_speed <= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 90:
-                    {
-                        if (pla.y_speed <= 0) pla.y_speed = 0;
-                        break;
-                    }
-                    case 180:
-                    {
-                        if (pla.x_speed >= 0) pla.x_speed = 0;
-                        break;
-                    }
-                    case 270:
-                    {
-                        if (pla.y_speed >= 0)
-                        {
-                            sink_direction |= COLL_FLAG_RIGHT;
-                            pla.ground_id = id;
-                        }
-                        break;
-                    }
-                }
+                if (pla.x_speed <= 0) pla.x_speed = 0;
+                break;
             }
         }
     }

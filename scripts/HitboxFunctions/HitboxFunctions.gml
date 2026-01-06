@@ -169,6 +169,18 @@ function collision_player(hb, pla, plahb = -1)
     return result;
 }
 
+/// @function collision_to_direction(flags)
+/// @description Converts the given flags to a direction in degrees.
+/// @param {Real} flags Flags to convert.
+/// @returns {Real}
+function collision_to_direction(flags)
+{
+    if (flags & COLL_FLAG_TOP) return 90;
+    else if (flags & COLL_FLAG_BOTTOM) return 270;
+    else if (flags & COLL_FLAG_LEFT) return 180;
+    else if (flags & COLL_FLAG_RIGHT) return 0;
+}
+
 /// @function draw_hitboxes([ang])
 /// @description Draws all hitboxes assigned to the instance.
 /// @param {Real} [ang] Angle to draw the hitboxes (optional, default is gravity_direction).
