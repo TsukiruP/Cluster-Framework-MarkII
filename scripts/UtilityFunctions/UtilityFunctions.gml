@@ -111,7 +111,7 @@ function rotate_towards(dest, src, amt = 2.8125)
 function instance_in_view(obj = id, padding = CAMERA_PADDING)
 {
     var left = camera_get_view_x(CAMERA_ID);
-    var top = glocamera_get_view_y(CAMERA_ID);
+    var top = camera_get_view_y(CAMERA_ID);
     var right = left + CAMERA_WIDTH;
     var bottom = top + CAMERA_HEIGHT;
     
