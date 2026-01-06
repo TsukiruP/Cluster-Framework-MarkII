@@ -1,6 +1,4 @@
 /// @description Scroll
-if (ctrlGame.game_paused) exit;
-
 // Calculate zoom
 if (zoom_active)
 {
