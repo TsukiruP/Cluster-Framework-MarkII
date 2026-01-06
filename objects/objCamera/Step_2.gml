@@ -3,12 +3,39 @@ if (ctrlGame.game_paused) exit;
 
 var vx = camera_get_view_x(CAMERA_ID);
 var vy = camera_get_view_y(CAMERA_ID);
+
+// Calculate zoom
+if (zoom_active)
+{
+    zoom_amount = interpolate(zoom_start, zoom_end, zoom_time++ / zoom_duration, EASE_SMOOTHSTEP);
+    if (zoom_amount == zoom_end) zoom_active = false;
+    camera_resize();
+}
+
 var width_step = CAMERA_WIDTH * zoom_amount;
 var height_step = CAMERA_HEIGHT * zoom_amount;
 
+// Calculate shake
+if (shake_active)
+{
+    var shake_amount = max((shake_duration - shake_time++) / shake_duration, 0);
+    shake_x_offset = random_range(-shake_magnitude, shake_magnitude) * shake_amount;
+    shake_y_offset = random_range(-shake_magnitude, shake_magnitude) * shake_amount;
+    if (shake_amount <= 0) shake_active = false;
+}
+
 // Calculate from view center
-var ox = x - (vx + width_step / 2);
-var oy = y - (vy + height_step / 2);
+var ox = x - (vx + width_step / 2) + shake_x_offset;
+var oy = y - (vy + height_step / 2) + shake_y_offset;
+
+// Apply offset
+if (x_offset != 0 or y_offset != 0)
+{
+    var sine = dsin(gravity_direction);
+    var cosine = dcos(gravity_direction);
+    ox += cosine * x_offset + sine * y_offset;
+    oy += -sine * x_offset + cosine * y_offset;
+}
 
 // List volumes
 var volume_list = ds_list_create();
@@ -77,8 +104,8 @@ for (var k = 0; k <= strength_count; k++)
 }
 
 // Apply volume
-var x_constraint = array_create(array_length(volume_lists), 0);
-var y_constraint = array_create(array_length(volume_lists), 0);
+var volume_x_constrain = array_create(array_length(volume_lists), 0);
+var volume_y_constrain = array_create(array_length(volume_lists), 0);
 
 for (var i = 0; i < array_length(volume_lists); i++)
 {
@@ -111,15 +138,15 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_width > volume_width)
                 {
                     var volume_center = ((volume_left + volume_right) / 2) - 1;
-                    x_constraint[i] = volume_center - x;
+                    volume_x_constrain[i] = volume_center - x;
                     center_h = true;
                 }
             }
             
             if (not center_h and (volume_left != undefined or volume_right != undefined))
             {
-                if (volume_left != undefined) x_constraint[i] -= min(view_left - volume_left, 0);
-                if (volume_right != undefined) x_constraint[i] -= max(view_right - volume_right, 0);
+                if (volume_left != undefined) volume_x_constrain[i] -= min(view_left - volume_left, 0);
+                if (volume_right != undefined) volume_x_constrain[i] -= max(view_right - volume_right, 0);
             }
             
             // Vertical constraint
@@ -131,40 +158,31 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_height > volume_height)
                 {
                     var volume_middle = ((volume_top + volume_bottom) / 2) - 1;
-                    y_constraint[i] = volume_middle - y;
+                    volume_y_constrain[i] = volume_middle - y;
                     center_v = true;
                 }
             }
             
             if (not center_v and (volume_top != undefined or volume_bottom != undefined))
             {
-                if (volume_top != undefined) y_constraint[i] -= min(view_top - volume_top, 0);
-                if (volume_bottom != undefined) y_constraint[i] -= max(view_bottom - volume_bottom, 9);
+                if (volume_top != undefined) volume_y_constrain[i] -= min(view_top - volume_top, 0);
+                if (volume_bottom != undefined) volume_y_constrain[i] -= max(view_bottom - volume_bottom, 9);
             }
         }
     }
 }
 
-volume_x = 0;
-volume_y = 0;
+volume_x_offset = 0;
+volume_y_offset = 0;
 
 for (var i = 0; i < array_length(volume_lists_strength); i++)
 {
-    volume_x += x_constraint[i] * volume_lists_strength[i];
-    volume_y += y_constraint[i] * volume_lists_strength[i];
+    volume_x_offset += volume_x_constrain[i] * volume_lists_strength[i];
+    volume_y_offset += volume_y_constrain[i] * volume_lists_strength[i];
 }
 
-ox += volume_x;
-oy += volume_y;
-
-// Apply scroll
-if (x_scroll != 0 or y_scroll != 0)
-{
-    var sine = dsin(gravity_direction);
-    var cosine = dcos(gravity_direction);
-    ox += cosine * x_scroll + sine * y_scroll;
-    oy += -sine * x_scroll + cosine * y_scroll;
-}
+ox += volume_x_offset;
+oy += volume_y_offset;
 
 // Confine to borders
 if (volume_list == noone)
@@ -174,8 +192,8 @@ if (volume_list == noone)
 }
 
 // Limit movement speed
-var x_speed_cap = 24 * (x_lag == 0);
-var y_speed_cap = min(6 + abs(y - yprevious), 24) * (y_lag == 0);
+var x_speed_cap = 24 * (x_lag_time == 0);
+var y_speed_cap = min(6 + abs(y - yprevious), 24) * (y_lag_time == 0);
 if (abs(ox) > x_speed_cap) ox = x_speed_cap * sign(ox);
 if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
 

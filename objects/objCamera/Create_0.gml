@@ -9,8 +9,12 @@ bound_right = room_width;
 bound_bottom = room_height;
 
 // Lag
-x_lag = 0;
-y_lag = 0;
+x_lag_time = 0;
+y_lag_time = 0;
+
+// Offset
+x_offset = 0;
+y_offset = 0;
 
 // Zoom
 zoom_active = false;
@@ -20,18 +24,22 @@ zoom_amount = 1;
 zoom_start = 0;
 zoom_end = 0;
 
+// Shake
+shake_x_offset = 0;
+shake_y_offset = 0;
+shake_active = false;
+shake_magnitude = 0;
+shake_time = 0;
+shake_duration = 0;
+
 // Volumes
-volume_x = 0;
-volume_y = 0;
+volume_x_offset = 0;
+volume_y_offset = 0;
 volume_speed = 0.05;
 
 volume_lists = [noone];
 volume_lists_cap = 4;
 volume_lists_strength = [1];
-
-// Scroll
-x_scroll = 0;
-y_scroll = 0;
 
 // Center view
 camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);
@@ -53,26 +61,38 @@ camera_resize = function()
     camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
 };
 
-/// @method camera_zoom(z, [duration])
-/// @description Zooms the camera.
-/// @param {Real} z Amount to zoom.
-/// @param {Real} [duration] Duration to zoom.
-camera_zoom = function(oz, duration = 0)
+/// @method camera_zoom(zoom, [duration])
+/// @description Zooms the camera over the given duration.
+/// @param {Real} zoom Amount to zoom.
+/// @param {Real} [duration] Duration to zoom (optional, defaults to 0).
+camera_zoom = function(zoom, duration = 0)
 {
     if (duration == 0)
     {
-    	zoom_amount = oz;
-    	camera_resize();
+        zoom_amount = zoom;
+        camera_resize();
     }
     else
     {
-    	zoom_active = true;
-    	zoom_time = 0;
-    	zoom_duration = duration;
-    	zoom_start = zoom_amount;
-    	zoom_end = oz;
+        zoom_active = true;
+        zoom_time = 0;
+        zoom_duration = duration;
+        zoom_start = zoom_amount;
+        zoom_end = zoom;
     }
-}
+};
+
+/// @method camera_shake(magnitude, duration)
+/// @description Shakes the camera over the given duration
+/// @param {Real} magnitude Intensity of the shake.
+/// @param {Real} duration Duration to shake.
+camera_shake = function(magnitude, duration)
+{
+    shake_active = true;
+    shake_magnitude = magnitude;
+    shake_time = 0;
+    shake_duration = duration;
+};
 
 /// @method view_to_room_x(x)
 /// @description Camera view to room position.
