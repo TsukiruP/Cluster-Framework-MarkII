@@ -148,7 +148,7 @@ function player_keep_in_bounds()
 		var y2 = y + x_radius;
 	}
 	
-	with (camera)
+	with (objCamera)
 	{
 		left = bound_left;
 		top = bound_top;
