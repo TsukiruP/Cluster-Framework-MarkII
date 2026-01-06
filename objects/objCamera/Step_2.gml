@@ -187,12 +187,15 @@ ox += volume_x_offset;
 oy += volume_y_offset;
 
 // Limit to view border
-var x_border = 8;
-ox = max(abs(ox) - x_border, 0) * sign(ox);
-if (not on_ground)
+if (volume_list == noone)
 {
-	var y_border = 32;
-	oy = max(abs(oy) - y_border, 0) * sign(oy);
+    var x_border = 8;
+    ox = max(abs(ox) - x_border, 0) * sign(ox);
+    if (not on_ground)
+    {
+    	var y_border = 32;
+    	oy = max(abs(oy) - y_border, 0) * sign(oy);
+    }
 }
 
 // Limit movement speed
