@@ -1,9 +1,6 @@
 /// @description Scroll
 if (ctrlGame.game_paused) exit;
 
-var vx = camera_get_view_x(CAMERA_ID);
-var vy = camera_get_view_y(CAMERA_ID);
-
 // Calculate zoom
 if (zoom_active)
 {
@@ -14,6 +11,9 @@ if (zoom_active)
 
 var width_step = CAMERA_WIDTH * zoom_amount;
 var height_step = CAMERA_HEIGHT * zoom_amount;
+
+var vx = camera_get_view_x(CAMERA_ID);
+var vy = camera_get_view_y(CAMERA_ID);
 
 // Calculate shake
 if (shake_active)
