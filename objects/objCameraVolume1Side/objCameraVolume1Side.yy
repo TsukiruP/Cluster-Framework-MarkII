@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"objCream",
+  "%Name":"objCameraVolume1Side",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"objCream",
+  "name":"objCameraVolume1Side",
   "overriddenProperties":[],
   "parent":{
-    "name":"Characters",
-    "path":"folders/Objects/Stage/Player/Characters.yy",
+    "name":"Camera Volumes",
+    "path":"folders/Objects/Stage/General/Camera Volumes.yy",
   },
   "parentObjectId":{
-    "name":"objPlayer",
-    "path":"objects/objPlayer/objPlayer.yy",
+    "name":"objCameraVolume",
+    "path":"objects/objCameraVolume/objCameraVolume.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -35,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprCreamIdle",
-    "path":"sprites/sprCreamIdle/sprCreamIdle.yy",
+    "name":"sprCameraVolume1Side",
+    "path":"sprites/sprCameraVolume1Side/sprCameraVolume1Side.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,7 +1,6 @@
 /// @description Setup
 image_speed = 0;
 ctrlGame.game_paused |= PAUSE_FLAG_MENU;
-global.main_camera.set_paused(true);
 audio_pause_all();
 cursor = 0;
 
@@ -11,7 +10,6 @@ cursor = 0;
 menu_close = function(destroy = true)
 {
     ctrlGame.game_paused &= ~PAUSE_FLAG_MENU;
-    global.main_camera.set_paused(false);
     InputVerbConsumeAll();
     if (destroy) instance_destroy();
 };

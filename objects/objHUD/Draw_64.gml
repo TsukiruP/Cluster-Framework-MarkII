@@ -64,8 +64,8 @@ switch (hud_config)
         draw_set_color(c_white);
         
         // Score
-        var score_max = 99999999;
-        draw_text(hud_x, hud_y, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 8)}");
+        var score_cap = 99999999;
+        draw_text(hud_x, hud_y, $"{global.score_count > score_cap ? score_cap : string_pad(global.score_count, 8)}");
         
         // Time
         var time_y = hud_y + 13;
@@ -102,8 +102,8 @@ switch (hud_config)
         draw_set_color(c_white);
         
         // Score
-        var score_max = 999999;
-        draw_text(hud_x + 27, hud_y + 11, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 6)}");
+        var score_cap = 999999;
+        draw_text(hud_x + 27, hud_y + 11, $"{global.score_count > score_cap ? score_cap : string_pad(global.score_count, 6)}");
         
         // Time
         var time_x = (CAMERA_WIDTH / 2);
@@ -165,9 +165,9 @@ switch (hud_config)
         }
         
         // Score
-        var score_max = 999999999;
+        var score_cap = 999999999;
         draw_set_font(global.font_hud_episode_ii_score);
-        draw_text(hud_x + 37, hud_y + 3, $"{global.score_count > score_max ? score_max : string_pad(global.score_count, 9)}");
+        draw_text(hud_x + 37, hud_y + 3, $"{global.score_count > score_cap ? score_cap : string_pad(global.score_count, 9)}");
         
         // Time
         var time_x = hud_x + 58;
@@ -196,52 +196,52 @@ if (LIVES_ENABLED)
             var lives_xend = CAMERA_WIDTH - 60;
             var lives_x = interpolate(lives_xstart, lives_xend, active_time / active_duration, EASE_SMOOTHSTEP);
             var lives_y = hud_y;
-            var lives_max = 99;
+            var lives_cap = 99;
             var character_index = global.characters[0];
             draw_sprite(sprHUDCluster, 2, lives_x, lives_y);
             draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
             draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
-            draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
+            draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
         }
         case CONFIG_HUD.ADVENTURE:
         {
             var lives_x = 11;
             var lives_y = CAMERA_HEIGHT - 26;
-            var lives_max = 99;
+            var lives_cap = 99;
             var character_index = global.characters[0];
             draw_sprite(sprHUDAdventureLifeIcon, character_index, lives_x, lives_y);
             draw_set_font(global.font_hud_adventure);
-            draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
+            draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
         }
         case CONFIG_HUD.ADVENTURE_2:
         {
             var lives_x = 22;
             var lives_y = CAMERA_HEIGHT - 20;
-            var lives_max = 99;
+            var lives_cap = 99;
             var character_index = global.characters[0];
             draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x, lives_y, -1, 1, 0, c_white, 1);
             draw_set_font(global.font_hud_adventure_2_lives);
-            draw_text(lives_x + 4, lives_y + 6, $"{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 2)}");
+            draw_text(lives_x + 4, lives_y + 6, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
         }
         case CONFIG_HUD.ADVANCE_2:
         {
             var lives_x = 6;
             var lives_y = CAMERA_HEIGHT - 18;
-            var lives_max = 9;
+            var lives_cap = 9;
             var character_index = global.characters[0];
             draw_sprite(sprHUDAdvance2LifeIcon, character_index, lives_x, lives_y);
             draw_set_font(global.font_hud_advance_2);
-            draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > lives_max ? lives_max : global.life_count}");
+            draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > lives_cap ? lives_cap : global.life_count}");
             break;
         }
         case CONFIG_HUD.ADVANCE_3:
         {
             var lives_x = 5;
             var lives_y = CAMERA_HEIGHT - 20;
-            var lives_max = 9;
+            var lives_cap = 9;
             for (var i = array_length(global.characters) - 1; i >= 0; i--)
             {
                 var character_index = global.characters[i];
@@ -249,14 +249,14 @@ if (LIVES_ENABLED)
             }
             if (array_length(global.characters) <= 1) draw_text(lives_x + 17, lives_y, "x");
             draw_set_font(global.font_hud_advance_3);
-            draw_text(lives_x + 27, lives_y, $"{global.life_count > lives_max ? lives_max : global.life_count}");
+            draw_text(lives_x + 27, lives_y, $"{global.life_count > lives_cap ? lives_cap : global.life_count}");
             break;
         }
         case CONFIG_HUD.EPISODE_II:
         {
             var lives_x = 36;
             var lives_y = CAMERA_HEIGHT - 45;
-            var lives_max = 999;
+            var lives_cap = 999;
             if (array_length(global.characters) > 1)
             {
                 for (var i = 0; i < array_length(global.characters); i++)
@@ -271,7 +271,7 @@ if (LIVES_ENABLED)
                 draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
             }
             draw_set_font(global.font_hud_episode_ii);
-            draw_text(lives_x + 11, lives_y + 6, $"x{global.life_count > lives_max ? lives_max : string_pad(global.life_count, 3)}");
+            draw_text(lives_x + 11, lives_y + 6, $"x{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 3)}");
             break;
         }
     }

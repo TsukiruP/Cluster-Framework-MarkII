@@ -2,11 +2,13 @@
 if (++scale == 4)
 {
 	scale = 0;
-	stanncam_set_borderless();
+	window_set_fullscreen(true);
+	surface_resize(application_surface, display_get_width(), display_get_height());
 }
 else
 {
-	if (scale == 1) stanncam_set_windowed();
-    stanncam_set_resolution(CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
+	if (scale == 1) window_set_fullscreen(false);
+	window_set_size(CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
+	surface_resize(application_surface, CAMERA_WIDTH * scale, CAMERA_HEIGHT * scale);
 	alarm[0] = 1;
 }

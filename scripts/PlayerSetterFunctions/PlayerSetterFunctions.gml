@@ -172,7 +172,12 @@ function player_refresh_physics()
 /// @returns {Bool} Whether the player is inside the boundary or has fallen below it.
 function player_in_bounds()
 {
-	// Check if already inside (early out)
+    var left = 0;
+    var top = 0;
+    var right = room_width;
+    var bottom = room_height;
+    
+    // Check if already inside (early out)
 	if (gravity_direction mod 180 == 0)
 	{
 		var x1 = x - x_radius;
@@ -188,12 +193,12 @@ function player_in_bounds()
 		var y2 = y + x_radius;
 	}
 	
-	with (ctrlStage)
+	with (camera)
 	{
-		var left = bound_left;
-		var top = bound_top;
-		var right = bound_right;
-		var bottom = bound_bottom;
+		left = bound_left;
+		top = bound_top;
+		right = bound_right;
+		bottom = bound_bottom;
 	}
 	
 	if (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom) == 1)

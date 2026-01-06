@@ -127,10 +127,6 @@ shield_stamp = new stamp();
 
 // Camera
 camera = noone;
-camera_offset_x = 0;
-camera_offset_y = 0;
-camera_padding_x = 0;
-camera_padding_y = 0;
 
 // CPU
 cpu_state = 0;
@@ -238,10 +234,6 @@ player_resist_slope = function(force)
 	x_speed -= dsin(local_direction) * force;
 };
 
-/// @method player_animate()
-/// @description Sets the player's current animation.
-player_animate = function() {};
-
 /// @method player_set_animation(ani, [ang])
 /// @description Sets the given animation within the player's animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
@@ -290,13 +282,13 @@ player_animate_run = function(ani, ang = direction)
     var variant = animation_data.variant;
     if (on_ground)
     {
-    	var speed_abs = abs(x_speed);
+    	var abs_speed = abs(x_speed);
         variant = 5;
-    	if (speed_abs <= 1.25) variant = 0;
-	    else if (speed_abs <= 2.5) variant = 1;
-	    else if (speed_abs <= 4.0) variant = 2;
-	    else if (speed_abs <= 9.0) variant = 3;
-	    else if (speed_abs <= 10.0) variant = 4;
+    	if (abs_speed <= 1.25) variant = 0;
+	    else if (abs_speed <= 2.5) variant = 1;
+	    else if (abs_speed <= 4.0) variant = 2;
+	    else if (abs_speed <= 9.0) variant = 3;
+	    else if (abs_speed <= 10.0) variant = 4;
     }
     player_set_animation(ani, ang);
     animation_data.variant = variant;
@@ -521,7 +513,7 @@ player_obtain_item = function(item)
             break;
         }
     }
-}
+};
 
 /// @method player_damage(inst)
 /// @description Sets the player to be either hurt or dead.
@@ -571,6 +563,10 @@ player_damage = function(inst)
         return player_perform(player_is_hurt);
     }
 };
+
+/// @method player_animate()
+/// @description Sets the player's current animation.
+player_animate = function() {};
 
 /// @method player_draw_before()
 /// @description Draws player effects behind the character sprite.

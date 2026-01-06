@@ -11,7 +11,7 @@ function draw_background_neo_green_hill()
     draw_sprite_tiled_area(sprNeoGreenHillBackground, 0, 0, 40, 0, 40, CAMERA_WIDTH, 48);
     for (var i = 88; i < 256; i++)
     {
-        draw_sprite_tiled_area(sprNeoGreenHillBackground, 0, (i - 86) * global.main_camera.get_x() div 256, i, 0, i, CAMERA_WIDTH, 1);
+        draw_sprite_tiled_area(sprNeoGreenHillBackground, 0, (i - 86) * camera_get_view_x(CAMERA_ID) div 256, i, 0, i, CAMERA_WIDTH, 1);
     }
 }
 
@@ -19,7 +19,7 @@ function draw_background_neo_green_hill()
 function draw_background_seaside_hill()
 {
     var time = ctrlGame.game_time;
-    var cam_x = -global.main_camera.get_x();
+    var cam_x = -camera_get_view_x(CAMERA_ID);
     
     // Sky
     var sky_y = 160;
