@@ -65,6 +65,8 @@ gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
 
+/* AUTHOR NOTE: "down" is treated as 0 degrees instead of 270. */
+
 cliff_sign = 0;
 
 collision_layer = 0;
@@ -75,14 +77,14 @@ tilemap_count = array_length(tilemaps);
 
 // Validate semisolid tilemap; if it exists, the tilemap count is even
 semisolid_tilemap = -1;
-if ((tilemap_count & 1) == 0)
+if (tilemap_count & 1 == 0)
 {
 	semisolid_tilemap = array_last(tilemaps);
 	tilemap_count--;
 }
 
 // Discard the "TilesLayer1" layer tilemap, if it exists
-if (tilemap_count >= 3)
+if (tilemap_count == 3)
 {
     array_delete(tilemaps, 2, 1);
     tilemap_count--;
@@ -212,7 +214,7 @@ player_rotate_mask = function()
 		exit;
 	}
 	
-	var new_rotation = (round(direction / 90) mod 4) * 90;
+	var new_rotation = round(direction / 90) mod 4 * 90;
 	if (mask_direction != new_rotation)
 	{
 		mask_direction = new_rotation;

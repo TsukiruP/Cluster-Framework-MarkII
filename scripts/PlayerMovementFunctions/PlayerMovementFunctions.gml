@@ -21,7 +21,7 @@ function player_move_on_ground()
 		// Move by a single step
 		x += dcos(direction) * step;
 		y -= dsin(direction) * step;
-		player_in_bounds(); // TODO: add death state and call it if this is false
+		player_keep_in_bounds(); // TODO: add death state and call it if this is false
 		
 		// Register nearby instances
 		player_detect_entities();
@@ -65,8 +65,8 @@ function player_move_in_air()
 	var total_steps = 1 + abs(x_speed) div x_radius + abs(y_speed) div y_radius;
 	var x_step = x_speed / total_steps;
 	var y_step = y_speed / total_steps;
-	var sine = dsin(direction);
-	var cosine = dcos(direction);
+	var sine = dsin(mask_direction);
+	var cosine = dcos(mask_direction);
 	
 	// Loop over the number of steps
 	repeat (total_steps)
@@ -74,7 +74,7 @@ function player_move_in_air()
 		// Move by a single step
 		x += cosine * x_step + sine * y_step;
 		y += -sine * x_step + cosine * y_step;
-		player_in_bounds();
+		player_keep_in_bounds();
 		
 		// Register nearby instances
 		player_detect_entities();
@@ -150,6 +150,7 @@ function player_move_in_air()
 			// Stop falling and exit loop
 			y_speed = 0;
 			landed = false;
+			on_ground = true;
 			break;
 		}
 	}

@@ -1,3 +1,27 @@
+/// @function player_detect_entities()
+/// @description Executes the reactions of all interactable objects.
+/// It also records any solid tilemaps for terrain collision detection.
+function player_detect_entities()
+{
+	// Reset tilemaps
+	array_resize(tilemaps, tilemap_count);
+	
+	// Reset ground instance
+    ground_id = noone;
+	
+	with (objInteractable) reaction(other);
+    
+	// Evaluate semisolid tilemap collision
+    if (semisolid_tilemap != -1 and player_beam_collision(semisolid_tilemap) == noone)
+    {
+        array_push(tilemaps, semisolid_tilemap);
+    }
+    
+    /* AUTHOR NOTE:
+	There is a limitation with the semisolid tilemap detection where, if the player passes through a semisolid tilemap whilst standing on one,
+	they will fall as it will be delisted from their `tilemaps` array. */
+}
+
 /// @function player_calc_tile_normal(x, y, rot)
 /// @description Calculates the surface normal of the 16x16 solid chunk found at the given point.
 /// @param {Real} x x-coordinate of the point.
@@ -44,28 +68,4 @@ function player_calc_tile_normal(ox, oy, rot)
 	
 	// Calculate the direction between both angle sensors
 	return point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]) div 1;
-}
-
-/// @function player_detect_entities()
-/// @description Executes the reactions of all interactable objects.
-/// It also records any solid tilemaps for terrain collision detection.
-function player_detect_entities()
-{
-	// Reset tilemaps
-	array_resize(tilemaps, tilemap_count);
-	
-	// Reset ground instance
-    ground_id = noone;
-	
-	with (objInteractable) reaction(other);
-    
-	// Evaluate semisolid tilemap collision
-    if (semisolid_tilemap != -1 and player_beam_collision(semisolid_tilemap) == noone)
-    {
-        array_push(tilemaps, semisolid_tilemap);
-    }
-    
-    /* AUTHOR NOTE:
-	There is a limitation with the semisolid tilemap detection where, if the player passes through a semisolid tilemap whilst standing on one,
-	they will fall as it will be delisted from their `tilemaps` array. */
 }

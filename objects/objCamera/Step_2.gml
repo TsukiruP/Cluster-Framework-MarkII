@@ -184,11 +184,14 @@ for (var i = 0; i < array_length(volume_lists_strength); i++)
 ox += volume_x_offset;
 oy += volume_y_offset;
 
-// Confine to borders
-if (volume_list == noone)
+// Limit to view border
+var x_border = 8;
+
+ox = max(abs(ox) - x_border, 0) * sign(ox);
+if (not on_ground)
 {
-    ox = max(abs(ox) - 8, 0) * sign(ox);
-    if (not on_ground) oy = max(abs(oy) - 32, 0) * sign(oy);
+	var y_border = 32;
+	oy = max(abs(oy) - y_border, 0) * sign(oy);
 }
 
 // Limit movement speed
