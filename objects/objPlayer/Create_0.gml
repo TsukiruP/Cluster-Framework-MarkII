@@ -28,8 +28,8 @@ shield_action = false;
 rotation_lock_time = 0;
 control_lock_time = 0;
 state_time = 0;
-recovery_time = 0;
 
+recovery_time = 0;
 invincibility_time = 0;
 superspeed_time = 0;
 confusion_time = 0;
