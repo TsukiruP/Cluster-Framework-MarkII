@@ -382,7 +382,7 @@ player_lose_rings = function()
             dir = 101.25;
         }
         
-        with (instance_create_layer(x div 1, y div 1, "Interactables", objRing))
+        with (instance_create_layer(x div 1, y div 1, "Stage", objRing))
         {
             gravity_direction = other.gravity_direction;
             x_speed = lengthdir_x(len, dir);

@@ -40,7 +40,7 @@
 | Tag Action | 1340-0, 1340-1 |
 | Heart | 1317-0 |
 
-# Interactables
+# Stage
 | Animation | Source | Notes |
 | --- | --- | --- |
 | Vertical Spring | 866-0, 866-1 |
