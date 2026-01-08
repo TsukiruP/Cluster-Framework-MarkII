@@ -184,7 +184,7 @@ with (spin_dash_stamp)
 with (shield_stamp)
 {
     var shield = other.shield;
-    var invincible = (other.invin_time > 0);
+    var invincible = (other.invincibility_time > 0);
     if (shield != SHIELD.NONE or invincible)
     {
         var x_int = other.x div 1;
@@ -201,12 +201,12 @@ with (shield_stamp)
         {
             case -1:
             {
-                animation_set(global.ani_shield_invin_v0);
+                animation_set(global.ani_shield_invincibility_v0);
                 if (animation_data.time mod 8 == 0)
                 {
                     var x_off = irandom_range(-16, 16);
                     var y_off = irandom_range(-16, 16);
-                    particle_create(x + x_off, y + y_off, global.ani_shield_invin_sparkle_v0);
+                    particle_create(x + x_off, y + y_off, global.ani_shield_invincibility_sparkle_v0);
                 }
                 break;
             }

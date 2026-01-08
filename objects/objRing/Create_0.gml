@@ -39,7 +39,7 @@ if (tilemap_count >= 3)
 
 reaction = function(pla)
 {
-	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.invuln_time < 90)
+	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.recovery_time < 90)
     {
         pla.player_gain_rings(value);
         audio_play_single(super ? sfxRingSuper : sfxRing);

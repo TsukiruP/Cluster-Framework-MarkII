@@ -54,9 +54,9 @@ global.ani_shield_lightning = [global.ani_shield_lightning_v0, global.ani_shield
 
 global.ani_shield_lightning_spark_v0 = new animation(sprShieldLightningSpark, [1, 2], -1);
 
-global.ani_shield_invin_v0 = new animation(sprShieldInvin, 2);
+global.ani_shield_invincibility_v0 = new animation(sprShieldInvincibility, 2);
 
-global.ani_shield_invin_sparkle_v0 = new animation(sprShieldInvinSparkle, 2, -1);
+global.ani_shield_invincibility_sparkle_v0 = new animation(sprShieldInvincibilitySparkle, 2, -1);
 
 #endregion
 

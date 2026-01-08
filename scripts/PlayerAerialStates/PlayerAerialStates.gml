@@ -169,7 +169,7 @@ function player_is_hurt(phase)
 		}
 		case PHASE.EXIT:
 		{
-			invuln_time = INVULN_DURATION;
+			recovery_time = RECOVERY_DURATION;
             break;
 		}
 	}

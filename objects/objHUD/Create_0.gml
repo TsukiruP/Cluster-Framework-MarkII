@@ -82,7 +82,7 @@ if (status_config != CONFIG_STATUS_BAR.OFF)
         icon = ITEM.INVINCIBILITY;
         update = function()
         {
-            var time = max(ctrlStage.stage_players[0].invin_time, ctrlStage.stage_players[0].invuln_time);
+            var time = max(ctrlStage.stage_players[0].invincibility_time, ctrlStage.stage_players[0].recovery_time);
             active = (time > 0);
             visible = (time < 120 ? time mod 4 < 2 : true);
         };

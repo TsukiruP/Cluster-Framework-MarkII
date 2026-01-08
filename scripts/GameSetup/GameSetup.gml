@@ -34,7 +34,7 @@
 #macro LIVES_ENABLED db_read(global.config_database, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
 
 #macro SLIDE_DURATION 30
-#macro INVULN_DURATION 120
+#macro RECOVERY_DURATION 120
 #macro SPRING_DURATION 16
 #macro TRICK_LOCK_DURATION 9
 

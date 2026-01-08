@@ -28,9 +28,9 @@ shield_action = false;
 rotation_lock_time = 0;
 control_lock_time = 0;
 trick_time = 0;
-invuln_time = 0;
+recovery_time = 0;
 
-invin_time = 0;
+invincibility_time = 0;
 superspeed_time = 0;
 confusion_time = 0;
 
@@ -472,7 +472,7 @@ player_obtain_item = function(item)
         }
         case ITEM.INVINCIBILITY:
         {
-            invin_time = INVIN_DURATION;
+            invincibility_time = INVIN_DURATION;
             if (superspeed_time < 0)
             {
                 superspeed_time = 0;
@@ -491,7 +491,7 @@ player_obtain_item = function(item)
         }
         case ITEM.SLOW_DOWN:
         {
-            if (invin_time == 0)
+            if (invincibility_time == 0)
             {
                 superspeed_time = -DEBUFF_DURAION;
                 player_refresh_physics();
@@ -502,7 +502,7 @@ player_obtain_item = function(item)
         }
         case ITEM.CONFUSION:
         {
-            if (invin_time == 0)
+            if (invincibility_time == 0)
             {
                 confusion_time = DEBUFF_DURAION;
                 audio_play_single(sfxItemDebuff);
@@ -518,13 +518,13 @@ player_obtain_item = function(item)
 };
 
 /// @method player_damage(inst)
-/// @description Sets the player to be either hurt or dead.
+/// @description Evaluates the player's condition after taking a hit.
 /// Setting inst to the player's id will force a death, while setting it to noone will just hurt the player.
 /// @param {Id.Instance} inst Instance to check.
 player_damage = function(inst)
 {
     // Abort if the player is already dead or hurt
-    if (state == player_is_dead or ((state == player_is_hurt or invin_time > 0 or invuln_time > 0) and inst != id)) exit;
+    if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
     
     if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
     {
