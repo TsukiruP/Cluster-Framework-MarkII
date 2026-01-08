@@ -88,9 +88,9 @@ function player_is_tricking(phase)
 		case PHASE.ENTER:
 		{
 			// Set time:
-			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT) trick_time = 45;
-			else if (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK)) trick_time = 10;
-            else trick_time = 0;
+			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT) state_time = 45;
+			else if (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK)) state_time = 10;
+            else state_time = 0;
 			
 			// Animate
             animation_data.variant++;
@@ -98,11 +98,11 @@ function player_is_tricking(phase)
 		}
 		case PHASE.STEP:
 		{
-			if (trick_time != 0) trick_time--;
-			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and trick_time == 0) animation_init(PLAYER_ANIMATION.FALL);
+			if (state_time != 0) state_time--;
+			if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and state_time == 0) animation_init(PLAYER_ANIMATION.FALL);
 			
 			var trick_spiral = (object_index == objKnuckles and trick_index == TRICK.UP);
-			var trick_glide = (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and trick_time > 0);
+			var trick_glide = (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and state_time > 0);
 			
 			// Accelerate
 			if (not trick_spiral or y_speed > 0)

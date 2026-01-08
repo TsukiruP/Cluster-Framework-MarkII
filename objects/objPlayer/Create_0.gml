@@ -27,7 +27,7 @@ shield_action = false;
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
-trick_time = 0;
+state_time = 0;
 recovery_time = 0;
 
 invincibility_time = 0;
@@ -182,9 +182,9 @@ player_try_jump = function()
 
 /// @method player_try_trick([time])
 /// @desctiption Sets the player's current state to tricking, if applicable.
-/// @param [time] Time to check (optional, defaults to trick_time).
+/// @param [time] Time to check (optional, defaults to state_time).
 /// @returns {Bool}
-player_try_trick = function(time = trick_time)
+player_try_trick = function(time = state_time)
 {
 	if (time == 0 and input_button.tag.pressed)
 	{
