@@ -1,4 +1,4 @@
 # Colors
 | Animation | Source | Notes |
 | --- | --- | --- |
-| Enemy Explosion | narc/act_com_lz7.narc/ac_eff_zako_bomb.bac |
+| Destroy Explosion | narc/act_com_lz7.narc/ac_eff_zako_bomb.bac |

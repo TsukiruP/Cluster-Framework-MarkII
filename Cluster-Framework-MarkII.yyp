@@ -634,7 +634,7 @@
     {"id":{"name":"sprCreamTurn","path":"sprites/sprCreamTurn/sprCreamTurn.yy",},},
     {"id":{"name":"sprCreamTurnBrake","path":"sprites/sprCreamTurnBrake/sprCreamTurnBrake.yy",},},
     {"id":{"name":"sprDevPauseMenu","path":"sprites/sprDevPauseMenu/sprDevPauseMenu.yy",},},
-    {"id":{"name":"sprExplosionEnemy","path":"sprites/sprExplosionEnemy/sprExplosionEnemy.yy",},},
+    {"id":{"name":"sprExplosionDestroy","path":"sprites/sprExplosionDestroy/sprExplosionDestroy.yy",},},
     {"id":{"name":"sprFontHUDAdvance2","path":"sprites/sprFontHUDAdvance2/sprFontHUDAdvance2.yy",},},
     {"id":{"name":"sprFontHUDAdvance3","path":"sprites/sprFontHUDAdvance3/sprFontHUDAdvance3.yy",},},
     {"id":{"name":"sprFontHUDAdventure","path":"sprites/sprFontHUDAdventure/sprFontHUDAdventure.yy",},},

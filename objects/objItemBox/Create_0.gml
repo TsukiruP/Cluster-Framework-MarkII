@@ -22,6 +22,6 @@ reaction = function(pla)
         pla.player_obtain_item(index);
         image_index = 1;
         audio_play_single(sfxDestroy);
-        particle_create(x, y + 15, global.ani_explosion_enemy_v0);
+        particle_create(x, y + 15, global.ani_explosion_destroy_v0);
     }
 };

@@ -1,6 +1,6 @@
 #region Explosions
 
-global.ani_explosion_enemy_v0 = new animation(sprExplosionEnemy, [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6], -1);
+global.ani_explosion_destroy_v0 = new animation(sprExplosionDestroy, [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 6], -1);
 
 #endregion
 
