@@ -314,4 +314,6 @@ with (camera)
     
     // Padding
     if (on_ground) y -= dcos(other.mask_direction) * (PLAYER_HEIGHT - other.y_radius);
+    
+    event_user(0);
 }

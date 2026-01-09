@@ -1,4 +1,4 @@
-/// @description Scroll
+/// @description Move
 // Calculate zoom
 if (zoom_active)
 {
@@ -10,8 +10,8 @@ if (zoom_active)
 var width_step = CAMERA_WIDTH * zoom_amount;
 var height_step = CAMERA_HEIGHT * zoom_amount;
 
-var vx = camera_get_view_x(CAMERA_ID);
-var vy = camera_get_view_y(CAMERA_ID);
+var view_x = camera_get_view_x(CAMERA_ID);
+var view_y = camera_get_view_y(CAMERA_ID);
 
 // Calculate shake
 if (shake_active)
@@ -23,16 +23,18 @@ if (shake_active)
 }
 
 // Calculate from view center
-var ox = x - (vx + width_step / 2) + shake_x_offset;
-var oy = y - (vy + height_step / 2) + shake_y_offset;
+var camera_x = x - (view_x + width_step / 2) + shake_x_offset;
+var camera_y = y - (view_y + height_step / 2) + shake_y_offset;
 
-// Apply offset
+// Calculate offsets
+var h_offset = 0;
+var v_offset = 0;
 if (x_offset != 0 or y_offset != 0)
 {
     var sine = dsin(gravity_direction);
     var cosine = dcos(gravity_direction);
-    ox += cosine * x_offset + sine * y_offset;
-    oy += -sine * x_offset + cosine * y_offset;
+    h_offset += cosine * x_offset + sine * y_offset;
+    v_offset += -sine * x_offset + cosine * y_offset;
 }
 
 // List volumes
@@ -103,7 +105,7 @@ for (var k = 0; k <= strength_count; k++)
     }
 }
 
-// Apply volume
+// Calculate volumes
 var volume_x_constrain = array_create(array_length(volume_lists), 0);
 var volume_y_constrain = array_create(array_length(volume_lists), 0);
 
@@ -111,10 +113,10 @@ for (var i = 0; i < array_length(volume_lists); i++)
 {
     if (volume_lists[i] != noone)
     {
-        var view_left = view_to_room_x(0) + 1;
-        var view_right = view_to_room_x(CAMERA_WIDTH) + 1;
-        var view_top = view_to_room_y(0) + 1;
-        var view_bottom = view_to_room_y(CAMERA_HEIGHT) + 1;
+        var view_left = view_to_room_x(0) + 1 + h_offset;
+        var view_right = view_to_room_x(CAMERA_WIDTH) + 1 + h_offset;
+        var view_top = view_to_room_y(0) + 1 + v_offset;
+        var view_bottom = view_to_room_y(CAMERA_HEIGHT) + 1 + v_offset;
         
         var volume_left = undefined;
         var volume_right = undefined;
@@ -138,7 +140,7 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_width > volume_width)
                 {
                     var volume_center = ((volume_left + volume_right) / 2) - 1;
-                    volume_x_constrain[i] = volume_center - x;
+                    volume_x_constrain[i] = volume_center - x - h_offset;
                     center_h = true;
                 }
             }
@@ -158,7 +160,7 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_height > volume_height)
                 {
                     var volume_middle = ((volume_top + volume_bottom) / 2) - 1;
-                    volume_y_constrain[i] = volume_middle - y;
+                    volume_y_constrain[i] = volume_middle - y - v_offset;
                     center_v = true;
                 }
             }
@@ -181,31 +183,32 @@ for (var i = 0; i < array_length(volume_lists_strength); i++)
     volume_y_offset += volume_y_constrain[i] * volume_lists_strength[i];
 }
 
-ox += volume_x_offset;
-oy += volume_y_offset;
+// Apply movement
+camera_x += h_offset + volume_x_offset;
+camera_y += v_offset + volume_y_offset;
 
 // Limit to view border
 if (volume_list == noone)
 {
     var x_border = 8;
-    ox = max(abs(ox) - x_border, 0) * sign(ox);
+    camera_x = max(abs(camera_x) - x_border, 0) * sign(camera_x);
     if (not on_ground)
     {
     	var y_border = 32;
-    	oy = max(abs(oy) - y_border, 0) * sign(oy);
+    	camera_y = max(abs(camera_y) - y_border, 0) * sign(camera_y);
     }
 }
 
 // Limit movement speed
 var x_speed_cap = 24 * (x_lag_time == 0);
 var y_speed_cap = min(6 + abs(y - yprevious), 24) * (y_lag_time == 0);
-if (abs(ox) > x_speed_cap) ox = x_speed_cap * sign(ox);
-if (abs(oy) > y_speed_cap) oy = y_speed_cap * sign(oy);
+if (abs(camera_x) > x_speed_cap) camera_x = x_speed_cap * sign(camera_x);
+if (abs(camera_y > y_speed_cap)) camera_y = y_speed_cap * sign(camera_y);
 
 // Move the view
-if (ox != 0 or oy != 0)
+if (camera_x != 0 or camera_y != 0)
 {
-	ox = clamp(vx + ox, bound_left, bound_right - width_step);
-	oy = clamp(vy + oy, bound_top, bound_bottom - height_step);
-	camera_set_view_pos(CAMERA_ID, ox, oy);
+	camera_x = clamp(view_x + camera_x, bound_left, bound_right - width_step);
+	camera_y = clamp(view_y + camera_y, bound_top, bound_bottom - height_step);
+	camera_set_view_pos(CAMERA_ID, camera_x, camera_y);
 }
