@@ -41,6 +41,13 @@ with (status_bar_option)
     set = function(val) { db_write(DATABASE_CONFIG, val, "status_bar"); };
 }
 
+item_feed_option = new dev_option_bool("Item Feed");
+with (item_feed_option)
+{
+    get = function() { return db_read(DATABASE_CONFIG, CONFIG_DEFAULT_TIME_OVER, "item_feed"); };
+    set = function(val) { db_write(DATABASE_CONFIG, val, "item_feed"); };
+}
+
 flicker_option = new dev_option_int("Flicker");
 with (flicker_option)
 {
@@ -62,7 +69,7 @@ with (debuffs_option)
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_bar_option, flicker_option, debuffs_option, device_option]);
+config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_bar_option, item_feed_option, flicker_option, debuffs_option, device_option]);
 
 #endregion
 

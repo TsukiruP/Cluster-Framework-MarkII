@@ -518,8 +518,11 @@ player_obtain_item = function(item)
     
     with (objHUD)
     {
-        array_push(item_feed, new item_post(item));
-        item_feed_time = item_feed_duration;
+        if (item_feed_config)
+        {
+            array_push(item_feed, new item_post(item));
+            item_feed_time = item_feed_duration;
+        }
     }
 };
 
