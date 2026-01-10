@@ -284,7 +284,7 @@ with (shield_stamp)
             image_xscale = (shield_advance ? 1 : other.image_xscale);
         }
         image_angle = other.gravity_direction;
-        image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.8 : 1);
+        image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.6 : 1);
     }
     else if (not is_undefined(animation_data.ani))
     {
