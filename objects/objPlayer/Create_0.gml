@@ -232,7 +232,6 @@ player_resist_slope = function(force)
 	if (local_direction < 22.5 or local_direction > 337.5) exit; // Moving along a shallow slope
 	if (local_direction >= 135 and local_direction <= 225) exit; // Attached to a ceiling
 	
-	// Apply
 	x_speed -= dsin(local_direction) * force;
 };
 
@@ -346,6 +345,19 @@ player_animate_spring = function(ani)
         }
     }
     player_set_animation(ani);
+};
+
+/// @method player_gain_score(num)
+/// @description Increases the player's score count by the given amount.
+/// @param {Real} num Amount of points to give.
+player_gain_score = function (num)
+{
+	var previous_count = global.score_count div 50000;
+	global.score_count = min(global.score_count + num, 999999);
+	
+	// Gain lives
+	var count = global.score_count div 50000;
+	if (count != previous_count) player_gain_lives(count - previous_count);
 };
 
 /// @method player_gain_rings(num)
