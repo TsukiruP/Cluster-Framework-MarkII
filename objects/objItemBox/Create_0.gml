@@ -5,7 +5,7 @@ event_inherited();
 hitboxes[0].set_size(-15, -17, 15, 15);
 
 // Change index if debuffs are disabled
-if (not db_read(global.config_database, CONFIG_DEFAULT_DEBUFFS, "debuffs") and (index == ITEM.SLOW_DOWN or index == ITEM.CONFUSION))
+if (not db_read(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs") and (index == ITEM.SLOW_DOWN or index == ITEM.CONFUSION))
 {
     index = ITEM.EGGMAN;
 }

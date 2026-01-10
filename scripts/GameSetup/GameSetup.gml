@@ -31,7 +31,7 @@
 #macro COLL_FLAG_LEFT 0x40000
 #macro COLL_FLAG_RIGHT 0x80000
 
-#macro LIVES_ENABLED db_read(global.config_database, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
+#macro LIVES_ENABLED db_read(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
 
 #macro SLIDE_DURATION 30
 #macro RECOVERY_DURATION 120

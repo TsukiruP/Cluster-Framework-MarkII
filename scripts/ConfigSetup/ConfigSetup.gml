@@ -1,4 +1,6 @@
 // Constants
+#macro DATABASE_CONFIG global.config_database
+ 
 enum CONFIG_HUD
 {
     NONE = -1,
@@ -29,13 +31,16 @@ enum CONFIG_FLICKER
 #macro CONFIG_DEFAULT_TIME_OVER true
 #macro CONFIG_DEFAULT_HUD CONFIG_HUD.CLUSTER
 #macro CONFIG_DEFAULT_STATUS_BAR CONFIG_STATUS_BAR.ALL
+#macro CONFIG_DEFAULT_ITEM_FEED true 
 #macro CONFIG_DEFAULT_FLICKER CONFIG_FLICKER.OFF
 #macro CONFIG_DEFAULT_DEBUFFS true
 
+// Setup
 global.config_database = db_create();
-db_write(global.config_database, CONFIG_DEFAULT_LIVES, "lives");
-db_write(global.config_database, CONFIG_DEFAULT_TIME_OVER, "time_over");
-db_write(global.config_database, CONFIG_DEFAULT_HUD, "hud");
-db_write(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status_bar");
-db_write(global.config_database, CONFIG_DEFAULT_FLICKER, "flicker");
-db_write(global.config_database, CONFIG_DEFAULT_DEBUFFS, "debuffs");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_TIME_OVER, "time_over");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_FLICKER, "flicker");
+db_write(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs");

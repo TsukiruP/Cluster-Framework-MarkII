@@ -1,15 +1,19 @@
+// Constants
+#macro DATABASE_SAVE global.save_database
+
+// Setup 
 global.save_database = db_create();
-db_write(global.save_database, "", "name");
-db_write(global.save_database, 0, "playtime");
-db_write(global.save_database, room_get_name(rmTest), "stage");
-db_write(global.save_database, true, "boost");
-db_write(global.save_database, true, "trick");
-db_write(global.save_database, true, "tag");
-db_write(global.save_database, true, "swap");
+db_write(DATABASE_SAVE, "", "name");
+db_write(DATABASE_SAVE, 0, "playtime");
+db_write(DATABASE_SAVE, room_get_name(rmTest), "stage");
+db_write(DATABASE_SAVE, true, "boost");
+db_write(DATABASE_SAVE, true, "trick");
+db_write(DATABASE_SAVE, true, "tag");
+db_write(DATABASE_SAVE, true, "swap");
 
 for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 {
-    db_write(global.save_database, CHARACTER.NONE, "character", i);
+    db_write(DATABASE_SAVE, CHARACTER.NONE, "character", i);
 }
 
-db_write(global.save_database, CHARACTER.SONIC, "character", 0);
+db_write(DATABASE_SAVE, CHARACTER.SONIC, "character", 0);

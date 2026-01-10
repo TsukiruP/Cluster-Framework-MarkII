@@ -195,7 +195,7 @@ with (shield_stamp)
         y = y_int;
         
         var shield_advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
-        var flicker_config = db_read(global.config_database, CONFIG_DEFAULT_FLICKER, "flicker");
+        var flicker_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_FLICKER, "flicker");
         animation_init(invincible ? -1 : shield);
         switch (animation_data.index)
         {
