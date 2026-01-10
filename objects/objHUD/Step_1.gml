@@ -15,12 +15,16 @@ if (hud_config == CONFIG_HUD.CLUSTER)
 
 if (item_feed_config)
 {
-    if (item_feed_time > 0)
+    var item_post_last = array_last(item_feed);
+    if (not is_undefined(item_post_last))
     {
-        item_feed_time--;
-        if (item_feed_time == 0)
+        if (item_post_last.time == item_post_duration and item_feed_time > 0)
         {
-            array_resize(item_feed, 0);
+            item_feed_time--;
+            if (item_feed_time == 0)
+            {
+                array_resize(item_feed, 0);
+            }
         }
     }
     
