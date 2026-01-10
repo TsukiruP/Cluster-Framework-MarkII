@@ -484,7 +484,7 @@ player_obtain_item = function(item)
         }
         case ITEM.INVINCIBILITY:
         {
-            invincibility_time = INVIN_DURATION;
+            invincibility_time = INVINCIBILITY_DURATION;
             if (superspeed_time < 0)
             {
                 superspeed_time = 0;
