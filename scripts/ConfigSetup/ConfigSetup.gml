@@ -1,6 +1,4 @@
 // Constants
-#macro DATABASE_CONFIG global.config_database
- 
 enum CONFIG_HUD
 {
     NONE = -1,

@@ -1,7 +1,3 @@
-// Constants
-#macro DATABASE_SAVE global.save_database
-
-// Setup 
 global.save_database = db_create();
 db_write(DATABASE_SAVE, "", "name");
 db_write(DATABASE_SAVE, 0, "playtime");
