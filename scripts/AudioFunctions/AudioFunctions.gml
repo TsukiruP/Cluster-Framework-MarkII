@@ -88,6 +88,6 @@ function audio_play_jingle(soundid)
     {
         audio_stop_sound(soundid);
         if (array_length(jingle_voices) > 0) audio_sound_gain(array_last(jingle_voices), 0);
-        array_push(jingle_voices, audio_play_sound(soundid, PRIORITY_JINGLE, false, global.volume_music * ((mute & MUTE_FLAG_JINGLE) == 0)));
+        array_push(jingle_voices, audio_play_sound(soundid, PRIORITY_JINGLE, false, global.volume_music * (mute & MUTE_FLAG_JINGLE == 0)));
     }
 }

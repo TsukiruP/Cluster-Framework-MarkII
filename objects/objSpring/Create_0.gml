@@ -11,7 +11,7 @@ reaction = function(pla)
     var bit = 1 << pla.player_index;
     if (collision_player(0, pla))
     {
-        if ((active & bit) == 0)
+        if (active & bit == 0)
         {
             var diff = angle_wrap(direction - pla.gravity_direction);
             if (diff == 90 or diff == 270)
