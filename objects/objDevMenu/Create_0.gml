@@ -37,8 +37,8 @@ with (status_bar_option)
     minimum = CONFIG_STATUS_BAR.OFF;
     maximum = CONFIG_STATUS_BAR.ALL;
     specifiers = ["Off", "Active", "All"];
-    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status"); };
-    set = function(val) { db_write(global.config_database, val, "status"); };
+    get = function() { return db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status_bar"); };
+    set = function(val) { db_write(global.config_database, val, "status_bar"); };
 }
 
 flicker_option = new dev_option_int("Flicker");
