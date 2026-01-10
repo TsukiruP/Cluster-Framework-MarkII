@@ -1,7 +1,4 @@
 // Constants
-#macro DATABASE_SAVE global.save_database
-#macro DATABASE_CONFIG global.config_database
-
 #macro GAME_FLAG_KEEP_CHARACTERS 1
 #macro GAME_FLAG_KEEP_SCORE 2
 #macro GAME_FLAG_HIDE_PAUSE 4 
