@@ -353,7 +353,7 @@ player_animate_spring = function(ani)
 player_gain_score = function (num)
 {
 	var previous_count = global.score_count div 50000;
-	global.score_count = min(global.score_count + num, 999999);
+	global.score_count = min(global.score_count + num, SCORE_CAP);
 	
 	// Gain lives
 	var count = global.score_count div 50000;
@@ -365,7 +365,7 @@ player_gain_score = function (num)
 /// @param {Real} num Amount of rings to give.
 player_gain_rings = function(num)
 {
-	global.ring_count = min(global.ring_count + num, 999);
+	global.ring_count = min(global.ring_count + num, RING_CAP);
 	
 	// Gain lives
     static ring_life_threshold = 99;
@@ -420,7 +420,7 @@ player_gain_lives = function(num)
 {
 	if (LIVES_ENABLED)
     {
-        global.life_count = min(global.life_count + num, 999);
+        global.life_count = min(global.life_count + num, LIVES_CAP);
         audio_play_life();
     }
 };

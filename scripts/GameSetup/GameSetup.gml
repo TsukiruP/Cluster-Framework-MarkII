@@ -55,6 +55,10 @@
 #macro PLAYER_HEIGHT 14
 #macro ITEM_WIDTH 18
 
+#macro SCORE_CAP 999999999
+#macro RING_CAP 999
+#macro LIVES_CAP 999 
+
 enum GAME_MODE
 {
     SINGLE,
