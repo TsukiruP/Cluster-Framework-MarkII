@@ -2,7 +2,7 @@
 image_speed = 0;
 hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
 status_bar_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar");
-item_feed_config = db_read(DATABASE_CONFIG, false, "item_feed");
+item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
 // HUD
 hud_x = 0;
@@ -53,7 +53,7 @@ hud_active = true;
 active_time = 0;
 active_duration = 10;
 
-// Status
+// Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
     /// @method status()
@@ -118,4 +118,22 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     status_bar = [status_confusion, status_speed, status_invin, status_shield];
     if (not db_read(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs")) array_shift(status_bar);
     status_bar_count = array_length(status_bar);
+}
+
+// Item Feed
+if (item_feed_config)
+{
+    /// @method item_post(icon)
+    /// @description Creates a new item post.
+    item_post = function(_icon) constructor
+    {
+        x = CAMERA_WIDTH / 2;
+        icon = _icon;
+        time = 0;
+    };
+    
+    item_feed = [];
+    item_feed_time = 0;
+    item_feed_duration = 90;
+    item_post_duration = 10;
 }

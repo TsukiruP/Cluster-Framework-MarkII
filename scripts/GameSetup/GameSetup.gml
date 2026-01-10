@@ -50,6 +50,7 @@
 #macro AIR_DRAG 0.96875
 
 #macro PLAYER_HEIGHT 14
+#macro ITEM_WIDTH 18
 
 enum GAME_MODE
 {

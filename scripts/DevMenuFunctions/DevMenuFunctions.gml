@@ -28,7 +28,7 @@ function dev_option(_label) constructor
 /// @function dev_option_value(label)
 /// @description Creates a new value option.
 /// @param {String} label Label to display.
-function dev_option_value(_label) : dev_option(_label) constructor 
+function dev_option_value(_label) : dev_option(_label) constructor
 {
     get = function() {};
     set = function(val) {};
@@ -92,7 +92,7 @@ function dev_option_int(_label) : dev_option_real(_label) constructor
 /// @function dev_option_player(player)
 /// @description Creates a new player option.
 /// @param {Real} player Player to display.
-function dev_option_player(_player) : dev_option_int($"Player {_player}") constructor 
+function dev_option_player(_player) : dev_option_int($"Player {_player}") constructor
 {
     player = _player;
     clampinv = true;

@@ -296,7 +296,22 @@ if (hud_config == CONFIG_HUD.CLUSTER and status_bar_config != CONFIG_STATUS_BAR.
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x - 1, status_bar_y + 1, 1, 1, 0, c_black, 1);
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x, status_bar_y, 1, 1, 0, status_bar_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
             }
-            status_bar_x -= 18;
+            status_bar_x -= ITEM_WIDTH;
+        }
+    }
+}
+
+// Item Feed
+if (item_feed_config)
+{
+    for (var i = 0; i < array_length(item_feed); i++)
+    {
+        var item_post_index = item_feed[i];
+        var item_post_x = item_post_index.x;
+        var icon_index = item_post_index.icon;
+        if (item_feed_time > 30 or item_feed_time mod 4 < 2)
+        {
+            draw_sprite(sprHUDItemIcon, icon_index, item_post_x, CAMERA_HEIGHT - 33);
         }
     }
 }

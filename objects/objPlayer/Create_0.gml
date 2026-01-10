@@ -515,6 +515,12 @@ player_obtain_item = function(item)
             break;
         }
     }
+    
+    with (objHUD)
+    {
+        array_push(item_feed, new item_post(item));
+        item_feed_time = item_feed_duration;
+    }
 };
 
 /// @method player_damage(inst)
