@@ -277,26 +277,26 @@ if (LIVES_ENABLED)
     }
 }
 
-// Status
-if (hud_config == CONFIG_HUD.CLUSTER and status_config != CONFIG_STATUS_BAR.OFF)
+// Status Bar
+if (hud_config == CONFIG_HUD.CLUSTER and status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
-    var status_xstart = CAMERA_WIDTH + 18 * status_bar_count;
-    var status_xend = CAMERA_WIDTH - 16;
-    var status_x = interpolate(status_xstart, status_xend, active_time / active_duration, EASE_SMOOTHSTEP);
-    var status_y = hud_y + (LIVES_ENABLED ? 36 : 8);
+    var status_bar_xstart = CAMERA_WIDTH + 18 * status_bar_count;
+    var status_bar_xend = CAMERA_WIDTH - 16;
+    var status_bar_x = interpolate(status_bar_xstart, status_bar_xend, active_time / active_duration, EASE_SMOOTHSTEP);
+    var status_bar_y = hud_y + (LIVES_ENABLED ? 36 : 8);
     for (var i = 0; i < status_bar_count; i++)
     {
         var status_index = status_bar[i];
         var status_active = status_index.active;
-        if (status_config == CONFIG_STATUS_BAR.ALL or status_active)
+        if (status_bar_config == CONFIG_STATUS_BAR.ALL or status_active)
         {
             if (status_index.visible)
             {
                 var icon_index = status_index.icon;
-                draw_sprite_ext(sprHUDItemIcon, icon_index, status_x - 1, status_y + 1, 1, 1, 0, c_black, 1);
-                draw_sprite_ext(sprHUDItemIcon, icon_index, status_x, status_y, 1, 1, 0, status_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
+                draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x - 1, status_bar_y + 1, 1, 1, 0, c_black, 1);
+                draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x, status_bar_y, 1, 1, 0, status_bar_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
             }
-            status_x -= 18;
+            status_bar_x -= 18;
         }
     }
 }

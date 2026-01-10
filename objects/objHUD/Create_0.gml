@@ -1,7 +1,7 @@
 /// @description Setup
 image_speed = 0;
 hud_config = db_read(global.config_database, CONFIG_DEFAULT_HUD, "hud");
-status_config = db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status");
+status_bar_config = db_read(global.config_database, CONFIG_DEFAULT_STATUS_BAR, "status");
 
 // HUD
 hud_x = 0;
@@ -53,7 +53,7 @@ active_time = 0;
 active_duration = 10;
 
 // Status
-if (status_config != CONFIG_STATUS_BAR.OFF)
+if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
     /// @method status()
     /// @description Creates a new status.
