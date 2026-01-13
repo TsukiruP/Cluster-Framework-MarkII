@@ -4,7 +4,7 @@ event_inherited();
 
 hitboxes[0].set_size(-15, -17, 15, 15);
 
-// Change index if debuffs are disabled
+// Change debuffs to Eggman
 if (not db_read(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs") and (index == ITEM.SLOW_DOWN or index == ITEM.CONFUSION))
 {
     index = ITEM.EGGMAN;
@@ -18,7 +18,20 @@ reaction = function(pla)
     var flags_hurtbox = [collision_player(0, pla, 0), collision_player(0, pla, 1)];
     if (flags_hurtbox[0] or flags_hurtbox[1])
     {
-        if (not pla.on_ground and pla.y_speed > 0) pla.y_speed = -(pla.y_speed + 2 * pla.gravity_force);
+        if (not pla.on_ground)
+        {
+            var in_shape = (pla.gravity_direction mod 180 == 0 ?
+                sign(pla.y - y) * dcos(pla.gravity_direction) :
+                sign(pla.x - x) * dsin(pla.gravity_direction));
+            if (pla.y_speed < 0 or in_shape == 1)
+            {
+                pla.y_speed -= sign(pla.y_speed);
+            }
+            else if (pla.y_speed >= 0 and in_shape == -1)
+            {
+                pla.y_speed = -pla.y_speed;
+            }
+        }
         pla.player_obtain_item(index);
         image_index = 1;
         audio_play_single(sfxDestroy);
