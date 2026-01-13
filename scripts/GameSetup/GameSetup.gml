@@ -79,9 +79,9 @@ enum SHIELD
 	NONE,
 	BASIC,
 	MAGNETIC,
-	FIRE,
-	BUBBLE,
-	LIGHTNING
+    AQUA,
+    FLAME,
+    THUNDER
 }
 
 enum PHASE
@@ -137,9 +137,9 @@ enum ITEM
     RANDOM_RING_BONUS,
     BASIC,
     MAGNETIC,
-    FIRE,
-    BUBBLE,
-    LIGHTNING,
+    AQUA,
+    FLAME,
+    THUNDER,
     INVINCIBILITY,
     SPEED_UP,
     SLOW_DOWN,

@@ -6,8 +6,8 @@ var shield_behind = false;
 // Shield
 with (shield_stamp)
 {
-    if ((animation_data.ani == global.ani_shield_fire_v0 and image_index mod 2 != 0) or
-        animation_data.ani == global.ani_shield_lightning_v1)
+    if ((animation_data.ani == global.ani_shield_flame_v0 and image_index mod 2 != 0) or
+        animation_data.ani == global.ani_shield_thunder_v1)
     {
         shield_behind = true;
         draw_self_floored();
@@ -30,9 +30,9 @@ with (shield_stamp)
         {
             draw_self_floored();
         }
-        else if (animation_data.ani == global.ani_shield_bubble_wave_v0)
+        else if (animation_data.ani == global.ani_shield_aqua_wave_v0)
         {
-            draw_self_as(sprShieldBubbleShell, animation_data.time div 12);
+            draw_self_as(sprShieldAquaShell, animation_data.time div 12);
         }
     }
 }

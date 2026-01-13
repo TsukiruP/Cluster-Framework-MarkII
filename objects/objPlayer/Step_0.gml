@@ -220,13 +220,7 @@ with (shield_stamp)
                 animation_set(global.ani_shield_magnetic_v0);
                 break;
             }
-            case SHIELD.FIRE:
-            {
-                if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
-                animation_set(global.ani_shield_fire);
-                break;
-            }
-            case SHIELD.BUBBLE:
+            case SHIELD.AQUA:
             {
                 switch (animation_data.variant)
                 {
@@ -241,14 +235,20 @@ with (shield_stamp)
                         break;
                     }
                 }
-                animation_set(global.ani_shield_bubble);
+                animation_set(global.ani_shield_aqua);
                 visible = (animation_data.variant == 0 ? animation_data.time mod 4 < 2 : true);
                 break;
             }
-            case SHIELD.LIGHTNING:
+            case SHIELD.FLAME:
+            {
+                if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+                animation_set(global.ani_shield_flame);
+                break;
+            }
+            case SHIELD.THUNDER:
             {
                 if (animation_is_finished()) animation_data.variant = (animation_data.variant == 0 ? 1 : 0);
-                animation_set(global.ani_shield_lightning);
+                animation_set(global.ani_shield_thunder);
                 break;
             }
         }
@@ -271,7 +271,7 @@ with (shield_stamp)
                 }
             }
         }
-        else if (animation_data.index == SHIELD.BUBBLE and animation_data.variant == 0)
+        else if (animation_data.index == SHIELD.AQUA and animation_data.variant == 0)
         {
             visible = animation_data.time mod 4 < 2;
         }
@@ -279,7 +279,8 @@ with (shield_stamp)
         {
             visible = true;
         }
-        if (not (animation_data.index == SHIELD.FIRE and animation_data.variant == 1))
+        
+        if (not (animation_data.index == SHIELD.FLAME and animation_data.variant == 1))
         {
             image_xscale = (shield_advance ? 1 : other.image_xscale);
         }

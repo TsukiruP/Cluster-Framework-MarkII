@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxItemFire",
+  "%Name":"sfxItemAqua",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.7169388,
+  "duration":0.7173016,
   "exportDir":"",
-  "name":"sfxItemFire",
+  "name":"sfxItemAqua",
   "parent":{
     "name":"Items",
     "path":"folders/Sounds/SFX/Stage/Items.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxItemFire.wav",
+  "soundFile":"sfxItemAqua.wav",
   "volume":1.0,
 }

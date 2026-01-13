@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprShieldLightningSpark",
+  "%Name":"sprShieldThunderSpark",
   "bboxMode":0,
   "bbox_bottom":15,
   "bbox_left":0,
@@ -22,19 +22,19 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"170889f7-0374-41f4-b060-45221e057e11","blendMode":0,"displayName":"default","isLocked":false,"name":"170889f7-0374-41f4-b060-45221e057e11","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprShieldLightningSpark",
+  "name":"sprShieldThunderSpark",
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Lightning",
-    "path":"folders/Sprites/Stage/Player/Shields/Lightning.yy",
+    "name":"Thunder",
+    "path":"folders/Sprites/Stage/Player/Shields/Thunder.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprShieldLightningSpark",
+    "%Name":"sprShieldThunderSpark",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -58,7 +58,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprShieldLightningSpark",
+    "name":"sprShieldThunderSpark",
     "playback":1,
     "playbackSpeed":1.0,
     "playbackSpeedType":1,
@@ -70,10 +70,10 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2ddcec10-3954-4add-b7ad-532ec1e5da87","path":"sprites/sprShieldLightningSpark/sprShieldLightningSpark.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2ddcec10-3954-4add-b7ad-532ec1e5da87","path":"sprites/sprShieldThunderSpark/sprShieldThunderSpark.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"aeaccbb5-9188-4236-ae26-d0727a66fc2b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b46a5d5b-fb9b-4c9a-b7a0-69b2e6d4697b","path":"sprites/sprShieldLightningSpark/sprShieldLightningSpark.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b46a5d5b-fb9b-4c9a-b7a0-69b2e6d4697b","path":"sprites/sprShieldThunderSpark/sprShieldThunderSpark.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2440aa04-f305-4de3-9e99-e171d93db7cd","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

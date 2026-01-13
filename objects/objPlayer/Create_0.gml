@@ -464,22 +464,22 @@ player_obtain_item = function(item)
             audio_play_single(sfxItemBasic);
             break;
         }
-        case ITEM.FIRE:
+        case ITEM.AQUA:
         {
-            shield = SHIELD.FIRE;
-            audio_play_single(sfxItemFire);
+            shield = SHIELD.AQUA;
+            audio_play_single(sfxItemAqua);
             break;
         }
-        case ITEM.BUBBLE:
+        case ITEM.FLAME:
         {
-            shield = SHIELD.BUBBLE;
-            audio_play_single(sfxItemBubble);
+            shield = SHIELD.FLAME;
+            audio_play_single(sfxItemFlame);
             break;
         }
-        case ITEM.LIGHTNING:
+        case ITEM.THUNDER:
         {
-            shield = SHIELD.LIGHTNING;
-            audio_play_single(sfxItemLightning);
+            shield = SHIELD.THUNDER;
+            audio_play_single(sfxItemThunder);
             break;
         }
         case ITEM.INVINCIBILITY:

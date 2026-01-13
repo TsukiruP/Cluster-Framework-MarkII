@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxItemLightning",
+  "%Name":"sfxItemThunder",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.7170975,
   "exportDir":"",
-  "name":"sfxItemLightning",
+  "name":"sfxItemThunder",
   "parent":{
     "name":"Items",
     "path":"folders/Sounds/SFX/Stage/Items.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxItemLightning.wav",
+  "soundFile":"sfxItemThunder.wav",
   "volume":1.0,
 }
