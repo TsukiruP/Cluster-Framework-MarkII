@@ -1,20 +1,52 @@
-Joevan Salmon-Johnson (AKA VectorSatyr, formerly AeroGP) - Sonic Studio Engine, "Basic Sonic Engine", Sonic For GMS.
+Joevan Salmon-Johnson (AKA VectorSatyr, formerly AeroGP) - Sonic Studio Engine, "Basic Sonic Engine", Sonic For GMS
 * https://forums.sonicretro.org/index.php?threads/new-game-maker-studio-sonic-engine.31723/
 * https://forums.sonicretro.org/index.php?threads/question-about-game-maker-sonic-engines-accuracy.34845/page-2#post-841401
 * https://codeberg.org/vectorsatyr/sonic-for-gms
 
-DarkD04, joshyflip, Chopppers, KGLBombyPig - Harmony Framework.
+DarkD04, joshyflip, Chopppers, KGLBombyPig - Harmony Framework
 * https://github.com/DarkD04/Harmony-Framework
 
 monolith4007 - HarmonyGMS
 * https://github.com/monolith4007/HarmonyGMS
 
+Sonic Advance Trilogy Research - Sonic Advance 2 Decompilation
+* https://github.com/SAT-R/sa2
+
+RSDKModding - Sonic Mania Decompilation
+* https://github.com/RSDKModding/Sonic-Mania-Decompilation
+
 This project uses a stripped-down version of the Sonic Studio Engine template, and features various modifications from VectorSatyr's other templates.
-It also uses the angle detection method from the Harmony Framework.
+It also uses the angle detection method from the Harmony Framework, as well as alynne's easing functions, Input, and snippets of STANN co's STANNcam.
+
+=============================================================================================================================
+
+HomingMissile333 - "Cluster" HUD
+* https://www.deviantart.com/homingmissile333/art/Sonic-HUD-Sprite-Sheet-NEW-439231185
+
+goncas23 - Adventure HUD, Adventure 2 HUD, Episode II HUD (w/ marvinvalentin07), Item Box Icons
+* https://www.deviantart.com/goncas23/art/Sonic-Colors-Styled-HUD-490587197
+* https://www.deviantart.com/marvinvalentin07/art/Sonic-4-Epi-2-HUD-Sprite-Ver-2-369970245
+* https://www.deviantart.com/goncas23/art/Item-Box-Icons-custom-427867914
+
+Vebills - Item Monitor Sprites
+* https://www.deviantart.com/vebills/art/Item-Monitor-Sprites-568848018
+
+=============================================================================================================================
+
+Ian Monsen (AKA 1234567890moomoo) - Mad Gear Zone Act 1 background music remix.
+* https://youtu.be/TCY7k_7pD0Y?si=bg4lX6nbZElMxjop
+
+=============================================================================================================================
+
+Additional thanks and credit goes to everyone else who contributed to the aforementioned projects in any way.
+All sprites, sounds and music belong to SEGA, Sonic Team, and their respective owners.
+This project is made in the GameMaker game engine by YoYo Games.
+All rights to Sonic the Hedgehog belong to SEGA and Sonic Team.
+
+=============================================================================================================================
 
 BSD 2-Clause License
 
-Copyright (c) 2025, TsukiruP
 Copyright (c) 2019, Joevan Salmon-Johnson
 All rights reserved.
 
@@ -39,14 +71,68 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-=============================================================================================================================
+MIT License
 
-Ian Monsen (AKA 1234567890moomoo) - Mad Gear Zone Act 1 background music remix.
-* https://youtu.be/TCY7k_7pD0Y?si=bg4lX6nbZElMxjop
+Copyright (c) 2023 Julian Adams
 
-=============================================================================================================================
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Additional thanks and credit goes to everyone else who contributed to the aforementioned projects in any way.
-All sprites, sounds and music belong to SEGA, Sonic Team, and their respective owners.
-This project is made in the GameMaker game engine by YoYo Games.
-All rights to Sonic the Hedgehog belong to SEGA and Sonic Team.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+MIT License
+
+Copyright (c) 2021 alynne o.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+MIT License
+
+Copyright (c) 2022 Jack Conradsen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
