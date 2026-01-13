@@ -13,10 +13,10 @@ if (item_feed_config)
 {
     for (var i = 0; i < array_length(item_feed); i++)
     {
-        var item_post_index = item_feed[i];
-        var item_post_time = item_post_index.time;
-        var item_post_xstart = -sprite_get_width(sprHUDItemIcon);
-        var item_post_xend = CAMERA_WIDTH / 2 + 9 * (array_length(item_feed) - 1) - i * ITEM_WIDTH;
-        item_post_index.x = interpolate(item_post_xstart, item_post_xend, item_post_time / item_post_duration, EASE_SMOOTHSTEP);
+        var popup_index = item_feed[i];
+        var popup_time = popup_index.time;
+        var popup_xstart = -sprite_get_width(sprHUDItemIcon);
+        var popup_xend = CAMERA_WIDTH / 2 + 9 * (array_length(item_feed) - 1) - i * ITEM_WIDTH;
+        popup_index.x = interpolate(popup_xstart, popup_xend, popup_time / popup_duration, EASE_SMOOTHSTEP);
     }
 }

@@ -532,7 +532,7 @@ player_obtain_item = function(item)
     {
         if (item_feed_config)
         {
-            array_push(item_feed, new item_post(item));
+            array_push(item_feed, new popup(item));
             item_feed_time = item_feed_duration;
         }
     }

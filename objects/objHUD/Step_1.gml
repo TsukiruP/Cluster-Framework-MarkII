@@ -15,10 +15,10 @@ if (hud_config == CONFIG_HUD.CLUSTER)
 
 if (item_feed_config)
 {
-    var item_post_last = array_last(item_feed);
-    if (not is_undefined(item_post_last))
+    var popup_last = array_last(item_feed);
+    if (not is_undefined(popup_last))
     {
-        if (item_post_last.time == item_post_duration and item_feed_time > 0)
+        if (popup_last.time == popup_duration and item_feed_time > 0)
         {
             item_feed_time--;
             if (item_feed_time == 0)
@@ -30,7 +30,7 @@ if (item_feed_config)
     
     for (var i = 0; i < array_length(item_feed); i++)
     {
-        var item_post_index = item_feed[i];
-        if (item_post_index.time < item_post_duration) item_post_index.time++;
+        var popup_index = item_feed[i];
+        if (popup_index.time < popup_duration) popup_index.time++;
     }
 }
