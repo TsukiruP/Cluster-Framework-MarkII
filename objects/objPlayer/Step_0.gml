@@ -24,8 +24,8 @@ if (player_index == 0 or cpu_gamepad_time > 0)
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
 	player_reset_input();
-	var leader_inst = ctrlStage.stage_players[0];
-	if (instance_exists(leader_inst))
+	var leader = ctrlStage.stage_players[0];
+	if (instance_exists(leader))
 	{
 		switch (cpu_state)
 		{
@@ -42,7 +42,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 			        {
 			        	x_speed = 0;
 			        	input_axis_y = 1;
-			        	image_xscale = esign(leader_inst.x - x, leader_inst.image_xscale);
+			        	image_xscale = esign(leader.x - x, leader.image_xscale);
 			        	if (state == player_is_crouching)
 			        	{
 			            	cpu_state = CPU_STATE.SPIN_DASH;
@@ -78,22 +78,22 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 					break;
 				}
 				
-                var leader_extra_distance = 32 * (abs(leader_inst.x_speed) < 4);
-                input_axis_x = leader_inst.cpu_axis_x[0];
-                input_axis_y = leader_inst.cpu_axis_y[0];
-                input_button.jump.check = leader_inst.cpu_input_jump[0];
-                input_button.jump.pressed = leader_inst.cpu_input_jump_pressed[0];
+                var leader_extra_distance = 32 * (abs(leader.x_speed) < 4);
+                input_axis_x = leader.cpu_axis_x[0];
+                input_axis_y = leader.cpu_axis_y[0];
+                input_button.jump.check = leader.cpu_input_jump[0];
+                input_button.jump.pressed = leader.cpu_input_jump_pressed[0];
                 
                 // TODO: Check for propeller flight
                 
                 // Move
                 // TODO: The checks for xscale should also check if the player is pushing
-                if (x > leader_inst.x + 16 + leader_extra_distance)
+                if (x > leader.x + 16 + leader_extra_distance)
                 {
                     input_axis_x = -1;
                     if (image_xscale == 1 and x_speed != 0) x++;
                 }
-                if (x < leader_inst.x - 16 - leader_extra_distance)
+                if (x < leader.x - 16 - leader_extra_distance)
                 {
                     input_axis_x = 1;
                     if (image_xscale == -1 and x_speed != 0) x--;
@@ -102,7 +102,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 // Jump
                 var jump_auto = 0;
                 // TODO: Check for pushing first
-                if (y - leader_inst.y < 32)
+                if (y - leader.y < 32)
                 {
                     jump_auto = 2;
                     cpu_state_time = 64;
@@ -113,7 +113,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     jump_auto = (cpu_state_time > 0 ? 1 : 0);
                 }
                 
-                if (leader_inst.state != player_is_dead)
+                if (leader.state != player_is_dead)
                 {
                     switch (jump_auto)
                     {

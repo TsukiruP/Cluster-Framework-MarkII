@@ -35,7 +35,7 @@ function audio_enqueue_music(soundid, priority)
         if (not audio_is_playing(soundid) and ds_priority_find_max(music) == soundid) 
         {
             swap = true;
-            if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
+            if (audio_is_playing(music_stream)) audio_sound_gain(music_stream, 0, TEN_MILLISECONDS);
         }
     }
 }
@@ -51,7 +51,7 @@ function audio_dequeue_music(soundid)
 		if (audio_is_playing(soundid))
         {
             swap = true;
-            if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
+            if (audio_is_playing(music_stream)) audio_sound_gain(music_stream, 0, TEN_MILLISECONDS);
         }
 	}
 }
@@ -65,7 +65,7 @@ function audio_clear_music()
         mute = 0;
         swap = true;
         ds_priority_clear(music);
-        if (audio_is_playing(music_voice)) audio_sound_gain(music_voice, 0, 1000);
+        if (audio_is_playing(music_stream)) audio_sound_gain(music_stream, 0, TEN_MILLISECONDS);
     }
 }
 
@@ -75,7 +75,7 @@ function audio_play_life()
 {
     with (ctrlMusic)
     {
-        life_voice = audio_play_single(bgmLife);
+        life_stream = audio_play_single(bgmLife);
     }
 }
 
@@ -87,7 +87,7 @@ function audio_play_jingle(soundid)
     with (ctrlMusic)
     {
         audio_stop_sound(soundid);
-        if (array_length(jingle_voices) > 0) audio_sound_gain(array_last(jingle_voices), 0);
-        array_push(jingle_voices, audio_play_sound(soundid, PRIORITY_JINGLE, false, global.volume_music * (mute & MUTE_FLAG_JINGLE == 0)));
+        if (array_length(jingle_streams) > 0) audio_sound_gain(array_last(jingle_streams), 0);
+        array_push(jingle_streams, audio_play_sound(soundid, PRIORITY_JINGLE, false, global.volume_music * (mute & MUTE_FLAG_JINGLE == 0)));
     }
 }
