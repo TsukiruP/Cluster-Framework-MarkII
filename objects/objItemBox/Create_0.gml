@@ -18,11 +18,12 @@ reaction = function(pla)
     var flags_hurtbox = [collision_player(0, pla, 0), collision_player(0, pla, 1)];
     if (flags_hurtbox[0] or flags_hurtbox[1])
     {
-        if (not pla.on_ground)
+        if (not pla.on_ground and pla.state != player_is_trick_drill_clawing)
         {
             var in_shape = (pla.gravity_direction mod 180 == 0 ?
                 sign(pla.y - y) * dcos(pla.gravity_direction) :
                 sign(pla.x - x) * dsin(pla.gravity_direction));
+            
             if (pla.y_speed < 0 or in_shape == 1)
             {
                 pla.y_speed -= sign(pla.y_speed);
@@ -30,6 +31,7 @@ reaction = function(pla)
             else if (pla.y_speed >= 0 and in_shape == -1)
             {
                 pla.y_speed = -pla.y_speed;
+                if (pla.state == player_is_trick_bounding) pla.player_perform(player_is_trick_rebounding);
             }
         }
         pla.player_obtain_item(index);
