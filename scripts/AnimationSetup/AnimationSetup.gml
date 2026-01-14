@@ -24,6 +24,8 @@ global.ani_spring_diagonal_alt_v0 = new animation(sprSpringDiagonalAlt, 0);
 global.ani_spring_diagonal_alt_v1 = new animation(sprSpringDiagonalAlt, [2, 4, 2, 4, 2], -1, [1, 2, 3, 4, 5]);
 global.ani_spring_diagonal_alt = [global.ani_spring_diagonal_alt_v0, global.ani_spring_diagonal_alt_v1];
 
+global.ani_item_balloon_v0 = new animation(sprItemBalloon, 12);
+
 #endregion
 
 #region Player
