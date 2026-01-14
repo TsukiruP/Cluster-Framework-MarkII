@@ -10,7 +10,6 @@ state_changed = false;
 
 spin_dash_charge = 0;
 
-fall_speed_reset = true;
 jump_cap = true;
 
 trick_index = TRICK.FRONT;
@@ -217,7 +216,12 @@ player_try_shield = function()
     {
         case SHIELD.AQUA:
         {
-            break;
+            player_perform(player_is_aqua_bounding);
+            with (shield_stamp)
+            {
+                if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;
+            }
+            return true;
         }
         case SHIELD.FLAME:
         {

@@ -5,15 +5,9 @@ function player_is_falling(phase)
     {
         case PHASE.ENTER:
         {
-            if (fall_speed_reset)
-            {
-                // Rise
-                y_speed = -dsin(local_direction) * x_speed;
-                x_speed *= dcos(local_direction);
-            }
-            
-            // Set flag
-            fall_speed_reset = true;
+            // Rise
+            y_speed = -dsin(local_direction) * x_speed;
+            x_speed *= dcos(local_direction);
             
             // Detach from ground
             player_ground(undefined);
