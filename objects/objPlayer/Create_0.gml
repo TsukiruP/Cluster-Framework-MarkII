@@ -151,10 +151,7 @@ player_perform = function(action, enter = true)
         state(PHASE.EXIT);
         state = action;
         state_changed = true;
-        if (enter)
-        {
-            state(PHASE.ENTER);
-        }
+        if (enter) state(PHASE.ENTER);
         return true;
     }
     return false;
@@ -219,34 +216,34 @@ player_try_trick = function(time = state_time)
 /// @returns {Bool}
 player_try_shield = function()
 {
-   switch (shield)
-   {
-       case SHIELD.AQUA:
-       {
-           break;
-       }
-       case SHIELD.FLAME:
-       {
-           shield_action = false;
-           x_speed = 8 * image_xscale;
-           y_speed = 0;
-           animation_init(PLAYER_ANIMATION.JUMP, 0);
-           audio_play_single(sfxFlameDash);
-           with (shield_stamp)
-           {
-               if (animation_data.index == SHIELD.FLAME) animation_data.variant = 1;
-           }
-           return player_perform(player_is_jumping, false);
-       }
-       case SHIELD.THUNDER:
-       {
-           y_speed = -5.5;
-           animation_init(PLAYER_ANIMATION.JUMP, 0);
-           audio_play_single(sfxThunderJump);
-           return player_perform(player_is_jumping, false);
-       }
-   }
-   return false;
+    switch (shield)
+    {
+        case SHIELD.AQUA:
+        {
+            break;
+        }
+        case SHIELD.FLAME:
+        {
+            shield_action = false;
+            x_speed = 8 * image_xscale;
+            y_speed = 0;
+            animation_init(PLAYER_ANIMATION.JUMP, 0);
+            audio_play_single(sfxFlameDash);
+            with (shield_stamp)
+            {
+                if (animation_data.index == SHIELD.FLAME) animation_data.variant = 1;
+            }
+            return player_perform(player_is_jumping, false);
+        }
+        case SHIELD.THUNDER:
+        {
+            y_speed = -5.5;
+             animation_init(PLAYER_ANIMATION.JUMP, 0);
+             audio_play_single(sfxThunderJump);
+             return player_perform(player_is_jumping, false);
+        }
+    }
+    return false;
 };
 
 /// @method player_rotate_mask()
@@ -325,20 +322,20 @@ player_animate_teeter = function(ani)
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
 player_animate_run = function(ani, ang = direction)
 {
-   var variant = animation_data.variant;
-   if (on_ground)
-   {
-       var abs_speed = abs(x_speed);
-       variant = 5;
-       if (abs_speed <= 1.25) variant = 0;
-       else if (abs_speed <= 2.5) variant = 1;
-       else if (abs_speed <= 4.0) variant = 2;
-       else if (abs_speed <= 9.0) variant = 3;
-       else if (abs_speed <= 10.0) variant = 4;
-   }
-   player_set_animation(ani, ang);
-   animation_data.variant = variant;
-   if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
+    var variant = animation_data.variant;
+    if (on_ground)
+    {
+        var abs_speed = abs(x_speed);
+        variant = 5;
+        if (abs_speed <= 1.25) variant = 0;
+        else if (abs_speed <= 2.5) variant = 1;
+        else if (abs_speed <= 4.0) variant = 2;
+        else if (abs_speed <= 9.0) variant = 3;
+        else if (abs_speed <= 10.0) variant = 4;
+    }
+    player_set_animation(ani, ang);
+    animation_data.variant = variant;
+    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
 /// @method player_animate_fall(ani)
@@ -476,47 +473,47 @@ player_gain_lives = function(num)
 /// @param {Id.Instance} inst Instance to check.
 player_damage = function(inst)
 {
-   // Abort if the player is already dead or hurt
-   if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
-   
-   if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
-   {
-       y_speed = -7;
-       audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
-       return player_perform(player_is_dead);
-   }
-   else
-   {
-       var hurt_speed = -2;
-       var ring_loss = false;
-       animation_init(PLAYER_ANIMATION.HURT);
-       if (inst == noone or abs(x_speed) <= 2.5)
-       {
-           if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
-           else x_speed = image_xscale * hurt_speed;
-           animation_data.variant = 0;
-       }
-       else
-       {
-           x_speed = sign(x_speed) * -hurt_speed;
-           animation_data.variant = 1;
-       }
-       y_speed = -4;
-       if (player_index == 0)
-       {
-           if (shield != SHIELD.NONE)
-           {
-               shield = SHIELD.NONE;
-           }
-           else
-           {
-               ring_loss = true;
-               player_lose_rings();
-           }
-       }
-       if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
-       return player_perform(player_is_hurt);
-   }
+    // Abort if the player is already dead or hurt
+    if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
+    
+    if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
+    {
+        y_speed = -7;
+        audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
+        return player_perform(player_is_dead);
+    }
+    else
+    {
+        var hurt_speed = -2;
+        var ring_loss = false;
+        animation_init(PLAYER_ANIMATION.HURT);
+        if (inst == noone or abs(x_speed) <= 2.5)
+        {
+            if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
+            else x_speed = image_xscale * hurt_speed;
+            animation_data.variant = 0;
+        }
+        else
+        {
+            x_speed = sign(x_speed) * -hurt_speed;
+            animation_data.variant = 1;
+        }
+        y_speed = -4;
+        if (player_index == 0)
+        {
+            if (shield != SHIELD.NONE)
+            {
+                shield = SHIELD.NONE;
+            }
+            else
+            {
+                ring_loss = true;
+                player_lose_rings();
+            }
+        }
+        if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
+        return player_perform(player_is_hurt);
+    }
 };
 
 /// @method player_obtain_item(item)
@@ -524,112 +521,112 @@ player_damage = function(inst)
 /// @param {Enum.ITEM} item Item to obtain.
 player_obtain_item = function(item)
 {
-   switch (item)
-   {
-       case ITEM.LIFE:
-       {
-           player_gain_lives(1);
-           break;
-       }
-       case ITEM.RING_BONUS:
-       {
-           player_gain_rings(5);
-           break;
-       }
-       case ITEM.SUPER_RING_BONUS:
-       {
-           player_gain_rings(10);
-           break;
-       }
-       case ITEM.RANDOM_RING_BONUS:
-       {
-           player_gain_rings(choose(1, 5, 10, 20, 30, 40));
-           break;
-       }
-       case ITEM.BASIC:
-       {
-           shield = SHIELD.BASIC;
-           audio_play_single(sfxItemBasic);
-           break;
-       }
-       case ITEM.MAGNETIC:
-       {
-           shield = SHIELD.MAGNETIC;
-           audio_play_single(sfxItemBasic);
-           break;
-       }
-       case ITEM.AQUA:
-       {
-           shield = SHIELD.AQUA;
-           audio_play_single(sfxItemAqua);
-           break;
-       }
-       case ITEM.FLAME:
-       {
-           shield = SHIELD.FLAME;
-           audio_play_single(sfxItemFlame);
-           break;
-       }
-       case ITEM.THUNDER:
-       {
-           shield = SHIELD.THUNDER;
-           audio_play_single(sfxItemThunder);
-           break;
-       }
-       case ITEM.INVINCIBILITY:
-       {
-           invincibility_time = INVINCIBILITY_DURATION;
-           if (superspeed_time < 0)
-           {
-               superspeed_time = 0;
-               player_refresh_physics();
-           }
-           if (confusion_time > 0) confusion_time = 0;
-           audio_play_jingle(bgmInvincibility);
-           break;
-       }
-       case ITEM.SPEED_UP:
-       {
-           superspeed_time = SPEED_UP_DURATION;
-           player_refresh_physics();
-           audio_play_jingle(bgmSpeedUp);
-           break;
-       }
-       case ITEM.SLOW_DOWN:
-       {
-           if (invincibility_time == 0)
-           {
-               superspeed_time = -DEBUFF_DURAION;
-               player_refresh_physics();
-               audio_stop_sound(bgmSpeedUp);
-               audio_play_single(sfxItemDebuff);
-           }
-           break;
-       }
-       case ITEM.CONFUSION:
-       {
-           if (invincibility_time == 0)
-           {
-               confusion_time = DEBUFF_DURAION;
-               audio_play_single(sfxItemDebuff);
-           }
-           break;
-       }
-       case ITEM.EGGMAN:
-       {
-           player_damage(noone);
-           break;
-       }
-   }
-   
-   with (objHUD)
-   {
-       if (item_feed_config)
-       {
-           array_push(item_feed, new popup(item));
-           item_feed_time = item_feed_duration;
-       }
-   }
+    switch (item)
+    {
+        case ITEM.LIFE:
+        {
+            player_gain_lives(1);
+            break;
+        }
+        case ITEM.RING_BONUS:
+        {
+            player_gain_rings(5);
+            break;
+        }
+        case ITEM.SUPER_RING_BONUS:
+        {
+            player_gain_rings(10);
+            break;
+        }
+        case ITEM.RANDOM_RING_BONUS:
+        {
+            player_gain_rings(choose(1, 5, 10, 20, 30, 40));
+            break;
+        }
+        case ITEM.BASIC:
+        {
+            shield = SHIELD.BASIC;
+            audio_play_single(sfxItemBasic);
+            break;
+        }
+        case ITEM.MAGNETIC:
+        {
+            shield = SHIELD.MAGNETIC;
+            audio_play_single(sfxItemBasic);
+            break;
+        }
+        case ITEM.AQUA:
+        {
+            shield = SHIELD.AQUA;
+            audio_play_single(sfxItemAqua);
+            break;
+        }
+        case ITEM.FLAME:
+        {
+            shield = SHIELD.FLAME;
+            audio_play_single(sfxItemFlame);
+            break;
+        }
+        case ITEM.THUNDER:
+        {
+            shield = SHIELD.THUNDER;
+            audio_play_single(sfxItemThunder);
+            break;
+        }
+        case ITEM.INVINCIBILITY:
+        {
+            invincibility_time = INVINCIBILITY_DURATION;
+            if (superspeed_time < 0)
+            {
+                superspeed_time = 0;
+                player_refresh_physics();
+            }
+            if (confusion_time > 0) confusion_time = 0;
+            audio_play_jingle(bgmInvincibility);
+            break;
+        }
+        case ITEM.SPEED_UP:
+        {
+            superspeed_time = SPEED_UP_DURATION;
+            player_refresh_physics();
+            audio_play_jingle(bgmSpeedUp);
+            break;
+        }
+        case ITEM.SLOW_DOWN:
+        {
+            if (invincibility_time == 0)
+            {
+                superspeed_time = -DEBUFF_DURAION;
+                player_refresh_physics();
+                audio_stop_sound(bgmSpeedUp);
+                audio_play_single(sfxItemDebuff);
+            }
+            break;
+        }
+        case ITEM.CONFUSION:
+        {
+            if (invincibility_time == 0)
+            {
+                confusion_time = DEBUFF_DURAION;
+                audio_play_single(sfxItemDebuff);
+            }
+            break;
+        }
+        case ITEM.EGGMAN:
+        {
+            player_damage(noone);
+            break;
+        }
+    }
+    
+    with (objHUD)
+    {
+        if (item_feed_config)
+        {
+            array_push(item_feed, new popup(item));
+            item_feed_time = item_feed_duration;
+        }
+    }
 };
 
 /// @method player_try_skill()

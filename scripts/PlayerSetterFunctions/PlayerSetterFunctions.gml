@@ -4,43 +4,43 @@
 /// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
 function player_eject_wall(inst)
 {
-   var sine = dsin(mask_direction);
-   var cosine = dcos(mask_direction);
-   var inside = collision_point(x div 1, y div 1, inst, true, false) != noone;
-   
-   for (var ox = 1; ox <= x_wall_radius; ox++)
-   {
-       if (not inside)
-       {
-           // Left of the wall
-           if (player_ray_collision(inst, ox, 0))
-           {
-               x -= cosine * (x_wall_radius - ox + 1);
-               y += sine * (x_wall_radius - ox + 1);
-               return 1;
-           }
-           else if (player_ray_collision(inst, -ox, 0)) // Right of the wall
-           {
-               x += cosine * (x_wall_radius - ox + 1);
-               y -= sine * (x_wall_radius - ox + 1);
-               return -1;
-           }
-       }
-       else if (not player_ray_collision(inst, ox, 0)) // Right of the wall
-       {
-           x += cosine * (x_wall_radius + ox);
-           y -= sine * (x_wall_radius + ox);
-           return -1;
-       }
-       else if (not player_ray_collision(inst, -ox, 0)) // Left of the wall
-       {
-           x -= cosine * (x_wall_radius + ox);
-           y += sine * (x_wall_radius + ox);
-           return 1;
-       }
-   }
-   
-   return undefined;
+    var sine = dsin(mask_direction);
+    var cosine = dcos(mask_direction);
+    var inside = collision_point(x div 1, y div 1, inst, true, false) != noone;
+    
+    for (var ox = 1; ox <= x_wall_radius; ox++)
+    {
+        if (not inside)
+        {
+            // Left of the wall
+            if (player_ray_collision(inst, ox, 0))
+            {
+                x -= cosine * (x_wall_radius - ox + 1);
+                y += sine * (x_wall_radius - ox + 1);
+                return 1;
+            }
+            else if (player_ray_collision(inst, -ox, 0)) // Right of the wall
+            {
+                x += cosine * (x_wall_radius - ox + 1);
+                y -= sine * (x_wall_radius - ox + 1);
+                return -1;
+            }
+        }
+        else if (not player_ray_collision(inst, ox, 0)) // Right of the wall
+        {
+            x += cosine * (x_wall_radius + ox);
+            y -= sine * (x_wall_radius + ox);
+            return -1;
+        }
+        else if (not player_ray_collision(inst, -ox, 0)) // Left of the wall
+        {
+            x -= cosine * (x_wall_radius + ox);
+            y += sine * (x_wall_radius + ox);
+            return 1;
+        }
+    }
+    
+    return undefined;
 }
 
 /// @function player_ground(height)
@@ -49,18 +49,18 @@ function player_eject_wall(inst)
 /// @param {Real|Undefined} height Amount in pixels to reposition the player, if applicable.
 function player_ground(height)
 {
-   if (height != undefined)
-   {
-       var offset = y_radius - height + 1;
-       x -= dsin(mask_direction) * offset;
-       y -= dcos(mask_direction) * offset;
-       player_detect_angle();
-   }
-   else
-   {
-       on_ground = false;
-       mask_direction = gravity_direction;
-   }
+    if (height != undefined)
+    {
+        var offset = y_radius - height + 1;
+        x -= dsin(mask_direction) * offset;
+        y -= dcos(mask_direction) * offset;
+        player_detect_angle();
+    }
+    else
+    {
+        on_ground = false;
+        mask_direction = gravity_direction;
+    }
 }
 
 /// @function player_detect_angle()
