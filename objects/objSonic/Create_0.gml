@@ -12,6 +12,21 @@ trick_speed =
     [-5, -3.5]
 ];
 
+player_try_skill = function()
+{
+    if (not on_ground)
+    {
+        if (input_button.jump.pressed)
+        {
+            if (shield_action)
+            {
+                return player_try_shield();
+            }
+        }
+    }
+    return false;
+};
+
 player_animate = function()
 {
     switch (animation_data.index)

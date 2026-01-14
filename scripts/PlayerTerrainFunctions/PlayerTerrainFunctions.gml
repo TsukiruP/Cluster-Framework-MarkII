@@ -4,15 +4,15 @@
 /// @returns {Real|Undefined}
 function player_find_floor(height)
 {
-	for (var oy = 0; oy <= height; oy++)
-	{
-		if (player_beam_collision(tilemaps, x_radius, oy) != noone)
-		{
-			return oy;
-		}
-	}
-	
-	return undefined;
+    for (var oy = 0; oy <= height; oy++)
+    {
+        if (player_beam_collision(tilemaps, x_radius, oy) != noone)
+        {
+            return oy;
+        }
+    }
+    
+    return undefined;
 }
 
 /// @function player_find_ceiling(height)
@@ -21,20 +21,20 @@ function player_find_floor(height)
 /// @returns {Real|Undefined}
 function player_find_ceiling(height)
 {
-	for (var oy = 0; oy <= height; oy++)
-	{
-		var inst = player_beam_collision(tilemaps, x_radius, -oy);
-		
-		// Skip the solid if passing through it
-		if (inst == noone or inst == semisolid_tilemap)
-		{
-			continue;
-		}
-		
-		return oy;
-	}
-	
-	return undefined;
+    for (var oy = 0; oy <= height; oy++)
+    {
+        var inst = player_beam_collision(tilemaps, x_radius, -oy);
+        
+        // Skip the solid if passing through it
+        if (inst == noone or inst == semisolid_tilemap)
+        {
+            continue;
+        }
+        
+        return oy;
+    }
+    
+    return undefined;
 }
 
 /* AUTHOR NOTE:
