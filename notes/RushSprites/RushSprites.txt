@@ -1,4 +1,5 @@
 # Colors
 | Animation | Source | Notes |
 | --- | --- | --- |
+| Item Balloon | act/ac_itm_box.bac |
 | Destroy Explosion | narc/act_com_lz7.narc/ac_eff_zako_bomb.bac |

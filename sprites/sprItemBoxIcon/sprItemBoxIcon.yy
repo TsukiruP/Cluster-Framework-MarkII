@@ -38,8 +38,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Item Box",
-    "path":"folders/Sprites/Stage/General/Item Box.yy",
+    "name":"Items",
+    "path":"folders/Sprites/Stage/General/Items.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
