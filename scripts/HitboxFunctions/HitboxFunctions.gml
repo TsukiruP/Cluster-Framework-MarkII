@@ -7,7 +7,7 @@
 /// @param {Real} bottom Bottom radius of the hitbox (optional, default is 0).
 function hitbox(col, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
 {
-	color = col;
+    color = col;
 }
 
 /// @function collision_player(hb, pla, [plahb])
