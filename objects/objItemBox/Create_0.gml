@@ -34,8 +34,10 @@ reaction = function(pla)
                 if (pla.state == player_is_trick_bounding) pla.player_perform(player_is_trick_rebounding);
             }
         }
-        pla.player_obtain_item(index);
         image_index = 1;
+        pla.player_obtain_item(index);
+        pla.shield_action = true;
+        pla.player_reset_skill();
         audio_play_single(sfxDestroy);
         particle_create(x, y + 15, global.ani_explosion_destroy_v0);
     }
