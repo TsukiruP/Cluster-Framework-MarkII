@@ -174,7 +174,7 @@ player_reset_input = function()
 };
 
 /// @method player_try_jump()
-/// @description Sets the player's current state to jumping, if applicable.
+/// @description Checks if the player performs a jump.
 /// @returns {Bool}
 player_try_jump = function()
 {
@@ -188,7 +188,7 @@ player_try_jump = function()
 };
 
 /// @method player_try_trick([time])
-/// @desctiption Sets the player's current state to tricking, if applicable.
+/// @desctiption Checks if the player performs a Trick Action.
 /// @param [time] Time to check (optional, defaults to state_time).
 /// @returns {Bool}
 player_try_trick = function(time = state_time)
@@ -212,7 +212,7 @@ player_try_trick = function(time = state_time)
 };
 
 /// @method player_try_shield()
-/// @description Performs a shield action.
+/// @description Checks if the player performs a Shield Actions.
 /// @returns {Bool}
 player_try_shield = function()
 {
@@ -317,7 +317,7 @@ player_animate_teeter = function(ani)
 };
 
 /// @method player_animate_run(ani)
-/// @description Sets the given animation within the player's animation core based on running conditions.
+/// @description Plays the given animation based on running conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
 player_animate_run = function(ani, ang = direction)
@@ -339,7 +339,7 @@ player_animate_run = function(ani, ang = direction)
 };
 
 /// @method player_animate_fall(ani)
-/// @description Sets the given animation within the player's animation core based on falling conditions.
+/// @description Plays the given animation based on falling conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_fall = function(ani)
 {
@@ -369,7 +369,7 @@ player_animate_jump = function(ani)
 };
 
 /// @method player_animate_spring(ani)
-/// @description Sets the given animation within the player's animation core based on spring conditions.
+/// @description Plays the given animation based on spring conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(ani)
 {
@@ -630,7 +630,7 @@ player_obtain_item = function(item)
 };
 
 /// @method player_try_skill()
-/// @description Checks whether the player performs a character skill.
+/// @description Checks if the player performs a character skill.
 /// @returns {Bool}
 player_try_skill = function () { return false; };
 
