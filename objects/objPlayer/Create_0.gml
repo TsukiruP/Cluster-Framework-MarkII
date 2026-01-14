@@ -250,6 +250,12 @@ player_try_shield = function()
             player_perform(player_is_jumping, false);
             animation_init(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxThunderJump);
+            for (var i = 45; i <= 315; i += 90)
+            {
+                var sine = dcos(i);
+                var cosine = dsin(i);
+                particle_create(x, y, global.ani_shield_thunder_spark_v0, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
+            }
             return true;
         }
     }
