@@ -56,15 +56,15 @@ function player_is_standing(phase)
                 return player_perform(player_is_falling);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Slide down steep slopes
             if (local_direction >= 45 and local_direction <= 315)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             
             // Turn
             if (animation_data.index != PLAYER_ANIMATION.TEETER and input_axis_x != 0 and image_xscale != input_axis_x)
@@ -169,9 +169,6 @@ function player_is_running(phase)
             // Fall
             if (not on_ground) return player_perform(player_is_falling);
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Slide down steep slopes
             if (abs(x_speed) < SLIDE_THRESHOLD)
             {
@@ -184,6 +181,9 @@ function player_is_running(phase)
                     control_lock_time = SLIDE_DURATION;
                 }
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             
             // Apply slope friction
             player_resist_slope(0.125);
@@ -263,15 +263,15 @@ function player_is_looking(phase)
             return player_perform(player_is_falling);
         }
         
-        // Skill
-        if (player_try_skill()) exit;
-        
         // Slide down steep slopes
         if (local_direction >= 45 and local_direction <= 315)
         {
             control_lock_time = SLIDE_DURATION;
             return player_perform(player_is_running);
         }
+        
+        // Skill
+        if (player_try_skill()) exit;
         
         // Run
         if (x_speed != 0) return player_perform(player_is_running);
@@ -335,15 +335,15 @@ function player_is_crouching(phase)
                 return player_perform(player_is_falling);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Slide down steep slopes
             if (local_direction >= 45 and local_direction <= 315)
             {
                 control_lock_time = SLIDE_DURATION;
                 return player_perform(player_is_running);
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             
             // Run
             if (x_speed != 0) return player_perform(player_is_running);
