@@ -197,7 +197,7 @@ player_try_trick = function(time = state_time)
         if (input_axis_y == -1) trick_index = TRICK.UP;
         else if (input_axis_y == 1) trick_index = TRICK.DOWN;
         else if (input_axis_x == image_xscale) trick_index = TRICK.FRONT;
-        global.score_count += 100;
+        player_gain_score(100);
         player_perform(player_is_trick_preparing);
         if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
             trick_index == TRICK.DOWN))
