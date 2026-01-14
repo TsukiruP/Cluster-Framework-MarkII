@@ -118,7 +118,7 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
     with (obj) return point_in_rectangle(x, y, left - padding, top - padding, right + padding, bottom + padding);
 }
 
-/// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel])
+/// @function particle_create(x, y, ani, [xspd], [yspd], [xaccel], [yaccel], [life])
 /// @description Creates a new particle with the given animation.
 /// @param {Real} x x-coordinate of the particle.
 /// @param {Real} y y-coordinate of the particle.
@@ -127,8 +127,9 @@ function instance_in_view(obj = id, padding = CAMERA_PADDING)
 /// @param {Real} [yspd] y-speed of the particle (optional, defaults to 0).
 /// @param {Real} [xaccel] x-acceleration of the particle (optional, defaults to 0).
 /// @param {Real} [yaccel] y-acceleration of the particle (optional, defaults to 0).
+/// @param {Real} [life] Lifespan of the particle (optional, defaults to -1).
 /// @returns {Id.Instance}
-function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0)
+function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0, life = -1)
 {
     var particle = instance_create_depth(ox, oy, layer_get_depth("Stage") - DEPTH_OFFSET_PARTICLE, objParticle);
     with (particle)
@@ -138,6 +139,7 @@ function particle_create(ox, oy, ani, xspd = 0, yspd = 0, xaccel = 0, yaccel = 0
         y_speed = yspd;
         x_acceleration = xaccel;
         y_acceleration = yaccel;
+        lifespan = life;
     }
     return particle;
 }

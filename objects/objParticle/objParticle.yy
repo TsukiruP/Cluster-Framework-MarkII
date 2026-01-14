@@ -11,8 +11,8 @@
   "name":"objParticle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Objects/Stage/General/Misc..yy",
+    "name":"Parents",
+    "path":"folders/Objects/Stage/Parents.yy",
   },
   "parentObjectId":null,
   "persistent":false,
