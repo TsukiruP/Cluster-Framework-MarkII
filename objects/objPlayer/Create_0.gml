@@ -236,7 +236,11 @@ player_try_shield = function()
             audio_play_single(sfxFlameDash);
             with (shield_stamp)
             {
-                if (animation_data.index == SHIELD.FLAME) animation_data.variant = 1;
+                if (animation_data.index == SHIELD.FLAME)
+                {
+                    image_xscale = other.image_xscale;
+                    animation_data.variant = 1;
+                }
             }
             return true;
         }

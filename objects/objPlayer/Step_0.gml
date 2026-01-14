@@ -284,7 +284,7 @@ with (shield_stamp)
         
         if (not (animation_data.index == SHIELD.FLAME and animation_data.variant == 1))
         {
-            image_xscale = (shield_advance ? 1 : other.image_xscale);
+            image_xscale = 1;
         }
         image_angle = other.gravity_direction;
         image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.6 : 1);

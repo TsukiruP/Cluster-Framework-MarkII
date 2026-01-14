@@ -42,8 +42,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Fire",
-    "path":"folders/Sprites/Stage/Player/Shields/Fire.yy",
+    "name":"Flame",
+    "path":"folders/Sprites/Stage/Player/Shields/Flame.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
