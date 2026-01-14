@@ -37,7 +37,7 @@ reaction = function(pla)
         image_index = 1;
         pla.player_obtain_item(index);
         pla.shield_action = true;
-        pla.player_reset_skill();
+        pla.player_refresh_aerial_skills();
         audio_play_single(sfxDestroy);
         particle_create(x, y + 15, global.ani_explosion_destroy_v0);
     }

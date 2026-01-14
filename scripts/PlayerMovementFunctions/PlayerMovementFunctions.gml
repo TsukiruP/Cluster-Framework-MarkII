@@ -152,7 +152,7 @@ function player_move_in_air()
             landed = false;
             on_ground = true;
             shield_action = true;
-            player_reset_skill();
+            player_refresh_aerial_skills();
             break;
         }
     }

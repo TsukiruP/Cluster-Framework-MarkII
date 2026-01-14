@@ -644,9 +644,9 @@ player_obtain_item = function(item)
 /// @returns {Bool}
 player_try_skill = function () { return false; };
 
-/// @method player_reset_skill()
-/// @description Resets character skills when grounded.
-player_reset_skill = function() {};
+/// @method player_refresh_aerial_skills()
+/// @description Resets aerial character skills when grounded.
+player_refresh_aerial_skills = function() {};
 
 /// @method player_animate()
 /// @description Sets the player's current animation.
