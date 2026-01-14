@@ -38,7 +38,10 @@ reaction = function(pla)
                     pla.player_perform(player_is_jumping);
                     audio_play_single(sfxAquaBound);
                 }
-                if (pla.state == player_is_trick_bounding) pla.player_perform(player_is_trick_rebounding);
+                else if (pla.state == player_is_trick_bounding)
+                {
+                    pla.player_perform(player_is_trick_rebounding);
+                }
             }
         }
         pla.player_obtain_item(index);
