@@ -212,3 +212,70 @@ function player_is_dead(phase)
         }
     }
 }
+
+/// @function player_is_aqua_bounding
+function player_is_aqua_bounding(phase)
+{
+    switch (phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Bound
+            x_speed = 0;
+            y_speed = 8;
+            
+            // Animate
+            animation_init(PLAYER_ANIMATION.ROLL);
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Accelerate
+            if (input_axis_x != 0)
+            {
+                image_xscale = input_axis_x;
+                if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                {
+                    x_speed += air_acceleration * input_axis_x;
+                    if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                    {
+                        x_speed = speed_cap * input_axis_x;
+                    }
+                }
+            }
+            
+            // Move
+            player_move_in_air();
+            if (state_changed) exit;
+            
+            // Rebound
+            if (on_ground)
+            {
+                player_perform(player_is_jumping);
+                y_speed = -8;
+                audio_play_single(sfxAquaBound);
+            }
+            
+            // Apply air resistance
+            if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
+            {
+                x_speed *= AIR_DRAG;
+            }
+            
+            // Fall
+            if (y_speed < gravity_cap)
+            {
+                y_speed = min(y_speed + gravity_force, gravity_cap);
+            }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            with (shield_stamp)
+            {
+                if (animation_data.index == SHIELD.AQUA) animation_data.variant = 3;
+            }
+            break;
+        }
+    }
+}

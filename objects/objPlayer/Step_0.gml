@@ -222,21 +222,23 @@ with (shield_stamp)
             }
             case SHIELD.AQUA:
             {
-                switch (animation_data.variant)
+                if (animation_is_finished())
                 {
-                    case 1:
+                    switch (animation_data.variant)
                     {
-                        animation_data.variant = 2;
-                        break;
-                    }
-                    case 3:
-                    {
-                        animation_data.variant = 0;
-                        break;
+                        case 1:
+                        {
+                            animation_data.variant = 2;
+                            break;
+                        }
+                        case 3:
+                        {
+                            animation_data.variant = 0;
+                            break;
+                        }
                     }
                 }
                 animation_set(global.ani_shield_aqua);
-                visible = (animation_data.variant == 0 ? animation_data.time mod 4 < 2 : true);
                 break;
             }
             case SHIELD.FLAME:
