@@ -79,8 +79,8 @@ tilemap_count = array_length(tilemaps);
 semisolid_tilemap = -1;
 if (tilemap_count & 1 == 0)
 {
-	semisolid_tilemap = array_last(tilemaps);
-	tilemap_count--;
+    semisolid_tilemap = array_last(tilemaps);
+    tilemap_count--;
 }
 
 // Discard the "TilesLayer1" layer tilemap, if it exists
