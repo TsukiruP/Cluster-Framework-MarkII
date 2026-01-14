@@ -42,7 +42,7 @@ reaction = function(pla)
         pla.shield_action = true;
         pla.player_refresh_aerial_skills();
         audio_play_single(sfxDestroy);
-        particle_create(x, y + 15, global.ani_explosion_destroy_v0);
+        particle_create(x, y + 15, global.ani_explosion_destroy_v0, image_angle);
         instance_destroy();
     }
 };
