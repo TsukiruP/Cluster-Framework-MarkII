@@ -31,14 +31,22 @@ reaction = function(pla)
             else if (pla.y_speed >= 0 and in_shape == -1)
             {
                 pla.y_speed = -pla.y_speed;
-                if (pla.state == player_is_trick_bounding) pla.player_perform(player_is_trick_rebounding);
+                if (pla.state == player_is_aqua_bounding)
+                {
+                    pla.player_perform(player_is_jumping);
+                    audio_play_single(sfxAquaBound);
+                }
+                else if (pla.state == player_is_trick_bounding)
+                {
+                    pla.player_perform(player_is_trick_rebounding);
+                }
             }
         }
-        image_index = 1;
         pla.player_obtain_item(index);
         pla.shield_action = true;
         pla.player_refresh_aerial_skills();
         audio_play_single(sfxDestroy);
         particle_create(x, y + 15, global.ani_explosion_destroy_v0);
+        image_index = 1;
     }
 };

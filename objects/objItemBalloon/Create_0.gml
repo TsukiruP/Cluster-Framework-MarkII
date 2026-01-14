@@ -6,12 +6,6 @@ animation_data = new animation_core();
 animation_set(global.ani_item_balloon_v0);
 hitboxes[0].set_size(-14, -16, 12, 8);
 
-// Change debuffs to Eggman
-if (not db_read(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs") and (index == ITEM.SLOW_DOWN or index == ITEM.CONFUSION))
-{
-    index = ITEM.EGGMAN;
-}
-
 reaction = function(pla)
 {
     // Abort if player is a cpu
