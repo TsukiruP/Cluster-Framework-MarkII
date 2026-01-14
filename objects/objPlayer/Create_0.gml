@@ -238,9 +238,9 @@ player_try_shield = function()
         case SHIELD.THUNDER:
         {
             y_speed = -5.5;
-             animation_init(PLAYER_ANIMATION.JUMP, 1);
-             audio_play_single(sfxThunderJump);
-             return player_perform(player_is_jumping, false);
+            animation_init(PLAYER_ANIMATION.JUMP, 1);
+            audio_play_single(sfxThunderJump);
+            return player_perform(player_is_jumping, false);
         }
     }
     return false;
