@@ -11,6 +11,7 @@ state_changed = false;
 spin_dash_charge = 0;
 
 jump_cap = true;
+jump_alternate = 0;
 
 trick_index = TRICK.FRONT;
 trick_speed = array_create(TRICK.BACK + 1);
@@ -178,6 +179,7 @@ player_try_jump = function()
     {
         player_perform(player_is_jumping);
         animation_init(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+        audio_play_single(sfxJump);
         return true;
     }
     return false;
@@ -217,6 +219,7 @@ player_try_shield = function()
         case SHIELD.AQUA:
         {
             player_perform(player_is_aqua_bounding);
+            jump_alternate = input_button.aux.pressed;
             with (shield_stamp)
             {
                 if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;

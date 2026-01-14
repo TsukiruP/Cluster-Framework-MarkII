@@ -16,7 +16,7 @@ player_try_skill = function()
 {
     if (not on_ground)
     {
-        if (input_button.jump.pressed)
+        if (input_button.jump.pressed or input_button.aux.pressed)
         {
             if (shield_action)
             {
