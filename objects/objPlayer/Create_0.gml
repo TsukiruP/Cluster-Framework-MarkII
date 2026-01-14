@@ -227,7 +227,7 @@ player_try_shield = function()
             shield_action = false;
             x_speed = 8 * image_xscale;
             y_speed = 0;
-            animation_init(PLAYER_ANIMATION.JUMP, 0);
+            animation_init(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
             with (shield_stamp)
             {
@@ -238,7 +238,7 @@ player_try_shield = function()
         case SHIELD.THUNDER:
         {
             y_speed = -5.5;
-             animation_init(PLAYER_ANIMATION.JUMP, 0);
+             animation_init(PLAYER_ANIMATION.JUMP, 1);
              audio_play_single(sfxThunderJump);
              return player_perform(player_is_jumping, false);
         }
