@@ -142,7 +142,6 @@ cpu_input_jump_pressed = array_create(16);
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
 /// @param {Bool} enter Whether to perform the enter phase (optional, defaults to true).
-/// @returns {Bool}
 player_perform = function(action, enter = true)
 {
     var reset = (argument_count > 1);
@@ -152,9 +151,7 @@ player_perform = function(action, enter = true)
         state = action;
         state_changed = true;
         if (enter) state(PHASE.ENTER);
-        return true;
     }
-    return false;
 };
 
 /// @method player_reset_input()
@@ -227,20 +224,22 @@ player_try_shield = function()
             shield_action = false;
             x_speed = 8 * image_xscale;
             y_speed = 0;
+            player_perform(player_is_jumping, false);
             animation_init(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
             with (shield_stamp)
             {
                 if (animation_data.index == SHIELD.FLAME) animation_data.variant = 1;
             }
-            return player_perform(player_is_jumping, false);
+            return true;
         }
         case SHIELD.THUNDER:
         {
             y_speed = -5.5;
+            player_perform(player_is_jumping, false);
             animation_init(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxThunderJump);
-            return player_perform(player_is_jumping, false);
+            return true;
         }
     }
     return false;
