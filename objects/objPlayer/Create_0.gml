@@ -214,6 +214,7 @@ player_try_trick = function(time = state_time)
 /// @returns {Bool}
 player_try_shield = function()
 {
+    shield_action = false;
     switch (shield)
     {
         case SHIELD.AQUA:
@@ -228,7 +229,6 @@ player_try_shield = function()
         }
         case SHIELD.FLAME:
         {
-            shield_action = false;
             x_speed = 8 * image_xscale;
             y_speed = 0;
             player_perform(player_is_jumping, false);
