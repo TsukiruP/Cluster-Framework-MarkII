@@ -1,7 +1,7 @@
 {
   "$GMNotes":"v1",
-  "%Name":"RushSprites",
-  "name":"RushSprites",
+  "%Name":"Sounds",
+  "name":"Sounds",
   "parent":{
     "name":"Sources",
     "path":"folders/Notes/Sources.yy",

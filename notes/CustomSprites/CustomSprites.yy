@@ -3,8 +3,8 @@
   "%Name":"CustomSprites",
   "name":"CustomSprites",
   "parent":{
-    "name":"Notes",
-    "path":"folders/Notes.yy",
+    "name":"Sources",
+    "path":"folders/Notes/Sources.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",
