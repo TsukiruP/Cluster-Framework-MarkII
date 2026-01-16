@@ -1,8 +1,7 @@
 /// @description Behave
 if (ctrlGame.game_paused) exit;
 
-#region Input
-
+// Input
 if (player_index == 0 or cpu_gamepad_time > 0)
 {
     input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
@@ -21,6 +20,7 @@ if (player_index == 0 or cpu_gamepad_time > 0)
     if (input_button.select.pressed) gravity_direction = angle_wrap(gravity_direction + 90);
 }
 
+// CPU
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
 	player_reset_input();
@@ -142,18 +142,13 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 	}
 }
 
-#endregion
-
-#region Perform
-
+// State
 state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_animate();
 
-#endregion
 
-#region Spin Dash Dust
-
+// Spin Dash
 with (spin_dash_stamp)
 {
     var action = other.state;
@@ -177,10 +172,7 @@ with (spin_dash_stamp)
     }
 }
 
-#endregion
-
-#region Shield
-
+// Shield
 with (shield_stamp)
 {
     var shield = other.shield;
@@ -294,8 +286,6 @@ with (shield_stamp)
         animation_set(undefined);
     }
 }
-
-#endregion
 
 // Direct camera
 with (camera)

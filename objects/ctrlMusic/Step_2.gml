@@ -1,6 +1,7 @@
 /// @description Update
 music_playing = audio_is_playing(music_stream);
 
+// Fade out
 if (fade_out)
 {
     if (audio_get_master_gain(0) > 0)
@@ -15,8 +16,7 @@ if (fade_out)
     }
 }
 
-#region Drown
-
+// Drown
 if (audio_is_playing(life_stream))
 {
     if (mute & MUTE_FLAG_DROWN == 0)
@@ -29,10 +29,7 @@ else if (mute & MUTE_FLAG_DROWN)
     mute &= ~MUTE_FLAG_DROWN;
 }
 
-#endregion
-
-#region Jingles
-
+// Jingles
 for (var i = 0; i < array_length(jingle_streams); i++)
 {
     if (not audio_is_playing(jingle_streams[i]))
@@ -65,10 +62,7 @@ if (mute & MUTE_FLAG_JINGLE == 0 and jingle_count > 0 and audio_sound_get_gain(j
     audio_sound_gain(jingle_last, global.volume_music, TEN_MILLISECONDS);
 }
 
-#endregion
-
-#region Music
-
+// Music
 if (swap)
 {
     if (not music_playing or audio_sound_get_gain(music_stream) <= 0)
@@ -101,5 +95,3 @@ else if (mute & MUTE_FLAG_MUSIC)
         audio_sound_gain(music_stream, global.volume_music, TEN_MILLISECONDS);
     }
 }
-
-#endregion

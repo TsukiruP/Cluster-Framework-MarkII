@@ -14,7 +14,7 @@ with (shield_stamp)
     }
 }
 
-// Character sprite
+// Character
 image_alpha = (recovery_time > 0 ? (recovery_time mod 4 < 2) : 1);
 player_draw_before();
 draw_self_floored();
