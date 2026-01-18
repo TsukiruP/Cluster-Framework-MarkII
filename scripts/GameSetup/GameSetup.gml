@@ -158,10 +158,7 @@ enum ITEM
 global.volume_sound = 1;
 global.volume_music = 1;
 
-// Music
-audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
-
-// Player values
+// Stage
 global.characters = [];
 global.score_count = 0;
 global.ring_count = 0;
@@ -187,11 +184,3 @@ global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "
 surface_depth_disable(true);
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
 randomize();
-
-// Create global controllers
-call_later(1, time_source_units_frames, function()
-{
-    instance_create_layer(0, 0, "Controllers", ctrlGame);
-    instance_create_layer(0, 0, "Controllers", ctrlWindow);
-    instance_create_layer(0, 0, "Controllers", ctrlMusic);
-});

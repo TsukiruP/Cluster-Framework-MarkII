@@ -50,7 +50,9 @@ volume_lists_cap = 4;
 volume_lists_strength = [1];
 
 // Center view
-camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);
+var ox = clamp(x - CAMERA_WIDTH / 2, bound_left, bound_right - CAMERA_WIDTH);
+var oy = clamp(y - CAMERA_HEIGHT / 2, bound_top, bound_bottom - CAMERA_HEIGHT);
+camera_set_view_pos(CAMERA_ID, ox, oy);
 
 // Misc.
 /// @method resize_view()

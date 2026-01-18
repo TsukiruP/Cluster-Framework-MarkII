@@ -30,7 +30,7 @@ if (tilemap_count & 1 == 0)
 	--tilemap_count;
 }
 
-// Discard the "TilesLayer1" layer tilemap, if it exists
+// Delist the "TilesLayer1" layer tilemap, if it exists
 if (tilemap_count >= 3)
 {
     array_delete(tilemaps, 2, 1);
