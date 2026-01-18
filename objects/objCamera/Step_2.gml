@@ -22,7 +22,7 @@ switch (state)
         y = focus.y div 1;
         gravity_direction = focus.gravity_direction;
         on_ground = focus.on_ground;
-        roll_offset = (focus.y_radius - PLAYER_HEIGHT) * dsin(gravity_direction);
+        roll_offset = (focus.y_radius - PLAYER_HEIGHT) * dcos(gravity_direction);
         
         // Look
         var action = focus.state;
