@@ -1,7 +1,7 @@
-/// @function player_detect_entities()
-/// @description Executes the reactions of all interactable objects.
-/// It also records any solid tilemaps for terrain collision detection.
-function player_detect_entities()
+/// @function player_get_collisions()
+/// @description Executes the reaction of all interactables.
+/// It also registers any tilemaps for terrain collision detection.
+function player_get_collisions()
 {
     // Reset tilemaps
     array_resize(tilemaps, tilemap_count);

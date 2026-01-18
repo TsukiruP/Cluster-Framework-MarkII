@@ -133,7 +133,8 @@ function player_keep_in_bounds()
     var bottom = room_height;
     
     // Check if already inside (early out)
-	if (gravity_direction mod 180 == 0)
+    var vertical = gravity_direction mod 180 == 0;
+	if (vertical)
 	{
 		var x1 = x - x_radius;
 		var y1 = y - y_radius;
@@ -162,7 +163,7 @@ function player_keep_in_bounds()
 	}
 	
 	// Reposition
-	if (gravity_direction mod 180 == 0)
+	if (vertical)
 	{
 		if (x1 < left)
 		{

@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":69.74177,
+  "duration":71.181885,
   "exportDir":"",
   "name":"bgmMadGear",
   "parent":{

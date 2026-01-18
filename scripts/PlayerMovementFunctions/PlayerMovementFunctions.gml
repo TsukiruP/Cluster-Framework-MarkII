@@ -23,8 +23,8 @@ function player_move_on_ground()
         y -= dsin(direction) * step;
         player_keep_in_bounds(); // TODO: add death state and call it if this is false
         
-        // Register nearby instances
-        player_detect_entities();
+        // Detect instances and tilemaps
+        player_get_collisions();
         
         // Handle wall collision
         var tile_data = player_beam_collision(tilemaps);
@@ -76,8 +76,8 @@ function player_move_in_air()
         y += -sine * x_step + cosine * y_step;
         player_keep_in_bounds();
         
-        // Register nearby instances
-        player_detect_entities();
+        // Detect instances and tilemaps
+        player_get_collisions();
         
         // Handle wall collision
         var tile_data = player_beam_collision(tilemaps);
@@ -129,9 +129,9 @@ function player_move_in_air()
                     x_speed = cosine * g_speed;
                     y_speed = -sine * g_speed;
                     
-                    // Detach and exit loop
+                    // Revert mask rotation and exit loop
+					mask_direction = gravity_direction;
                     landed = false;
-                    player_ground(undefined);
                     break;
                 }
             }
