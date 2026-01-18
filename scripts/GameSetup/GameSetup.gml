@@ -131,6 +131,7 @@ enum CPU_STATE
 
 enum CAMERA_STATE
 {
+    NULL = -1,
     FOLLOW,
     RETURN,
     KNUCKLES

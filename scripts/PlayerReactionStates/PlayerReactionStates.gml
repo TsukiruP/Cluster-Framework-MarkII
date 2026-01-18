@@ -10,7 +10,7 @@ function player_is_sprung(phase)
             
             // Animate
             var ani_spring = (abs(x_speed) > 2.5 ? PLAYER_ANIMATION.SPRING_TWIRL : PLAYER_ANIMATION.SPRING);
-            animation_init(ani_spring, 0);
+            animation_play(ani_spring, 0);
             break;
         }
         case PHASE.STEP:

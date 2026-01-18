@@ -26,11 +26,11 @@ function animation_core() constructor
     time = 0;
 }
 
-/// @function animation_init(index, [variant], [alternatives])
-/// @description Initializes the given index within the animation core.
+/// @function animation_play(index, [variant], [alternatives])
+/// @description Sets the given index within the animation core.
 /// @param {Real} index Animation index to set.
 /// @param {Real} [variant] Variant to set (optional, defaults to 0 if the indexes don't match).
-function animation_init(index, variant = -1, alternatives = [])
+function animation_play(index, variant = -1, alternatives = [])
 {
     // Abort if...
     if (variant == -1 and animation_data.index == index) exit; // Indexes match with no given variant

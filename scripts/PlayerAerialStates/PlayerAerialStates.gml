@@ -13,7 +13,7 @@ function player_is_falling(phase)
             player_ground(undefined);
             
             // Animate
-            animation_init(PLAYER_ANIMATION.FALL, 0, [PLAYER_ANIMATION.ROLL]); 
+            animation_play(PLAYER_ANIMATION.FALL, 0, [PLAYER_ANIMATION.ROLL]); 
             break;
         }
         case PHASE.STEP:
@@ -82,7 +82,7 @@ function player_is_jumping(phase)
             player_ground(undefined);
             
             // Animate
-            animation_init(PLAYER_ANIMATION.JUMP, 0);
+            animation_play(PLAYER_ANIMATION.JUMP, 0);
             break;
         }
         case PHASE.STEP:
@@ -185,7 +185,7 @@ function player_is_dead(phase)
             player_ground(undefined);
             
             // Animate
-            animation_init(PLAYER_ANIMATION.DEAD);
+            animation_play(PLAYER_ANIMATION.DEAD);
             break;
         }
         case PHASE.STEP:
@@ -224,7 +224,7 @@ function player_is_aqua_bounding(phase)
             y_speed = 8;
             
             // Animate
-            animation_init(PLAYER_ANIMATION.ROLL);
+            animation_play(PLAYER_ANIMATION.ROLL);
             break;
         }
         case PHASE.STEP:

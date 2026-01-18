@@ -14,22 +14,22 @@ function player_is_trick_preparing(phase)
             {
                 case TRICK.UP:
                 {
-                    animation_init(PLAYER_ANIMATION.TRICK_UP);
+                    animation_play(PLAYER_ANIMATION.TRICK_UP);
                     break;
                 }
                 case TRICK.DOWN:
                 {
-                    animation_init(PLAYER_ANIMATION.TRICK_DOWN);
+                    animation_play(PLAYER_ANIMATION.TRICK_DOWN);
                     break;
                 }
                 case TRICK.FRONT:
                 {
-                    animation_init(PLAYER_ANIMATION.TRICK_FRONT);
+                    animation_play(PLAYER_ANIMATION.TRICK_FRONT);
                     break;
                 }
                 default:
                 {
-                    animation_init(PLAYER_ANIMATION.TRICK_BACK);
+                    animation_play(PLAYER_ANIMATION.TRICK_BACK);
                 }
             }
         break;
@@ -99,7 +99,7 @@ function player_is_tricking(phase)
         case PHASE.STEP:
         {
             if (state_time > 0) state_time--;
-            if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and state_time == 0) animation_init(PLAYER_ANIMATION.FALL);
+            if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and state_time == 0) animation_play(PLAYER_ANIMATION.FALL);
             
             var trick_spiral = (object_index == objKnuckles and trick_index == TRICK.UP);
             var trick_glide = (object_index == objKnuckles and (trick_index == TRICK.FRONT or trick_index == TRICK.BACK) and state_time > 0);
@@ -352,7 +352,7 @@ function player_is_trick_somersaulting(phase)
             if (animation_is_starting(5)) audio_play_single(sfxRoll);
             if (animation_is_finished())
             {
-                animation_init(PLAYER_ANIMATION.ROLL);
+                animation_play(PLAYER_ANIMATION.ROLL);
                 return player_perform(on_ground ? player_is_rolling : player_is_falling, false);
             }
             break;

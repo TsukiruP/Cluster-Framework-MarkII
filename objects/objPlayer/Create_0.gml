@@ -176,7 +176,7 @@ player_try_jump = function()
     if (input_button.jump.pressed)
     {
         player_perform(player_is_jumping);
-        animation_init(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+        animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
         audio_play_single(sfxJump);
         return true;
     }
@@ -231,7 +231,7 @@ player_try_shield = function()
             y_speed = 0;
             player_perform(player_is_jumping, false);
             camera_set_x_lag_time(16);
-            animation_init(PLAYER_ANIMATION.JUMP, 1);
+            animation_play(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
             with (shield_stamp)
             {
@@ -247,7 +247,7 @@ player_try_shield = function()
         {
             y_speed = -5.5;
             player_perform(player_is_jumping, false);
-            animation_init(PLAYER_ANIMATION.JUMP, 1);
+            animation_play(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxThunderJump);
             for (var i = 45; i <= 315; i += 90)
             {
@@ -501,7 +501,7 @@ player_damage = function(inst)
     {
         var hurt_speed = -2;
         var ring_loss = false;
-        animation_init(PLAYER_ANIMATION.HURT);
+        animation_play(PLAYER_ANIMATION.HURT);
         if (inst == noone or abs(x_speed) <= 2.5)
         {
             if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
