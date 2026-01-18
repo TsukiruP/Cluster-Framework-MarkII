@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 game_time = 0;
 game_speed = 1;

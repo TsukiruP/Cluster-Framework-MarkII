@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 // Inherit the parent event
 event_inherited();
 

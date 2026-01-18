@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 state = CAMERA_STATE.FOLLOW;
 on_ground = false;

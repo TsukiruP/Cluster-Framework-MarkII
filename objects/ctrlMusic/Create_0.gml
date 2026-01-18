@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 fade_out = false;
 mute = 0;

@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 ctrlGame.game_paused |= PAUSE_FLAG_MENU;
 audio_pause_all();

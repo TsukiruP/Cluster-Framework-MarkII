@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 gravity_direction = 0;
 hitboxes[0] = new hitbox(c_maroon);

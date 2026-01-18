@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
 status_bar_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar");

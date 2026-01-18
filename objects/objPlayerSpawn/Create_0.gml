@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 if (not (ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS))
 {
     global.characters = [];

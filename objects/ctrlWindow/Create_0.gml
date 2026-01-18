@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 scale = (os_type == os_linux ? 1 : 2);
 event_perform(ev_keypress, vk_f4);

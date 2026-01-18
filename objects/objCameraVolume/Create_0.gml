@@ -1,4 +1,4 @@
-/// @description Setup
+/// @description Initialize
 image_speed = 0;
 image_angle = angle_wrap(image_angle);
 included_volumes = [];
