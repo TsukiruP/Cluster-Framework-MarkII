@@ -33,6 +33,8 @@ goncas23 - Adventure HUD, Adventure 2 HUD, Episode II HUD (w/ marvinvalentin07),
 Vebills - Item Monitor Sprites
 * https://www.deviantart.com/vebills/art/Item-Monitor-Sprites-568848018
 
+IceIsNice - Miles Spin Dash Charge
+
 =============================================================================================================================
 
 Ian Monsen (AKA 1234567890moomoo) - Mad Gear Zone Act 1 background music remix.
