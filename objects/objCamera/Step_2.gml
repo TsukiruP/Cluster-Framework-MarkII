@@ -245,3 +245,47 @@ if (camera_x != 0 or camera_y != 0)
 	camera_y = clamp(view_y + camera_y, bound_top, bound_bottom - height_step);
 	camera_set_view_pos(CAMERA_ID, camera_x, camera_y);
 }
+
+// Refresh view position
+view_x = camera_get_view_x(CAMERA_ID);
+view_y = camera_get_view_y(CAMERA_ID);
+
+// Left target
+if (bound_left < target_left)
+{
+	bound_left = view_x;
+	bound_left = min(bound_left + 2, target_left);
+}
+
+if (bound_left > target_left) bound_left = max(bound_left - 2, target_left);
+if (bound_left < view_x - 16) bound_left = target_left;
+
+// Top target
+if (bound_top < target_top)
+{
+    bound_top = view_y;
+    bound_top = min(bound_top + 2, target_top);
+}
+
+if (bound_top > target_top) bound_top = max(bound_top - 2, target_top);
+if (bound_top < view_y - 16) bound_top = target_top;
+
+// Right target
+if (bound_right > target_right)
+{
+	bound_right = view_x + width_step;
+	bound_right = max(bound_right - 2, target_right);
+}
+
+if (bound_right < target_right) bound_right = min(bound_right + 2, target_right);
+if (bound_right > view_x + width_step + 16) bound_right = target_right;
+
+// Bottom target
+if (bound_bottom > target_bottom)
+{
+	bound_bottom = view_y + height_step;
+	bound_bottom = max(bound_bottom - 2, target_bottom);
+}
+
+if (bound_bottom < target_bottom) bound_bottom = min(bound_bottom + 2, target_bottom);
+if (bound_bottom > view_y + height_step + 16) bound_bottom = target_bottom;

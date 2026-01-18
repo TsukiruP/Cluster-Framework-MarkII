@@ -14,6 +14,12 @@ bound_top = 0;
 bound_right = room_width;
 bound_bottom = room_height;
 
+// Target
+target_left = bound_left;
+target_top = bound_top;
+target_right = bound_right;
+target_bottom = bound_bottom;
+
 // Lag
 x_lag_time = 0;
 y_lag_time = 0;
