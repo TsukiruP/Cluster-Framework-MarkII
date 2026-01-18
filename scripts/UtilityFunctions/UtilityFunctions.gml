@@ -41,30 +41,6 @@ function time_to_frames(minutes, seconds)
     return (minutes * 3600) + (seconds * 60);
 }
 
-/// @function esign(val, def)
-/// @description Check if the given value is 0, returning the given default if applicable. Ported from GM8.2.
-/// @param {Real} val Value to get the sign of.
-/// @param {Real} def Default value to give if the value is 0.
-/// @returns {Real}
-function esign(val, def)
-{
-    if (val == 0) return def;
-    return sign(val);
-}
-
-/// @function clamp_inverse(val, minimum, maximum)
-/// @description Maintains the given value between the given range by overflowing or underflowing, if applicable.
-/// @param {Real} val Value to wrap.
-/// @param {Real} minimum Minimum value.
-/// @param {Real} maximum Maximum value.
-/// @returns {Real}
-function clamp_inverse(val, minimum, maximum)
-{
-    if (val < minimum) return maximum;
-    else if (val > maximum) return minimum;
-    return val;
-}
-
 /// @function modwrap(val, minimum, maximum)
 /// @description Wraps the given value between the given range - maximum exclusive. Ported from GM8.2.
 /// @param {Real} val Value to wrap.
@@ -76,6 +52,42 @@ function modwrap(val, minimum, maximum)
     var diff = val - minimum;
     var range = maximum - minimum;
     return diff - floor(diff / range) * range + minimum;
+}
+
+/// @function esign(val, def)
+/// @description Checks if the given value is 0, returning the given default if applicable. Ported from GM8.2.
+/// @param {Real} val Value to get the sign of.
+/// @param {Real} def Default value to give if the value is 0.
+/// @returns {Real}
+function esign(val, def)
+{
+    if (val == 0) return def;
+    return sign(val);
+}
+
+/// @function approach(a, b, step)
+/// @description Find the value of a as it approaches b with the given step.
+/// @param {Real} a First value.
+/// @param {Real} b Second value.
+/// @param {Real} step Amount to step.
+/// @returns {Real}
+function approach(a, b, step)
+{
+    if (a < b) return min(a + step, b);
+    return max (a - step, b);
+}
+
+/// @function clamp_inverse(val, minimum, maximum)
+/// @description Maintains the given value between the given range by overflowing or underflowing.
+/// @param {Real} val Value to wrap.
+/// @param {Real} minimum Minimum value.
+/// @param {Real} maximum Maximum value.
+/// @returns {Real}
+function clamp_inverse(val, minimum, maximum)
+{
+    if (val < minimum) return maximum;
+    else if (val > maximum) return minimum;
+    return val;
 }
 
 /// @function angle_wrap(ang)

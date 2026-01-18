@@ -32,20 +32,37 @@ switch (state)
             {
                 case player_is_looking:
                 {
-                    if (y_offset > -104) y_offset -= 2;
+                    y_offset = approach(y_offset, -104, 2);
                     break;
                 }
                 case player_is_crouching:
                 {
-                    if (y_offset < 88) y_offset += 2;
+                    y_offset = approach(y_offset, 88, 2);
                     break;
                 }
             }
         }
         else
         {
-            y_offset -= 2 * sign(y_offset);
+            y_offset = approach(y_offset, 0, 2);
         }
+        break;
+    }
+    case CAMERA_STATE.RETURN:
+    {
+        x = approach(x, focus.x, return_speed);
+        y = approach(y, focus.y, return_speed);
+        return_speed += 0.25;
+        
+        if (x == focus.x and y == focus.y)
+        {
+            return_speed = 0;
+            state = CAMERA_STATE.FOLLOW;
+        }
+        break;
+    }
+    case CAMERA_STATE.KNUCKLES:
+    {
         break;
     }
 }

@@ -1,7 +1,6 @@
 /// @description Initialize
 image_speed = 0;
 state = CAMERA_STATE.FOLLOW;
-on_ground = false;
 
 // Focus
 focus = ctrlStage.stage_players[0];
@@ -61,6 +60,8 @@ var oy = clamp(y - CAMERA_HEIGHT / 2, bound_top, bound_bottom - CAMERA_HEIGHT);
 camera_set_view_pos(CAMERA_ID, ox, oy);
 
 // Misc.
+return_speed = 0;
+
 /// @method resize_view()
 /// @description Resizes the camera, accounting for zoom.
 resize_view = function()
