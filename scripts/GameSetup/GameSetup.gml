@@ -129,6 +129,13 @@ enum CPU_STATE
 	SPIN_DASH
 }
 
+enum CAMERA_STATE
+{
+    FOLLOW,
+    RETURN,
+    KNUCKLES
+}
+
 enum ITEM
 {
     LIFE,

@@ -1,25 +1,52 @@
 /// @description Move
+if (ctrlGame.game_paused) exit;
+
 // Calculate zoom
 if (zoom_active)
 {
     zoom_amount = interpolate(zoom_start, zoom_end, zoom_time++ / zoom_duration, EASE_SMOOTHSTEP);
     if (zoom_amount == zoom_end) zoom_active = false;
-    camera_resize();
+    resize_view();
 }
-
-var width_step = CAMERA_WIDTH * zoom_amount;
-var height_step = CAMERA_HEIGHT * zoom_amount;
 
 var view_x = camera_get_view_x(CAMERA_ID);
 var view_y = camera_get_view_y(CAMERA_ID);
+var width_step = CAMERA_WIDTH * zoom_amount;
+var height_step = CAMERA_HEIGHT * zoom_amount;
 
-// Calculate shake
-if (shake_active)
+switch (state)
 {
-    var shake_amount = max((shake_duration - shake_time++) / shake_duration, 0);
-    shake_x_offset = random_range(-shake_magnitude, shake_magnitude) * shake_amount;
-    shake_y_offset = random_range(-shake_magnitude, shake_magnitude) * shake_amount;
-    if (shake_amount <= 0) shake_active = false;
+    case CAMERA_STATE.FOLLOW:
+    {
+        x = follow.x div 1;
+        y = follow.y div 1;
+        gravity_direction = follow.gravity_direction;
+        roll_offset = (follow.y_radius - PLAYER_HEIGHT) * dsin(gravity_direction);
+        
+        // Look
+        var action = follow.state;
+        if ((action == player_is_looking or action == player_is_crouching) and look_time == 0)
+        {
+            switch (action)
+            {
+                case player_is_looking:
+                {
+                    if (y_offset > -104) y_offset -= 2;
+                    break;
+                }
+                case player_is_crouching:
+                {
+                    if (y_offset < 88) y_offset += 2;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            y_offset -= 2 * sign(y_offset);
+        }
+        break;
+    }
 }
 
 // Calculate from view center
@@ -106,8 +133,8 @@ for (var k = 0; k <= strength_count; k++)
 }
 
 // Calculate volumes
-var volume_x_constrain = array_create(array_length(volume_lists), 0);
-var volume_y_constrain = array_create(array_length(volume_lists), 0);
+var volume_lists_x_offset = array_create(array_length(volume_lists), 0);
+var volume_lists_y_offset = array_create(array_length(volume_lists), 0);
 
 for (var i = 0; i < array_length(volume_lists); i++)
 {
@@ -140,15 +167,15 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_width > volume_width)
                 {
                     var volume_center = ((volume_left + volume_right) / 2) - 1;
-                    volume_x_constrain[i] = volume_center - x - h_offset;
+                    volume_lists_x_offset[i] = volume_center - x - h_offset;
                     center_h = true;
                 }
             }
             
             if (not center_h and (volume_left != undefined or volume_right != undefined))
             {
-                if (volume_left != undefined) volume_x_constrain[i] -= min(view_left - volume_left, 0);
-                if (volume_right != undefined) volume_x_constrain[i] -= max(view_right - volume_right, 0);
+                if (volume_left != undefined) volume_lists_x_offset[i] -= min(view_left - volume_left, 0);
+                if (volume_right != undefined) volume_lists_x_offset[i] -= max(view_right - volume_right, 0);
             }
             
             // Vertical constraint
@@ -160,15 +187,15 @@ for (var i = 0; i < array_length(volume_lists); i++)
                 if (view_height > volume_height)
                 {
                     var volume_middle = ((volume_top + volume_bottom) / 2) - 1;
-                    volume_y_constrain[i] = volume_middle - y - v_offset;
+                    volume_lists_y_offset[i] = volume_middle - y - v_offset;
                     center_v = true;
                 }
             }
             
             if (not center_v and (volume_top != undefined or volume_bottom != undefined))
             {
-                if (volume_top != undefined) volume_y_constrain[i] -= min(view_top - volume_top, 0);
-                if (volume_bottom != undefined) volume_y_constrain[i] -= max(view_bottom - volume_bottom, 9);
+                if (volume_top != undefined) volume_lists_y_offset[i] -= min(view_top - volume_top, 0);
+                if (volume_bottom != undefined) volume_lists_y_offset[i] -= max(view_bottom - volume_bottom, 9);
             }
         }
     }
@@ -179,31 +206,37 @@ volume_y_offset = 0;
 
 for (var i = 0; i < array_length(volume_lists_strength); i++)
 {
-    volume_x_offset += volume_x_constrain[i] * volume_lists_strength[i];
-    volume_y_offset += volume_y_constrain[i] * volume_lists_strength[i];
+    volume_x_offset += volume_lists_x_offset[i] * volume_lists_strength[i];
+    volume_y_offset += volume_lists_y_offset[i] * volume_lists_strength[i];
 }
 
-// Apply movement
-camera_x += h_offset + volume_x_offset;
-camera_y += v_offset + volume_y_offset;
-
 // Limit to view border
-if (volume_list == noone)
+if (state == CAMERA_STATE.FOLLOW and volume_list == noone)
 {
     var x_border = 8;
     camera_x = max(abs(camera_x) - x_border, 0) * sign(camera_x);
-    if (not on_ground)
+    
+    on_ground = follow.on_ground;
+    if (on_ground)
     {
-    	var y_border = 32;
-    	camera_y = max(abs(camera_y) - y_border, 0) * sign(camera_y);
+        ground_offset = ground_offset - ground_offset / 8;
+        camera_y = max(abs(camera_y) - ground_offset + roll_offset, 0) * sign(camera_y);
+    }
+    else if (not on_ground)
+    {
+        ground_offset = 32;
+        camera_y = max(abs(camera_y) - ground_offset, 0) * sign(camera_y);
     }
 }
+// Apply offsets
+camera_x += h_offset + volume_x_offset;
+camera_y += v_offset + volume_y_offset;
 
 // Limit movement speed
-var x_speed_cap = 24 * (x_lag_time == 0);
+var x_speed_cap = 16 * (x_lag_time == 0);
 var y_speed_cap = min(6 + abs(y - yprevious), 24) * (y_lag_time == 0);
 if (abs(camera_x) > x_speed_cap) camera_x = x_speed_cap * sign(camera_x);
-if (abs(camera_y > y_speed_cap)) camera_y = y_speed_cap * sign(camera_y);
+if (abs(camera_y) > y_speed_cap) camera_y = y_speed_cap * sign(camera_y);
 
 // Move the view
 if (camera_x != 0 or camera_y != 0)

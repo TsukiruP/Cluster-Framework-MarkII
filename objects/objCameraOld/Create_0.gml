@@ -1,12 +1,6 @@
 /// @description Setup
 image_speed = 0;
-state = CAMERA_STATE.FOLLOW;
-on_ground = false;
-
-// Follow
-follow = ctrlStage.stage_players[0];
-on_ground = false;
-look_time = 0;
+on_ground = true;
 
 // Boundary
 bound_left = 0;
@@ -21,8 +15,6 @@ y_lag_time = 0;
 // Offset
 x_offset = 0;
 y_offset = 0;
-ground_offset = 0;
-roll_offset = 0;
 
 // Zoom
 zoom_active = false;
@@ -53,9 +45,9 @@ volume_lists_strength = [1];
 camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);
 
 // Misc.
-/// @method resize_view()
+/// @method camera_resize()
 /// @description Resizes the camera, accounting for zoom.
-resize_view = function()
+camera_resize = function()
 {
 	var view_width = camera_get_view_width(CAMERA_ID);
     var view_height = camera_get_view_height(CAMERA_ID);
@@ -67,6 +59,39 @@ resize_view = function()
     var x_shift = camera_get_view_x(CAMERA_ID) - (new_width - view_width) / 2;
     var y_shift = camera_get_view_y(CAMERA_ID) - (new_height - view_height) / 2;
     camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
+};
+
+/// @method camera_zoom(zoom, [duration])
+/// @description Zooms the camera over the given duration.
+/// @param {Real} zoom Amount to zoom.
+/// @param {Real} [duration] Duration to zoom (optional, defaults to 0).
+camera_zoom = function(zoom, duration = 0)
+{
+    if (duration == 0)
+    {
+        zoom_amount = zoom;
+        camera_resize();
+    }
+    else
+    {
+        zoom_active = true;
+        zoom_time = 0;
+        zoom_duration = duration;
+        zoom_start = zoom_amount;
+        zoom_end = zoom;
+    }
+};
+
+/// @method camera_shake(magnitude, duration)
+/// @description Shakes the camera over the given duration
+/// @param {Real} magnitude Intensity of the shake.
+/// @param {Real} duration Duration to shake.
+camera_shake = function(magnitude, duration)
+{
+    shake_active = true;
+    shake_magnitude = magnitude;
+    shake_time = 0;
+    shake_duration = duration;
 };
 
 /// @method view_to_room_x(x)

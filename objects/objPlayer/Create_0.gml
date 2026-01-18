@@ -34,8 +34,6 @@ invincibility_time = 0;
 superspeed_time = 0;
 confusion_time = 0;
 
-camera_look_time = 0;
-
 cpu_state_time = 0;
 cpu_respawn_time = 0;
 cpu_gamepad_time = 0;
@@ -232,6 +230,7 @@ player_try_shield = function()
             x_speed = 8 * image_xscale;
             y_speed = 0;
             player_perform(player_is_jumping, false);
+            camera_set_x_lag_time(16);
             animation_init(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
             with (shield_stamp)
