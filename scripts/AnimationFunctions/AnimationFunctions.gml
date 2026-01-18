@@ -57,7 +57,7 @@ function animation_set(ani)
         sprite_index = -1;
         image_index = 0;
     }
-    else if (animation_data.ani != ani or animation_data.force)
+    else if (animation_data.force or animation_data.ani != ani)
     {
         var sprite = ani.sprite;
         var duration = ani.duration;
