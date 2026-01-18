@@ -3,8 +3,8 @@ image_speed = 0;
 state = CAMERA_STATE.FOLLOW;
 on_ground = false;
 
-// Follow
-follow = ctrlStage.stage_players[0];
+// Focus
+focus = ctrlStage.stage_players[0];
 on_ground = false;
 look_time = 0;
 

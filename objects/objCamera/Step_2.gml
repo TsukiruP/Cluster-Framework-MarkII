@@ -18,13 +18,14 @@ switch (state)
 {
     case CAMERA_STATE.FOLLOW:
     {
-        x = follow.x div 1;
-        y = follow.y div 1;
-        gravity_direction = follow.gravity_direction;
-        roll_offset = (follow.y_radius - PLAYER_HEIGHT) * dsin(gravity_direction);
+        x = focus.x div 1;
+        y = focus.y div 1;
+        gravity_direction = focus.gravity_direction;
+        on_ground = focus.on_ground;
+        roll_offset = (focus.y_radius - PLAYER_HEIGHT) * dsin(gravity_direction);
         
         // Look
-        var action = follow.state;
+        var action = focus.state;
         if ((action == player_is_looking or action == player_is_crouching) and look_time == 0)
         {
             switch (action)
@@ -216,7 +217,6 @@ if (state == CAMERA_STATE.FOLLOW and volume_list == noone)
     var x_border = 8;
     camera_x = max(abs(camera_x) - x_border, 0) * sign(camera_x);
     
-    on_ground = follow.on_ground;
     if (on_ground)
     {
         ground_offset = ground_offset - ground_offset / 8;

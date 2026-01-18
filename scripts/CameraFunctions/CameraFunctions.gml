@@ -6,7 +6,7 @@ function camera_set_look_time(time, force = false)
 {
     with (objCamera)
     {
-        if (force or follow == other.id) look_time = time;
+        if (force or focus == other.id) look_time = time;
     }
 }
 
@@ -18,7 +18,7 @@ function camera_set_x_lag_time(time, force = false)
 {
     with (objCamera)
     {
-        if (force or follow == other.id) x_lag_time = time;
+        if (force or focus == other.id) x_lag_time = time;
     }
 }
 
@@ -30,7 +30,7 @@ function camera_set_y_lag_time(time, force = false)
 {
     with (objCamera)
     {
-        if (force or follow == other.id) y_lag_time = time;
+        if (force or focus == other.id) y_lag_time = time;
     }
 }
 
