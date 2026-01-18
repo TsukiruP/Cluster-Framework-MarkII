@@ -187,7 +187,7 @@ player_try_jump = function()
 /// @desctiption Checks if the player performs a Trick Action.
 /// @param [time] Time to check (optional, defaults to state_time).
 /// @returns {Bool}
-player_try_trick = function(time = state_time)
+player_try_trick = function(time = 0)
 {
     if (time == 0 and input_button.tag.pressed)
     {

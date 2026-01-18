@@ -98,7 +98,7 @@ function player_is_tricking(phase)
         }
         case PHASE.STEP:
         {
-            if (state_time != 0) state_time--;
+            if (state_time > 0) state_time--;
             if ((object_index == objSonic or object_index == objAmy) and trick_index == TRICK.FRONT and state_time == 0) animation_init(PLAYER_ANIMATION.FALL);
             
             var trick_spiral = (object_index == objKnuckles and trick_index == TRICK.UP);
