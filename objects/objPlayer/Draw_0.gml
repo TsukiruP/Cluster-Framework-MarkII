@@ -3,7 +3,7 @@ var x_int = x div 1;
 var y_int = y div 1;
 var shield_behind = false;
 
-// Shield
+// Shield (Behind)
 with (shield)
 {
     if ((animation_data.ani == global.ani_shield_flame_v0 and image_index mod 2 != 0) or
@@ -20,8 +20,10 @@ player_draw_before();
 draw_self_floored();
 player_draw_after();
 
-// Stamps
+// Spin Dash Dust
 with (spin_dash_dust) draw_self_floored();
+
+// Shield
 with (shield)
 {
     if (not shield_behind)
