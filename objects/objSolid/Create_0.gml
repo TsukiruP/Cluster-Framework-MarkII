@@ -12,23 +12,23 @@ sink_bottom = 0;
 
 reaction = function(pla)
 {
-    var flags_hurtbox = collision_player(0, pla);
-    if (flags_hurtbox)
+    var hurtbox_flags = collision_player(0, pla);
+    if (hurtbox_flags)
     {
-        var side_direction = collision_to_direction(flags_hurtbox);
-        var side_diff = angle_wrap(side_direction - pla.gravity_direction);
-        var x_dist = hex_to_dec((flags_hurtbox & 0x0FF00) >> 8);
-        var y_dist = hex_to_dec(flags_hurtbox & 0x000FF);
+        var hurtbox_direction = collision_direction(hurtbox_flags);
+        var hurtbox_difference = angle_wrap(hurtbox_direction - pla.gravity_direction);
+        var x_dist = hex_to_dec((hurtbox_flags & 0x0FF00) >> 8);
+        var y_dist = hex_to_dec(hurtbox_flags & 0x000FF);
         pla.x += x_dist;
         pla.y += y_dist;
         
-        switch (side_diff)
+        switch (hurtbox_difference)
         {
             case 90:
             {
                 if (pla.y_speed >= 0)
                 {
-                    sink_direction |= (flags_hurtbox & 0xF0000);
+                    sink_direction |= (hurtbox_flags & 0xF0000);
                     pla.ground_id = id;
                 }
                 break;

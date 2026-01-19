@@ -169,11 +169,11 @@ function collision_player(hb, pla, plahb = -1)
     return result;
 }
 
-/// @function collision_to_direction(flags)
+/// @function collision_direction(flags)
 /// @description Converts the given flags to a direction in degrees.
 /// @param {Real} flags Flags to convert.
 /// @returns {Real}
-function collision_to_direction(flags)
+function collision_direction(flags)
 {
     if (flags & COLL_FLAG_TOP) return 90;
     else if (flags & COLL_FLAG_BOTTOM) return 270;

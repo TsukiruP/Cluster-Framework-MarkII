@@ -15,8 +15,8 @@ reaction = function(pla)
     // Abort if broken or player is a cpu
     if (image_index != 0 or pla.player_index != 0) exit;
     
-    var flags_hurtbox = [collision_player(0, pla, 0), collision_player(0, pla, 1)];
-    if (flags_hurtbox[0] or flags_hurtbox[1])
+    var hurtbox_flags = [collision_player(0, pla, 0), collision_player(0, pla, 1)];
+    if (hurtbox_flags[0] or hurtbox_flags[1])
     {
         if (not pla.on_ground and pla.state != player_is_trick_drill_clawing)
         {
