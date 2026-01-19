@@ -86,7 +86,7 @@ reaction = function(pla)
                     else pla.x = x + (hitboxes[0].top - pla.x_radius) * dsin(gravity_direction);
                     pla.player_damage(id);
                 }
-                else if (gravity_difference == 0 or gravity_difference == 180 and attackbox_flags and hidden_fix)
+                else if ((gravity_difference == 0 or gravity_difference == 180) and attackbox_flags and hidden_fix)
                 {
                     if (gravity_direction mod 180 == 0) pla.y = y + (hitboxes[0].top - pla.y_radius) * dcos(gravity_direction);
                     else pla.x = x + (hitboxes[0].top - pla.y_radius) * dsin(gravity_direction);
