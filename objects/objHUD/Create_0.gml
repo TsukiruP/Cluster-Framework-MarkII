@@ -71,9 +71,9 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     {
         update = function()
         {
-            var shield = ctrlStage.stage_players[0].shield;
+            var shield = ctrlStage.stage_players[0].shield[$ "index"];
             icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
-            active = shield != SHIELD.NONE;
+            active = (shield != SHIELD.NONE);
         };
     }
     

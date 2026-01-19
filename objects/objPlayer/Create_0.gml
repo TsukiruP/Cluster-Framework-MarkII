@@ -9,6 +9,7 @@ state = player_is_ready;
 state_changed = false;
 
 spin_dash_charge = 0;
+spin_dash_dust = new stamp();
 
 jump_cap = true;
 jump_alternate = 0;
@@ -21,7 +22,8 @@ for (var i = 0; i < array_length(trick_speed); i++)
 }
 
 // Shield
-shield = SHIELD.NONE;
+shield = new stamp();
+shield.index = SHIELD.NONE;
 shield_action = true;
 
 // Timers
@@ -121,10 +123,6 @@ input_button =
 animation_data = new animation_core();
 //animation_history = array_create(16);
 
-// Stamps
-spin_dash_stamp = new stamp();
-shield_stamp = new stamp();
-
 // Camera
 camera = noone;
 
@@ -213,13 +211,13 @@ player_try_trick = function(time = 0)
 player_try_shield = function()
 {
     shield_action = false;
-    switch (shield)
+    switch (shield.index)
     {
         case SHIELD.AQUA:
         {
             player_perform(player_is_aqua_bounding);
             jump_alternate = input_button.aux.pressed;
-            with (shield_stamp)
+            with (shield)
             {
                 if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;
             }
@@ -233,7 +231,7 @@ player_try_shield = function()
             camera_set_x_lag_time(16);
             animation_play(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
-            with (shield_stamp)
+            with (shield)
             {
                 if (animation_data.index == SHIELD.FLAME)
                 {
@@ -491,7 +489,7 @@ player_damage = function(inst)
     // Abort if the player is already dead or hurt
     if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
     
-    if (inst == id or (player_index == 0 and shield == SHIELD.NONE and global.ring_count == 0))
+    if (inst == id or (player_index == 0 and shield.index == SHIELD.NONE and global.ring_count == 0))
     {
         y_speed = -7;
         audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
@@ -516,9 +514,9 @@ player_damage = function(inst)
         y_speed = -4;
         if (player_index == 0)
         {
-            if (shield != SHIELD.NONE)
+            if (shield.index != SHIELD.NONE)
             {
-                shield = SHIELD.NONE;
+                shield.index = SHIELD.NONE;
             }
             else
             {
@@ -560,31 +558,31 @@ player_obtain_item = function(item)
         }
         case ITEM.BASIC:
         {
-            shield = SHIELD.BASIC;
+            shield.index = SHIELD.BASIC;
             audio_play_single(sfxItemBasic);
             break;
         }
         case ITEM.MAGNETIC:
         {
-            shield = SHIELD.MAGNETIC;
+            shield.index = SHIELD.MAGNETIC;
             audio_play_single(sfxItemBasic);
             break;
         }
         case ITEM.AQUA:
         {
-            shield = SHIELD.AQUA;
+            shield.index = SHIELD.AQUA;
             audio_play_single(sfxItemAqua);
             break;
         }
         case ITEM.FLAME:
         {
-            shield = SHIELD.FLAME;
+            shield.index = SHIELD.FLAME;
             audio_play_single(sfxItemFlame);
             break;
         }
         case ITEM.THUNDER:
         {
-            shield = SHIELD.THUNDER;
+            shield.index = SHIELD.THUNDER;
             audio_play_single(sfxItemThunder);
             break;
         }

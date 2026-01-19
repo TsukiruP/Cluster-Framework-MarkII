@@ -148,8 +148,8 @@ if (state_changed) state_changed = false;
 player_animate();
 
 
-// Spin Dash
-with (spin_dash_stamp)
+// Spin Dash Dust
+with (spin_dash_dust)
 {
     var action = other.state;
     if (action == player_is_spin_dashing)
@@ -173,11 +173,10 @@ with (spin_dash_stamp)
 }
 
 // Shield
-with (shield_stamp)
+with (shield)
 {
-    var shield = other.shield;
     var invincible = (other.invincibility_time > 0);
-    if (shield != SHIELD.NONE or invincible)
+    if (index != SHIELD.NONE or invincible)
     {
         var x_int = other.x div 1;
         var y_int = other.y div 1;
@@ -186,9 +185,9 @@ with (shield_stamp)
         x = x_int;
         y = y_int;
         
-        var shield_advance = (shield == SHIELD.BASIC or shield == SHIELD.MAGNETIC or invincible);
+        var shield_advance = (index == SHIELD.BASIC or index == SHIELD.MAGNETIC or invincible);
         var flicker_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_FLICKER, "flicker");
-        animation_play(invincible ? -1 : shield);
+        animation_play(invincible ? -1 : index);
         switch (animation_data.index)
         {
             case -1:

@@ -271,7 +271,7 @@ function player_is_aqua_bounding(phase)
         }
         case PHASE.EXIT:
         {
-            with (shield_stamp)
+            with (shield)
             {
                 if (animation_data.index == SHIELD.AQUA) animation_data.variant = 3;
             }

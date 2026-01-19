@@ -13,7 +13,7 @@ trick_speed =
 ];
 
 
-ears_stamp = new stamp();
+ears = new stamp();
 
 player_animate = function()
 {
@@ -288,6 +288,6 @@ player_animate = function()
 
 player_draw_before = function()
 {
-    ears_stamp.image_alpha = image_alpha;
-    with (ears_stamp) draw_self_floored();
+    ears.image_alpha = image_alpha;
+    with (ears) draw_self_floored();
 };

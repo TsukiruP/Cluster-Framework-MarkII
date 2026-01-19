@@ -4,7 +4,7 @@ var y_int = y div 1;
 var shield_behind = false;
 
 // Shield
-with (shield_stamp)
+with (shield)
 {
     if ((animation_data.ani == global.ani_shield_flame_v0 and image_index mod 2 != 0) or
         animation_data.ani == global.ani_shield_thunder_v1)
@@ -21,8 +21,8 @@ draw_self_floored();
 player_draw_after();
 
 // Stamps
-with (spin_dash_stamp) draw_self_floored();
-with (shield_stamp)
+with (spin_dash_dust) draw_self_floored();
+with (shield)
 {
     if (not shield_behind)
     {
