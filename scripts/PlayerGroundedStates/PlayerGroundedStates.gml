@@ -115,9 +115,6 @@ function player_is_running(phase)
         }
         case PHASE.STEP:
         {
-            var facing = sign(x_speed);
-            var velocity = abs(x_speed);
-            
             // Jump
             if (player_try_jump()) exit;
             
@@ -130,26 +127,29 @@ function player_is_running(phase)
                 if (input_axis_x != 0)
                 {
                     // If moving in the opposite direction...
-                    if (x_speed != 0 and facing != input_axis_x)
+                    if (x_speed != 0 and sign(x_speed) != input_axis_x)
                     {
                         // Decelerate and reverse direction
                         can_brake = true;
                         x_speed += deceleration * input_axis_x;
-                        if (facing == input_axis_x)
+                        if (sign(x_speed) == input_axis_x)
                         {
-                            // Turn
-                            if (image_xscale != input_axis_x) can_turn = true;
+                            if (sign(x_speed) != image_xscale) can_turn = true;
                             x_speed = deceleration * input_axis_x;
                         }
+                    }
+                    else if (x_speed == 0 and image_xscale != input_axis_x)
+                    {
+                        can_turn = true;
                     }
                     else
                     {
                         // Accelerate
                         can_brake = false;
                         image_xscale = input_axis_x;
-                        if (velocity < speed_cap)
+                        if (abs(x_speed) < speed_cap)
                         {
-                            x_speed = min(velocity + acceleration, speed_cap) * input_axis_x;
+                            x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_axis_x;
                         }
                     }
                 }
@@ -189,6 +189,7 @@ function player_is_running(phase)
             player_resist_slope(0.125);
             
             // Roll
+            var velocity = abs(x_speed);
             if (input_axis_y == 1 and velocity >= 1.03125 and input_axis_x == 0)
             {
                 audio_play_single(sfxRoll);
