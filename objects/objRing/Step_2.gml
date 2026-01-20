@@ -3,21 +3,22 @@ if (ctrlGame.game_paused) exit;
 
 with (objPlayer)
 {
-	if (other.target == noone and (shield.index == SHIELD.MAGNETIC or shield.index == SHIELD.THUNDER))
-	{
-		if (abs(point_distance(other.x, other.y, x, y)) <= other.magnet_range)
-		{
-			other.target = id;
-			other.magnetized = true;
-			other.lost = false;
-		}
-	}
-	else if (other.target == id and not (shield.index == SHIELD.MAGNETIC or shield.index == SHIELD.THUNDER))
-	{
-		other.target = noone;
+    if (other.target == noone and (shield.index == SHIELD.MAGNETIC or shield.index == SHIELD.THUNDER))
+    {
+        if (abs(point_distance(other.x, other.y, x, y)) <= other.magnet_range)
+        {
+            other.target = id;
+            other.magnetized = true;
+            other.lost = false;
+        }
+    }
+    else if (other.target == id and not (shield.index == SHIELD.MAGNETIC or shield.index == SHIELD.THUNDER))
+    {
+        other.target = noone;
         other.magnetized = false;
-		other.lost = true;
-	}
+        other.lost = true;
+        other.lifespan = 256;
+    }
 }
 
 if (magnetized)

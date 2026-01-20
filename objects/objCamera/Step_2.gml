@@ -26,7 +26,12 @@ switch (state)
         
         // Look
         var action = focus.state;
-        if ((action == player_is_looking or action == player_is_crouching) and look_time == 0)
+        if (look_time > 0)
+        {
+            y_offset = approach(y_offset, 0, 2);
+            if (action == player_is_looking or action == player_is_crouching) look_time--;
+        }
+        else
         {
             switch (action)
             {
@@ -41,10 +46,6 @@ switch (state)
                     break;
                 }
             }
-        }
-        else
-        {
-            y_offset = approach(y_offset, 0, 2);
         }
         break;
     }

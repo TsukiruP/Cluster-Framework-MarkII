@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxLoseRings",
+  "%Name":"sfxDropRings",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":1.501814,
   "exportDir":"",
-  "name":"sfxLoseRings",
+  "name":"sfxDropRings",
   "parent":{
     "name":"Player",
     "path":"folders/Sounds/SFX/Player.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxLoseRings.wav",
+  "soundFile":"sfxDropRings.wav",
   "volume":1.0,
 }

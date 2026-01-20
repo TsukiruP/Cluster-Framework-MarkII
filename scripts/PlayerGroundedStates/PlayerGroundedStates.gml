@@ -293,7 +293,7 @@ function player_is_looking(phase)
         }
         case PHASE.EXIT:
         {
-            camera_set_look_time(120);
+            camera_set_look_time(LOOK_DURATION);
             break;
         }
     }
@@ -355,7 +355,7 @@ function player_is_crouching(phase)
         }
         case PHASE.EXIT:
         {
-            camera_set_look_time(120);
+            camera_set_look_time(LOOK_DURATION);
             break;
         }
     }
