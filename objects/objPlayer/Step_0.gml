@@ -17,68 +17,73 @@ if (player_index == 0 or cpu_gamepad_time > 0)
     });
     
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
-    if (input_button.select.pressed) gravity_direction = angle_wrap(gravity_direction + 90);
+    if (input_button.select.pressed) objPlayer.gravity_direction = angle_wrap(gravity_direction + 90);
 }
 
 // CPU
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
-	player_reset_input();
-	var leader = ctrlStage.stage_players[0];
-	if (instance_exists(leader))
-	{
-		switch (cpu_state)
-		{
-			case CPU_STATE.CROUCH:
-			{
+    player_reset_input();
+    var leader = ctrlStage.stage_players[0];
+    if (instance_exists(leader))
+    {
+        var sine = dsin(gravity_direction);
+        var cosine = dcos(gravity_direction);
+        var x_dist = leader.x - x;
+        var y_dist = leader.y - y;
+        
+        switch (cpu_state)
+        {
+            case CPU_STATE.CROUCH:
+            {
                 if (cpu_state_time == 0)
                 {
-                	cpu_state = CPU_STATE.FOLLOW;
-					cpu_state_time = 0;
+                    cpu_state = CPU_STATE.FOLLOW;
+                    cpu_state_time = 0;
                 }
                 else
                 {
-			        if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
-			        {
-			        	x_speed = 0;
-			        	input_axis_y = 1;
-			        	image_xscale = esign(leader.x - x, leader.image_xscale);
-			        	if (state == player_is_crouching)
-			        	{
-			            	cpu_state = CPU_STATE.SPIN_DASH;
-							cpu_state_time = 64;
-			        	}
-			        }
-			        cpu_state_time--;
+                    if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
+                    {
+                        x_speed = 0;
+                        input_axis_y = 1;
+                        image_xscale = esign(sine == 0 ? cosine * x_dist : -sine * y_dist, leader.image_xscale);
+                        if (state == player_is_crouching)
+                        {
+                            cpu_state = CPU_STATE.SPIN_DASH;
+                            cpu_state_time = 64;
+                        }
+                    }
+                    cpu_state_time--;
                 }
-				break;
-			}
-			case CPU_STATE.SPIN_DASH:
-			{
-				if (cpu_state_time == 0)
-				{
-					cpu_state = CPU_STATE.FOLLOW;
-					cpu_state_time = 0;
-				}
-				else
-				{
-					input_axis_y = 1;
-					input_button.jump.pressed = (cpu_state_time mod 16 == 0);
-					cpu_state_time--;
-				}
-				break;
-			}
-			default:
-			{
-				// Panic
-				if (abs(x_speed) < 0.5 and control_lock_time > 0)
-				{
-					cpu_state = CPU_STATE.CROUCH;
-					cpu_state_time = 128;
-					break;
-				}
-				
-                var leader_extra_distance = 32 * (abs(leader.x_speed) < 4);
+                break;
+            }
+            case CPU_STATE.SPIN_DASH:
+            {
+                if (cpu_state_time == 0)
+                {
+                    cpu_state = CPU_STATE.FOLLOW;
+                    cpu_state_time = 0;
+                }
+                else
+                {
+                    input_axis_y = 1;
+                    input_button.jump.pressed = (cpu_state_time mod 16 == 0);
+                    cpu_state_time--;
+                }
+                break;
+            }
+            default:
+            {
+                // Panic
+                if (abs(x_speed) < 0.5 and control_lock_time > 0)
+                {
+                    cpu_state = CPU_STATE.CROUCH;
+                    cpu_state_time = 128;
+                    break;
+                }
+                
+                var leader_extra_dist = 32 * (abs(leader.x_speed) < 4);
                 input_axis_x = leader.cpu_axis_x[0];
                 input_axis_y = leader.cpu_axis_y[0];
                 input_button.jump.check = leader.cpu_input_jump[0];
@@ -88,28 +93,32 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 
                 // Move
                 // TODO: The checks for xscale should also check if the player is pushing
-                if (x > leader.x + 16 + leader_extra_distance)
+                var leader_x_dist = (sine == 0 ? cosine * x_dist : -sine * y_dist );
+                if (leader_x_dist + 16 + leader_extra_dist < 0)
                 {
                     input_axis_x = -1;
-                    if (image_xscale == 1 and x_speed != 0) x++;
+                    if (sine == 0) x -= sign(cosine);
+                    else y -= -sine;
                 }
-                if (x < leader.x - 16 - leader_extra_distance)
+                if (leader_x_dist - 16 - leader_extra_dist > 0)
                 {
                     input_axis_x = 1;
-                    if (image_xscale == -1 and x_speed != 0) x--;
+                    if (sine == 0) x += sign(cosine);
+                    else y += -sine;
                 }
                 
                 // Jump
+                var jump_dist = (sine == 0 ? cosine * y_dist : sine * x_dist);
                 var jump_auto = 0;
                 // TODO: Check for pushing first
-                if (y - leader.y < 32)
+                if (jump_dist + 32 > 0)
                 {
                     jump_auto = 2;
                     cpu_state_time = 64;
                 }
                 else
                 {
-                	if (cpu_state_time > 0) cpu_state_time--;
+                    if (cpu_state_time > 0) cpu_state_time--;
                     jump_auto = (cpu_state_time > 0 ? 1 : 0);
                 }
                 
@@ -134,43 +143,18 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                         }
                     }
                 }
-			}
-		}
+            }
+        }
         
         // Swap to player
         if (InputCheckMany(-1, player_index)) cpu_gamepad_time = CPU_GAMEPAD_DURATION;
-	}
+    }
 }
 
 // State
 state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_animate();
-
-
-// Spin Dash Dust
-with (spin_dash_dust)
-{
-    var action = other.state;
-    if (action == player_is_spin_dashing)
-    {
-        var x_int = other.x div 1;
-        var y_int = other.y div 1;
-        var sine = dsin(other.gravity_direction);
-        var cosine = dcos(other.gravity_direction);
-        var charge = floor(other.spin_dash_charge);
-        x = x_int + sine * other.y_radius;
-        y = y_int + cosine * other.y_radius;
-        image_xscale = other.image_xscale;
-        image_angle = other.mask_direction;
-        animation_data.variant = (charge > 2);
-        animation_set(global.ani_spin_dash_dust);
-    }
-    else if (not is_undefined(animation_data.ani))
-    {
-        animation_set(undefined);
-    }
-}
 
 // Shield
 with (shield)
@@ -180,8 +164,6 @@ with (shield)
     {
         var x_int = other.x div 1;
         var y_int = other.y div 1;
-        var sine = dsin(other.gravity_direction);
-        var cosine = dcos(other.gravity_direction);
         x = x_int;
         y = y_int;
         
@@ -279,6 +261,30 @@ with (shield)
         }
         image_angle = other.gravity_direction;
         image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.6 : 1);
+    }
+    else if (not is_undefined(animation_data.ani))
+    {
+        animation_set(undefined);
+    }
+}
+
+// Spin Dash Dust
+with (spin_dash_dust)
+{
+    var action = other.state;
+    if (action == player_is_spin_dashing)
+    {
+        var x_int = other.x div 1;
+        var y_int = other.y div 1;
+        var sine = dsin(other.gravity_direction);
+        var cosine = dcos(other.gravity_direction);
+        var charge = floor(other.spin_dash_charge);
+        x = x_int + sine * other.y_radius;
+        y = y_int + cosine * other.y_radius;
+        image_xscale = other.image_xscale;
+        image_angle = other.mask_direction;
+        animation_data.variant = (charge > 2);
+        animation_set(global.ani_spin_dash_dust);
     }
     else if (not is_undefined(animation_data.ani))
     {
