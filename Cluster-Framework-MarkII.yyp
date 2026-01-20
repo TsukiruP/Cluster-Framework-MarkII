@@ -541,6 +541,7 @@
     {"id":{"name":"sfxAquaBound","path":"sounds/sfxAquaBound/sfxAquaBound.yy",},},
     {"id":{"name":"sfxBrake","path":"sounds/sfxBrake/sfxBrake.yy",},},
     {"id":{"name":"sfxDestroy","path":"sounds/sfxDestroy/sfxDestroy.yy",},},
+    {"id":{"name":"sfxDestroyBalloon","path":"sounds/sfxDestroyBalloon/sfxDestroyBalloon.yy",},},
     {"id":{"name":"sfxDropRings","path":"sounds/sfxDropRings/sfxDropRings.yy",},},
     {"id":{"name":"sfxFlameDash","path":"sounds/sfxFlameDash/sfxFlameDash.yy",},},
     {"id":{"name":"sfxHurt","path":"sounds/sfxHurt/sfxHurt.yy",},},
