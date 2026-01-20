@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"db_nullify",
+  "%Name":"db_debug_save",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"db_nullify",
+  "name":"db_debug_save",
   "parent":{
-    "name":"Access",
-    "path":"folders/Libraries/db/Access.yy",
+    "name":"Export & Import",
+    "path":"folders/Libraries/db/Export & Import.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"db_load",
+  "%Name":"__db_trace",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"db_load",
+  "name":"__db_trace",
   "parent":{
-    "name":"Export & Import",
-    "path":"folders/Libraries/db/Export & Import.yy",
+    "name":"(System)",
+    "path":"folders/Libraries/db/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

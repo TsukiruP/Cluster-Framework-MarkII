@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Writes a value into a database, overwriting a previous value if one exists. Values can be atomic types
+/// Writes a value into a database, overwriting a previous value if one exists. Values can be basic types
 /// (string, number, `undefined`, booleans) or a struct or array.
 /// 
 /// Interally, db databases are stored as nested structs and arrays ("JSON"). Keys are used to navigate these
@@ -47,16 +47,21 @@
 
 function db_write(_database, _set_value)
 {
-    if (argument_count < 2) __db_error("Incorrect number of arguments (got ", argument_count, ", was expecting at least 3)");
-    
-    if (argument_count == 2)
-    {
-        db_set_raw_data(_database, _set_value, true);
-        return;
-    }
+    if (argument_count < 2) __db_error("Incorrect number of parameters (got ", argument_count, ", was expecting 2 or more)");
     
     with(_database)
     {
+        if (argument_count == 2)
+        {
+            if (__data != _set_value)
+            {
+                __data = _set_value;
+                __changed = true;
+            }
+            
+            return;
+        }
+        
         var _node = __data;
         if (_node == undefined)
         {
@@ -86,7 +91,7 @@ function db_write(_database, _set_value)
             
             if (is_string(_key))
             {
-                if (!is_struct(_node)) __db_error("Key provided is a string (", _key, ") but current data structure is not a struct");
+                if (not is_struct(_node)) __db_error("Key provided is a string (", _key, ") but current data structure is not a struct");
                 
                 if (variable_struct_exists(_node, _key))
                 {
@@ -134,7 +139,7 @@ function db_write(_database, _set_value)
             }
             else if (is_numeric(_key))
             {
-                if (!is_array(_node)) __db_error("Key provided is a number (", _key, ") but current data structure is not an array");
+                if (not is_array(_node)) __db_error("Key provided is a number (", _key, ") but current data structure is not an array");
                 
                 if (_key < 0) __db_error("Array index is less than 0 (", _key, ")");
                 

@@ -1,5 +1,15 @@
 // Feather disable all
 
+/// Merges a struct/json into a database rather than strictly overwriting the existing value. The
+/// patch operation is recursive and you can merge complex trees of data into a database.
+/// 
+/// When patching arrays, you may want to skip certain indexes. To skip an index, set the value at
+/// that index to `pointer_null` in the incoming patch data. For example:
+/// 
+///   database = db_create([ 0, 1, 2 ]);
+///   db_merge(database, [ "a", pointer_null, "c" ]);
+///   db_get_raw_data(database) --> ["a", 1, "c"];
+/// 
 /// @param database
 /// @param structOrArray
 /// @param [key]
@@ -7,7 +17,13 @@
 
 function db_patch(_database, _patch_value)
 {
-    if (argument_count < 2) __db_error("Incorrect number of arguments (got ", argument_count, ", was expecting at least 3)");
+    if (argument_count < 2) __db_error("Incorrect number of parameters (got ", argument_count, ", was expecting 3 or more)");
+    
+    //Convert an incoming database into raw data for merging
+    if (is_db(_patch_value))
+    {
+        _patch_value = db_get_raw_data(_patch_value);
+    }
     
     //Use the simplier `db_write()` function if we're not patching complex data
     if ((not is_struct(_patch_value)) && (not is_array(_patch_value)))
@@ -76,7 +92,7 @@ function db_patch(_database, _patch_value)
             
             if (is_string(_key))
             {
-                if (!is_struct(_node)) __db_error("Key provided is a string (", _key, ") but current data structure is not a struct");
+                if (not is_struct(_node)) __db_error("Key provided is a string (", _key, ") but current data structure is not a struct");
                 
                 if (variable_struct_exists(_node, _key))
                 {
@@ -124,7 +140,7 @@ function db_patch(_database, _patch_value)
             }
             else if (is_numeric(_key))
             {
-                if (!is_array(_node)) __db_error("Key provided is a number (", _key, ") but current data structure is not an array");
+                if (not is_array(_node)) __db_error("Key provided is a number (", _key, ") but current data structure is not an array");
                 
                 if (_key < 0) __db_error("Array index is less than 0 (", _key, ")");
                 
@@ -214,7 +230,7 @@ function db_patch(_database, _patch_value)
             repeat(array_length(_patch_value))
             {
                 var _value = _patch_value[_i];
-                if (_value != pointer_null)
+                if ((not is_ptr(_value)) && (_value != pointer_null))
                 {
                     _node[_i] = _value;
                 }

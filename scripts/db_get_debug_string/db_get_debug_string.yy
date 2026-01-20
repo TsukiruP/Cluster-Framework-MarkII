@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__db_deep_copy",
+  "%Name":"db_get_debug_string",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__db_deep_copy",
+  "name":"db_get_debug_string",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Libraries/db/(System).yy",
+    "name":"db",
+    "path":"folders/Libraries/db.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
