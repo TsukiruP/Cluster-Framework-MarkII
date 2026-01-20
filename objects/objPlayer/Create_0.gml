@@ -432,9 +432,9 @@ player_gain_rings = function(num)
     }
 };
 
-/// @method player_lose_rings()
-/// @description Creates up to 32 lost rings in circles of 16 at the player's position.
-player_lose_rings = function()
+/// @method player_drop_rings()
+/// @description Spawns up to 32 dropped rings in circles of 16 at the player's position, and resets their ring count.
+player_drop_rings = function()
 {
     var total = min(global.ring_count, 32);
     var len = 4;
@@ -521,7 +521,7 @@ player_damage = function(inst)
             else
             {
                 ring_loss = true;
-                player_lose_rings();
+                player_drop_rings();
             }
         }
         if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
