@@ -39,6 +39,7 @@
 | Rail Spark | 1329-0 |
 | Tag Action | 1340-0, 1340-1 |
 | Heart | 1317-0 |
+| Miasma | 1507-0 |
 
 # Stage
 | Animation | Source | Notes |
