@@ -140,6 +140,7 @@ function player_is_running(phase)
                     }
                     else if (x_speed == 0 and image_xscale != input_axis_x)
                     {
+                        // Turn
                         can_turn = true;
                     }
                     else
