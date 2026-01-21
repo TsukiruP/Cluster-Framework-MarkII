@@ -38,8 +38,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Display",
-    "path":"folders/Sprites/Display.yy",
+    "name":"HUD",
+    "path":"folders/Sprites/Display/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

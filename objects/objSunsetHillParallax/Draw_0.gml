@@ -10,7 +10,7 @@ draw_sprite_tiled_area(sprSeasideHillBackgroundSky, 0, (time >> 4), sky_y, cam_x
 var sea_y1 = cam_y + sky_height;
 var sea_x2 = cam_x + CAMERA_WIDTH;
 var sea_y2 = cam_y + CAMERA_HEIGHT;
-draw_rectangle_colour(cam_x, sea_y1, sea_x2, sea_y2, sea_color, sea_color, sea_color, sea_color, false);
+draw_rectangle_color(cam_x, sea_y1, sea_x2, sea_y2, sea_color, sea_color, sea_color, sea_color, false);
 for (var i = 0; i < sea_height; i++)
 {
     draw_sprite_tiled_area(sprSeasideHillBackgroundSea, 0, ((i + 2) * time div 256) + cam_x div 512, i, cam_x, cam_y + i + sky_height, CAMERA_WIDTH, 1);

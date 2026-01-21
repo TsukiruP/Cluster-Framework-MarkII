@@ -6,7 +6,7 @@ sky_y = 160;
 sky_height = sprite_get_height(sprSeasideHillBackgroundSky) - sky_y;
 
 // Sea
-sea_color = make_colour_rgb(63, 138, 223);
+sea_color = make_color_rgb(63, 138, 223);
 sea_height = sprite_get_height(sprSeasideHillBackgroundSea);
 
 // Rocks

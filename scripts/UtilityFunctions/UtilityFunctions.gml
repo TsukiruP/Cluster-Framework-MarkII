@@ -115,6 +115,28 @@ function rotate_towards(dest, src, amt = 2.8125)
     return src;
 }
 
+/// @function pivot_pos_x(px, py, dir)
+/// @description x-component of two-dimensional lengthdir of a point.
+/// @param {Real} px x-coordinate of the point.
+/// @param {Real} py y-coordinate of the point.
+/// @param {Real} dir Direction of the point.
+/// @returns {Real}
+function pivot_pos_x(px, py, dir)
+{
+    return (dcos(dir) * px) + (dcos(dir - 90) * py);
+}
+
+/// @function pivot_pos_y(px, py, dir)
+/// @description y-component of two-dimensional lengthdir of a point.
+/// @param {Real} px x-coordinate of the point.
+/// @param {Real} py y-coordinate of the point.
+/// @param {Real} dir Direction of the point.
+/// @returns {Real}
+function pivot_pos_y(px, py, dir)
+{
+    return (dsin(dir) * -px) + (dsin(dir - 90) * -py);
+}
+
 /// @function instance_in_view([obj], [padding])
 /// @description Checks if the given instance is visible within the game view.
 /// @param {Asset.GMObject|Id.Instance} [obj] Object or instance to check (optional, default is the calling instance).
@@ -236,8 +258,137 @@ function draw_sprite_tiled_area(sprite, subimg, xorig, yorig, ox, oy, w, h, hsep
     }
 }
 
+/// @function draw_sprite_tiled_extra(sprite, subimg, x, y, [hrep], [vrep], [xscale], [yscale], [rot], [color], [alpha])
+/// @description Efficiently tile the given sprite. Ported from GM8.2.
+/// @param {Asset.GMSprite} sprite Sprite to draw.
+/// @param {Real} subimg Sub-image (frame) to draw.
+/// @param {Real} x x-coordinate of where to draw the sprite.
+/// @param {Real} y y-coordinate of where to draw the sprite.
+/// @param {Real} [hrep] Number of horizontal repetition, use 0 for infinite (optional, defaults to 0).
+/// @param {Real} [vrep] Number of vertical repetition, use 0 for infinite (optional, defaults to 0).
+/// @param {Real} [xscale] Horizontal scaling of the sprite, as a multiplier (optional, defaults to 1).
+/// @param {Real} [yscale] Vertical scaling of the sprite, as a multiplier (optional, defaults to 1).
+/// @param {Real} [rot] Rotation of the sprite (optional, defaults to 0).
+/// @param {Real} [color] Color with which to blend the sprite (optional, defaults to c_white).
+/// @param {Real} [alpha] Alpha of the sprite (optional, defaults to 1).
+function draw_sprite_tiled_extra(sprite, subimg, ox, oy, hrep = 0, vrep = 0, xscale = 1, yscale = 1, rot = 0, color = c_white, alpha = 1)
+{
+    var texture = sprite_get_texture(sprite, subimg);
+    var texture_width = sprite_get_width(sprite) * xscale;
+    var texture_height = sprite_get_height(sprite) * yscale;
+    
+    // Abort if width or height is 0
+    if (texture_width == 0 or texture_height == 0) exit;
+    
+    gpu_set_texrepeat(true);
+    draw_primitive_begin_texture(pr_trianglestrip, texture);
+    
+    if (hrep > 0 and vrep > 0)
+    {
+        // Abort if xscale or yscale is 0
+        if (xscale == 0 or yscale == 0) exit;
+        
+        var u = ox;
+        var v = oy;
+        draw_vertex_texture_color(u, v, 0, 0, color, alpha);
+        
+        u = ox + dcos(rot) * texture_width * hrep;
+        v = oy - dsin(rot) * texture_width * hrep;
+        draw_vertex_texture_color(u, v, hrep, 0, color, alpha);
+        
+        u = ox + dcos(rot - 90) * texture_height * vrep;
+        v = oy - dsin(rot - 90) * texture_height * vrep;
+        draw_vertex_texture_color(u, v, 0, vrep, color, alpha);
+        
+        u = ox + pivot_pos_x(texture_width * hrep, texture_height * vrep, dir);
+        v = oy + pivot_pos_y(texture_width * hrep, texture_height * vrep, dir);
+        draw_vertex_texture_color(u, v, hrep, vrep, color, alpha);
+    }
+    else if (hrep > 0 or vrep > 0)
+    {
+        // Abort if xscale or yscale is 0
+        if (xscale == 0 or yscale == 0) exit;
+        
+        var rot_add = -rot;
+        var length = texture_height * vrep;
+        
+        // Vertical infinity
+        if (hrep > 0)
+        {
+            length = texture_width * hrep;
+            rot +=  90;
+        }
+        
+        if (rot < 45 or rot > 315 or (rot > 135 and rot < 225))
+        {
+            // Horizontal tiling
+            var u = 0;
+            repeat(2)
+            {
+                var v = oy + (ox - u) * dtan(rot);
+                repeat(2)
+                {
+                    draw_vertex_texture_color(u, v, pivot_pos_x(u - ox, v - oy, rot_add) / texture_width, pivot_pos_y(u - ox, v - oy, rot_add) / texture_height, color, alpha);
+                    v += length * (1 / cos(rot / 180 * pi));
+                }
+                u = room_width;
+            }
+        }
+        else
+        {
+            // Vertical tiling
+            var v = 0;
+            repeat(2)
+            {
+                var u = ox + (oy - v) * dtan(90 - rot);
+                repeat(2)
+                {
+                    draw_vertex_texture_color(u, v, pivot_pos_x(u - ox, v - oy, rot_add) / texture_width, pivot_pos_y(u - ox, v - oy, rot_add) / texture_height, color, alpha);
+                    u += length * (1 / cos((90 - rot) / 180 * pi));
+                }
+                v = room_height;
+            }
+        }
+    }
+    else
+    {
+        if (xscale == 0 or yscale == 0)
+        {
+            // Infinite scale mode
+            var u = 0;
+            repeat(2)
+            {
+                var v = 0;
+                repeat(2)
+                {
+                    draw_vertex_texture_color(u, v, 0.5, 0.5, color, alpha);
+                    v = room_height;
+                }
+                u = room_width;
+            }
+        }
+        else
+        {
+            // Cover room mode
+            var u = 0;
+            repeat(2)
+            {
+                var v = 0;
+                repeat(2)
+                {
+                    draw_vertex_texture_color(u, v, pivot_pos_x(u - ox, v - oy, rot) / texture_width, pivot_pos_y(u - ox, v - oy, rot) / texture_height, color, alpha);
+                    v = room_height;
+                }
+                u = room_width;
+            }
+        }
+    }
+    
+    draw_primitive_end();
+}
+
 /// @function string_pad(val, digits)
-/// @description Pads the given value with zeros to occupy the specified dimensions.  Ported from GM8.2.
+/// @description Pads the given value with zeros to occupy the specified dimensions. Ported from GM8.2.
 /// @param {Real} val Value to pad.
 /// @param {Real} digits Number of spaces to occupy.
 /// @returns {String}

@@ -28,7 +28,7 @@
   "origin":0,
   "parent":{
     "name":"Cluster",
-    "path":"folders/Sprites/Display/Cluster.yy",
+    "path":"folders/Sprites/Display/HUD/Cluster.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

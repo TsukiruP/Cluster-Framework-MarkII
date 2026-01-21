@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Advance 3",
-    "path":"folders/Sprites/Display/Advance 3.yy",
+    "path":"folders/Sprites/Display/HUD/Advance 3.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
