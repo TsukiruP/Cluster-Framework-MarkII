@@ -95,7 +95,22 @@ test_option.confirm = function()
     return true;
 };
 
-home_menu = new dev_menu([player_0_option, player_1_option, boost_option, config_option, test_option]);
+room_option = new dev_option_array("Room");
+with (room_option)
+{
+    elements = [rmTest, rmTestNew];
+    confirm = function()
+    {
+        room_goto(elements[index]);
+        return true;
+    }
+    toString = function()
+    {
+        return room_get_name(elements[index]);
+    }
+}
+
+home_menu = new dev_menu([player_0_option, player_1_option, boost_option, config_option, room_option]);
 
 #endregion
 

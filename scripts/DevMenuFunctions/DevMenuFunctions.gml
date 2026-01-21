@@ -42,7 +42,6 @@ function dev_option_value(_label) : dev_option(_label) constructor
 function dev_option_bool(_label) : dev_option_value(_label) constructor
 {
     get = function() { return false; };
-    set = function(val) {};
     update = function() { set(not get()); };
     toString = function() { return (get() ? "True" : "False")};
 }
@@ -87,6 +86,19 @@ function dev_option_int(_label) : dev_option_real(_label) constructor
             return string(get());
         }
     };
+}
+
+/// @function dev_option_array(label)
+/// @description Creates a new array option.
+/// @param {String} label Label to display.
+function dev_option_array(_label) : dev_option_value(_label) constructor
+{
+    elements = [];
+    index = 0;
+    get = function() { return index; };
+    set = function(val) { index = clamp_inverse(index + val, 0, array_length(elements) - 1); };
+    update = function(dir) { set(dir); };
+    toString = function() { return $"{elements[index]}"; };
 }
 
 /// @function dev_option_player(player)
