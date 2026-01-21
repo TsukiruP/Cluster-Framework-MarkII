@@ -16,11 +16,25 @@ player_try_skill = function()
 {
     if (not on_ground)
     {
-        if (input_button.jump.pressed or input_button.aux.pressed)
+        if (input_button.jump.pressed)
         {
-            if (shield_action)
+            if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
             {
                 return player_try_shield();
+            }
+        }
+        
+        if (input_button.aux.pressed)
+        {
+            if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+            {
+                var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
+                aerial_flags |= AERIAL_FLAG_AIR_DASH;
+                x_speed += 2.25 * image_xscale;
+                y_speed = 0;
+                animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                audio_play_single(sfxAirDash);
+                return player_perform(player_is_falling, false);
             }
         }
     }
@@ -360,6 +374,28 @@ player_animate = function()
             {
                 hitboxes[0].set_size(-6, -16, 6, 14);
                 hitboxes[1].set_size();
+            }
+            break;
+        }
+        case SONIC_ANIMATION.AIR_DASH:
+        {
+            if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
+            player_set_animation(global.ani_sonic_air_dash);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-6, -12, 6, 18);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 4:
+                {
+                    hitboxes[0].set_size(-6, -14, 8, 16);
+                    hitboxes[1].set_size();
+                    break;
+                }
             }
             break;
         }

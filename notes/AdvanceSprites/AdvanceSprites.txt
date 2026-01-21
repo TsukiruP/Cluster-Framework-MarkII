@@ -94,6 +94,8 @@
 | Spring | 108-0, 108-1, 108-2 |
 | Spring Twirl | 109-0 |
 
+| Air Dash | (SA2) 19-0 |
+
 # Miles
 
 | Animation | Source | Notes |

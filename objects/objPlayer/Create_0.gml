@@ -11,6 +11,8 @@ state_changed = false;
 spin_dash_charge = 0;
 spin_dash_dust = new stamp();
 
+aerial_flags = 0;
+
 jump_cap = true;
 jump_alternate = 0;
 
@@ -21,10 +23,9 @@ for (var i = 0; i < array_length(trick_speed); i++)
     trick_speed[i] = array_create(2);
 }
 
-// Shield
+// Status
 shield = new stamp();
 shield.index = SHIELD.NONE;
-shield_action = true;
 
 // Timers
 rotation_lock_time = 0;
@@ -210,7 +211,7 @@ player_try_trick = function(time = 0)
 /// @returns {Bool}
 player_try_shield = function()
 {
-    shield_action = false;
+    aerial_flags |= AERIAL_FLAG_SHIELD_ACTION;
     switch (shield.index)
     {
         case SHIELD.AQUA:
@@ -227,8 +228,8 @@ player_try_shield = function()
         {
             x_speed = 8 * image_xscale;
             y_speed = 0;
-            player_perform(player_is_jumping, false);
             camera_set_x_lag_time(16);
+            player_perform(player_is_jumping, false);
             animation_play(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxFlameDash);
             with (shield)
@@ -316,8 +317,12 @@ player_set_radii = function(xrad, yrad)
     x_radius = xrad;
     x_wall_radius = x_radius + 2;
     y_radius = yrad;
-    x += sine * (old_y_radius - y_radius);
-    y += cosine * (old_y_radius - y_radius);
+    
+    if (on_ground)
+    {
+        x += sine * (old_y_radius - y_radius);
+        y += cosine * (old_y_radius - y_radius);
+    }
 };
 
 /// @method player_animate_teeter(ani)
@@ -647,9 +652,9 @@ player_obtain_item = function(item)
 /// @returns {Bool}
 player_try_skill = function () { return false; };
 
-/// @method player_refresh_aerial_skills()
+/// @method player_refresh_aerials()
 /// @description Resets aerial character skills when grounded.
-player_refresh_aerial_skills = function() {};
+player_refresh_aerials = function() {};
 
 /// @method player_animate()
 /// @description Sets the player's current animation.

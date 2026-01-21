@@ -136,6 +136,10 @@ global.ani_sonic_spring = [global.ani_sonic_spring_v0, global.ani_sonic_spring_v
 
 global.ani_sonic_spring_twirl_v0 = new animation(sprSonicSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
 
+global.ani_sonic_air_dash_v0 = new animation(sprSonicAirDash, 2, -1, [0, 1, 2, 3]);
+global.ani_sonic_air_dash_v1 = new animation(sprSonicAirDash, 2, 0, [4, 5, 6]);
+global.ani_sonic_air_dash = [global.ani_sonic_air_dash_v0, global.ani_sonic_air_dash_v1];
+
 #endregion
 
 #region Miles

@@ -31,7 +31,12 @@
 #macro COLL_FLAG_LEFT 0x40000
 #macro COLL_FLAG_RIGHT 0x80000
 
-#macro LIVES_ENABLED db_read(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK 
+#macro LIVES_ENABLED db_read(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK
+
+#macro AERIAL_FLAG_PLATFORM 1
+#macro AERIAL_FLAG_SHIELD_ACTION 2
+#macro AERIAL_FLAG_BOUND 4
+#macro AERIAL_FLAG_AIR_DASH 8
 
 #macro LOOK_DURATION 120
 #macro SLIDE_DURATION 30
@@ -67,19 +72,19 @@ enum GAME_MODE
 
 enum CHARACTER
 {
-	NONE = -1,
-	SONIC,
-	MILES,
-	KNUCKLES,
-	AMY,
-	CREAM
+    NONE = -1,
+    SONIC,
+    MILES,
+    KNUCKLES,
+    AMY,
+    CREAM
 }
 
 enum SHIELD
 {
-	NONE,
-	BASIC,
-	MAGNETIC,
+    NONE,
+    BASIC,
+    MAGNETIC,
     AQUA,
     FLAME,
     THUNDER
@@ -94,40 +99,46 @@ enum PHASE
 
 enum PLAYER_ANIMATION
 {
-	IDLE,
-	TEETER,
-	TURN,
-	RUN,
-	BRAKE,
-	LOOK,
-	CROUCH,
-	ROLL,
-	SPIN_DASH,
-	FALL,
-	JUMP,
-	HURT,
-	DEAD,
-	TRICK_UP,
-	TRICK_DOWN,
-	TRICK_FRONT,
-	TRICK_BACK,
-	SPRING,
-	SPRING_TWIRL
+    IDLE,
+    TEETER,
+    TURN,
+    RUN,
+    BRAKE,
+    LOOK,
+    CROUCH,
+    ROLL,
+    SPIN_DASH,
+    FALL,
+    JUMP,
+    HURT,
+    DEAD,
+    TRICK_UP,
+    TRICK_DOWN,
+    TRICK_FRONT,
+    TRICK_BACK,
+    SPRING,
+    SPRING_TWIRL,
+    MAX
+}
+
+enum SONIC_ANIMATION
+{
+    AIR_DASH = PLAYER_ANIMATION.MAX
 }
 
 enum TRICK
 {
-	UP,
-	DOWN,
-	FRONT,
-	BACK
+    UP,
+    DOWN,
+    FRONT,
+    BACK
 }
 
 enum CPU_STATE
 {
-	FOLLOW,
-	CROUCH,
-	SPIN_DASH
+    FOLLOW,
+    CROUCH,
+    SPIN_DASH
 }
 
 enum CAMERA_STATE

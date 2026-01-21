@@ -22,7 +22,6 @@ switch (state)
         y = focus.y div 1;
         gravity_direction = focus.gravity_direction;
         on_ground = focus.on_ground;
-        roll_offset = (focus.y_radius - PLAYER_HEIGHT) * dcos(gravity_direction);
         
         // Look
         var action = focus.state;
@@ -238,6 +237,7 @@ if (state == CAMERA_STATE.FOLLOW and volume_list == noone)
     if (on_ground)
     {
         ground_offset = ground_offset - ground_offset / 8;
+        roll_offset = (focus.y_radius - PLAYER_HEIGHT) * dcos(gravity_direction);
         camera_y = max(abs(camera_y) - ground_offset + roll_offset, 0) * sign(camera_y);
     }
     else if (not on_ground)
