@@ -18,13 +18,18 @@ switch (state)
 {
     case CAMERA_STATE.FOLLOW:
     {
-        x = focus.x div 1;
-        y = focus.y div 1;
+        var action = focus.state;
         gravity_direction = focus.gravity_direction;
         on_ground = focus.on_ground;
         
+        // Follow
+        if (action != player_is_dead)
+        {
+            x = focus.x div 1;
+            y = focus.y div 1;
+        }
+        
         // Look
-        var action = focus.state;
         if (look_time > 0)
         {
             y_offset = approach(y_offset, 0, 2);
