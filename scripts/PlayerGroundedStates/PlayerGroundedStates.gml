@@ -29,7 +29,6 @@ function player_is_standing(phase)
             // Check if standing on a cliff
             cliff_sign = 0;
             var height = y_radius + y_tile_reach;
-            
             if (not player_ray_collision(tilemaps, 0, height))
             {
                 cliff_sign = player_ray_collision(tilemaps, -x_radius, height) -
@@ -37,8 +36,7 @@ function player_is_standing(phase)
             }
             
             // Animate
-            var ani_idle = (cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
-            animation_play(ani_idle, 0, [PLAYER_ANIMATION.TURN]);
+            animation_play(cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE, 0, [PLAYER_ANIMATION.TURN]);
             break;
         }
         case PHASE.STEP:
@@ -75,7 +73,7 @@ function player_is_standing(phase)
             
             if (animation_data.index == PLAYER_ANIMATION.TURN and animation_is_finished())
             {
-                animation_play(PLAYER_ANIMATION.IDLE);
+                animation_play(cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
             }
             
             if (animation_data.index != PLAYER_ANIMATION.TURN)

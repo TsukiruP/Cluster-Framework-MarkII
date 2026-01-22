@@ -96,14 +96,20 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 if (leader_x_dist + 16 + leader_extra_dist < 0)
                 {
                     input_axis_x = -1;
-                    if (sine == 0) x -= sign(cosine);
-                    else y -= -sine;
+                    if (image_xscale == -1 and x_speed != 0)
+                    {
+                        if (sine == 0) x -= sign(cosine);
+                        else y -= -sine;
+                    }
                 }
                 if (leader_x_dist - 16 - leader_extra_dist > 0)
                 {
                     input_axis_x = 1;
-                    if (sine == 0) x += sign(cosine);
-                    else y += -sine;
+                    if (image_xscale == 1 and x_speed != 0)
+                    {
+                        if (sine == 0) x += sign(cosine);
+                        else y += -sine;
+                    }
                 }
                 
                 // Jump
