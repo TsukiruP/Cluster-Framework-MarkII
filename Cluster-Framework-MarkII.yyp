@@ -722,6 +722,7 @@
     {"id":{"name":"sprKnucklesTurn","path":"sprites/sprKnucklesTurn/sprKnucklesTurn.yy",},},
     {"id":{"name":"sprKnucklesTurnBrake","path":"sprites/sprKnucklesTurnBrake/sprKnucklesTurnBrake.yy",},},
     {"id":{"name":"sprLayerSet","path":"sprites/sprLayerSet/sprLayerSet.yy",},},
+    {"id":{"name":"sprMiasma","path":"sprites/sprMiasma/sprMiasma.yy",},},
     {"id":{"name":"sprMilesBrake","path":"sprites/sprMilesBrake/sprMilesBrake.yy",},},
     {"id":{"name":"sprMilesBrakeFast","path":"sprites/sprMilesBrakeFast/sprMilesBrakeFast.yy",},},
     {"id":{"name":"sprMilesCrouch","path":"sprites/sprMilesCrouch/sprMilesCrouch.yy",},},

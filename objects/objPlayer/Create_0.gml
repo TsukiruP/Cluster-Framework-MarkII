@@ -27,6 +27,8 @@ for (var i = 0; i < array_length(trick_speed); i++)
 shield = new stamp();
 shield.index = SHIELD.NONE;
 
+miasma = new stamp();
+
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;

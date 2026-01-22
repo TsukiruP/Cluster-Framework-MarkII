@@ -161,6 +161,30 @@ state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_animate();
 
+// Spin Dash Dust
+with (spin_dash_dust)
+{
+    var action = other.state;
+    if (action == player_is_spin_dashing)
+    {
+        var x_int = other.x div 1;
+        var y_int = other.y div 1;
+        var sine = dsin(other.gravity_direction);
+        var cosine = dcos(other.gravity_direction);
+        var charge = floor(other.spin_dash_charge);
+        x = x_int + sine * other.y_radius;
+        y = y_int + cosine * other.y_radius;
+        image_xscale = other.image_xscale;
+        image_angle = other.mask_direction;
+        animation_data.variant = (charge > 2);
+        animation_set(global.ani_spin_dash_dust);
+    }
+    else if (not is_undefined(animation_data.ani))
+    {
+        animation_set(undefined);
+    }
+}
+
 // Shield
 with (shield)
 {
@@ -273,23 +297,20 @@ with (shield)
     }
 }
 
-// Spin Dash Dust
-with (spin_dash_dust)
+// Miasma
+with (miasma)
 {
-    var action = other.state;
-    if (action == player_is_spin_dashing)
+    var debuffed = other.superspeed_time < 0 or other.confusion_time > 0;
+    if (debuffed)
     {
         var x_int = other.x div 1;
         var y_int = other.y div 1;
         var sine = dsin(other.gravity_direction);
         var cosine = dcos(other.gravity_direction);
-        var charge = floor(other.spin_dash_charge);
-        x = x_int + sine * other.y_radius;
-        y = y_int + cosine * other.y_radius;
-        image_xscale = other.image_xscale;
+        x = x_int - sine * 16;
+        y = y_int - cosine * 16;
         image_angle = other.mask_direction;
-        animation_data.variant = (charge > 2);
-        animation_set(global.ani_spin_dash_dust);
+        animation_set(global.ani_miasma_v0);
     }
     else if (not is_undefined(animation_data.ani))
     {

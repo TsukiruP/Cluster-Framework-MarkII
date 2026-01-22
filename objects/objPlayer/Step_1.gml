@@ -15,6 +15,7 @@ if (confusion_time > 0) confusion_time--;
 animation_update();
 with (spin_dash_dust) animation_update();
 with (shield) animation_update();
+with (miasma) animation_update();
 
 // Record
 if (player_index == 0)

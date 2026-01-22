@@ -39,6 +39,9 @@ with (shield)
     }
 }
 
+// Miasma
+with (miasma) draw_self_floored();
+
 // Hitboxes
 draw_hitboxes(mask_direction);
 
