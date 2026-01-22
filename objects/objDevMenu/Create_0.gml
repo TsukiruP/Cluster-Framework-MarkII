@@ -88,13 +88,6 @@ with (boost_option)
 config_option = new dev_option("Config");
 config_option.confirm = function() { dev_menu_goto(config_menu); }
 
-test_option = new dev_option("Test Room");
-test_option.confirm = function()
-{
-    room_goto(rmTestNew);
-    return true;
-};
-
 room_option = new dev_option_array("Room");
 with (room_option)
 {
@@ -104,10 +97,7 @@ with (room_option)
         room_goto(elements[index]);
         return true;
     }
-    toString = function()
-    {
-        return room_get_name(elements[index]);
-    }
+    toString = function() { return room_get_name(elements[index]); };
 }
 
 home_menu = new dev_menu([player_0_option, player_1_option, boost_option, config_option, room_option]);
