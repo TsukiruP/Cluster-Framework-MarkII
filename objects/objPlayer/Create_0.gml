@@ -46,7 +46,6 @@ cpu_gamepad_time = 0;
 // Physics
 x_speed = 0;
 y_speed = 0;
-
 player_refresh_physics();
 
 // Collision detection

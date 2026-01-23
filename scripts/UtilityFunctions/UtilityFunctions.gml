@@ -91,7 +91,7 @@ function clamp_inverse(val, minimum, maximum)
 }
 
 /// @function angle_wrap(ang)
-/// @description Wraps the given angle between 0 and 359 degrees inclusively.
+/// @description Wraps the given angle between 0 and 360 degrees exclusively.
 /// @param {Real} ang Angle to wrap.
 /// @returns {Real}
 function angle_wrap(ang)
