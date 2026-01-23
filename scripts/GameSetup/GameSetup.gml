@@ -56,8 +56,7 @@ enum TITLE_CARD_STATE
     ENTER_WAIT,
     GOTO,
     RESET,
-    EXIT,
-    END
+    EXIT
 }
 
 enum CAMERA_STATE

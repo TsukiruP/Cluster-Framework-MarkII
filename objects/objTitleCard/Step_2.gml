@@ -75,11 +75,6 @@ switch (state)
     }
     case TITLE_CARD_STATE.EXIT:
     {
-        state = TITLE_CARD_STATE.END;
-        break;
-    }
-    case TITLE_CARD_STATE.END:
-    {
         if (curtain_time == 0 and banner_time == 0 and zone_time == zone_duration)
         {
             with (ctrlStage) time_enablde = true;
