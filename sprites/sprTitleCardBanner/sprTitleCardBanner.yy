@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Title Card",
-    "path":"folders/Sprites/Display/Transition/Title Card.yy",
+    "path":"folders/Sprites/Display/Title Card.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

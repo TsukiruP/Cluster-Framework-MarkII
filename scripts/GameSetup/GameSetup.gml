@@ -33,28 +33,6 @@
 
 #macro LIVES_ENABLED db_read(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives") and ctrlGame.game_mode != GAME_MODE.TIME_ATTACK
 
-#macro AERIAL_FLAG_PLATFORM 1
-#macro AERIAL_FLAG_SHIELD_ACTION 2
-#macro AERIAL_FLAG_BOUND 4
-#macro AERIAL_FLAG_AIR_DASH 8
-
-#macro LOOK_DURATION 120
-#macro SLIDE_DURATION 30
-#macro RECOVERY_DURATION 120
-#macro SPRING_DURATION 16
-#macro TRICK_LOCK_DURATION 9
-
-#macro INVINCIBILITY_DURATION 1380
-#macro SPEED_UP_DURATION 900
-#macro DEBUFF_DURAION 600
-
-#macro CPU_RESPAWN_DURATION 300
-#macro CPU_GAMEPAD_DURATION 600
-
-#macro SLIDE_THRESHOLD 2.5
-#macro AIR_DRAG_THRESHOLD 0.125
-#macro AIR_DRAG 0.96875
-
 #macro TEN_MILLISECONDS 1000
 #macro PLAYER_HEIGHT 14
 #macro ITEM_WIDTH 18
@@ -70,75 +48,16 @@ enum GAME_MODE
     TIME_ATTACK
 }
 
-enum CHARACTER
+enum TITLE_CARD_STATE
 {
-    NONE = -1,
-    SONIC,
-    MILES,
-    KNUCKLES,
-    AMY,
-    CREAM
-}
-
-enum SHIELD
-{
-    NONE,
-    BASIC,
-    MAGNETIC,
-    AQUA,
-    FLAME,
-    THUNDER
-}
-
-enum PHASE
-{ 
+    FADE,
+    FADE_WAIT,
     ENTER,
-    STEP,
-    EXIT
-}
-
-enum PLAYER_ANIMATION
-{
-    IDLE,
-    TEETER,
-    TURN,
-    RUN,
-    BRAKE,
-    LOOK,
-    CROUCH,
-    ROLL,
-    SPIN_DASH,
-    FALL,
-    JUMP,
-    HURT,
-    DEAD,
-    TRICK_UP,
-    TRICK_DOWN,
-    TRICK_FRONT,
-    TRICK_BACK,
-    SPRING,
-    SPRING_TWIRL,
-    MAX
-}
-
-enum SONIC_ANIMATION
-{
-    AIR_DASH = PLAYER_ANIMATION.MAX
-}
-
-enum TRICK
-{
-    UP,
-    DOWN,
-    FRONT,
-    BACK
-}
-
-enum CPU_STATE
-{
-    FOLLOW,
-    CROUCH,
-    SPIN_DASH
+    ENTER_WAIT,
+    GOTO,
+    RESET,
+    EXIT,
+    END
 }
 
 enum CAMERA_STATE
@@ -192,6 +111,8 @@ global.font_hud_advance_3 = font_add_sprite(sprFontHUDAdvance3, ord("!"), false,
 global.font_hud_episode_ii = font_add_sprite_ext(sprFontHUDEpisodeII, "0123456789x", false, 1);
 global.font_hud_episode_ii_score = font_add_sprite(sprFontHUDEpisodeIIScore, ord("0"), false, 1);
 global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "0123456789'\"", false, 1);
+
+global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
 
 // Misc.
 surface_depth_disable(true);

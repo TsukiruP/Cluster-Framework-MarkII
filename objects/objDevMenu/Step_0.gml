@@ -36,3 +36,5 @@ else
         if (InputLong(INPUT_VERB.CONFIRM)) InputPartySetJoin(false);
     }
 }
+
+if (InputPressed(INPUT_VERB.SELECT)) instance_create_depth(0, 0, 0, objTitleCard);
