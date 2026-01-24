@@ -19,5 +19,5 @@ for (var i = 0; i < sea_height; i++)
 // Rocks
 for (var i = 0; i < array_length(rock_index); i++)
 {
-    draw_sprite_tiled_area(rock_index[i], 0, 0, 0, cam_x, cam_y + rock_oy[i], CAMERA_WIDTH, sprite_get_height(rock_index[i]), rock_hsep[i], 0, (-cam_x >> 7 - i) + rock_xoffset[i]);
+    draw_sprite_tiled_area(rock_index[i], 0, 0, 0, cam_x, cam_y + rock_oy[i], CAMERA_WIDTH, rock_height[i], rock_hsep[i], 0, (-cam_x >> 7 - i) + rock_xoffset[i]);
 }

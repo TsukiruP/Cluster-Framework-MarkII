@@ -1,13 +1,17 @@
 /// @description Initialize
 image_speed = 0;
+
+// Configs
 hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
 status_bar_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar");
 item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
-// HUD
-hud_x = 0;
-hud_y = 0;
+// Active
+hud_active = true;
+active_time = 0;
+active_duration = 10;
 
+// HUD
 switch (hud_config)
 {
     case CONFIG_HUD.CLUSTER:
@@ -47,11 +51,6 @@ switch (hud_config)
         break;
     }
 }
-
-// Active
-hud_active = true;
-active_time = 0;
-active_duration = 10;
 
 // Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
