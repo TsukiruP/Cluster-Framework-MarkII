@@ -34,7 +34,7 @@ with (shield)
         }
         else if (animation_data.ani == global.ani_shield_aqua_wave_v0)
         {
-            draw_self_as(sprShieldAquaShell, animation_data.time div 12);
+            draw_self_as(sprShieldAquaShell, animation_data.time mod 24 < 12);
         }
     }
 }
