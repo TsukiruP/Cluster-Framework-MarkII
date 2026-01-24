@@ -16,5 +16,17 @@ draw_set_font(global.font_title_card);
 draw_set_valign(fa_bottom);
 draw_text(zone_x, 126, zone_text);
 
+// Act
+if ((target_scene[$ "act"] ?? 0) != 0)
+{
+    draw_sprite(sprTitleCardAct, target_scene.act, zone_x + 5, 128);
+}
+
+// Loading
+if (state == TITLE_CARD_STATE.GOTO and not skip_load)
+{
+    draw_sprite(sprTitleCardLoading, title_card_time div 22, 4, CAMERA_HEIGHT - 12);
+}
+
 draw_reset();
 draw_set_font(-1);

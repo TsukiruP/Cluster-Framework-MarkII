@@ -1,4 +1,6 @@
 /// @description Behave
+if (instance_exists(objTransition)) exit;
+
 if (not InputPartyGetJoin())
 {
     var input_axis_y = InputOpposingRepeat(INPUT_VERB.UP, INPUT_VERB.DOWN);
@@ -36,5 +38,3 @@ else
         if (InputLong(INPUT_VERB.CONFIRM)) InputPartySetJoin(false);
     }
 }
-
-if (InputPressed(INPUT_VERB.SELECT)) instance_create_depth(0, 0, 0, objTitleCard);

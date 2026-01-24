@@ -2,7 +2,7 @@
 if (ctrlGame.game_paused) exit;
 
 // Input
-if (player_index == 0 or cpu_gamepad_time > 0)
+if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 {
     input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
     input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);

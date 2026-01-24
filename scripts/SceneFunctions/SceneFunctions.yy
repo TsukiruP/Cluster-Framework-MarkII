@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SceneFunctions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SceneFunctions",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Scripts/Global.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

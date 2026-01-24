@@ -1,25 +1,15 @@
 /// @description Initialize
 image_speed = 0;
 stage_players = [];
+stage_depth = layer_get_depth("Stage");
 
 // Timing
 stage_time = 0;
 time_limit = time_to_frames(10, 0);
 time_over = false;
-time_enabled = true;
+time_enabled = false;
 
 // alarm[0] = 5;
-
-// Identify stage
-switch (room)
-{
-	case rmTest:
-	{
-		name = "DEMONSTRATION";
-		act = 1;
-		break;
-	}
-}
 
 // Setup tilemaps; delist invalid ones
 tilemaps =

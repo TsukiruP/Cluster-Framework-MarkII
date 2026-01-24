@@ -33,8 +33,11 @@ else if (state != TITLE_CARD_STATE.FADE_WAIT)
     banner_scroll = modwrap(banner_scroll + banner_speed, 0, banner_height);
     
     // Zone
-    if ((state < TITLE_CARD_STATE.EXIT and curtain_time == curtain_duration) or state > TITLE_CARD_STATE.RESET)
+    if ((state < TITLE_CARD_STATE.EXIT and curtain_time == curtain_duration) or
+        (state > TITLE_CARD_STATE.RESET and curtain_time == 0 and banner_time == 0))
     {
         if (zone_time < zone_duration) zone_time++;
     }
+    
+    // TODO: Zone has to account for when character entrances are ever added
 }

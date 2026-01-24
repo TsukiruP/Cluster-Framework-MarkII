@@ -7,7 +7,7 @@ status_bar_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_
 item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
 // Active
-hud_active = true;
+hud_active = false;
 active_time = 0;
 active_duration = 10;
 
@@ -70,7 +70,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     {
         update = function()
         {
-            var shield = ctrlStage.stage_players[0].shield[$ "index"];
+            var shield = ctrlStage.stage_players[0].shield.index;
             icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
             active = (shield != SHIELD.NONE);
         };

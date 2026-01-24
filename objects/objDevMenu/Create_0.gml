@@ -94,7 +94,7 @@ with (room_option)
     elements = [rmTest, rmTestNew];
     confirm = function()
     {
-        room_goto(elements[index]);
+        transition_create(elements[index]);
         return true;
     }
     toString = function() { return room_get_name(elements[index]); };

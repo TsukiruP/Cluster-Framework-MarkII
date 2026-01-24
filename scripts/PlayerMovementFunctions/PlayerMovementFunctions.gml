@@ -23,7 +23,7 @@ function player_move_on_ground()
         y -= dsin(direction) * step;
         
         // Die if out of bounds
-        if (not player_keep_in_bounds()) return player_perform(player_is_dead);
+        if (not player_keep_in_bounds()) player_damage(id);
         
         // Detect instances and tilemaps
         player_get_collisions();
@@ -78,7 +78,7 @@ function player_move_in_air()
         y += -sine * x_step + cosine * y_step;
         
         // Die if out of bounds
-        if (not player_keep_in_bounds()) player_perform(player_is_dead);
+        if (not player_keep_in_bounds()) player_damage(id);
         
         // Detect instances and tilemaps
         player_get_collisions();

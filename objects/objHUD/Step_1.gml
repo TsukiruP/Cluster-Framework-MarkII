@@ -1,5 +1,5 @@
 /// @description Time
-if (ctrlGame.game_paused) exit;
+if (ctrlGame.game_paused & PAUSE_FLAG_MENU) exit;
 
 if (hud_config == CONFIG_HUD.CLUSTER)
 {

@@ -95,6 +95,7 @@ if (tilemap_count == 3)
 ground_id = noone;
 
 // Input
+input_enabled = false;
 input_axis_x = 0;
 input_axis_y = 0;
 
@@ -447,7 +448,7 @@ player_drop_rings = function()
     
     for (var n = min(global.ring_count, 32); n > 0; --n)
     {
-        with (instance_create_layer(x, y, "Stage", objRing))
+        with (instance_create_layer(x, y, ctrlStage.stage_depth, objRing))
         {
             gravity_direction = other.gravity_direction;
             image_angle = gravity_direction;

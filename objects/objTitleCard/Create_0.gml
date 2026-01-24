@@ -3,6 +3,7 @@
 event_inherited();
 
 title_card_time = 0;
+skip_load = false;
 
 // Fade
 fade_alpha = 0;
@@ -29,6 +30,6 @@ zone_x = 0;
 zone_time = 0;
 zone_duration = 30;
 
-zone_text = "Green Hill";
+zone_text = "";
 zone_width = -1;
 zone_padding = 9;

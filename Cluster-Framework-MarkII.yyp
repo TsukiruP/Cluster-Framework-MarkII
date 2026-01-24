@@ -542,6 +542,8 @@
     {"id":{"name":"PlayerSetup","path":"scripts/PlayerSetup/PlayerSetup.yy",},},
     {"id":{"name":"PlayerTerrainFunctions","path":"scripts/PlayerTerrainFunctions/PlayerTerrainFunctions.yy",},},
     {"id":{"name":"PlayerTrickStates","path":"scripts/PlayerTrickStates/PlayerTrickStates.yy",},},
+    {"id":{"name":"SceneFunctions","path":"scripts/SceneFunctions/SceneFunctions.yy",},},
+    {"id":{"name":"SceneSetup","path":"scripts/SceneSetup/SceneSetup.yy",},},
     {"id":{"name":"UtilityFunctions","path":"scripts/UtilityFunctions/UtilityFunctions.yy",},},
     {"id":{"name":"bgmExtraDungeon1A","path":"sounds/bgmExtraDungeon1A/bgmExtraDungeon1A.yy",},},
     {"id":{"name":"bgmInvincibility","path":"sounds/bgmInvincibility/bgmInvincibility.yy",},},

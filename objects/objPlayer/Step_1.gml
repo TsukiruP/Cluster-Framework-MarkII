@@ -1,4 +1,14 @@
 /// @description Update
+// Animate
+if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
+{
+    animation_update();
+    with (spin_dash_dust) animation_update();
+    with (shield) animation_update();
+    with (miasma) animation_update();
+}
+
+// Abort if game is paused at all
 if (ctrlGame.game_paused) exit;
 
 if (control_lock_time > 0 and on_ground) control_lock_time--;
@@ -11,11 +21,6 @@ if (superspeed_time != 0)
     if (superspeed_time == 0) player_refresh_physics();
 }
 if (confusion_time > 0) confusion_time--;
-
-animation_update();
-with (spin_dash_dust) animation_update();
-with (shield) animation_update();
-with (miasma) animation_update();
 
 // Record
 if (player_index == 0)

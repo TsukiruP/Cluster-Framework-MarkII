@@ -48,6 +48,13 @@ enum GAME_MODE
     TIME_ATTACK
 }
 
+enum TRANSITION
+{
+    FADE,
+    TITLE_CARD,
+    TRY_AGAIN
+}
+
 enum FADE_STATE
 {
     IN,

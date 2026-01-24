@@ -69,15 +69,17 @@ switch (state)
     {
         if (try_again_time == 0)
         {
-            //room_goto;
+            room_goto(target);
             state = TRY_AGAIN_STATE.EXIT;
         }
         break;
     }
     case TRY_AGAIN_STATE.EXIT:
     {
+        persistent = false;
         if (curtain_time == 0)
         {
+            stage_start();
             instance_destroy();
         }
         break;
