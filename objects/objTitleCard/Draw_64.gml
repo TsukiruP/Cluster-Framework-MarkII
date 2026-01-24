@@ -25,7 +25,7 @@ if ((target_scene[$ "act"] ?? 0) != 0)
 // Loading
 if (state == TITLE_CARD_STATE.GOTO and not skip_load)
 {
-    draw_sprite(sprTitleCardLoading, title_card_time div 22, 4, CAMERA_HEIGHT - 12);
+    draw_sprite(sprTitleCardLoading, (title_card_time div 15) - 1, 4, CAMERA_HEIGHT - 12);
 }
 
 draw_reset();
