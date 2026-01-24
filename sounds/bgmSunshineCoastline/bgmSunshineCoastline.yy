@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"bgmSunshineCoastline",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":3,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":185.00267,
+  "exportDir":"",
+  "name":"bgmSunshineCoastline",
+  "parent":{
+    "name":"Test",
+    "path":"folders/Sounds/BGM/Test.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":48000,
+  "soundFile":"bgmSunshineCoastline.ogg",
+  "volume":1.0,
+}

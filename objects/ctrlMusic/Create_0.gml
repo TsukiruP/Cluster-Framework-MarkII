@@ -15,4 +15,5 @@ music = ds_priority_create();
 music_playing = false;
 
 // Loop points
-audio_loop_points(bgmExtraBattle1, 14.2224, 128.0002);
+audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
+audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
