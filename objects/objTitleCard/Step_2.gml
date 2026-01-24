@@ -1,11 +1,12 @@
 /// @description Animate
 curtain_y = interpolate(-15, CAMERA_HEIGHT + 15, curtain_time / curtain_duration, EASE_SMOOTHSTEP);
-banner_x = interpolate(-sprite_get_width(sprTitleCardBanner), 0, banner_time / banner_duration, EASE_SMOOTHSTEP);
+banner_x = interpolate(-banner_width, 0, banner_time / banner_duration, EASE_SMOOTHSTEP);
 
+// Zone
 if (zone_width == -1)
 {
     draw_set_font(global.font_title_card);
-    zone_width = string_width(zone_test) + zone_padding;
+    zone_width = string_width(zone_text) + zone_padding;
     draw_set_font(-1);
 }
 
@@ -32,11 +33,7 @@ switch (state)
     }
     case TITLE_CARD_STATE.FADE_WAIT:
     {
-        if (title_card_time == 0)
-        {
-            state = TITLE_CARD_STATE.ENTER;
-            fade_alpha = 0;
-        }
+        if (title_card_time == 0) state = TITLE_CARD_STATE.ENTER;
         break;
     }
     case TITLE_CARD_STATE.ENTER:
@@ -45,6 +42,7 @@ switch (state)
         {
             state = TITLE_CARD_STATE.ENTER_WAIT;
             title_card_time = 30;
+            fade_alpha = 0;
         }
         break;
     }

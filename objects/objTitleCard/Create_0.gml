@@ -21,11 +21,14 @@ banner_duration = 20;
 banner_scroll = 0;
 banner_speed = 1;
 
+banner_width = sprite_get_width(sprTitleCardBanner);
+banner_height = sprite_get_height(sprTitleCardBanner);
+
 // Zone
 zone_x = 0;
 zone_time = 0;
 zone_duration = 30;
 
+zone_text = "Green Hill";
 zone_width = -1;
 zone_padding = 9;
-zone_test = "Green Hill";

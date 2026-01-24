@@ -48,6 +48,13 @@ enum GAME_MODE
     TIME_ATTACK
 }
 
+enum FADE_STATE
+{
+    IN,
+    WAIT,
+    OUT
+}
+
 enum TITLE_CARD_STATE
 {
     FADE,
@@ -56,6 +63,17 @@ enum TITLE_CARD_STATE
     ENTER_WAIT,
     GOTO,
     RESET,
+    EXIT
+}
+
+enum TRY_AGAIN_STATE
+{
+    ENTER,
+    WAIT,
+    RESET,
+    CLOSE,
+    GOTO,
+    OPEN,
     EXIT
 }
 
