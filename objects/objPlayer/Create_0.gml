@@ -381,7 +381,7 @@ player_animate_jump = function(ani)
         }
         case 1:
         {
-            if (y_speed > 0 and not is_undefined(player_find_floor(y_radius + 32))) animation_data.variant = 2;
+            if (y_speed > 0 and player_find_floor(y_radius + 32) != undefined) animation_data.variant = 2;
             break;
         }
     }

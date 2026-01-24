@@ -16,7 +16,7 @@ if (hud_config == CONFIG_HUD.CLUSTER)
 if (item_feed_config)
 {
     var popup_last = array_last(item_feed);
-    if (not is_undefined(popup_last))
+    if (popup_last != undefined)
     {
         if (popup_last.time == popup_duration and item_feed_time > 0)
         {

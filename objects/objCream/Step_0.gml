@@ -25,7 +25,7 @@ with (ears)
         
         animation_set(global.ani_cream_ears_v0);
     }
-    else if (not is_undefined(animation_data.ani))
+    else if (animation_data.ani != undefined)
     {
         animation_set(undefined);
     }

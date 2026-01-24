@@ -50,7 +50,7 @@ function transition_create(index, override = undefined)
 {
     var transition, inst;
     var room_scene = room_get_scene(index);
-    var room_transition = (is_undefined(override) ? room_scene.transition : override);
+    var room_transition = (override == undefined ? room_scene.transition : override);
     switch (room_transition)
     {
         case TRANSITION.TITLE_CARD:
@@ -79,7 +79,7 @@ function transition_create(index, override = undefined)
     with (ctrlMusic)
     {
         var room_music = room_get_scene(room).music;
-        if (room_music != room_scene.music) audio_clear_music();
+        if (room_music == undefined or not audio_is_playing(room_music)) audio_clear_music();
     }
     
     return inst;

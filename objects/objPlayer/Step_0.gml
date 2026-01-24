@@ -179,7 +179,7 @@ with (spin_dash_dust)
         animation_data.variant = (charge > 2);
         animation_set(global.ani_spin_dash_dust);
     }
-    else if (not is_undefined(animation_data.ani))
+    else if (animation_data.ani != undefined)
     {
         animation_set(undefined);
     }
@@ -291,7 +291,7 @@ with (shield)
         image_angle = other.gravity_direction;
         image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.6 : 1);
     }
-    else if (not is_undefined(animation_data.ani))
+    else if (animation_data.ani != undefined)
     {
         animation_set(undefined);
     }
@@ -312,7 +312,7 @@ with (miasma)
         image_angle = other.mask_direction;
         animation_set(global.ani_miasma_v0);
     }
-    else if (not is_undefined(animation_data.ani))
+    else if (animation_data.ani != undefined)
     {
         animation_set(undefined);
     }

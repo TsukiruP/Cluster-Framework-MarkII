@@ -49,7 +49,7 @@ function animation_set(ani)
 {
     ani = (is_array(ani) ? ani[min(array_length(ani) - 1, animation_data.variant)] : ani);
     
-    if (is_undefined(ani))
+    if (ani == undefined)
     {
         animation_data.alarm = 0;
         animation_data.pos = -1;
@@ -81,7 +81,7 @@ function animation_set(ani)
 /// @description Updates the animation core.
 function animation_update()
 {
-    if (not is_undefined(animation_data.ani))
+    if (animation_data.ani != undefined)
     {
         if (animation_data.alarm > 0)
         {
