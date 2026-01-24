@@ -37,4 +37,4 @@ else
     }
 }
 
-if (InputPressed(INPUT_VERB.SELECT)) instance_create_depth(0, 0, 0, objTryAgain);
+if (InputPressed(INPUT_VERB.SELECT)) instance_create_depth(0, 0, 0, objTitleCard);

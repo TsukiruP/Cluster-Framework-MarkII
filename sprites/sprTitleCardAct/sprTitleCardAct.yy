@@ -30,7 +30,7 @@
   "origin":0,
   "parent":{
     "name":"Title Card",
-    "path":"folders/Sprites/Display/Title Card.yy",
+    "path":"folders/Sprites/Title Card.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -6,7 +6,7 @@ banner_x = interpolate(-banner_width, 0, banner_time / banner_duration, EASE_SMO
 if (zone_width == -1)
 {
     draw_set_font(global.font_title_card);
-    zone_width = string_width(zone_text) + zone_padding;
+    zone_width = string_width(zone_text);
     draw_set_font(-1);
 }
 
@@ -16,7 +16,7 @@ if (state > TITLE_CARD_STATE.RESET)
 }
 else
 {
-    zone_x = interpolate(-zone_width, 40, zone_time / zone_duration, EASE_INOUT_BACK);
+    zone_x = interpolate(-zone_width - zone_padding, 40, zone_time / zone_duration, EASE_INOUT_BACK);
 }
 
 switch (state)

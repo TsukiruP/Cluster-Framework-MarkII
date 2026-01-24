@@ -17,7 +17,7 @@ else
 if (message_width == -1)
 {
     draw_set_font(global.font_title_card);
-    message_width = (string_width(message_text)) div 2;
+    message_width = string_width(message_text) div 2;
     draw_set_font(-1);
 }
 
