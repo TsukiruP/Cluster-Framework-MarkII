@@ -1,5 +1,5 @@
-| Game | Uploader | Link |
+| Game | Uploader | Link | Notes |
 | --- | --- | --- |
 | Sonic Mania | Random Talking Bush | https://sounds.spriters-resource.com/pc_computer/sonicmania/asset/405943/ |
-| Sonic Heroes | Tsukiru |
-| Sonic Advance 2 | Luna-Alex |
+| Sonic Heroes | Tsukiru | | Air Dash, Item Balloon |
+| Sonic Advance 2 | Luna-Alex | | Trick Action |
