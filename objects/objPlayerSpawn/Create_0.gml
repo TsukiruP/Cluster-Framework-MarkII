@@ -11,15 +11,15 @@ if (not (ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS))
 }
 
 var player_objects = [objSonic, objMiles, objKnuckles, objAmy, objCream];
-ctrlStage.stage_players = array_create(INPUT_MAX_PLAYERS, noone);
+with (ctrlStage) stage_players = array_create(INPUT_MAX_PLAYERS, noone);
 for (var i = 0; i < array_length(global.characters); i++)
 {
     var character_index = global.characters[i];
     if (character_index == CHARACTER.NONE) break;
     var player = instance_create_depth(x - i * 32, y, depth + i - DEPTH_OFFSET_PLAYER, player_objects[character_index]);
     with (player) player_index = i;
-    ctrlStage.stage_players[i] = player;
+    with (ctrlStage) stage_players[i] = player;
 }
-ctrlGame.game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
+with (ctrlGame) game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
 instance_create_depth(x, y, depth - DEPTH_OFFSET_PLAYER, objCamera);
 instance_destroy();

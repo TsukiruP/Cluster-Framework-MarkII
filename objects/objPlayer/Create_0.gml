@@ -153,9 +153,9 @@ player_perform = function(action, enter = true)
     }
 };
 
-/// @method player_reset_input()
-/// @description Resets all player input.
-player_reset_input = function()
+/// @method player_refresh_input()
+/// @description Resets the player's input.
+player_refresh_input = function()
 {
     input_axis_x = 0;
     input_axis_y = 0;
@@ -209,7 +209,7 @@ player_try_trick = function(time = 0)
 };
 
 /// @method player_try_shield()
-/// @description Checks if the player performs a Shield Actions.
+/// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
 player_try_shield = function()
 {

@@ -28,10 +28,10 @@ switch (state)
     {
         if (fade_alpha == 1)
         {
-            with (ctrlStage) time_enabled = false;
-            ctrlGame.game_paused |= PAUSE_FLAG_TRANSITION;
             state = TITLE_CARD_STATE.FADE_WAIT;
             title_card_time = 50;
+            with (ctrlGame) game_paused |= PAUSE_FLAG_TRANSITION;
+            with (ctrlStage) time_enabled = false;
         }
         break;
     }
@@ -72,7 +72,7 @@ switch (state)
     case TITLE_CARD_STATE.RESET:
     {
         persistent = false;
-        ctrlGame.game_paused &= ~PAUSE_FLAG_TRANSITION;
+        with (ctrlGame) game_paused &= ~PAUSE_FLAG_TRANSITION;
         if (title_card_time == 0)
         {
             state = TITLE_CARD_STATE.EXIT;

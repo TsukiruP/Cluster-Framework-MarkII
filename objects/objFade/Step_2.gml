@@ -5,9 +5,9 @@ switch (state)
     {
         if (fade_alpha == 1)
         {
-            ctrlGame.game_paused |= PAUSE_FLAG_TRANSITION;
             state = FADE_STATE.WAIT;
             fade_time = 60;
+            with (ctrlGame) game_paused |= PAUSE_FLAG_TRANSITION;
         }
         break;
     }
@@ -23,8 +23,8 @@ switch (state)
     case FADE_STATE.OUT:
     {
         persistent = false;
-        ctrlGame.game_paused &= ~PAUSE_FLAG_TRANSITION;
         stage_start();
+        with (ctrlGame) game_paused &= ~PAUSE_FLAG_TRANSITION;
         if (fade_alpha == 0) instance_destroy();
         break;
     }
