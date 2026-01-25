@@ -151,6 +151,16 @@ if (player_index != 0 and cpu_gamepad_time == 0)
             }
         }
         
+        // Respawn
+        if (not instance_in_view())
+        {
+            if (cpu_respawn_time++ == 300) player_respawn_cpu();
+        }
+        else if (cpu_respawn_time != 0)
+        {
+            cpu_respawn_time = 0;
+        }
+        
         // Swap to player
         if (InputCheckMany(-1, player_index)) cpu_gamepad_time = CPU_GAMEPAD_DURATION;
     }

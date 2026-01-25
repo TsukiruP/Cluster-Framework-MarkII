@@ -122,6 +122,22 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
+/// @method player_refresh_input()
+/// @description Resets the player's input.
+player_refresh_input = function()
+{
+    input_axis_x = 0;
+    input_axis_y = 0;
+    
+    struct_foreach(input_button, function(name, value)
+    {
+        var verb = value.verb;
+        value.check = false;
+        value.pressed = false;
+        value.released = false;
+    });
+};
+
 // Animation
 animation_data = new animation_core();
 //animation_history = array_create(16);
@@ -135,6 +151,39 @@ cpu_axis_x = array_create(16);
 cpu_axis_y = array_create(16);
 cpu_input_jump = array_create(16);
 cpu_input_jump_pressed = array_create(16);
+
+/// @method player_refresh_cpu()
+/// @description Resets the CPU.
+player_refresh_cpu = function()
+{
+    var leader = ctrlStage.stage_players[0];
+    x = leader.x div 1;
+    y = leader.y div 1;
+    xprevious = x;
+    yprevious = y;
+    image_xscale = leader.image_xscale;
+    gravity_direction = leader.gravity_direction;
+    x_speed = leader.x_speed;
+    y_speed = leader.y_speed;
+    collision_layer = leader.collision_layer;
+    animation_play(PLAYER_ANIMATION.ROLL);
+    player_perform(player_is_falling, false);
+    player_refresh_physics();
+};
+
+
+/// @method player_respawn_cpu()
+/// @description Respawns the CPU.
+player_respawn_cpu = function()
+{
+    var can_respawn = (ctrlStage.stage_players[0].state != player_is_dead);
+    if (can_respawn)
+    {
+        player_refresh_cpu();
+        recovery_time = RECOVERY_DURATION;
+        cpu_respawn_time = 0;
+    }
+};
 
 // Misc.
 /// @method player_perform(action, [enter])
@@ -151,22 +200,6 @@ player_perform = function(action, enter = true)
         state_changed = true;
         if (enter) state(PHASE.ENTER);
     }
-};
-
-/// @method player_refresh_input()
-/// @description Resets the player's input.
-player_refresh_input = function()
-{
-    input_axis_x = 0;
-    input_axis_y = 0;
-    
-    struct_foreach(input_button, function(name, value)
-    {
-        var verb = value.verb;
-        value.check = false;
-        value.pressed = false;
-        value.released = false;
-    });
 };
 
 /// @method player_try_jump()
