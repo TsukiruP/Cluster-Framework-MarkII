@@ -2,6 +2,7 @@
 image_speed = 0;
 stage_players = [];
 stage_depth = layer_get_depth("Stage");
+pause_allow = true;
 
 // Timing
 stage_time = 0;
