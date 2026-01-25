@@ -185,6 +185,9 @@ function player_is_dead(phase)
     {
         case PHASE.ENTER:
         {
+            // Set time:
+            state_time = 64;
+            
             // Detach from ground
             player_ground(undefined);
             
@@ -194,6 +197,13 @@ function player_is_dead(phase)
         }
         case PHASE.STEP:
         {
+            if (player_index == 0 and --state_time == 0)
+            {
+                transition_create(room, TRANSITION.TRY_AGAIN);
+                //if (LIVES_ENABLED) global.life_count--;
+                with (ctrlStage) pause_allow = false;
+            }
+            
             // Move
             var sine = dsin(gravity_direction);
             var cosine = dcos(gravity_direction);

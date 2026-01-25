@@ -128,6 +128,8 @@ switch (index)
     }
     case TRANSITION.TRY_AGAIN:
     {
+        if (InputPressedMany(-1) and state == TRY_AGAIN_STATE.WAIT) state = TRY_AGAIN_STATE.RESET;
+        
         // Curtain
         if (state > TRY_AGAIN_STATE.RESET and state < TRY_AGAIN_STATE.EXIT)
         {
