@@ -189,7 +189,7 @@ player_refresh_cpu = function()
     x_speed = leader.x_speed;
     y_speed = leader.y_speed;
     collision_layer = leader.collision_layer;
-    animation_play(PLAYER_ANIMATION.ROLL);
+    animation_play(PLAYER_ANIMATION.FALL);
     player_perform(player_is_falling, false);
     player_refresh_physics();
 };
