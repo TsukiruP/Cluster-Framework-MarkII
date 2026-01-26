@@ -169,7 +169,7 @@ animation_data = new animation_core();
 camera = noone;
 
 // CPU
-cpu_state = 0;
+cpu_state = CPU_STATE.FOLLOW;
 cpu_axis_x = array_create(16);
 cpu_axis_y = array_create(16);
 cpu_input_jump = array_create(16);
@@ -190,6 +190,7 @@ player_refresh_cpu = function()
     y_speed = leader.y_speed;
     collision_layer = leader.collision_layer;
     tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
+    cpu_state = CPU_STATE.FOLLOW;
     animation_play(PLAYER_ANIMATION.FALL);
     player_perform(player_is_falling, false);
     player_refresh_physics();
