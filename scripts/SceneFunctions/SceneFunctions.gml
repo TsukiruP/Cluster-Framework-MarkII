@@ -19,12 +19,12 @@ function stage(_music = undefined, _zone = "", _act = 0) : scene(TRANSITION.TITL
     act = _act;
 }
 
-/// @function room_get_scene([index])
-/// @param {Asset.GMRoom} [index] Index of the room to check (optional, defaults to the current room).
+/// @function room_get_scene([rm])
+/// @param {Asset.GMRoom} [rm] Room to check (optional, defaults to the current room).
 /// @returns {Struct.scene}
-function room_get_scene(index = room)
+function room_get_scene(rm = room)
 {
-    switch (index)
+    switch (rm)
     {
         case rmTest:
         {
@@ -41,48 +41,32 @@ function room_get_scene(index = room)
     }
 }
 
-/// @function transition_create(index, [override])
+/// @function transition_create(rm, [override])
 /// @description Creates a new transition.
-/// @param {Asset.GMRoom} index Index of the room to go to.
+/// @param {Asset.GMRoom} rm Room to go to.
 /// @param {Enum.TRANSITION} [override] Transition to override with (optional, defaults to undefined).
 /// @returns {Id.Instance}
-function transition_create(index, override = undefined)
+function transition_create(rm, override = undefined)
 {
-    var transition, inst;
-    var room_scene = room_get_scene(index);
+    var transition;
+    var room_scene = room_get_scene(rm);
     var room_transition = (override == undefined ? room_scene.transition : override);
-    switch (room_transition)
-    {
-        case TRANSITION.TITLE_CARD:
-        {
-            transition = objTitleCard;
-            break;
-        }
-        case TRANSITION.TRY_AGAIN:
-        {
-            transition = objTryAgain;
-            break;
-        }
-        default:
-        {
-            transition = objFade;
-        }
-    }
     
-    inst = instance_create_depth(0, 0, 0, transition);
-    with (inst)
+    transition = instance_create_depth(0, 0, 0, objTransition);
+    with (transition)
     {
-        target = index;
+        index = room_transition;
+        target = rm;
         target_scene = room_scene;
     }
     
     with (ctrlMusic)
     {
-        var room_music = room_get_scene(room).music;
+        var room_music = room_scene.music;
         if (room_music == undefined or not audio_is_playing(room_music)) audio_clear_music();
     }
     
-    return inst;
+    return transition;
 }
 
 /// @function stage_start()

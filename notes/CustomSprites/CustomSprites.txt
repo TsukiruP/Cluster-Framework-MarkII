@@ -3,6 +3,7 @@
 | "Cluster" HUD| HomingMissile333 | https://www.deviantart.com/homingmissile333/art/Sonic-HUD-Sprite-Sheet-NEW-439231185 |
 | Adventure HUD | goncas23 | https://www.deviantart.com/goncas23/art/Just-another-screenshot-415736271 |
 | Adventure 2 HUD | goncas23 | https://www.deviantart.com/goncas23/art/Sonic-Colors-Styled-HUD-490587197 |
+| Title Card | HomingMissile333 | https://www.deviantart.com/homingmissile333/art/Sonic-Custom-Title-Card-Animated-407535260 |
 | Episode II HUD | marvinvalentin07 & goncas23 | https://www.deviantart.com/marvinvalentin07/art/Sonic-4-Epi-2-HUD-Sprite-Ver-2-369970245 |
 | Item Monitor Sprites | Vebills | https://www.deviantart.com/vebills/art/Item-Monitor-Sprites-568848018 |
 | Item Box Icons | goncas23 | https://www.deviantart.com/goncas23/art/Item-Box-Icons-custom-427867914 |

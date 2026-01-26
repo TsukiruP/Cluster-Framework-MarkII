@@ -2,19 +2,22 @@
 // Hide
 if (InputPressed(INPUT_VERB.HIDE))
 {
-    if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE))
+    with (ctrlGame)
     {
-        ctrlGame.game_flags |= GAME_FLAG_HIDE_PAUSE;
-    }
-    else
-    {
-    	if (not (ctrlGame.game_flags & GAME_FLAG_HIDE_HUD))
+        if (not (game_flags & GAME_FLAG_HIDE_PAUSE))
         {
-            ctrlGame.game_flags |= GAME_FLAG_HIDE_HUD;
+            game_flags |= GAME_FLAG_HIDE_PAUSE;
         }
         else
         {
-            ctrlGame.game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
+            if (not (game_flags & GAME_FLAG_HIDE_HUD))
+            {
+                game_flags |= GAME_FLAG_HIDE_HUD;
+            }
+            else
+            {
+                game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
+            }
         }
     }
     
@@ -23,10 +26,13 @@ if (InputPressed(INPUT_VERB.HIDE))
 
 if (ctrlGame.game_flags & GAME_FLAG_HIDE_PAUSE)
 {
-    // Show
-    if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
+    with (ctrlGame)
     {
-        ctrlGame.game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
+        // Show
+        if (InputPressed(INPUT_VERB.START) or InputPressed(INPUT_VERB.CANCEL))
+        {
+            game_flags &= ~(GAME_FLAG_HIDE_PAUSE | GAME_FLAG_HIDE_HUD);
+        }
     }
 }
 else

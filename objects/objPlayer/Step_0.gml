@@ -22,7 +22,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 // CPU
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
-    player_reset_input();
+    player_refresh_inputs();
     var leader = ctrlStage.stage_players[0];
     if (instance_exists(leader))
     {
@@ -151,6 +151,16 @@ if (player_index != 0 and cpu_gamepad_time == 0)
             }
         }
         
+        // Respawn
+        if (not instance_in_view() and state != player_is_dead)
+        {
+            if (--cpu_respawn_time == 0) player_respawn_cpu();
+        }
+        else if (cpu_respawn_time != CPU_RESPAWN_DURATION)
+        {
+            cpu_respawn_time = CPU_RESPAWN_DURATION;
+        }
+        
         // Swap to player
         if (InputCheckMany(-1, player_index)) cpu_gamepad_time = CPU_GAMEPAD_DURATION;
     }
@@ -160,6 +170,51 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 state(PHASE.STEP);
 if (state_changed) state_changed = false;
 player_animate();
+
+// Swap
+if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
+{
+    var partner = ctrlStage.stage_players[1];
+    if (input_button.swap.pressed)
+    {
+        if (partner.cpu_gamepad_time == 0)
+        {
+            if (instance_in_view(partner))
+            {
+                var can_leader_swap = (swap_time == 0 and sign(superspeed_time) != -1 and confusion_time == 0);
+                var can_partner_swap = false;
+                with (partner) can_partner_swap = (state != player_is_hurt and state != player_is_dead);
+                if (can_leader_swap and can_partner_swap)
+                {
+                    with (partner)
+                    {
+                        player_index = 0;
+                        swap_time = SWAP_DURATION;
+                        shield.index = other.shield.index;
+                        invincibility_time = other.invincibility_time;
+                        superspeed_time = other.superspeed_time;
+                        player_refresh_inputs();
+                    }
+                    
+                    player_index = array_length(ctrlStage.stage_players) - 1;
+                    player_refresh_status();
+                    player_refresh_inputs();
+                    player_refresh_records();
+                    array_push(global.characters, array_shift(global.characters));
+                    with (ctrlStage) array_push(stage_players, array_shift(stage_players));
+                    with (objCamera) focus = ctrlStage.stage_players[0];
+                    with (objPlayer) depth = ctrlStage.stage_depth + player_index - DEPTH_OFFSET_PLAYER;
+                }
+            }
+            else
+            {
+                var can_respawn = false;
+                with (partner) can_respawn = (state != player_is_hurt and state != player_is_dead);
+                if (can_respawn) partner.player_respawn_cpu();
+            }
+        }
+    }
+}
 
 // Spin Dash Dust
 with (spin_dash_dust)

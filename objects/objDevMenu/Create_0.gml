@@ -75,6 +75,12 @@ config_menu = new dev_menu([lives_option, time_over_option, hud_option, status_b
 
 #region Home
 
+player_options = [];
+for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
+{
+    array_push(player_options, new dev_option_player(i));
+}
+
 player_0_option = new dev_option_player(0);
 player_1_option = new dev_option_player(1);
 
@@ -100,7 +106,7 @@ with (room_option)
     toString = function() { return room_get_name(elements[index]); };
 }
 
-home_menu = new dev_menu([player_0_option, player_1_option, boost_option, config_option, room_option]);
+home_menu = new dev_menu(array_concat(player_options, [boost_option, config_option, room_option]));
 
 #endregion
 

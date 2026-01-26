@@ -10,28 +10,8 @@ function player_is_trick_preparing(phase)
             y_speed = 0;
             
             // Animate
-            switch (trick_index)
-            {
-                case TRICK.UP:
-                {
-                    animation_play(PLAYER_ANIMATION.TRICK_UP);
-                    break;
-                }
-                case TRICK.DOWN:
-                {
-                    animation_play(PLAYER_ANIMATION.TRICK_DOWN);
-                    break;
-                }
-                case TRICK.FRONT:
-                {
-                    animation_play(PLAYER_ANIMATION.TRICK_FRONT);
-                    break;
-                }
-                default:
-                {
-                    animation_play(PLAYER_ANIMATION.TRICK_BACK);
-                }
-            }
+            animation_play(pick(trick_index, [PLAYER_ANIMATION.TRICK_UP, PLAYER_ANIMATION.TRICK_DOWN,
+                PLAYER_ANIMATION.TRICK_FRONT, PLAYER_ANIMATION.TRICK_BACK]));
         break;
         }
         case PHASE.STEP:

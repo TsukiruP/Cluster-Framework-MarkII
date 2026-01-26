@@ -24,14 +24,26 @@ for (var i = 0; i < array_length(trick_speed); i++)
 }
 
 // Status
+miasma = new stamp();
 shield = new stamp();
 shield.index = SHIELD.NONE;
 
-miasma = new stamp();
+/// @method player_refresh_status()
+/// @description Resets the player's status.
+player_refresh_status = function()
+{
+    shield.index = SHIELD.NONE;
+    aerial_flags &= ~AERIAL_FLAG_SHIELD_ACTION;
+    recovery_time = 0;
+    invincibility_time = 0;
+    superspeed_time = 0;
+    confusion_time = 0;
+};
 
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
+swap_time = 0;
 state_time = 0;
 
 recovery_time = 0;
@@ -40,7 +52,7 @@ superspeed_time = 0;
 confusion_time = 0;
 
 cpu_state_time = 0;
-cpu_respawn_time = 0;
+cpu_respawn_time = CPU_RESPAWN_DURATION;
 cpu_gamepad_time = 0;
 
 // Physics
@@ -122,6 +134,32 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
+/// @method player_refresh_inputs()
+/// @description Resets the player's inputs.
+player_refresh_inputs = function()
+{
+    input_axis_x = 0;
+    input_axis_y = 0;
+    
+    struct_foreach(input_button, function(name, value)
+    {
+        var verb = value.verb;
+        value.check = false;
+        value.pressed = false;
+        value.released = false;
+    });
+};
+
+/// @method player_refresh_records()
+/// @description Resets the player's input records.
+player_refresh_records = function()
+{
+    array_foreach(cpu_axis_x, function(element, index) { element = 0; });
+    array_foreach(cpu_axis_y, function(element, index) { element = 0; });
+    array_foreach(cpu_input_jump, function(element, index) { element = false; });
+    array_foreach(cpu_input_jump_pressed, function(element, index) { element = false; });
+};
+
 // Animation
 animation_data = new animation_core();
 //animation_history = array_create(16);
@@ -130,11 +168,46 @@ animation_data = new animation_core();
 camera = noone;
 
 // CPU
-cpu_state = 0;
+cpu_state = CPU_STATE.FOLLOW;
 cpu_axis_x = array_create(16);
 cpu_axis_y = array_create(16);
 cpu_input_jump = array_create(16);
 cpu_input_jump_pressed = array_create(16);
+
+/// @method player_refresh_cpu()
+/// @description Resets the CPU.
+player_refresh_cpu = function()
+{
+    var leader = ctrlStage.stage_players[0];
+    x = leader.x div 1;
+    y = leader.y div 1;
+    xprevious = x;
+    yprevious = y;
+    image_xscale = leader.image_xscale;
+    gravity_direction = leader.gravity_direction;
+    x_speed = leader.x_speed;
+    y_speed = leader.y_speed;
+    collision_layer = leader.collision_layer;
+    tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
+    cpu_state = CPU_STATE.FOLLOW;
+    animation_play(PLAYER_ANIMATION.FALL);
+    player_perform(player_is_falling, false);
+    player_refresh_physics();
+};
+
+
+/// @method player_respawn_cpu()
+/// @description Respawns the CPU.
+player_respawn_cpu = function()
+{
+    var can_respawn = (ctrlStage.stage_players[0].state != player_is_dead);
+    if (can_respawn)
+    {
+        player_refresh_cpu();
+        recovery_time = RECOVERY_DURATION;
+        cpu_respawn_time = 0;
+    }
+};
 
 // Misc.
 /// @method player_perform(action, [enter])
@@ -151,22 +224,6 @@ player_perform = function(action, enter = true)
         state_changed = true;
         if (enter) state(PHASE.ENTER);
     }
-};
-
-/// @method player_reset_input()
-/// @description Resets all player input.
-player_reset_input = function()
-{
-    input_axis_x = 0;
-    input_axis_y = 0;
-    
-    struct_foreach(input_button, function(name, value)
-    {
-        var verb = value.verb;
-        value.check = false;
-        value.pressed = false;
-        value.released = false;
-    });
 };
 
 /// @method player_try_jump()
@@ -209,7 +266,7 @@ player_try_trick = function(time = 0)
 };
 
 /// @method player_try_shield()
-/// @description Checks if the player performs a Shield Actions.
+/// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
 player_try_shield = function()
 {

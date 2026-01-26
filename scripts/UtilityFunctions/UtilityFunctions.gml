@@ -41,6 +41,16 @@ function time_to_frames(minutes, seconds)
     return (minutes * 3600) + (seconds * 60);
 }
 
+/// @function pick(val, options)
+/// @description Returns an option based on the given value. Ported from GM8.2.
+/// @param {Real} val Value to check.
+/// @param {Array} options Options to return.
+/// @returns {Any}
+function pick(val, options)
+{
+	return options[(max(val, 0) mod array_length(options))];
+}
+
 /// @function modwrap(val, minimum, maximum)
 /// @description Wraps the given value between the given range - maximum exclusive. Ported from GM8.2.
 /// @param {Real} val Value to wrap.

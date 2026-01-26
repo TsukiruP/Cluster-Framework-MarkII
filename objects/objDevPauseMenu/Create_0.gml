@@ -1,8 +1,8 @@
 /// @description Initialize
 image_speed = 0;
-ctrlGame.game_paused |= PAUSE_FLAG_MENU;
 audio_pause_all();
 cursor = 0;
+with (ctrlGame) game_paused |= PAUSE_FLAG_MENU;
 
 /// @method menu_close([destroy])
 /// @description Closes the pause menu.
