@@ -24,128 +24,132 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 {
     player_refresh_inputs();
     var leader = ctrlStage.stage_players[0];
-    if (instance_exists(leader) and leader.state != player_is_dead)
+    if (instance_exists(leader))
     {
-        var x_dist = leader.x - x;
-        var y_dist = leader.y - y;
-        
-        var sine = dsin(gravity_direction);
-        var cosine = dcos(gravity_direction);
-        
-        switch (cpu_state)
+        if (state != player_is_dead)
         {
-            case CPU_STATE.CROUCH:
+            var x_dist = leader.x - x;
+            var y_dist = leader.y - y;
+            
+            var sine = dsin(gravity_direction);
+            var cosine = dcos(gravity_direction);
+            
+            switch (cpu_state)
             {
-                if (cpu_state_time == 0)
+                case CPU_STATE.CROUCH:
                 {
-                    cpu_state = CPU_STATE.FOLLOW;
-                    cpu_state_time = 0;
-                }
-                else
-                {
-                    if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
+                    if (cpu_state_time == 0)
                     {
-                        x_speed = 0;
-                        input_axis_y = 1;
-                        image_xscale = esign(sine == 0 ? cosine * x_dist : -sine * y_dist, leader.image_xscale);
-                        if (state == player_is_crouching)
-                        {
-                            cpu_state = CPU_STATE.SPIN_DASH;
-                            cpu_state_time = 64;
-                        }
+                        cpu_state = CPU_STATE.FOLLOW;
+                        cpu_state_time = 0;
                     }
-                    cpu_state_time--;
-                }
-                break;
-            }
-            case CPU_STATE.SPIN_DASH:
-            {
-                if (cpu_state_time == 0)
-                {
-                    cpu_state = CPU_STATE.FOLLOW;
-                    cpu_state_time = 0;
-                }
-                else
-                {
-                    input_axis_y = 1;
-                    input_button.jump.pressed = (cpu_state_time mod 16 == 0);
-                    cpu_state_time--;
-                }
-                break;
-            }
-            default:
-            {
-                // Panic
-                if (abs(x_speed) < 0.5 and control_lock_time > 0)
-                {
-                    cpu_state = CPU_STATE.CROUCH;
-                    cpu_state_time = 128;
+                    else
+                    {
+                        if (abs(x_speed) < 0.25 and control_lock_time == 0 and on_ground)
+                        {
+                            x_speed = 0;
+                            input_axis_y = 1;
+                            image_xscale = esign(sine == 0 ? cosine * x_dist : -sine * y_dist, leader.image_xscale);
+                            if (state == player_is_crouching)
+                            {
+                                cpu_state = CPU_STATE.SPIN_DASH;
+                                cpu_state_time = 64;
+                            }
+                        }
+                        cpu_state_time--;
+                    }
                     break;
                 }
-                
-                var leader_extra_dist = 32 * (abs(leader.x_speed) < 4);
-                input_axis_x = leader.cpu_axis_x[0];
-                input_axis_y = leader.cpu_axis_y[0];
-                input_button.jump.check = leader.cpu_input_jump[0];
-                input_button.jump.pressed = leader.cpu_input_jump_pressed[0];
-                
-                // TODO: Check for propeller flight
-                
-                // Move
-                // TODO: The checks for xscale should also check if the player is pushing
-                var leader_x_dist = (sine == 0 ? cosine * x_dist : -sine * y_dist );
-                if (leader_x_dist + 16 + leader_extra_dist < 0)
+                case CPU_STATE.SPIN_DASH:
                 {
-                    input_axis_x = -1;
-                    if (image_xscale == -1 and x_speed != 0)
+                    if (cpu_state_time == 0)
                     {
-                        if (sine == 0) x -= sign(cosine);
-                        else y -= -sine;
+                        cpu_state = CPU_STATE.FOLLOW;
+                        cpu_state_time = 0;
                     }
-                }
-                if (leader_x_dist - 16 - leader_extra_dist > 0)
-                {
-                    input_axis_x = 1;
-                    if (image_xscale == 1 and x_speed != 0)
+                    else
                     {
-                        if (sine == 0) x += sign(cosine);
-                        else y += -sine;
+                        input_axis_y = 1;
+                        input_button.jump.pressed = (cpu_state_time mod 16 == 0);
+                        cpu_state_time--;
                     }
+                    break;
                 }
-                
-                // Jump
-                var jump_dist = (sine == 0 ? cosine * y_dist : sine * x_dist);
-                var jump_auto = 0;
-                // TODO: Check for pushing first
-                if (jump_dist + 32 > 0)
+                default:
                 {
-                    jump_auto = 2;
-                    cpu_state_time = 64;
-                }
-                else
-                {
-                    if (cpu_state_time > 0) cpu_state_time--;
-                    jump_auto = (cpu_state_time > 0 ? 1 : 0);
-                }
-                
-                if (leader.state != player_is_dead)
-                {
-                    switch (jump_auto)
+                    // Panic
+                    if (abs(x_speed) < 0.5 and control_lock_time > 0)
                     {
-                        case 0:
+                        cpu_state = CPU_STATE.CROUCH;
+                        cpu_state_time = 128;
+                        break;
+                    }
+                    
+                    var leader_extra_dist = 32 * (abs(leader.x_speed) < 4);
+                    input_axis_x = leader.cpu_axis_x[0];
+                    input_axis_y = leader.cpu_axis_y[0];
+                    input_button.jump.check = leader.cpu_input_jump[0];
+                    input_button.jump.pressed = leader.cpu_input_jump_pressed[0];
+                    
+                    // TODO: Check for propeller flight
+                    
+                    // Move
+                    var leader_x_dist = (sine == 0 ? cosine * x_dist : -sine * y_dist );
+                    if (leader_x_dist + 16 + leader_extra_dist < 0)
+                    {
+                        input_axis_x = -1;
+                        // TODO: The checks for xscale should also check if the player is pushing
+                        if (image_xscale == -1 and x_speed != 0)
                         {
-                            if (on_ground)
-                            {
-                                if (not input_button.jump.check) input_button.jump.pressed = true;
-                                input_button.jump.check = true;
-                            }
-                            jump_cap = false;
-                            break;
+                            if (sine == 0) x -= sign(cosine);
+                            else y -= -sine;
                         }
-                        case 1:
+                    }
+                    if (leader_x_dist - 16 - leader_extra_dist > 0)
+                    {
+                        input_axis_x = 1;
+                        // TODO: The checks for xscale should also check if the player is pushing
+                        if (image_xscale == 1 and x_speed != 0)
                         {
-                            input_button.jump.check = true;
-                            break;
+                            if (sine == 0) x += sign(cosine);
+                            else y += -sine;
+                        }
+                    }
+                    
+                    // Jump
+                    var jump_dist = (sine == 0 ? cosine * y_dist : sine * x_dist);
+                    var jump_auto = 0;
+                    // TODO: Check for pushing first
+                    if (jump_dist + 32 > 0)
+                    {
+                        jump_auto = 2;
+                        cpu_state_time = 64;
+                    }
+                    else
+                    {
+                        if (cpu_state_time > 0) cpu_state_time--;
+                        jump_auto = (cpu_state_time > 0 ? 1 : 0);
+                    }
+                    
+                    if (leader.state != player_is_dead)
+                    {
+                        switch (jump_auto)
+                        {
+                            case 0:
+                            {
+                                if (on_ground)
+                                {
+                                    if (not input_button.jump.check) input_button.jump.pressed = true;
+                                    input_button.jump.check = true;
+                                }
+                                jump_cap = false;
+                                break;
+                            }
+                            case 1:
+                            {
+                                input_button.jump.check = true;
+                                break;
+                            }
                         }
                     }
                 }
@@ -198,6 +202,7 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                     }
                     
                     player_index = array_length(ctrlStage.stage_players) - 1;
+                    cpu_state = CPU_STATE.FOLLOW;
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
