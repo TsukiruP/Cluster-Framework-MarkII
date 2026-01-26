@@ -261,6 +261,7 @@
     {"id":{"name":"objSunsetHillSolid0","path":"objects/objSunsetHillSolid0/objSunsetHillSolid0.yy",},},
     {"id":{"name":"objSunsetHillSolid1","path":"objects/objSunsetHillSolid1/objSunsetHillSolid1.yy",},},
     {"id":{"name":"objTransition","path":"objects/objTransition/objTransition.yy",},},
+    {"id":{"name":"rmDev","path":"rooms/rmDev/rmDev.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"rmTemplate","path":"rooms/rmTemplate/rmTemplate.yy",},},
     {"id":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
@@ -853,6 +854,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
+    {"roomId":{"name":"rmDev","path":"rooms/rmDev/rmDev.yy",},},
     {"roomId":{"name":"rmTemplate","path":"rooms/rmTemplate/rmTemplate.yy",},},
     {"roomId":{"name":"rmTest","path":"rooms/rmTest/rmTest.yy",},},
     {"roomId":{"name":"rmTestNew","path":"rooms/rmTestNew/rmTestNew.yy",},},

@@ -142,3 +142,13 @@ global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
 surface_depth_disable(true);
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
 randomize();
+
+// Start the game!
+call_later(1, time_source_units_frames, room_goto_next);
+
+/* AUTHOR NOTE: `room_goto_next` executes at the end of the function/event it was called in,
+meaning calling it here would result in the global controllers not being created.
+Thus, it is instead called 1 frame later.
+
+Note, however, this means the initialization room will be shown for that 1 frame.
+Calling `room_goto_next` in the room's Creation Code does not address this, either. */
