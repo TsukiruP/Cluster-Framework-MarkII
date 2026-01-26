@@ -189,6 +189,7 @@ player_refresh_cpu = function()
     x_speed = leader.x_speed;
     y_speed = leader.y_speed;
     collision_layer = leader.collision_layer;
+    tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
     animation_play(PLAYER_ANIMATION.FALL);
     player_perform(player_is_falling, false);
     player_refresh_physics();

@@ -203,6 +203,7 @@ function player_is_dead(phase)
                 {
                     transition_create(room, TRANSITION.TRY_AGAIN);
                     //if (LIVES_ENABLED) global.life_count--;
+                    with (ctrlGame) game_flags |= GAME_FLAG_KEEP_CHARACTERS;
                     with (ctrlStage) pause_allow = false;
                 }
                 else
