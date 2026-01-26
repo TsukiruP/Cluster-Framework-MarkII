@@ -197,11 +197,18 @@ function player_is_dead(phase)
         }
         case PHASE.STEP:
         {
-            if (player_index == 0 and --state_time == 0)
+            if (--state_time == 0)
             {
-                transition_create(room, TRANSITION.TRY_AGAIN);
-                //if (LIVES_ENABLED) global.life_count--;
-                with (ctrlStage) pause_allow = false;
+                if (player_index == 0)
+                {
+                    transition_create(room, TRANSITION.TRY_AGAIN);
+                    //if (LIVES_ENABLED) global.life_count--;
+                    with (ctrlStage) pause_allow = false;
+                }
+                else
+                {
+                    player_respawn_cpu();
+                }
             }
             
             // Move

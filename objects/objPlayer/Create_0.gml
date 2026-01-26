@@ -29,9 +29,22 @@ shield.index = SHIELD.NONE;
 
 miasma = new stamp();
 
+/// @method player_refresh_status()
+/// @description Resets the player's status.
+player_refresh_status = function()
+{
+    shield.index = SHIELD.NONE;
+    aerial_flags &= ~AERIAL_FLAG_SHIELD_ACTION;
+    recovery_time = 0;
+    invincibility_time = 0;
+    superspeed_time = 0;
+    confusion_time = 0;
+};
+
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
+swap_time = 0;
 state_time = 0;
 
 recovery_time = 0;
@@ -40,7 +53,7 @@ superspeed_time = 0;
 confusion_time = 0;
 
 cpu_state_time = 0;
-cpu_respawn_time = 0;
+cpu_respawn_time = CPU_RESPAWN_DURATION;
 cpu_gamepad_time = 0;
 
 // Physics
@@ -136,6 +149,16 @@ player_refresh_input = function()
         value.pressed = false;
         value.released = false;
     });
+};
+
+/// @method player_refresh_records()
+/// @description Resets the player's input record.
+player_refresh_records = function()
+{
+    array_foreach(cpu_axis_x, function(element, index) { element = 0; });
+    array_foreach(cpu_axis_y, function(element, index) { element = 0; });
+    array_foreach(cpu_input_jump, function(element, index) { element = false; });
+    array_foreach(cpu_input_jump_pressed, function(element, index) { element = false; });
 };
 
 // Animation
