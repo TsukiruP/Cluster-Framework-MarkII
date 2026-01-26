@@ -67,6 +67,7 @@ function player_move_in_air()
     var total_steps = 1 + abs(x_speed) div x_radius + abs(y_speed) div y_radius;
     var x_step = x_speed / total_steps;
     var y_step = y_speed / total_steps;
+    
     var sine = dsin(mask_direction);
     var cosine = dcos(mask_direction);
     

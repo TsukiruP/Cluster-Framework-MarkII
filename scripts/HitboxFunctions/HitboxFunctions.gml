@@ -21,6 +21,7 @@ function collision_player(hb, pla, plahb = -1)
     var result = 0;
     var x_int = x div 1;
     var y_int = y div 1;
+    
     var sine = dsin(gravity_direction);
     var cosine = dcos(gravity_direction);
     
@@ -46,6 +47,7 @@ function collision_player(hb, pla, plahb = -1)
     
     var px_int = pla.x div 1;
     var py_int = pla.y div 1;
+    
     var psine = dsin(pla.mask_direction);
     var pcosine = dcos(pla.mask_direction);
     

@@ -46,6 +46,7 @@ else if (lost)
 {
     var x_int = x div 1;
     var y_int = y div 1;
+    
     var sine = dsin(gravity_direction);
     var cosine = dcos(gravity_direction);
     

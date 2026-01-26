@@ -24,12 +24,13 @@ if (player_index != 0 and cpu_gamepad_time == 0)
 {
     player_refresh_inputs();
     var leader = ctrlStage.stage_players[0];
-    if (instance_exists(leader))
+    if (instance_exists(leader) and leader.state != player_is_dead)
     {
-        var sine = dsin(gravity_direction);
-        var cosine = dcos(gravity_direction);
         var x_dist = leader.x - x;
         var y_dist = leader.y - y;
+        
+        var sine = dsin(gravity_direction);
+        var cosine = dcos(gravity_direction);
         
         switch (cpu_state)
         {
@@ -230,14 +231,15 @@ with (spin_dash_dust)
     {
         var x_int = other.x div 1;
         var y_int = other.y div 1;
+        
         var sine = dsin(other.gravity_direction);
         var cosine = dcos(other.gravity_direction);
-        var charge = floor(other.spin_dash_charge);
+        
         x = x_int + sine * other.y_radius;
         y = y_int + cosine * other.y_radius;
         image_xscale = other.image_xscale;
         image_angle = other.mask_direction;
-        animation_data.variant = (charge > 2);
+        animation_data.variant = (floor(other.spin_dash_charge) > 2);
         animation_set(global.ani_spin_dash_dust);
     }
     else if (animation_data.ani != undefined)
@@ -252,10 +254,8 @@ with (shield)
     var invincible = (other.invincibility_time > 0);
     if (index != SHIELD.NONE or invincible)
     {
-        var x_int = other.x div 1;
-        var y_int = other.y div 1;
-        x = x_int;
-        y = y_int;
+        x = other.x div 1;
+        y = other.y div 1;
         
         var shield_advance = (index == SHIELD.BASIC or index == SHIELD.MAGNETIC or invincible);
         var flicker_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_FLICKER, "flicker");
@@ -366,8 +366,10 @@ with (miasma)
     {
         var x_int = other.x div 1;
         var y_int = other.y div 1;
+        
         var sine = dsin(other.gravity_direction);
         var cosine = dcos(other.gravity_direction);
+        
         x = x_int - sine * 16;
         y = y_int - cosine * 16;
         image_angle = other.mask_direction;

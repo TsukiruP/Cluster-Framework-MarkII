@@ -21,6 +21,7 @@ function player_part_collision(obj, ylen)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
+    
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	
@@ -42,6 +43,7 @@ function player_ray_collision(obj, xoff, ylen)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
+    
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	
@@ -63,6 +65,7 @@ function player_beam_collision(obj, xrad = x_wall_radius, yoff = 0)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
+    
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	

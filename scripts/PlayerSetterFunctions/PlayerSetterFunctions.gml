@@ -6,6 +6,7 @@ function player_eject_wall(inst)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
+    
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
 	

@@ -190,6 +190,7 @@ player_refresh_cpu = function()
     collision_layer = leader.collision_layer;
     tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
     cpu_state = CPU_STATE.FOLLOW;
+    player_ground(undefined);
     animation_play(PLAYER_ANIMATION.FALL);
     player_perform(player_is_falling, false);
     player_refresh_physics();
@@ -371,14 +372,14 @@ player_set_radii = function(xrad, yrad)
     
     var old_x_radius = x_radius;
     var old_y_radius = y_radius;
-    var sine = dsin(mask_direction);
-    var cosine = dcos(mask_direction);
     x_radius = xrad;
     x_wall_radius = x_radius + 2;
     y_radius = yrad;
     
     if (on_ground)
     {
+        var sine = dsin(mask_direction);
+        var cosine = dcos(mask_direction);
         x += sine * (old_y_radius - y_radius);
         y += cosine * (old_y_radius - y_radius);
     }
