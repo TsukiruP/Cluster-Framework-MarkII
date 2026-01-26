@@ -200,10 +200,16 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
+                    audio_play_single(sfxSwap);
+                    InputVerbConsume(INPUT_VERB.SWAP);
                     array_push(global.characters, array_shift(global.characters));
                     with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     with (objCamera) focus = ctrlStage.stage_players[0];
                     with (objPlayer) depth = ctrlStage.stage_depth + player_index - DEPTH_OFFSET_PLAYER;
+                }
+                else
+                {
+                    audio_play_single(sfxSwapFail);
                 }
             }
             else

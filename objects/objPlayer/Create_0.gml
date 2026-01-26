@@ -258,7 +258,7 @@ player_try_trick = function(time = 0)
         if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
             trick_index == TRICK.DOWN))
         {
-            audio_play_single(sfxTrick);
+            audio_play_single(sfxTrickAction);
         }
         return true;
     }
