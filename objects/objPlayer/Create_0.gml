@@ -135,9 +135,9 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
-/// @method player_refresh_input()
-/// @description Resets the player's input.
-player_refresh_input = function()
+/// @method player_refresh_inputs()
+/// @description Resets the player's inputs.
+player_refresh_inputs = function()
 {
     input_axis_x = 0;
     input_axis_y = 0;
@@ -152,7 +152,7 @@ player_refresh_input = function()
 };
 
 /// @method player_refresh_records()
-/// @description Resets the player's input record.
+/// @description Resets the player's input records.
 player_refresh_records = function()
 {
     array_foreach(cpu_axis_x, function(element, index) { element = 0; });

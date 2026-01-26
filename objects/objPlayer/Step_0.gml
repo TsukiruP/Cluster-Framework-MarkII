@@ -22,7 +22,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 // CPU
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
-    player_refresh_input();
+    player_refresh_inputs();
     var leader = ctrlStage.stage_players[0];
     if (instance_exists(leader))
     {
@@ -193,12 +193,12 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                         shield.index = other.shield.index;
                         invincibility_time = other.invincibility_time;
                         superspeed_time = other.superspeed_time;
-                        player_refresh_input();
+                        player_refresh_inputs();
                     }
                     
                     player_index = array_length(ctrlStage.stage_players) - 1;
                     player_refresh_status();
-                    player_refresh_input();
+                    player_refresh_inputs();
                     player_refresh_records();
                     array_push(global.characters, array_shift(global.characters));
                     with (ctrlStage) array_push(stage_players, array_shift(stage_players));
