@@ -265,10 +265,10 @@ player_try_trick = function(time = 0)
     return false;
 };
 
-/// @method player_try_shield()
+/// @method player_try_shield_action()
 /// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
-player_try_shield = function()
+player_try_shield_action = function()
 {
     aerial_flags |= AERIAL_FLAG_SHIELD_ACTION;
     switch (shield.index)

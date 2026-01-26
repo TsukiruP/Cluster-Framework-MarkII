@@ -20,7 +20,7 @@ player_try_skill = function()
         {
             if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
             {
-                return player_try_shield();
+                return player_try_shield_action();
             }
         }
         
