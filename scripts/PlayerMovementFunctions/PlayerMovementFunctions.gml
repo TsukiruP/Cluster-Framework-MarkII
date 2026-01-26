@@ -36,8 +36,8 @@ function player_move_on_ground()
         }
         
         // Handle floor collision
-        if (on_ground)
-        {
+        //if (on_ground)
+        //{
             if (instance_exists(ground_id))
             {
                 on_ground = true;
@@ -55,7 +55,7 @@ function player_move_on_ground()
                 }
                 else on_ground = false;
             }
-        }
+        //}
     }
 }
 
