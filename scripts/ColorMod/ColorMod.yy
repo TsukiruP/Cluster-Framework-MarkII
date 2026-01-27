@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ColorMod",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ColorMod",
+  "parent":{
+    "name":"ColorMod",
+    "path":"folders/Libraries/ColorMod.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

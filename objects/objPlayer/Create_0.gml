@@ -24,6 +24,7 @@ for (var i = 0; i < array_length(trick_speed); i++)
 }
 
 // Status
+swap_arrow = new stamp();
 miasma = new stamp();
 shield = new stamp();
 shield.index = SHIELD.NONE;

@@ -39,6 +39,7 @@
 | Rail Spark | 1329-0 |
 | Tag Action | 1340-0, 1340-1 |
 | Heart | 1317-0 |
+| "Swap" Arrow | 1511-0, (SA2) 863-0 |
 | Miasma | 1507-0 |
 
 # Stage

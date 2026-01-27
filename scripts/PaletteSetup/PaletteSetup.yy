@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"PaletteSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PaletteSetup",
+  "parent":{
+    "name":"Global",
+    "path":"folders/Scripts/Global.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
