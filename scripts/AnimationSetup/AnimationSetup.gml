@@ -195,7 +195,7 @@ global.ani_miles_fall = [global.ani_miles_fall_v0, global.ani_miles_fall_v1];
 
 global.ani_miles_jump_v0 = new animation(sprMilesJump0, 3, -1);
 global.ani_miles_jump_v1 = new animation(sprMilesJump1, 2);
-global.ani_miles_jump_v2 = new animation(sprMilesJump2, [1, 2, 2, 2, 2, 2]);
+global.ani_miles_jump_v2 = new animation(sprMilesJump2, [1, 2, 2, 2, 2, 2], 3);
 global.ani_miles_jump = [global.ani_miles_jump_v0, global.ani_miles_jump_v1, global.ani_miles_jump_v2];
 
 global.ani_miles_hurt_v0 = new animation(sprMilesHurt0, [3, 8, 8, 8, 8], -1);
