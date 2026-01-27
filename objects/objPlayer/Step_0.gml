@@ -157,7 +157,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
         }
         
         // Respawn
-        if (not instance_in_view() and state != player_is_dead)
+        if (not instance_in_view())
         {
             if (--cpu_respawn_time == 0) player_respawn_cpu();
         }
