@@ -193,7 +193,6 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                 {
                     with (partner)
                     {
-                        player_index = 0;
                         swap_time = SWAP_DURATION;
                         shield.index = other.shield.index;
                         invincibility_time = other.invincibility_time;
@@ -201,7 +200,6 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                         player_refresh_inputs();
                     }
                     
-                    player_index = array_length(ctrlStage.stage_players) - 1;
                     cpu_state = CPU_STATE.FOLLOW;
                     player_refresh_status();
                     player_refresh_inputs();
@@ -211,7 +209,11 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                     array_push(global.characters, array_shift(global.characters));
                     with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     with (objCamera) focus = ctrlStage.stage_players[0];
-                    with (objPlayer) depth = ctrlStage.stage_depth + player_index - DEPTH_OFFSET_PLAYER;
+                    with (objPlayer)
+                    {
+                        player_index = array_get_index(ctrlStage.stage_players, id);
+                        depth = ctrlStage.stage_depth + player_index - DEPTH_OFFSET_PLAYER;
+                    }
                 }
                 else
                 {
