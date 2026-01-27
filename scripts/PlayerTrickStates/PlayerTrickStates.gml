@@ -10,8 +10,7 @@ function player_is_trick_preparing(phase)
             y_speed = 0;
             
             // Animate
-            animation_play(pick(trick_index, [PLAYER_ANIMATION.TRICK_UP, PLAYER_ANIMATION.TRICK_DOWN,
-                PLAYER_ANIMATION.TRICK_FRONT, PLAYER_ANIMATION.TRICK_BACK]));
+            animation_play(PLAYER_ANIMATION.TRICK_UP + trick_index);
         break;
         }
         case PHASE.STEP:
