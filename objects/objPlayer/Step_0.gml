@@ -177,10 +177,10 @@ if (state_changed) state_changed = false;
 player_animate();
 
 // Swap
-if (player_index == 0 and state != player_is_hurt and state != player_is_dead)
+if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
 {
     var partner = ctrlStage.stage_players[1];
-    if (input_button.swap.pressed and instance_exists(partner))
+    if (input_button.swap.pressed)
     {
         if (partner.cpu_gamepad_time == 0)
         {

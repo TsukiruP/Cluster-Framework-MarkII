@@ -140,7 +140,7 @@ global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
 
 // Misc.
 surface_depth_disable(true);
-InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, false, INPUT_VERB.CANCEL, undefined);
+InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 randomize();
 
 // Start the game!
