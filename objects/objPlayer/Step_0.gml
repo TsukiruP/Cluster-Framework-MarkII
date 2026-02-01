@@ -179,7 +179,7 @@ player_animate();
 // Swap
 if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
 {
-    var partner = ctrlStage.stage_players[1];
+    var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
     if (input_button.swap.pressed)
     {
         if (partner.cpu_gamepad_time == 0)
@@ -200,14 +200,23 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                         player_refresh_inputs();
                     }
                     
+                    if (input_button.alt.check)
+                    {
+                        array_insert(global.characters, 0, array_pop(global.characters));
+                        with (ctrlStage) array_insert(stage_players, 0, array_pop(stage_players));
+                    }
+                    else
+                    {
+                        array_push(global.characters, array_shift(global.characters));
+                        with (ctrlStage) array_push(stage_players, array_shift(stage_players));
+                    }
+                    
                     cpu_state = CPU_STATE.FOLLOW;
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
                     audio_play_single(sfxSwap);
                     InputVerbConsume(INPUT_VERB.SWAP);
-                    array_push(global.characters, array_shift(global.characters));
-                    with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     with (objCamera) focus = ctrlStage.stage_players[0];
                     with (objPlayer)
                     {
