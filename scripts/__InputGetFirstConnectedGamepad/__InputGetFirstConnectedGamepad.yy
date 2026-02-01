@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__InputIconSystem",
+  "%Name":"__InputGetFirstConnectedGamepad",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__InputIconSystem",
+  "name":"__InputGetFirstConnectedGamepad",
   "parent":{
     "name":"(System)",
-    "path":"folders/Libraries/Input Plug-Ins/Binding Icons/(System).yy",
+    "path":"folders/Libraries/Input/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

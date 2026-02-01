@@ -9,6 +9,12 @@
 // library, set this macro to `false`.
 #macro INPUT_SAFETY_CHECKS  true
 
+// Whether to only allow one PlayStation user to play the game when running on PlayStation 5. This
+// macro corresponds to the `InitialUserAlwaysLoggedIn` mode set in your `param.json`. Please note
+// that this macro (and the associated `param.json` mode) should only be used for single player
+// games.
+#macro INPUT_PS5_SINGLE_USER  false
+
 ////////////////
 //            //
 //  Checkers  //
@@ -25,7 +31,7 @@
 
 // Default values for the "opposing" checker functions. Please see that function for documentation
 // on behaviour.
-#macro INPUT_OPPOSING_DEFAULT_MOST_RECENT  false
+#macro INPUT_OPPOSING_DEFAULT_MOST_RECENT  true
 
 ///////////////////////////
 //                       //
