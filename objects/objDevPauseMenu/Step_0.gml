@@ -57,7 +57,7 @@ else
                 audio_stop_all();
                 audio_clear_music();
                 menu_close(false);
-                room_goto(rmDev);
+                room_goto(rmDevMenu);
                 break;
             }
             

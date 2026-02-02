@@ -8,8 +8,8 @@
   "name":"objNeoGreenHillParallax",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Objects/Stage/Misc..yy",
+    "name":"Stage",
+    "path":"folders/Objects/Stage.yy",
   },
   "parentObjectId":null,
   "persistent":false,

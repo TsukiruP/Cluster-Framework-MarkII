@@ -9,8 +9,8 @@
   "name":"objJumpPanel",
   "overriddenProperties":[],
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Objects/Stage/General/Misc..yy",
+    "name":"General",
+    "path":"folders/Objects/Stage/General.yy",
   },
   "parentObjectId":{
     "name":"objInteractable",
