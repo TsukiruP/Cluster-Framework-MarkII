@@ -11,8 +11,8 @@
   "name":"objTransition",
   "overriddenProperties":[],
   "parent":{
-    "name":"Display",
-    "path":"folders/Objects/Display.yy",
+    "name":"System",
+    "path":"folders/Objects/System.yy",
   },
   "parentObjectId":null,
   "persistent":true,

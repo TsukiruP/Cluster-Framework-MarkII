@@ -10,8 +10,8 @@
   "name":"ctrlInput",
   "overriddenProperties":[],
   "parent":{
-    "name":"Depreciated",
-    "path":"folders/Objects/Depreciated.yy",
+    "name":"Controllers",
+    "path":"folders/Objects/Controllers.yy",
   },
   "parentObjectId":null,
   "persistent":true,
