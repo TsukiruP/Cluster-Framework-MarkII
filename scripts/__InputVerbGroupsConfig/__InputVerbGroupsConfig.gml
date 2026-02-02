@@ -12,6 +12,8 @@ function __InputVerbGroupsConfig()
         //EXAMPLE_B,
         
         //Add your own verb groups here!
+        STAGE,
+        SYSTEM
     }
     
     //If you add a verb group in the `INPUT_VERB_GROUP` enum then you should add a call to
@@ -22,4 +24,6 @@ function __InputVerbGroupsConfig()
     
     //InputVerbGroupDefine(INPUT_VERB_GROUP.EXAMPLE_A, [INPUT_VERB.UP, INPUT_VERB.DOWN, INPUT_VERB.LEFT, INPUT_VERB.RIGHT, INPUT_VERB.ACCEPT, INPUT_VERB.CANCEL]);
     //InputVerbGroupDefine(INPUT_VERB_GROUP.EXAMPLE_B, [INPUT_VERB.ACTION, INPUT_VERB.SPECIAL]);
+    InputVerbGroupDefine(INPUT_VERB_GROUP.STAGE, [INPUT_VERB.JUMP, INPUT_VERB.AUX, INPUT_VERB.SWAP, INPUT_VERB.EXTRA, INPUT_VERB.TAG, INPUT_VERB.ALT]);
+    InputVerbGroupDefine(INPUT_VERB_GROUP.SYSTEM, [INPUT_VERB.START, INPUT_VERB.SELECT, INPUT_VERB.CONFIRM, INPUT_VERB.CANCEL, INPUT_VERB.HIDE]);
 }
