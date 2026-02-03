@@ -39,7 +39,7 @@
   "origin":4,
   "parent":{
     "name":"HUD",
-    "path":"folders/Sprites/Display/HUD.yy",
+    "path":"folders/Sprites/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

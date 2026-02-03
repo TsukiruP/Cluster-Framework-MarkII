@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Adventure",
-    "path":"folders/Sprites/Display/HUD/Adventure.yy",
+    "path":"folders/Sprites/HUD/Adventure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

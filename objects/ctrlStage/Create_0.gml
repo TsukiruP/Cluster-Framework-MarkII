@@ -37,5 +37,7 @@ switch (room)
     }
 }
 
-// Create UI elements
-instance_create_layer(0, 0, "Display", objHUD);
+// Create HUD
+var hud_objects = [objHUDCluster, objHUDAdventure, objHUDAdventure2, objHUDAdvance2, objHUDAdvance3, objHUDEpisodeII];
+var hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
+if (hud_config != CONFIG_HUD.NONE) instance_create_layer(0, 0, "HUD", hud_objects[hud_config]);
