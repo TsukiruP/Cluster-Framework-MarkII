@@ -1,10 +1,8 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
+hitboxes[0].set_size(-14, -16, 12, 8);
 animation_data = new animation_core();
 animation_set(global.ani_item_balloon_v0);
-hitboxes[0].set_size(-14, -16, 12, 8);
 
 reaction = function(pla)
 {

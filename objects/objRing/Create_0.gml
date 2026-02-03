@@ -1,11 +1,10 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 hitboxes[0].set_size(-8, -8, 8, 8);
 frame_speed = 8;
 super = false;
 value = 1;
+
 x_speed = 0;
 y_speed = 0;
 

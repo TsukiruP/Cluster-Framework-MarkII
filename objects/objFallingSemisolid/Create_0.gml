@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 state = 0; // 0 - idle, 1 - delay, 2 - falling
 state_time = 0;
 reset = false;

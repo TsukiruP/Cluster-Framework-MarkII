@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 character_index = CHARACTER.KNUCKLES;
 
 trick_speed =

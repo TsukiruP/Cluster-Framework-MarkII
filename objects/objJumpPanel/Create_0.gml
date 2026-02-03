@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 hitboxes[0].set_size(-32, -32, 30, 0);
 
 reaction = function(pla)

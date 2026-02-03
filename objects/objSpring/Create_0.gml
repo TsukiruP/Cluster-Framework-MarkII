@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 active = 0;
 animation_data = new animation_core();
 ani_spring = global.ani_spring_vertical;

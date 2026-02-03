@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 character_index = CHARACTER.MILES;
 
 trick_speed =
@@ -13,7 +11,6 @@ trick_speed =
 ];
 
 tails = new stamp();
-
 player_animate = function()
 {
     switch (animation_data.index)

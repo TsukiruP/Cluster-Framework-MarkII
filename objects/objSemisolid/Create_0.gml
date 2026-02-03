@@ -1,5 +1,4 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
 
 reaction = function(pla)

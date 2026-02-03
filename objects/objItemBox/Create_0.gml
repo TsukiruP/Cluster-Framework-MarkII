@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 hitboxes[0].set_size(-15, -17, 15, 15);
 
 // Change debuffs to Eggman

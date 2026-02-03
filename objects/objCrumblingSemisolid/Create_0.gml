@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 is_crumbling = false;
 crumbled = false;
 crumble_time = 0;

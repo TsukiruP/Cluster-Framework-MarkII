@@ -3,7 +3,6 @@ if (ctrlGame.game_paused) exit;
 
 if (not reset)
 {
-    // Inherit the parent event
     event_inherited();
     
     if (state != 0 and not instance_in_view(id, 128))

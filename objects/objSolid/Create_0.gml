@@ -1,8 +1,7 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 gravity_direction = angle_wrap(image_angle);
+
 sink_direction = 0;
 sink_shift = 7;
 sink_left = 0;

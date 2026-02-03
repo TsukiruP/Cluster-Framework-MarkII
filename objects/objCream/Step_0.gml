@@ -1,7 +1,5 @@
 /// @description Ears
 if (ctrlGame.game_paused) exit;
-
-// Inherit the parent event
 event_inherited();
 
 var rolling = (animation_data.ani == global.ani_cream_roll_v0 || animation_data.ani == global.ani_cream_jump_v1);

@@ -1,7 +1,5 @@
 /// @description Initialize
-// Inherit the parent event
 event_inherited();
-
 character_index = CHARACTER.CREAM;
 
 trick_speed =
@@ -14,7 +12,6 @@ trick_speed =
 
 
 ears = new stamp();
-
 player_animate = function()
 {
     switch (animation_data.index)
