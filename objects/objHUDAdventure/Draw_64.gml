@@ -1,4 +1,12 @@
 /// @description Render
+var time = ctrlStage.stage_time;
+var time_over = ctrlStage.time_over;
+var time_alert = (ctrlStage.time_limit - time) < time_to_frames(1, 0);
+var flash = ctrlGame.game_time mod 32 < 16;
+var minutes = time div 3600;
+var seconds = time div 60 mod 60;
+var centiseconds = floor(time / 0.6) mod 100;
+
 var hud_x = 10;
 var hud_y = 13;
 
