@@ -1,6 +1,5 @@
-/// @description Animate
+/// @description Update
 visible = (ctrlGame.game_flags & GAME_FLAG_HIDE_HUD ? false : true);
-
 time = ctrlStage.stage_time;
 time_over = ctrlStage.time_over;
 time_alert = (ctrlStage.time_limit - time) < time_to_frames(1, 0);
