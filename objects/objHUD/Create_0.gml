@@ -2,6 +2,15 @@
 image_speed = 0;
 item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
+// Time
+time = 0;
+time_over = false;
+time_alert = false;
+flash = false;
+minutes = 0;
+seconds = 0;
+centiseconds = 0;
+
 // Item Feed
 if (item_feed_config)
 {
