@@ -14,7 +14,8 @@ switch (hud_config)
     {
         var hud_xstart = -sprite_get_width(sprHUDCluster);
         var hud_xend = 4;
-        hud_x = interpolate(hud_xstart, hud_xend, active_time / active_duration, EASE_SMOOTHSTEP);
+        var hud_x = interpolate(hud_xstart, hud_xend, active_time / active_duration, EASE_SMOOTHSTEP);
+        var hud_y = 6;
         
         // Text
         draw_set_font(global.font_hud_cluster);
@@ -38,6 +39,9 @@ switch (hud_config)
     }
     case CONFIG_HUD.ADVENTURE:
     {
+        var hud_x = 10;
+        var hud_y = 13;
+        
         // Text
         draw_set_font(global.font_hud_adventure);
         draw_set_halign(fa_left);
@@ -58,6 +62,9 @@ switch (hud_config)
     }
     case CONFIG_HUD.ADVENTURE_2:
     {
+        var hud_x = 8;
+        var hud_y = 8;
+        
         // Text
         draw_set_font(global.font_hud_adventure_2);
         draw_set_halign(fa_left);
@@ -86,6 +93,9 @@ switch (hud_config)
     }
     case CONFIG_HUD.ADVANCE_2:
     {
+        var hud_x = 1;
+        var hud_y = 3;
+        
         // Text
         draw_set_font(global.font_hud_advance_2);
         draw_set_halign(fa_left);
@@ -119,6 +129,9 @@ switch (hud_config)
     }
     case CONFIG_HUD.ADVANCE_3:
     {
+        var hud_x = 8;
+        var hud_y = 0;
+        
         // Text
         draw_set_font(global.font_hud_advance_3);
         draw_set_halign(fa_left);
@@ -150,6 +163,9 @@ switch (hud_config)
     }
     case CONFIG_HUD.EPISODE_II:
     {
+        var hud_x = 25;
+        var hud_y = 26;
+        
         // Text
         draw_set_halign(fa_left);
         draw_set_color(c_white);
@@ -278,7 +294,7 @@ if (LIVES_ENABLED)
 }
 
 // Status Bar
-if (hud_config == CONFIG_HUD.CLUSTER and status_bar_config != CONFIG_STATUS_BAR.OFF)
+if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
     var status_bar_xstart = CAMERA_WIDTH + ITEM_WIDTH * status_bar_count;
     var status_bar_xend = CAMERA_WIDTH - 16;

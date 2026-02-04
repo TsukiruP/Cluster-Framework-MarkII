@@ -3,54 +3,13 @@ image_speed = 0;
 
 // Configs
 hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
-status_bar_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar");
+status_bar_config = (hud_config == CONFIG_HUD.CLUSTER ? db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar") : 0);
 item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
 // Active
 hud_active = false;
 active_time = 0;
 active_duration = 10;
-
-// HUD
-switch (hud_config)
-{
-    case CONFIG_HUD.CLUSTER:
-    {
-        hud_x = 0;
-        hud_y = 6;
-        break;
-    }
-    case CONFIG_HUD.ADVENTURE:
-    {
-        hud_x = 10;
-        hud_y = 13;
-        break;
-    }
-    case CONFIG_HUD.ADVENTURE_2:
-    {
-        hud_x = 8;
-        hud_y = 8;
-        break;
-    }
-    case CONFIG_HUD.ADVANCE_2:
-    {
-        hud_x = 1;
-        hud_y = 3;
-        break;
-    }
-    case CONFIG_HUD.ADVANCE_3:
-    {
-        hud_x = 8;
-        hud_y = 0;
-        break;
-    }
-    case CONFIG_HUD.EPISODE_II:
-    {
-        hud_x = 25;
-        hud_y = 26;
-        break;
-    }
-}
 
 // Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
