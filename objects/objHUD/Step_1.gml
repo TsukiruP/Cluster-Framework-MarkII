@@ -1,6 +1,18 @@
 /// @description Time
 if (ctrlGame.game_paused & PAUSE_FLAG_MENU) exit;
 
+if (hud_config == CONFIG_HUD.CLUSTER)
+{
+    if (hud_active)
+    {
+        if (active_time < active_duration) active_time++;
+    }
+    else
+    {
+        if (active_time > 0) active_time--;
+    }
+}
+
 if (item_feed_config)
 {
     var popup_last = array_last(item_feed);
