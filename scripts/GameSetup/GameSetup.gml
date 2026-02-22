@@ -52,7 +52,8 @@ enum TRANSITION
 {
     FADE,
     TITLE_CARD,
-    TRY_AGAIN
+    TRY_AGAIN,
+    GAME_OVER
 }
 
 enum FADE_STATE

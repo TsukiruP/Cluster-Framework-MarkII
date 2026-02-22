@@ -1,6 +1,7 @@
 /// @description Initialize
 image_speed = 0;
 index = TRANSITION.FADE;
+transition_time = 0;
 state = 0;
 
 // Flags
@@ -11,11 +12,6 @@ skip_load = false;
 // Target
 target = room;
 target_scene = global.scn_default;
-
-// Timers
-fade_time = 0;
-title_card_time = 0;
-try_again_time = 0;
 
 // Fade
 fade_alpha = 0;
@@ -48,15 +44,20 @@ zone_x = 0;
 zone_time = 0;
 zone_duration = 30;
 
+// Try Again
+try_again_x = 0;
+try_again_time = 0;
+try_again_duration = 30;
+
+// Game Over
+game_over_x = 0;
+game_over_time = 0;
+game_over_duration = 30;
+
+// Text
 zone_text = "";
-zone_width = -1;
-zone_padding = 9;
+try_again_text = "Try Again";
+game_over_text = "Game Over";
 
-// Message
-message_x = 0;
-message_time = 0;
-message_duration = 30;
-
-message_text = "Try Again";
-message_width = -1;
-message_padding = 9;
+text_width = -1;
+text_padding = 9;

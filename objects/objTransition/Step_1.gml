@@ -5,7 +5,7 @@ switch (index)
 {
     case TRANSITION.FADE:
     {
-        if (fade_time > 0) fade_time--;
+        if (transition_time > 0) transition_time--;
         
         switch (state)
         {
@@ -23,7 +23,7 @@ switch (index)
     }
     case TRANSITION.TITLE_CARD:
     {
-        if (title_card_time > 0) title_card_time--;
+        if (transition_time > 0) transition_time--;
         
         // Fade
         if (state == TITLE_CARD_STATE.FADE)
@@ -67,7 +67,7 @@ switch (index)
     }
     case TRANSITION.TRY_AGAIN:
     {
-        if (try_again_time > 0) try_again_time--;
+        if (transition_time > 0) transition_time--;
         
         // Curtain
         if (state < TRY_AGAIN_STATE.OPEN)
@@ -81,8 +81,8 @@ switch (index)
         
         curtain_scroll = modwrap(curtain_scroll + curtain_speed, 0, curtain_width);
         
-        // Message
-        if (message_time < message_duration) message_time++;
+        // Text
+        if (try_again_time < try_again_duration) try_again_time++;
         break;
     }
 }

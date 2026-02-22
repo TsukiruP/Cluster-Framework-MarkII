@@ -37,7 +37,7 @@ switch (index)
         // Loading
         if (state == TITLE_CARD_STATE.GOTO and not skip_load)
         {
-            draw_sprite(sprTitleCardLoading, (title_card_time div 15) - 1, 4, CAMERA_HEIGHT - 12);
+            draw_sprite(sprTitleCardLoading, (transition_time div 15) - 1, 4, CAMERA_HEIGHT - 12);
         }
         
         draw_reset();
@@ -50,11 +50,11 @@ switch (index)
         draw_sprite_tiled_extra(sprTitleCardCurtain, 1, curtain_scroll, curtain_y - curtain_height, 0, 1, 1, 1, 0, c_black);
         draw_sprite_tiled_extra(sprTitleCardCurtain, 1, 16 - curtain_scroll, CAMERA_HEIGHT - curtain_y + curtain_height, 0, 1, 1, -1, 0, c_black);
         
-        // Message
+        // Try Again
         draw_set_font(global.font_title_card);
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
-        draw_text(message_x, CAMERA_HEIGHT / 2, message_text);
+        draw_text(try_again_x, CAMERA_HEIGHT / 2, try_again_text);
         
         draw_reset();
         draw_set_font(-1);
