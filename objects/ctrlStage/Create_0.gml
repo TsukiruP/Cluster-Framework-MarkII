@@ -1,8 +1,11 @@
 /// @description Initialize
 image_speed = 0;
 stage_players = [];
-stage_depth = layer_get_depth("Stage");
 pause_allow = true;
+
+// Depths
+display_depth = layer_get_depth("Display");
+stage_depth = layer_get_depth("Stage");
 
 // Timing
 stage_time = 0;

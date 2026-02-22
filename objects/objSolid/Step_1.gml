@@ -1,7 +1,7 @@
 /// @description Update
 if (ctrlGame.game_paused) exit;
-
 sink_direction = 0;
+
 if (xdistance != 0 or ydistance != 0)
 {
     var time = ctrlGame.game_time;

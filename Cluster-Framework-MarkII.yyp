@@ -258,6 +258,7 @@
     {"id":{"name":"objSunsetHillSemisolid","path":"objects/objSunsetHillSemisolid/objSunsetHillSemisolid.yy",},},
     {"id":{"name":"objSunsetHillSolid0","path":"objects/objSunsetHillSolid0/objSunsetHillSolid0.yy",},},
     {"id":{"name":"objSunsetHillSolid1","path":"objects/objSunsetHillSolid1/objSunsetHillSolid1.yy",},},
+    {"id":{"name":"objSwapCooldown","path":"objects/objSwapCooldown/objSwapCooldown.yy",},},
     {"id":{"name":"objTransition","path":"objects/objTransition/objTransition.yy",},},
     {"id":{"name":"rmDevMenu","path":"rooms/rmDevMenu/rmDevMenu.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},

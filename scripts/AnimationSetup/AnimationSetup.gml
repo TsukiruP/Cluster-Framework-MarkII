@@ -39,7 +39,11 @@ global.ani_spin_dash_dust = [global.ani_spin_dash_dust_v0, global.ani_spin_dash_
 global.ani_miasma_v0 = new animation(sprMiasma, 7);
 
 global.ani_swap_cooldown_v0 = new animation(sprSwapCooldown0, 3);
-
+global.ani_swap_cooldown_v1 = new animation(sprSwapCooldown1, 3);
+global.ani_swap_cooldown_v2 = new animation(sprSwapCooldown2, 3);
+global.ani_swap_cooldown_v3 = new animation(sprSwapCooldown3, 3);
+global.ani_swap_cooldown_v4 = new animation(sprSwapCooldown4, 3);
+global.ani_swap_cooldown = [global.ani_swap_cooldown_v0, global.ani_swap_cooldown_v1, global.ani_swap_cooldown_v2, global.ani_swap_cooldown_v3, global.ani_swap_cooldown_v4];
 
 #endregion
 
