@@ -42,14 +42,6 @@ with (shield)
 // Miasma
 with (miasma) draw_self_floored();
 
-// Swap arrow
-with (swap_arrow)
-{
-    //global.swap_arrow_palettes.SetShader("miles");
-    draw_self_floored();
-    //shader_reset();
-}
-
 // Hitboxes
 draw_hitboxes(mask_direction);
 

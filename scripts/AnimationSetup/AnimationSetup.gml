@@ -36,9 +36,10 @@ global.ani_spin_dash_dust_v0 = new animation(sprSpinDashDust0, 2);
 global.ani_spin_dash_dust_v1 = new animation(sprSpinDashDust1, 2);
 global.ani_spin_dash_dust = [global.ani_spin_dash_dust_v0, global.ani_spin_dash_dust_v1];
 
-global.ani_swap_arrow_v0 = new animation(sprSwapArrow, 3);
-
 global.ani_miasma_v0 = new animation(sprMiasma, 7);
+
+global.ani_swap_cooldown_v0 = new animation(sprSwapCooldown0, 3);
+
 
 #endregion
 

@@ -239,20 +239,6 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
     }
 }
 
-with (swap_arrow)
-{
-    if (other.swap_time > 0)
-    {
-        x = other.x div 1;
-        y = other.y div 1 - 16;
-        animation_set(global.ani_swap_arrow_v0);
-    }
-    else if (animation_data.ani != undefined)
-    {
-        animation_set(undefined);
-    }
-}
-
 // Spin Dash Dust
 with (spin_dash_dust)
 {
