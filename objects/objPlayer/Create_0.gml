@@ -40,11 +40,6 @@ sonic_boom =
     time : 0,
     sprite_index : -1,
     image_index : 0,
-    image_xscale : 1,
-    image_yscale : 1,
-    image_angle : 0,
-    image_blend : c_white,
-    image_alpha : 1,
     animation_data : new animation_core(),
     visible : false
 };
@@ -742,7 +737,32 @@ player_obtain_item = function(item)
 /// @description Creates a sonic boom effect.
 player_sonic_boom_create = function ()
 {
-    
+    with (sonic_boom)
+    {
+        var x_scale = other.image_xscale;
+        var rot = other.direction;
+        for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+        {
+            var old_rot, accel;
+            positions[i][1] = irandom(4) + 16;
+            if (x_scale == -1)
+            {
+                old_rot = rot + 270;
+                positions[i][0] = dcos(angle_wrap((rot + 180) * 4)) * positions[i][1];
+                positions[i][1] = dsin(angle_wrap((rot + 180) * 4)) * positions[i][1];
+            }
+            else
+            {
+                old_rot = rot + 90;
+                positions[i][0] = dcos(angle_wrap(rot * 4)) * positions[i][1];
+                positions[i][1] = dsin(angle_wrap(rot * 4)) * positions[i][1];
+            }
+            
+            accel = irandom(4) + 2;
+            accelerations[i][0] = dcos(angle_wrap(old_rot * 4)) * accel;
+            accelerations[i][1] = dsin(angle_wrap(old_rot * 4)) * accel;
+        }
+    }
 };
 
 /// @method player_try_skill()
