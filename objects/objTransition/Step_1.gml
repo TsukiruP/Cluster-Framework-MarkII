@@ -1,12 +1,11 @@
 /// @description Time
 if (ctrlGame.game_paused & PAUSE_FLAG_MENU and not ignore_pause) exit;
+if (transition_time > 0) transition_time--;
 
 switch (index)
 {
     case TRANSITION.FADE:
     {
-        if (transition_time > 0) transition_time--;
-        
         switch (state)
         {
             case FADE_STATE.OUT:
@@ -23,8 +22,6 @@ switch (index)
     }
     case TRANSITION.TITLE_CARD:
     {
-        if (transition_time > 0) transition_time--;
-        
         // Fade
         if (state == TITLE_CARD_STATE.FADE)
         {
@@ -67,8 +64,6 @@ switch (index)
     }
     case TRANSITION.TRY_AGAIN:
     {
-        if (transition_time > 0) transition_time--;
-        
         // Curtain
         if (state < TRY_AGAIN_STATE.OPEN)
         {
@@ -81,8 +76,32 @@ switch (index)
         
         curtain_scroll = modwrap(curtain_scroll + curtain_speed, 0, curtain_width);
         
-        // Text
+        // Try Again
         if (try_again_time < try_again_duration) try_again_time++;
+        break;
+    }
+    case TRANSITION.GAME_OVER:
+    {
+        // Fade
+        switch (state)
+        {
+            case GAME_OVER_STATE.FADE:
+            case GAME_OVER_STATE.GOTO:
+            {
+                if (fade_alpha < 1) fade_alpha += fade_speed;
+                break;
+            }
+            default:
+            {
+                if (fade_alpha > 0) fade_alpha -= fade_speed;
+            }
+        }
+        
+        // Game Over
+        if (state > GAME_OVER_STATE.WAIT)
+        {
+            if (game_over_time < game_over_duration) game_over_time++;
+        }
         break;
     }
 }

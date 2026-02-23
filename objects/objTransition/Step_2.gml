@@ -218,4 +218,73 @@ switch (index)
         }
         break;
     }
+    case TRANSITION.GAME_OVER:
+    {
+        // Game Over
+        if (text_width == -1)
+        {
+            draw_set_font(global.font_title_card);
+            text_width = string_width(game_over_text) div 2;
+            draw_set_font(-1);
+        }
+        
+        game_over_x = interpolate(CAMERA_WIDTH + text_width + text_padding, CAMERA_WIDTH / 2, game_over_time / game_over_duration, EASE_INOUT_BACK);
+        
+        switch (state)
+        {
+            case GAME_OVER_STATE.ENTER:
+            {
+                state = GAME_OVER_STATE.WAIT;
+                transition_time = 60;
+                audio_stop_sound(bgmInvincibility);
+                audio_stop_sound(bgmSpeedUp);
+                audio_clear_music();
+                break;
+            }
+            case GAME_OVER_STATE.WAIT:
+            {
+                if (transition_time == 0)
+                {
+                    state = GAME_OVER_STATE.JINGLE;
+                    transition_time = audio_sound_length(bgmGameOver) * 60 div 1;
+                    audio_play_single(bgmGameOver);
+                    audio_stop_sound(bgmLife);
+                }
+                break;
+            }
+            case GAME_OVER_STATE.JINGLE:
+            {
+                if (transition_time == 0)
+                {
+                    state = GAME_OVER_STATE.FADE;
+                }
+                break;
+            }
+            case GAME_OVER_STATE.FADE:
+            {
+                if (fade_alpha == 1)
+                {
+                    state = GAME_OVER_STATE.GOTO;
+                    transition_time = 90;
+                }
+                break;
+            }
+            case GAME_OVER_STATE.GOTO:
+            {
+                if (transition_time == 0)
+                {
+                    room_goto(rmDevMenu);
+                    state = GAME_OVER_STATE.EXIT;
+                }
+                break;
+            }
+            case GAME_OVER_STATE.EXIT:
+            {
+                persistent = false;
+                global.life_count = 3;
+                if (fade_alpha == 0) instance_destroy();
+                break;
+            }
+        }
+    }
 }

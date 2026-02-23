@@ -60,4 +60,25 @@ switch (index)
         draw_set_font(-1);
         break;
     }
+    case TRANSITION.GAME_OVER:
+    {
+        // Game Over
+        if (state < GAME_OVER_STATE.GOTO)
+        {
+            draw_set_font(global.font_title_card);
+            draw_set_halign(fa_center);
+            draw_set_valign(fa_middle);
+            draw_text(game_over_x, CAMERA_HEIGHT / 2, game_over_text);
+        }
+        
+        // Fade
+        draw_set_color(c_white);
+        draw_set_alpha(fade_alpha);
+        draw_rectangle(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT, false);
+        draw_reset();
+        
+        draw_reset();
+        draw_set_font(-1);
+        break;
+    }
 }

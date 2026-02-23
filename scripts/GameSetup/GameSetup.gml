@@ -85,6 +85,16 @@ enum TRY_AGAIN_STATE
     EXIT
 }
 
+enum GAME_OVER_STATE
+{
+    ENTER,
+    WAIT,
+    JINGLE,
+    FADE,
+    GOTO,
+    EXIT
+}
+
 enum CAMERA_STATE
 {
     NULL = -1,

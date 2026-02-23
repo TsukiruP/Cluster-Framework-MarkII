@@ -1,8 +1,8 @@
 /// @description Initialize
 image_speed = 0;
 index = TRANSITION.FADE;
-transition_time = 0;
 state = 0;
+transition_time = 0;
 
 // Flags
 debug = false;
@@ -52,7 +52,7 @@ try_again_duration = 30;
 // Game Over
 game_over_x = 0;
 game_over_time = 0;
-game_over_duration = 30;
+game_over_duration = 60;
 
 // Text
 zone_text = "";

@@ -193,16 +193,27 @@ function player_is_dead(phase)
             
             // Animate
             animation_play(PLAYER_ANIMATION.DEAD);
+            
+            // Disable pause
+            if (player_index == 0)
+            {
+                with (ctrlStage) pause_allow = false;
+            }
             break;
         }
         case PHASE.STEP:
         {
             if (player_index == 0 and --state_time == 0)
             {
-                transition_create(room, TRANSITION.TRY_AGAIN);
-                //if (LIVES_ENABLED) global.life_count--;
-                with (ctrlGame) game_flags |= GAME_FLAG_KEEP_CHARACTERS;
-                with (ctrlStage) pause_allow = false;
+                if (LIVES_ENABLED and --global.life_count <= 0)
+                {
+                    transition_create(room, TRANSITION.GAME_OVER);
+                }
+                else
+                {
+                    transition_create(room, TRANSITION.TRY_AGAIN);
+                    with (ctrlGame) game_flags |= GAME_FLAG_KEEP_CHARACTERS;
+                }
             }
             
             // Move
