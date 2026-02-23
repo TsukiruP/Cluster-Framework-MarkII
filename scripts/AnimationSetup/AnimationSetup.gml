@@ -38,8 +38,8 @@ global.ani_spin_dash_dust = [global.ani_spin_dash_dust_v0, global.ani_spin_dash_
 
 global.ani_miasma_v0 = new animation(sprMiasma, 7);
 
-global.ani_sonic_boom_v0 = new animation(sprSonicBoom0, 2);
-global.ani_sonic_boom_v1 = new animation(sprSonicBoom1, 2, -1);
+global.ani_sonic_boom_v0 = new animation(sprSonicBoom, 2, 0, [0, 1]);
+global.ani_sonic_boom_v1 = new animation(sprSonicBoom, 2, -1);
 global.ani_sonic_boom = [global.ani_sonic_boom_v0, global.ani_sonic_boom_v1];
 
 global.ani_swap_cooldown_v0 = new animation(sprSwapCooldown0, 3);

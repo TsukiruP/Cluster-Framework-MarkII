@@ -402,5 +402,84 @@ with (miasma)
 // Sonic Boom
 with (sonic_boom)
 {
-    
+    if (visible)
+    {
+        x = other.x div 1;
+        y = other.y div 1;
+        
+        switch (animation_data.variant)
+        {
+            case 1:
+            {
+                if (time++ > 24)
+                {
+                    visible = false;
+                    animation_set(undefined);
+                    break;
+                }
+                
+                for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+                {
+                    positions[i][0] += accelerations[i][0];
+                    positions[i][1] += accelerations[i][1];
+                    
+                    positions[i][0] -= unkE2;
+                    positions[i][1] -= unkE4;
+                    
+                    accelerations[i][0] *= 0.78125;
+                    accelerations[i][1] *= 0.78125;
+                    
+                    unkE2 *= 1.00390625;
+                    unkE4 *= 1.00390625;
+                }
+                break;
+            }
+            default:
+            {
+                for (var i = 0; i < SONIC_BOOM_COUNT / 2; i++)
+                {
+                    if (i & 1)
+                    {
+                        positions[i][0] += accelerations[i][0];
+                        positions[i][1] += accelerations[i][1];
+                    }
+                    else
+                    {
+                        positions[i][0] -= accelerations[i][0];
+                        positions[i][1] -= accelerations[i][1];
+                    }
+                    
+                    accelerations[i][0] *= 0.78125;
+                    accelerations[i][1] *= 0.78125;
+                }
+                
+                if (time++ > 8)
+                {
+                    var x_scale = other.image_xscale;
+                    var rot = other.direction;
+                    animation_data.variant = 1;
+                    animation_set(global.ani_sonic_boom);
+                    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+                    {
+                        var rand_rot = irandom(359);
+                        if (x_scale == -1)
+                        {
+                            rand_rot += 90;
+                            unkE2 = dcos(rot + 180) * 4;
+                            unkE4 = -dsin(rot + 180) * 4;
+                        }
+                        else
+                        {
+                            unkE2 = dcos(rot) * 4;
+                            unkE4 = -dsin(rot) * 4;
+                        }
+                        
+                        var accel = irandom(4) + 6;
+                        accelerations[i][0] = dcos(rand_rot) * accel;
+                        accelerations[i][1] = -dsin(rand_rot) * accel;
+                    }
+                }
+            }
+        }
+    }
 }

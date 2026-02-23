@@ -51,6 +51,7 @@ function animation_set(ani)
     
     if (ani == undefined)
     {
+        animation_data.variant = 0;
         animation_data.alarm = 0;
         animation_data.pos = -1;
         animation_data.time = 0;

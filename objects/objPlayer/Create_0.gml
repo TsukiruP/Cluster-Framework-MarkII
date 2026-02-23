@@ -40,6 +40,7 @@ sonic_boom =
     time : 0,
     sprite_index : -1,
     image_index : 0,
+    image_angle : 0,
     animation_data : new animation_core(),
     visible : false
 };
@@ -741,6 +742,9 @@ player_sonic_boom_create = function ()
     {
         var x_scale = other.image_xscale;
         var rot = other.direction;
+        time = 0;
+        visible = true;
+        animation_set(global.ani_sonic_boom);
         for (var i = 0; i < SONIC_BOOM_COUNT; i++)
         {
             var old_rot, accel;
@@ -748,19 +752,19 @@ player_sonic_boom_create = function ()
             if (x_scale == -1)
             {
                 old_rot = rot + 270;
-                positions[i][0] = dcos(angle_wrap((rot + 180) * 4)) * positions[i][1];
-                positions[i][1] = dsin(angle_wrap((rot + 180) * 4)) * positions[i][1];
+                positions[i][0] = dcos(rot + 180) * positions[i][1];
+                positions[i][1] = -dsin(rot + 180) * positions[i][1];
             }
             else
             {
                 old_rot = rot + 90;
-                positions[i][0] = dcos(angle_wrap(rot * 4)) * positions[i][1];
-                positions[i][1] = dsin(angle_wrap(rot * 4)) * positions[i][1];
+                positions[i][0] = dcos(rot) * positions[i][1];
+                positions[i][1] = -dsin(rot) * positions[i][1];
             }
             
             accel = irandom(4) + 2;
-            accelerations[i][0] = dcos(angle_wrap(old_rot * 4)) * accel;
-            accelerations[i][1] = dsin(angle_wrap(old_rot * 4)) * accel;
+            accelerations[i][0] = dcos(old_rot) * accel;
+            accelerations[i][1] = -dsin(old_rot) * accel;
         }
     }
 };

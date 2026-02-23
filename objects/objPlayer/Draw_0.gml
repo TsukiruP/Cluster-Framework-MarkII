@@ -45,7 +45,20 @@ with (miasma) draw_self_floored();
 // Sonic Boom
 with (sonic_boom)
 {
-    
+    if (visible)
+    {
+        for (var i = 0; i < SONIC_BOOM_COUNT / 2; i++)
+        {
+            if (animation_data.variant == 1 and time & 1)
+            {
+                draw_sprite(sprite_index, image_index, x + positions[i + (SONIC_BOOM_COUNT / 2)][0], y + positions[i + (SONIC_BOOM_COUNT / 2)][1]);
+            }
+            else
+            {
+                draw_sprite(sprite_index, image_index, x + positions[i][0], y + positions[i][1]);
+            }
+        }
+    }
 }
 
 // Hitboxes

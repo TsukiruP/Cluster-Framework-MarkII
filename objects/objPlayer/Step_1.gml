@@ -6,6 +6,7 @@ if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
     with (spin_dash_dust) animation_update();
     with (shield) animation_update();
     with (miasma) animation_update();
+    with (sonic_boom) animation_update();
 }
 
 // Abort if game is paused at all
