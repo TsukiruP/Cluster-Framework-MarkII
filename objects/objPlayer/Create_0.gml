@@ -29,6 +29,34 @@ shield.index = SHIELD.NONE;
 
 miasma = new stamp();
 
+sonic_boom =
+{
+    x : 0,
+    y : 0,
+    positions : array_create(SONIC_BOOM_COUNT),
+    accelerations : array_create(SONIC_BOOM_COUNT),
+    unkE2 : 128,
+    unkE4 : 0,
+    sprite_index : -1,
+    image_index : 0,
+    image_xscale : 1,
+    image_yscale : 1,
+    image_angle : 0,
+    image_blend : c_white,
+    image_alpha : 1,
+    animation_data : new animation_core(),
+    visible : false
+};
+
+with (sonic_boom)
+{
+    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+    {
+        positions[i] = array_create(2);
+        accelerations[i] = array_create(2);
+    }
+}
+
 /// @method player_refresh_status()
 /// @description Resets the player's status.
 player_refresh_status = function()
@@ -705,6 +733,40 @@ player_obtain_item = function(item)
         {
             array_push(item_feed, new popup(item));
             item_feed_time = item_feed_duration;
+        }
+    }
+};
+
+/// @method player_sonic_boom_create()
+/// @description Creates a sonic boom effect.
+player_sonic_boom_create = function ()
+{
+    
+    with (sonic_boom)
+    {
+        var x_scale = other.image_xscale;
+        var rot = other.direction;
+        animation_set(global.ani_sonic_boom);
+        for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+        {
+            var old_rot, rand;
+            positions[i][1] = irandom(8) + 16;
+            if (x_scale == -1)
+            {
+                old_rot = rot + 270;
+                positions[i][0] = dcos((rot + 180) * 8) * positions[i][1];
+                positions[i][1] = dsin((rot + 180) * 8) * positions[i][1];
+            }
+            else
+            {
+                old_rot = rot + 90;
+                positions[i][0] = dcos(rot * 8) * positions[i][1];
+                positions[i][1] = dsin(rot * 8) * positions[i][1];
+            }
+            
+            rand = irandom(4) + 2;
+            accelerations[i][0] = dcos(old_rot * 8) * rand;
+            accelerations[i][1] = dsin(old_rot * 8) * rand;
         }
     }
 };
