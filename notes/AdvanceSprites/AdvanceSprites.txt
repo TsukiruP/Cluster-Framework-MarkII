@@ -41,6 +41,7 @@
 | Heart | 1317-0 |
 | Swap Cooldown | 1511-0, (SA2) 863-0 |
 | Miasma | 1507-0 |
+| Sonic Boom | (SA2) 873-0, 873-1 |
 
 # Stage
 | Animation | Source | Notes |
