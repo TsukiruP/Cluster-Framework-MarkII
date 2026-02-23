@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgmExtraDungeon1A",
   "parent":{
-    "name":"Test",
-    "path":"folders/Sounds/BGM/Test.yy",
+    "name":"Basic Test",
+    "path":"folders/Sounds/BGM/Basic Test.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
