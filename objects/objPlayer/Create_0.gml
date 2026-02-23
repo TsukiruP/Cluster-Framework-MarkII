@@ -37,6 +37,7 @@ sonic_boom =
     accelerations : array_create(SONIC_BOOM_COUNT),
     unkE2 : 128,
     unkE4 : 0,
+    time : 0,
     sprite_index : -1,
     image_index : 0,
     image_xscale : 1,
@@ -742,33 +743,6 @@ player_obtain_item = function(item)
 player_sonic_boom_create = function ()
 {
     
-    with (sonic_boom)
-    {
-        var x_scale = other.image_xscale;
-        var rot = other.direction;
-        animation_set(global.ani_sonic_boom);
-        for (var i = 0; i < SONIC_BOOM_COUNT; i++)
-        {
-            var old_rot, rand;
-            positions[i][1] = irandom(8) + 16;
-            if (x_scale == -1)
-            {
-                old_rot = rot + 270;
-                positions[i][0] = dcos((rot + 180) * 8) * positions[i][1];
-                positions[i][1] = dsin((rot + 180) * 8) * positions[i][1];
-            }
-            else
-            {
-                old_rot = rot + 90;
-                positions[i][0] = dcos(rot * 8) * positions[i][1];
-                positions[i][1] = dsin(rot * 8) * positions[i][1];
-            }
-            
-            rand = irandom(4) + 2;
-            accelerations[i][0] = dcos(old_rot * 8) * rand;
-            accelerations[i][1] = dsin(old_rot * 8) * rand;
-        }
-    }
 };
 
 /// @method player_try_skill()
