@@ -418,7 +418,7 @@ with (speed_break)
                     break;
                 }
                 
-                for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+                for (var i = 0; i < SPEED_BREAK_COUNT; i++)
                 {
                     positions[i][0] += accelerations[i][0];
                     positions[i][1] += accelerations[i][1];
@@ -436,7 +436,7 @@ with (speed_break)
             }
             default:
             {
-                for (var i = 0; i < SONIC_BOOM_COUNT / 2; i++)
+                for (var i = 0; i < SPEED_BREAK_COUNT / 2; i++)
                 {
                     if (i & 1)
                     {
@@ -459,7 +459,7 @@ with (speed_break)
                     var rot = other.direction;
                     animation_data.variant = 1;
                     animation_set(global.ani_speed_break);
-                    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+                    for (var i = 0; i < SPEED_BREAK_COUNT; i++)
                     {
                         var rand_rot = irandom(359);
                         if (x_scale == -1)

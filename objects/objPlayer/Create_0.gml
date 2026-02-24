@@ -208,8 +208,8 @@ speed_break =
 {
     x : 0,
     y : 0,
-    positions : array_create(SONIC_BOOM_COUNT),
-    accelerations : array_create(SONIC_BOOM_COUNT),
+    positions : array_create(SPEED_BREAK_COUNT),
+    accelerations : array_create(SPEED_BREAK_COUNT),
     unkE2 : 128,
     unkE4 : 0,
     time : 0,
@@ -222,7 +222,7 @@ speed_break =
 
 with (speed_break)
 {
-    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+    for (var i = 0; i < SPEED_BREAK_COUNT; i++)
     {
         positions[i] = array_create(2);
         accelerations[i] = array_create(2);
@@ -784,7 +784,7 @@ player_speed_break = function()
         time = 0;
         visible = true;
         animation_set(global.ani_speed_break);
-        for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+        for (var i = 0; i < SPEED_BREAK_COUNT; i++)
         {
             var old_rot, accel;
             positions[i][1] = irandom(4) + 16;
