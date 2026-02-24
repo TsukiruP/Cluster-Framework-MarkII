@@ -161,6 +161,8 @@ function player_is_running(phase)
                 }
             }
             
+            if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+            
             // Move
             player_move_on_ground();
             if (state_changed) exit;
@@ -392,6 +394,8 @@ function player_is_rolling(phase)
                 // Friction
                 x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
             }
+            
+            if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
             player_move_on_ground();
