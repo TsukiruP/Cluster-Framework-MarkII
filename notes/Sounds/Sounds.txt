@@ -2,4 +2,4 @@
 | --- | --- | --- |
 | Sonic Mania | Random Talking Bush | https://sounds.spriters-resource.com/pc_computer/sonicmania/asset/405943/ |
 | Sonic Heroes | Tsukiru | | Air Dash, Item Balloon |
-| Sonic Advance 2 | Luna-Alex | | Trick Action |
+| Sonic Advance 2 | Luna-Alex | | Trick Action, Speed Break |

@@ -27,6 +27,7 @@ if (db_read(DATABASE_SAVE, false, "boost"))
                 boost_mode = true;
                 player_speed_break();
                 camera_set_x_lag_time(16);
+                audio_play_single(sndSpeedBreak);
             }
         }
         else
