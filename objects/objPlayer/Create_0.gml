@@ -163,8 +163,8 @@ player_refresh_records = function()
 // Animation
 animation_data = new animation_core();
 
-// Sonic Boom
-sonic_boom =
+// Speed Break
+speed_break =
 {
     x : 0,
     y : 0,
@@ -180,7 +180,7 @@ sonic_boom =
     visible : false
 };
 
-with (sonic_boom)
+with (speed_break)
 {
     for (var i = 0; i < SONIC_BOOM_COUNT; i++)
     {
@@ -773,17 +773,17 @@ player_obtain_item = function(item)
     }
 };
 
-/// @method player_sonic_boom_create()
-/// @description Creates a sonic boom effect.
-player_sonic_boom_create = function()
+/// @method player_speed_break()
+/// @description Creates a Speed Break effect.
+player_speed_break = function()
 {
-    with (sonic_boom)
+    with (speed_break)
     {
         var x_scale = other.image_xscale;
         var rot = other.direction;
         time = 0;
         visible = true;
-        animation_set(global.ani_sonic_boom);
+        animation_set(global.ani_speed_break);
         for (var i = 0; i < SONIC_BOOM_COUNT; i++)
         {
             var old_rot, accel;

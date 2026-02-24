@@ -17,7 +17,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     });
     
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
-    if (input_button.select.pressed) afterimage_visible = !afterimage_visible;
+    if (input_button.select.pressed) player_speed_break();
 }
 
 // CPU
@@ -399,8 +399,8 @@ with (miasma)
     }
 }
 
-// Sonic Boom
-with (sonic_boom)
+// Speed Break
+with (speed_break)
 {
     if (visible)
     {
@@ -458,7 +458,7 @@ with (sonic_boom)
                     var x_scale = other.image_xscale;
                     var rot = other.direction;
                     animation_data.variant = 1;
-                    animation_set(global.ani_sonic_boom);
+                    animation_set(global.ani_speed_break);
                     for (var i = 0; i < SONIC_BOOM_COUNT; i++)
                     {
                         var rand_rot = irandom(359);
@@ -494,14 +494,17 @@ afterimage_history[afterimage_index].ani = animation_data.ani;
 afterimage_history[afterimage_index].ani_speed = animation_data.speed;
 afterimage_index = ++afterimage_index mod array_length(afterimage_history);
 
-for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+if (afterimage_visible)
 {
-    with (boost_afterimages[i])
-    {
-        var delay = (i * 2) + 2;
-        var record_index = modwrap(other.afterimage_index - delay, 0, AFTERIMAGE_RECORD_COUNT);
-        record = other.afterimage_history[record_index];
-        animation_set(record.ani);
-        animation_data.speed = record.ani_speed;
-    }
+	for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+	{
+	    with (boost_afterimages[i])
+	    {
+	        var delay = (i * 2) + 2;
+	        var record_index = modwrap(other.afterimage_index - delay, 0, AFTERIMAGE_RECORD_COUNT);
+	        record = other.afterimage_history[record_index];
+	        animation_set(record.ani);
+	        animation_data.speed = record.ani_speed;
+	    }
+	}
 }

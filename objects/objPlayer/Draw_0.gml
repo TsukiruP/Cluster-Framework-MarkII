@@ -62,8 +62,8 @@ with (shield)
 // Miasma
 with (miasma) draw_self_floored();
 
-// Sonic Boom
-with (sonic_boom)
+// Speed Break
+with (speed_break)
 {
     if (visible)
     {
