@@ -14,6 +14,26 @@ with (shield)
     }
 }
 
+// Afterimages
+if (afterimage_visible)
+{
+    for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+    {
+        with (boost_afterimages[i])
+        {
+            if (not ctrlGame.game_paused) time = ++time mod AFTERIMAGE_COUNT;
+            if (time == i)
+            {
+                if (sprite_exists(sprite_index))
+                {
+                    var alpha = 0.625 - i * 0.125;
+                    draw_sprite_ext(sprite_index, image_index, record.x, record.y, record.image_xscale, record.image_yscale, record.image_angle, c_white, alpha);
+                }
+            }
+        }
+    }
+}
+
 // Character
 image_alpha = (recovery_time > 0 ? (recovery_time mod 4 < 2) : 1);
 player_draw_before();

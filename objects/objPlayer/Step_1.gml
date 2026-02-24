@@ -7,6 +7,11 @@ if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
     with (shield) animation_update();
     with (miasma) animation_update();
     with (sonic_boom) animation_update();
+    
+    for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+    {
+        with (boost_afterimages[i]) animation_update();
+    }
 }
 
 // Abort if game is paused at all

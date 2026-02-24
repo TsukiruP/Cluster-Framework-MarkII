@@ -26,33 +26,7 @@ for (var i = 0; i < array_length(trick_speed); i++)
 // Status
 shield = new stamp();
 shield.index = SHIELD.NONE;
-
 miasma = new stamp();
-
-sonic_boom =
-{
-    x : 0,
-    y : 0,
-    positions : array_create(SONIC_BOOM_COUNT),
-    accelerations : array_create(SONIC_BOOM_COUNT),
-    unkE2 : 128,
-    unkE4 : 0,
-    time : 0,
-    sprite_index : -1,
-    image_index : 0,
-    image_angle : 0,
-    animation_data : new animation_core(),
-    visible : false
-};
-
-with (sonic_boom)
-{
-    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
-    {
-        positions[i] = array_create(2);
-        accelerations[i] = array_create(2);
-    }
-}
 
 /// @method player_refresh_status()
 /// @description Resets the player's status.
@@ -188,17 +162,82 @@ player_refresh_records = function()
 
 // Animation
 animation_data = new animation_core();
-//animation_history = array_create(16);
+
+// Sonic Boom
+sonic_boom =
+{
+    x : 0,
+    y : 0,
+    positions : array_create(SONIC_BOOM_COUNT),
+    accelerations : array_create(SONIC_BOOM_COUNT),
+    unkE2 : 128,
+    unkE4 : 0,
+    time : 0,
+    sprite_index : -1,
+    image_index : 0,
+    image_angle : 0,
+    animation_data : new animation_core(),
+    visible : false
+};
+
+with (sonic_boom)
+{
+    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+    {
+        positions[i] = array_create(2);
+        accelerations[i] = array_create(2);
+    }
+}
+
+// Afterimage
+/// @method afterimage_record()
+/// @description Creates a new afterimage record.
+afterimage_record = function() constructor
+{
+    x = 0;
+    y = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    ani = undefined;
+    ani_speed = 1;
+};
+
+/// @method afterimage()
+/// @description Creates a new afterimage.
+afterimage = function() constructor 
+{
+    time = 0;
+    sprite_index = -1;
+    image_index = 0;
+    image_alpha = 1;
+    record = undefined;
+    animation_data = new animation_core();
+}
+
+afterimage_index = 0;
+afterimage_visible = false;
+afterimage_history = array_create(AFTERIMAGE_RECORD_COUNT);
+for (var i = 0; i < AFTERIMAGE_RECORD_COUNT; i++)
+{
+    afterimage_history[i] = new afterimage_record();
+}
+
+boost_afterimages = array_create(AFTERIMAGE_COUNT);
+for (var i = 0; i < AFTERIMAGE_COUNT; i++)
+{
+    boost_afterimages[i] = new afterimage();
+}
 
 // Camera
 camera = noone;
 
 // CPU
 cpu_state = CPU_STATE.FOLLOW;
-cpu_axis_x = array_create(16);
-cpu_axis_y = array_create(16);
-cpu_input_jump = array_create(16);
-cpu_input_jump_pressed = array_create(16);
+cpu_axis_x = array_create(CPU_RECORD_COUNT);
+cpu_axis_y = array_create(CPU_RECORD_COUNT);
+cpu_input_jump = array_create(CPU_RECORD_COUNT);
+cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
 
 /// @method player_refresh_cpu()
 /// @description Resets the CPU.
@@ -497,7 +536,7 @@ player_animate_spring = function(ani)
 /// @method player_gain_score(num)
 /// @description Increases the player's score count by the given amount.
 /// @param {Real} num Amount of points to give.
-player_gain_score = function (num)
+player_gain_score = function(num)
 {
     var previous_count = global.score_count div 50000;
     global.score_count = min(global.score_count + num, SCORE_CAP);
@@ -736,7 +775,7 @@ player_obtain_item = function(item)
 
 /// @method player_sonic_boom_create()
 /// @description Creates a sonic boom effect.
-player_sonic_boom_create = function ()
+player_sonic_boom_create = function()
 {
     with (sonic_boom)
     {
@@ -772,7 +811,7 @@ player_sonic_boom_create = function ()
 /// @method player_try_skill()
 /// @description Checks if the player performs a character skill.
 /// @returns {Bool}
-player_try_skill = function () { return false; };
+player_try_skill = function() { return false; };
 
 /// @method player_refresh_aerials()
 /// @description Resets aerial character skills when grounded.
