@@ -2,40 +2,41 @@
 if (ctrlGame.game_paused) exit;
 
 // Boost Mode
-if (db_read(DATABASE_SAVE, false, "boost"))
+var boost_config = db_read(DATABASE_SAVE, false, "boost");
+boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
+
+if (boost_mode)
 {
-    boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
-    
-    if (boost_mode)
+    if (on_ground or superspeed_time < 0)
     {
-        if (on_ground or superspeed_time < 0)
+        boost_speed = boost_threshold[boost_index];
+        if (abs(x_speed) < 4.5 or superspeed_time < 0)
         {
-            boost_speed = boost_threshold[boost_index];
-            if (abs(x_speed) < 4.5 or superspeed_time < 0)
-            {
-                boost_mode = false;
-                boost_speed = 0;
-            }
+            boost_mode = false;
+            boost_speed = 0;
+        }
+    }
+}
+else if (boost_config)
+{
+    if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
+    {
+        if (boost_speed >= boost_threshold[boost_index])
+        {
+            boost_mode = true;
+            player_speed_break();
+            camera_set_x_lag_time(16);
+            audio_play_single(sndSpeedBreak);
         }
     }
     else
     {
-        if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
-        {
-            if (boost_speed >= boost_threshold[boost_index])
-            {
-                boost_mode = true;
-                player_speed_break();
-                camera_set_x_lag_time(16);
-                audio_play_single(sndSpeedBreak);
-            }
-        }
-        else
-        {
-            boost_speed = 0;
-        }
+        boost_speed = 0;
     }
-    
+}
+
+if (boost_config)
+{
     if (boost_mode or superspeed_time > 0)
     {
         speed_limit = 12;
@@ -70,7 +71,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     });
     
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
-    if (input_button.select.pressed) player_speed_break();
+    if (input_button.select.pressed) player_gain_rings(150);
 }
 
 // CPU
