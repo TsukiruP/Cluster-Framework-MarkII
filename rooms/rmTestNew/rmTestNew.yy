@@ -36,7 +36,7 @@
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Particles","depth":300,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Particles","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Player","depth":400,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_FD41C75","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FD41C75","objectId":{"name":"objPlayerSpawn","path":"objects/objPlayerSpawn/objPlayerSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1216.0,},
+        {"$GMRInstance":"v4","%Name":"inst_FD41C75","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FD41C75","objectId":{"name":"objPlayerSpawn","path":"objects/objPlayerSpawn/objPlayerSpawn.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1232.0,},
       ],"layers":[],"name":"Player","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Stage","depth":500,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_56F26114","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_56F26114","objectId":{"name":"objRing","path":"objects/objRing/objRing.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":384.0,"y":1232.0,},
@@ -61,12 +61,12 @@
           -51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,
           -51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,-51,0,-49,-2147483648,
           -16,0,6,4,5,72,73,2,3,-29,0,-49,-2147483648,-12,0,5,390,391,0,0,65,-4,66,1,67,-29,0,-49,-2147483648,
-          3,0,350,351,-3,0,5,163,300,5,230,166,-40,0,-49,-2147483648,3,2,286,285,-3,2,1,195,-3,34,1,198,-4,2,4,
-          74,75,5,6,-4,0,2,476,33,-26,0,-49,-2147483648,3,34,319,255,-15,34,1,35,-5,0,1,33,-26,0,-49,-2147483648,
-          3,34,319,255,-15,34,1,35,-32,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,
-          -10,34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,
-          -2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,
-          319,255,-10,34,-16,0,-71,-2147483648,3,34,319,255,-10,34,-16,0,-85,-2147483648,-15,0,-571,-2147483648,
+          3,0,350,351,-3,0,5,163,300,5,230,166,-13,0,1,1,-26,0,-49,-2147483648,3,2,286,285,-3,2,1,195,-3,34,1,
+          198,-4,2,4,74,75,5,6,-4,0,2,476,33,-26,0,-49,-2147483648,3,34,319,255,-15,34,1,35,-5,0,1,33,-26,0,-49,
+          -2147483648,3,34,319,255,-15,34,1,35,-32,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,
+          3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,-10,
+          34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,3,34,319,255,-10,34,-38,0,-49,-2147483648,
+          3,34,319,255,-10,34,-16,0,-71,-2147483648,3,34,319,255,-10,34,-16,0,-85,-2147483648,-15,0,-571,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tsSunsetHill","path":"tilesets/tsSunsetHill/tsSunsetHill.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"TilesSemisolid","depth":700,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"TilesSemisolid","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":30,"SerialiseWidth":100,"TileCompressedData":[
           -100,-2147483648,-5,0,-695,-2147483648,-10,0,-110,-2147483648,-3,0,-83,-2147483648,-4,0,1,-2147483648,

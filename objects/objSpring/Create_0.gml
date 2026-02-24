@@ -22,7 +22,7 @@ reaction = function(pla)
                 if (pla.on_ground)
                 {
                     pla.control_lock_time = SPRING_DURATION;
-                    // TODO: Set Boost Mode
+                    if (pla.on_ground and force > 9) pla.boost_mode = true;
                 }
                 else
                 {

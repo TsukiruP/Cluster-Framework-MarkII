@@ -23,23 +23,6 @@ for (var i = 0; i < array_length(trick_speed); i++)
     trick_speed[i] = array_create(2);
 }
 
-// Status
-shield = new stamp();
-shield.index = SHIELD.NONE;
-miasma = new stamp();
-
-/// @method player_refresh_status()
-/// @description Resets the player's status.
-player_refresh_status = function()
-{
-    shield.index = SHIELD.NONE;
-    aerial_flags &= ~AERIAL_FLAG_SHIELD_ACTION;
-    recovery_time = 0;
-    invincibility_time = 0;
-    superspeed_time = 0;
-    confusion_time = 0;
-};
-
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
@@ -54,6 +37,29 @@ confusion_time = 0;
 cpu_state_time = 0;
 cpu_respawn_time = CPU_RESPAWN_DURATION;
 cpu_gamepad_time = 0;
+
+// Boost Mode
+boost_mode = false;
+boost_index = 0;
+boost_speed = 0;
+boost_threshold = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
+
+// Status
+/// @method player_refresh_status()
+/// @description Resets the player's status.
+player_refresh_status = function()
+{
+    shield.index = SHIELD.NONE;
+    aerial_flags &= ~AERIAL_FLAG_SHIELD_ACTION;
+    recovery_time = 0;
+    invincibility_time = 0;
+    superspeed_time = 0;
+    confusion_time = 0;
+};
+
+shield = new stamp();
+miasma = new stamp();
+player_refresh_status();
 
 // Physics
 x_speed = 0;
@@ -189,8 +195,8 @@ afterimage = function() constructor
     animation_data = new animation_core();
 }
 
-afterimage_index = 0;
 afterimage_visible = false;
+afterimage_index = 0;
 afterimage_history = array_create(AFTERIMAGE_RECORD_COUNT);
 for (var i = 0; i < AFTERIMAGE_RECORD_COUNT; i++)
 {

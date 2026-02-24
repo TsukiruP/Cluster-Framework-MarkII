@@ -1,6 +1,58 @@
 /// @description Behave
 if (ctrlGame.game_paused) exit;
 
+// Boost Mode
+if (db_read(DATABASE_SAVE, false, "boost"))
+{
+    boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
+    
+    if (boost_mode)
+    {
+        if (on_ground or superspeed_time < 0)
+        {
+            boost_speed = boost_threshold[boost_index];
+            if (abs(x_speed) < 4.5 or superspeed_time < 0)
+            {
+                boost_mode = false;
+                boost_speed = 0;
+            }
+        }
+    }
+    else
+    {
+        if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
+        {
+            if (boost_speed >= boost_threshold[boost_index])
+            {
+                boost_mode = true;
+                player_speed_break();
+                camera_set_x_lag_time(16);
+            }
+        }
+        else
+        {
+            boost_speed = 0;
+        }
+    }
+    
+    if (boost_mode or superspeed_time > 0)
+    {
+        speed_limit = 12;
+        speed_cap = 15;
+    }
+    else
+    {
+        speed_limit = 6;
+        speed_cap = 9;
+    }
+    
+    // TODO: Halve speed_limit when underwater.
+    
+    acceleration = base_acceleration + (2 / 256) * min(global.ring_count / 50, 30);
+    if (global.ring_count > 10) acceleration += 4 / 256;
+    air_acceleration = acceleration * 2;
+}
+
 // Input
 if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 {
@@ -494,6 +546,7 @@ afterimage_history[afterimage_index].ani = animation_data.ani;
 afterimage_history[afterimage_index].ani_speed = animation_data.speed;
 afterimage_index = ++afterimage_index mod array_length(afterimage_history);
 
+afterimage_visible = boost_mode;
 if (afterimage_visible)
 {
 	for (var i = 0; i < AFTERIMAGE_COUNT; i++)

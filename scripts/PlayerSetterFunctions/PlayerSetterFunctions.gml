@@ -225,7 +225,7 @@ function player_keep_in_bounds()
 function player_refresh_physics()
 {
 	// Speed values
-	speed_limit = 6;
+    // Speed values
     speed_cap = 16;
 	acceleration = 0.046875;
 	deceleration = 0.5;

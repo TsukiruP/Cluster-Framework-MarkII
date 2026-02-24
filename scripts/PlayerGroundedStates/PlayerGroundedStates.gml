@@ -150,6 +150,10 @@ function player_is_running(phase)
                         {
                             x_speed = min(abs(x_speed) + acceleration, speed_limit) * input_axis_x;
                         }
+                        else
+                        {
+                            boost_speed += acceleration;
+                        }
                     }
                 }
                 else
