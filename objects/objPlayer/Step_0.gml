@@ -35,7 +35,7 @@ else if (boost_config)
     }
 }
 
-if (boost_config)
+if (boost_config or boost_mode)
 {
     if (boost_mode or superspeed_time > 0)
     {
