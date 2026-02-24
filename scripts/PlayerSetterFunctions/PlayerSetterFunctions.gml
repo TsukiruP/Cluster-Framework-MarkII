@@ -224,38 +224,40 @@ function player_keep_in_bounds()
 /// @description Resets the player's physics variables back to their default values, applying any modifiers afterward.
 function player_refresh_physics()
 {
-	// Speed values
     // Speed values
+    speed_limit = 6;
     speed_cap = 16;
-	acceleration = 0.046875;
-	deceleration = 0.5;
-	air_acceleration = 0.09375;
-	roll_deceleration = 0.125;
-	roll_friction = 0.0234375;
-	
-	// Aerial values
-	gravity_cap = 16;
-	gravity_force = 0.21875;
-	jump_height = 6.5;
+    base_acceleration = 0.046875;
+    acceleration = base_acceleration;
+    deceleration = 0.5;
+    air_acceleration = 0.09375;
+    roll_deceleration = 0.125;
+    roll_friction = 0.0234375;
+    
+    // Aerial values
+    gravity_cap = 16;
+    gravity_force = 0.21875;
+    jump_height = 6.5;
     jump_release = 4;
     hurt_force = 0.1875;
     
     trick_bound_force = 0.21875;
     trick_bound_height = 6;
-	
-	// Superspeed modification
+    
+    // Superspeed modification
     if (superspeed_time > 0)
     {
         speed_limit *= 2;
-        acceleration *= 2;
-        air_acceleration *= 2;
+        base_acceleration *= 2;
         roll_friction *= 2;
     }
     else if (superspeed_time < 0)
     {
         speed_limit /= 2;
-        acceleration /= 2;
-        air_acceleration /= 2;
+        base_acceleration /= 2;
         roll_friction /= 2;
     }
+    
+    acceleration = base_acceleration;
+    air_acceleration = acceleration * 2;
 }
