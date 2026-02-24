@@ -225,7 +225,8 @@ function player_keep_in_bounds()
 function player_refresh_physics()
 {
 	// Speed values
-	speed_cap = 6;
+	speed_limit = 6;
+    speed_cap = 16;
 	acceleration = 0.046875;
 	deceleration = 0.5;
 	air_acceleration = 0.09375;
@@ -245,14 +246,14 @@ function player_refresh_physics()
 	// Superspeed modification
     if (superspeed_time > 0)
     {
-        speed_cap *= 2;
+        speed_limit *= 2;
         acceleration *= 2;
         air_acceleration *= 2;
         roll_friction *= 2;
     }
     else if (superspeed_time < 0)
     {
-        speed_cap /= 2;
+        speed_limit /= 2;
         acceleration /= 2;
         air_acceleration /= 2;
         roll_friction /= 2;

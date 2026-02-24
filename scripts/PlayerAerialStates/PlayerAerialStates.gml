@@ -25,12 +25,12 @@ function player_is_falling(phase)
             if (input_axis_x != 0)
             {
                 image_xscale = input_axis_x;
-                if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
                 {
                     x_speed += air_acceleration * input_axis_x;
-                    if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                    if (abs(x_speed) > speed_limit and sign(x_speed) == input_axis_x)
                     {
-                        x_speed = speed_cap * input_axis_x;
+                        x_speed = speed_limit * input_axis_x;
                     }
                 }
             }
@@ -95,12 +95,12 @@ function player_is_jumping(phase)
             if (input_axis_x != 0)
             {
                 image_xscale = input_axis_x;
-                if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
                 {
                     x_speed += air_acceleration * input_axis_x;
-                    if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                    if (abs(x_speed) > speed_limit and sign(x_speed) == input_axis_x)
                     {
-                        x_speed = speed_cap * input_axis_x;
+                        x_speed = speed_limit * input_axis_x;
                     }
                 }
             }
@@ -259,12 +259,12 @@ function player_is_aqua_bounding(phase)
             if (input_axis_x != 0)
             {
                 image_xscale = input_axis_x;
-                if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
                 {
                     x_speed += air_acceleration * input_axis_x;
-                    if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                    if (abs(x_speed) > speed_limit and sign(x_speed) == input_axis_x)
                     {
-                        x_speed = speed_cap * input_axis_x;
+                        x_speed = speed_limit * input_axis_x;
                     }
                 }
             }

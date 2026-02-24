@@ -23,12 +23,12 @@ function player_is_sprung(phase)
             if (input_axis_x != 0)
             {
                 image_xscale = input_axis_x;
-                if (abs(x_speed) < speed_cap or sign(x_speed) != input_axis_x)
+                if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
                 {
                     x_speed += air_acceleration * input_axis_x;
-                    if (abs(x_speed) > speed_cap and sign(x_speed) == input_axis_x)
+                    if (abs(x_speed) > speed_limit and sign(x_speed) == input_axis_x)
                     {
-                        x_speed = speed_cap * input_axis_x;
+                        x_speed = speed_limit * input_axis_x;
                     }
                 }
             }

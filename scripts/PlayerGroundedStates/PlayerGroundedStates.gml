@@ -146,9 +146,9 @@ function player_is_running(phase)
                         // Accelerate
                         can_brake = false;
                         image_xscale = input_axis_x;
-                        if (abs(x_speed) < speed_cap)
+                        if (abs(x_speed) < speed_limit)
                         {
-                            x_speed = min(abs(x_speed) + acceleration, speed_cap) * input_axis_x;
+                            x_speed = min(abs(x_speed) + acceleration, speed_limit) * input_axis_x;
                         }
                     }
                 }
