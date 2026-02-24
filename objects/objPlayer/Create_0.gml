@@ -163,32 +163,6 @@ player_refresh_records = function()
 // Animation
 animation_data = new animation_core();
 
-// Speed Break
-speed_break =
-{
-    x : 0,
-    y : 0,
-    positions : array_create(SONIC_BOOM_COUNT),
-    accelerations : array_create(SONIC_BOOM_COUNT),
-    unkE2 : 128,
-    unkE4 : 0,
-    time : 0,
-    sprite_index : -1,
-    image_index : 0,
-    image_angle : 0,
-    animation_data : new animation_core(),
-    visible : false
-};
-
-with (speed_break)
-{
-    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
-    {
-        positions[i] = array_create(2);
-        accelerations[i] = array_create(2);
-    }
-}
-
 // Afterimage
 /// @method afterimage_record()
 /// @description Creates a new afterimage record.
@@ -227,6 +201,32 @@ boost_afterimages = array_create(AFTERIMAGE_COUNT);
 for (var i = 0; i < AFTERIMAGE_COUNT; i++)
 {
     boost_afterimages[i] = new afterimage();
+}
+
+// Speed Break
+speed_break =
+{
+    x : 0,
+    y : 0,
+    positions : array_create(SONIC_BOOM_COUNT),
+    accelerations : array_create(SONIC_BOOM_COUNT),
+    unkE2 : 128,
+    unkE4 : 0,
+    time : 0,
+    sprite_index : -1,
+    image_index : 0,
+    image_angle : 0,
+    animation_data : new animation_core(),
+    visible : false
+};
+
+with (speed_break)
+{
+    for (var i = 0; i < SONIC_BOOM_COUNT; i++)
+    {
+        positions[i] = array_create(2);
+        accelerations[i] = array_create(2);
+    }
 }
 
 // Camera
