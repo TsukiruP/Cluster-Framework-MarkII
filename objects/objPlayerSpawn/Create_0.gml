@@ -14,10 +14,10 @@ with (ctrlStage) stage_players = [];
 for (var i = 0; i < array_length(global.characters); i++)
 {
     var character_index = global.characters[i];
-    var player = instance_create_depth(x - i * 32, y, depth + i - DEPTH_OFFSET_PLAYER, player_objects[character_index]);
+    var player = instance_create_depth(x - i * 32, y, depth + i, player_objects[character_index]);
     with (player) player_index = i;
     with (ctrlStage) array_push(stage_players, player);
 }
 with (ctrlGame) game_flags &= ~GAME_FLAG_KEEP_CHARACTERS;
-instance_create_depth(x, y, depth - DEPTH_OFFSET_PLAYER, objCamera);
+instance_create_layer(x, y, layer, objCamera);
 instance_destroy();

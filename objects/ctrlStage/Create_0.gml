@@ -5,6 +5,8 @@ pause_allow = true;
 
 // Depths
 display_depth = layer_get_depth("Display");
+particles_depth = layer_get_depth("Particles");
+player_depth = layer_get_depth("Player");
 stage_depth = layer_get_depth("Stage");
 
 // Timing

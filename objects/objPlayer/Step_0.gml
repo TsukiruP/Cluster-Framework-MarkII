@@ -222,7 +222,7 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                     with (objPlayer)
                     {
                         player_index = array_get_index(ctrlStage.stage_players, id);
-                        depth = ctrlStage.stage_depth + player_index - DEPTH_OFFSET_PLAYER;
+                        depth = ctrlStage.player_depth + player_index;
                     }
                     instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
                 }
