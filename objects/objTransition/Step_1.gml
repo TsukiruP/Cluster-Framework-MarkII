@@ -57,8 +57,6 @@ switch (index)
             {
                 if (zone_time < zone_duration) zone_time++;
             }
-            
-            // TODO: Zone has to account for when character entrances are ever added
         }
         break;
     }
