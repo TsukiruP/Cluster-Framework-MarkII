@@ -31,8 +31,8 @@ roll_offset = 0;
 
 // Zoom
 zoom_active = false;
-zoom_time = 0;
 zoom_duration = 0;
+zoom_time = 0;
 zoom_amount = 1;
 zoom_start = 0;
 zoom_end = 0;
@@ -42,8 +42,8 @@ shake_x_offset = 0;
 shake_y_offset = 0;
 shake_active = false;
 shake_magnitude = 0;
-shake_time = 0;
 shake_duration = 0;
+shake_time = 0;
 
 // Volumes
 volume_x_offset = 0;

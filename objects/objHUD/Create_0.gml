@@ -8,8 +8,8 @@ item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed
 
 // Active
 hud_active = false;
-active_time = 0;
 active_duration = 10;
+active_time = active_duration;
 
 // Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
@@ -91,7 +91,7 @@ if (item_feed_config)
     };
     
     item_feed = [];
-    item_feed_time = 0;
     item_feed_duration = 90;
+    item_feed_time = 0;
     popup_duration = 10;
 }

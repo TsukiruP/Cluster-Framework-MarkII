@@ -18,8 +18,8 @@ y_offset = 0;
 
 // Zoom
 zoom_active = false;
-zoom_time = 0;
 zoom_duration = 0;
+zoom_time = 0;
 zoom_amount = 1;
 zoom_start = 0;
 zoom_end = 0;
@@ -29,8 +29,8 @@ shake_x_offset = 0;
 shake_y_offset = 0;
 shake_active = false;
 shake_magnitude = 0;
-shake_time = 0;
 shake_duration = 0;
+shake_time = 0;
 
 // Volumes
 volume_x_offset = 0;
@@ -75,8 +75,8 @@ camera_zoom = function(zoom, duration = 0)
     else
     {
         zoom_active = true;
-        zoom_time = 0;
         zoom_duration = duration;
+        zoom_time = 0;
         zoom_start = zoom_amount;
         zoom_end = zoom;
     }
@@ -90,8 +90,8 @@ camera_shake = function(magnitude, duration)
 {
     shake_active = true;
     shake_magnitude = magnitude;
-    shake_time = 0;
     shake_duration = duration;
+    shake_time = 0;
 };
 
 /// @method view_to_room_x(x)

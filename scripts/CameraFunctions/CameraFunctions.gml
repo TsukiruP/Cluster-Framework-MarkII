@@ -50,8 +50,8 @@ function camera_set_zoom (zoom, duration = 0)
         else
         {
             zoom_active = true;
-            zoom_time = 0;
             zoom_duration = duration;
+            zoom_time = 0;
             zoom_start = zoom_amount;
             zoom_end = zoom;
         }
@@ -68,7 +68,7 @@ function camera_set_shake(magnitude, duration)
     {
         shake_active = true;
         shake_magnitude = magnitude;
-        shake_time = 0;
         shake_duration = duration;
+        shake_time = 0;
     }
 };
