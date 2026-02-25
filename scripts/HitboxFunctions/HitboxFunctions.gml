@@ -1,5 +1,5 @@
 /// @function hitbox(col, [left], [top], [right], [bottom])
-/// @description Creates a new hitbox with a color and dimensions assuming (0, 0) origin.
+/// @description Creates a new hitbox with the given color and dimensions.
 /// @param {Constant.Color} col Color of the hitbox.
 /// @param {Real} left Left radius of the hitbox (optional, default is 0).
 /// @param {Real} top Top radius of the hitbox (optional, default is 0).
