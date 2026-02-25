@@ -112,6 +112,7 @@ function animation_update()
                 }
             }
         }
+        
         animation_data.time++;
     }
 }
