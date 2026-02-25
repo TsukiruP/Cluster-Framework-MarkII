@@ -11,7 +11,7 @@ function player_is_trick_preparing(phase)
             
             // Animate
             animation_play(PLAYER_ANIMATION.TRICK_UP + trick_index);
-        break;
+            break;
         }
         case PHASE.STEP:
         {

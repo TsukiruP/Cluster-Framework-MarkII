@@ -111,6 +111,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                                 cpu_state_time = 64;
                             }
                         }
+                        
                         cpu_state_time--;
                     }
                     break;
@@ -197,6 +198,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                                     if (not input_button.jump.check) input_button.jump.pressed = true;
                                     input_button.jump.check = true;
                                 }
+                                
                                 jump_cap = false;
                                 break;
                             }

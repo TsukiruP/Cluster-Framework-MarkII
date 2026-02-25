@@ -250,52 +250,53 @@ function player_is_looking(phase)
     {
         case PHASE.ENTER:
         {
+            // Animate
             animation_play(PLAYER_ANIMATION.LOOK);
             break;
         }
         case PHASE.STEP:
         {
-        // Jump
-        if (player_try_jump()) exit;
-        
-        // Move
-        player_move_on_ground();
-        if (state_changed) exit;
-        
-        // Fall
-        if (not on_ground or (local_direction >= 90 and local_direction <= 270))
-        {
-            return player_perform(player_is_falling);
-        }
-        
-        // Slide down steep slopes
-        if (local_direction >= 45 and local_direction <= 315)
-        {
-            control_lock_time = SLIDE_DURATION;
-            return player_perform(player_is_running);
-        }
-        
-        // Skill
-        if (player_try_skill()) exit;
-        
-        // Run
-        if (x_speed != 0) return player_perform(player_is_running);
-        
-        // Stand
-        if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 1 and animation_is_finished())
-        {
-            return player_perform(player_is_standing);
-        }
-        
-        if (input_axis_x == 0 and input_axis_y == 0)
-        {
-            if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 0) animation_data.variant = 1;
-        }
-        else if (input_axis_y != -1)
-        {
-            return player_perform(player_is_standing);
-        }
-        break;
+            // Jump
+            if (player_try_jump()) exit;
+            
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
+            
+            // Fall
+            if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+            {
+                return player_perform(player_is_falling);
+            }
+            
+            // Slide down steep slopes
+            if (local_direction >= 45 and local_direction <= 315)
+            {
+                control_lock_time = SLIDE_DURATION;
+                return player_perform(player_is_running);
+            }
+            
+            // Skill
+            if (player_try_skill()) exit;
+            
+            // Run
+            if (x_speed != 0) return player_perform(player_is_running);
+            
+            // Stand
+            if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 1 and animation_is_finished())
+            {
+                return player_perform(player_is_standing);
+            }
+            
+            if (input_axis_x == 0 and input_axis_y == 0)
+            {
+                if (animation_data.index == PLAYER_ANIMATION.LOOK and animation_data.variant == 0) animation_data.variant = 1;
+            }
+            else if (input_axis_y != -1)
+            {
+                return player_perform(player_is_standing);
+            }
+            break;
         }
         case PHASE.EXIT:
         {
@@ -312,6 +313,7 @@ function player_is_crouching(phase)
     {
         case PHASE.ENTER:
         {
+            // Animate
             animation_play(PLAYER_ANIMATION.CROUCH);
             break;
         }
@@ -374,6 +376,7 @@ function player_is_rolling(phase)
     {
         case PHASE.ENTER:
         {
+            // Animate
             animation_play(PLAYER_ANIMATION.ROLL);
             break;
         }
@@ -445,8 +448,13 @@ function player_is_spin_dashing(phase)
     {
         case PHASE.ENTER:
         {
+            // Set charge
             spin_dash_charge = 0;
+            
+            // Animate
             animation_play(PLAYER_ANIMATION.SPIN_DASH);
+            
+            // Sound
             audio_play_single(sfxSpinRev);
             break;
         }
@@ -489,7 +497,10 @@ function player_is_spin_dashing(phase)
                 var rev_sound = audio_play_single(sfxSpinRev);
                 audio_sound_pitch(rev_sound, 1 + spin_dash_charge * 0.0625);
             }
-            else spin_dash_charge *= 0.96875;
+            else
+            {
+                spin_dash_charge *= 0.96875;
+            }
             break;
         }
         case PHASE.EXIT:

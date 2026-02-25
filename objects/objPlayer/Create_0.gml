@@ -277,9 +277,9 @@ player_respawn_cpu = function()
     var can_respawn = (ctrlStage.stage_players[0].state != player_is_dead);
     if (can_respawn)
     {
-        player_refresh_cpu();
         recovery_time = RECOVERY_DURATION;
         cpu_respawn_time = 0;
+        player_refresh_cpu();
     }
 };
 
@@ -312,6 +312,7 @@ player_try_jump = function()
         audio_play_single(sfxJump);
         return true;
     }
+    
     return false;
 };
 
@@ -346,8 +347,10 @@ player_try_trick = function(time = 0)
         {
             audio_play_single(sfxTrickAction);
         }
+        
         return true;
     }
+    
     return false;
 };
 
@@ -367,6 +370,7 @@ player_try_shield_action = function()
             {
                 if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;
             }
+            
             return true;
         }
         case SHIELD.FLAME:
@@ -385,6 +389,7 @@ player_try_shield_action = function()
                     animation_data.variant = 1;
                 }
             }
+            
             return true;
         }
         case SHIELD.THUNDER:
@@ -393,15 +398,18 @@ player_try_shield_action = function()
             player_perform(player_is_jumping, false);
             animation_play(PLAYER_ANIMATION.JUMP, 1);
             audio_play_single(sfxThunderJump);
+            
             for (var i = 45; i <= 315; i += 90)
             {
                 var sine = dcos(i);
                 var cosine = dsin(i);
                 particle_create(x, y, global.ani_shield_thunder_spark_v0, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
             }
+            
             return true;
         }
     }
+    
     return false;
 };
 
