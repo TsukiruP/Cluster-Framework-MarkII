@@ -400,9 +400,9 @@ player_perform = function(action, enter = true)
     if (state != action or reset)
     { 
         state_previous = state;
-        state(PHASE.EXIT);
         state = action;
         state_changed = true;
+        state_previous(PHASE.EXIT);
         if (enter) state(PHASE.ENTER);
     }
 };
