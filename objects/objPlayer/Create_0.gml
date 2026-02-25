@@ -6,6 +6,7 @@ player_index = -1;
 
 // State machine
 state = player_is_ready;
+state_previous = state;
 state_changed = false;
 
 spin_dash_charge = 0;
@@ -398,6 +399,7 @@ player_perform = function(action, enter = true)
     var reset = (argument_count > 1);
     if (state != action or reset)
     { 
+        state_previous = state;
         state(PHASE.EXIT);
         state = action;
         state_changed = true;
