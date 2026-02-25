@@ -323,9 +323,20 @@ player_try_trick = function(time = 0)
     if (time == 0 and input_button.tag.pressed)
     {
         trick_index = TRICK.BACK;
-        if (input_axis_y == -1) trick_index = TRICK.UP;
-        else if (input_axis_y == 1) trick_index = TRICK.DOWN;
-        else if (input_axis_x == image_xscale) trick_index = TRICK.FRONT;
+        if (input_axis_y == -1)
+        {
+            trick_index = TRICK.UP;
+        }
+        else if (input_axis_y == 1)
+        {
+            trick_index = TRICK.DOWN;
+            if (object_index == objSonic or object_index == objAmy) boost_mode = false;
+        }
+        else if (input_axis_x == image_xscale)
+        {
+            trick_index = TRICK.FRONT;
+        }
+        
         player_gain_score(100);
         player_perform(player_is_trick_preparing);
         if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
