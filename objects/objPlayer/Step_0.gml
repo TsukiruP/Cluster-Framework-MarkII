@@ -543,27 +543,25 @@ with (speed_break)
 }
 
 // Afterimage
-afterimage_history[afterimage_index].x = x div 1;
-afterimage_history[afterimage_index].y = y div 1;
-afterimage_history[afterimage_index].image_xscale = image_xscale;
-afterimage_history[afterimage_index].image_yscale = image_yscale;
-afterimage_history[afterimage_index].image_angle = image_angle;
-afterimage_history[afterimage_index].ani = animation_data.ani;
-afterimage_history[afterimage_index].ani_speed = animation_data.speed;
-afterimage_index = ++afterimage_index mod array_length(afterimage_history);
+player_update_animation_history();
 
 afterimage_visible = boost_mode;
 if (afterimage_visible)
 {
 	for (var i = 0; i < AFTERIMAGE_COUNT; i++)
 	{
-	    with (boost_afterimages[i])
-	    {
-	        var delay = (i * 2) + 2;
-	        var record_index = modwrap(other.afterimage_index - delay, 0, AFTERIMAGE_RECORD_COUNT);
-	        record = other.afterimage_history[record_index];
-	        animation_set(record.ani);
-	        animation_data.speed = record.ani_speed;
-	    }
+	    var delay = i * 2 + 2;
+        var history_index = modwrap(animation_history_index - delay, 0, ANIMATION_RECORD_COUNT);
+        var record = animation_history[history_index];
+        with (afterimage_list[i])
+        {
+            x = record.x;
+            y = record.y;
+            image_xscale = record.image_xscale;
+            image_yscale = record.image_yscale;
+            image_angle = record.image_angle;
+            animation_set(record.ani);
+            animation_data.speed = record.ani_speed;
+        }
 	}
 }

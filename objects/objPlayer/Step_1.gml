@@ -10,7 +10,11 @@ if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
     
     for (var i = 0; i < AFTERIMAGE_COUNT; i++)
     {
-        with (boost_afterimages[i]) animation_update();
+        with (afterimage_list[i])
+        {
+            animation_update();
+            time = ++time mod AFTERIMAGE_COUNT;
+        }
     }
 }
 

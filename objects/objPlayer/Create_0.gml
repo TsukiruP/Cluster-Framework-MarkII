@@ -169,10 +169,93 @@ player_refresh_records = function()
 // Animation
 animation_data = new animation_core();
 
-// Afterimage
-/// @method afterimage_record()
-/// @description Creates a new afterimage record.
-afterimage_record = function() constructor
+/// @method player_animate_teeter(ani)
+/// @description Sets the given animation within the player's animation core based on teeter conditions.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_teeter = function(ani)
+{
+    animation_data.variant = (cliff_sign != image_xscale);
+    player_set_animation(ani);
+};
+
+/// @method player_animate_run(ani)
+/// @description Plays the given animation based on running conditions.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+/// @param {Real} [ang] Angle to set (optional, defaults to direction).
+player_animate_run = function(ani, ang = direction)
+{
+    var variant = (on_ground ? 5 : animation_data.variant);
+    if (on_ground)
+    {
+        var abs_speed = abs(x_speed);
+        if (abs_speed <= 1.25) variant = 0;
+        else if (abs_speed <= 2.5) variant = 1;
+        else if (abs_speed <= 4.0) variant = 2;
+        else if (abs_speed <= 9.0) variant = 3;
+        else if (abs_speed <= 11.5) variant = 4;
+    }
+    
+    player_set_animation(ani, ang);
+    animation_data.variant = variant;
+    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
+};
+
+/// @method player_animate_fall(ani)
+/// @description Plays the given animation based on falling conditions.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_fall = function(ani)
+{
+    if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
+    player_set_animation(ani, rotate_towards(mask_direction, image_angle));
+};
+
+/// @method player_animate_jump(ani)
+/// @description Sets the given animation within the player's animation core based on jumping conditions.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_jump = function(ani)
+{
+    switch (animation_data.variant)
+    {
+        case 0:
+        {
+            if (animation_is_finished()) animation_data.variant = 1;
+            break;
+        }
+        case 1:
+        {
+            if (y_speed > 0 and player_find_floor(y_radius + 32) != undefined) animation_data.variant = 2;
+            break;
+        }
+    }
+    
+    player_set_animation(ani);
+};
+
+/// @method player_animate_spring(ani)
+/// @description Plays the given animation based on spring conditions.
+/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
+player_animate_spring = function(ani)
+{
+    switch (animation_data.variant)
+    {
+        case 0:
+        {
+            if (y_speed > 0) animation_data.variant = 1;
+            break;
+        }
+        case 1:
+        {
+            if (animation_is_finished()) animation_data.variant = 2;
+            break;
+        }
+    }
+    
+    player_set_animation(ani);
+};
+
+/// @method animation_record()
+/// @description Creates a new animation record.
+animation_record = function() constructor
 {
     x = 0;
     y = 0;
@@ -183,6 +266,32 @@ afterimage_record = function() constructor
     ani_speed = 1;
 };
 
+animation_history_index = 0;
+animation_history = array_create(ANIMATION_RECORD_COUNT);
+for (var i = 0; i < ANIMATION_RECORD_COUNT; i++)
+{
+    animation_history[i] = new animation_record();
+}
+
+/// @method player_update_animation_history()
+/// @description Updates the animation history.
+player_update_animation_history = function ()
+{
+    with (animation_history[animation_history_index])
+    {
+        x = other.x div 1;
+        y = other.y div 1;
+        image_xscale = other.image_xscale;
+        image_yscale = other.image_yscale;
+        image_angle = other.image_angle;
+        ani = other.animation_data.ani;
+        ani_speed = other.animation_data.speed;
+    }
+    
+    animation_history_index = ++animation_history_index mod ANIMATION_RECORD_COUNT;
+};
+
+// Afterimage
 /// @method afterimage()
 /// @description Creates a new afterimage.
 afterimage = function() constructor 
@@ -190,23 +299,19 @@ afterimage = function() constructor
     time = 0;
     sprite_index = -1;
     image_index = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    image_blend = c_white;
     image_alpha = 1;
-    record = undefined;
     animation_data = new animation_core();
 }
 
 afterimage_visible = false;
-afterimage_index = 0;
-afterimage_history = array_create(AFTERIMAGE_RECORD_COUNT);
-for (var i = 0; i < AFTERIMAGE_RECORD_COUNT; i++)
-{
-    afterimage_history[i] = new afterimage_record();
-}
-
-boost_afterimages = array_create(AFTERIMAGE_COUNT);
+afterimage_list = array_create(AFTERIMAGE_COUNT);
 for (var i = 0; i < AFTERIMAGE_COUNT; i++)
 {
-    boost_afterimages[i] = new afterimage();
+    afterimage_list[i] = new afterimage();
 }
 
 // Speed Break
@@ -476,90 +581,6 @@ player_set_radii = function(xrad, yrad)
         x += sine * (old_y_radius - y_radius);
         y += cosine * (old_y_radius - y_radius);
     }
-};
-
-/// @method player_animate_teeter(ani)
-/// @description Sets the given animation within the player's animation core based on teeter conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_teeter = function(ani)
-{
-    animation_data.variant = (cliff_sign != image_xscale);
-    player_set_animation(ani);
-};
-
-/// @method player_animate_run(ani)
-/// @description Plays the given animation based on running conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-/// @param {Real} [ang] Angle to set (optional, defaults to direction).
-player_animate_run = function(ani, ang = direction)
-{
-    var variant = (on_ground ? 5 : animation_data.variant);
-    if (on_ground)
-    {
-        var abs_speed = abs(x_speed);
-        if (abs_speed <= 1.25) variant = 0;
-        else if (abs_speed <= 2.5) variant = 1;
-        else if (abs_speed <= 4.0) variant = 2;
-        else if (abs_speed <= 9.0) variant = 3;
-        else if (abs_speed <= 11.5) variant = 4;
-    }
-    
-    player_set_animation(ani, ang);
-    animation_data.variant = variant;
-    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
-};
-
-/// @method player_animate_fall(ani)
-/// @description Plays the given animation based on falling conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_fall = function(ani)
-{
-    if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
-    player_set_animation(ani, rotate_towards(mask_direction, image_angle));
-};
-
-/// @method player_animate_jump(ani)
-/// @description Sets the given animation within the player's animation core based on jumping conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_jump = function(ani)
-{
-    switch (animation_data.variant)
-    {
-        case 0:
-        {
-            if (animation_is_finished()) animation_data.variant = 1;
-            break;
-        }
-        case 1:
-        {
-            if (y_speed > 0 and player_find_floor(y_radius + 32) != undefined) animation_data.variant = 2;
-            break;
-        }
-    }
-    
-    player_set_animation(ani);
-};
-
-/// @method player_animate_spring(ani)
-/// @description Plays the given animation based on spring conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_spring = function(ani)
-{
-    switch (animation_data.variant)
-    {
-        case 0:
-        {
-            if (y_speed > 0) animation_data.variant = 1;
-            break;
-        }
-        case 1:
-        {
-            if (animation_is_finished()) animation_data.variant = 2;
-            break;
-        }
-    }
-    
-    player_set_animation(ani);
 };
 
 /// @method player_gain_score(num)
