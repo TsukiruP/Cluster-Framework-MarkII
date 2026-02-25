@@ -40,7 +40,7 @@ if (boost_config or boost_mode)
     if (boost_mode or superspeed_time > 0)
     {
         speed_limit = 12;
-        speed_cap = 15;
+        speed_cap = 16;
     }
     else
     {
