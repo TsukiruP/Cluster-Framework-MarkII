@@ -257,6 +257,7 @@ player_refresh_cpu = function()
     gravity_direction = leader.gravity_direction;
     image_xscale = leader.image_xscale;
     image_angle = gravity_direction;
+    boost_mode = false;
     x_speed = leader.x_speed;
     y_speed = leader.y_speed;
     collision_layer = leader.collision_layer;

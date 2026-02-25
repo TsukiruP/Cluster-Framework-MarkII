@@ -154,6 +154,9 @@ function player_is_hurt(phase)
     {
         case PHASE.ENTER:
         {
+            // Set flags
+            boost_mode = false;
+            
             // Detach from ground
             player_ground(undefined);
             break;
@@ -189,6 +192,9 @@ function player_is_dead(phase)
     {
         case PHASE.ENTER:
         {
+            // Set flags
+            boost_mode = false;
+            
             // Set time:
             state_time = 64;
             
