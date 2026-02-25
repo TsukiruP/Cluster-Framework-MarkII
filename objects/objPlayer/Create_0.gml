@@ -560,12 +560,11 @@ player_gain_rings = function(num)
     global.ring_count = min(global.ring_count + num, RING_CAP);
     
     // Gain lives
-    static ring_life_threshold = 99;
-    if (global.ring_count > ring_life_threshold)
+    if (global.ring_count > global.ring_life_threshold)
     {
         var change = global.ring_count div 100;
-        player_gain_lives(change - ring_life_threshold div 100);
-        ring_life_threshold = change * 100 + 99;
+        player_gain_lives(change - global.ring_life_threshold div 100);
+        global.ring_life_threshold = change * 100 + RING_LIFE_BASE_THRESHOLD;
     }
 };
 

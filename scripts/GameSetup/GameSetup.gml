@@ -41,7 +41,8 @@
 
 #macro SCORE_CAP 999999999
 #macro RING_CAP 999
-#macro LIVES_CAP 999 
+#macro LIVES_CAP 999
+#macro RING_LIFE_BASE_THRESHOLD 99
 
 enum GAME_MODE
 {
@@ -132,6 +133,7 @@ global.characters = [];
 global.score_count = 0;
 global.ring_count = 0;
 global.life_count = 3;
+global.ring_life_threshold = RING_LIFE_BASE_THRESHOLD;
 
 // Fonts
 global.font_hud_cluster = font_add_sprite_ext(sprFontHUDCluster, "0123456789", false, 1);
