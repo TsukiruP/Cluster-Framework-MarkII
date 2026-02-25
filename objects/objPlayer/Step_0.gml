@@ -422,6 +422,7 @@ with (shield)
         {
             image_xscale = 1;
         }
+        
         image_angle = other.gravity_direction;
         image_alpha = (shield_advance and flicker_config == CONFIG_FLICKER.OFF ? 0.6 : 1);
     }

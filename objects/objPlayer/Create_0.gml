@@ -485,17 +485,17 @@ player_animate_teeter = function(ani)
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
 player_animate_run = function(ani, ang = direction)
 {
-    var variant = animation_data.variant;
+    var variant = (on_ground ? 5 : animation_data.variant);
     if (on_ground)
     {
         var abs_speed = abs(x_speed);
-        variant = 5;
         if (abs_speed <= 1.25) variant = 0;
         else if (abs_speed <= 2.5) variant = 1;
         else if (abs_speed <= 4.0) variant = 2;
         else if (abs_speed <= 9.0) variant = 3;
-        else if (abs_speed <= 10.0) variant = 4;
+        else if (abs_speed <= 11.5) variant = 4;
     }
+    
     player_set_animation(ani, ang);
     animation_data.variant = variant;
     if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
@@ -528,6 +528,7 @@ player_animate_jump = function(ani)
             break;
         }
     }
+    
     player_set_animation(ani);
 };
 
@@ -549,6 +550,7 @@ player_animate_spring = function(ani)
             break;
         }
     }
+    
     player_set_animation(ani);
 };
 
@@ -660,7 +662,9 @@ player_damage = function(inst)
             x_speed = sign(x_speed) * -hurt_speed;
             animation_data.variant = 1;
         }
+        
         y_speed = -4;
+        
         if (player_index == 0)
         {
             if (shield.index != SHIELD.NONE)
@@ -673,6 +677,7 @@ player_damage = function(inst)
                 player_drop_rings();
             }
         }
+        
         if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_hurt);
     }
