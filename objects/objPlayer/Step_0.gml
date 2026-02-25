@@ -2,7 +2,7 @@
 if (ctrlGame.game_paused) exit;
 
 // Boost Mode
-var boost_config = db_read(DATABASE_SAVE, false, "boost");
+var boost_config = db_read(DATABASE_SAVE, true, "boost_mode");
 boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
 
 if (boost_mode)
@@ -237,7 +237,8 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
     var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
     if (input_button.swap.pressed)
     {
-        if (partner.cpu_gamepad_time == 0)
+        var swap_config = db_read(DATABASE_SAVE, true, "swap");
+        if (swap_config and partner.cpu_gamepad_time == 0)
         {
             if (instance_in_view(partner))
             {

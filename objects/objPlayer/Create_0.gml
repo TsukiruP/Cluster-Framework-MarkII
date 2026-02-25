@@ -321,7 +321,8 @@ player_try_jump = function()
 /// @returns {Bool}
 player_try_trick = function(time = 0)
 {
-    if (time == 0 and input_button.tag.pressed)
+    var trick_actions_config = db_read(DATABASE_SAVE, true, "trick_actions");
+    if (trick_actions_config and time == 0 and input_button.tag.pressed)
     {
         trick_index = TRICK.BACK;
         if (input_axis_y == -1)
