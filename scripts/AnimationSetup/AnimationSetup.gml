@@ -28,7 +28,7 @@ global.ani_item_balloon_v0 = new animation(sprItemBalloon, 12);
 
 #endregion
 
-#region Player
+#region Effects
 
 global.ani_brake_dust_v0 = new animation(sprBrakeDust, 2, -1);
 

@@ -542,7 +542,7 @@ with (speed_break)
     }
 }
 
-// Afterimage
+// Afterimages
 player_update_animation_history();
 
 afterimage_visible = boost_mode;
