@@ -4,7 +4,7 @@ global.ani_explosion_destroy_v0 = new animation(sprExplosionDestroy, [3, 3, 3, 3
 
 #endregion
 
-#region Objects
+#region Interactables
 
 global.ani_ring_sparkle_v0 = new animation(sprRingSparkle, 4, -1);
 
