@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprMilesFlightFall",
+  "%Name":"sprMilesFlightTired",
   "bboxMode":0,
   "bbox_bottom":40,
   "bbox_left":3,
@@ -30,7 +30,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"4c2a2886-304c-41b8-9f65-7c50d269707d","blendMode":0,"displayName":"default","isLocked":false,"name":"4c2a2886-304c-41b8-9f65-7c50d269707d","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprMilesFlightFall",
+  "name":"sprMilesFlightTired",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -42,7 +42,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprMilesFlightFall",
+    "%Name":"sprMilesFlightTired",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -66,7 +66,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprMilesFlightFall",
+    "name":"sprMilesFlightTired",
     "playback":1,
     "playbackSpeed":1.0,
     "playbackSpeedType":1,
@@ -78,34 +78,34 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3fe88309-fbd7-47c1-9385-1c92ba805639","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3fe88309-fbd7-47c1-9385-1c92ba805639","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f3df18b0-2b93-4f40-bc65-4d26737c7d42","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ab57e412-636a-486e-a25b-d1d10b4d1f75","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ab57e412-636a-486e-a25b-d1d10b4d1f75","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"729e0033-468f-4441-b090-932a34b504de","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d20a0905-960b-4edc-bc40-7b77f973bcd8","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d20a0905-960b-4edc-bc40-7b77f973bcd8","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"97e4e020-44e1-4381-845f-370af3fee5a3","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8aad2ac1-3e01-435d-afc5-5adc3f9a5015","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8aad2ac1-3e01-435d-afc5-5adc3f9a5015","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"4c1e671c-56a2-4686-94d4-7a78b4399f13","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b4ea63d7-2113-46bc-9ac1-d18592e7da81","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b4ea63d7-2113-46bc-9ac1-d18592e7da81","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"cfe6d0ba-e148-4a5e-b53e-ade9db8641d4","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d52cfd6a-f6a2-44c8-ad43-c92e4fe42ecf","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d52cfd6a-f6a2-44c8-ad43-c92e4fe42ecf","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"0d38db29-7ca7-42a0-86c5-b0251f10fad3","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d226e107-d2c5-427f-a0b6-dcd23ecdc1f6","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d226e107-d2c5-427f-a0b6-dcd23ecdc1f6","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"d0be845f-a94e-40a7-8fd0-7f4828bffdc5","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"974af5fe-7329-4026-b100-54e2306bdf57","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"974af5fe-7329-4026-b100-54e2306bdf57","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6d3886f0-d48d-4814-bbc9-b4ee8b9ea7c0","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea97607a-fd4f-4a70-ac81-471c6dad4d2d","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea97607a-fd4f-4a70-ac81-471c6dad4d2d","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"16d83114-deb5-4cef-93bb-3247c3643549","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"720c7843-0a4a-4ea4-afca-f2b2ea303c31","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"720c7843-0a4a-4ea4-afca-f2b2ea303c31","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2bc92704-7af1-4abb-aaa4-bb443ea3f02a","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

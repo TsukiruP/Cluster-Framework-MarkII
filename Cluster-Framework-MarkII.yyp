@@ -735,7 +735,7 @@
     {"id":{"name":"sprMilesDead","path":"sprites/sprMilesDead/sprMilesDead.yy",},},
     {"id":{"name":"sprMilesFlight","path":"sprites/sprMilesFlight/sprMilesFlight.yy",},},
     {"id":{"name":"sprMilesFlightCancel","path":"sprites/sprMilesFlightCancel/sprMilesFlightCancel.yy",},},
-    {"id":{"name":"sprMilesFlightFall","path":"sprites/sprMilesFlightFall/sprMilesFlightFall.yy",},},
+    {"id":{"name":"sprMilesFlightTired","path":"sprites/sprMilesFlightTired/sprMilesFlightTired.yy",},},
     {"id":{"name":"sprMilesFlightTurn","path":"sprites/sprMilesFlightTurn/sprMilesFlightTurn.yy",},},
     {"id":{"name":"sprMilesHurt0","path":"sprites/sprMilesHurt0/sprMilesHurt0.yy",},},
     {"id":{"name":"sprMilesHurt1","path":"sprites/sprMilesHurt1/sprMilesHurt1.yy",},},
