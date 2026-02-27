@@ -276,7 +276,7 @@ for (var i = 0; i < ANIMATION_RECORD_COUNT; i++)
 
 /// @method player_update_animation_history()
 /// @description Updates the animation history.
-player_update_animation_history = function ()
+player_update_animation_history = function()
 {
     with (animation_history[animation_history_index])
     {
