@@ -261,3 +261,61 @@ function player_refresh_physics()
     acceleration = base_acceleration;
     air_acceleration = acceleration * 2;
 }
+
+/// @function player_refresh_boost_mode()
+/// @description Sets the player's Boost Mode, applying any modifiers afterward.
+function player_refresh_boost_mode()
+{
+    var boost_config = db_read(DATABASE_SAVE, true, "boost_mode");
+    boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
+    
+    if (boost_mode)
+    {
+        if (on_ground or superspeed_time < 0)
+        {
+            boost_speed = boost_threshold[boost_index];
+            if (abs(x_speed) < 4.5 or superspeed_time < 0)
+            {
+                boost_mode = false;
+                boost_speed = 0;
+            }
+        }
+    }
+    else if (boost_config)
+    {
+        if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
+        {
+            if (boost_speed >= boost_threshold[boost_index])
+            {
+                boost_mode = true;
+                player_speed_break();
+                camera_set_x_lag_time(16);
+                audio_play_single(sndSpeedBreak);
+            }
+        }
+        else
+        {
+            boost_speed = 0;
+        }
+    }
+    
+    if (boost_config or boost_mode)
+    {
+        if (boost_mode or superspeed_time > 0)
+        {
+            speed_limit = 12;
+            speed_cap = 16;
+        }
+        else
+        {
+            speed_limit = 6;
+            speed_cap = 9;
+        }
+        
+        // TODO: Halve speed_limit when underwater.
+        
+        acceleration = base_acceleration + (2 / 256) * min(global.ring_count / 50, 30);
+        if (global.ring_count > 10) acceleration += 4 / 256;
+        air_acceleration = acceleration * 2;
+    }
+}

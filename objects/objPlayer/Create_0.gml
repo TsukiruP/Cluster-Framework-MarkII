@@ -373,6 +373,7 @@ player_refresh_cpu = function()
     animation_play(PLAYER_ANIMATION.FALL);
     player_perform(player_is_falling, false);
     player_refresh_physics();
+    player_refresh_boost_mode();
 };
 
 
