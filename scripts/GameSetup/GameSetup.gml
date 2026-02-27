@@ -32,6 +32,7 @@
 #macro TEN_MILLISECONDS 1000
 
 #macro PLAYER_HEIGHT 14
+#macro ITEM_WIDTH sprite_get_width(sprHUDItemIcon) + 2
 
 #macro SCORE_CAP 999999999
 #macro RING_CAP 999

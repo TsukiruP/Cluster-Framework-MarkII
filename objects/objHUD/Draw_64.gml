@@ -263,9 +263,10 @@ if (LIVES_ENABLED)
                 var character_index = global.characters[i];
                 draw_sprite(sprHUDAdvance3LifeIcon, character_index, lives_x + i * 10, lives_y);
             }
-            if (array_length(global.characters) <= 1) draw_text(lives_x + 17, lives_y, "x");
+            
             draw_set_font(global.font_hud_advance_3);
             draw_text(lives_x + 27, lives_y, $"{global.life_count > lives_cap ? lives_cap : global.life_count}");
+            if (array_length(global.characters) <= 1) draw_text(lives_x + 17, lives_y, "x");
             break;
         }
         case CONFIG_HUD.EPISODE_II:
@@ -286,6 +287,7 @@ if (LIVES_ENABLED)
             	var character_index = global.characters[0];
                 draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
             }
+            
             draw_set_font(global.font_hud_episode_ii);
             draw_text(lives_x + 11, lives_y + 6, $"x{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 3)}");
             break;
@@ -312,6 +314,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x - 1, status_bar_y + 1, 1, 1, 0, c_black, 1);
                 draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x, status_bar_y, 1, 1, 0, status_bar_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
             }
+            
             status_bar_x -= ITEM_WIDTH;
         }
     }
@@ -325,10 +328,7 @@ if (item_feed_config)
         var popup_index = item_feed[i];
         var popup_x = popup_index.x;
         var icon_index = popup_index.icon;
-        if (item_feed_time > 30 or item_feed_time mod 4 < 2)
-        {
-            draw_sprite(sprHUDItemIcon, icon_index, popup_x, CAMERA_HEIGHT - 33);
-        }
+        if (item_feed_time > 30 or item_feed_time mod 4 < 2) draw_sprite(sprHUDItemIcon, icon_index, popup_x, CAMERA_HEIGHT - 33);
     }
 }
 
