@@ -215,5 +215,8 @@
 | Trick Back | 269-0, 269-1, 269-2 |
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
+| Flight | 188-0 |
+| Flight Turn | 188-1 |
+| Flight Tired | 189-0 |
 
 * Cream's eyelids were recolored in SA3, so use SA3 sprites.
