@@ -13,6 +13,7 @@ tails = new stamp();
 
 flight_time = 0;
 flight_reset_time = 0;
+flight_hammer = false;
 flight_base_force = 0.03125;
 flight_ascent_force = 0.125;
 flight_force = flight_base_force;

@@ -129,6 +129,8 @@
 | Flight Turn | (SA2) 203-0 |
 | Flight Tired | 352-0 |
 | Flight Cancel | (SA1) 158-0 |
+| Flight Hammer | 358-0 |
+| Flight Hammer Attack | 358-1 |
 
 # Knuckles
 
