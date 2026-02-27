@@ -1,7 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.CREAM;
-
 trick_speed =
 [
     [0, -6],
@@ -10,8 +9,8 @@ trick_speed =
     [-3.5, -3]
 ];
 
-
 ears = new stamp();
+
 player_animate = function()
 {
     switch (animation_data.index)

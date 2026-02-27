@@ -36,9 +36,10 @@ reaction = function(pla)
                 }
             }
         }
-        pla.player_obtain_item(index);
-        aerial_flags = 0;
+        
+        pla.aerial_flags = 0;
         pla.player_refresh_aerials();
+        pla.player_obtain_item(index);
         audio_play_single(sfxDestroyBalloon);
         particle_create(x, y + 15, global.ani_explosion_destroy_v0, image_angle);
         instance_destroy();

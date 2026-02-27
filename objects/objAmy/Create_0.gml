@@ -1,7 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.AMY;
-
 trick_speed =
 [
     [0, -6],

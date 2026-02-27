@@ -1,7 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.SONIC;
-
 trick_speed =
 [
     [0, -6],
@@ -32,7 +31,8 @@ player_try_skill = function()
                 y_speed = 0;
                 animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
                 audio_play_single(sfxAirDash);
-                return player_perform(player_is_falling, false);
+                player_perform(player_is_falling, false);
+                return true;
             }
         }
     }

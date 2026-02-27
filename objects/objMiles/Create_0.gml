@@ -1,7 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.MILES;
-
 trick_speed =
 [
     [0, -6],
@@ -11,6 +10,43 @@ trick_speed =
 ];
 
 tails = new stamp();
+
+flight_time = 0;
+flight_reset_time = 0;
+flight_base_force = 0.03125;
+flight_ascent_force = 0.125;
+flight_force = flight_base_force;
+
+player_try_skill = function()
+{
+    if (not on_ground)
+    {
+        if (input_button.jump.pressed)
+        {
+            if (state != player_is_propeller_flying and flight_time < FLIGHT_DURATION)
+            {
+                player_perform(player_is_propeller_flying);
+                return true;
+            }
+        }
+        
+        if (input_button.aux.pressed)
+        {
+            if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+            {
+                return player_try_shield_action();
+            }
+        }
+    }
+    
+    return false;
+};
+
+player_refresh_aerials = function()
+{
+    if (on_ground) flight_time = 0;
+}
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -371,6 +407,7 @@ player_animate = function()
                 hitboxes[0].set_size(-6, -10, 6, 16);
                 hitboxes[1].set_size(-22, -23, 21, -11);
             }
+            break;
         }
         case MILES_ANIMATION.FLIGHT_TIRED:
         {
@@ -381,6 +418,7 @@ player_animate = function()
                 hitboxes[0].set_size(-6, -10, 6, 16);
                 hitboxes[1].set_size();
             }
+            break;
         }
         case MILES_ANIMATION.FLIGHT_CANCEL:
         {
@@ -391,6 +429,7 @@ player_animate = function()
                 hitboxes[0].set_size(-6, -10, 6, 16);
                 hitboxes[1].set_size();
             }
+            break;
         }
         case MILES_ANIMATION.FLIGHT_TURN:
         {
@@ -401,6 +440,7 @@ player_animate = function()
                 hitboxes[0].set_size(-6, -10, 6, 16);
                 hitboxes[1].set_size(-17, -19, 17, -11);
             }
+            break;
         }
     }
 };
