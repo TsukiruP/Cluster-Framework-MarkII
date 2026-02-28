@@ -20,7 +20,7 @@ function player_is_fan_flying(phase)
             // Apply flight resistance
             if (abs(x_speed) > flight_drag_thresholds[boost_index])
             {
-                x_speed += (-acceleration * 2) * sign(x_speed);
+                x_speed += -air_acceleration * sign(x_speed);
             }
             
             // Accelerate
