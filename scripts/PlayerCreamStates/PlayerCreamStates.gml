@@ -18,10 +18,17 @@ function player_is_fan_flying(phase)
         case PHASE.STEP:
         {
             // Apply flight resistance
-            if (abs(x_speed) > flight_drag_thresholds[boost_index])
+            /*var boost_mode_config = db_read(DATABASE_SAVE, "true", "boost_mode");
+            if (boost_mode_config)
             {
-                x_speed += -air_acceleration * sign(x_speed);
-            }
+                if (abs(x_speed) > flight_drag_thresholds[boost_index])
+                {
+                    x_speed += -air_acceleration * sign(x_speed);
+                }
+            }*/
+            
+            /* AUTHOR NOTE: The code above applies a strict cap, which is too drastic a change imo.
+            I believe disabling it makes it behave closer to Advance 3. */
             
             // Accelerate
             if (input_axis_x != 0)

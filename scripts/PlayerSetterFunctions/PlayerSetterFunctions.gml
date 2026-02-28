@@ -266,7 +266,7 @@ function player_refresh_physics()
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.
 function player_refresh_boost_mode()
 {
-    var boost_config = db_read(DATABASE_SAVE, true, "boost_mode");
+    var boost_mode_config = db_read(DATABASE_SAVE, true, "boost_mode");
     boost_index = (global.ring_count > 10 ? 1 : 0) + min(global.ring_count / 50, 3);
     
     if (boost_mode)
@@ -281,7 +281,7 @@ function player_refresh_boost_mode()
             }
         }
     }
-    else if (boost_config)
+    else if (boost_mode_config)
     {
         if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
         {
@@ -299,7 +299,7 @@ function player_refresh_boost_mode()
         }
     }
     
-    if (boost_config or boost_mode)
+    if (boost_mode_config or boost_mode)
     {
         if (boost_mode or superspeed_time > 0)
         {
