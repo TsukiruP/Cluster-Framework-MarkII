@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"sprMilesFlightTurn",
+  "%Name":"sprMilesFlight1",
   "bboxMode":0,
   "bbox_bottom":38,
   "bbox_left":6,
@@ -22,7 +22,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"832cd923-7468-4899-a33c-cd6565faa3d7","blendMode":0,"displayName":"default","isLocked":false,"name":"832cd923-7468-4899-a33c-cd6565faa3d7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"sprMilesFlightTurn",
+  "name":"sprMilesFlight1",
   "nineSlice":null,
   "origin":9,
   "parent":{
@@ -34,7 +34,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"sprMilesFlightTurn",
+    "%Name":"sprMilesFlight1",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -58,7 +58,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"sprMilesFlightTurn",
+    "name":"sprMilesFlight1",
     "playback":1,
     "playbackSpeed":1.0,
     "playbackSpeedType":1,
@@ -70,10 +70,10 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd1df684-5bcb-4222-96cc-beb4b2979594","path":"sprites/sprMilesFlightTurn/sprMilesFlightTurn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd1df684-5bcb-4222-96cc-beb4b2979594","path":"sprites/sprMilesFlight1/sprMilesFlight1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"00190c19-392a-45e0-9843-1f0a3f0c9eb3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a58ea613-ca50-486b-9355-e538c8800d8a","path":"sprites/sprMilesFlightTurn/sprMilesFlightTurn.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a58ea613-ca50-486b-9355-e538c8800d8a","path":"sprites/sprMilesFlight1/sprMilesFlight1.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"28354d3b-c60f-4065-bd0e-4ceb8b385134","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

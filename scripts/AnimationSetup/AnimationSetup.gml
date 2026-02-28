@@ -239,9 +239,9 @@ global.ani_miles_spring = [global.ani_miles_spring_v0, global.ani_miles_spring_v
 
 global.ani_miles_spring_twirl_v0 = new animation(sprMilesSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
 
-global.ani_miles_flight_v0 = new animation(sprMilesFlight, 2);
-global.ani_miles_flight_turn_v0 = new animation(sprMilesFlightTurn, 1, -1);
-global.ani_miles_flight = [global.ani_miles_flight_v0, global.ani_miles_flight_turn_v0];
+global.ani_miles_flight_v0 = new animation(sprMilesFlight0, 2);
+global.ani_miles_flight_v1 = new animation(sprMilesFlight1, 1, -1);
+global.ani_miles_flight = [global.ani_miles_flight_v0, global.ani_miles_flight_v1];
 
 global.ani_miles_flight_tired_v0 = new animation(sprMilesFlightTired, [6, 4, 6, 6, 6, 6, 6, 6, 6, 6], 2);
 global.ani_miles_flight_cancel_v0 = new animation(sprMilesFlightCancel, 3, 2);
