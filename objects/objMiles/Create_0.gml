@@ -18,36 +18,6 @@ flight_base_force = 0.03125;
 flight_ascent_force = 0.125;
 flight_force = flight_base_force;
 
-player_try_skill = function()
-{
-    if (not on_ground)
-    {
-        if (input_button.jump.pressed)
-        {
-            if (state != player_is_propeller_flying and flight_time < FLIGHT_DURATION)
-            {
-                player_perform(player_is_propeller_flying);
-                return true;
-            }
-        }
-        
-        if (input_button.aux.pressed)
-        {
-            if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-            {
-                return player_try_shield_action();
-            }
-        }
-    }
-    
-    return false;
-};
-
-player_refresh_aerials = function()
-{
-    if (on_ground) flight_time = 0;
-}
-
 player_animate = function()
 {
     switch (animation_data.index)

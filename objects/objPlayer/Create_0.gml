@@ -521,6 +521,86 @@ player_try_shield_action = function()
     return false;
 };
 
+/// @method player_try_skill()
+/// @description Checks if the player performs a character skill.
+/// @returns {Bool}
+player_try_skill = function()
+{
+    if (player_index == 0 or cpu_gamepad_time > 0)
+    {
+        switch (object_index)
+        {
+            case objSonic:
+            {
+                if (not on_ground)
+                {
+                    if (input_button.jump.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        {
+                            return player_try_shield_action();
+                        }
+                    }
+                    
+                    if (input_button.aux.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                        {
+                            var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
+                            aerial_flags |= AERIAL_FLAG_AIR_DASH;
+                            x_speed += 2.25 * image_xscale;
+                            y_speed = 0;
+                            animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                            audio_play_single(sfxAirDash);
+                            player_perform(player_is_falling, false);
+                            return true;
+                        }
+                    }
+                }
+                break;
+            }
+            case objMiles:
+            {
+                if (not on_ground)
+                {
+                    if (input_button.jump.pressed)
+                    {
+                        if (state != player_is_propeller_flying and flight_time < FLIGHT_DURATION)
+                        {
+                            player_perform(player_is_propeller_flying);
+                            return true;
+                        }
+                    }
+                    
+                    if (input_button.aux.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        {
+                            return player_try_shield_action();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return false;
+};
+
+/// @method player_refresh_aerials()
+/// @description Resets aerial character skills when grounded.
+player_refresh_aerials = function()
+{
+    switch (object_index)
+    {
+        case objMiles:
+        {
+            if (on_ground) flight_time = 0;
+            break;
+        }
+    }
+};
+
 /// @method player_rotate_mask()
 /// @description Rotates the player's virtual mask, if applicable.
 player_rotate_mask = function()
@@ -862,15 +942,6 @@ player_speed_break = function()
         }
     }
 };
-
-/// @method player_try_skill()
-/// @description Checks if the player performs a character skill.
-/// @returns {Bool}
-player_try_skill = function() { return false; };
-
-/// @method player_refresh_aerials()
-/// @description Resets aerial character skills when grounded.
-player_refresh_aerials = function() {};
 
 /// @method player_animate()
 /// @description Sets the player's current animation.

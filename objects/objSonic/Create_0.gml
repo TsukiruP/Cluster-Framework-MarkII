@@ -9,37 +9,6 @@ trick_speed =
     [-5, -3.5]
 ];
 
-player_try_skill = function()
-{
-    if (not on_ground)
-    {
-        if (input_button.jump.pressed)
-        {
-            if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-            {
-                return player_try_shield_action();
-            }
-        }
-        
-        if (input_button.aux.pressed)
-        {
-            if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
-            {
-                var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
-                aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                x_speed += 2.25 * image_xscale;
-                y_speed = 0;
-                animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
-                audio_play_single(sfxAirDash);
-                player_perform(player_is_falling, false);
-                return true;
-            }
-        }
-    }
-    
-    return false;
-};
-
 player_animate = function()
 {
     switch (animation_data.index)
