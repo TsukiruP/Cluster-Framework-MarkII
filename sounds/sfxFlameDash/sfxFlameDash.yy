@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"sfxFlameDash",
   "parent":{
-    "name":"Player",
-    "path":"folders/Sounds/SFX/Player.yy",
+    "name":"Shield Actions",
+    "path":"folders/Sounds/SFX/Player/Shield Actions.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -5,15 +5,11 @@ mute = 0;
 swap = false;
 
 // Streams
-music_stream = noone;
-life_stream = noone;
-drown_stream = noone;
-jingle_streams = [];
+music_soundid = noone;
+life_soundid = noone;
+drown_soundid = noone;
+jingle_soundids = [];
 
 // Music
 music = ds_priority_create();
 music_playing = false;
-
-// Loop points
-audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
-audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);

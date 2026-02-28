@@ -148,6 +148,12 @@ global.font_hud_episode_ii_time = font_add_sprite_ext(sprFontHUDEpisodeIITime, "
 
 global.font_title_card = font_add_sprite(sprFontTitleCard, ord(" "), true, -5);
 
+// Loop points
+audio_loop_points(sfxPropellerFlight, 0, 33075 / 44100);
+audio_loop_points(sfxPropellerFlightTired, 0, 12711 / 44100);
+audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
+audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
+
 // Misc.
 surface_depth_disable(true);
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);

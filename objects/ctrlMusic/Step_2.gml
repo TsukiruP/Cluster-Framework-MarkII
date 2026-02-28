@@ -1,5 +1,5 @@
 /// @description Update
-music_playing = audio_is_playing(music_stream);
+music_playing = audio_is_playing(music_soundid);
 
 // Fade out
 if (fade_out)
@@ -17,7 +17,7 @@ if (fade_out)
 }
 
 // Drown
-if (audio_is_playing(life_stream))
+if (audio_is_playing(life_soundid))
 {
     if (mute & MUTE_FLAG_DROWN == 0)
     {
@@ -30,18 +30,18 @@ else if (mute & MUTE_FLAG_DROWN)
 }
 
 // Jingles
-for (var i = 0; i < array_length(jingle_streams); i++)
+for (var i = 0; i < array_length(jingle_soundids); i++)
 {
-    if (not audio_is_playing(jingle_streams[i]))
+    if (not audio_is_playing(jingle_soundids[i]))
     {
-        array_delete(jingle_streams, i, 1);
+        array_delete(jingle_soundids, i, 1);
     }
 }
 
-var jingle_count = array_length(jingle_streams);
-var jingle_last = array_last(jingle_streams);
+var jingle_count = array_length(jingle_soundids);
+var jingle_last = array_last(jingle_soundids);
 
-if (audio_is_playing(drown_stream) or mute & MUTE_FLAG_DROWN)
+if (audio_is_playing(drown_soundid) or mute & MUTE_FLAG_DROWN)
 {
     if (mute & MUTE_FLAG_JINGLE == 0)
     {
@@ -65,13 +65,13 @@ if (mute & MUTE_FLAG_JINGLE == 0 and jingle_count > 0 and audio_sound_get_gain(j
 // Music
 if (swap)
 {
-    if (not music_playing or audio_sound_get_gain(music_stream) <= 0)
+    if (not music_playing or audio_sound_get_gain(music_soundid) <= 0)
     {
         swap = false;
-        if (music_playing) audio_stop_sound(music_stream);
+        if (music_playing) audio_stop_sound(music_soundid);
         if (ds_priority_size(music) > 0)
         {
-            music_stream = audio_play_sound(ds_priority_find_max(music), PRIORITY_MUSIC, true, global.volume_music * (mute == 0));
+            music_soundid = audio_play_sound(ds_priority_find_max(music), PRIORITY_MUSIC, true, global.volume_music * (mute == 0));
         }
     }
 }
@@ -83,7 +83,7 @@ if (jingle_count > 0 or mute & MUTE_FLAG_JINGLE)
         mute |= MUTE_FLAG_MUSIC;
         if (music_playing)
         {
-            audio_sound_gain(music_stream, 0);
+            audio_sound_gain(music_soundid, 0);
         }
     }
 }
@@ -92,6 +92,6 @@ else if (mute & MUTE_FLAG_MUSIC)
     mute &= ~MUTE_FLAG_MUSIC;
     if (music_playing and not swap)
     {
-        audio_sound_gain(music_stream, global.volume_music, TEN_MILLISECONDS);
+        audio_sound_gain(music_soundid, global.volume_music, TEN_MILLISECONDS);
     }
 }

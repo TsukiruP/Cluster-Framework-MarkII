@@ -88,15 +88,26 @@ function player_is_propeller_flying(phase)
             if (flight_time < PROPELLER_FLIGHT_DURATION)
             {
                 animation_play(MILES_ANIMATION.FLIGHT);
+                if (not audio_is_playing(sfxPropellerFlight))
+                {
+                    audio_stop_sound(flight_soundid);
+                    flight_soundid = audio_play_single(sfxPropellerFlight, true);
+                }
             }
             else
             {
                 animation_play(MILES_ANIMATION.FLIGHT_TIRED);
+                if (not audio_is_playing(sfxPropellerFlightTired))
+                {
+                    audio_stop_sound(flight_soundid);
+                    flight_soundid = audio_play_single(sfxPropellerFlightTired, true);
+                }
             }
             break;
         }
         case PHASE.EXIT:
         {
+            audio_stop_sound(flight_soundid);
             break;
         }
     }

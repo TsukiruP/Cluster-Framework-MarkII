@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfxAirDash",
+  "%Name":"sfxPropellerFlight",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.1555556,
+  "duration":11.5,
   "exportDir":"",
-  "name":"sfxAirDash",
+  "name":"sfxPropellerFlight",
   "parent":{
-    "name":"Sonic",
-    "path":"folders/Sounds/SFX/Player/Sonic.yy",
+    "name":"Miles",
+    "path":"folders/Sounds/SFX/Player/Miles.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfxAirDash.wav",
+  "soundFile":"sfxPropellerFlight.wav",
   "volume":1.0,
 }
