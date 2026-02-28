@@ -21,7 +21,7 @@ function player_is_propeller_flying(phase)
             // Accelerate
             if (input_axis_x != 0)
             {
-                if (image_xscale != input_axis_x and flight_time < FLIGHT_DURATION) animation_play(MILES_ANIMATION.FLIGHT_TURN);
+                if (image_xscale != input_axis_x and flight_time < FLIGHT_DURATION) animation_play(animation_data.index, 1);
                 
                 image_xscale = input_axis_x;
                 if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
@@ -87,10 +87,7 @@ function player_is_propeller_flying(phase)
             // Animate
             if (flight_time < FLIGHT_DURATION)
             {
-                if (animation_data.index != MILES_ANIMATION.FLIGHT_TURN or animation_is_finished())
-                {
-                    animation_play(MILES_ANIMATION.FLIGHT);
-                }
+                animation_play(MILES_ANIMATION.FLIGHT);
             }
             else
             {

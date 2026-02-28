@@ -371,12 +371,29 @@ player_animate = function()
         }
         case MILES_ANIMATION.FLIGHT:
         {
-            player_set_animation(global.ani_miles_flight_v0);
+            if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+            player_set_animation(global.ani_miles_flight);
             player_set_radii(6, 14);
-            if (image_index == 0)
+            switch (animation_data.variant)
             {
-                hitboxes[0].set_size(-6, -10, 6, 16);
-                hitboxes[1].set_size(-22, -23, 21, -11);
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -10, 6, 16);
+                        hitboxes[1].set_size(-22, -23, 21, -11);
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -10, 6, 16);
+                        hitboxes[1].set_size(-17, -19, 17, -11);
+                    }
+                    break;
+                }
             }
             break;
         }
@@ -399,17 +416,6 @@ player_animate = function()
             {
                 hitboxes[0].set_size(-6, -10, 6, 16);
                 hitboxes[1].set_size();
-            }
-            break;
-        }
-        case MILES_ANIMATION.FLIGHT_TURN:
-        {
-            player_set_animation(global.ani_miles_flight_turn_v0);
-            player_set_radii(6, 14);
-            if (image_index == 0)
-            {
-                hitboxes[0].set_size(-6, -10, 6, 16);
-                hitboxes[1].set_size(-17, -19, 17, -11);
             }
             break;
         }
