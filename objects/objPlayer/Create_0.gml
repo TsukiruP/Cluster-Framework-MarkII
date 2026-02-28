@@ -580,6 +580,7 @@ player_try_skill = function()
                         }
                     }
                 }
+                break;
             }
         }
     }
