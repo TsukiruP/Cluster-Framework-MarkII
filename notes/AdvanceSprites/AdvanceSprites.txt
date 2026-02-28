@@ -125,6 +125,7 @@
 | Trick Back | (SA2) 232-0, 232-1, 232-2 |
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
+
 | Flight | 351-0 |
 | Flight Turn | (SA2) 203-0 |
 | Flight Tired | 352-0 |
@@ -215,6 +216,7 @@
 | Trick Back | 269-0, 269-1, 269-2 |
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
+
 | Flight | 188-0 |
 | Flight Turn | 188-1 |
 | Flight Tired | 189-0 |

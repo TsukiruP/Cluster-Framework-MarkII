@@ -567,6 +567,7 @@ player_try_skill = function()
                     {
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
+                            flight_hammer = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
                             player_perform(player_is_propeller_flying);
                             return true;
                         }
@@ -574,7 +575,15 @@ player_try_skill = function()
                     
                     if (input_button.aux.pressed)
                     {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        if (animation_data.index == MILES_ANIMATION.HAMMER_FLIGHT)
+                        {
+                            if (animation_data.variant == 0)
+                            {
+                                animation_data.variant = 1;
+                                return false;
+                            }
+                        }
+                        else if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                         {
                             return player_try_shield_action();
                         }

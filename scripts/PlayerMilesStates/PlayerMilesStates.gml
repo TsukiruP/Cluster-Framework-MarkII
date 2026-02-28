@@ -21,7 +21,11 @@ function player_is_propeller_flying(phase)
             // Accelerate
             if (input_axis_x != 0)
             {
-                if (image_xscale != input_axis_x and flight_time < PROPELLER_FLIGHT_DURATION) animation_play(animation_data.index, 1);
+                // Turn
+                if (image_xscale != input_axis_x and flight_time < PROPELLER_FLIGHT_DURATION and not flight_hammer)
+                {
+                    animation_play(animation_data.index, 1);
+                }
                 
                 image_xscale = input_axis_x;
                 if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
@@ -46,18 +50,22 @@ function player_is_propeller_flying(phase)
             // Skill
             if (player_try_skill()) exit;
             
-            // Cancel
-            if (input_axis_y == 1 and input_button.jump.pressed)
+            // Ignore inputs when hammer attacking
+            if (animation_data.index != MILES_ANIMATION.HAMMER_FLIGHT or animation_data.variant == 0)
             {
-                animation_play(MILES_ANIMATION.FLIGHT_CANCEL);
-                return player_perform(player_is_falling, false);
-            }
-            
-            // Ascend
-            if (input_button.jump.pressed and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
-            {
-                flight_reset_time = 60;
-                flight_force = -flight_ascent_force;
+                // Cancel
+                if (input_axis_y == 1 and input_button.jump.pressed)
+                {
+                    animation_play(MILES_ANIMATION.FLIGHT_CANCEL);
+                    return player_perform(player_is_falling, false);
+                }
+                
+                // Ascend
+                if (input_button.jump.pressed and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
+                {
+                    flight_reset_time = 60;
+                    flight_force = -flight_ascent_force;
+                }
             }
             
             // Apply air resistance
@@ -87,7 +95,7 @@ function player_is_propeller_flying(phase)
             // Animate
             if (flight_time < PROPELLER_FLIGHT_DURATION)
             {
-                animation_play(MILES_ANIMATION.FLIGHT);
+                animation_play(flight_hammer ? MILES_ANIMATION.HAMMER_FLIGHT : MILES_ANIMATION.FLIGHT);
                 if (not audio_is_playing(sfxPropellerFlight))
                 {
                     audio_stop_sound(flight_soundid);

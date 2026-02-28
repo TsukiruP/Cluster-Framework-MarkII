@@ -246,6 +246,10 @@ global.ani_miles_flight = [global.ani_miles_flight_v0, global.ani_miles_flight_v
 global.ani_miles_flight_tired_v0 = new animation(sprMilesFlightTired, [6, 4, 6, 6, 6, 6, 6, 6, 6, 6], 2);
 global.ani_miles_flight_cancel_v0 = new animation(sprMilesFlightCancel, 3, 2);
 
+global.ani_miles_hammer_flight_v0 = new animation(sprMilesHammerFlight0, 2);
+global.ani_miles_hammer_flight_v1 = new animation(sprMilesHammerFlight1, [1, 1, 1, 2, 3, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2], -1);
+global.ani_miles_hammer_flight = [global.ani_miles_hammer_flight_v0, global.ani_miles_hammer_flight_v1];
+
 #endregion
 
 #region Knuckles

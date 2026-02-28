@@ -430,6 +430,50 @@ player_animate = function()
             }
             break;
         }
+        case MILES_ANIMATION.HAMMER_FLIGHT:
+        {
+            if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+            player_set_animation(global.ani_miles_hammer_flight);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-7, -10, 6, 10);
+                        hitboxes[1].set_size(-26, -22, 22, -9);
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-7, -10, 6, 10);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 6:
+                        {
+                            hitboxes[0].set_size(-7, -10, 6, 10);
+                            hitboxes[1].set_size(4, -24, 38, 11);
+                            break;
+                        }
+                        case 7:
+                        {
+                            hitboxes[0].set_size(-7, -10, 6, 10);
+                            hitboxes[1].set_size(-15, -9, 31, 32);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            break;
+        }
     }
 };
 
