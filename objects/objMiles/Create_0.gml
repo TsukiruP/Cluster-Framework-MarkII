@@ -380,7 +380,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-6, -10, 6, 16);
+                        hitboxes[0].set_size(-6, -10, 6, 10);
                         hitboxes[1].set_size(-22, -23, 21, -11);
                     }
                     break;
@@ -389,7 +389,7 @@ player_animate = function()
                 {
                     if (image_index == 0)
                     {
-                        hitboxes[0].set_size(-6, -10, 6, 16);
+                        hitboxes[0].set_size(-6, -10, 6, 10);
                         hitboxes[1].set_size(-17, -19, 17, -11);
                     }
                     break;
@@ -403,7 +403,7 @@ player_animate = function()
             player_set_radii(6, 14);
             if (image_index == 0)
             {
-                hitboxes[0].set_size(-6, -10, 6, 16);
+                hitboxes[0].set_size(-6, -10, 6, 10);
                 hitboxes[1].set_size();
             }
             break;
@@ -412,10 +412,20 @@ player_animate = function()
         {
             player_set_animation(global.ani_miles_flight_cancel_v0);
             player_set_radii(6, 14);
-            if (image_index == 0)
+            switch (image_index)
             {
-                hitboxes[0].set_size(-6, -10, 6, 16);
-                hitboxes[1].set_size();
+                case 0:
+                {
+                    hitboxes[0].set_size(-6, -10, 6, 10);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 1:
+                {
+                    hitboxes[0].set_size(-2, -10, 10, 10);
+                    hitboxes[1].set_size();
+                    break;
+                }
             }
             break;
         }

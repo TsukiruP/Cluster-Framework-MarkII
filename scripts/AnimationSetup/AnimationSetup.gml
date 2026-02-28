@@ -488,4 +488,11 @@ global.ani_cream_spring = [global.ani_cream_spring_v0, global.ani_cream_spring_v
 
 global.ani_cream_spring_twirl_v0 = new animation(sprCreamSpringTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3, 3, 3], 12);
 
+global.ani_cream_flight_v0 = new animation(sprCreamFlight0, [2, 4, 4, 4, 4, 2, 1, 1, 2, 4, 4, 4, 4, 2, 1, 1]);
+global.ani_cream_flight_v1 = new animation(sprCreamFlight1, 1, -1);
+global.ani_cream_flight = [global.ani_cream_flight_v0, global.ani_cream_flight_v1];
+
+global.ani_cream_flight_tired_v0 = new animation(sprCreamFlightTired, [6, 4, 6, 6, 6, 6, 6, 6, 6, 6], 2);
+global.ani_cream_flight_cancel_v0 = new animation(sprCreamFlightCancel, [2, 2, 3, 3, 3], 2);
+
 #endregion

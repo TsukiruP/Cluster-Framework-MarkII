@@ -41,7 +41,7 @@
   "origin":9,
   "parent":{
     "name":"Shields",
-    "path":"folders/Sprites/Stage/Player/Shields.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Turn/Shields.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

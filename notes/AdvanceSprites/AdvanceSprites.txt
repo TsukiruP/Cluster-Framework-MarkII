@@ -218,5 +218,6 @@
 | Flight | 188-0 |
 | Flight Turn | 188-1 |
 | Flight Tired | 189-0 |
+| Flight Cancel | 190-0 |
 
 * Cream's eyelids were recolored in SA3, so use SA3 sprites.

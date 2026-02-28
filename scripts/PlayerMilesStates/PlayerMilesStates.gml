@@ -21,7 +21,7 @@ function player_is_propeller_flying(phase)
             // Accelerate
             if (input_axis_x != 0)
             {
-                if (image_xscale != input_axis_x and flight_time < FLIGHT_DURATION) animation_play(animation_data.index, 1);
+                if (image_xscale != input_axis_x and flight_time < PROPELLER_FLIGHT_DURATION) animation_play(animation_data.index, 1);
                 
                 image_xscale = input_axis_x;
                 if (abs(x_speed) < speed_limit or sign(x_speed) != input_axis_x)
@@ -54,7 +54,7 @@ function player_is_propeller_flying(phase)
             }
             
             // Ascend
-            if (input_button.jump.pressed and flight_time < FLIGHT_DURATION and y_speed >= FLIGHT_THRESHOLD)
+            if (input_button.jump.pressed and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
             {
                 flight_reset_time = 60;
                 flight_force = -flight_ascent_force;
@@ -70,7 +70,7 @@ function player_is_propeller_flying(phase)
             y_speed += flight_force;
             
             // Reset
-            if (y_speed < FLIGHT_THRESHOLD or flight_reset_time == 0)
+            if (y_speed < PROPELLER_FLIGHT_THRESHOLD or flight_reset_time == 0)
             {
                 flight_force = flight_base_force;
             }
@@ -81,11 +81,11 @@ function player_is_propeller_flying(phase)
             }
             
             // Timers
-            flight_time = min(++flight_time, FLIGHT_DURATION);
+            flight_time = min(++flight_time, PROPELLER_FLIGHT_DURATION);
             flight_reset_time = max(--flight_reset_time, 0);
             
             // Animate
-            if (flight_time < FLIGHT_DURATION)
+            if (flight_time < PROPELLER_FLIGHT_DURATION)
             {
                 animation_play(MILES_ANIMATION.FLIGHT);
             }

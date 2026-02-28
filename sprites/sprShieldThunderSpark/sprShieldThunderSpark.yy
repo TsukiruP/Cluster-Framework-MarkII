@@ -28,7 +28,7 @@
   "origin":4,
   "parent":{
     "name":"Thunder",
-    "path":"folders/Sprites/Stage/Player/Shields/Thunder.yy",
+    "path":"folders/Sprites/Stage/Player/Characters/Miles/Turn/Shields/Thunder.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -43,7 +43,7 @@ cpu_gamepad_time = 0;
 boost_mode = false;
 boost_index = 0;
 boost_speed = 0;
-boost_threshold = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
+boost_thresholds = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
 
 // Status
 /// @method player_refresh_status()
@@ -565,9 +565,32 @@ player_try_skill = function()
                 {
                     if (input_button.jump.pressed)
                     {
-                        if (state != player_is_propeller_flying and flight_time < FLIGHT_DURATION)
+                        if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
                             player_perform(player_is_propeller_flying);
+                            return true;
+                        }
+                    }
+                    
+                    if (input_button.aux.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        {
+                            return player_try_shield_action();
+                        }
+                    }
+                }
+                break;
+            }
+            case objCream:
+            {
+                if (not on_ground)
+                {
+                    if (input_button.jump.pressed)
+                    {
+                        if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
+                        {
+                            player_perform(player_is_fan_flying);
                             return true;
                         }
                     }
@@ -595,6 +618,7 @@ player_refresh_aerials = function()
     switch (object_index)
     {
         case objMiles:
+        case objCream:
         {
             if (on_ground) flight_time = 0;
             break;

@@ -11,6 +11,12 @@ trick_speed =
 
 ears = new stamp();
 
+flight_time = 0;
+flight_reset_time = 0;
+flight_base_force = 0.03125;
+flight_ascent_force = 0.09375;
+flight_drag_thresholds = [2, 4, 6, 8, 10];
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -276,6 +282,66 @@ player_animate = function()
             {
                 hitboxes[0].set_size(-6, -17, 6, 5);
                 hitboxes[1].set_size();
+            }
+            break;
+        }
+        case CREAM_ANIMATION.FLIGHT:
+        {
+            if (animation_data.variant == 1 and animation_is_finished()) animation_data.variant = 0;
+            player_set_animation(global.ani_cream_flight);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+        case CREAM_ANIMATION.FLIGHT_TIRED:
+        {
+            player_set_animation(global.ani_cream_flight_tired_v0);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 10);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
+        case CREAM_ANIMATION.FLIGHT_CANCEL:
+        {
+            player_set_animation(global.ani_cream_flight_cancel_v0);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-6, -12, 6, 10);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 1:
+                {
+                    hitboxes[0].set_size(-6, -12, 6, 10);
+                    hitboxes[1].set_size(-6, 7, 6, 17);
+                    break;
+                }
             }
             break;
         }
