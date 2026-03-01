@@ -112,6 +112,6 @@ function dev_option_player(_player) : dev_option_int($"Player {_player}") constr
     maximum = CHARACTER.CREAM;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
     offset = CHARACTER.NONE;
-    get = function() { return db_read(DATABASE_SAVE, CHARACTER.NONE, "character", player); };
-    set = function(val) { db_write(DATABASE_SAVE, val, "character", player); };
+    get = function() { return db_read(SAVE_DATABASE, CHARACTER.NONE, "character", player); };
+    set = function(val) { db_write(SAVE_DATABASE, val, "character", player); };
 }

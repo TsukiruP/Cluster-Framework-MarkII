@@ -430,7 +430,7 @@ player_try_jump = function()
 /// @returns {Bool}
 player_try_trick = function(time = 0)
 {
-    var trick_actions_config = db_read(DATABASE_SAVE, true, "trick_actions");
+    var trick_actions_config = db_read(SAVE_DATABASE, true, "trick_actions");
     if (trick_actions_config and time == 0 and input_button.tag.pressed)
     {
         trick_index = TRICK.BACK;
@@ -519,7 +519,7 @@ player_try_buddy_flight = function()
                             case objSonic:
                             {
                                 // TODO: Check Sonic's skills.
-                                //var skill_config = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
+                                //var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
                                 can_skill = true;
                                 break;
                             }
@@ -648,7 +648,7 @@ player_try_skill = function()
                     {
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
-                            var skill_config = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
+                            var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
                             flight_hammer = (skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
                             player_perform(player_is_propeller_flying);
                             return true;

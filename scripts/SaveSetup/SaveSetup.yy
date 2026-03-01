@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"DatabaseSetup",
+  "%Name":"SaveSetup",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"DatabaseSetup",
+  "name":"SaveSetup",
   "parent":{
     "name":"Global",
     "path":"folders/Scripts/Global.yy",

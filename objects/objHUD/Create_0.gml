@@ -2,9 +2,9 @@
 image_speed = 0;
 
 // Configs
-hud_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_HUD, "hud");
-status_bar_config = (hud_config == CONFIG_HUD.CLUSTER ? db_read(DATABASE_CONFIG, CONFIG_DEFAULT_STATUS_BAR, "status_bar") : 0);
-item_feed_config = db_read(DATABASE_CONFIG, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
+hud_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_HUD, "hud");
+status_bar_config = (hud_config == CONFIG_HUD.CLUSTER ? db_read(CONFIG_DATABASE, CONFIG_DEFAULT_STATUS_BAR, "status_bar") : 0);
+item_feed_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_ITEM_FEED, "item_feed");
 
 // Active
 hud_active = false;
@@ -74,7 +74,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     }
     
     status_bar = [status_confusion, status_speed, status_invin, status_shield];
-    if (not db_read(DATABASE_CONFIG, CONFIG_DEFAULT_DEBUFFS, "debuffs")) array_shift(status_bar);
+    if (not db_read(CONFIG_DATABASE, CONFIG_DEFAULT_DEBUFFS, "debuffs")) array_shift(status_bar);
     status_bar_count = array_length(status_bar);
 }
 

@@ -4,7 +4,7 @@ if (not (ctrlGame.game_flags & GAME_FLAG_KEEP_CHARACTERS))
     global.characters = [];
     for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
     {
-        var character_index = db_read(DATABASE_SAVE, CHARACTER.NONE, "character", i);
+        var character_index = db_read(SAVE_DATABASE, CHARACTER.NONE, "character", i);
         if (character_index != CHARACTER.NONE) array_push(global.characters, character_index);
     }
 }
