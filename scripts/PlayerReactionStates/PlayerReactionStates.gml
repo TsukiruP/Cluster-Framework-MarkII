@@ -9,7 +9,7 @@ function player_is_sprung(phase)
             player_ground(undefined);
             
             // Animate
-            var ani_spring = (abs(x_speed) > 2.5 ? PLAYER_ANIMATION.SPRING_TWIRL : PLAYER_ANIMATION.SPRING);
+            var ani_spring = (abs(x_speed) > 2.5 ? PLAYER_ANIMATION.SPRUNG_TWIRL : PLAYER_ANIMATION.SPRUNG);
             animation_play(ani_spring, 0);
             break;
         }

@@ -416,7 +416,7 @@ player_try_jump = function()
     if (input_button.jump.pressed)
     {
         player_perform(player_is_jumping);
-        animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+        animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRUNG : PLAYER_ANIMATION.JUMP);
         audio_play_single(sfxJump);
         return true;
     }

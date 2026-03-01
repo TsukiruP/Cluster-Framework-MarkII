@@ -305,9 +305,9 @@ player_animate = function()
             }
             break;
         }
-        case PLAYER_ANIMATION.SPRING:
+        case PLAYER_ANIMATION.SPRUNG:
         {
-            player_animate_spring(global.ani_miles_spring);
+            player_animate_spring(global.ani_miles_sprung);
             player_set_radii(6, 14);
             switch (animation_data.variant)
             {
@@ -360,9 +360,9 @@ player_animate = function()
             }
             break;
         }
-        case PLAYER_ANIMATION.SPRING_TWIRL:
+        case PLAYER_ANIMATION.SPRUNG_TWIRL:
         {
-            player_set_animation(global.ani_miles_spring_twirl_v0);
+            player_set_animation(global.ani_miles_sprung_twirl_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
