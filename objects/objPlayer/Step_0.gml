@@ -99,8 +99,8 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                             }
                             else
                             {
-                                x_dist -= x_speed / 16;
-                                x_dist += leader.x_speed / 16;
+                                x_dist -= x_speed * 16;
+                                x_dist += leader.x_speed * 16;
                                 if (x_dist <= -12)
                                 {
                                     input_axis_x = -1;
@@ -110,14 +110,14 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                                     input_axis_x = 1;
                                 }
                                 
-                                y_dist -= y_speed / 16;
+                                y_dist -= y_speed * 16;
                                 if (leader.input_axis_y == 1)
                                 {
                                     y_dist += 64;
                                 }
                                 else
                                 {
-                                    var height_difference = max(64 - abs(leader.y_speed / 16), 0);
+                                    var height_difference = max(64 - abs(leader.y_speed * 16), 0);
                                     y_dist -= height_difference;
                                 }
                                 
