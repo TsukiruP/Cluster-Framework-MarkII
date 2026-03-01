@@ -71,9 +71,14 @@ function player_is_propeller_flying(phase)
             }
             
             // Apply air resistance
-            if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
+            //if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
+            //{
+                //x_speed *= AIR_DRAG;
+            //}
+            
+            if (y_speed < 0 and y_speed > -4)
             {
-                x_speed *= AIR_DRAG;
+                x_speed -= x_speed / 32;
             }
             
             // Fall
