@@ -120,8 +120,8 @@ function player_is_jumping(phase)
             if (player_try_skill()) exit;
             
             // Lower height
-            var jump_check = (jump_alternate == 2 ? input_button.aux.check : input_button.jump.check)
-            if (jump_cap and y_speed < -jump_release and not jump_check)
+            var input_jump = (jump_alternate == 2 ? input_button.aux.check : input_button.jump.check)
+            if (jump_cap and y_speed < -jump_release and not input_jump)
             {
                 y_speed = -jump_release;
             }

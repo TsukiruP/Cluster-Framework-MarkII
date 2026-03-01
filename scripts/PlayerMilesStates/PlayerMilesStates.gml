@@ -13,7 +13,7 @@ function player_is_propeller_flying(phase)
             player_ground(undefined);
             
             // Animate
-            animation_play(MILES_ANIMATION.FLIGHT);
+            animation_play(flight_hammer ? MILES_ANIMATION.HAMMER_FLIGHT : MILES_ANIMATION.FLIGHT);
             break;
         }
         case PHASE.STEP:
@@ -61,7 +61,9 @@ function player_is_propeller_flying(phase)
                 }
                 
                 // Ascend
-                if (input_button.jump.pressed and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
+                var flight_config = db_read(DATABASE_SAVE, MILES_FLIGHT_STYLE.CLASSIC, "miles", "flight_style");
+                var input_flight = input_button.jump.pressed or (flight_config and input_button.jump.check);
+                if (input_flight and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
                 {
                     flight_reset_time = 60;
                     flight_force = -flight_ascent_force;

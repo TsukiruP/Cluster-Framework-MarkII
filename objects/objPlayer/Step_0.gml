@@ -26,14 +26,14 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 // CPU
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
-    player_refresh_inputs();
     var leader = ctrlStage.stage_players[0];
+    player_refresh_inputs();
     if (instance_exists(leader))
     {
         if (state != player_is_dead)
         {
-            var x_dist = leader.x - x;
-            var y_dist = leader.y - y;
+            var dx = (leader.x - x) div 1;
+            var dy = (leader.y - y) div 1;
             
             var sine = dsin(gravity_direction);
             var cosine = dcos(gravity_direction);
@@ -53,7 +53,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                         {
                             x_speed = 0;
                             input_axis_y = 1;
-                            image_xscale = esign(sine == 0 ? cosine * x_dist : -sine * y_dist, leader.image_xscale);
+                            image_xscale = esign(sine == 0 ? cosine * dx : -sine * dy, leader.image_xscale);
                             if (state == player_is_crouching)
                             {
                                 cpu_state = CPU_STATE.SPIN_DASH;
@@ -80,6 +80,66 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     }
                     break;
                 }
+                case CPU_STATE.BUDDY_FLIGHT:
+                {
+                    if (state == player_is_propeller_flying)
+                    {
+                        if (flight_carry)
+                        {
+                            
+                        }
+                        else
+                        {
+                            var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                            var y_dist = (sine == 0 ? cosine * dy : sine * dx);
+                            if (x_dist > 256 or y_dist > 256 or flight_time > PROPELLER_FLIGHT_DURATION - 30)
+                            {
+                                cpu_state = CPU_STATE.FOLLOW;
+                                break;
+                            }
+                            else
+                            {
+                                x_dist -= x_speed div 16;
+                                x_dist += leader.x_speed div 16;
+                                if (x_dist <= -12)
+                                {
+                                    input_axis_x = -1;
+                                }
+                                else if (x_dist >= 12)
+                                {
+                                    input_axis_x = 1;
+                                }
+                                
+                                y_dist -= y_speed div 16;
+                                if (leader.input_axis_y == 1)
+                                {
+                                    y_dist += 64;
+                                }
+                                else
+                                {
+                                    var height_difference = max(64 - abs(leader.y_speed) div 16, 0);
+                                    y_dist -= height_difference;
+                                }
+                                
+                                if (y_dist <= 0) input_button.jump.pressed = true;;
+                            }
+                        }
+                        break;
+                    }
+                    else if (cpu_state_time > 0)
+                    {
+                        input_button.jump.pressed = true;
+                        if (--cpu_state_time == 0)
+                        {
+                            y_speed = max(y_speed, -2);
+                            player_perform(player_is_propeller_flying);
+                        }
+                        break;
+                    }
+                    
+                    cpu_state = CPU_STATE.FOLLOW;
+                    break;
+                }
                 default:
                 {
                     // Panic
@@ -90,17 +150,15 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                         break;
                     }
                     
-                    var leader_extra_dist = 32 * (abs(leader.x_speed) < 4);
+                    var x_offset = 32 * (abs(leader.x_speed) < 4);
                     input_axis_x = leader.cpu_axis_x[0];
                     input_axis_y = leader.cpu_axis_y[0];
                     input_button.jump.check = leader.cpu_input_jump[0];
                     input_button.jump.pressed = leader.cpu_input_jump_pressed[0];
                     
-                    // TODO: Check for propeller flight
-                    
                     // Move
-                    var leader_x_dist = (sine == 0 ? cosine * x_dist : -sine * y_dist );
-                    if (leader_x_dist + 16 + leader_extra_dist < 0)
+                    var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                    if (x_dist + 16 + x_offset < 0)
                     {
                         input_axis_x = -1;
                         // TODO: The checks for xscale should also check if the player is pushing
@@ -110,7 +168,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                             else y -= -sine;
                         }
                     }
-                    if (leader_x_dist - 16 - leader_extra_dist > 0)
+                    else if (x_dist - 16 - x_offset > 0)
                     {
                         input_axis_x = 1;
                         // TODO: The checks for xscale should also check if the player is pushing
@@ -122,10 +180,10 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     }
                     
                     // Jump
-                    var jump_dist = (sine == 0 ? cosine * y_dist : sine * x_dist);
+                    var y_dist = (sine == 0 ? cosine * dy : sine * dx);
                     var jump_auto = 0;
                     // TODO: Check for pushing first
-                    if (jump_dist + 32 > 0)
+                    if (y_dist + 32 > 0)
                     {
                         jump_auto = 2;
                         cpu_state_time = 64;
@@ -155,6 +213,32 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                             {
                                 input_button.jump.check = true;
                                 break;
+                            }
+                        }
+                    }
+                    
+                    // Buddy Flight
+                    if (object_index == objMiles and input_axis_y == -1 and input_button.jump.pressed)
+                    {
+                        if (x_dist < 192 and y_dist < 84)
+                        {
+                            var start_flight = false;
+                            if (state == player_is_jumping)
+                            {
+                                start_flight = true;
+                            }
+                            else
+                            {
+                                cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                                cpu_state_time = 8;
+                            }
+                            
+                            if (start_flight)
+                            {
+                                fly_hammer = false;
+                                cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                                cpu_state_time = 0;
+                                player_perform(player_is_propeller_flying);
                             }
                         }
                     }

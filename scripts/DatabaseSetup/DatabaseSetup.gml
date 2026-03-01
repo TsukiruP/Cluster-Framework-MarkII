@@ -44,6 +44,12 @@ enum MILES_GROUND_SKILL
     HAMMER_ATTACK
 }
 
+enum MILES_FLIGHT_STYLE
+{
+    CLASSIC,
+    ADVENTURE
+}
+
 // Config
 global.config_database = db_create();
 db_write(DATABASE_CONFIG, CONFIG_DEFAULT_LIVES, "lives");
@@ -72,3 +78,4 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 db_write(DATABASE_SAVE, CHARACTER.SONIC, "character", 0);
 
 db_write(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
+db_write(DATABASE_SAVE, MILES_FLIGHT_STYLE.ADVENTURE, "miles", "flight_style");

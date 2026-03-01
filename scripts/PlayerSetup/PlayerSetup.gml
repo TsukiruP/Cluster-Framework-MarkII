@@ -116,5 +116,6 @@ enum CPU_STATE
 {
     FOLLOW,
     CROUCH,
-    SPIN_DASH
+    SPIN_DASH,
+    BUDDY_FLIGHT
 }
