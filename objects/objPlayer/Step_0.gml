@@ -241,17 +241,17 @@ if (state_changed) state_changed = false;
 player_animate();
 
 // Swap
-if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
+if (input_button.swap.pressed)
 {
-    var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
-    if (input_button.swap.pressed)
-    {
-        var swap_config = db_read(DATABASE_SAVE, true, "swap");
-        if (swap_config and partner.cpu_gamepad_time == 0)
-        {
-            if (instance_in_view(partner))
-            {
-                var can_leader_swap = (swap_time == 0 and sign(superspeed_time) != -1 and confusion_time == 0);
+	if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
+	{
+		var swap_config = db_read(DATABASE_SAVE, true, "swap");
+		var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
+		if (swap_config and partner.cpu_gamepad_time == 0)
+		{
+			if (instance_in_view(partner, 0))
+			{
+				var can_leader_swap = (swap_time == 0 and sign(superspeed_time) != -1 and confusion_time == 0);
                 var can_partner_swap = false;
                 with (partner) can_partner_swap = (state != player_is_hurt and state != player_is_dead);
                 if (can_leader_swap and can_partner_swap)
@@ -294,15 +294,15 @@ if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state !=
                 {
                     audio_play_single(sfxSwapFail);
                 }
-            }
-            else
-            {
-                var can_respawn = false;
+			}
+			else
+			{
+				var can_respawn = false;
                 with (partner) can_respawn = (state != player_is_hurt and state != player_is_dead);
                 if (can_respawn) partner.player_respawn_cpu();
-            }
-        }
-    }
+			}
+		}
+	}
 }
 
 // Spin Dash Dust

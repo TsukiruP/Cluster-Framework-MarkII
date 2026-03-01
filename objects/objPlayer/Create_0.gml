@@ -394,7 +394,7 @@ player_respawn_cpu = function()
 /// @method player_perform(action, [enter])
 /// @description Sets the given function as the player's current state.
 /// @param {Function} action State function to set.
-/// @param {Bool} enter Whether to perform the enter phase (optional, defaults to true).
+/// @param {Bool} [enter] Whether to perform the enter phase (optional, defaults to true).
 player_perform = function(action, enter = true)
 {
     var reset = (argument_count > 1);
