@@ -46,9 +46,9 @@ function player_is_sprung(phase)
             if (player_try_skill()) exit;
             
             // Apply air resistance
-            if (y_speed < 0 and y_speed > -4 and abs(x_speed) > AIR_DRAG_THRESHOLD)
+            if (y_speed < 0 and y_speed > -4)
             {
-                x_speed *= AIR_DRAG;
+                x_speed -= x_speed / 32;
             }
             
             // Fall
