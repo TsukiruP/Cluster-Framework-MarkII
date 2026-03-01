@@ -462,6 +462,87 @@ player_try_trick = function(time = 0)
     return false;
 };
 
+/// @method player_try_buddy_flight()
+/// @description Check is the player tells Miles to perform a Buddy Flight.
+/// @returns {Bool}
+player_try_buddy_flight = function()
+{
+    if (state == player_is_jumping)
+    {
+        if (input_axis_y == -1)
+        {
+            if (array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
+            {
+                var partner = ctrlStage.stage_players[1];
+                
+                var dx = partner.x - x;
+                var dy = partner.y - y;
+                
+                var sine = dsin(gravity_direction);
+                var cosine = dcos(gravity_direction);
+                
+                var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                var y_dist = (sine == 0 ? cosine * dy : sine * dx);
+                
+                if (partner.cpu_gamepad_time == 0 and x_dist < 192 and y_dist < 84)
+                {
+                    var start_flight = false;
+                    if (partner.state == player_is_jumping)
+                    {
+                        start_flight = true;
+                    }
+                    else
+                    {
+                        with (partner)
+                        {
+                            input_button.jump.pressed = true;
+                            cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                            cpu_state_time = 8;
+                        }
+                    }
+                    
+                    if (start_flight)
+                    {
+                        with (partner)
+                        {
+                            y_speed = max(y_speed, -2);
+                            flight_hammer = false;
+                            cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                            cpu_state_time = 0;
+                            player_perform(player_is_propeller_flying);
+                        }
+                        
+                        /*var can_skill = false;
+                        
+                        switch (object_index)
+                        {
+                            case objSonic:
+                            {
+                                // TODO: Check Sonic's skills.
+                                //var skill_config = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
+                                can_skill = true;
+                                break;
+                            }
+                            case objCream:
+                            {
+                                can_skill = true;
+                                break;
+                            }
+                        }
+                        
+                        return not can_skill;*/
+                        return false;
+                        
+                        /* AUTHOR'S NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
+                    }
+                }
+            }
+        }
+    }
+    
+    return true;
+};
+
 /// @method player_try_shield_action()
 /// @description Checks if the player performs a Shield Action.
 /// @returns {Bool}
@@ -534,7 +615,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed)
+                    if (input_button.jump.pressed and player_try_buddy_flight())
                     {
                         if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                         {
@@ -567,7 +648,8 @@ player_try_skill = function()
                     {
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
-                            flight_hammer = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
+                            var skill_config = db_read(DATABASE_SAVE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
+                            flight_hammer = (skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
                             player_perform(player_is_propeller_flying);
                             return true;
                         }
@@ -595,7 +677,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed)
+                    if (input_button.jump.pressed and player_try_buddy_flight())
                     {
                         if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
                         {

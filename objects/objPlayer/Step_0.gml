@@ -216,33 +216,6 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                             }
                         }
                     }
-                    
-                    // Buddy Flight
-                    if (object_index == objMiles and input_axis_y == -1 and input_button.jump.pressed)
-                    {
-                        if (x_dist < 192 and y_dist < 84)
-                        {
-                            var start_flight = false;
-                            if (state == player_is_jumping)
-                            {
-                                start_flight = true;
-                            }
-                            else
-                            {
-                                cpu_state = CPU_STATE.BUDDY_FLIGHT;
-                                cpu_state_time = 8;
-                            }
-                            
-                            if (start_flight)
-                            {
-                                y_speed = max(y_speed, -2);
-                                fly_hammer = false;
-                                cpu_state = CPU_STATE.BUDDY_FLIGHT;
-                                cpu_state_time = 0;
-                                player_perform(player_is_propeller_flying);
-                            }
-                        }
-                    }
                 }
             }
         }
