@@ -491,7 +491,7 @@ player_try_buddy_flight = function()
                     {
                         start_flight = true;
                     }
-                    else
+                    else if (partner.on_ground)
                     {
                         with (partner)
                         {

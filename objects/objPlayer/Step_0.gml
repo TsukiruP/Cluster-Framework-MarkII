@@ -128,7 +128,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     }
                     else if (cpu_state_time > 0)
                     {
-                        input_button.jump.pressed = true;
+                        input_button.jump.check = true;
                         if (--cpu_state_time == 0)
                         {
                             y_speed = max(y_speed, -2);
