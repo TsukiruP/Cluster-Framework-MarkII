@@ -238,6 +238,8 @@
 | Glide Ride Turn | 747-0, 747-1, 747-2, 747-3 |
 | Hammer Attack | 689-0, (SA1) 353-0 |
 | Chao Attack | 750-0, 751-0, 752-0 |
+| Air Hammer Attack | 695-0 |
+| Air Hammer Jump | 696-0 |
 
 # Cream
 

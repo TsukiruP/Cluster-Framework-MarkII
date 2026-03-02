@@ -509,5 +509,26 @@ player_animate = function()
             }
             break;
         }
+        case AMY_ANIMATION.AIR_HAMMER_ATTACK:
+        {
+            player_set_animation(global.ani_amy_air_hammer_attack_v0);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-10, -8, 10, 12);
+                    hitboxes[1].set_size(-14, -12, 14, 16);
+                    break;
+                }
+                case 11:
+                {
+                    hitboxes[0].set_size(-6, -14, 6, 12);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
+            break;
+        }
     }
 };

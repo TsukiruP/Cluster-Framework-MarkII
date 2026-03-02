@@ -707,6 +707,18 @@ player_try_skill = function()
                             return player_try_shield_action();
                         }
                     }
+                    
+                    if (input_button.aux.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_HAMMER))
+                        {
+                            aerial_flags |= AERIAL_FLAG_HAMMER;
+                            animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
+                            audio_play_single(sfxHammerAttack);
+                            player_perform(player_is_falling, false);
+                            return true;
+                        }
+                    }
                 }
                 else
                 {

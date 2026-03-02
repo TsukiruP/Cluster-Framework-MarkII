@@ -425,6 +425,8 @@ global.ani_amy_hammer_attack_v0 = new animation(sprAmyHammerAttack0, [1, 1, 1, 1
 global.ani_amy_hammer_attack_v1 = new animation(sprAmyHammerAttack1, [1, 1, 1, 1, 3, 4, 2, 1, 1, 1, 1, 2, 2, 2, 8, 3, 3, 3], -1);
 global.ani_amy_hammer_attack = [global.ani_amy_hammer_attack_v0, global.ani_amy_hammer_attack_v1];
 
+global.ani_amy_air_hammer_attack_v0 = new animation(sprAmyAirHammerAttack, [2, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3], 14);
+
 #endregion
 
 #region Cream

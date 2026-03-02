@@ -7,7 +7,15 @@ ani_spring = global.ani_spring_vertical;
 reaction = function(pla)
 {
     var bit = 1 << pla.player_index;
-    if (collision_player(0, pla))
+    var high_jump = false;
+    
+    // High Jump
+    if (pla.state == player_is_hammer_attacking or (pla.object_index == objAmy and pla.animation_data.index = AMY_ANIMATION.AIR_HAMMER_ATTACK))
+    {
+        if (collision_player(0, pla, 1)) high_jump = true;
+    }
+    
+    if (high_jump or collision_player(0, pla))
     {
         if (active & bit == 0)
         {
@@ -39,7 +47,9 @@ reaction = function(pla)
                 pla.y_speed = -dsin(diff) * force;
             }
             
+            if (high_jump) pla.y_speed *= 1.5;
             if (pla.state == player_is_sprung) pla.state_time = max(2, TRICK_LOCK_DURATION - (force / 1.5) div 1);
+            
             pla.aerial_flags = 0;
             active |= bit;
             animation_data.variant = 1;
