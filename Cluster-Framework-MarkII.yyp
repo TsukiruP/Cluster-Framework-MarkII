@@ -820,6 +820,7 @@
     {"id":{"name":"sprSonicBrakeFast","path":"sprites/sprSonicBrakeFast/sprSonicBrakeFast.yy",},},
     {"id":{"name":"sprSonicCrouch","path":"sprites/sprSonicCrouch/sprSonicCrouch.yy",},},
     {"id":{"name":"sprSonicDead","path":"sprites/sprSonicDead/sprSonicDead.yy",},},
+    {"id":{"name":"sprSonicFlightRide","path":"sprites/sprSonicFlightRide/sprSonicFlightRide.yy",},},
     {"id":{"name":"sprSonicHurt0","path":"sprites/sprSonicHurt0/sprSonicHurt0.yy",},},
     {"id":{"name":"sprSonicHurt1","path":"sprites/sprSonicHurt1/sprSonicHurt1.yy",},},
     {"id":{"name":"sprSonicIdle","path":"sprites/sprSonicIdle/sprSonicIdle.yy",},},

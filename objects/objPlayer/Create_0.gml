@@ -24,6 +24,9 @@ for (var i = 0; i < array_length(trick_speed); i++)
     trick_speed[i] = array_create(2);
 }
 
+flight_ride = noone;
+glide_ride = noone;
+
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;

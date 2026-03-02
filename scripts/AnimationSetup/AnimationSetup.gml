@@ -153,6 +153,8 @@ global.ani_sonic_sprung = [global.ani_sonic_sprung_v0, global.ani_sonic_sprung_v
 
 global.ani_sonic_sprung_twirl_v0 = new animation(sprSonicSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
 
+global.ani_sonic_flight_ride_v0 = new animation(sprSonicFlightRide, 5);
+
 global.ani_sonic_air_dash_v0 = new animation(sprSonicAirDash, 2, -1, [0, 1, 2, 3]);
 global.ani_sonic_air_dash_v1 = new animation(sprSonicAirDash, 2, 0, [4, 5, 6]);
 global.ani_sonic_air_dash = [global.ani_sonic_air_dash_v0, global.ani_sonic_air_dash_v1];
