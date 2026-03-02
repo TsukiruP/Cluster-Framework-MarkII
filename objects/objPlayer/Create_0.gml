@@ -498,6 +498,7 @@ player_try_buddy_flight = function()
                     {
                         with (partner)
                         {
+                            player_refresh_inputs();
                             input_button.jump.pressed = true;
                             cpu_state = CPU_STATE.BUDDY_FLIGHT;
                             cpu_state_time = 8;
@@ -509,9 +510,9 @@ player_try_buddy_flight = function()
                         with (partner)
                         {
                             y_speed = max(y_speed, -2);
-                            flight_hammer = false;
                             cpu_state = CPU_STATE.BUDDY_FLIGHT;
                             cpu_state_time = 0;
+                            flight_hammer = false;
                             player_perform(player_is_propeller_flying);
                         }
                         
@@ -669,6 +670,22 @@ player_try_skill = function()
                             }
                         }
                         else if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        {
+                            return player_try_shield_action();
+                        }
+                    }
+                }
+                break;
+            }
+            case objKnuckles:
+            case objAmy:
+            {
+                // TODO: Give Amy & Knuckles a real moveset
+                if (not on_ground)
+                {
+                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                         {
                             return player_try_shield_action();
                         }

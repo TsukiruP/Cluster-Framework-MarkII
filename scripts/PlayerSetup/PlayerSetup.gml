@@ -81,12 +81,13 @@ enum PLAYER_ANIMATION
     JUMP,
     HURT,
     DEAD,
+    SPRUNG,
+    SPRUNG_TWIRL,
     TRICK_UP,
     TRICK_DOWN,
     TRICK_FRONT,
     TRICK_BACK,
-    SPRUNG,
-    SPRUNG_TWIRL,
+    FLIGHT_RIDE,
     MAX
 }
 

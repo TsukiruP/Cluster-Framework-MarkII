@@ -13,6 +13,7 @@ tails = new stamp();
 
 flight_time = 0;
 flight_reset_time = 0;
+flight_carry_time = 0;
 flight_carry = false;
 flight_hammer = false;
 flight_base_force = 0.03125;
@@ -232,6 +233,72 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.SPRUNG:
+        {
+            player_animate_spring(global.ani_miles_sprung);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -12, 6, 10);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 10);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 8);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 4:
+                        {
+                            hitboxes[0].set_size(-6, -16, 6, 6);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 5:
+                        {
+                            hitboxes[0].set_size(-6, -14, 6, 6);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    hitboxes[0].set_size(-6, -16, 6, 6);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
+            break;
+        }
+        case PLAYER_ANIMATION.SPRUNG_TWIRL:
+        {
+            player_set_animation(global.ani_miles_sprung_twirl_v0);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -11, 6, 11);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
         case PLAYER_ANIMATION.TRICK_UP:
         {
             if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
@@ -303,72 +370,6 @@ player_animate = function()
                     }
                     break;
                 }
-            }
-            break;
-        }
-        case PLAYER_ANIMATION.SPRUNG:
-        {
-            player_animate_spring(global.ani_miles_sprung);
-            player_set_radii(6, 14);
-            switch (animation_data.variant)
-            {
-                case 0:
-                {
-                    if (image_index == 0)
-                    {
-                        hitboxes[0].set_size(-6, -12, 6, 10);
-                        hitboxes[1].set_size();
-                    }
-                    break;
-                }
-                case 1:
-                {
-                    switch (image_index)
-                    {
-                        case 0:
-                        {
-                            hitboxes[0].set_size(-6, -12, 6, 10);
-                            hitboxes[1].set_size();
-                            break;
-                        }
-                        case 1:
-                        {
-                            hitboxes[0].set_size(-6, -14, 6, 8);
-                            hitboxes[1].set_size();
-                            break;
-                        }
-                        case 4:
-                        {
-                            hitboxes[0].set_size(-6, -16, 6, 6);
-                            hitboxes[1].set_size();
-                            break;
-                        }
-                        case 5:
-                        {
-                            hitboxes[0].set_size(-6, -14, 6, 6);
-                            hitboxes[1].set_size();
-                            break;
-                        }
-                    }
-                    break;
-                }
-                case 2:
-                {
-                    hitboxes[0].set_size(-6, -16, 6, 6);
-                    hitboxes[1].set_size();
-                    break;
-                }
-            }
-            break;
-        }
-        case PLAYER_ANIMATION.SPRUNG_TWIRL:
-        {
-            player_set_animation(global.ani_miles_sprung_twirl_v0);
-            player_set_radii(6, 14);
-            if (image_index == 0)
-            {
-                hitboxes[0].set_size(-6, -11, 6, 11);
-                hitboxes[1].set_size();
             }
             break;
         }

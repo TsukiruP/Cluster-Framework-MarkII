@@ -9,7 +9,6 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 {
     input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
     input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
-    if (confusion_time > 0) input_axis_x *= -1;
     
     struct_foreach(input_button, function(name, value)
     {
@@ -19,6 +18,7 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
         value.released = InputReleased(verb, player_index);
     });
     
+    if (confusion_time > 0) input_axis_x *= -1;
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
     if (input_button.select.pressed) player_gain_rings(150);
 }
@@ -27,7 +27,6 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
 if (player_index != 0 and cpu_gamepad_time == 0)
 {
     var leader = ctrlStage.stage_players[0];
-    player_refresh_inputs();
     if (instance_exists(leader))
     {
         if (state != player_is_dead)
@@ -42,6 +41,8 @@ if (player_index != 0 and cpu_gamepad_time == 0)
             {
                 case CPU_STATE.CROUCH:
                 {
+                    player_refresh_inputs();
+                    
                     if (cpu_state_time == 0)
                     {
                         cpu_state = CPU_STATE.FOLLOW;
@@ -67,6 +68,8 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 }
                 case CPU_STATE.SPIN_DASH:
                 {
+                    player_refresh_inputs();
+                    
                     if (cpu_state_time == 0)
                     {
                         cpu_state = CPU_STATE.FOLLOW;
@@ -84,9 +87,14 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 {
                     if (state == player_is_propeller_flying)
                     {
+                        player_refresh_inputs();
+                        
                         if (flight_carry)
                         {
-                            
+                            input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
+                            input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN);
+                            input_button.jump.check = InputCheck(INPUT_VERB.JUMP);
+                            input_button.jump.pressed = InputPressed(INPUT_VERB.JUMP);
                         }
                         else
                         {
@@ -126,12 +134,13 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                         }
                         break;
                     }
-                    else if (state == player_is_jumping and cpu_state_time > 0)
+                    else if (cpu_state_time > 0)
                     {
                         input_button.jump.check = true;
-                        if (--cpu_state_time == 0)
+                        if (--cpu_state_time == 0 and state == player_is_jumping)
                         {
                             y_speed = max(y_speed, -2);
+                            flight_hammer = false;
                             player_perform(player_is_propeller_flying);
                         }
                         break;
@@ -249,7 +258,7 @@ if (input_button.swap.pressed)
 		var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
 		if (swap_config and partner.cpu_gamepad_time == 0)
 		{
-			if (instance_in_view(partner, 0))
+			if (instance_in_view(partner))
 			{
 				var can_leader_swap = (swap_time == 0 and sign(superspeed_time) != -1 and confusion_time == 0);
                 var can_partner_swap = false;
@@ -276,7 +285,7 @@ if (input_button.swap.pressed)
                         with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     }
                     
-                    cpu_state = CPU_STATE.FOLLOW;
+                    cpu_state = (state == player_is_propeller_flying ? CPU_STATE.BUDDY_FLIGHT : CPU_STATE.FOLLOW);
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();

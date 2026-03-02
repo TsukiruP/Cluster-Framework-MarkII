@@ -54,7 +54,7 @@ function player_is_propeller_flying(phase)
             if (animation_data.index != MILES_ANIMATION.HAMMER_FLIGHT or animation_data.variant == 0)
             {
                 // Cancel
-                if (input_axis_y == 1 and input_button.jump.pressed)
+                if ((player_index == 0 or cpu_gamepad_time > 0) and input_axis_y == 1 and input_button.jump.pressed)
                 {
                     animation_play(MILES_ANIMATION.FLIGHT_CANCEL);
                     return player_perform(player_is_falling, false);
@@ -85,14 +85,16 @@ function player_is_propeller_flying(phase)
                 flight_force = flight_base_force;
             }
             
+            // Ceiling cap
             if (y < 0 and y_speed < 0)
             {
                 y_speed = 0;
             }
             
             // Timers
-            flight_time = min(++flight_time, PROPELLER_FLIGHT_DURATION);
-            flight_reset_time = max(--flight_reset_time, 0);
+            if (flight_time < PROPELLER_FLIGHT_DURATION) flight_time++;
+            if (flight_reset_time > 0) flight_reset_time--;
+            if (flight_carry_time > 0) flight_carry_time--;
             
             // Animate
             if (flight_time < PROPELLER_FLIGHT_DURATION)
@@ -111,6 +113,69 @@ function player_is_propeller_flying(phase)
                 {
                     audio_stop_sound(flight_soundid);
                     flight_soundid = audio_play_single(sfxPropellerFlightTired, true);
+                }
+            }
+            
+            // Buddy Flight
+            if (not flight_hammer)
+            {
+                if (flight_carry == false)
+                {
+                    if (flight_carry_time == 0)
+                    {
+                        with (objPlayer)
+                        {
+                            // Abort if...
+                            if (object_index == objMiles or input_axis_y == 1 or on_ground) continue; // "Other" player is Miles, holding down, or grounded
+                            if (state != player_is_falling and state != player_is_jumping) continue; // Not in an appropriate state
+                            
+                            var dx = (other.x - x) div 1;
+                            var dy = (other.y - y) div 1;
+                            
+                            var sine = dsin(gravity_direction);
+                            var cosine = dcos(gravity_direction);
+                            
+                            var x_dist = (sine == 0 ? cosine * dx : -sine * dy) + 16;
+                            var y_dist = (sine == 0 ? cosine * dy : sine * dx) + 32;
+                            
+                            if (abs(x_dist) < 32 and abs(y_dist) < 16)
+                            {
+                                flight_ride = other.id;
+                                other.flight_carry = true;
+                                other.flight_buddy = id;
+                                audio_play_single(sfxGrab);
+                                player_perform(player_is_flight_riding);
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (flight_carry)
+                {
+                    var sine = dsin(gravity_direction);
+                    var cosine = dcos(gravity_direction);
+                    
+                    with (flight_buddy)
+                    {
+                        if (state == player_is_flight_riding)
+                        {
+                            x = other.x + sine * 32;
+                            y = other.y + cosine * 32;
+                            image_xscale = other.image_xscale;
+                            
+                            if (collision_layer != other.collision_layer)
+                            {
+                                collision_layer = other.collision_layer;
+                                tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
+                            }
+                        }
+                        else
+                        {
+                            other.flight_carry = false;
+                            other.flight_buddy = noone;
+                        }
+                    }
                 }
             }
             break;

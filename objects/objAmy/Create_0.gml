@@ -226,6 +226,28 @@ player_animate = function()
             }
             break;
         }
+        case PLAYER_ANIMATION.SPRUNG:
+        {
+            player_animate_spring(global.ani_amy_sprung);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
+        case PLAYER_ANIMATION.SPRUNG_TWIRL:
+        {
+            player_set_animation(global.ani_amy_sprung_twirl_v0);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -13, 6, 13);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
         case PLAYER_ANIMATION.TRICK_UP:
         {
             if (animation_data.variant == 1 and y_speed > 0) animation_data.variant = 2;
@@ -355,24 +377,13 @@ player_animate = function()
             }
             break;
         }
-        case PLAYER_ANIMATION.SPRUNG:
+        case PLAYER_ANIMATION.FLIGHT_RIDE:
         {
-            player_animate_spring(global.ani_amy_sprung);
+            player_set_animation(global.ani_amy_flight_ride_v0);
             player_set_radii(6, 14);
             if (image_index == 0)
             {
-                hitboxes[0].set_size(-6, -12, 6, 16);
-                hitboxes[1].set_size();
-            }
-            break;
-        }
-        case PLAYER_ANIMATION.SPRUNG_TWIRL:
-        {
-            player_set_animation(global.ani_amy_sprung_twirl_v0);
-            player_set_radii(6, 14);
-            if (image_index == 0)
-            {
-                hitboxes[0].set_size(-6, -13, 6, 13);
+                hitboxes[0].set_size(-1, -17, 11, 14);
                 hitboxes[1].set_size();
             }
             break;

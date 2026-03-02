@@ -90,17 +90,17 @@
 | Jump | 19-0, 19-1, 19-2 | Uses SA2 hitbox (10-0, 10-1, 10-2) |
 | Hurt | (SA2) 28-0, 28-1 |
 | Death | (SA2) 29-0 |
-| Trick Up | (SA2) 48-0, 48-1, 48-2 |
-| Trick Down | (SA2) 51-0, 51-1, 51-2, 51-3 | Variant 3 is bound effect |
-| Trick Front | 105-0, 105-1 | Edited to use SA2's effect (49-2)
-| Trick Back | (SA2) 50-0, 50-1 |
 | Push | 33-0 |
 | Spring | 108-0, 108-1, 108-2 |
 | Spring Twirl | 109-0 |
 | Launch | 89-0, 89-1 |
 | Breathe | 36-0 |
+| Trick Up | (SA2) 48-0, 48-1, 48-2 |
+| Trick Down | (SA2) 51-0, 51-1, 51-2, 51-3 | Variant 3 is bound effect |
+| Trick Front | 105-0, 105-1 | Edited to use SA2's effect (49-2)
+| Trick Back | (SA2) 50-0, 50-1 |
 | Leap Jump | 91-0, 91-1, 91-2, 91-3 |
-| Buddy Carry | 92-0 |
+| Flight Ride | 92-0 |
 | Knuckleball | 96-0 |
 | Glide Ride | 94-0, 94-1 |
 | Glide Ride Turn | 95-0, 95-1, 95-2, 95-3 |
@@ -131,15 +131,15 @@
 | Jump | 345-0, 345-1, 345-2 | Uses SA2 hitbox (192-0, 192-1, 192-2) |
 | Hurt | 428-0, 428-1 |
 | Death | 429-0 | Uses an assumed offset |
-| Trick Up | (SA2) 230-0, 230-1, 230-1 |
-| Trick Down | (SA2) 233-0, 233-1 |
-| Trick Front | (SA2) 231-0, 231-1, 231-2 |
-| Trick Back | (SA2) 232-0, 232-1, 232-2 |
 | Push | 359-0 |
 | Spring | 434-0, 434-1, 434-2 |
 | Spring Twirl | 435-0 |
 | Launch | 415-0, 415-1 |
 | Breathe | 362-0 |
+| Trick Up | (SA2) 230-0, 230-1, 230-1 |
+| Trick Down | (SA2) 233-0, 233-1 |
+| Trick Front | (SA2) 231-0, 231-1, 231-2 |
+| Trick Back | (SA2) 232-0, 232-1, 232-2 |
 | Knuckleball | 422-0 |
 | Glide Ride | 420-0, 420-1 |
 | Glide Ride Turn | 421-0, 421-1, 421-2, 421-3 |
@@ -179,17 +179,17 @@
 | Jump | 508-0, 508-1, 508-2 | Uses SA2 hitbox (283-0, 283-1, 283-2) |
 | Hurt | 591-0, 591-1 | Uses SA2 hitbox (301-0, 301-1)
 | Death | (SA2) 302-0 | Uses an assumed offset |
-| Trick Up | (SA2) 321-0, 321-1, 321-2, 321-3 | Variant 3 is the spiral trail |
-| Trick Down | 570-0, 570-1, 570-2 |
-| Trick Front | (SA2) 322-0, 322-1, 322-2 |
-| Trick Back | (SA2) 323-0, 323-1 |
 | Push | 522-0 |
 | Spring | 597-0, 597-1, 597-2 |
 | Spring Twirl | 598-0 |
 | Launch | 578-0, 578-1 |
 | Breathe | 525-0 |
+| Trick Up | (SA2) 321-0, 321-1, 321-2, 321-3 | Variant 3 is the spiral trail |
+| Trick Down | 570-0, 570-1, 570-2 |
+| Trick Front | (SA2) 322-0, 322-1, 322-2 |
+| Trick Back | (SA2) 323-0, 323-1 |
 | Leap Jump | 580-0, 580-1, 580-2, 580-3 |
-| Buddy Carry | 581-0 |
+| Flight Ride | 581-0 |
 | Hammer Sprung | 590-0, 590-1 |
 | Hammer Attack | 531-0 |
 | Chao Attack | 587-0, 588-0, 589-0 |
@@ -222,17 +222,17 @@
 | Jump | 671-0, 671-1, 671-2 | Uses SA2 hitbox (374-0, 374-1, 374-2) |
 | Hurt | 754-0, 754-1 | Uses SA2 hitbox (392-0, 392-1) |
 | Death | 755-0 | Uses an assumed offset |
-| Trick Up | (SA2) 412-0, 412-1, 412-2 | Uses SA3 hitbox (756-0, 756-1, 756-2) |
-| Trick Down | (SA2) 415-0, 415-1, 415-2 |
-| Trick Front | (SA2) 413-0, 413-1 |
-| Trick Back | (SA2) 414-0, 414-1 |
 | Push | 685-0 |
 | Spring | 760-0, 760-1, 760-2 |
 | Spring Twirl | 761-0 |
 | Launch | 741-0, 741-1 |
 | Breathe | 688-0 |
+| Trick Up | (SA2) 412-0, 412-1, 412-2 | Uses SA3 hitbox (756-0, 756-1, 756-2) |
+| Trick Down | (SA2) 415-0, 415-1, 415-2 |
+| Trick Front | (SA2) 413-0, 413-1 |
+| Trick Back | (SA2) 414-0, 414-1 |
 | Leap Jump | 743-0, 743-1, 743-2, 743-3 |
-| Buddy Carry | 744-0 |
+| Flight Ride | 744-0 |
 | Knuckleball | 748-0 |
 | Glide Ride | 746-0, 746-1 |
 | Glide Ride Turn | 747-0, 747-1, 747-2, 747-3 |
@@ -259,17 +259,17 @@
 | Jump | 182-0, 182-1, 182-2 | Uses SA2 hitbox (101-0, 101-1, 101-2) |
 | Hurt | 265-0, 265-1 | Uses SA2 hitbox (119-0, 119-1) |
 | Death | 266-0 | Uses an assumed offset |
-| Trick Up | 267-0, 267-1, 267-2 |
-| Trick Down | (SA2) 142-0, 142-1 |
-| Trick Front | 268-0, 268-1 |
-| Trick Back | 269-0, 269-1, 269-2 |
 | Push | 196-0 |
 | Spring | 271-0, 271-1, 271-2 |
 | Spring Twirl | 272-0 |
 | Launch | 252-0, 252-1 |
 | Breathe | 199-0 |
+| Trick Up | 267-0, 267-1, 267-2 |
+| Trick Down | (SA2) 142-0, 142-1 |
+| Trick Front | 268-0, 268-1 |
+| Trick Back | 269-0, 269-1, 269-2 |
 | Leap Jump | 254-0, 254-1, 254-2, 254-3 |
-| Buddy Carry | 255-0 |
+| Flight Ride | 255-0 |
 | Knuckleball | 259-0 |
 | Glide Ride | 257-0, 257-1 |
 | Glide Ride Turn | 258-0, 258-1, 258-2, 258-3 |

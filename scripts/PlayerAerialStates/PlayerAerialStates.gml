@@ -230,8 +230,6 @@ function player_is_dead(phase)
             x += sine * y_speed;
             y += cosine * y_speed;
             
-            // TODO: SonicForGMS checks if the player is 48 below bound_bottom.
-            
             // Fall
             if (y_speed < gravity_cap)
             {

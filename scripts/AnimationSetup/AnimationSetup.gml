@@ -129,6 +129,13 @@ global.ani_sonic_hurt = [global.ani_sonic_hurt_v0, global.ani_sonic_hurt_v1];
 
 global.ani_sonic_dead_v0 = new animation(sprSonicDead, [3, 3, 12, 2, 3, 3], 4);
 
+global.ani_sonic_sprung_v0 = new animation(sprSonicSprung0, 3, 1);
+global.ani_sonic_sprung_v1 = new animation(sprSonicSprung1, [2, 2, 2, 3, 3, 3], -1);
+global.ani_sonic_sprung_v2 = new animation(sprSonicSprung2, 3);
+global.ani_sonic_sprung = [global.ani_sonic_sprung_v0, global.ani_sonic_sprung_v1, global.ani_sonic_sprung_v2];
+
+global.ani_sonic_sprung_twirl_v0 = new animation(sprSonicSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
 global.ani_sonic_trick_up_v0 = new animation(sprSonicTrickUp0, [3, 6, 2], -1);
 global.ani_sonic_trick_up_v1 = new animation(sprSonicTrickUp1, [1, 1, 3, 3, 3], 2);
 global.ani_sonic_trick_up_v2 = new animation(sprSonicTrickUp2, [3, 3, 3, 2, 2, 2], 3);
@@ -145,13 +152,6 @@ global.ani_sonic_trick_front = [global.ani_sonic_trick_front_v0, global.ani_soni
 global.ani_sonic_trick_back_v0 = new animation(sprSonicTrickBack, 1, -1, [0]);
 global.ani_sonic_trick_back_v1 = new animation(sprSonicTrickBack, [5, 4, 3, 2, 2, 2, 2, 2, 3, 3, 3], 8);
 global.ani_sonic_trick_back = [global.ani_sonic_trick_back_v0, global.ani_sonic_trick_back_v1];
-
-global.ani_sonic_sprung_v0 = new animation(sprSonicSprung0, 3, 1);
-global.ani_sonic_sprung_v1 = new animation(sprSonicSprung1, [2, 2, 2, 3, 3, 3], -1);
-global.ani_sonic_sprung_v2 = new animation(sprSonicSprung2, 3);
-global.ani_sonic_sprung = [global.ani_sonic_sprung_v0, global.ani_sonic_sprung_v1, global.ani_sonic_sprung_v2];
-
-global.ani_sonic_sprung_twirl_v0 = new animation(sprSonicSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
 
 global.ani_sonic_flight_ride_v0 = new animation(sprSonicFlightRide, 5);
 
@@ -215,6 +215,13 @@ global.ani_miles_hurt = [global.ani_miles_hurt_v0, global.ani_miles_hurt_v1];
 
 global.ani_miles_dead_v0 = new animation(sprMilesDead, [3, 3, 12, 2, 3, 3], 4);
 
+global.ani_miles_sprung_v0 = new animation(sprMilesSprung0, 2);
+global.ani_miles_sprung_v1 = new animation(sprMilesSprung1, [2, 3, 3, 4, 4, 4], -1);
+global.ani_miles_sprung_v2 = new animation(sprMilesSprung2, 3, 1);
+global.ani_miles_sprung = [global.ani_miles_sprung_v0, global.ani_miles_sprung_v1, global.ani_miles_sprung_v2];
+
+global.ani_miles_sprung_twirl_v0 = new animation(sprMilesSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
 global.ani_miles_trick_up_v0 = new animation(sprMilesTrickUp0, [2, 1, 1, 8], -1);
 global.ani_miles_trick_up_v1 = new animation(sprMilesTrickUp1, [3, 4, 4, 4, 4], 2);
 global.ani_miles_trick_up_v2 = new animation(sprMilesTrickUp2, [2, 4, 4, 3, 3, 3], 3);
@@ -233,13 +240,6 @@ global.ani_miles_trick_back_v0 = new animation(sprMilesTrickBack0, [2, 2, 2, 4],
 global.ani_miles_trick_back_v1 = new animation(sprMilesTrickBack1, [2, 2, 2, 3, 3, 3, 3], 3);
 global.ani_miles_trick_back_v2 = new animation(sprMilesTrickBack2, [4, 4, 4, 4, 3, 3, 3, 3, 3, 3], 7);
 global.ani_miles_trick_back = [global.ani_miles_trick_back_v0, global.ani_miles_trick_back_v1, global.ani_miles_trick_back_v2];
-
-global.ani_miles_sprung_v0 = new animation(sprMilesSprung0, 2);
-global.ani_miles_sprung_v1 = new animation(sprMilesSprung1, [2, 3, 3, 4, 4, 4], -1);
-global.ani_miles_sprung_v2 = new animation(sprMilesSprung2, 3, 1);
-global.ani_miles_sprung = [global.ani_miles_sprung_v0, global.ani_miles_sprung_v1, global.ani_miles_sprung_v2];
-
-global.ani_miles_sprung_twirl_v0 = new animation(sprMilesSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
 
 global.ani_miles_flight_v0 = new animation(sprMilesFlight0, 2);
 global.ani_miles_flight_v1 = new animation(sprMilesFlight1, 1, -1);
@@ -306,6 +306,13 @@ global.ani_knuckles_hurt = [global.ani_knuckles_hurt_v0, global.ani_knuckles_hur
 
 global.ani_knuckles_dead_v0 = new animation(sprKnucklesDead, [3, 3, 12, 2, 3, 3], 4);
 
+global.ani_knuckles_sprung_v0 = new animation(sprKnucklesSprung0, 3, 1);
+global.ani_knuckles_sprung_v1 = new animation(sprKnucklesSprung1, 3, -1);
+global.ani_knuckles_sprung_v2 = new animation(sprKnucklesSprung2, 3);
+global.ani_knuckles_sprung = [global.ani_knuckles_sprung_v0, global.ani_knuckles_sprung_v1, global.ani_knuckles_sprung_v2];
+
+global.ani_knuckles_sprung_twirl_v0 = new animation(sprKnucklesSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
 global.ani_knuckles_trick_up_v0 = new animation(sprKnucklesTrickUp0, [1, 2, 1], -1);
 global.ani_knuckles_trick_up_v1 = new animation(sprKnucklesTrickUp1, [4, 4, 8, 8, 8], -1);
 global.ani_knuckles_trick_up_v2 = new animation(sprKnucklesTrickUp2, [7, 6, 3, 3, 3], 2);
@@ -325,12 +332,7 @@ global.ani_knuckles_trick_back_v0 = new animation(sprKnucklesTrickBack0, [2, 2, 
 global.ani_knuckles_trick_back_v1 = new animation(sprKnucklesTrickBack1, [2, 2, 3, 3], 2);
 global.ani_knuckles_trick_back = [global.ani_knuckles_trick_back_v0, global.ani_knuckles_trick_back_v1];
 
-global.ani_knuckles_sprung_v0 = new animation(sprKnucklesSprung0, 3, 1);
-global.ani_knuckles_sprung_v1 = new animation(sprKnucklesSprung1, 3, -1);
-global.ani_knuckles_sprung_v2 = new animation(sprKnucklesSprung2, 3);
-global.ani_knuckles_sprung = [global.ani_knuckles_sprung_v0, global.ani_knuckles_sprung_v1, global.ani_knuckles_sprung_v2];
-
-global.ani_knuckles_sprung_twirl_v0 = new animation(sprKnucklesSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+global.ani_knuckles_flight_ride_v0 = new animation(sprKnucklesFlightRide, 5);
 
 #endregion
 
@@ -391,6 +393,13 @@ global.ani_amy_hurt = [global.ani_amy_hurt_v0, global.ani_amy_hurt_v1];
 
 global.ani_amy_dead_v0 = new animation(sprAmyDead, [6, 12, 2, 3, 3], 3);
 
+global.ani_amy_sprung_v0 = new animation(sprAmySprung0, 3);
+global.ani_amy_sprung_v1 = new animation(sprAmySprung1, [3, 3, 3, 4, 4, 4], -1);
+global.ani_amy_sprung_v2 = new animation(sprAmySprung2, 3, 1);
+global.ani_amy_sprung = [global.ani_amy_sprung_v0, global.ani_amy_sprung_v1, global.ani_amy_sprung_v2];
+
+global.ani_amy_sprung_twirl_v0 = new animation(sprAmySprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+
 global.ani_amy_trick_up_v0 = new animation(sprAmyTrickUp0, [3, 6], -1);
 global.ani_amy_trick_up_v1 = new animation(sprAmyTrickUp1, [2, 1, 1, 3, 3, 3], 3);
 global.ani_amy_trick_up_v2 = new animation(sprAmyTrickUp2, [2, 1, 1, 3, 3, 3], 3);
@@ -409,12 +418,7 @@ global.ani_amy_trick_back_v0 = new animation(sprAmyTrickBack0, [1, 2, 2, 3], -1)
 global.ani_amy_trick_back_v1 = new animation(sprAmyTrickBack1, [2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3], 14);
 global.ani_amy_trick_back = [global.ani_amy_trick_back_v0, global.ani_amy_trick_back_v1];
 
-global.ani_amy_sprung_v0 = new animation(sprAmySprung0, 3);
-global.ani_amy_sprung_v1 = new animation(sprAmySprung1, [3, 3, 3, 4, 4, 4], -1);
-global.ani_amy_sprung_v2 = new animation(sprAmySprung2, 3, 1);
-global.ani_amy_sprung = [global.ani_amy_sprung_v0, global.ani_amy_sprung_v1, global.ani_amy_sprung_v2];
-
-global.ani_amy_sprung_twirl_v0 = new animation(sprAmySprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3], 11);
+global.ani_amy_flight_ride_v0 = new animation(sprAmyFlightRide, 5);
 
 #endregion
 
@@ -469,6 +473,13 @@ global.ani_cream_hurt = [global.ani_cream_hurt_v0, global.ani_cream_hurt_v1];
 
 global.ani_cream_dead_v0 = new animation(sprCreamDead, [6, 12, 2, 3, 3], 3);
 
+global.ani_cream_sprung_v0 = new animation(sprCreamSprung0, 3, 1);
+global.ani_cream_sprung_v1 = new animation(sprCreamSprung1, [2, 3, 3, 4, 4, 4], -1);
+global.ani_cream_sprung_v2 = new animation(sprCreamSprung2, 3);
+global.ani_cream_sprung = [global.ani_cream_sprung_v0, global.ani_cream_sprung_v1, global.ani_cream_sprung_v2];
+
+global.ani_cream_sprung_twirl_v0 = new animation(sprCreamSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3, 3, 3], 12);
+
 global.ani_cream_trick_up_v0 = new animation(sprCreamTrickUp0, [1, 4, 4, 4, 2], -1);
 global.ani_cream_trick_up_v1 = new animation(sprCreamTrickUp1, [2, 2, 2, 3, 3, 3], 3);
 global.ani_cream_trick_up_v2 = new animation(sprCreamTrickUp2, [2, 2, 2, 2, 2, 3, 3, 3], 5);
@@ -487,12 +498,7 @@ global.ani_cream_trick_back_v1 = new animation(sprCreamTrickBack1, [2, 2, 3, 3, 
 global.ani_cream_trick_back_v2 = new animation(sprCreamTrickBack2, [2, 2, 2, 3, 3, 3], 3);
 global.ani_cream_trick_back = [global.ani_cream_trick_back_v0, global.ani_cream_trick_back_v1, global.ani_cream_trick_back_v2];
 
-global.ani_cream_sprung_v0 = new animation(sprCreamSprung0, 3, 1);
-global.ani_cream_sprung_v1 = new animation(sprCreamSprung1, [2, 3, 3, 4, 4, 4], -1);
-global.ani_cream_sprung_v2 = new animation(sprCreamSprung2, 3);
-global.ani_cream_sprung = [global.ani_cream_sprung_v0, global.ani_cream_sprung_v1, global.ani_cream_sprung_v2];
-
-global.ani_cream_sprung_twirl_v0 = new animation(sprCreamSprungTwirl, [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 3, 3, 3], 12);
+global.ani_cream_flight_ride_v0 = new animation(sprCreamFlightRide, 5);
 
 global.ani_cream_flight_v0 = new animation(sprCreamFlight0, [2, 4, 4, 4, 4, 2, 1, 1, 2, 4, 4, 4, 4, 2, 1, 1]);
 global.ani_cream_flight_v1 = new animation(sprCreamFlight1, 1, -1);
