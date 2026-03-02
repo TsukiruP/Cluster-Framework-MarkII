@@ -678,9 +678,26 @@ player_try_skill = function()
                 break;
             }
             case objKnuckles:
+            {
+                if (not on_ground)
+                {
+                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    {
+                        return false;
+                    }
+                    
+                    if (input_button.aux.pressed)
+                    {
+                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                        {
+                            return player_try_shield_action();
+                        }
+                    }
+                }
+                break;
+            }
             case objAmy:
             {
-                // TODO: Give Amy & Knuckles a real moveset
                 if (not on_ground)
                 {
                     if (input_button.jump.pressed and player_try_buddy_flight())
@@ -689,6 +706,14 @@ player_try_skill = function()
                         {
                             return player_try_shield_action();
                         }
+                    }
+                }
+                else
+                {
+                    if (input_button.aux.pressed)
+                    {
+                        player_perform(player_is_hammer_attacking);
+                        return true;
                     }
                 }
                 break;

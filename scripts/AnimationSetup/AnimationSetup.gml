@@ -339,6 +339,7 @@ global.ani_knuckles_flight_ride_v0 = new animation(sprKnucklesFlightRide, 5);
 #region Amy
 
 global.ani_amy_idle_v0 = new animation(sprAmyIdle, 7);
+
 global.ani_amy_idle_alt_v0 = new animation(sprAmyIdleAlt, 6);
 
 global.ani_amy_teeter_front_v0 = new animation(sprAmyTeeterFront, [5, 4, 3, 20, 6, 8, 6], 3);
@@ -419,6 +420,10 @@ global.ani_amy_trick_back_v1 = new animation(sprAmyTrickBack1, [2, 2, 3, 2, 2, 2
 global.ani_amy_trick_back = [global.ani_amy_trick_back_v0, global.ani_amy_trick_back_v1];
 
 global.ani_amy_flight_ride_v0 = new animation(sprAmyFlightRide, 5);
+
+global.ani_amy_hammer_attack_v0 = new animation(sprAmyHammerAttack0, [1, 1, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1, 3, 3, 3], -1);
+global.ani_amy_hammer_attack_v1 = new animation(sprAmyHammerAttack1, [1, 1, 1, 1, 3, 4, 2, 1, 1, 1, 1, 2, 2, 2, 8, 3, 3, 3], -1);
+global.ani_amy_hammer_attack = [global.ani_amy_hammer_attack_v0, global.ani_amy_hammer_attack_v1];
 
 #endregion
 

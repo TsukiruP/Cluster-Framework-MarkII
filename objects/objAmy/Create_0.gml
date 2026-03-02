@@ -9,6 +9,8 @@ trick_speed =
     [-3.5, -2]
 ];
 
+hammer_double = false;
+
 player_animate = function()
 {
     var lovely_couple = (global.characters[0] == CHARACTER.SONIC);
@@ -385,6 +387,119 @@ player_animate = function()
             {
                 hitboxes[0].set_size(-1, -17, 11, 14);
                 hitboxes[1].set_size();
+            }
+            break;
+        }
+        case PLAYER_ANIMATION.HAMMER_ATTACK:
+        {
+            player_set_animation(global.ani_amy_hammer_attack);
+            player_set_radii(6, 14);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-14, -12, 0, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 2:
+                        {
+                            hitboxes[0].set_size(-14, -12, -2, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 3:
+                        {
+                            hitboxes[0].set_size(-18, -12, -6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 6:
+                        {
+                            hitboxes[0].set_size(-14, -12, -2, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 7:
+                        {
+                            hitboxes[0].set_size(-12, -12, 0, 16);
+                            hitboxes[1].set_size(-10, -35, 20, -2);
+                            break;
+                        }
+                        case 8:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 16);
+                            hitboxes[1].set_size(0, -23, 32, 16);
+                            break;
+                        }
+                        case 12:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 8:
+                        {
+                            hitboxes[0].set_size(-6, -12, 6, 16);
+                            hitboxes[1].set_size(0, -42, 32, 0);
+                            break;
+                        }
+                        case 9:
+                        {
+                            hitboxes[0].set_size(2, -12, 14, 16);
+                            hitboxes[1].set_size(7, -34, 40, 6);
+                            break;
+                        }
+                        case 10:
+                        {
+                            hitboxes[0].set_size(2, -12, 14, 16);
+                            hitboxes[1].set_size(11, -23, 44, 16);
+                            break;
+                        }
+                        case 15:
+                        {
+                            hitboxes[0].set_size(-4, -12, 8, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 16:
+                        {
+                            hitboxes[0].set_size(-8, -12, 4, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 17:
+                        {
+                            hitboxes[0].set_size(-10, -12, 2, 16);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                    }
+                    break;
+                }
             }
             break;
         }

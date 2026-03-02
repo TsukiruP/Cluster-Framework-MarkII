@@ -236,7 +236,7 @@
 | Knuckleball | 748-0 |
 | Glide Ride | 746-0, 746-1 |
 | Glide Ride Turn | 747-0, 747-1, 747-2, 747-3 |
-| Hammer Attack | 689-0 |
+| Hammer Attack | 689-0, (SA1) 353-0 |
 | Chao Attack | 750-0, 751-0, 752-0 |
 
 # Cream

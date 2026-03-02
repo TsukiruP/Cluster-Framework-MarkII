@@ -319,7 +319,7 @@ function player_is_crouching(phase)
         }
         case PHASE.STEP:
         {
-            // Spindash
+            // Spin Dash
             if (input_button.jump.pressed) return player_perform(player_is_spin_dashing);
             
             // Move
@@ -500,6 +500,70 @@ function player_is_spin_dashing(phase)
             else
             {
                 spin_dash_charge *= 0.96875;
+            }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+/// @function player_is_hammer_attacking(phase)
+function player_is_hammer_attacking(phase)
+{
+    switch (phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Animate
+            animation_play(PLAYER_ANIMATION.HAMMER_ATTACK);
+            break;
+        }
+        case PHASE.STEP:
+        {
+            // Friction
+            x_speed -= min(abs(x_speed), 0.375) * sign(x_speed);
+            
+            // Move
+            player_move_on_ground();
+            if (state_changed) exit;
+            
+            // Fall
+            if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+            {
+                return player_perform(player_is_falling);
+            }
+            
+            // Slide down steep slopes
+            if (local_direction >= 45 and local_direction <= 315)
+            {
+                control_lock_time = SLIDE_DURATION;
+                return player_perform(player_is_running);
+            }
+            
+            // Double Hammer Attack
+            if (object_index == objAmy)
+            {
+                if (input_button.aux.pressed and animation_data.variant == 0 and hammer_double == false) hammer_double = true;
+            }
+            
+            // Exit
+            if (animation_is_finished()) 
+            {
+                if (object_index == objAmy)
+                {
+                    if (hammer_double)
+                    {
+                        x_speed = 3 * image_xscale;
+                        hammer_double = false;
+                        animation_data.variant = 1;
+                        exit;
+                    }
+                }
+                
+                return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             }
             break;
         }
