@@ -449,6 +449,9 @@ player_animate = function()
                             break;
                         }
                     }
+                    
+                    // Sound
+                    if (animation_is_starting(8)) audio_play_single(sfxHammerAttack);
                     break;
                 }
                 case 1:
@@ -498,6 +501,9 @@ player_animate = function()
                             break;
                         }
                     }
+                    
+                    // Sound
+                    if (animation_is_starting(10)) audio_play_single(sfxHammerAttack);
                     break;
                 }
             }
