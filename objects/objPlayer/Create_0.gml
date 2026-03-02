@@ -487,7 +487,7 @@ player_try_buddy_flight = function()
                 var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
                 var y_dist = (sine == 0 ? cosine * dy : sine * dx);
                 
-                if (partner.cpu_gamepad_time == 0 and x_dist < 192 and y_dist < 84)
+                if (partner.cpu_gamepad_time == 0 and x_dist < 192 and y_dist < 128)
                 {
                     var start_flight = false;
                     if (partner.state == player_is_jumping)
