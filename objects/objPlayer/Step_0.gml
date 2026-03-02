@@ -126,7 +126,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                         }
                         break;
                     }
-                    else if (cpu_state_time > 0)
+                    else if (state == player_is_jumping and cpu_state_time > 0)
                     {
                         input_button.jump.check = true;
                         if (--cpu_state_time == 0)
