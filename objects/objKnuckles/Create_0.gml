@@ -381,6 +381,9 @@ player_animate = function()
                             break;
                         }
                     }
+                    
+                    // Sound
+                    if (animation_is_starting(5)) audio_play_single(sfxRoll);
                     break;
                 }
             }

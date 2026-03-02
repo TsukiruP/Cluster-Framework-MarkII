@@ -328,7 +328,6 @@ function player_is_trick_somersaulting(phase)
             }
             
             // Roll
-            if (animation_is_starting(5)) audio_play_single(sfxRoll);
             if (animation_is_finished())
             {
                 animation_play(PLAYER_ANIMATION.ROLL);
