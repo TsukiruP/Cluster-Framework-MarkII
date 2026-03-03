@@ -16,9 +16,13 @@ enum MILES_FLIGHT_STYLE
 }
 
 global.save_database = db_create();
+
+// Metadata
 db_write(SAVE_DATABASE, "", "name");
 db_write(SAVE_DATABASE, 0, "playtime");
 db_write(SAVE_DATABASE, room_get_name(rmTest), "stage");
+
+// Config
 db_write(SAVE_DATABASE, true, "boost_mode");
 db_write(SAVE_DATABASE, true, "trick_actions");
 db_write(SAVE_DATABASE, true, "tag_actions");

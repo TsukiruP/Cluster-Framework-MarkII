@@ -35,7 +35,10 @@ enum CONFIG_FLICKER
     VIRTUAL_CONSOLE_ADVANCE_3
 }
 
+// Create
 global.config_database = db_create();
+
+// Gameplay
 db_write(CONFIG_DATABASE, CONFIG_DEFAULT_LIVES, "lives");
 db_write(CONFIG_DATABASE, CONFIG_DEFAULT_TIME_OVER, "time_over");
 db_write(CONFIG_DATABASE, CONFIG_DEFAULT_HUD, "hud");
