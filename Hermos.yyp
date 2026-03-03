@@ -11,6 +11,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Global","folderPath":"folders/Global.yy","name":"Global","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Input","folderPath":"folders/Global/Input.yy","name":"Input","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
@@ -22,9 +23,11 @@
   },
   "name":"Hermos",
   "resources":[
+    {"id":{"name":"ctrlInput","path":"objects/ctrlInput/ctrlInput.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
+    {"id":{"name":"InputChecking","path":"scripts/InputChecking/InputChecking.yy",},},
     {"id":{"name":"Utilities","path":"scripts/Utilities/Utilities.yy",},},
   ],
   "resourceType":"GMProject",
