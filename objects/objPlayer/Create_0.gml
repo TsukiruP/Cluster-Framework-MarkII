@@ -1,0 +1,43 @@
+/// @description Initialize
+image_speed = 0;
+
+// State machine
+state = player_is_ready;
+state_changed = false;
+
+rolling = false;
+
+// Timers
+rotation_lock_time = 0;
+control_lock_time = 0;
+
+// Movement and collision
+x_speed = 0;
+y_speed = 0;
+
+slide_threshold = 2.5;
+slide_duration = 30;
+
+air_drag_threshold = 0.125;
+air_drag = 0.96875;
+
+x_radius = 8;
+x_wall_radius = 10;
+
+y_radius = 15;
+y_tile_reach = 16;
+
+landed = false;
+on_ground = true;
+ground_id = noone;
+
+direction = 0;
+gravity_direction = 0;
+local_direction = 0;
+mask_direction = 0;
+
+hard_colliders = [layer_tilemap_get_id("CollisionMain")];
+
+// Methods
+var n = 0;
+repeat (16) event_user(n++);
