@@ -1,6 +1,7 @@
-| Game | Uploader | Link | Notes |
+| Game | Uploader | Notes | Link |
 | --- | --- | --- | --- |
-| Sonic Mania | Random Talking Bush | https://sounds.spriters-resource.com/pc_computer/sonicmania/asset/405943/ |
-| Sonic Heroes | Tsukiru | | Air Dash, Item Balloon |
-| Sonic Advance 2 | Luna-Alex | | Trick Action, Speed Break |
-| Sonic Superstars | WistfulHopes | | Propeller Flight, Hammer Attack |
+| Sonic Mania | Random Talking Bush | | https://sounds.spriters-resource.com/pc_computer/sonicmania/asset/405943/ |
+| Sonic Heroes | Tsukiru | Air Dash, Item Balloon |
+| Sonic Advance 2 | Luna-Alex | Trick Action, Speed Break |
+| Sonic Superstars | WistfulHopes | Propeller Flight, Hammer Attack |
+| Sonic Frontiers | Shiruba | Big Hammer Attack, Air Hammer Attack | https://sounds.spriters-resource.com/pc_computer/sonicfrontiers/asset/488954/
