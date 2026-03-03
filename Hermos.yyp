@@ -25,6 +25,7 @@
   "name":"Hermos",
   "resources":[
     {"id":{"name":"ctrlInput","path":"objects/ctrlInput/ctrlInput.yy",},},
+    {"id":{"name":"ctrlWindow","path":"objects/ctrlWindow/ctrlWindow.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
