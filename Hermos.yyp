@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Global","folderPath":"folders/Global.yy","name":"Global","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Input","folderPath":"folders/Global/Input.yy","name":"Input","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Tilesets","folderPath":"folders/Tilesets.yy","name":"Tilesets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
@@ -31,6 +32,8 @@
     {"id":{"name":"PlayerAirStates","path":"scripts/PlayerAirStates/PlayerAirStates.yy",},},
     {"id":{"name":"PlayerGroundStates","path":"scripts/PlayerGroundStates/PlayerGroundStates.yy",},},
     {"id":{"name":"Utilities","path":"scripts/Utilities/Utilities.yy",},},
+    {"id":{"name":"sprCollisionTileset","path":"sprites/sprCollisionTileset/sprCollisionTileset.yy",},},
+    {"id":{"name":"tsCollision","path":"tilesets/tsCollision/tsCollision.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
