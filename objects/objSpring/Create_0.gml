@@ -10,7 +10,8 @@ reaction = function(pla)
     var high_jump = false;
     
     // High Jump
-    if (pla.state == player_is_hammer_attacking or (pla.object_index == objAmy and pla.animation_data.index = AMY_ANIMATION.AIR_HAMMER_ATTACK))
+    if (pla.state == player_is_hammer_attacking or
+        (pla.object_index == objAmy and (pla.animation_data.index == AMY_ANIMATION.AIR_HAMMER_ATTACK or pla.animation_data.index == AMY_ANIMATION.HAMMER_JUMP)))
     {
         if (collision_player(0, pla, 1)) high_jump = true;
     }

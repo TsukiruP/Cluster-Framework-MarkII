@@ -591,6 +591,39 @@ player_animate = function()
         {
             player_set_animation(global.ani_amy_hammer_jump_v0);
             player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-9, -16, 3, 12);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 1:
+                {
+                    hitboxes[0].set_size(-5, -16, 8, 12);
+                    hitboxes[1].set_size(-4, -35, 26, -2);
+                    break;
+                }
+                case 2:
+                {
+                    hitboxes[0].set_size(-5, -16, 8, 13);
+                    hitboxes[1].set_size(-5, -25, 37, 14);
+                    break;
+                }
+                case 3:
+                {
+                    hitboxes[0].set_size(-6, -16, 7, 9);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 4:
+                {
+                    hitboxes[0].set_size(-6, -14, 6, 12);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
             break;
         }
         case AMY_ANIMATION.AIR_HAMMER_ATTACK:
