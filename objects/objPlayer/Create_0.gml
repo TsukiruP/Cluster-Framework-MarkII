@@ -418,8 +418,11 @@ player_try_jump = function()
 {
     if (input_button.jump.pressed)
     {
+        // Animate
         player_perform(player_is_jumping);
         animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+        
+        // Sound
         audio_play_single(sfxJump);
         return true;
     }
@@ -477,13 +480,11 @@ player_try_buddy_flight = function()
             if (array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
             {
                 var partner = ctrlStage.stage_players[1];
-                
                 var dx = partner.x - x;
                 var dy = partner.y - y;
                 
                 var sine = dsin(gravity_direction);
                 var cosine = dcos(gravity_direction);
-                
                 var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
                 var y_dist = (sine == 0 ? cosine * dy : sine * dx);
                 
@@ -557,8 +558,13 @@ player_try_shield_action = function()
     {
         case SHIELD.AQUA:
         {
-            player_perform(player_is_aqua_bounding);
+            // Set flags
             jump_alternate = input_button.aux.pressed;
+            
+            // Perform
+            player_perform(player_is_aqua_bounding);
+            
+            // Animate
             with (shield)
             {
                 if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;
@@ -568,12 +574,16 @@ player_try_shield_action = function()
         }
         case SHIELD.FLAME:
         {
-            x_speed = 8 * image_xscale;
+            // Dash
+            x_speed = image_xscale * 8;
             y_speed = 0;
-            camera_set_x_lag_time(16);
+            
+            // Perform
             player_perform(player_is_jumping, false);
+            
+            // Animate
+            camera_set_x_lag_time(16);
             animation_play(PLAYER_ANIMATION.JUMP, 1);
-            audio_play_single(sfxFlameDash);
             with (shield)
             {
                 if (animation_data.index == SHIELD.FLAME)
@@ -583,15 +593,20 @@ player_try_shield_action = function()
                 }
             }
             
+            // Sound
+            audio_play_single(sfxFlameDash);
             return true;
         }
         case SHIELD.THUNDER:
         {
+            // Jump
             y_speed = -5.5;
-            player_perform(player_is_jumping, false);
-            animation_play(PLAYER_ANIMATION.JUMP, 1);
-            audio_play_single(sfxThunderJump);
             
+            // Perform
+            player_perform(player_is_jumping, false);
+            
+            // Animate
+            animation_play(PLAYER_ANIMATION.JUMP, 1);
             for (var i = 45; i <= 315; i += 90)
             {
                 var sine = dcos(i);
@@ -599,6 +614,8 @@ player_try_shield_action = function()
                 particle_create(x, y, global.ani_shield_thunder_spark_v0, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
             }
             
+            // Sound
+            audio_play_single(sfxThunderJump);
             return true;
         }
     }
@@ -632,12 +649,22 @@ player_try_skill = function()
                         if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
                         {
                             var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
+                            
+                            // Set flags
                             aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                            x_speed += 2.25 * image_xscale;
+                            
+                            // Dash
+                            x_speed += image_xscale * 2.25;
                             y_speed = 0;
-                            animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
-                            audio_play_single(sfxAirDash);
+                            
+                            // Perform
                             player_perform(player_is_falling, false);
+                            
+                            // Animate
+                            animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                            
+                            // Sound
+                            audio_play_single(sfxAirDash);
                             return true;
                         }
                     }
@@ -652,8 +679,11 @@ player_try_skill = function()
                     {
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
+                            // Set flags
                             var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
                             flight_hammer = (skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
+                            
+                            // Perform
                             player_perform(player_is_propeller_flying);
                             return true;
                         }
@@ -712,10 +742,17 @@ player_try_skill = function()
                     {
                         if (not (aerial_flags & AERIAL_FLAG_HAMMER))
                         {
+                            // Set flags
                             aerial_flags |= AERIAL_FLAG_HAMMER;
-                            animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
-                            audio_play_single(sfxHammerAttack);
+                            
+                            // Perform
                             player_perform(player_is_falling, false);
+                            
+                            // Animate
+                            animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
+                            
+                            // Sound
+                            audio_play_single(sfxHammerAttack);
                             return true;
                         }
                     }
@@ -724,7 +761,12 @@ player_try_skill = function()
                 {
                     if (input_button.aux.pressed)
                     {
-                        player_perform(player_is_hammer_attacking);
+                        // Perform
+                        player_perform(player_is_hammer_attacking, false);
+                        
+                        // Animate
+                        var hammer_config = db_read(SAVE_DATABASE, AMY_HAMMER_SKILL.HAMMER_ATTACK, "amy", "hammer_skill");
+                        animation_play(hammer_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
                         return true;
                     }
                 }
