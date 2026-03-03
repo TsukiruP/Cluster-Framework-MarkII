@@ -32,16 +32,15 @@
 
 | Animation | Source | Notes |
 | --- | --- | --- |
-| Brake Dust | 1332-0 | Reduced size |
 | Ring Sparkle | 1334-0 |
-| Spin Dash | 1333-0, 1331-0 |
-| Boost Particle | 1327-0, 1327-1 |
 | Rail Spark | 1329-0 |
-| Tag Action | 1340-0, 1340-1 |
-| Heart | 1317-0 |
+| Brake Dust | 1332-0 | Reduced size |
+| Spin Dash Dust | 1333-0, 1331-0 |
 | Swap Cooldown | 1511-0, (SA2) 863-0 |
+| Tag Action | 1340-0, 1340-1 |
 | Miasma | 1507-0 |
-| Sonic Boom | (SA2) 873-0, 873-1 |
+| Sonic Boom | (SA2) 873-0, (SA2) 873-1, 1327-0, 1327-1 |
+| Heart | 1317-0 |
 
 # Stage
 | Animation | Source | Notes |
@@ -50,12 +49,12 @@
 | Horizontal Spring | 866-2, 866-3 |
 | Diagonal Spring | 866-4, 866-5 |
 | Diagonal Spring Alt | 866-6, 866-7 |
+| Items | 1315-0, 1315-1, 1315-2, ... |
+| Item Box | 1316-0, 1316-1 | Variant 1 is for multiplayer |
 | Spring Pole | (SA2) 538-0 |
 | Spike | 869-0 |
 | Act Ring | 983-0, 983-1, 983-2 |
 | Chao | 1001-0, 1002-0, 1003-0, 1003-0, 1004-0, 1005-0, 1006-0 |
-| Items | 1315-0, 1315-1, 1315-2, ... |
-| Item Box | 1316-0, 1316-1 | Variant 1 is for multiplayer |
 
 # Route 99
 | Animation | Source | Notes |
