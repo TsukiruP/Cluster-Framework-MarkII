@@ -416,53 +416,60 @@ player_perform = function(action, enter = true)
 /// @returns {Bool}
 player_try_jump = function()
 {
-    if (input_button.jump.pressed)
+    if (object_index == objAmy)
     {
-        // Animate
-        player_perform(player_is_jumping);
-        animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
-        
-        // Sound
-        audio_play_single(sfxJump);
-        return true;
+        if (player_check_ground_skill())
+        {
+            // Hammer Jump
+            if ((input_axis_y == 1 or input_button.alt.check) and input_button.aux.pressed)
+            {
+                var hammer_jump_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_JUMP, "amy", "hammer_jump");
+                if (hammer_jump_config)
+                {
+                    var hammer_jump_height = 7.5;
+                    
+                    /* AUTHOR NOTE: This scaling up of Advance physics is a bit involved.
+                    Everyone's jump height in Advance is 4.875 (2.625). Amy's Hammer Jump goes to 6 (3.375).
+                    Dividing her Hammer Jump height gets us 8 (4.5). This difference is then applied to 6 rather than 6.5.
+                    Which is how we get 7.5 (4). */
+                    
+                    // Set flags
+                    jump_cap = false;
+                    aerial_flags |= AERIAL_FLAG_HAMMER;
+                    
+                    // Leap
+                    var sine = dsin(local_direction);
+                    var cosine = dcos(local_direction);
+                    y_speed = -sine * x_speed - cosine * hammer_jump_height;
+                    x_speed = cosine * x_speed - sine * hammer_jump_height;
+                    
+                    // Detact from ground
+                    player_ground(undefined);
+                    
+                    // Animate
+                    animation_play(AMY_ANIMATION.HAMMER_JUMP);
+                    player_perform(player_is_jumping, false);
+                    
+                    // Sound
+                    audio_play_single(sfxJump);
+                    return true;
+                }
+            }
+        }
     }
     
-    return false;
-};
-
-/// @method player_try_trick([time])
-/// @desctiption Checks if the player performs a Trick Action.
-/// @param [time] Time to check (optional, defaults to state_time).
-/// @returns {Bool}
-player_try_trick = function(time = 0)
-{
-    var trick_actions_config = db_read(SAVE_DATABASE, true, "trick_actions");
-    if (trick_actions_config and time == 0 and input_button.tag.pressed)
+    if (input_button.jump.pressed)
     {
-        trick_index = TRICK.BACK;
-        if (input_axis_y == -1)
+        if (state != player_is_crouching)
         {
-            trick_index = TRICK.UP;
+            // Animate
+            player_perform(player_is_jumping);
+            animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+            
+            // Sound
+            audio_play_single(sfxJump);
+            return true;
         }
-        else if (input_axis_y == 1)
-        {
-            trick_index = TRICK.DOWN;
-            if (object_index == objSonic or object_index == objAmy) boost_mode = false;
-        }
-        else if (input_axis_x == image_xscale)
-        {
-            trick_index = TRICK.FRONT;
-        }
-        
-        player_gain_score(100);
-        player_perform(player_is_trick_preparing);
-        if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
-            trick_index == TRICK.DOWN))
-        {
-            audio_play_single(sfxTrickAction);
-        }
-        
-        return true;
     }
     
     return false;
@@ -477,7 +484,8 @@ player_try_flight_assist = function()
     {
         if (input_axis_y == -1)
         {
-            if (array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
+            var flight_assist_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_FLIGHT_ASSIST, "miles", "flight_assist");
+            if (flight_assist_config and array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
             {
                 var partner = ctrlStage.stage_players[1];
                 var dx = partner.x - x;
@@ -599,7 +607,7 @@ player_try_shield_action = function()
         }
         case SHIELD.THUNDER:
         {
-            // Jump
+            // Leap
             y_speed = -5.5;
             
             // Perform
@@ -623,8 +631,16 @@ player_try_shield_action = function()
     return false;
 };
 
+/// @method player_check_ground_skill()
+/// @description Checks if the player can perform a ground skill.
+/// @returns {Bool}
+player_check_ground_skill = function()
+{
+    return (on_ground and not (local_direction >= 45 and local_direction <= 315));
+};
+
 /// @method player_try_skill()
-/// @description Checks if the player performs a character skill.
+/// @description Checks if the player performs a skill.
 /// @returns {Bool}
 player_try_skill = function()
 {
@@ -669,6 +685,9 @@ player_try_skill = function()
                         }
                     }
                 }
+                else
+                {
+                }
                 break;
             }
             case objMiles:
@@ -680,7 +699,7 @@ player_try_skill = function()
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
                             // Set flags
-                            var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
+                            var skill_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_GROUND_SKILL, "miles", "ground_skill");
                             flight_hammer = (skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
                             
                             // Perform
@@ -705,6 +724,9 @@ player_try_skill = function()
                         }
                     }
                 }
+                else
+                {
+                }
                 break;
             }
             case objKnuckles:
@@ -723,6 +745,9 @@ player_try_skill = function()
                             return player_try_shield_action();
                         }
                     }
+                }
+                else
+                {
                 }
                 break;
             }
@@ -759,13 +784,13 @@ player_try_skill = function()
                 }
                 else
                 {
-                    if (input_button.aux.pressed)
+                    if (input_button.aux.pressed and player_check_ground_skill())
                     {
                         // Perform
                         player_perform(player_is_hammer_attacking, false);
                         
                         // Animate
-                        var hammer_config = db_read(SAVE_DATABASE, AMY_HAMMER_SKILL.HAMMER_ATTACK, "amy", "hammer_skill");
+                        var hammer_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_SKILL, "amy", "hammer_skill");
                         animation_play(hammer_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
                         return true;
                     }
@@ -793,6 +818,9 @@ player_try_skill = function()
                         }
                     }
                 }
+                else
+                {
+                }
                 break;
             }
         }
@@ -801,8 +829,49 @@ player_try_skill = function()
     return false;
 };
 
+/// @method player_try_trick([time])
+/// @desctiption Checks if the player performs a Trick Action.
+/// @param [time] Time to check (optional, defaults to state_time).
+/// @returns {Bool}
+player_try_trick = function(time = 0)
+{
+    if (input_button.tag.pressed)
+    {
+        var trick_actions_config = db_read(SAVE_DATABASE, true, "trick_actions");
+        if (trick_actions_config and time == 0)
+        {
+            trick_index = TRICK.BACK;
+            if (input_axis_y == -1)
+            {
+                trick_index = TRICK.UP;
+            }
+            else if (input_axis_y == 1)
+            {
+                trick_index = TRICK.DOWN;
+                if (object_index == objSonic or object_index == objAmy) boost_mode = false;
+            }
+            else if (input_axis_x == image_xscale)
+            {
+                trick_index = TRICK.FRONT;
+            }
+            
+            player_gain_score(100);
+            player_perform(player_is_trick_preparing);
+            if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
+                trick_index == TRICK.DOWN))
+            {
+                audio_play_single(sfxTrickAction);
+            }
+            
+            return true;
+        }
+    }
+    
+    return false;
+};
+
 /// @method player_refresh_aerials()
-/// @description Resets aerial character skills when grounded.
+/// @description Resets aerial skills when grounded.
 player_refresh_aerials = function()
 {
     switch (object_index)

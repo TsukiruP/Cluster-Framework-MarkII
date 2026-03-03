@@ -61,9 +61,6 @@ function player_is_standing(phase)
                 return player_perform(player_is_running);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Turn
             if (animation_data.index != PLAYER_ANIMATION.TEETER and input_axis_x != 0 and image_xscale != input_axis_x)
             {
@@ -71,6 +68,7 @@ function player_is_standing(phase)
                 image_xscale *= -1;
             }
             
+            // Cliff
             if (animation_data.index == PLAYER_ANIMATION.TURN and animation_is_finished())
             {
                 animation_play(cliff_sign != 0 ? PLAYER_ANIMATION.TEETER : PLAYER_ANIMATION.IDLE);
@@ -91,6 +89,9 @@ function player_is_standing(phase)
                     if (input_axis_y == 1) return player_perform(player_is_crouching);
                 }
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             break;
         }
         case PHASE.EXIT:
@@ -187,22 +188,25 @@ function player_is_running(phase)
                 }
             }
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Apply slope friction
             player_resist_slope(0.125);
             
             // Roll
             var velocity = abs(x_speed);
-            if (input_axis_y == 1 and velocity >= 1.03125 and input_axis_x == 0)
+            if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_SPIN, "amy", "spin")))
             {
-                audio_play_single(sfxRoll);
-                return player_perform(player_is_rolling);
+                if (input_axis_y == 1 and velocity >= 1.03125 and input_axis_x == 0)
+                {
+                    audio_play_single(sfxRoll);
+                    return player_perform(player_is_rolling);
+                }
             }
             
             // Stand
             if (x_speed == 0 and input_axis_x == 0) return player_perform(player_is_standing);
+            
+            // Skill
+            if (player_try_skill()) exit;
             
             // Animate
             if (can_turn)
@@ -276,9 +280,6 @@ function player_is_looking(phase)
                 return player_perform(player_is_running);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
-            
             // Run
             if (x_speed != 0) return player_perform(player_is_running);
             
@@ -296,6 +297,9 @@ function player_is_looking(phase)
             {
                 return player_perform(player_is_standing);
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             break;
         }
         case PHASE.EXIT:
@@ -319,8 +323,8 @@ function player_is_crouching(phase)
         }
         case PHASE.STEP:
         {
-            // Spin Dash
-            if (input_button.jump.pressed) return player_perform(player_is_spin_dashing);
+            // Jump
+            if (player_try_jump()) exit;
             
             // Move
             player_move_on_ground();
@@ -339,8 +343,14 @@ function player_is_crouching(phase)
                 return player_perform(player_is_running);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Spin Dash
+            if (input_button.jump.pressed)
+            {
+                if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_SPIN, "amy", "spin")))
+                {
+                    return player_perform(player_is_spin_dashing);
+                }
+            }
             
             // Run
             if (x_speed != 0) return player_perform(player_is_running);
@@ -359,6 +369,9 @@ function player_is_crouching(phase)
             {
                 return player_perform(player_is_standing);
             }
+            
+            // Skill
+            if (player_try_skill()) exit;
             break;
         }
         case PHASE.EXIT:
@@ -546,7 +559,14 @@ function player_is_hammer_attacking(phase)
             // Double Hammer Attack
             if (object_index == objAmy)
             {
-                if (input_button.aux.pressed and animation_data.variant == 0 and hammer_double == false) hammer_double = true;
+                if (input_button.aux.pressed)
+                {
+                    var hammer_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_SKILL, "amy", "hammer_skill");
+                    if (hammer_config and animation_data.variant == 0 and hammer_double == false)
+                    {
+                        hammer_double = true;
+                    }
+                }
             }
             
             // Exit

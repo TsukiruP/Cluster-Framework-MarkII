@@ -41,8 +41,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Amy",
-    "path":"folders/Sprites/Stage/Player/Characters/Amy.yy",
+    "name":"Hammer",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Hammer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

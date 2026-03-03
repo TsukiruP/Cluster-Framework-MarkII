@@ -509,6 +509,90 @@ player_animate = function()
             }
             break;
         }
+        case AMY_ANIMATION.BIG_HAMMER_ATTACK:
+        {
+            player_set_animation(global.ani_amy_big_hammer_attack_v0);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-6, -12, 6, 16);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 3:
+                {
+                    hitboxes[0].set_size(-8, -15, 4, 13);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 4:
+                {
+                    hitboxes[0].set_size(-9, -18, 3, 10);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 5:
+                {
+                    hitboxes[0].set_size(-10, -21, 2, 7);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 6:
+                {
+                    hitboxes[0].set_size(-12, -23, 0, 5);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 7:
+                {
+                    hitboxes[0].set_size(-12, -24, 0, 4);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 9:
+                {
+                    hitboxes[0].set_size(-10, -21, 2, 7);
+                    hitboxes[1].set_size(-21, -47, 14, -20);
+                    break;
+                }
+                case 10:
+                {
+                    hitboxes[0].set_size(-9, -20, 3, 8);
+                    hitboxes[1].set_size(8, -32, 45, 3);
+                    break;
+                }
+                case 11:
+                {
+                    hitboxes[0].set_size(-5, -19, 7, 9);
+                    hitboxes[1].set_size(12, -24, 54, 16);
+                    break;
+                }
+                case 14:
+                {
+                    hitboxes[0].set_size(-5, -15, 7, 13);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 16:
+                {
+                    hitboxes[0].set_size(-6, -12, 6, 16);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
+            
+            // Sound
+            if (animation_is_starting(10)) audio_play_single(sfxBigHammerAttack);
+            break;
+        }
+        case AMY_ANIMATION.HAMMER_JUMP:
+        {
+            player_set_animation(global.ani_amy_hammer_jump_v0);
+            player_set_radii(6, 14);
+            break;
+        }
         case AMY_ANIMATION.AIR_HAMMER_ATTACK:
         {
             player_set_animation(global.ani_amy_air_hammer_attack_v0);

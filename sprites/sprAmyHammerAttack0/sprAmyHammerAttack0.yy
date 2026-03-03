@@ -39,8 +39,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Hammer Attack",
-    "path":"folders/Sprites/Stage/Player/Characters/Amy/Hammer Attack.yy",
+    "name":"Hammer",
+    "path":"folders/Sprites/Stage/Player/Characters/Amy/Hammer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

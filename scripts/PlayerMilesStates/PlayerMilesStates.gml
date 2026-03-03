@@ -61,7 +61,7 @@ function player_is_propeller_flying(phase)
                 }
                 
                 // Ascend
-                var flight_config = db_read(SAVE_DATABASE, MILES_FLIGHT_STYLE.CLASSIC, "miles", "flight_style");
+                var flight_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_FLIGHT_STYLE, "miles", "flight_style");
                 var input_flight = input_button.jump.pressed or (flight_config and input_button.jump.check);
                 if (input_flight and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
                 {
@@ -117,7 +117,7 @@ function player_is_propeller_flying(phase)
             }
             
             // Flight Assist
-            var flight_assist_config = db_read(SAVE_DATABASE, true, "miles", "flight_assist");
+            var flight_assist_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_FLIGHT_ASSIST, "miles", "flight_assist");
             if (not flight_hammer)
             {
                 if (flight_assist_config and flight_carry == false)
