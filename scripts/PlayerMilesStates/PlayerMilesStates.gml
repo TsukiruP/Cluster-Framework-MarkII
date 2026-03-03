@@ -116,10 +116,11 @@ function player_is_propeller_flying(phase)
                 }
             }
             
-            // Buddy Flight
+            // Flight Assist
+            var flight_assist_config = db_read(SAVE_DATABASE, true, "miles", "flight_assist");
             if (not flight_hammer)
             {
-                if (flight_carry == false)
+                if (flight_assist_config and flight_carry == false)
                 {
                     if (flight_carry_time == 0)
                     {

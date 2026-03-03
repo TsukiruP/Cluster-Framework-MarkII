@@ -15,6 +15,7 @@ enum MILES_FLIGHT_STYLE
     ADVENTURE
 }
 
+// Create
 global.save_database = db_create();
 
 // Metadata
@@ -39,3 +40,4 @@ db_write(SAVE_DATABASE, CHARACTER.SONIC, "character", 0);
 // Miles
 db_write(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "miles", "ground_skill");
 db_write(SAVE_DATABASE, MILES_FLIGHT_STYLE.ADVENTURE, "miles", "flight_style");
+db_write(SAVE_DATABASE, true, "miles", "flight_assist");

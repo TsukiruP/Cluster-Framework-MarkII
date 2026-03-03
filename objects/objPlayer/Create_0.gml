@@ -468,10 +468,10 @@ player_try_trick = function(time = 0)
     return false;
 };
 
-/// @method player_try_buddy_flight()
-/// @description Check is the player tells Miles to perform a Buddy Flight.
+/// @method player_try_flight_assist()
+/// @description Check is the player calls for a Flight Assist.
 /// @returns {Bool}
-player_try_buddy_flight = function()
+player_try_flight_assist = function()
 {
     if (state == player_is_jumping)
     {
@@ -501,7 +501,7 @@ player_try_buddy_flight = function()
                         {
                             player_refresh_inputs();
                             input_button.jump.pressed = true;
-                            cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
                             cpu_state_time = 8;
                         }
                     }
@@ -511,7 +511,7 @@ player_try_buddy_flight = function()
                         with (partner)
                         {
                             y_speed = max(y_speed, -2);
-                            cpu_state = CPU_STATE.BUDDY_FLIGHT;
+                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
                             cpu_state_time = 0;
                             flight_hammer = false;
                             player_perform(player_is_propeller_flying);
@@ -538,7 +538,7 @@ player_try_buddy_flight = function()
                         return not can_skill;*/
                         return false;
                         
-                        /* AUTHOR'S NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
+                        /* AUTHOR NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
                     }
                 }
             }
@@ -636,7 +636,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    if (input_button.jump.pressed and player_try_flight_assist())
                     {
                         if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                         {
@@ -711,7 +711,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    if (input_button.jump.pressed and player_try_flight_assist())
                     {
                         return false;
                     }
@@ -730,7 +730,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    if (input_button.jump.pressed and player_try_flight_assist())
                     {
                         if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                         {
@@ -776,7 +776,7 @@ player_try_skill = function()
             {
                 if (not on_ground)
                 {
-                    if (input_button.jump.pressed and player_try_buddy_flight())
+                    if (input_button.jump.pressed and player_try_flight_assist())
                     {
                         if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
                         {

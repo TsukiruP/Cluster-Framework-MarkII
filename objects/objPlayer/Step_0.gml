@@ -83,7 +83,7 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     }
                     break;
                 }
-                case CPU_STATE.BUDDY_FLIGHT:
+                case CPU_STATE.FLIGHT_ASSIST:
                 {
                     if (state == player_is_propeller_flying)
                     {
@@ -285,7 +285,7 @@ if (input_button.swap.pressed)
                         with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     }
                     
-                    cpu_state = (state == player_is_propeller_flying ? CPU_STATE.BUDDY_FLIGHT : CPU_STATE.FOLLOW);
+                    cpu_state = (state == player_is_propeller_flying ? CPU_STATE.FLIGHT_ASSIST : CPU_STATE.FOLLOW);
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
