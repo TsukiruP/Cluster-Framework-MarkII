@@ -587,6 +587,48 @@ player_animate = function()
             if (animation_is_starting(10)) audio_play_single(sfxBigHammerAttack);
             break;
         }
+        case AMY_ANIMATION.AIR_HAMMER_ATTACK:
+        {
+            player_set_animation(global.ani_amy_air_hammer_attack_v0);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-10, -8, 10, 12);
+                    hitboxes[1].set_size(-14, -12, 14, 16);
+                    break;
+                }
+                case 11:
+                {
+                    hitboxes[0].set_size(-6, -14, 6, 12);
+                    hitboxes[1].set_size();
+                    break;
+                }
+            }
+            break;
+        }
+        case AMY_ANIMATION.HAMMER_WHIRL:
+        {
+            player_set_animation(global.ani_amy_hammer_whirl_v0);
+            player_set_radii(6, 14);
+            switch (image_index)
+            {
+                case 0:
+                {
+                    hitboxes[0].set_size(-6, -14, 6, 12);
+                    hitboxes[1].set_size();
+                    break;
+                }
+                case 3:
+                {
+                    hitboxes[0].set_size(-6, -14, 6, 10);
+                    hitboxes[1].set_size(-24, -8, 24, 16);
+                    break;
+                }
+            }
+            break;
+        }
         case AMY_ANIMATION.HAMMER_JUMP:
         {
             player_set_animation(global.ani_amy_hammer_jump_v0);
@@ -618,27 +660,6 @@ player_animate = function()
                     break;
                 }
                 case 4:
-                {
-                    hitboxes[0].set_size(-6, -14, 6, 12);
-                    hitboxes[1].set_size();
-                    break;
-                }
-            }
-            break;
-        }
-        case AMY_ANIMATION.AIR_HAMMER_ATTACK:
-        {
-            player_set_animation(global.ani_amy_air_hammer_attack_v0);
-            player_set_radii(6, 14);
-            switch (image_index)
-            {
-                case 0:
-                {
-                    hitboxes[0].set_size(-10, -8, 10, 12);
-                    hitboxes[1].set_size(-14, -12, 14, 16);
-                    break;
-                }
-                case 11:
                 {
                     hitboxes[0].set_size(-6, -14, 6, 12);
                     hitboxes[1].set_size();

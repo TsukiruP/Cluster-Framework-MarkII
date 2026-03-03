@@ -597,6 +597,7 @@
     {"id":{"name":"sprAmyHammerAttack0","path":"sprites/sprAmyHammerAttack0/sprAmyHammerAttack0.yy",},},
     {"id":{"name":"sprAmyHammerAttack1","path":"sprites/sprAmyHammerAttack1/sprAmyHammerAttack1.yy",},},
     {"id":{"name":"sprAmyHammerJump","path":"sprites/sprAmyHammerJump/sprAmyHammerJump.yy",},},
+    {"id":{"name":"sprAmyHammerWhirl","path":"sprites/sprAmyHammerWhirl/sprAmyHammerWhirl.yy",},},
     {"id":{"name":"sprAmyHurt0","path":"sprites/sprAmyHurt0/sprAmyHurt0.yy",},},
     {"id":{"name":"sprAmyHurt1","path":"sprites/sprAmyHurt1/sprAmyHurt1.yy",},},
     {"id":{"name":"sprAmyIdle","path":"sprites/sprAmyIdle/sprAmyIdle.yy",},},

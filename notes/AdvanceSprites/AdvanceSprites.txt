@@ -241,6 +241,7 @@
 | Big Hammer Attack | 690-0 |
 | Air Hammer Attack | 695-0 |
 | Air Hammer Jump | 696-0 |
+| Hammer Whirl | 733-0 |
 | Hammer Jump | (SA1) 373-0, 726-0 |
 
 # Cream
