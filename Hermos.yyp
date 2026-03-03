@@ -24,6 +24,7 @@
   "resources":[
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
     {"id":{"name":"Utilities","path":"scripts/Utilities/Utilities.yy",},},
   ],
   "resourceType":"GMProject",
