@@ -28,6 +28,8 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"GameStartup","path":"scripts/GameStartup/GameStartup.yy",},},
     {"id":{"name":"InputChecking","path":"scripts/InputChecking/InputChecking.yy",},},
+    {"id":{"name":"PlayerAirStates","path":"scripts/PlayerAirStates/PlayerAirStates.yy",},},
+    {"id":{"name":"PlayerGroundStates","path":"scripts/PlayerGroundStates/PlayerGroundStates.yy",},},
     {"id":{"name":"Utilities","path":"scripts/Utilities/Utilities.yy",},},
   ],
   "resourceType":"GMProject",
