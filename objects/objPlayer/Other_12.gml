@@ -9,7 +9,7 @@ player_escape_wall = function ()
 	var y_int = y div 1;
 	var sine = dsin(mask_direction);
 	var cosine = dcos(mask_direction);
-	var ind = instance_place(x_int, y_int, hard_colliders);
+	var ind = hard_colliders; //instance_place(x_int, y_int, hard_colliders);
 	
 	if (collision_point(x_int, y_int, ind, true, false) == noone)
 	{
@@ -113,8 +113,8 @@ player_detect_angle = function ()
 		// Calculate offset point, and reposition it if applicable
 		var sine = dsin(mask_direction);
 		var cosine = dcos(mask_direction);
-		var ox = x + sine * y_radius;
-		var oy = y + cosine * y_radius;
+		var ox = x div 1 + sine * y_radius;
+		var oy = y div 1 + cosine * y_radius;
 		
 		if (edge == 1)
 		{

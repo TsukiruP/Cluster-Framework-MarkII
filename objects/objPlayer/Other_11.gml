@@ -106,7 +106,7 @@ player_calc_tile_normal = function (ox, oy)
 	}
 	
 	// Cache tilemap id to prevent unnecessary iteration through colliders
-	var ind = collision_point(sensor_x[0], sensor_y[0], hard_colliders, false, false);
+	var ind = collision_point(ox + sine, oy + cosine, hard_colliders, true, false);
 	
 	// Extend / regress angle sensors
 	for (var n = 0; n < 2; ++n)

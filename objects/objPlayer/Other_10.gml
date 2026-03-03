@@ -34,7 +34,7 @@ player_move_on_ground = function ()
 		if (player_boxcast(hard_colliders, floor_reach))
 		{
 			player_ground(true);
-			mask_direction = round(direction / 90) mod 4 * 90;
+			player_rotate_mask();
 		}
 		else on_ground = false;
 		
@@ -73,7 +73,7 @@ player_move_in_air = function ()
 			{
 				landed = true;
 				player_ground(true);
-				mask_direction = round(direction / 90) mod 4 * 90;
+				player_rotate_mask();
 			}
 		}
 		else if (player_boxcast(hard_colliders, -y_radius))
