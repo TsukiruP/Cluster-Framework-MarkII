@@ -38,8 +38,8 @@ function player_is_trick_preparing(phase)
                 }
                 else
                 {
-                    x_speed = image_xscale * trick_speed[trick_index][0];
-                    y_speed = trick_speed[trick_index][1];
+                    x_speed = image_xscale * (trick_speed[trick_index][0] / 0.75);
+                    y_speed = trick_speed[trick_index][1] / 0.75;
                     return player_perform(player_is_tricking);
                 }
             }

@@ -524,7 +524,7 @@ function player_is_hammer_attacking(phase)
         case PHASE.STEP:
         {
             // Friction
-            x_speed -= min(abs(x_speed), 0.375) * sign(x_speed);
+            x_speed -= min(abs(x_speed), 0.375 / 0.75) * sign(x_speed);
             
             // Move
             player_move_on_ground();
@@ -556,7 +556,7 @@ function player_is_hammer_attacking(phase)
                 {
                     if (hammer_double)
                     {
-                        x_speed = 3 * image_xscale;
+                        x_speed = image_xscale * (3 / 0.75);
                         hammer_double = false;
                         animation_data.variant = 1;
                         exit;

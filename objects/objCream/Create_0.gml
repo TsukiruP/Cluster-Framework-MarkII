@@ -14,7 +14,7 @@ ears = new stamp();
 flight_time = 0;
 flight_reset_time = 0;
 flight_base_force = 0.03125;
-flight_ascent_force = 0.09375;
+flight_ascent_force = 0.09375 / 0.75;
 flight_drag_thresholds = [2, 4, 6, 8, 10];
 
 player_animate = function()
