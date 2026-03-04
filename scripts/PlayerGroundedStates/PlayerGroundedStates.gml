@@ -193,7 +193,7 @@ function player_is_running(phase)
             
             // Roll
             var velocity = abs(x_speed);
-            if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_SPIN, "amy", "spin")))
+            if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin")))
             {
                 if (input_axis_y == 1 and velocity >= 1.03125 and input_axis_x == 0)
                 {
@@ -346,7 +346,7 @@ function player_is_crouching(phase)
             // Spin Dash
             if (input_button.jump.pressed)
             {
-                if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_SPIN, "amy", "spin")))
+                if (object_index != objAmy or (object_index == objAmy and db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin")))
                 {
                     return player_perform(player_is_spin_dashing);
                 }
@@ -561,7 +561,7 @@ function player_is_hammer_attacking(phase)
             {
                 if (input_button.aux.pressed)
                 {
-                    var hammer_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_SKILL, "amy", "hammer_skill");
+                    var hammer_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
                     if (hammer_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
                     {
                         hammer_double = true;
