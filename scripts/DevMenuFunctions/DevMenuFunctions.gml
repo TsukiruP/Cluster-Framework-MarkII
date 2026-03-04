@@ -16,17 +16,17 @@ function dev_menu_goto(menu)
     menu_index = menu;
 }
 
-/// @function dev_menu_goto_character(character)
+/// @function dev_menu_goto_character(index)
 /// @description Goes to a character menu.
-/// @param {Real} character Character index to interpret.
-function dev_menu_goto_character(character)
+/// @param {Real} index Character to get the menu of.
+function dev_menu_goto_character(index)
 {
-    if (character != CHARACTER.NONE)
+    if (index != CHARACTER.NONE)
     {
         with (objDevMenu)
         {
-            var character_menus = [miles_menu, miles_menu, miles_menu, amy_menu, miles_menu];
-            dev_menu_goto(character_menus[character]);
+            var character_menus = [sonic_menu, miles_menu, knuckles_menu, amy_menu, cream_menu];
+            dev_menu_goto(character_menus[index]);
         }
     }
 }
