@@ -284,11 +284,12 @@ if (input_button.swap.pressed)
                         with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     }
                     
-                    cpu_state = (object_index == objMiles and flight_carry ? CPU_STATE.FLIGHT_ASSIST : CPU_STATE.FOLLOW);
+                    cpu_state = CPU_STATE.FOLLOW;
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
                     audio_play_single(sfxSwap);
+                    instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
                     InputVerbConsume(INPUT_VERB.SWAP);
                     with (objCamera) focus = ctrlStage.stage_players[0];
                     with (objPlayer)
@@ -296,7 +297,12 @@ if (input_button.swap.pressed)
                         player_index = array_get_index(ctrlStage.stage_players, id);
                         depth = ctrlStage.player_depth + player_index;
                     }
-                    instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
+                    
+                    // Flight Assist
+                    if (state == player_is_propeller_flying and not flight_hammer and flight_time < PROPELLER_FLIGHT_DURATION - 30)
+                    {
+                        cpu_state = CPU_STATE.FLIGHT_ASSIST;
+                    }
                 }
                 else
                 {
