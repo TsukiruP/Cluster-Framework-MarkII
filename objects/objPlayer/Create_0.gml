@@ -699,8 +699,8 @@ player_try_skill = function()
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
                             // Set flags
-                            var skill_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_GROUND_SKILL, "miles", "ground_skill");
-                            flight_hammer = (skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
+                            var ground_skill_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_MILES_GROUND_SKILL, "miles", "ground_skill");
+                            flight_hammer = (ground_skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
                             
                             // Perform
                             player_perform(player_is_propeller_flying);

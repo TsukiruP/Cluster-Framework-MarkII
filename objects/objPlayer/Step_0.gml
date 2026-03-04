@@ -42,7 +42,6 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 case CPU_STATE.CROUCH:
                 {
                     player_refresh_inputs();
-                    
                     if (cpu_state_time == 0)
                     {
                         cpu_state = CPU_STATE.FOLLOW;
@@ -69,7 +68,6 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 case CPU_STATE.SPIN_DASH:
                 {
                     player_refresh_inputs();
-                    
                     if (cpu_state_time == 0)
                     {
                         cpu_state = CPU_STATE.FOLLOW;
@@ -88,7 +86,6 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                     if (state == player_is_propeller_flying)
                     {
                         player_refresh_inputs();
-                        
                         if (flight_carry)
                         {
                             input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
@@ -151,6 +148,8 @@ if (player_index != 0 and cpu_gamepad_time == 0)
                 }
                 default:
                 {
+                    player_refresh_inputs();
+                    
                     // Panic
                     if (abs(x_speed) < 0.5 and control_lock_time > 0)
                     {
