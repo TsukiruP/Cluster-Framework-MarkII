@@ -8,12 +8,27 @@ function dev_menu(_options = []) constructor
 }
 
 /// @function dev_menu_goto(menu)
-/// @description Sets the given menu as the current menu, adding to the dev menu's history.
+/// @description Adds the current menu to the history before going to the given menu.
 /// @param {Struct.dev_menu} menu Menu to go to.
 function dev_menu_goto(menu)
 {
     array_push(history, menu_index);
     menu_index = menu;
+}
+
+/// @function dev_menu_goto_character(character)
+/// @description Goes to a character menu.
+/// @param {Real} character Character index to interpret.
+function dev_menu_goto_character(character)
+{
+    if (character != CHARACTER.NONE)
+    {
+        with (objDevMenu)
+        {
+            var character_menus = [miles_menu, miles_menu, miles_menu, amy_menu, miles_menu];
+            dev_menu_goto(character_menus[character]);
+        }
+    }
 }
 
 /// @function dev_option(label)
@@ -112,6 +127,7 @@ function dev_option_player(_player) : dev_option_int($"Player {_player}") constr
     maximum = CHARACTER.CREAM;
     specifiers = ["None", "Sonic", "Miles", "Knuckles", "Amy", "Cream"];
     offset = CHARACTER.NONE;
+    confirm = function() { dev_menu_goto_character(get()); };
     get = function() { return db_read(SAVE_DATABASE, CHARACTER.NONE, "character", player); };
     set = function(val) { db_write(SAVE_DATABASE, val, "character", player); };
 }
