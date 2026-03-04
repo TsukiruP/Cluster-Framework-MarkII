@@ -61,4 +61,5 @@ var home_options =
     room_option
 ];
 
-home_menu.options = array_concat(home_menu.options, player_options, home_options)
+home_menu.options = array_concat(home_menu.options, player_options, home_options);
+menu_index = home_menu;

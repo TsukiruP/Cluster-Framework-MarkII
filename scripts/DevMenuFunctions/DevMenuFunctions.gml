@@ -12,7 +12,7 @@ function dev_menu(_options = []) constructor
 /// @param {Struct.dev_menu} menu Menu to go to.
 function dev_menu_goto(menu)
 {
-    array_push(history, menu_index);
+    array_push(menu_history, menu_index);
     menu_index = menu;
 }
 

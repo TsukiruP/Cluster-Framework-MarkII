@@ -25,9 +25,9 @@ if (not InputPartyGetJoin())
     }
     
     // Cancel
-    if (array_length(history) > 0 and InputPressed(INPUT_VERB.CANCEL))
+    if (array_length(menu_history) > 0 and InputPressed(INPUT_VERB.CANCEL))
     {
-        menu_index = array_pop(history);
+        menu_index = array_pop(menu_history);
     }
 }
 else 

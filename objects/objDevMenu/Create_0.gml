@@ -1,8 +1,8 @@
 /// @description Initialize
 image_speed = 0;
-history = [];
+menu_index = undefined;
+menu_history = [];
 wip_option = new dev_option("Work in Progress!");
-
 
 // Menus
 home_menu = new dev_menu();
@@ -15,8 +15,6 @@ amy_menu = new dev_menu();
 cream_menu = new dev_menu([wip_option]);
 
 config_menu = new dev_menu();
-
-menu_index = home_menu;
 
 // Options
 var n = 0;
