@@ -37,6 +37,8 @@ local_direction = 0;
 mask_direction = 0;
 
 hard_colliders = [layer_tilemap_get_id("CollisionMain")];
+semisolid_tilemap = layer_tilemap_get_id("CollisionSemisolid");
+tilemap_count = array_length(hard_colliders);
 
 // Methods
 var n = 0;

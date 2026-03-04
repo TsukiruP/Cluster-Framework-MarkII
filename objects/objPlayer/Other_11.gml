@@ -81,6 +81,58 @@ player_raycast = function (ind, xoff, ylen)
 	return collision_line(x1, y1, x2, y2, ind, true, false) != noone;
 };
 
+/// @method player_get_collisions
+/// @description Refreshes the player's local solids, and executes the reaction of instances intersecting the player's virtual mask.
+player_get_collisions = function ()
+{
+	// Delist solid instances
+	array_resize(hard_colliders, tilemap_count);
+	
+	// Calculate the area of the upper half of the player's virtual mask
+	var x_int = x div 1;
+	var y_int = y div 1;
+	var sine = dsin(mask_direction);
+	var cosine = dcos(mask_direction);
+	
+	var x1 = x_int - cosine * x_wall_radius - sine * y_radius;
+	var y1 = y_int + sine * x_wall_radius - cosine * y_radius;
+	var x2 = x_int + cosine * x_wall_radius;
+	var y2 = y_int - sine * x_wall_radius;
+	
+	// Account for outer edge overlap bug
+	var left = min(x1, x2);
+	var top = min(y1, y2);
+	var right = max(x1, x2) + 0.001;
+	var bottom = max(y1, y2) + 0.001;
+	
+	// Register semisolid tilemap
+	if (semisolid_tilemap != -1 and collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone)
+	{
+		array_push(hard_colliders, semisolid_tilemap);
+	}
+	
+	// Detect instances intersecting the player's virtual mask
+	/*static instances = ds_list_create();
+	ds_list_clear(instances);
+	
+	var total = mask_direction mod 180 == 0 ?
+		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
+		collision_rectangle_list(x_int - y_radius, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
+	
+	// Execute reactions
+	for (var n = 0; n < total; ++n)
+	{
+		var ind = instances[| n];
+		script_execute(ind.reaction, ind);
+		
+		// Register solid instances (exclude semisolids)
+		if (not (instance_exists(ind) and object_is_ancestor(ind.object_index, objSolid))) continue;
+		if (ind.semisolid and collision_rectangle(left, top, right, bottom, ind, true, false) != noone) continue;
+		
+		array_push(hard_colliders, ind);
+	}*/
+};
+
 /// @method player_calc_tile_normal
 /// @description Calculates the surface normal of the tiles found within the 16x16 area relative to the given point.
 /// @param {Real} x x-coordinate of the point.

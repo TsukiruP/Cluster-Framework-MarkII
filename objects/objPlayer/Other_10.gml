@@ -24,6 +24,9 @@ player_move_on_ground = function ()
 		x += dcos(direction) * step;
 		y -= dsin(direction) * step;
 		
+		// Detect colliders
+		player_get_collisions();
+		
 		// Detect walls
 		if (player_linecast(hard_colliders) and sign(x_speed) == player_escape_wall())
 		{
@@ -59,6 +62,9 @@ player_move_in_air = function ()
 	{
 		x += cosine * x_step + sine * y_step;
 		y += -sine * x_step + cosine * y_step;
+		
+		// Detect colliders
+		player_get_collisions();
 		
 		// Detect walls
 		if (player_linecast(hard_colliders) and sign(x_speed) == player_escape_wall())
