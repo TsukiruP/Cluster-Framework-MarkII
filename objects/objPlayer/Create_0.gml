@@ -773,9 +773,13 @@ player_try_skill = function()
                             // Hammer Whirl
                             if (input_axis_y == 1)
                             {
-                                // Perform
-                                player_perform(player_is_hammer_whirling);
-                                return true;
+                                var hammer_whirl_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_WHIRL);
+                                if (hammer_whirl_config)
+                                {
+                                    // Perform
+                                    player_perform(player_is_hammer_whirling);
+                                    return true;
+                                }
                             }
                             
                             // Perform
