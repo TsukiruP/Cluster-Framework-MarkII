@@ -421,7 +421,7 @@ player_try_jump = function()
         if (player_check_ground_skill())
         {
             // Hammer Jump
-            if ((input_axis_y == 1 or input_button.alt.check) and input_button.aux.pressed)
+            if (input_button.aux.pressed and (input_axis_y == 1 or input_button.alt.check))
             {
                 var hammer_jump_config = db_read(SAVE_DATABASE, SAVE_DEFAULT_AMY_HAMMER_JUMP, "amy", "hammer_jump");
                 if (hammer_jump_config)
@@ -769,6 +769,14 @@ player_try_skill = function()
                         {
                             // Set flags
                             aerial_flags |= AERIAL_FLAG_HAMMER;
+                            
+                            // Hammer Whirl
+                            if (input_axis_y == 1)
+                            {
+                                // Perform
+                                player_perform(player_is_hammer_whirling);
+                                return true;
+                            }
                             
                             // Perform
                             player_perform(player_is_falling, false);

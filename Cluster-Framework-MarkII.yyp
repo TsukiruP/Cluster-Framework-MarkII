@@ -533,6 +533,7 @@
     {"id":{"name":"InputY","path":"scripts/InputY/InputY.yy",},},
     {"id":{"name":"is_db","path":"scripts/is_db/is_db.yy",},},
     {"id":{"name":"PlayerAerialStates","path":"scripts/PlayerAerialStates/PlayerAerialStates.yy",},},
+    {"id":{"name":"PlayerAmyStates","path":"scripts/PlayerAmyStates/PlayerAmyStates.yy",},},
     {"id":{"name":"PlayerCollisionFunctions","path":"scripts/PlayerCollisionFunctions/PlayerCollisionFunctions.yy",},},
     {"id":{"name":"PlayerCreamStates","path":"scripts/PlayerCreamStates/PlayerCreamStates.yy",},},
     {"id":{"name":"PlayerGetterFunctions","path":"scripts/PlayerGetterFunctions/PlayerGetterFunctions.yy",},},
