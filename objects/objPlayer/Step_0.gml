@@ -284,7 +284,7 @@ if (input_button.swap.pressed)
                         with (ctrlStage) array_push(stage_players, array_shift(stage_players));
                     }
                     
-                    cpu_state = (state == player_is_propeller_flying ? CPU_STATE.FLIGHT_ASSIST : CPU_STATE.FOLLOW);
+                    cpu_state = (object_index == objMiles and flight_carry ? CPU_STATE.FLIGHT_ASSIST : CPU_STATE.FOLLOW);
                     player_refresh_status();
                     player_refresh_inputs();
                     player_refresh_records();
