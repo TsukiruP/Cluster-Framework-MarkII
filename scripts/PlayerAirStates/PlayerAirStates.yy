@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"PlayerGroundedStates",
+  "%Name":"PlayerAirStates",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"PlayerGroundedStates",
+  "name":"PlayerAirStates",
   "parent":{
     "name":"States",
     "path":"folders/Scripts/Player/States.yy",
