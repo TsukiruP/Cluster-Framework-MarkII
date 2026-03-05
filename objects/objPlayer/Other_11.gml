@@ -112,10 +112,10 @@ player_get_collisions = function ()
 	}
 	
 	// Detect instances intersecting the player's virtual mask
-	/*static instances = ds_list_create();
+	static instances = ds_list_create();
 	ds_list_clear(instances);
 	
-	var total = mask_direction mod 180 == 0 ?
+	var total = sine == 0 ?
 		collision_rectangle_list(x_int - x_wall_radius, y_int - y_radius, x_int + x_wall_radius, y_int + y_radius + 1, objZoneObject, true, false, instances, false) :
 		collision_rectangle_list(x_int - y_radius, y_int - x_wall_radius, x_int + y_radius + 1, y_int + x_wall_radius, objZoneObject, true, false, instances, false);
 	
@@ -130,7 +130,7 @@ player_get_collisions = function ()
 		if (ind.semisolid and collision_rectangle(left, top, right, bottom, ind, true, false) != noone) continue;
 		
 		array_push(hard_colliders, ind);
-	}*/
+	}
 };
 
 /// @method player_calc_tile_normal

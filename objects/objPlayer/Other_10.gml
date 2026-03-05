@@ -31,6 +31,7 @@ player_move_on_ground = function ()
 		if (player_linecast(hard_colliders) and sign(x_speed) == player_escape_wall())
 		{
 			x_speed = 0;
+			floor_reach = y_radius + 2;
 		}
 		
 		// Detect floor
