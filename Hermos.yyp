@@ -28,6 +28,7 @@
   "resources":[
     {"id":{"name":"ctrlInput","path":"objects/ctrlInput/ctrlInput.yy",},},
     {"id":{"name":"ctrlWindow","path":"objects/ctrlWindow/ctrlWindow.yy",},},
+    {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},},
     {"id":{"name":"objPlayer","path":"objects/objPlayer/objPlayer.yy",},},
     {"id":{"name":"objSolid","path":"objects/objSolid/objSolid.yy",},},
     {"id":{"name":"objZoneObject","path":"objects/objZoneObject/objZoneObject.yy",},},

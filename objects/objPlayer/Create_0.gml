@@ -43,3 +43,6 @@ tilemap_count = array_length(hard_colliders);
 // Methods
 var n = 0;
 repeat (16) event_user(n++);
+
+// Misc.
+instance_create_layer(x, y, layer, objCamera, { gravity_direction });

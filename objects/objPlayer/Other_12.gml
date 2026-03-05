@@ -58,6 +58,7 @@ player_ground = function (land)
 	if (not land)
 	{
 		on_ground = false;
+		objCamera.on_ground = false;
 		mask_direction = gravity_direction;
 		exit;
 	}
