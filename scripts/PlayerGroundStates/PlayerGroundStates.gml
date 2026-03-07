@@ -29,10 +29,10 @@ function player_is_standing(phase)
             // Check if standing on a cliff
             cliff_sign = 0;
             var height = y_radius + y_tile_reach;
-            if (not player_ray_collision(tilemaps, 0, height))
+            if (not player_raycast(tilemaps, 0, height))
             {
-                cliff_sign = player_ray_collision(tilemaps, -x_radius, height) -
-                    player_ray_collision(tilemaps, x_radius, height);
+                cliff_sign = player_raycast(tilemaps, -x_radius, height) -
+                    player_raycast(tilemaps, x_radius, height);
             }
             
             // Animate

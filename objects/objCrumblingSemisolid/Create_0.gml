@@ -24,7 +24,7 @@ reaction = function(pla)
             pla.x += x_dist;
             pla.y += y_dist;
             pla.y_speed = 0;
-            pla.ground_id = id;
+            pla.solid_id = id;
         }
     }
 };

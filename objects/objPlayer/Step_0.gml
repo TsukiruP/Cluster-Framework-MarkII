@@ -20,7 +20,6 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     
     if (confusion_time > 0) input_axis_x *= -1;
     if (cpu_gamepad_time > 0) cpu_gamepad_time--;
-    if (input_button.select.pressed) player_gain_rings(150);
 }
 
 // CPU
@@ -287,7 +286,7 @@ if (input_button.swap.pressed)
                     cpu_state = CPU_STATE.FOLLOW;
                     player_refresh_status();
                     player_refresh_inputs();
-                    player_refresh_records();
+                    player_refresh_cpu_records();
                     audio_play_single(sfxSwap);
                     instance_create_depth(x, y, ctrlStage.display_depth, objSwapCooldown);
                     InputVerbConsume(INPUT_VERB.SWAP);
@@ -564,7 +563,7 @@ with (speed_break)
 }
 
 // Afterimages
-player_update_animation_history();
+player_refresh_animation_history();
 
 afterimage_visible = boost_mode;
 if (afterimage_visible)

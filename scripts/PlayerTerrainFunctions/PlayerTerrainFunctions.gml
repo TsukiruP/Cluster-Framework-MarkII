@@ -1,4 +1,4 @@
-/// @function player_find_floor(height)
+/*/// @function player_find_floor(height)
 /// @description Finds the minimum distance between the player and the first solid intersecting the lower half of their virtual mask.
 /// @param {Real} height Distance in pixels to extend the mask downward.
 /// @returns {Real|Undefined}

@@ -1,9 +1,9 @@
-/// @function player_move_on_ground()
+/*/// @function player_move_on_ground()
 /// @description Updates the player's position on the ground and checks for collisions.
 function player_move_on_ground()
 {
     // Ride moving platforms
-    with (ground_id)
+    with (solid_id)
     {
         var dx = x - xprevious;
         var dy = y - yprevious;
@@ -38,7 +38,7 @@ function player_move_on_ground()
         // Handle floor collision
         //if (on_ground)
         //{
-            if (instance_exists(ground_id))
+            if (instance_exists(solid_id))
             {
                 on_ground = true;
                 direction = gravity_direction;
@@ -94,7 +94,7 @@ function player_move_in_air()
         // Handle floor collision
         if (y_speed >= 0)
         {
-            if (instance_exists(ground_id))
+            if (instance_exists(solid_id))
             {
                 landed = true;
                 on_ground = true;

@@ -1,4 +1,4 @@
-/// @function player_collision(obj)
+/*/// @function player_collision(obj)
 /// @description Checks if the given entity's mask intersects the player's virtual mask.
 /// @param {Asset.GMObject|Id.Instance|Id.TileMapElement} obj Object, instance or tilemap to check.
 /// @returns {Bool}

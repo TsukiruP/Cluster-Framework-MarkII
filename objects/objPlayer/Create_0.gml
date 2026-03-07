@@ -1,13 +1,14 @@
 /// @description Initialize
 image_speed = 0;
-
-character_index = CHARACTER.NONE;
 player_index = -1;
+character_index = CHARACTER.NONE;
 
 // State machine
 state = player_is_ready;
 state_previous = state;
 state_changed = false;
+
+cliff_sign = 0;
 
 spin_dash_charge = 0;
 spin_dash_dust = new stamp();
@@ -42,35 +43,10 @@ cpu_state_time = 0;
 cpu_respawn_time = CPU_RESPAWN_DURATION;
 cpu_gamepad_time = 0;
 
-// Boost Mode
-boost_mode = false;
-boost_index = 0;
-boost_speed = 0;
-boost_thresholds = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
-
-// Status
-/// @method player_refresh_status()
-/// @description Resets the player's status.
-player_refresh_status = function()
-{
-    shield.index = SHIELD.NONE;
-    aerial_flags &= ~AERIAL_FLAG_SHIELD_ACTION;
-    recovery_time = 0;
-    invincibility_time = 0;
-    superspeed_time = 0;
-    confusion_time = 0;
-};
-
-shield = new stamp();
-miasma = new stamp();
-player_refresh_status();
-
-// Physics
+// Movement and collision
 x_speed = 0;
 y_speed = 0;
-player_refresh_physics();
 
-// Collision detection
 x_radius = 8;
 x_wall_radius = 10;
 
@@ -82,16 +58,14 @@ hitboxes[1] = new hitbox(c_green);
 
 landed = false;
 on_ground = true;
-//ground_snap = true;
+
+solid_id = noone;
+ground_id = noone;
 
 direction = 0;
 gravity_direction = 0;
 local_direction = 0;
 mask_direction = 0;
-
-/* AUTHOR NOTE: "down" is treated as 0 degrees instead of 270. */
-
-cliff_sign = 0;
 
 collision_layer = 0;
 
@@ -114,7 +88,15 @@ if (tilemap_count == 3)
     tilemap_count--;
 }
 
-ground_id = noone;
+// Boost Mode
+boost_mode = false;
+boost_index = 0;
+boost_speed = 0;
+boost_thresholds = [8.0, 7.96875, 6.5625, 5.625, 4.21875];
+
+// Status
+shield = new stamp();
+miasma = new stamp();
 
 // Input
 input_enabled = false;
@@ -144,118 +126,8 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
-/// @method player_refresh_inputs()
-/// @description Resets the player's inputs.
-player_refresh_inputs = function()
-{
-    input_axis_x = 0;
-    input_axis_y = 0;
-    
-    struct_foreach(input_button, function(name, value)
-    {
-        var verb = value.verb;
-        value.check = false;
-        value.pressed = false;
-        value.released = false;
-    });
-};
-
-/// @method player_refresh_records()
-/// @description Resets the player's input records.
-player_refresh_records = function()
-{
-    array_foreach(cpu_axis_x, function(element, index) { element = 0; });
-    array_foreach(cpu_axis_y, function(element, index) { element = 0; });
-    array_foreach(cpu_input_jump, function(element, index) { element = false; });
-    array_foreach(cpu_input_jump_pressed, function(element, index) { element = false; });
-};
-
 // Animation
 animation_data = new animation_core();
-
-/// @method player_animate_teeter(ani)
-/// @description Sets the given animation within the player's animation core based on teeter conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_teeter = function(ani)
-{
-    animation_data.variant = (cliff_sign != image_xscale);
-    player_set_animation(ani);
-};
-
-/// @method player_animate_run(ani)
-/// @description Plays the given animation based on running conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-/// @param {Real} [ang] Angle to set (optional, defaults to direction).
-player_animate_run = function(ani, ang = direction)
-{
-    var variant = (on_ground ? 5 : animation_data.variant);
-    if (on_ground)
-    {
-        var abs_speed = abs(x_speed);
-        if (abs_speed <= 1.25) variant = 0;
-        else if (abs_speed <= 2.5) variant = 1;
-        else if (abs_speed <= 4.0) variant = 2;
-        else if (abs_speed <= 9.0) variant = 3;
-        else if (abs_speed <= 11.5) variant = 4;
-    }
-    
-    player_set_animation(ani, ang);
-    animation_data.variant = variant;
-    if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
-};
-
-/// @method player_animate_fall(ani)
-/// @description Plays the given animation based on falling conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_fall = function(ani)
-{
-    if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
-    player_set_animation(ani, rotate_towards(mask_direction, image_angle));
-};
-
-/// @method player_animate_jump(ani)
-/// @description Sets the given animation within the player's animation core based on jumping conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_jump = function(ani)
-{
-    switch (animation_data.variant)
-    {
-        case 0:
-        {
-            if (animation_is_finished()) animation_data.variant = 1;
-            break;
-        }
-        case 1:
-        {
-            if (y_speed > 0 and player_find_floor(y_radius + 32) != undefined) animation_data.variant = 2;
-            break;
-        }
-    }
-    
-    player_set_animation(ani);
-};
-
-/// @method player_animate_spring(ani)
-/// @description Plays the given animation based on spring conditions.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-player_animate_spring = function(ani)
-{
-    switch (animation_data.variant)
-    {
-        case 0:
-        {
-            if (y_speed > 0) animation_data.variant = 1;
-            break;
-        }
-        case 1:
-        {
-            if (animation_is_finished()) animation_data.variant = 2;
-            break;
-        }
-    }
-    
-    player_set_animation(ani);
-};
 
 /// @method animation_record()
 /// @description Creates a new animation record.
@@ -277,24 +149,6 @@ for (var i = 0; i < ANIMATION_RECORD_COUNT; i++)
     animation_history[i] = new animation_record();
 }
 
-/// @method player_update_animation_history()
-/// @description Updates the animation history.
-player_update_animation_history = function()
-{
-    with (animation_history[animation_history_index])
-    {
-        x = other.x div 1;
-        y = other.y div 1;
-        image_xscale = other.image_xscale;
-        image_yscale = other.image_yscale;
-        image_angle = other.image_angle;
-        ani = other.animation_data.ani;
-        ani_speed = other.animation_data.speed;
-    }
-    
-    animation_history_index = ++animation_history_index mod ANIMATION_RECORD_COUNT;
-};
-
 // Afterimage
 /// @method afterimage()
 /// @description Creates a new afterimage.
@@ -309,7 +163,7 @@ afterimage = function() constructor
     image_blend = c_white;
     image_alpha = 1;
     animation_data = new animation_core();
-}
+};
 
 afterimage_visible = false;
 afterimage_list = array_create(AFTERIMAGE_COUNT);
@@ -344,9 +198,6 @@ with (speed_break)
     }
 }
 
-// Camera
-camera = noone;
-
 // CPU
 cpu_state = CPU_STATE.FOLLOW;
 cpu_axis_x = array_create(CPU_RECORD_COUNT);
@@ -354,615 +205,12 @@ cpu_axis_y = array_create(CPU_RECORD_COUNT);
 cpu_input_jump = array_create(CPU_RECORD_COUNT);
 cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
 
-/// @method player_refresh_cpu()
-/// @description Resets the CPU.
-player_refresh_cpu = function()
-{
-    var leader = ctrlStage.stage_players[0];
-    x = leader.x div 1;
-    y = leader.y div 1;
-    xprevious = x;
-    yprevious = y;
-    gravity_direction = leader.gravity_direction;
-    image_xscale = leader.image_xscale;
-    image_angle = gravity_direction;
-    boost_mode = leader.boost_mode;
-    x_speed = leader.x_speed;
-    y_speed = leader.y_speed;
-    collision_layer = leader.collision_layer;
-    tilemaps[1] = ctrlStage.tilemaps[collision_layer + 1];
-    cpu_state = CPU_STATE.FOLLOW;
-    player_ground(undefined);
-    animation_play(PLAYER_ANIMATION.FALL);
-    player_perform(player_is_falling, false);
-    player_refresh_physics();
-    player_refresh_boost_mode();
-};
-
-
-/// @method player_respawn_cpu()
-/// @description Respawns the CPU.
-player_respawn_cpu = function()
-{
-    var can_respawn = (ctrlStage.stage_players[0].state != player_is_dead);
-    if (can_respawn)
-    {
-        recovery_time = RECOVERY_DURATION;
-        cpu_respawn_time = 0;
-        player_refresh_cpu();
-    }
-};
+// Methods
+var n = 0;
+repeat (16) event_user(n++);
 
 // Misc.
-/// @method player_perform(action, [enter])
-/// @description Sets the given function as the player's current state.
-/// @param {Function} action State function to set.
-/// @param {Bool} [enter] Whether to perform the enter phase (optional, defaults to true).
-player_perform = function(action, enter = true)
-{
-    var reset = (argument_count > 1);
-    if (state != action or reset)
-    { 
-        state_previous = state;
-        state = action;
-        state_changed = true;
-        state_previous(PHASE.EXIT);
-        if (enter) state(PHASE.ENTER);
-    }
-};
 
-/// @method player_try_jump()
-/// @description Checks if the player performs a jump.
-/// @returns {Bool}
-player_try_jump = function()
-{
-    if (object_index == objAmy)
-    {
-        if (player_check_ground_skill())
-        {
-            // Hammer Jump
-            if (input_button.aux.pressed and (input_axis_y == 1 or input_button.alt.check))
-            {
-                var hammer_jump_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
-                if (hammer_jump_config)
-                {
-                    var hammer_jump_height = 7.5;
-                    
-                    /* AUTHOR NOTE: This scaling up of Advance physics is a bit involved.
-                    Everyone's jump height in Advance is 4.875 (2.625). Amy's Hammer Jump goes to 6 (3.375).
-                    Dividing her Hammer Jump height gets us 8 (4.5). This difference is then applied to 6 rather than 6.5.
-                    Which is how we get 7.5 (4). */
-                    
-                    // Set flags
-                    jump_cap = false;
-                    aerial_flags |= AERIAL_FLAG_HAMMER;
-                    
-                    // Leap
-                    var sine = dsin(local_direction);
-                    var cosine = dcos(local_direction);
-                    y_speed = -sine * x_speed - cosine * hammer_jump_height;
-                    x_speed = cosine * x_speed - sine * hammer_jump_height;
-                    
-                    // Detact from ground
-                    player_ground(undefined);
-                    
-                    // Animate
-                    animation_play(AMY_ANIMATION.HAMMER_JUMP);
-                    player_perform(player_is_jumping, false);
-                    
-                    // Sound
-                    audio_play_single(sfxJump);
-                    return true;
-                }
-            }
-        }
-    }
-    
-    if (input_button.jump.pressed)
-    {
-        if (state != player_is_crouching)
-        {
-            // Animate
-            player_perform(player_is_jumping);
-            animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
-            
-            // Sound
-            audio_play_single(sfxJump);
-            return true;
-        }
-    }
-    
-    return false;
-};
-
-/// @method player_try_flight_assist()
-/// @description Check is the player calls for a Flight Assist.
-/// @returns {Bool}
-player_try_flight_assist = function()
-{
-    if (state == player_is_jumping)
-    {
-        if (input_axis_y == -1)
-        {
-            var flight_assist_config = db_read(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_ASSIST, "miles", "flight_assist");
-            if (flight_assist_config and array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
-            {
-                var partner = ctrlStage.stage_players[1];
-                var dx = partner.x - x;
-                var dy = partner.y - y;
-                
-                var sine = dsin(gravity_direction);
-                var cosine = dcos(gravity_direction);
-                var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
-                var y_dist = (sine == 0 ? cosine * dy : sine * dx);
-                
-                if (partner.cpu_gamepad_time == 0 and partner.cpu_state == CPU_STATE.FOLLOW and x_dist < 192 and y_dist < 128)
-                {
-                    var start_flight = false;
-                    if (partner.state == player_is_jumping)
-                    {
-                        start_flight = true;
-                    }
-                    else if (partner.on_ground)
-                    {
-                        with (partner)
-                        {
-                            player_refresh_inputs();
-                            input_button.jump.pressed = true;
-                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
-                            cpu_state_time = 8;
-                        }
-                    }
-                    
-                    if (start_flight)
-                    {
-                        with (partner)
-                        {
-                            y_speed = max(y_speed, -2);
-                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
-                            cpu_state_time = 0;
-                            flight_hammer = false;
-                            player_perform(player_is_propeller_flying);
-                        }
-                        
-                        /*var can_skill = false;
-                        
-                        switch (object_index)
-                        {
-                            case objSonic:
-                            {
-                                // TODO: Check Sonic's skills.
-                                //var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
-                                can_skill = true;
-                                break;
-                            }
-                            case objCream:
-                            {
-                                can_skill = true;
-                                break;
-                            }
-                        }
-                        
-                        return not can_skill;*/
-                        return false;
-                        
-                        /* AUTHOR NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
-                    }
-                }
-            }
-        }
-    }
-    
-    return true;
-};
-
-/// @method player_try_shield_action()
-/// @description Checks if the player performs a Shield Action.
-/// @returns {Bool}
-player_try_shield_action = function()
-{
-    aerial_flags |= AERIAL_FLAG_SHIELD_ACTION;
-    switch (shield.index)
-    {
-        case SHIELD.AQUA:
-        {
-            // Set flags
-            jump_alternate = input_button.aux.pressed;
-            
-            // Perform
-            player_perform(player_is_aqua_bounding);
-            
-            // Animate
-            with (shield)
-            {
-                if (animation_data.index == SHIELD.AQUA) animation_data.variant = 1;
-            }
-            
-            return true;
-        }
-        case SHIELD.FLAME:
-        {
-            // Dash
-            x_speed = image_xscale * 8;
-            y_speed = 0;
-            
-            // Perform
-            player_perform(player_is_jumping, false);
-            
-            // Animate
-            camera_set_x_lag_time(16);
-            animation_play(PLAYER_ANIMATION.JUMP, 1);
-            with (shield)
-            {
-                if (animation_data.index == SHIELD.FLAME)
-                {
-                    image_xscale = other.image_xscale;
-                    animation_data.variant = 1;
-                }
-            }
-            
-            // Sound
-            audio_play_single(sfxFlameDash);
-            return true;
-        }
-        case SHIELD.THUNDER:
-        {
-            // Leap
-            y_speed = -5.5;
-            
-            // Perform
-            player_perform(player_is_jumping, false);
-            
-            // Animate
-            animation_play(PLAYER_ANIMATION.JUMP, 1);
-            for (var i = 45; i <= 315; i += 90)
-            {
-                var sine = dcos(i);
-                var cosine = dsin(i);
-                particle_create(x, y, global.ani_shield_thunder_spark_v0, gravity_direction, 20, sine * 2, -cosine * 2, 0, 0);
-            }
-            
-            // Sound
-            audio_play_single(sfxThunderJump);
-            return true;
-        }
-    }
-    
-    return false;
-};
-
-/// @method player_check_ground_skill()
-/// @description Checks if the player can perform a ground skill.
-/// @returns {Bool}
-player_check_ground_skill = function()
-{
-    return (on_ground and not (local_direction >= 45 and local_direction <= 315));
-};
-
-/// @method player_try_skill()
-/// @description Checks if the player performs a skill.
-/// @returns {Bool}
-player_try_skill = function()
-{
-    if (player_index == 0 or cpu_gamepad_time > 0)
-    {
-        switch (object_index)
-        {
-            case objSonic:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
-                        {
-                            var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
-                            
-                            // Set flags
-                            aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                            
-                            // Dash
-                            x_speed += image_xscale * 2.25;
-                            y_speed = 0;
-                            
-                            // Perform
-                            player_perform(player_is_falling, false);
-                            
-                            // Animate
-                            animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
-                            
-                            // Sound
-                            audio_play_single(sfxAirDash);
-                            return true;
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objMiles:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed)
-                    {
-                        if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
-                        {
-                            // Set flags
-                            var ground_skill_config = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-                            flight_hammer = (ground_skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
-                            
-                            // Perform
-                            player_perform(player_is_propeller_flying);
-                            return true;
-                        }
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (animation_data.index == MILES_ANIMATION.HAMMER_FLIGHT)
-                        {
-                            if (animation_data.variant == 0)
-                            {
-                                animation_data.variant = 1;
-                                return false;
-                            }
-                        }
-                        else if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objKnuckles:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        return false;
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objAmy:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_HAMMER))
-                        {
-                            // Set flags
-                            aerial_flags |= AERIAL_FLAG_HAMMER;
-                            
-                            // Hammer Whirl
-                            if (input_axis_y == 1)
-                            {
-                                var hammer_whirl_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL);
-                                if (hammer_whirl_config)
-                                {
-                                    // Perform
-                                    player_perform(player_is_hammer_whirling);
-                                    return true;
-                                }
-                            }
-                            
-                            // Perform
-                            player_perform(player_is_falling, false);
-                            
-                            // Animate
-                            animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
-                            
-                            // Sound
-                            audio_play_single(sfxHammerAttack);
-                            return true;
-                        }
-                    }
-                }
-                else
-                {
-                    if (input_button.aux.pressed and player_check_ground_skill())
-                    {
-                        // Perform
-                        player_perform(player_is_hammer_attacking, false);
-                        
-                        // Animate
-                        var hammer_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                        animation_play(hammer_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
-                        return true;
-                    }
-                }
-                break;
-            }
-            case objCream:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
-                        {
-                            player_perform(player_is_fan_flying);
-                            return true;
-                        }
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-        }
-    }
-    
-    return false;
-};
-
-/// @method player_try_trick([time])
-/// @desctiption Checks if the player performs a Trick Action.
-/// @param [time] Time to check (optional, defaults to state_time).
-/// @returns {Bool}
-player_try_trick = function(time = 0)
-{
-    if (input_button.tag.pressed)
-    {
-        var trick_actions_config = db_read(SAVE_DATABASE, true, "trick_actions");
-        if (trick_actions_config and time == 0)
-        {
-            trick_index = TRICK.BACK;
-            if (input_axis_y == -1)
-            {
-                trick_index = TRICK.UP;
-            }
-            else if (input_axis_y == 1)
-            {
-                trick_index = TRICK.DOWN;
-                if (object_index == objSonic or object_index == objAmy) boost_mode = false;
-            }
-            else if (input_axis_x == image_xscale)
-            {
-                trick_index = TRICK.FRONT;
-            }
-            
-            player_gain_score(100);
-            player_perform(player_is_trick_preparing);
-            if (not ((object_index == objSonic or object_index == objKnuckles or object_index == objAmy) and
-                trick_index == TRICK.DOWN))
-            {
-                audio_play_single(sfxTrickAction);
-            }
-            
-            return true;
-        }
-    }
-    
-    return false;
-};
-
-/// @method player_refresh_aerials()
-/// @description Resets aerial skills when grounded.
-player_refresh_aerials = function()
-{
-    switch (object_index)
-    {
-        case objMiles:
-        case objCream:
-        {
-            if (on_ground) flight_time = 0;
-            break;
-        }
-    }
-};
-
-/// @method player_rotate_mask()
-/// @description Rotates the player's virtual mask, if applicable.
-player_rotate_mask = function()
-{
-    if (rotation_lock_time > 0 and not landed)
-    {
-        rotation_lock_time--;
-        exit;
-    }
-    
-    var new_rotation = round(direction / 90) mod 4 * 90;
-    if (mask_direction != new_rotation)
-    {
-        mask_direction = new_rotation;
-        rotation_lock_time = (not landed) * max(16 - abs(x_speed * 2) div 1, 0);
-    }
-};
-
-/// @method player_resist_slope(force)
-/// @description Applies slope friction to the player's horizontal speed, if appropriate.
-/// @param {Real} force Friction value to use.
-player_resist_slope = function(force)
-{
-    // Abort if...
-    if (x_speed == 0 and control_lock_time == 0) exit; // Not moving
-    if (local_direction < 22.5 or local_direction > 337.5) exit; // Moving along a shallow slope
-    if (local_direction >= 135 and local_direction <= 225) exit; // Attached to a ceiling
-    
-    x_speed -= dsin(local_direction) * force;
-};
-
-/// @method player_set_animation(ani, [ang])
-/// @description Sets the given animation within the player's animation core.
-/// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-/// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
-player_set_animation = function(ani, ang = gravity_direction)
-{
-    animation_set(ani);
-    image_angle = ang;
-};
-
-/// @method player_set_radii(xrad, yrad)
-/// @description Sets the given radii as the player's virtual mask.
-/// @param {Real} xrad Horizontal radius to use.
-/// @param {Real} yrad Vertical radius to use.
-player_set_radii = function(xrad, yrad)
-{
-    // Abort if radii already match
-    if (x_radius == xrad and y_radius == yrad) exit;
-    
-    var old_x_radius = x_radius;
-    var old_y_radius = y_radius;
-    x_radius = xrad;
-    x_wall_radius = x_radius + 2;
-    y_radius = yrad;
-    
-    if (on_ground)
-    {
-        var sine = dsin(mask_direction);
-        var cosine = dcos(mask_direction);
-        x += sine * (old_y_radius - y_radius);
-        y += cosine * (old_y_radius - y_radius);
-    }
-};
-
-/// @method player_gain_score(num)
 /// @description Increases the player's score count by the given amount.
 /// @param {Real} num Amount of points to give.
 player_gain_score = function(num)
@@ -975,7 +223,6 @@ player_gain_score = function(num)
     if (count != previous_count) player_gain_lives(count - previous_count);
 };
 
-/// @method player_gain_rings(num)
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
 player_gain_rings = function(num)
@@ -991,7 +238,6 @@ player_gain_rings = function(num)
     }
 };
 
-/// @method player_drop_rings()
 /// @description Spawns up to 32 dropped rings in circles of 16 at the player's position, and resets their ring count.
 player_drop_rings = function()
 {
@@ -1027,7 +273,6 @@ player_drop_rings = function()
     audio_play_single(sfxDropRings);
 };
 
-/// @method player_gain_lives(num)
 /// @description Increases the player's life count by the given amount.
 /// @param {Real} num Amount of lives to give.
 player_gain_lives = function(num)
@@ -1039,59 +284,6 @@ player_gain_lives = function(num)
     }
 };
 
-/// @method player_damage(inst)
-/// @description Evaluates the player's condition after taking a hit.
-/// Setting inst to the player's id will force a death, while setting it to noone will just hurt the player.
-/// @param {Id.Instance} inst Instance to check.
-player_damage = function(inst)
-{
-    // Abort if the player is already dead or hurt
-    if (state == player_is_dead or ((state == player_is_hurt or recovery_time > 0 or invincibility_time > 0) and inst != id)) exit;
-    
-    if (inst == id or (player_index == 0 and shield.index == SHIELD.NONE and global.ring_count == 0))
-    {
-        y_speed = -7;
-        audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
-        return player_perform(player_is_dead);
-    }
-    else
-    {
-        var hurt_speed = -2;
-        var ring_loss = false;
-        animation_play(PLAYER_ANIMATION.HURT);
-        if (inst == noone or abs(x_speed) <= 2.5)
-        {
-            if (abs(x_speed) > 0.625) x_speed = sign(x_speed) * hurt_speed;
-            else x_speed = image_xscale * hurt_speed;
-            animation_data.variant = 0;
-        }
-        else
-        {
-            x_speed = sign(x_speed) * -hurt_speed;
-            animation_data.variant = 1;
-        }
-        
-        y_speed = -4;
-        
-        if (player_index == 0)
-        {
-            if (shield.index != SHIELD.NONE)
-            {
-                shield.index = SHIELD.NONE;
-            }
-            else
-            {
-                ring_loss = true;
-                player_drop_rings();
-            }
-        }
-        
-        if (not ring_loss) audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
-        return player_perform(player_is_hurt);
-    }
-};
-
-/// @method player_obtain_item(item)
 /// @description Gives the player the given item.
 /// @param {Enum.ITEM} item Item to obtain.
 player_obtain_item = function(item)
@@ -1239,14 +431,8 @@ player_speed_break = function()
     }
 };
 
-/// @method player_animate()
-/// @description Sets the player's current animation.
-player_animate = function() {};
-
-/// @method player_draw_before()
 /// @description Draws player effects behind the character sprite.
 player_draw_before = function() {};
 
-/// @method player_draw_after()
 /// @description Draws player effects in front of the character sprite.
 player_draw_after = function() {};
