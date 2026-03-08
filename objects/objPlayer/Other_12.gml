@@ -177,7 +177,9 @@ player_refresh_physics = function ()
 	gravity_force = 0.21875;
 	jump_height = 6.5;
 	jump_release = 4;
-}();
+};
+
+player_refresh_physics();
 
 /// @method player_resist_slope
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
