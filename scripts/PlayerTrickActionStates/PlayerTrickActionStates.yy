@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"PlayerTrickStates",
+  "%Name":"PlayerTrickActionStates",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"PlayerTrickStates",
+  "name":"PlayerTrickActionStates",
   "parent":{
     "name":"States",
     "path":"folders/Scripts/Player/States.yy",

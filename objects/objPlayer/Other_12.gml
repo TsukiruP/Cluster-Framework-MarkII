@@ -401,8 +401,6 @@ player_refresh_boost_mode = function()
     }
 };
 
-player_refresh_physics();
-
 /// @description Resets the player's status.
 player_refresh_status = function()
 {
@@ -413,8 +411,6 @@ player_refresh_status = function()
     confusion_time = 0;
     shield.index = SHIELD.NONE;
 };
-
-player_refresh_status();
 
 /// @description Resets the player's inputs.
 player_refresh_inputs = function()

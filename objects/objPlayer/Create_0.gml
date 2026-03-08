@@ -208,6 +208,8 @@ var n = 0;
 repeat (16) event_user(n++);
 
 // Misc.
+player_refresh_physics();
+player_refresh_status();
 
 /// @description Increases the player's score count by the given amount.
 /// @param {Real} num Amount of points to give.
