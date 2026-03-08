@@ -34,8 +34,8 @@ player_boxcast = function (ind, ylen)
 	// Account for outer edge overlap bug (see: https://github.com/YoYoGames/GameMaker-Bugs/issues/14176)
 	var left = min(x1, x2);
 	var top = min(y1, y2);
-	var right = max(x1, x2) + 0.001;
-	var bottom = max(y1, y2) + 0.001;
+	var right = max(x1, x2) + 0.00101;
+	var bottom = max(y1, y2) + 0.00101;
 	
 	return collision_rectangle(left, top, right, bottom, ind, true, false) != noone;
 };
@@ -102,8 +102,8 @@ player_get_collisions = function ()
 	// Account for outer edge overlap bug
 	var left = min(x1, x2);
 	var top = min(y1, y2);
-	var right = max(x1, x2) + 0.001;
-	var bottom = max(y1, y2) + 0.001;
+	var right = max(x1, x2) + 0.00101;
+	var bottom = max(y1, y2) + 0.00101;
 	
 	// Register semisolid tilemap
 	if (semisolid_tilemap != -1 and collision_rectangle(left, top, right, bottom, semisolid_tilemap, true, false) == noone)
