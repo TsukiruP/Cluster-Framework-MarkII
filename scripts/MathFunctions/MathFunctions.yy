@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"PlayerTrickStates",
+  "%Name":"MathFunctions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"PlayerTrickStates",
+  "name":"MathFunctions",
   "parent":{
-    "name":"States",
-    "path":"folders/Scripts/Player/States.yy",
+    "name":"Global",
+    "path":"folders/Scripts/Global.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,4 +1,3 @@
-/// @function player_is_ready(phase)
 function player_is_ready(phase)
 {
     switch (phase)
@@ -19,7 +18,6 @@ function player_is_ready(phase)
     }
 }
 
-/// @function player_is_standing(phase)
 function player_is_standing(phase)
 {
     switch (phase)
@@ -29,10 +27,10 @@ function player_is_standing(phase)
             // Check if standing on a cliff
             cliff_sign = 0;
             var height = y_radius + y_tile_reach;
-            if (not player_ray_collision(tilemaps, 0, height))
+            if (not player_raycast(tilemaps, 0, height))
             {
-                cliff_sign = player_ray_collision(tilemaps, -x_radius, height) -
-                    player_ray_collision(tilemaps, x_radius, height);
+                cliff_sign = player_raycast(tilemaps, -x_radius, height) -
+                    player_raycast(tilemaps, x_radius, height);
             }
             
             // Animate
@@ -101,7 +99,6 @@ function player_is_standing(phase)
     }
 }
 
-/// @function player_is_running(phase)
 function player_is_running(phase)
 {
     switch (phase)
@@ -247,7 +244,6 @@ function player_is_running(phase)
     }
 }
 
-/// @function player_is_looking(phase)
 function player_is_looking(phase)
 {
     switch (phase)
@@ -310,7 +306,6 @@ function player_is_looking(phase)
     }
 }
 
-/// @function player_is_crouching(phase)
 function player_is_crouching(phase)
 {
     switch (phase)
@@ -382,7 +377,6 @@ function player_is_crouching(phase)
     }
 }
 
-/// @function player_is_rolling(phase)
 function player_is_rolling(phase)
 {
     switch (phase)
@@ -454,7 +448,6 @@ function player_is_rolling(phase)
     }
 }
 
-/// @function player_is_spin_dashing(phase)
 function player_is_spin_dashing(phase)
 {
     switch (phase)
@@ -523,7 +516,6 @@ function player_is_spin_dashing(phase)
     }
 }
 
-/// @function player_is_hammer_attacking(phase)
 function player_is_hammer_attacking(phase)
 {
     switch (phase)
@@ -561,8 +553,8 @@ function player_is_hammer_attacking(phase)
             {
                 if (input_button.aux.pressed)
                 {
-                    var hammer_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                    if (hammer_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
+                    var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                    if (hammer_skill_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
                     {
                         hammer_double = true;
                     }

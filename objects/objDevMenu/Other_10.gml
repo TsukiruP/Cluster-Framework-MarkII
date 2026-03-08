@@ -12,28 +12,28 @@ boost_mode_option = new dev_option_bool("Boost Mode");
 with (boost_mode_option)
 {
     get = function() { return db_read(SAVE_DATABASE, true, "boost_mode"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "boost_mode"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "boost_mode"); };
 }
 
 trick_actions_option = new dev_option_bool("Trick Actions");
 with (trick_actions_option)
 {
     get = function() { return db_read(SAVE_DATABASE, true, "trick_actions"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "trick_actions"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "trick_actions"); };
 }
 
 tag_actions_option = new dev_option_bool("Tag Actions");
 with (tag_actions_option)
 {
     get = function() { return db_read(SAVE_DATABASE, true, "tag_actions"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "tag_actions"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "tag_actions"); };
 }
 
 swap_option = new dev_option_bool("Swap");
 with (swap_option)
 {
     get = function() { return db_read(SAVE_DATABASE, true, "swap"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "swap"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "swap"); };
 }
 
 config_option = new dev_option("Config");

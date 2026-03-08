@@ -1,4 +1,3 @@
-/// @function player_is_fan_flying(phase)
 function player_is_fan_flying(phase)
 {
     switch (phase)

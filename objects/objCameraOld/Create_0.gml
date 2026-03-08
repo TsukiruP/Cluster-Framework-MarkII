@@ -45,7 +45,6 @@ volume_lists_strength = [1];
 camera_set_view_pos(CAMERA_ID, x - CAMERA_WIDTH / 2, y - CAMERA_HEIGHT / 2);
 
 // Misc.
-/// @method camera_resize()
 /// @description Resizes the camera, accounting for zoom.
 camera_resize = function()
 {
@@ -61,7 +60,6 @@ camera_resize = function()
     camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
 };
 
-/// @method camera_zoom(zoom, [duration])
 /// @description Zooms the camera over the given duration.
 /// @param {Real} zoom Amount to zoom.
 /// @param {Real} [duration] Duration to zoom (optional, defaults to 0).

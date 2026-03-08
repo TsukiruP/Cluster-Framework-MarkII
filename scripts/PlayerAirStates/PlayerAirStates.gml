@@ -1,4 +1,3 @@
-/// @function player_is_falling(phase)
 function player_is_falling(phase)
 {
     switch (phase)
@@ -68,7 +67,6 @@ function player_is_falling(phase)
     }
 }
 
-/// @function player_is_jumping(phase)
 function player_is_jumping(phase)
 {
     switch (phase)
@@ -147,7 +145,6 @@ function player_is_jumping(phase)
     }
 }
 
-/// @function player_is_hurt(phase)
 function player_is_hurt(phase)
 {
     switch (phase)
@@ -185,7 +182,6 @@ function player_is_hurt(phase)
     }
 }
 
-/// @function player_is_dead(phase)
 function player_is_dead(phase)
 {
     switch (phase)
@@ -244,7 +240,6 @@ function player_is_dead(phase)
     }
 }
 
-/// @function player_is_aqua_bounding
 function player_is_aqua_bounding(phase)
 {
     switch (phase)

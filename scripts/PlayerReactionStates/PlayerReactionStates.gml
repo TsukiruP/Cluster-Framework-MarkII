@@ -1,4 +1,3 @@
-/// @function player_is_sprung(phase)
 function player_is_sprung(phase)
 {
     switch (phase)
@@ -17,7 +16,7 @@ function player_is_sprung(phase)
         {
             // Trick
             if (state_time > 0) state_time--;
-            if (player_try_trick(state_time)) exit;
+            if (player_try_trick_action(state_time)) exit;
             
             // Accelerate
             if (input_axis_x != 0)

@@ -14,7 +14,6 @@ active_time = active_duration;
 // Status Bar
 if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 {
-    /// @method status()
     /// @description Creates a new status.
     status = function() constructor
     {
@@ -81,7 +80,6 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 // Item Feed
 if (item_feed_config)
 {
-    /// @method popup(icon)
     /// @description Creates a new item post.
     popup = function(_icon) constructor
     {

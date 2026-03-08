@@ -28,7 +28,7 @@ reaction = function(pla)
                 if (pla.y_speed >= 0)
                 {
                     sink_direction |= (hurtbox_flags & 0xF0000);
-                    pla.ground_id = id;
+                    pla.solid_id = id;
                 }
                 break;
             }

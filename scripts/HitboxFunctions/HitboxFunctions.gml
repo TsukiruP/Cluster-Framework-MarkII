@@ -1,22 +1,46 @@
-/// @function hitbox(col, [left], [top], [right], [bottom])
+/// @description Creates a new rectangle with the given dimensions.
+/// @param {Real} left Left radius of the rectangle (optional, default is 0).
+/// @param {Real} top Top radius of the rectangle (optional, default is 0).
+/// @param {Real} right Right radius of the rectangle (optional, default is 0).
+/// @param {Real} bottom Bottom radius of the rectangle (optional, default is 0).
+function rect(_left = 0, _top = 0, _right = 0, _bottom = 0) constructor
+{
+	left = _left;
+	top = _top;
+	right = _right;
+	bottom = _bottom;
+    
+    /// @description Sets the rectangle with the given dimensions.
+    /// @param {Real} left Left radius of the rectangle (optional, default is 0).
+    /// @param {Real} top Top radius of the rectangle (optional, default is 0).
+    /// @param {Real} right Right radius of the rectangle (optional, default is 0).
+    /// @param {Real} bottom Bottom radius of the rectangle (optional, default is 0).
+    static set_size = function(_left = 0, _top = 0, _right = 0, _bottom = 0)
+    {
+        left = _left;
+        top = _top;
+        right = _right;
+        bottom = _bottom;
+    };
+}
+
 /// @description Creates a new hitbox with the given color and dimensions.
-/// @param {Constant.Color} col Color of the hitbox.
+/// @param {Constant.Color} color Color of the hitbox.
 /// @param {Real} left Left radius of the hitbox (optional, default is 0).
 /// @param {Real} top Top radius of the hitbox (optional, default is 0).
 /// @param {Real} right Right radius of the hitbox (optional, default is 0).
 /// @param {Real} bottom Bottom radius of the hitbox (optional, default is 0).
-function hitbox(col, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
+function hitbox(_color, _left = 0, _top = 0, _right = 0, _bottom = 0) : rect(_left, _top, _right, _bottom) constructor
 {
-    color = col;
+    color = _color;
 }
 
-/// @function collision_player(hb, pla, [plahb])
 /// @description Checks if the given player is intersecting the given hitbox.
 /// @param {Real} hb Hitbox to check.
 /// @param {Id.Instance} pla Player to check.
 /// @param {Real} plahb Player hitbox to check (optional, defaults to virtual mask).
 /// @returns {Real}
-function collision_player(hb, pla, plahb = -1)
+function collision_player(_hb, _pla, _plahb = -1)
 {
     var result = 0;
     var x_int = x div 1;
@@ -25,10 +49,10 @@ function collision_player(hb, pla, plahb = -1)
     var sine = dsin(gravity_direction);
     var cosine = dcos(gravity_direction);
     
-    var left = hitboxes[hb].left;
-    var top = hitboxes[hb].top;
-    var right = hitboxes[hb].right;
-    var bottom = hitboxes[hb].bottom;
+    var left = hitboxes[_hb].left;
+    var top = hitboxes[_hb].top;
+    var right = hitboxes[_hb].right;
+    var bottom = hitboxes[_hb].bottom;
     
     // Abort if hitbox is empty
     if ((left == 0 and top == 0 and right == 0 and bottom == 0)) return 0;
@@ -45,31 +69,31 @@ function collision_player(hb, pla, plahb = -1)
         bottom *= -1;
     }
     
-    var px_int = pla.x div 1;
-    var py_int = pla.y div 1;
+    var px_int = _pla.x div 1;
+    var py_int = _pla.y div 1;
     
-    var psine = dsin(pla.mask_direction);
-    var pcosine = dcos(pla.mask_direction);
+    var psine = dsin(_pla.mask_direction);
+    var pcosine = dcos(_pla.mask_direction);
     
-    var pleft = -pla.x_radius;
-    var ptop = -pla.y_radius;
-    var pright = pla.x_radius;
-    var pbottom = pla.y_radius;
+    var pleft = -_pla.x_radius;
+    var ptop = -_pla.y_radius;
+    var pright = _pla.x_radius;
+    var pbottom = _pla.y_radius;
     
-    if (plahb > -1)
+    if (_plahb > -1)
     {
-        pleft = pla.hitboxes[plahb].left;
-        ptop = pla.hitboxes[plahb].top;
-        pright = pla.hitboxes[plahb].right;
-        pbottom = pla.hitboxes[plahb].bottom;
+        pleft = _pla.hitboxes[_plahb].left;
+        ptop = _pla.hitboxes[_plahb].top;
+        pright = _pla.hitboxes[_plahb].right;
+        pbottom = _pla.hitboxes[_plahb].bottom;
         
-        if (pla.image_xscale == -1)
+        if (_pla.image_xscale == -1)
         {
             pleft *= -1;
             pright *= -1;
         }
         
-        if (pla.image_yscale == -1)
+        if (_pla.image_yscale == -1)
         {
             ptop *= -1;
             pbottom *= -1;
@@ -171,22 +195,20 @@ function collision_player(hb, pla, plahb = -1)
     return result;
 }
 
-/// @function collision_direction(flags)
 /// @description Converts the given flags to a direction in degrees.
 /// @param {Real} flags Flags to convert.
 /// @returns {Real}
-function collision_direction(flags)
+function collision_direction(_flags)
 {
-    if (flags & COLL_FLAG_TOP) return 90;
-    else if (flags & COLL_FLAG_BOTTOM) return 270;
-    else if (flags & COLL_FLAG_LEFT) return 180;
-    else if (flags & COLL_FLAG_RIGHT) return 0;
+    if (_flags & COLL_FLAG_TOP) return 90;
+    else if (_flags & COLL_FLAG_BOTTOM) return 270;
+    else if (_flags & COLL_FLAG_LEFT) return 180;
+    else if (_flags & COLL_FLAG_RIGHT) return 0;
 }
 
-/// @function draw_hitboxes([ang])
 /// @description Draws all hitboxes assigned to the instance.
 /// @param {Real} [ang] Angle to draw the hitboxes (optional, default is gravity_direction).
-function draw_hitboxes(ang = gravity_direction)
+function draw_hitboxes(_ang = gravity_direction)
 {
 	var x_int = x div 1;
 	var y_int = y div 1;
@@ -200,8 +222,8 @@ function draw_hitboxes(ang = gravity_direction)
 		
 		if (not (left == 0 and top == 0 and right == 0 and bottom == 0))
 		{
-			var sine = dsin(ang);
-        	var cosine = dcos(ang);
+			var sine = dsin(_ang);
+        	var cosine = dcos(_ang);
         	var color = hitboxes[i].color;
         	
 			if (image_xscale == -1)

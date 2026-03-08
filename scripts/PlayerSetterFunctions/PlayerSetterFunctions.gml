@@ -1,4 +1,4 @@
-/// @function player_eject_wall(inst)
+/*/// @function player_eject_wall(inst)
 /// @description Moves the player's virtual mask out of collision with the given wall.
 /// @param {Id.Instance|Id.TileMapElement} inst Instance or tilemap to eject from.
 /// @returns {Real|Undefined} Sign of the wall from the player, or undefined on failure to reposition.
@@ -109,7 +109,7 @@ function player_detect_angle()
 			}
 		}*/
 		
-		// Reposition offset point, if applicable
+		/*// Reposition offset point, if applicable
 		if (edge == 1)
 		{
 			ox -= cosine * x_radius;

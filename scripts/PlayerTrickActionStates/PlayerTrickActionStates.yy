@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"InputFunctions",
+  "%Name":"PlayerTrickActionStates",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InputFunctions",
+  "name":"PlayerTrickActionStates",
   "parent":{
-    "name":"Global",
-    "path":"folders/Scripts/Global.yy",
+    "name":"States",
+    "path":"folders/Scripts/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,4 +1,4 @@
-/// @function player_get_collisions()
+/*/// @function player_get_collisions()
 /// @description Executes the reaction of all interactables.
 /// It also registers any tilemaps for terrain collision detection.
 function player_get_collisions()
@@ -7,7 +7,7 @@ function player_get_collisions()
     array_resize(tilemaps, tilemap_count);
     
     // Reset ground instance
-    ground_id = noone;
+    solid_id = noone;
     
     with (objInteractable) reaction(other);
     
@@ -20,7 +20,7 @@ function player_get_collisions()
     /* AUTHOR NOTE:
     There is a limitation with the semisolid tilemap detection where, if the player passes through it whilst standing on it,
     they will fall as it will be delisted from their `tilemaps` array. */
-}
+/*}
 
 /// @function player_calc_tile_normal(x, y, rot)
 /// @description Calculates the surface normal of the 16x16 solid chunk found at the given point.

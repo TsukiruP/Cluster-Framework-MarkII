@@ -25,7 +25,7 @@ reaction = function(pla)
             pla.x += x_dist;
             pla.y += y_dist;
             pla.y_speed = 0;
-            pla.ground_id = id;
+            pla.solid_id = id;
             
             if (state == 0)
             {
@@ -34,13 +34,13 @@ reaction = function(pla)
             }
         }
         
-        if (state == 2 and pla.ground_id == id and state_time >= 32)
+        if (state == 2 and pla.solid_id == id and state_time >= 32)
         {
             state = 3;
             pla.aerial_flags |= AERIAL_FLAG_PLATFORM;
             pla.y_speed = y_speed;
             pla.on_ground = false;
-            pla.ground_id = noone;
+            pla.solid_id = noone;
         }
     }
 }
