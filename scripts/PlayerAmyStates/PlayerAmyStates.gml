@@ -1,4 +1,3 @@
-/// @function player_is_hammer_whirling(phase)
 function player_is_hammer_whirling(phase)
 {
     switch (phase)

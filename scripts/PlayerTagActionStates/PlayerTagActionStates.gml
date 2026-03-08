@@ -1,4 +1,3 @@
-/// @function player_is_flight_riding(phase)
 function player_is_flight_riding(phase)
 {
     switch (phase)

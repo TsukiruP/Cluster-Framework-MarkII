@@ -10,12 +10,12 @@ if (input_enabled and (player_index == 0 or cpu_gamepad_time > 0))
     input_axis_x = InputOpposing(INPUT_VERB.LEFT, INPUT_VERB.RIGHT, player_index);
     input_axis_y = InputOpposing(INPUT_VERB.UP, INPUT_VERB.DOWN, player_index);
     
-    struct_foreach(input_button, function(name, value)
+    struct_foreach(input_button, function(_name, _value)
     {
-        var verb = value.verb;
-        value.check = InputCheck(verb, player_index);
-        value.pressed = InputPressed(verb, player_index);
-        value.released = InputReleased(verb, player_index);
+        var verb = _value.verb;
+        _value.check = InputCheck(verb, player_index);
+        _value.pressed = InputPressed(verb, player_index);
+        _value.released = InputReleased(verb, player_index);
     });
     
     if (confusion_time > 0) input_axis_x *= -1;

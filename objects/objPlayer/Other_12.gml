@@ -326,20 +326,20 @@ player_refresh_inputs = function()
     input_axis_x = 0;
     input_axis_y = 0;
     
-    struct_foreach(input_button, function(name, value)
+    struct_foreach(input_button, function(_name, _value)
     {
-        var verb = value.verb;
-        value.check = false;
-        value.pressed = false;
-        value.released = false;
+        var verb = _value.verb;
+        _value.check = false;
+        _value.pressed = false;
+        _value.released = false;
     });
 };
 
 /// @description Resets the player's input records.
 player_refresh_cpu_records = function()
 {
-    array_foreach(cpu_axis_x, function(element, index) { element = 0; });
-    array_foreach(cpu_axis_y, function(element, index) { element = 0; });
-    array_foreach(cpu_input_jump, function(element, index) { element = false; });
-    array_foreach(cpu_input_jump_pressed, function(element, index) { element = false; });
+    array_foreach(cpu_axis_x, function(_element, _index) { _element = 0; });
+    array_foreach(cpu_axis_y, function(_element, _index) { _element = 0; });
+    array_foreach(cpu_input_jump, function(_element, _index) { _element = false; });
+    array_foreach(cpu_input_jump_pressed, function(_element, _index) { _element = false; });
 };

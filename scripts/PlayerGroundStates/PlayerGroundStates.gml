@@ -1,4 +1,3 @@
-/// @function player_is_ready(phase)
 function player_is_ready(phase)
 {
     switch (phase)
@@ -19,7 +18,6 @@ function player_is_ready(phase)
     }
 }
 
-/// @function player_is_standing(phase)
 function player_is_standing(phase)
 {
     switch (phase)
@@ -101,7 +99,6 @@ function player_is_standing(phase)
     }
 }
 
-/// @function player_is_running(phase)
 function player_is_running(phase)
 {
     switch (phase)
@@ -247,7 +244,6 @@ function player_is_running(phase)
     }
 }
 
-/// @function player_is_looking(phase)
 function player_is_looking(phase)
 {
     switch (phase)
@@ -310,7 +306,6 @@ function player_is_looking(phase)
     }
 }
 
-/// @function player_is_crouching(phase)
 function player_is_crouching(phase)
 {
     switch (phase)
@@ -382,7 +377,6 @@ function player_is_crouching(phase)
     }
 }
 
-/// @function player_is_rolling(phase)
 function player_is_rolling(phase)
 {
     switch (phase)
@@ -454,7 +448,6 @@ function player_is_rolling(phase)
     }
 }
 
-/// @function player_is_spin_dashing(phase)
 function player_is_spin_dashing(phase)
 {
     switch (phase)
@@ -523,7 +516,6 @@ function player_is_spin_dashing(phase)
     }
 }
 
-/// @function player_is_hammer_attacking(phase)
 function player_is_hammer_attacking(phase)
 {
     switch (phase)

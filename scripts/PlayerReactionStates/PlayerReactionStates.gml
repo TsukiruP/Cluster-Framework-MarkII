@@ -1,4 +1,3 @@
-/// @function player_is_sprung(phase)
 function player_is_sprung(phase)
 {
     switch (phase)

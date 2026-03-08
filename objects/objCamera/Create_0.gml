@@ -62,7 +62,6 @@ camera_set_view_pos(CAMERA_ID, ox, oy);
 // Misc.
 return_speed = 0;
 
-/// @method resize_view()
 /// @description Resizes the camera, accounting for zoom.
 resize_view = function()
 {
@@ -78,26 +77,24 @@ resize_view = function()
     camera_set_view_pos(CAMERA_ID, x_shift, y_shift);
 };
 
-/// @method view_to_room_x(x)
 /// @description Camera view to room position.
 /// @param {Real} x
 /// @returns {Real}
-view_to_room_x = function(ox)
+view_to_room_x = function(_x)
 {
     var zoom_offset = (CAMERA_WIDTH * (1 - zoom_amount)) / 2;
-    ox *= zoom_amount;
-    ox += zoom_offset + (x - CAMERA_WIDTH / 2) - 1;
-    return ox;
+    _x *= zoom_amount;
+    _x += zoom_offset + (x - CAMERA_WIDTH / 2) - 1;
+    return _x;
 };
 
-/// @method view_to_room_y(y)
 /// @description Camera view to room position.
 /// @param {Real} y
 /// @returns {Real}
-view_to_room_y = function(oy)
+view_to_room_y = function(_y)
 {
     var zoom_offset = (CAMERA_HEIGHT * (1 - zoom_amount)) / 2;
-    oy *= zoom_amount;
-    oy += zoom_offset + (y - CAMERA_HEIGHT / 2) - 1;
-    return oy;
+    _y *= zoom_amount;
+    _y += zoom_offset + (y - CAMERA_HEIGHT / 2) - 1;
+    return _y;
 };

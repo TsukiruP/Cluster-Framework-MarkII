@@ -1,4 +1,3 @@
-/// @function player_is_trick_preparing(phase)
 function player_is_trick_preparing(phase)
 {
     switch (phase)
@@ -59,7 +58,6 @@ function player_is_trick_preparing(phase)
     }
 }
 
-/// @function player_is_tricking(phase)
 function player_is_tricking(phase)
 {
     switch (phase)
@@ -143,7 +141,6 @@ function player_is_tricking(phase)
 
 #region Sonic/Amy
 
-/// @function player_is_trick_bounding(phase)
 function player_is_trick_bounding(phase)
 {
     switch (phase)
@@ -183,7 +180,6 @@ function player_is_trick_bounding(phase)
     }
 }
 
-/// @function player_is_trick_rebounding(phase)
 function player_is_trick_rebounding(phase)
 {
     switch (phase)
@@ -239,7 +235,6 @@ function player_is_trick_rebounding(phase)
 
 #region Knuckles
 
-/// @function player_is_trick_drill_clawing(phase)
 function player_is_trick_drill_clawing(phase)
 {
     switch (phase)
@@ -294,7 +289,6 @@ function player_is_trick_drill_clawing(phase)
     }
 }
 
-/// @function player_is_trick_somersaulting(phase)
 function player_is_trick_somersaulting(phase)
 {
     switch (phase)

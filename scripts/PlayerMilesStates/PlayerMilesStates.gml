@@ -1,4 +1,3 @@
-/// @function player_is_propeller_flying(phase)
 function player_is_propeller_flying(phase)
 {
     switch (phase)

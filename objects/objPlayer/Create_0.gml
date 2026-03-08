@@ -103,7 +103,6 @@ input_enabled = false;
 input_axis_x = 0;
 input_axis_y = 0;
 
-/// @method button(verb)
 /// @description Creates a new button.
 /// @param {Enum.INPUT_VERB} verb Verb to check.
 button = function(_verb) constructor
@@ -129,7 +128,6 @@ input_button =
 // Animation
 animation_data = new animation_core();
 
-/// @method animation_record()
 /// @description Creates a new animation record.
 animation_record = function() constructor
 {
@@ -150,7 +148,7 @@ for (var i = 0; i < ANIMATION_RECORD_COUNT; i++)
 }
 
 // Afterimage
-/// @method afterimage()
+
 /// @description Creates a new afterimage.
 afterimage = function() constructor 
 {
@@ -213,10 +211,10 @@ repeat (16) event_user(n++);
 
 /// @description Increases the player's score count by the given amount.
 /// @param {Real} num Amount of points to give.
-player_gain_score = function(num)
+player_gain_score = function(_num)
 {
     var previous_count = global.score_count div 50000;
-    global.score_count = min(global.score_count + num, SCORE_CAP);
+    global.score_count = min(global.score_count + _num, SCORE_CAP);
     
     // Gain lives
     var count = global.score_count div 50000;
@@ -225,9 +223,9 @@ player_gain_score = function(num)
 
 /// @description Increases the player's ring count by the given amount.
 /// @param {Real} num Amount of rings to give.
-player_gain_rings = function(num)
+player_gain_rings = function(_num)
 {
-    global.ring_count = min(global.ring_count + num, RING_CAP);
+    global.ring_count = min(global.ring_count + _num, RING_CAP);
     
     // Gain lives
     if (global.ring_count > global.ring_life_threshold)
@@ -275,20 +273,20 @@ player_drop_rings = function()
 
 /// @description Increases the player's life count by the given amount.
 /// @param {Real} num Amount of lives to give.
-player_gain_lives = function(num)
+player_gain_lives = function(_num)
 {
     if (LIVES_ENABLED)
     {
-        global.life_count = min(global.life_count + num, LIVES_CAP);
+        global.life_count = min(global.life_count + _num, LIVES_CAP);
         audio_play_life();
     }
 };
 
 /// @description Gives the player the given item.
 /// @param {Enum.ITEM} item Item to obtain.
-player_obtain_item = function(item)
+player_obtain_item = function(_item)
 {
-    switch (item)
+    switch (_item)
     {
         case ITEM.LIFE:
         {
@@ -390,13 +388,12 @@ player_obtain_item = function(item)
     {
         if (item_feed_config)
         {
-            array_push(item_feed, new popup(item));
+            array_push(item_feed, new popup(_item));
             item_feed_time = item_feed_duration;
         }
     }
 };
 
-/// @method player_speed_break()
 /// @description Creates a Speed Break effect.
 player_speed_break = function()
 {
