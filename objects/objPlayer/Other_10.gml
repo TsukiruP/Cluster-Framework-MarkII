@@ -148,14 +148,12 @@ player_move_in_air = function()
                 if (local_direction < 45 or local_direction > 315) x_speed *= 0.5;
             }
             
-            // Refresh skills
-            aerial_flags = 0;
-            player_refresh_aerials();
-            
             // Stop falling, and abort
             y_speed = 0;
             landed = false;
             on_ground = true;
+            aerial_flags = 0;
+            player_refresh_aerials();
             break;
         }
     }

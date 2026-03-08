@@ -9,7 +9,7 @@ with (miles_ground_skill_option)
     maximum = MILES_GROUND_SKILL.HAMMER_ATTACK;
     specifiers = ["None", "Tail Attack", "Tornado", "Hammer Attack"];
     get = function() { return db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "miles", "ground_skill"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "miles", "ground_skill"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "miles", "ground_skill"); };
 }
 
 var miles_options =
@@ -28,7 +28,7 @@ with (amy_hammer_skill_option)
     maximum = AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK;
     specifiers = ["Hammer Attack", "Double Hammer Attack", "Big Hammer Attack"];
     get = function() { return db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill"); };
-    set = function(val) { db_write(SAVE_DATABASE, val, "amy", "hammer_skill"); };
+    set = function(_val) { db_write(SAVE_DATABASE, _val, "amy", "hammer_skill"); };
 }
 
 var amy_options =

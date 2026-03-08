@@ -238,7 +238,7 @@ player_refresh_physics = function()
     
     acceleration = base_acceleration;
     air_acceleration = acceleration * 2;
-}();
+};
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
 /// @param {Real} force Friction value to use.
@@ -309,6 +309,8 @@ player_refresh_boost_mode = function()
     }
 };
 
+player_refresh_physics();
+
 /// @description Resets the player's status.
 player_refresh_status = function()
 {
@@ -318,7 +320,9 @@ player_refresh_status = function()
     superspeed_time = 0;
     confusion_time = 0;
     shield.index = SHIELD.NONE;
-}();
+};
+
+player_refresh_status();
 
 /// @description Resets the player's inputs.
 player_refresh_inputs = function()
