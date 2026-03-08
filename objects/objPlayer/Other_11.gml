@@ -80,11 +80,11 @@ player_raycast = function(_ind, _xoff, _ylen)
 /// @description Refreshes the player's local tilemaps, and executes the reaction of interactables.
 player_get_collisions = function()
 {
-    // Reset tilemaps
-    array_resize(tilemaps, tilemap_count);
-    
     // Reset solid
     solid_id = noone;
+    
+    // Reset tilemaps
+    array_resize(tilemaps, tilemap_count);
     
     // Calculate the area of the upper half of the player's virtual mask
     var x_int = x div 1;
