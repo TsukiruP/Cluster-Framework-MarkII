@@ -23,6 +23,7 @@ player_move_on_ground = function ()
 	{
 		x += dcos(direction) * step;
 		y -= dsin(direction) * step;
+		player_keep_in_bounds();
 		
 		// Detect colliders
 		player_get_collisions();
@@ -63,6 +64,7 @@ player_move_in_air = function ()
 	{
 		x += cosine * x_step + sine * y_step;
 		y += -sine * x_step + cosine * y_step;
+		player_keep_in_bounds();
 		
 		// Detect colliders
 		player_get_collisions();
