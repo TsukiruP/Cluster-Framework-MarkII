@@ -119,7 +119,7 @@ function animation_update()
 function animation_is_starting(_index = 0)
 {
     var duration = animation_data.ani.duration;
-    return (animation_data.pos == _index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
+    return (animation_data.pos == _index and animation_data.alarm == (is_array(duration) ? duration[_index] : duration));
 }
 
 /// @description Checks if the animation is finished.
