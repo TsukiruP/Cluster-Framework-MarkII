@@ -553,8 +553,8 @@ function player_is_hammer_attacking(phase)
             {
                 if (input_button.aux.pressed)
                 {
-                    var hammer_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                    if (hammer_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
+                    var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                    if (hammer_skill_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
                     {
                         hammer_double = true;
                     }

@@ -476,8 +476,8 @@ player_try_skill = function()
                         player_perform(player_is_hammer_attacking, false);
                         
                         // Animate
-                        var hammer_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                        animation_play(hammer_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
+                        var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                        animation_play(hammer_skill_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
                         return true;
                     }
                 }
