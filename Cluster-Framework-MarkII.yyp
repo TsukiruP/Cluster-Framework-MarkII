@@ -419,7 +419,6 @@
     {"id":{"name":"InputDirection","path":"scripts/InputDirection/InputDirection.yy",},},
     {"id":{"name":"InputDistance","path":"scripts/InputDistance/InputDistance.yy",},},
     {"id":{"name":"InputDuration","path":"scripts/InputDuration/InputDuration.yy",},},
-    {"id":{"name":"InputFunctions","path":"scripts/InputFunctions/InputFunctions.yy",},},
     {"id":{"name":"InputGameHasFocus","path":"scripts/InputGameHasFocus/InputGameHasFocus.yy",},},
     {"id":{"name":"InputGetBindingName","path":"scripts/InputGetBindingName/InputGetBindingName.yy",},},
     {"id":{"name":"InputGetHotswap","path":"scripts/InputGetHotswap/InputGetHotswap.yy",},},

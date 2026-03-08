@@ -4,7 +4,7 @@
 player_move_on_ground = function()
 {
     // Ride moving platforms
-    with (ground_id)
+    with (solid_id)
     {
         var dx = x - xprevious;
         var dy = y - yprevious;
@@ -20,8 +20,12 @@ player_move_on_ground = function()
     
     repeat (total_steps)
     {
+        // Move by a single step
         x += dcos(direction) * step;
         y -= dsin(direction) * step;
+        
+        // Die if out of bounds
+        if (not player_keep_in_bounds()) player_damage(id);
         
         // Detect colliders
         player_get_collisions();
@@ -34,7 +38,14 @@ player_move_on_ground = function()
         }
         
         // Detect floor
-        if (player_boxcast(tilemaps, floor_reach))
+        if (instance_exists(solid_id))
+        {
+            on_ground = true;
+            direction = gravity_direction;
+            mask_direction = gravity_direction;
+            local_direction = 0;
+        }
+        else if (player_boxcast(tilemaps, floor_reach))
         {
             player_ground(true);
             player_rotate_mask();
@@ -65,6 +76,9 @@ player_move_in_air = function()
         x += cosine * x_step + sine * y_step;
         y += -sine * x_step + cosine * y_step;
         
+        // Die if out of bounds
+        if (not player_keep_in_bounds()) player_damage(id);
+        
         // Detect colliders
         player_get_collisions();
         
@@ -77,7 +91,15 @@ player_move_in_air = function()
         // Detect floors / ceilings
         if (y_speed >= 0)
         {
-            if (player_boxcast(tilemaps, y_radius))
+            if (instance_exists(solid_id))
+            {
+                landed = true;
+                on_ground = true;
+                direction = gravity_direction;
+                mask_direction = gravity_direction;
+                local_direction = 0;
+            }
+            else if (player_boxcast(tilemaps, y_radius))
             {
                 landed = true;
                 player_ground(true);
@@ -125,6 +147,10 @@ player_move_in_air = function()
                 x_speed = -y_speed * sign(dsin(local_direction));
                 if (local_direction < 45 or local_direction > 315) x_speed *= 0.5;
             }
+            
+            // Refresh skills
+            aerial_flags = 0;
+            player_refresh_aerials();
             
             // Stop falling, and abort
             y_speed = 0;

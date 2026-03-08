@@ -8,7 +8,7 @@ player_escape_wall = function()
     var y_int = y div 1;
     var sine = dsin(mask_direction);
     var cosine = dcos(mask_direction);
-    var ind = tilemaps;
+    var ind = tilemaps; //instance_place(x_int, y_int, tilemaps);
     
     if (collision_point(x_int, y_int, ind, true, false) == noone)
     {
@@ -60,6 +60,7 @@ player_ground = function(_land)
     {
         on_ground = false;
         mask_direction = gravity_direction;
+        exit;
     }
     
     // Reposition

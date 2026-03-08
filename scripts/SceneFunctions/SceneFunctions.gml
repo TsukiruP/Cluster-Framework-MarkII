@@ -1,4 +1,3 @@
-/// @function scene(transition, [music])
 /// @description Creates a new scene.
 /// @param {Enum.TRANSITION} transition Transition of the scene.
 /// @param {Asset.GMSound} [music] Music of the scene (optional, defaults to undefined).
@@ -8,7 +7,6 @@ function scene(_transition, _music = undefined) constructor
     music = _music;
 }
 
-/// @function stage([music], [zone], [act])
 /// @description Creates a new stage scene.
 /// @param {Asset.GMSound} [music] Music of the stage (optional, defaults to undefined).
 /// @param {String} [zone] Zone of the stage (optional, defaults to "").
@@ -19,12 +17,11 @@ function stage(_music = undefined, _zone = "", _act = 0) : scene(TRANSITION.TITL
     act = _act;
 }
 
-/// @function room_get_scene([rm])
-/// @param {Asset.GMRoom} [rm] Room to check (optional, defaults to the current room).
+/// @param {Asset.GMRoom} [room] Room to check (optional, defaults to the current room).
 /// @returns {Struct.scene}
-function room_get_scene(rm = room)
+function room_get_scene(_room = room)
 {
-    switch (rm)
+    switch (_room)
     {
         case rmTest:
         {
@@ -41,22 +38,21 @@ function room_get_scene(rm = room)
     }
 }
 
-/// @function transition_create(rm, [override])
 /// @description Creates a new transition.
-/// @param {Asset.GMRoom} rm Room to go to.
+/// @param {Asset.GMRoom} room Room to go to.
 /// @param {Enum.TRANSITION} [override] Transition to override with (optional, defaults to undefined).
 /// @returns {Id.Instance}
-function transition_create(rm, override = undefined)
+function transition_create(_room, _override = undefined)
 {
     var transition;
-    var room_scene = room_get_scene(rm);
-    var room_transition = (override == undefined ? room_scene.transition : override);
+    var room_scene = room_get_scene(_room);
+    var room_transition = (_override == undefined ? room_scene.transition : _override);
     
     transition = instance_create_depth(0, 0, 0, objTransition);
     with (transition)
     {
         index = room_transition;
-        target = rm;
+        target = _room;
         target_scene = room_scene;
     }
     
@@ -69,7 +65,6 @@ function transition_create(rm, override = undefined)
     return transition;
 }
 
-/// @function stage_start()
 /// @description Starts the stage.
 function stage_start()
 {

@@ -177,6 +177,7 @@ speed_break =
 {
     x : 0,
     y : 0,
+    visible : false,
     positions : array_create(SPEED_BREAK_COUNT),
     accelerations : array_create(SPEED_BREAK_COUNT),
     unkE2 : 128,
@@ -185,8 +186,7 @@ speed_break =
     sprite_index : -1,
     image_index : 0,
     image_angle : 0,
-    animation_data : new animation_core(),
-    visible : false
+    animation_data : new animation_core()
 };
 
 with (speed_break)

@@ -20,7 +20,7 @@ player_refresh_animation_history = function()
     animation_history_index = ++animation_history_index mod ANIMATION_RECORD_COUNT;
 };
 
-/// @description
+/// @description Sets the given animation as the player's current animation.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to gravity_direction).
 player_set_animation = function(_ani, _ang = gravity_direction)
@@ -29,7 +29,7 @@ player_set_animation = function(_ani, _ang = gravity_direction)
     image_angle = _ang;
 };
 
-/// @description
+/// @description Sets the given animation based on teeter conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_teeter = function(_ani)
 {
@@ -37,7 +37,7 @@ player_animate_teeter = function(_ani)
     player_set_animation(_ani);
 };
 
-/// @description
+/// @description Sets the given animation based on running conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 /// @param {Real} [ang] Angle to set (optional, defaults to direction).
 player_animate_run = function(_ani, _ang = direction)
@@ -58,7 +58,7 @@ player_animate_run = function(_ani, _ang = direction)
     if (on_ground) animation_data.speed = clamp((abs(x_speed) / 3) + (abs(x_speed) / 4), 0.5, 8);
 };
 
-/// @description
+/// @description Sets the given animation based on falling conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_fall = function(_ani)
 {
@@ -66,7 +66,7 @@ player_animate_fall = function(_ani)
     player_set_animation(_ani, rotate_towards(mask_direction, image_angle));
 };
 
-/// @description
+/// @description Sets the given animation based on jumping conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_jump = function(_ani)
 {
@@ -79,7 +79,7 @@ player_animate_jump = function(_ani)
         }
         case 1:
         {
-            if (y_speed > 0 and player_boxcast(tilemaps, y_radius + 32) != undefined) animation_data.variant = 2;
+            if (y_speed > 0 and player_boxcast(tilemaps, y_radius + 32)) animation_data.variant = 2;
             break;
         }
     }
@@ -87,7 +87,7 @@ player_animate_jump = function(_ani)
     player_set_animation(_ani);
 };
 
-/// @description
+/// @description Sets the given animation based on spring conditions.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
 player_animate_spring = function(_ani)
 {

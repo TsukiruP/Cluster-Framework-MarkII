@@ -1,4 +1,3 @@
-/// @function animation(sprite, duration, [loop], [order])
 /// @description Creates a new animation with the given sprite and given duration.
 /// @param {Asset.GMSprite} sprite Sprite to draw.
 /// @param {Real|Array} duration Duration of each frame. Provide an array to set the duration per frame.
@@ -12,7 +11,6 @@ function animation(_sprite, _duration, _loop = 0, _order = []) constructor
     order = _order;
 }
 
-/// @function animation_core()
 /// @description Creates a new animation core.
 function animation_core() constructor
 {
@@ -26,30 +24,29 @@ function animation_core() constructor
     time = 0;
 }
 
-/// @function animation_play(index, [variant], [alternatives])
-/// @description Sets the given index within the animation core.
+/// @description Sets the index of the animation core.
 /// @param {Real} index Animation index to set.
 /// @param {Real} [variant] Variant to set (optional, defaults to 0 if the indexes don't match).
-function animation_play(index, variant = -1, alternatives = [])
+/// @param {Array} [alternatives] Alternative animations to consi
+function animation_play(_index, _variant = -1, _alternatives = [])
 {
     // Abort if...
-    if (variant == -1 and animation_data.index == index) exit; // Indexes match with no given variant
-    if (array_contains(alternatives, animation_data.index)) exit; // Current index is an alternative
+    if (_variant == -1 and animation_data.index == _index) exit; // Indexes match with no given variant
+    if (array_contains(_alternatives, animation_data.index)) exit; // Current index is an alternative
     
-    if (variant == -1) variant = 0;
-    animation_data.force = (animation_data.index == index);
-    animation_data.index = index;
-    animation_data.variant = variant;
+    animation_data.force = (animation_data.index == _index);
+    animation_data.index = _index;
+    animation_data.variant = (_variant == -1 ? 0 : _variant);
 }
 
-/// @function animation_set(ani)
-/// @description Sets the given animation within the animation core.
+/// @description Sets the animation of the animation core.
 /// @param {Undefined|Struct.animation|Array} ani Animation to set. Accepts an array as animation variants.
-function animation_set(ani)
+function animation_set(_ani)
 {
-    ani = (is_array(ani) ? ani[min(array_length(ani) - 1, animation_data.variant)] : ani);
+    // Take out a variant if given an array
+    _ani = (is_array(_ani) ? _ani[min(array_length(_ani) - 1, animation_data.variant)] : _ani);
     
-    if (ani == undefined)
+    if (_ani == undefined)
     {
         animation_data.variant = 0;
         animation_data.alarm = 0;
@@ -58,12 +55,12 @@ function animation_set(ani)
         sprite_index = -1;
         image_index = 0;
     }
-    else if (animation_data.force or animation_data.ani != ani)
+    else if (animation_data.force or animation_data.ani != _ani)
     {
-        var sprite = ani.sprite;
-        var duration = ani.duration;
-        var loop = ani.loop;
-        var order = ani.order;
+        var sprite = _ani.sprite;
+        var duration = _ani.duration;
+        var loop = _ani.loop;
+        var order = _ani.order;
         var start = 0;
         
         animation_data.alarm = (is_array(duration) ? duration[start] : duration);
@@ -73,12 +70,11 @@ function animation_set(ani)
         image_index = (array_length(order) > 0 ? order[start] : start);
     }
     
-    animation_data.ani = ani;
+    animation_data.ani = _ani;
     animation_data.force = false;
     animation_data.speed = 1;
 }
 
-/// @function animation_update()
 /// @description Updates the animation core.
 function animation_update()
 {
@@ -117,17 +113,15 @@ function animation_update()
     }
 }
 
-/// @function animation_is_starting([index])
-/// @description Checks if the current animation has just started playing at the given index.
+/// @description Checks if the current animation has just started playing the given index.
 /// @param {Real} [index] Index to check (optional, defaults to 0).
 /// @returns {Bool}
-function animation_is_starting(index = 0)
+function animation_is_starting(_index = 0)
 {
     var duration = animation_data.ani.duration;
-    return (animation_data.pos == index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
+    return (animation_data.pos == _index and animation_data.alarm == (is_array(duration) ? duration[index] : duration));
 }
 
-/// @function animation_is_finished()
 /// @description Checks if the animation is finished.
 /// @returns {Bool}
 function animation_is_finished()
@@ -135,12 +129,12 @@ function animation_is_finished()
     return animation_data.pos == -1;
 }
 
-/// @function stamp()
 /// @description Creates a new stamp.
 function stamp() constructor
 {
     x = 0;
     y = 0;
+    visible = true;
     sprite_index = -1;
     image_index = 0;
     image_xscale = 1;
@@ -149,5 +143,4 @@ function stamp() constructor
     image_blend = c_white;
     image_alpha = 1;
     animation_data = new animation_core();
-    visible = true;
 }

@@ -83,6 +83,9 @@ player_get_collisions = function()
     // Reset tilemaps
     array_resize(tilemaps, tilemap_count);
     
+    // Reset solid
+    solid_id = noone;
+    
     // Calculate the area of the upper half of the player's virtual mask
     var x_int = x div 1;
     var y_int = y div 1;
@@ -114,7 +117,7 @@ player_get_collisions = function()
 /// @param {Real} x x-coordinate of the point.
 /// @param {Real} y y-coordinate of the point.
 /// @returns {Real}
-player_calc_tile_normal = function(ox, oy)
+player_calc_tile_normal = function(_x, _y)
 {
     // Set up angle sensors
     var sine = dsin(mask_direction);
@@ -122,20 +125,21 @@ player_calc_tile_normal = function(ox, oy)
     
     if (sine == 0)
     {
-        var sensor_y = array_create(2, oy);
-        var sensor_x = array_create(2, ox - ox mod 16);
+        var sensor_y = array_create(2, _y);
+        var sensor_x = array_create(2, _x - _x mod 16);
         sensor_x[mask_direction == 0] += 15;
     }
     else
     {
-        var sensor_x = array_create(2, ox);
-        var sensor_y = array_create(2, oy - oy mod 16);
+        var sensor_x = array_create(2, _x);
+        var sensor_y = array_create(2, _y - _y mod 16);
         sensor_y[mask_direction == 270] += 15;
     }
     
     // Cache tilemap id to prevent unnecessary iteration through colliders
-    var ind = collision_point(ox + sine, oy + cosine, tilemaps, true, false);
+    var ind = collision_point(_x + sine, _y + cosine, tilemaps, true, false);
     
+    // Extend / regress angle sensors
     for (var n = 0; n < 2; n++)
     {
         repeat (y_tile_reach)
@@ -159,3 +163,95 @@ player_calc_tile_normal = function(ox, oy)
     
     return point_direction(sensor_x[0], sensor_y[0], sensor_x[1], sensor_y[1]) div 1;
 };
+
+/// @description Confines the player inside the camera boundary.
+/// @returns {Bool} Whether the player is inside the boundary or has fallen below it.
+function player_keep_in_bounds()
+{
+    var left = 0;
+    var top = 0;
+    var right = room_width;
+    var bottom = room_height;
+    
+    // Check if already inside (early out)
+    var vertical = gravity_direction mod 180 == 0;
+	if (vertical)
+	{
+		var x1 = x - x_radius;
+		var y1 = y - y_radius;
+		var x2 = x + x_radius;
+		var y2 = y + y_radius;
+	}
+	else
+	{
+		var x1 = x - y_radius;
+		var y1 = y - x_radius;
+		var x2 = x + y_radius;
+		var y2 = y + x_radius;
+	}
+	
+	with (objCamera)
+	{
+		left = bound_left;
+		top = bound_top;
+		right = bound_right;
+		bottom = bound_bottom;
+	}
+	
+	if (rectangle_in_rectangle(x1, y1, x2, y2, left, top, right, bottom) == 1)
+	{
+		return true;
+	}
+	
+	// Reposition
+	if (vertical)
+	{
+		if (x1 < left)
+		{
+			x = left + x_radius;
+			x_speed = 0;
+		}
+		else if (x2 > right)
+		{
+			x = right - x_radius;
+			x_speed = 0;
+		}
+		
+		if (y1 > bottom and gravity_direction == 0)
+		{
+			y = bottom + y_radius;
+			return false;
+		}
+		else if (y2 < top and gravity_direction == 180)
+		{
+			y = top - y_radius;
+			return false;
+		}
+	}
+	else
+	{
+		if (y1 < top)
+		{
+			y = top + x_radius;
+			x_speed = 0;
+		}
+		else if (y2 > bottom)
+		{
+			y = bottom - x_radius;
+			x_speed = 0;
+		}
+		
+		if (x1 > right and gravity_direction == 90)
+		{
+			x = right + y_radius;
+			return false;
+		}
+		else if (x2 < left and gravity_direction == 270)
+		{
+			x = left - y_radius;
+			return false;
+		}
+	}
+	
+	return true;
+}
