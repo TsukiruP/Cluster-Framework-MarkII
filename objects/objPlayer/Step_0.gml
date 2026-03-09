@@ -573,7 +573,7 @@ if (afterimage_visible)
 	    var delay = i * 2 + 2;
         var history_index = modwrap(animation_history_index - delay, 0, ANIMATION_RECORD_COUNT);
         var record = animation_history[history_index];
-        with (afterimage_list[i])
+        with (afterimage_trail[i])
         {
             x = record.x;
             y = record.y;

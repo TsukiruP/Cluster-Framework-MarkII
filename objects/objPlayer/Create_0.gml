@@ -164,10 +164,10 @@ afterimage = function() constructor
 };
 
 afterimage_visible = false;
-afterimage_list = array_create(AFTERIMAGE_COUNT);
+afterimage_trail = array_create(AFTERIMAGE_COUNT);
 for (var i = 0; i < AFTERIMAGE_COUNT; i++)
 {
-    afterimage_list[i] = new afterimage();
+    afterimage_trail[i] = new afterimage();
 }
 
 // Speed Break
