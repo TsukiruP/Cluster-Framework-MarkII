@@ -11,6 +11,144 @@ trick_speed =
 
 hammer_double = false;
 
+/// @description Creates a new heart.
+heart = function() constructor
+{
+    x = 0;
+    y = 0;
+    visible = false;
+    sprite_index = -1;
+    image_index = 0;
+    image_xscale = 1;
+    image_yscale = 1;
+    image_angle = 0;
+    image_blend = c_white;
+    image_alpha = 1;
+    animation_data = new animation_core();
+};
+
+attack_trail =
+{
+    hearts : array_create(HEART_COUNT),
+    state : undefined,
+    pattern : 0,
+    time : 0,
+    offset_index : 0,
+};
+
+for (var i = 0; i < HEART_COUNT; i++)
+{
+    attack_trail.hearts[i] = new heart();
+}
+
+attack_trail_offsets =
+[
+    [
+        [10, 0, -27],
+        [12, 13, -22],
+        [14, 23, -13],
+        [16, 26, 0],
+        [-1, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ],
+    [
+        [10, 7, -27],
+        [12, 20, -22],
+        [14, 30, -13],
+        [16, 33, 0],
+        [-1, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ],
+    [
+        [0, -10, -26],
+        [4, 8, -27],
+        [8, 22, -17],
+        [12, 28, -1],
+        [16, 23, 16],
+        [20, 10, 26],
+        [-1, 0, 0],
+        [0, 0, 0]
+    ],
+    [
+        [2, 0, 4],
+        [6, 19, 6],
+        [10, 28, 2],
+        [14, 19, 4],
+        [18, 0, 6],
+        [22, -19, 2],
+        [26, -28, 4],
+        [30, -19, 6]
+    ]
+];
+
+/// @description Creates an attack trail effect.
+/// @param {Real} pattern
+amy_create_attack_trail = function(_pattern)
+{
+    with (attack_trail)
+    {
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            with (hearts[i])
+            {
+                visible = false;
+            }
+        }
+        
+        state = other.state;
+        pattern = _pattern;
+        time = 0;
+        offset_index = 0;
+    }
+};
+
+/// @description Repositions the attack trail.
+amy_refresh_attack_trail = function()
+{
+    var i = 0;
+    with (attack_trail)
+    {
+        while (hearts[i].visible)
+        {
+            //if (++i >= HEART_COUNT) return;
+        }
+    }
+    
+    if (i < HEART_COUNT)
+    {
+        with (attack_trail)
+        {
+            var x_int = other.x div 1;
+            var y_int = other.y div 1;
+            var x_scale = other.image_xscale;
+            var y_scale = other.image_yscale;
+            
+            hearts[i].x = x_int + x_scale * other.attack_trail_offsets[pattern][offset_index][1];
+            hearts[i].y = y_int + other.attack_trail_offsets[pattern][offset_index][2];
+            hearts[i].visible = true;
+            with (hearts[i]) animation_set(global.ani_amy_heart_v0);
+        }
+    }
+};
+
+player_draw_before = function()
+{
+    with (attack_trail)
+    {
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            if (hearts[i].visible)
+            {
+                with (hearts[i]) draw_self_floored();
+            }
+        }
+    }
+};
+
 player_animate = function()
 {
     var lovely_couple = (global.characters[0] == CHARACTER.SONIC);

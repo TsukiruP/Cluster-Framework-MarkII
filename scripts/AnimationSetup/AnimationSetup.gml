@@ -433,6 +433,8 @@ global.ani_amy_hammer_whirl_v0 = new animation(sprAmyHammerWhirl, [3, 4, 3, 2, 2
 
 global.ani_amy_hammer_jump_v0 = new animation(sprAmyHammerJump, [1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3], 22);
 
+global.ani_amy_heart_v0 = new animation(sprAmyHeart, 3, -1);
+
 #endregion
 
 #region Cream

@@ -424,6 +424,7 @@ player_try_skill = function()
                     {
                         // Perform
                         player_perform(player_is_hammer_attacking, false);
+                        amy_create_attack_trail(0);
                         
                         // Animate
                         var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
