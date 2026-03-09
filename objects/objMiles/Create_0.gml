@@ -9,8 +9,6 @@ trick_speed =
     [-3.5, -3]
 ];
 
-tails = new stamp();
-
 flight_time = 0;
 flight_reset_time = 0;
 flight_carry_time = 0;
@@ -21,6 +19,8 @@ flight_ascent_force = 0.125;
 flight_force = flight_base_force;
 flight_buddy = noone;
 flight_soundid = noone;
+
+tails = new stamp();
 
 player_animate = function()
 {
