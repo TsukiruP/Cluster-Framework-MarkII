@@ -17,6 +17,12 @@ flight_drag_thresholds = [2, 4, 6, 8, 10];
 
 ears = new stamp();
 
+player_draw_before = function()
+{
+    ears.image_alpha = image_alpha;
+    with (ears) draw_self_floored();
+};
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -357,10 +363,4 @@ player_animate = function()
             break;
         }
     }
-};
-
-player_draw_before = function()
-{
-    ears.image_alpha = image_alpha;
-    with (ears) draw_self_floored();
 };

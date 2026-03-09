@@ -22,6 +22,12 @@ flight_soundid = noone;
 
 tails = new stamp();
 
+player_draw_before = function()
+{
+    tails.image_alpha = image_alpha;
+    with (tails) draw_self_floored();
+};
+
 player_animate = function()
 {
     switch (animation_data.index)
@@ -478,10 +484,4 @@ player_animate = function()
             break;
         }
     }
-};
-
-player_draw_before = function()
-{
-    tails.image_alpha = image_alpha;
-    with (tails) draw_self_floored();
 };
