@@ -402,7 +402,10 @@ function player_is_rolling(phase)
                         x_speed += roll_deceleration * input_axis_x;
                         if (sign(x_speed) == input_axis_x) x_speed = roll_deceleration * input_axis_x;
                     }
-                    else image_xscale = input_axis_x;
+                    else
+                    {
+                        image_xscale = input_axis_x;
+                    }
                 }
                 
                 // Friction
