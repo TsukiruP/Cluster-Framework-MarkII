@@ -29,6 +29,8 @@ heart = function() constructor
 
 attack_trail =
 {
+    visible : false,
+    gravity_direction : 0,
     hearts : array_create(HEART_COUNT),
     state : undefined,
     pattern : 0,
@@ -99,7 +101,9 @@ amy_create_attack_trail = function(_pattern)
             }
         }
         
-        state = (_pattern == -1 ? undefined : other.state);
+        visible = true;
+        gravity_direction = other.gravity_direction;
+        state = other.state;
         pattern = _pattern;
         time = 0;
         offset_index = 0;
@@ -132,6 +136,7 @@ amy_refresh_attack_trail = function()
                 x = x_int + cosine * x_offset + sine * y_offset;
                 y = y_int - sine * x_offset + cosine * y_offset;
                 visible = true;
+                image_angle = other.gravity_direction;
                 animation_set(global.ani_amy_heart_v0);
             }
         }

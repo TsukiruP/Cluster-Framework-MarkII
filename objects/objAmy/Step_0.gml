@@ -2,11 +2,11 @@
 event_inherited();
 if (ctrlGame.game_paused) exit;
 
-if (attack_trail.state != state)
+with (attack_trail)
 {
-    with (attack_trail)
+    if (state != other.state)
     {
-        if (pattern != -1)
+        if (visible)
         {
             for (var i = 0; i < HEART_COUNT; i++)
             {
@@ -17,13 +17,10 @@ if (attack_trail.state != state)
                 }
             }
             
-            pattern = -1;
+            visible = false;
         }
     }
-}
-else if (attack_trail.pattern != -1)
-{
-    with (attack_trail)
+    else if (visible)
     {
         for (var i = 0; i < HEART_COUNT; i++)
         {
@@ -43,6 +40,7 @@ else if (attack_trail.pattern != -1)
             var old_time = time++;
             if (old_time > duration)
             {
+                gravity_direction = other.gravity_direction;
                 other.amy_refresh_attack_trail();
                 offset_index = ++offset_index mod 8;
                 if (offset_index == 0) time = 0;
