@@ -27,7 +27,7 @@
   ],
   "name":"sprAmyHeart",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Amy",
     "path":"folders/Sprites/Stage/Player/Characters/Amy.yy",
@@ -91,7 +91,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":8,
+    "xorigin":6,
     "yorigin":8,
   },
   "swatchColours":null,

@@ -34,56 +34,55 @@ attack_trail =
     pattern : 0,
     time : 0,
     offset_index : 0,
+    offsets :
+    [
+        [
+            [10, 0, -27],
+            [12, 13, -22],
+            [14, 23, -13],
+            [16, 26, 0],
+            [-1, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [10, 7, -27],
+            [12, 20, -22],
+            [14, 30, -13],
+            [16, 33, 0],
+            [-1, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [0, -10, -26],
+            [4, 8, -27],
+            [8, 22, -17],
+            [12, 28, -1],
+            [16, 23, 16],
+            [20, 10, 26],
+            [-1, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [2, 0, 4],
+            [6, 19, 6],
+            [10, 28, 2],
+            [14, 19, 4],
+            [18, 0, 6],
+            [22, -19, 2],
+            [26, -28, 4],
+            [30, -19, 6]
+        ]
+    ],
 };
 
 for (var i = 0; i < HEART_COUNT; i++)
 {
     attack_trail.hearts[i] = new heart();
 }
-
-attack_trail_offsets =
-[
-    [
-        [10, 0, -27],
-        [12, 13, -22],
-        [14, 23, -13],
-        [16, 26, 0],
-        [-1, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ],
-    [
-        [10, 7, -27],
-        [12, 20, -22],
-        [14, 30, -13],
-        [16, 33, 0],
-        [-1, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ],
-    [
-        [0, -10, -26],
-        [4, 8, -27],
-        [8, 22, -17],
-        [12, 28, -1],
-        [16, 23, 16],
-        [20, 10, 26],
-        [-1, 0, 0],
-        [0, 0, 0]
-    ],
-    [
-        [2, 0, 4],
-        [6, 19, 6],
-        [10, 28, 2],
-        [14, 19, 4],
-        [18, 0, 6],
-        [22, -19, 2],
-        [26, -28, 4],
-        [30, -19, 6]
-    ]
-];
 
 /// @description Creates an attack trail effect.
 /// @param {Real} pattern
@@ -96,10 +95,11 @@ amy_create_attack_trail = function(_pattern)
             with (hearts[i])
             {
                 visible = false;
+                animation_set(undefined);
             }
         }
         
-        state = other.state;
+        state = (_pattern == -1 ? undefined : other.state);
         pattern = _pattern;
         time = 0;
         offset_index = 0;
@@ -114,23 +114,26 @@ amy_refresh_attack_trail = function()
     {
         while (hearts[i].visible)
         {
-            //if (++i >= HEART_COUNT) return;
+            if (++i >= HEART_COUNT) exit;
         }
-    }
-    
-    if (i < HEART_COUNT)
-    {
-        with (attack_trail)
+        
+        if (i < HEART_COUNT)
         {
             var x_int = other.x div 1;
             var y_int = other.y div 1;
-            var x_scale = other.image_xscale;
-            var y_scale = other.image_yscale;
+            var sine = dsin(other.gravity_direction);
+            var cosine = dcos(other.gravity_direction);
             
-            hearts[i].x = x_int + x_scale * other.attack_trail_offsets[pattern][offset_index][1];
-            hearts[i].y = y_int + other.attack_trail_offsets[pattern][offset_index][2];
-            hearts[i].visible = true;
-            with (hearts[i]) animation_set(global.ani_amy_heart_v0);
+            var x_offset = offsets[pattern][offset_index][1] * other.image_xscale;
+            var y_offset = offsets[pattern][offset_index][2];
+            
+            with (hearts[i])
+            {
+                x = x_int + cosine * x_offset + sine * y_offset;
+                y = y_int - sine * x_offset + cosine * y_offset;
+                visible = true;
+                animation_set(global.ani_amy_heart_v0);
+            }
         }
     }
 };

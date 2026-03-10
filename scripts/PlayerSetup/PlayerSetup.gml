@@ -129,3 +129,11 @@ enum CPU_STATE
     SPIN_DASH,
     FLIGHT_ASSIST
 }
+
+enum HEART_PATTERN
+{
+    A,
+    B,
+    C,
+    D
+}
