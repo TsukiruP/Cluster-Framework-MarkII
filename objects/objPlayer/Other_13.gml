@@ -415,7 +415,7 @@ player_try_skill = function()
                             
                             // Animate
                             animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
-                            amy_create_attack_trail(HEART_PATTERN.C);
+                            amy_create_attack_trail(HEART_PATTERN.AIR_HAMMER_ATTACK);
                             
                             // Sound
                             audio_play_single(sfxAirHammerAttack);
@@ -438,7 +438,7 @@ player_try_skill = function()
                         }
                         else
                         {
-                        	amy_create_attack_trail(HEART_PATTERN.A);
+                        	amy_create_attack_trail(HEART_PATTERN.HAMMER_ATTACK);
                         }
                         return true;
                     }

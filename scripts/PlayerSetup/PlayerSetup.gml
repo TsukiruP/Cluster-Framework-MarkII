@@ -132,8 +132,8 @@ enum CPU_STATE
 
 enum HEART_PATTERN
 {
-    A,
-    B,
-    C,
-    D
+    HAMMER_ATTACK,
+    DOUBLE_HAMMER_ATTACK,
+    AIR_HAMMER_ATTACK,
+    HAMMER_WHIRL
 }
