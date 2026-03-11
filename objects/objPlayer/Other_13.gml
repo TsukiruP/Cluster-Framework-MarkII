@@ -406,9 +406,6 @@ player_try_skill = function()
                                 {
                                     // Perform
                                     player_perform(player_is_hammer_whirling);
-                                    
-                                    // Animate
-                                    amy_create_attack_trail(HEART_PATTERN.D);
                                     return true;
                                 }
                             }
