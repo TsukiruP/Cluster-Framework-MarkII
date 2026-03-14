@@ -8,6 +8,7 @@ function player_is_ready(phase)
 		}
 		case PHASE.STEP:
 		{
+			timeline_running = true;
 			player_perform(player_is_standing);
 			break;
 		}
@@ -24,6 +25,10 @@ function player_is_standing(phase)
 	{
 		case PHASE.ENTER:
 		{
+			// Animate
+			player_animate("idle");
+			timeline_speed = 1;
+			image_angle = gravity_direction;
 			break;
 		}
 		case PHASE.STEP:
@@ -129,6 +134,13 @@ function player_is_running(phase)
 			
 			// Stand
 			if (x_speed == 0 and input_sign == 0) return player_perform(player_is_standing);
+			
+			// Animate
+			var spd = abs(x_speed);
+			var new_anim = spd < 6 ? "walk" : "run";
+			if (animation != new_anim) player_animate(new_anim);
+			timeline_speed = 1 / max(8 - spd div 1, 1);
+			image_angle = direction;
 			break;
 		}
 		case PHASE.EXIT:

@@ -282,3 +282,13 @@ player_resist_slope = function (force)
 	var slope_factor = dsin(local_direction) * force;
 	if (abs(slope_factor) >= 0.05078125) x_speed -= slope_factor;
 };
+
+/// @method player_animate
+/// @description Records the player's current animation as the given string, and sets the timeline assigned to that string from the player's `animations` struct.
+/// @param {String} name Name of the animation.
+player_animate = function (name)
+{
+	animation = name;
+	timeline_index = animations[$ name];
+	timeline_position = 0;
+};

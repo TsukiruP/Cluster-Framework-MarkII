@@ -76,6 +76,11 @@ function player_is_jumping(phase)
 			
 			// Detach from ground
 			player_ground(false);
+			
+			// Animate
+			player_animate("roll");
+			timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
+			image_angle = gravity_direction;
 			break;
 		}
 		case PHASE.STEP:

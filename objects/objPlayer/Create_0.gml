@@ -46,3 +46,12 @@ repeat (16) event_user(n++);
 
 // Misc.
 instance_create_layer(x, y, layer, objCamera, { gravity_direction });
+
+// Animations
+animations =
+{
+	idle: animSonicIdle,
+	walk: animSonicWalk,
+	run: animSonicRun,
+	roll: animSonicRoll
+};
