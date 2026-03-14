@@ -17,6 +17,7 @@ flight_soundid = noone;
 // Tails
 tails = new stamp();
 
+/// @description Draws tails behind Miles.
 player_draw_before = function()
 {
     tails.image_alpha = image_alpha;

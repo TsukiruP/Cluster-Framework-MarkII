@@ -12,6 +12,7 @@ flight_drag_thresholds = [2, 4, 6, 8, 10];
 // Ears
 ears = new stamp();
 
+/// @description Draws ears behind Cream.
 player_draw_before = function()
 {
     ears.image_alpha = image_alpha;

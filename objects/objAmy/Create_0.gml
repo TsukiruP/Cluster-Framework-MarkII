@@ -63,7 +63,7 @@ for (var i = 0; i < HEART_COUNT; i++)
     hammer_trail.hearts[i] = new stamp();
 }
 
-/// @description Creates an attack trail effect.
+/// @description Creates a hammer trail effect.
 /// @param {Enum.HEART_PATTERN} pattern
 amy_create_hammer_trail = function(_pattern)
 {
@@ -87,7 +87,7 @@ amy_create_hammer_trail = function(_pattern)
     }
 };
 
-/// @description Repositions the attack trail.
+/// @description Repositions the hammer trail.
 amy_refresh_hammer_trail = function()
 {
     var i = 0;
@@ -120,6 +120,7 @@ amy_refresh_hammer_trail = function()
     }
 };
 
+// Draws the hammer trail behind Amy.
 player_draw_before = function()
 {
     with (hammer_trail)
@@ -150,7 +151,7 @@ for (var i = 0; i < HEART_COUNT; i++)
     trick_trail.hearts[i] = new stamp();
 }
 
-/// @description Creates a trick trail.
+/// @description Creates a trick trail effect.
 amy_create_trick_trail = function()
 {
     with (trick_trail)
@@ -191,6 +192,7 @@ amy_offset_trick_trail = function(_index)
     }
 };
 
+/// @description Draws the trick trail in front of Amy.
 player_draw_after = function()
 {
     with (trick_trail)
