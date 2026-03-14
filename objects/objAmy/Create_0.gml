@@ -3,6 +3,7 @@ event_inherited();
 character_index = CHARACTER.AMY;
 hammer_double = false;
 
+// Hammer trail
 hammer_trail =
 {
     visible : false,
@@ -129,6 +130,86 @@ player_draw_before = function()
             {
                 with (hearts[i]) draw_self_floored();
             }
+        }
+    }
+};
+
+// Trick trail
+trick_trail =
+{
+    visible : false,
+    gravity_direction : false,
+    hearts : array_create(HEART_COUNT),
+    time : 0,
+    active : 0,
+    destroy : false,
+};
+
+for (var i = 0; i < HEART_COUNT; i++)
+{
+    trick_trail.hearts[i] = new stamp();
+}
+
+/// @description Creates a trick trail.
+amy_create_trick_trail = function()
+{
+    with (trick_trail)
+    {
+        visible = true;
+        time = 0;
+        active = 0;
+        destroy = false;
+        
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            with (hearts[i])
+            {
+                animation_data.force = true;
+                animation_set(global.ani_amy_heart_v0);
+            }
+        }
+    }
+};
+
+/// @description Offsets the trick heart at the given index.
+/// @param {Real} index Index of the heart.
+amy_offset_trick_trail = function(_index)
+{
+    with (trick_trail)
+    {
+        hearts[_index].x = other.x;
+        hearts[_index].y = other.y;
+        with (hearts[_index])
+        {
+            animation_data.force = true;
+            animation_set(global.ani_amy_heart_v0);
+        }
+        
+        if (_index == 1) hearts[_index].y += 8;
+        if (_index == 3) hearts[_index].y -= 8;
+        active |= (1 << _index);
+    }
+};
+
+player_draw_after = function()
+{
+    with (trick_trail)
+    {
+        var j = 1;
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            if (active & j)
+            {
+                with (hearts[i])
+                {
+                    if (not animation_is_finished())
+                    {
+                        draw_self_floored();
+                    }
+                }
+            }
+            
+            j = j << 1;
         }
     }
 };

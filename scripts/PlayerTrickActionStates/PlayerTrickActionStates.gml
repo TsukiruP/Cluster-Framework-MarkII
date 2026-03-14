@@ -71,6 +71,7 @@ function player_is_tricking(phase)
             
             // Animate
             animation_data.variant++;
+            if (object_index == objAmy and trick_index == TRICK.FRONT) amy_create_trick_trail();
             break;
         }
         case PHASE.STEP:
