@@ -1,7 +1,7 @@
 /// @description Update
 event_inherited();
 if (ctrlGame.game_paused & PAUSE_FLAG_MENU) exit;
-with (attack_trail)
+with (hammer_trail)
 {
     for (var i = 0; i < HEART_COUNT; i++)
     {

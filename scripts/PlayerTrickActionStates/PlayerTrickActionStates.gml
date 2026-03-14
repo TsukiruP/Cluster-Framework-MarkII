@@ -149,6 +149,7 @@ function player_is_trick_bounding(phase)
         {
             // Animate
             animation_data.variant++;
+            if (object_index == objAmy) amy_create_hammer_trail(HEART_PATTERN.HAMMER_WHIRL);
             break;
         }
         case PHASE.STEP:

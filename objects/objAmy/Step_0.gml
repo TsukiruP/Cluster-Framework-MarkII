@@ -2,7 +2,7 @@
 event_inherited();
 if (ctrlGame.game_paused) exit;
 
-with (attack_trail)
+with (hammer_trail)
 {
     if (state != other.state)
     {
@@ -41,7 +41,7 @@ with (attack_trail)
             if (old_time > duration)
             {
                 gravity_direction = other.gravity_direction;
-                other.amy_refresh_attack_trail();
+                other.amy_refresh_hammer_trail();
                 offset_index = ++offset_index mod 8;
                 if (offset_index == 0) time = 0;
             }

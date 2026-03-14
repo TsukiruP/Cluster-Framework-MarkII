@@ -11,7 +11,7 @@ trick_speed =
 
 hammer_double = false;
 
-attack_trail =
+hammer_trail =
 {
     visible : false,
     gravity_direction : 0,
@@ -67,14 +67,14 @@ attack_trail =
 
 for (var i = 0; i < HEART_COUNT; i++)
 {
-    attack_trail.hearts[i] = new stamp();
+    hammer_trail.hearts[i] = new stamp();
 }
 
 /// @description Creates an attack trail effect.
 /// @param {Enum.HEART_PATTERN} pattern
-amy_create_attack_trail = function(_pattern)
+amy_create_hammer_trail = function(_pattern)
 {
-    with (attack_trail)
+    with (hammer_trail)
     {
         for (var i = 0; i < HEART_COUNT; i++)
         {
@@ -95,10 +95,10 @@ amy_create_attack_trail = function(_pattern)
 };
 
 /// @description Repositions the attack trail.
-amy_refresh_attack_trail = function()
+amy_refresh_hammer_trail = function()
 {
     var i = 0;
-    with (attack_trail)
+    with (hammer_trail)
     {
         while (hearts[i].visible)
         {
@@ -129,7 +129,7 @@ amy_refresh_attack_trail = function()
 
 player_draw_before = function()
 {
-    with (attack_trail)
+    with (hammer_trail)
     {
         for (var i = 0; i < HEART_COUNT; i++)
         {
