@@ -1,6 +1,8 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.KNUCKLES;
+
+// Misc.
 trick_speed =
 [
     [0, -6],

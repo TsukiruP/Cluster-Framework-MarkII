@@ -1,14 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.AMY;
-trick_speed =
-[
-    [0, -6],
-    [0, 1],
-    [6, 0],
-    [-3.5, -2]
-];
-
 hammer_double = false;
 
 hammer_trail =
@@ -140,6 +132,15 @@ player_draw_before = function()
         }
     }
 };
+
+// Misc.
+trick_speed =
+[
+    [0, -6],
+    [0, 1],
+    [6, 0],
+    [-3.5, -2]
+];
 
 player_animate = function()
 {
