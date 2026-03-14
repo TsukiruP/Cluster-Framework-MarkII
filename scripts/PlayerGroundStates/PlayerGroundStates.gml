@@ -163,6 +163,7 @@ function player_is_running(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -412,6 +413,7 @@ function player_is_rolling(phase)
                 x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -489,7 +491,7 @@ function player_is_spin_dashing(phase)
             // Roll
             if (input_axis_y != 1)
             {
-                x_speed = image_xscale * (8 + spin_dash_charge div 2);
+                x_speed = image_xscale * (6 + spin_dash_charge * (3 / 8));
                 camera_set_x_lag_time(16);
                 audio_stop_sound(sfxSpinRev);
                 audio_play_single(sfxSpinDash);
@@ -532,7 +534,7 @@ function player_is_hammer_attacking(phase)
         case PHASE.STEP:
         {
             // Friction
-            x_speed -= min(abs(x_speed), 0.375 / 0.75) * sign(x_speed);
+            x_speed -= min(abs(x_speed), 0.375) * sign(x_speed);
             
             // Move
             player_move_on_ground();
@@ -571,7 +573,7 @@ function player_is_hammer_attacking(phase)
                 {
                     if (hammer_double)
                     {
-                        x_speed = image_xscale * (3 / 0.75);
+                        x_speed = image_xscale * (3);
                         hammer_double = false;
                         animation_data.variant = 1;
                         amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);

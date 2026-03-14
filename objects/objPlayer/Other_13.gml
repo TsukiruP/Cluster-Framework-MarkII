@@ -21,12 +21,9 @@ player_try_jump = function()
                 var hammer_jump_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
                 if (hammer_jump_config)
                 {
-                    var hammer_jump_height = 7.5;
+                    var hammer_jump_height = 6;
                     
-                    /* AUTHOR NOTE: This scaling up of Advance physics is a bit involved.
-                    Everyone's jump height in Advance is 4.875 (2.625). Amy's Hammer Jump goes to 6 (3.375).
-                    Dividing her Hammer Jump height gets us 8 (4.5). This difference is then applied to 6 rather than 6.5.
-                    Which is how we get 7.5 (4). */
+                    /* TODO: Hammer Jump is 3.375 underwater */
                     
                     // Set flags
                     jump_cap = false;
@@ -500,13 +497,13 @@ player_damage = function(inst)
     
     if (inst == id or (player_index == 0 and shield.index == SHIELD.NONE and global.ring_count == 0))
     {
-        y_speed = -7;
+        y_speed = -4.875; // TODO: Underwater, this is -2.625
         audio_play_single(inst != noone and inst.object_index == objSpikes ? sfxHurtSpikes : sfxHurt);
         return player_perform(player_is_dead);
     }
     else
     {
-        var hurt_speed = -2;
+        var hurt_speed = -1.5;
         var ring_loss = false;
         animation_play(PLAYER_ANIMATION.HURT);
         if (inst == noone or abs(x_speed) <= 2.5)
@@ -521,7 +518,7 @@ player_damage = function(inst)
             animation_data.variant = 1;
         }
         
-        y_speed = -4;
+        y_speed = -3;
         
         if (player_index == 0)
         {
