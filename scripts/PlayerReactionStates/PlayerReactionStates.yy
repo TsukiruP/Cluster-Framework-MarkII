@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"PlayerReactionStates",
   "parent":{
-    "name":"States",
-    "path":"folders/Scripts/Player/States.yy",
+    "name":"Player",
+    "path":"folders/Scripts/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
