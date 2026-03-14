@@ -1,16 +1,8 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.MILES;
-trick_speed =
-[
-    [0, -6],
-    [0, 0.5],
-    [4, -2.5],
-    [-3.5, -3]
-];
 
-tails = new stamp();
-
+// Flight
 flight_time = 0;
 flight_reset_time = 0;
 flight_carry_time = 0;
@@ -21,6 +13,25 @@ flight_ascent_force = 0.125;
 flight_force = flight_base_force;
 flight_buddy = noone;
 flight_soundid = noone;
+
+// Tails
+tails = new stamp();
+
+/// @description Draws tails behind Miles.
+player_draw_before = function()
+{
+    tails.image_alpha = image_alpha;
+    with (tails) draw_self_floored();
+};
+
+// Misc.
+trick_speed =
+[
+    [0, -6],
+    [0, 0.5],
+    [4, -2.5],
+    [-3.5, -3]
+];
 
 player_animate = function()
 {
@@ -478,10 +489,4 @@ player_animate = function()
             break;
         }
     }
-};
-
-player_draw_before = function()
-{
-    tails.image_alpha = image_alpha;
-    with (tails) draw_self_floored();
 };

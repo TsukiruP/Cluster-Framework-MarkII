@@ -558,6 +558,7 @@
     {"id":{"name":"bgmSpeedUp","path":"sounds/bgmSpeedUp/bgmSpeedUp.yy",},},
     {"id":{"name":"bgmSunshineCoastline","path":"sounds/bgmSunshineCoastline/bgmSunshineCoastline.yy",},},
     {"id":{"name":"sfxAirDash","path":"sounds/sfxAirDash/sfxAirDash.yy",},},
+    {"id":{"name":"sfxAirHammerAttack","path":"sounds/sfxAirHammerAttack/sfxAirHammerAttack.yy",},},
     {"id":{"name":"sfxAquaBound","path":"sounds/sfxAquaBound/sfxAquaBound.yy",},},
     {"id":{"name":"sfxBigHammerAttack","path":"sounds/sfxBigHammerAttack/sfxBigHammerAttack.yy",},},
     {"id":{"name":"sfxBrake","path":"sounds/sfxBrake/sfxBrake.yy",},},

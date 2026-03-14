@@ -41,9 +41,11 @@ player_try_jump = function()
                     // Detact from ground
                     player_ground(undefined);
                     
+                    // Perform
+                    player_perform(player_is_jumping, false);
+                    
                     // Animate
                     animation_play(AMY_ANIMATION.HAMMER_JUMP);
-                    player_perform(player_is_jumping, false);
                     
                     // Sound
                     audio_play_single(sfxJump);
@@ -57,8 +59,10 @@ player_try_jump = function()
     {
         if (state != player_is_crouching)
         {
-            // Animate
+            // Perform
             player_perform(player_is_jumping);
+            
+            // Animate
             animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
             
             // Sound
@@ -411,9 +415,10 @@ player_try_skill = function()
                             
                             // Animate
                             animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
+                            amy_create_hammer_trail(HEART_PATTERN.AIR_HAMMER_ATTACK);
                             
                             // Sound
-                            audio_play_single(sfxHammerAttack);
+                            audio_play_single(sfxAirHammerAttack);
                             return true;
                         }
                     }
@@ -423,11 +428,18 @@ player_try_skill = function()
                     if (input_button.aux.pressed and player_check_ground_skill())
                     {
                         // Perform
-                        player_perform(player_is_hammer_attacking, false);
+                        player_perform(player_is_hammer_attacking);
                         
                         // Animate
                         var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                        animation_play(hammer_skill_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK ? AMY_ANIMATION.BIG_HAMMER_ATTACK : PLAYER_ANIMATION.HAMMER_ATTACK);
+                        if (hammer_skill_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
+                        {
+                            animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
+                        }
+                        else
+                        {
+                        	amy_create_hammer_trail(HEART_PATTERN.HAMMER_ATTACK);
+                        }
                         return true;
                     }
                 }

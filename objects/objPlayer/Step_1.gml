@@ -10,7 +10,7 @@ if (not (ctrlGame.game_paused & PAUSE_FLAG_MENU))
     
     for (var i = 0; i < AFTERIMAGE_COUNT; i++)
     {
-        with (afterimage_list[i])
+        with (afterimage_trail[i])
         {
             animation_update();
             time = ++time mod AFTERIMAGE_COUNT;

@@ -1,6 +1,8 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.SONIC;
+
+// Misc.
 trick_speed =
 [
     [0, -6],

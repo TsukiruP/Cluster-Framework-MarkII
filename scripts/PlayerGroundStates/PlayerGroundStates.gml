@@ -402,7 +402,10 @@ function player_is_rolling(phase)
                         x_speed += roll_deceleration * input_axis_x;
                         if (sign(x_speed) == input_axis_x) x_speed = roll_deceleration * input_axis_x;
                     }
-                    else image_xscale = input_axis_x;
+                    else
+                    {
+                        image_xscale = input_axis_x;
+                    }
                 }
                 
                 // Friction
@@ -571,6 +574,7 @@ function player_is_hammer_attacking(phase)
                         x_speed = image_xscale * (3 / 0.75);
                         hammer_double = false;
                         animation_data.variant = 1;
+                        amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);
                         exit;
                     }
                 }

@@ -1,6 +1,222 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.AMY;
+hammer_double = false;
+
+// Hammer trail
+hammer_trail =
+{
+    visible : false,
+    gravity_direction : 0,
+    hearts : array_create(HEART_COUNT),
+    state : undefined,
+    pattern : 0,
+    time : 0,
+    offset_index : 0,
+    offsets :
+    [
+        [
+            [10, 0, -27],
+            [12, 13, -22],
+            [14, 23, -13],
+            [16, 26, 0],
+            [-1, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [10, 7, -27],
+            [12, 20, -22],
+            [14, 30, -13],
+            [16, 33, 0],
+            [-1, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [0, -10, -26],
+            [4, 8, -27],
+            [8, 22, -17],
+            [12, 28, -1],
+            [16, 23, 16],
+            [20, 10, 26],
+            [-1, 0, 0],
+            [0, 0, 0]
+        ],
+        [
+            [2, 0, 4],
+            [6, 19, 6],
+            [10, 28, 2],
+            [14, 19, 4],
+            [18, 0, 6],
+            [22, -19, 2],
+            [26, -28, 4],
+            [30, -19, 6]
+        ]
+    ],
+};
+
+for (var i = 0; i < HEART_COUNT; i++)
+{
+    hammer_trail.hearts[i] = new stamp();
+}
+
+/// @description Creates a hammer trail effect.
+/// @param {Enum.HEART_PATTERN} pattern
+amy_create_hammer_trail = function(_pattern)
+{
+    with (hammer_trail)
+    {
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            with (hearts[i])
+            {
+                visible = false;
+                animation_set(undefined);
+            }
+        }
+        
+        visible = true;
+        gravity_direction = other.gravity_direction;
+        state = other.state;
+        pattern = _pattern;
+        time = 0;
+        offset_index = 0;
+    }
+};
+
+/// @description Repositions the hammer trail.
+amy_refresh_hammer_trail = function()
+{
+    var i = 0;
+    with (hammer_trail)
+    {
+        while (hearts[i].visible)
+        {
+            if (++i >= HEART_COUNT) exit;
+        }
+        
+        if (i < HEART_COUNT)
+        {
+            var x_int = other.x div 1;
+            var y_int = other.y div 1;
+            var sine = dsin(other.gravity_direction);
+            var cosine = dcos(other.gravity_direction);
+            
+            var x_offset = offsets[pattern][offset_index][1] * other.image_xscale;
+            var y_offset = offsets[pattern][offset_index][2];
+            
+            with (hearts[i])
+            {
+                x = x_int + cosine * x_offset + sine * y_offset;
+                y = y_int - sine * x_offset + cosine * y_offset;
+                visible = true;
+                image_angle = other.gravity_direction;
+                animation_set(global.ani_amy_heart_v0);
+            }
+        }
+    }
+};
+
+// Draws the hammer trail behind Amy.
+player_draw_before = function()
+{
+    with (hammer_trail)
+    {
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            if (hearts[i].visible)
+            {
+                with (hearts[i]) draw_self_floored();
+            }
+        }
+    }
+};
+
+// Trick trail
+trick_trail =
+{
+    visible : false,
+    gravity_direction : false,
+    hearts : array_create(HEART_COUNT),
+    time : 0,
+    active : 0,
+    destroy : false,
+};
+
+for (var i = 0; i < HEART_COUNT; i++)
+{
+    trick_trail.hearts[i] = new stamp();
+}
+
+/// @description Creates a trick trail effect.
+amy_create_trick_trail = function()
+{
+    with (trick_trail)
+    {
+        visible = true;
+        time = 0;
+        active = 0;
+        destroy = false;
+        
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            with (hearts[i])
+            {
+                animation_data.force = true;
+                animation_set(global.ani_amy_heart_v0);
+            }
+        }
+    }
+};
+
+/// @description Offsets the trick heart at the given index.
+/// @param {Real} index Index of the heart.
+amy_offset_trick_trail = function(_index)
+{
+    with (trick_trail)
+    {
+        hearts[_index].x = other.x;
+        hearts[_index].y = other.y;
+        with (hearts[_index])
+        {
+            animation_data.force = true;
+            animation_set(global.ani_amy_heart_v0);
+        }
+        
+        if (_index == 1) hearts[_index].y += 8;
+        if (_index == 3) hearts[_index].y -= 8;
+        active |= (1 << _index);
+    }
+};
+
+/// @description Draws the trick trail in front of Amy.
+player_draw_after = function()
+{
+    with (trick_trail)
+    {
+        var j = 1;
+        for (var i = 0; i < HEART_COUNT; i++)
+        {
+            if (active & j)
+            {
+                with (hearts[i])
+                {
+                    if (not animation_is_finished())
+                    {
+                        draw_self_floored();
+                    }
+                }
+            }
+            
+            j = j << 1;
+        }
+    }
+};
+
+// Misc.
 trick_speed =
 [
     [0, -6],
@@ -8,8 +224,6 @@ trick_speed =
     [6, 0],
     [-3.5, -2]
 ];
-
-hammer_double = false;
 
 player_animate = function()
 {

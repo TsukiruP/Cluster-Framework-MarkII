@@ -9,6 +9,7 @@ function player_is_hammer_whirling(phase)
             
             // Animate
             animation_play(AMY_ANIMATION.HAMMER_WHIRL);
+            amy_create_hammer_trail(HEART_PATTERN.HAMMER_WHIRL);
             break;
         }
         case PHASE.STEP:

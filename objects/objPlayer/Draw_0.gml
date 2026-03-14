@@ -19,7 +19,7 @@ if (afterimage_visible)
 {
     for (var i = 0; i < AFTERIMAGE_COUNT; i++)
     {
-        with (afterimage_list[i])
+        with (afterimage_trail[i])
         {
             if (time == i)
             {

@@ -1,6 +1,25 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.CREAM;
+
+// Flight
+flight_time = 0;
+flight_reset_time = 0;
+flight_base_force = 0.03125;
+flight_ascent_force = 0.09375 / 0.75;
+flight_drag_thresholds = [2, 4, 6, 8, 10];
+
+// Ears
+ears = new stamp();
+
+/// @description Draws ears behind Cream.
+player_draw_before = function()
+{
+    ears.image_alpha = image_alpha;
+    with (ears) draw_self_floored();
+};
+
+// Misc.
 trick_speed =
 [
     [0, -6],
@@ -8,14 +27,6 @@ trick_speed =
     [4, -2.5],
     [-3.5, -3]
 ];
-
-ears = new stamp();
-
-flight_time = 0;
-flight_reset_time = 0;
-flight_base_force = 0.03125;
-flight_ascent_force = 0.09375 / 0.75;
-flight_drag_thresholds = [2, 4, 6, 8, 10];
 
 player_animate = function()
 {
@@ -357,10 +368,4 @@ player_animate = function()
             break;
         }
     }
-};
-
-player_draw_before = function()
-{
-    ears.image_alpha = image_alpha;
-    with (ears) draw_self_floored();
 };
