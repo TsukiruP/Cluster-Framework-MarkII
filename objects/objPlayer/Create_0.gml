@@ -21,6 +21,8 @@ slide_duration = 30;
 air_drag_threshold = 0.125;
 air_drag = 0.96875;
 
+roll_threshold = 0.5;
+
 x_radius = 8;
 x_wall_radius = 10;
 

@@ -107,6 +107,12 @@ function player_is_running(phase)
 			{
 				// Friction (same value as acceleration)
 				x_speed -= min(abs(x_speed), acceleration) * sign(x_speed);
+				
+				// Roll
+				if (abs(x_speed) >= roll_threshold and input_check(INPUT.DOWN))
+				{
+					return player_perform(player_is_rolling);
+				}
 			}
 			
 			// Move
@@ -145,6 +151,79 @@ function player_is_running(phase)
 		}
 		case PHASE.EXIT:
 		{
+			break;
+		}
+	}
+}
+
+function player_is_rolling(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			rolling = true;
+			player_animate("roll");
+			image_angle = gravity_direction;
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Jump
+			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
+			
+			// Decelerate
+			if (control_lock_time == 0)
+			{
+				var input_sign = input_check(INPUT.RIGHT) - input_check(INPUT.LEFT);
+				if (input_sign != 0)
+				{
+					if (sign(x_speed) != input_sign)
+					{
+						x_speed += roll_deceleration * input_sign;
+						if (sign(x_speed) == input_sign) x_speed = roll_deceleration * input_sign;
+					}
+					else image_xscale = input_sign;
+				}
+			}
+			
+			// Friction
+			x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
+			
+			// Move
+			player_move_on_ground();
+			if (state_changed) exit;
+			
+			// Fall
+			if (not on_ground) return player_perform(player_is_falling);
+			
+			// Slide down steep slopes
+			if (abs(x_speed) < slide_threshold)
+			{
+				if (local_direction >= 90 and local_direction <= 270)
+				{
+					return player_perform(player_is_falling);
+				}
+				else if (local_direction >= 45 and local_direction <= 315)
+				{
+					control_lock_time = slide_duration;
+				}
+			}
+			
+			// Apply slope friction
+			var slope_friction = sign(x_speed) == sign(dsin(local_direction)) ? 0.078125 : 0.3125; // Uphill / downhill
+			player_resist_slope(slope_friction);
+			
+			// Unroll
+			if (abs(x_speed) < roll_threshold) return player_perform(player_is_running);
+			
+			// Animate
+			timeline_speed = 1 / max(5 - abs(x_speed) div 1, 1);
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			if (on_ground) rolling = false;
 			break;
 		}
 	}

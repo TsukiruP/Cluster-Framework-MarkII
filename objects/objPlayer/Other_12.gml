@@ -260,6 +260,8 @@ player_refresh_physics = function ()
 	acceleration = 0.046875;
 	deceleration = 0.5;
 	air_acceleration = 0.09375;
+	roll_deceleration = 0.125;
+	roll_friction = 0.0234375;
 	
 	// Aerial values
 	gravity_cap = 16;
