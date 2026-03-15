@@ -163,6 +163,7 @@ function player_is_running(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -186,7 +187,7 @@ function player_is_running(phase)
             }
             
             // Apply slope friction
-            player_resist_slope(0.125);
+            player_resist_slope();
             
             // Roll
             var velocity = abs(x_speed);
@@ -400,7 +401,7 @@ function player_is_rolling(phase)
                     if (sign(x_speed) != input_axis_x)
                     {
                         x_speed += roll_deceleration * input_axis_x;
-                        if (sign(x_speed) == input_axis_x) x_speed = roll_deceleration * input_axis_x;
+                        if (sign(x_speed) == input_axis_x) x_speed = 0.375 * input_axis_x;
                     }
                     else
                     {
@@ -412,6 +413,7 @@ function player_is_rolling(phase)
                 x_speed -= min(abs(x_speed), roll_friction) * sign(x_speed);
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -435,10 +437,16 @@ function player_is_rolling(phase)
             }
             
             // Apply slope friction
-            var friction_uphill = 0.078125;
-            var friction_downhill = 0.3125;
-            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
-            player_resist_slope(slope_friction);
+            if (not (local_direction >= 135 and local_direction <= 225) and x_speed != 0)
+            {
+                var friction_downhill = 60 / 256;
+                var friction_uphill = friction_downhill / 4;
+                var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
+                x_speed -= dsin(local_direction) * slope_friction;
+                
+                // Apply speed cap
+                if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+            }
             
             // Unroll
             if (abs(x_speed) < 0.5) return player_perform(player_is_running);
@@ -489,7 +497,7 @@ function player_is_spin_dashing(phase)
             // Roll
             if (input_axis_y != 1)
             {
-                x_speed = image_xscale * (8 + spin_dash_charge div 2);
+                x_speed = image_xscale * (6 + spin_dash_charge * (3 / 8));
                 camera_set_x_lag_time(16);
                 audio_stop_sound(sfxSpinRev);
                 audio_play_single(sfxSpinDash);
@@ -532,7 +540,7 @@ function player_is_hammer_attacking(phase)
         case PHASE.STEP:
         {
             // Friction
-            x_speed -= min(abs(x_speed), 0.375 / 0.75) * sign(x_speed);
+            x_speed -= min(abs(x_speed), 0.375) * sign(x_speed);
             
             // Move
             player_move_on_ground();
@@ -552,15 +560,12 @@ function player_is_hammer_attacking(phase)
             }
             
             // Double Hammer Attack
-            if (object_index == objAmy)
+            if (input_button.aux.pressed and object_index == objAmy)
             {
-                if (input_button.aux.pressed)
+                var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                if (hammer_skill_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
                 {
-                    var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                    if (hammer_skill_config == AMY_HAMMER_SKILL.DOUBLE_HAMMER_ATTACK and animation_data.variant == 0 and hammer_double == false)
-                    {
-                        hammer_double = true;
-                    }
+                    hammer_double = true;
                 }
             }
             
@@ -571,7 +576,7 @@ function player_is_hammer_attacking(phase)
                 {
                     if (hammer_double)
                     {
-                        x_speed = image_xscale * (3 / 0.75);
+                        x_speed = image_xscale * 3;
                         hammer_double = false;
                         animation_data.variant = 1;
                         amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);

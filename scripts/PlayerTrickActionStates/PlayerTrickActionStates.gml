@@ -37,8 +37,8 @@ function player_is_trick_preparing(phase)
                 }
                 else
                 {
-                    x_speed = image_xscale * (trick_speed[trick_index][0] / 0.75);
-                    y_speed = trick_speed[trick_index][1] / 0.75;
+                    x_speed = image_xscale * (trick_speed[trick_index][0]);
+                    y_speed = trick_speed[trick_index][1];
                     return player_perform(player_is_tricking);
                 }
             }
@@ -98,6 +98,7 @@ function player_is_tricking(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -171,7 +172,7 @@ function player_is_trick_bounding(phase)
             // Fall
             if (y_speed < gravity_cap)
             {
-                y_speed = min(y_speed + trick_bound_force / 0.75, gravity_cap);
+                y_speed = min(y_speed + trick_bound_force, gravity_cap);
             }
             break;
         }
@@ -216,7 +217,7 @@ function player_is_trick_rebounding(phase)
             // Fall
             if (y_speed < gravity_cap)
             {
-                y_speed = min(y_speed + trick_bound_force / 0.75, gravity_cap);
+                y_speed = min(y_speed + trick_bound_force, gravity_cap);
             }
             
             if (y_speed > 0)
@@ -279,7 +280,7 @@ function player_is_trick_drill_clawing(phase)
                 // Fall
                 if (y_speed < gravity_cap)
                 {
-                    y_speed = min(y_speed + (42 / 256) / 0.75, gravity_cap);
+                    y_speed = min(y_speed + (42 / 256), gravity_cap);
                 }
             }
             break;

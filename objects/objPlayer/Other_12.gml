@@ -296,22 +296,20 @@ player_refresh_physics = function()
 {
     // Speed values
     speed_limit = 6;
-    speed_cap = 16;
-    base_acceleration = 0.046875;
-    acceleration = base_acceleration;
-    deceleration = 0.5;
-    air_acceleration = 0.09375;
-    roll_deceleration = 0.125;
-    roll_friction = 0.0234375;
+    speed_cap = 15;
+    base_acceleration = 8 / 256;
+    deceleration = 96 / 256;
+    
+    roll_deceleration = 0.09375;
+    roll_friction = 8 / 256;
     
     // Aerial values
     gravity_cap = 16;
-    gravity_force = 0.21875;
-    jump_height = 6.5;
-    jump_release = 4;
-    hurt_force = 0.1875;
+    gravity_force = 42 / 256;
+    jump_height = 4.875;
+    jump_release = 3;
     
-    trick_bound_force = 0.21875;
+    trick_bound_force = 56 / 256;
     trick_bound_height = 6;
     
     // Superspeed modification
@@ -333,15 +331,20 @@ player_refresh_physics = function()
 };
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
-/// @param {Real} force Friction value to use.
-player_resist_slope = function(_force)
+player_resist_slope = function()
 {
     // Abort if moving along a ceiling
     if (local_direction >= 135 and local_direction <= 225) exit;
     
-    // Apply (Sonic 3 method)
-    var slope_factor = dsin(local_direction) * _force;
-    if (abs(slope_factor) >= 0.05078125) x_speed -= slope_factor;
+    // Apply (Sonic Advance method)
+    if (x_speed != 0)
+    {
+        var slope_factor = (dsin(local_direction) * 3) / 32;
+        x_speed -= slope_factor;
+        
+        // Apply speed cap
+        if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+    }
 };
 
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.
@@ -354,7 +357,7 @@ player_refresh_boost_mode = function()
     {
         if (on_ground or superspeed_time < 0)
         {
-            boost_speed = boost_thresholds[boost_index] / 0.75;
+            boost_speed = boost_thresholds[boost_index];
             if (abs(x_speed) < 4.5 or superspeed_time < 0)
             {
                 boost_mode = false;
@@ -366,7 +369,7 @@ player_refresh_boost_mode = function()
     {
         if (on_ground and abs(x_speed) >= speed_limit and not (superspeed_time < 0))
         {
-            if (boost_speed >= boost_thresholds[boost_index] / 0.75)
+            if (boost_speed >= boost_thresholds[boost_index])
             {
                 boost_mode = true;
                 player_speed_break();
@@ -385,7 +388,7 @@ player_refresh_boost_mode = function()
         if (boost_mode or superspeed_time > 0)
         {
             speed_limit = 12;
-            speed_cap = 16;
+            speed_cap = 15;
         }
         else
         {
