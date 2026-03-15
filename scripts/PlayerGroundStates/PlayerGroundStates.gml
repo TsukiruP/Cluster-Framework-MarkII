@@ -1,6 +1,6 @@
-function player_is_ready(phase)
+function player_is_ready(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -18,9 +18,9 @@ function player_is_ready(phase)
     }
 }
 
-function player_is_standing(phase)
+function player_is_standing(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -99,9 +99,9 @@ function player_is_standing(phase)
     }
 }
 
-function player_is_running(phase)
+function player_is_running(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -245,9 +245,9 @@ function player_is_running(phase)
     }
 }
 
-function player_is_looking(phase)
+function player_is_looking(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -307,9 +307,9 @@ function player_is_looking(phase)
     }
 }
 
-function player_is_crouching(phase)
+function player_is_crouching(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -378,9 +378,9 @@ function player_is_crouching(phase)
     }
 }
 
-function player_is_rolling(phase)
+function player_is_rolling(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -459,9 +459,9 @@ function player_is_rolling(phase)
     }
 }
 
-function player_is_spin_dashing(phase)
+function player_is_spin_dashing(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -527,9 +527,9 @@ function player_is_spin_dashing(phase)
     }
 }
 
-function player_is_hammer_attacking(phase)
+function player_is_hammer_attacking(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {

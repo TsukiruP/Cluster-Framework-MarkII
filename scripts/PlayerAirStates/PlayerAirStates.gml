@@ -1,6 +1,6 @@
-function player_is_falling(phase)
+function player_is_falling(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -68,9 +68,9 @@ function player_is_falling(phase)
     }
 }
 
-function player_is_jumping(phase)
+function player_is_jumping(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -147,9 +147,9 @@ function player_is_jumping(phase)
     }
 }
 
-function player_is_hurt(phase)
+function player_is_hurt(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -184,9 +184,9 @@ function player_is_hurt(phase)
     }
 }
 
-function player_is_dead(phase)
+function player_is_dead(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -242,9 +242,9 @@ function player_is_dead(phase)
     }
 }
 
-function player_is_aqua_bounding(phase)
+function player_is_aqua_bounding(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {

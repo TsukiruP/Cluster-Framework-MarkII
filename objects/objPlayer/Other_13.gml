@@ -49,11 +49,19 @@ player_try_jump = function()
                     return true;
                 }
             }
+            
+            // Leap
+            if (input_button.jump.pressed and input_axis_y == 1)
+            {
+                player_perform(player_is_leaping);
+                return true;
+            }
         }
     }
     
     if (input_button.jump.pressed)
     {
+        // Don't jump when crouching
         if (state != player_is_crouching)
         {
             // Perform

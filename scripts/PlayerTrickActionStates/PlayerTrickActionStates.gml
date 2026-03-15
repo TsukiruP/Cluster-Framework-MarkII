@@ -1,6 +1,6 @@
-function player_is_trick_preparing(phase)
+function player_is_trick_preparing(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -58,9 +58,9 @@ function player_is_trick_preparing(phase)
     }
 }
 
-function player_is_tricking(phase)
+function player_is_tricking(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -143,9 +143,9 @@ function player_is_tricking(phase)
 
 #region Sonic/Amy
 
-function player_is_trick_bounding(phase)
+function player_is_trick_bounding(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -183,9 +183,9 @@ function player_is_trick_bounding(phase)
     }
 }
 
-function player_is_trick_rebounding(phase)
+function player_is_trick_rebounding(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -238,9 +238,9 @@ function player_is_trick_rebounding(phase)
 
 #region Knuckles
 
-function player_is_trick_drill_clawing(phase)
+function player_is_trick_drill_clawing(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
@@ -292,9 +292,9 @@ function player_is_trick_drill_clawing(phase)
     }
 }
 
-function player_is_trick_somersaulting(phase)
+function player_is_trick_somersaulting(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {

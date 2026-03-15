@@ -39,7 +39,7 @@
 | Swap Cooldown | 1511-0, (SA2) 863-0 |
 | Tag Action | 1340-0, 1340-1 |
 | Miasma | 1507-0 |
-| Sonic Boom | (SA2) 873-0, (SA2) 873-1, 1327-0, 1327-1 |
+| Sonic Boom | 1327-0, 1327-1, (SA2) 873-0, 873-1 |
 | Heart | 1317-0 |
 
 # Stage
@@ -241,9 +241,9 @@
 | Air Hammer Attack | 695-0 |
 | Air Hammer Jump | 696-0 |
 | Hammer Whirl | 733-0 |
-| Hammer Jump | (SA1) 373-0, 726-0 |
-| Leap | 704-0, 725-0, 725-1, 725-2, (SA1) 375-0, 375-1 |
-| Head Slide | (SA2) 380-0, 380-1, 380-2, 380-3 |
+| Hammer Jump | 726-0, (SA1) 373-0 |
+| Leap | 704-0, (SA1) 374-0 |
+| Head Slide | 725-0, 725-1, 725-2, (SA2) 380-0, 380-1, 380-2, 380-3, (SA1) 375-0, 375-1 |
 
 # Cream
 

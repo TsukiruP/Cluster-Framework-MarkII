@@ -435,6 +435,8 @@ global.ani_amy_hammer_jump_v0 = new animation(sprAmyHammerJump, [1, 1, 2, 1, 2, 
 
 global.ani_amy_heart_v0 = new animation(sprAmyHeart, 3, -1);
 
+global.ani_amy_leap_v0 = new animation(sprAmyLeap, [1, 1, 2, 2, 2, 2], 3);
+
 #endregion
 
 #region Cream

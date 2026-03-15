@@ -1,6 +1,6 @@
-function player_is_sprung(phase)
+function player_is_sprung(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {

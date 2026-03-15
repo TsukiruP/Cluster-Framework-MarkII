@@ -1,6 +1,6 @@
-function player_is_flight_riding(phase)
+function player_is_flight_riding(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {

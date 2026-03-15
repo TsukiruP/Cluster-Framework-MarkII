@@ -882,5 +882,20 @@ player_animate = function()
             }
             break;
         }
+        case AMY_ANIMATION.LEAP:
+        {
+            player_set_animation(global.ani_amy_leap_v0);
+            player_set_radii(6, 14);
+            if (image_index == 0)
+            {
+                hitboxes[0].set_size(-6, -12, 6, 16);
+                hitboxes[1].set_size();
+            }
+            break;
+        }
+        case AMY_ANIMATION.HEAD_SLIDE:
+        {
+            break;
+        }
     }
 };

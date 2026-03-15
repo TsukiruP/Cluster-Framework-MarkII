@@ -1,6 +1,6 @@
-function player_is_propeller_flying(phase)
+function player_is_propeller_flying(_phase)
 {
-    switch (phase)
+    switch (_phase)
     {
         case PHASE.ENTER:
         {
