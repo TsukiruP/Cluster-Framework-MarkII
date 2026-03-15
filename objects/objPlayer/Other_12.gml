@@ -300,8 +300,8 @@ player_refresh_physics = function()
     base_acceleration = 8 / 256;
     deceleration = 96 / 256;
     
-    roll_deceleration = 0.125;
-    roll_friction = 0.0234375;
+    roll_deceleration = 0.09375;
+    roll_friction = 8 / 256;
     
     // Aerial values
     gravity_cap = 16;
@@ -331,8 +331,7 @@ player_refresh_physics = function()
 };
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
-/// @param {Real} force Friction value to use.
-player_resist_slope = function(_force)
+player_resist_slope = function()
 {
     // Abort if moving along a ceiling
     if (local_direction >= 135 and local_direction <= 225) exit;
@@ -342,11 +341,10 @@ player_resist_slope = function(_force)
     {
         var slope_factor = (dsin(local_direction) * 3) / 32;
         x_speed -= slope_factor;
+        
+        // Apply speed cap
+        if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
     }
-    
-    // Apply (Sonic 3 method)
-    //var slope_factor = dsin(local_direction) * _force;
-    //if (abs(slope_factor) >= 0.05078125) x_speed -= slope_factor;
 };
 
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.

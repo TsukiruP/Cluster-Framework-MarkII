@@ -187,7 +187,7 @@ function player_is_running(phase)
             }
             
             // Apply slope friction
-            player_resist_slope(0.125);
+            player_resist_slope();
             
             // Roll
             var velocity = abs(x_speed);
@@ -401,7 +401,7 @@ function player_is_rolling(phase)
                     if (sign(x_speed) != input_axis_x)
                     {
                         x_speed += roll_deceleration * input_axis_x;
-                        if (sign(x_speed) == input_axis_x) x_speed = roll_deceleration * input_axis_x;
+                        if (sign(x_speed) == input_axis_x) x_speed = 0.375 * input_axis_x;
                     }
                     else
                     {
@@ -437,10 +437,15 @@ function player_is_rolling(phase)
             }
             
             // Apply slope friction
-            var friction_uphill = 0.078125;
-            var friction_downhill = 0.3125;
-            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
-            player_resist_slope(slope_friction);
+            if (not (local_direction >= 135 and local_direction <= 225) and x_speed != 0)
+            {
+                var slope_friction = 60 / 256;
+                if (sign(x_speed) == sign(dsin(local_direction))) slope_friction /= 4;
+                x_speed -= dsin(local_direction) * slope_friction;
+                
+                // Apply speed cap
+                if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
+            }
             
             // Unroll
             if (abs(x_speed) < 0.5) return player_perform(player_is_running);
@@ -573,7 +578,7 @@ function player_is_hammer_attacking(phase)
                 {
                     if (hammer_double)
                     {
-                        x_speed = image_xscale * (3);
+                        x_speed = image_xscale * 3;
                         hammer_double = false;
                         animation_data.variant = 1;
                         amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);
