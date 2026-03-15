@@ -7,6 +7,8 @@ state_changed = false;
 
 rolling = false;
 
+spindash_charge = 0;
+
 // Timers
 rotation_lock_time = 0;
 control_lock_time = 0;
@@ -60,5 +62,6 @@ animations =
 	run: animSonicRun,
 	roll: animSonicRoll,
 	look: animSonicLook,
-	crouch: animSonicCrouch
+	crouch: animSonicCrouch,
+	spindash: animSonicSpindash
 };

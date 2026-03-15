@@ -228,7 +228,7 @@ function player_is_crouching(phase)
 		case PHASE.STEP:
 		{
 			// Spindash
-			//if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_spindashing);
+			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_spindashing);
 			
 			// Move
 			player_move_on_ground();
@@ -340,6 +340,59 @@ function player_is_rolling(phase)
 		case PHASE.EXIT:
 		{
 			if (on_ground) rolling = false;
+			break;
+		}
+	}
+}
+
+function player_is_spindashing(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			rolling = true;
+			spindash_charge = 0;
+			player_animate("spindash");
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Move
+			player_move_on_ground();
+			if (state_changed) exit;
+			
+			// Fall
+			if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+			{
+				return player_perform(player_is_falling);
+			}
+			
+			// Slide down steep slopes
+			if (local_direction >= 45 and local_direction <= 315)
+			{
+				control_lock_time = slide_duration;
+				return player_perform(player_is_rolling);
+			}
+			
+			// Release
+			if (not input_check(INPUT.DOWN))
+			{
+				x_speed = image_xscale * (8 + spindash_charge div 2);
+				objCamera.alarm[0] = 16;
+				return player_perform(player_is_rolling);
+			}
+			
+			// Charge / atrophy
+			if (input_check_pressed(INPUT.ACTION))
+			{
+				spindash_charge = min(spindash_charge + 2, 8);
+			}
+			else spindash_charge *= 0.96875;
+			break;
+		}
+		case PHASE.EXIT:
+		{
 			break;
 		}
 	}
