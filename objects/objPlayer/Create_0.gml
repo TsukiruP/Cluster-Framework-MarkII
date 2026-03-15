@@ -241,7 +241,7 @@ player_gain_rings = function(_num)
 /// @description Spawns up to 32 dropped rings in circles of 16 at the player's position, and resets their ring count.
 player_drop_rings = function()
 {
-    var spd = 4;
+    var spd = 3;
     var dir = 101.25;
     
     for (var n = min(global.ring_count, 32); n > 0; --n)

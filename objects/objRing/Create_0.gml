@@ -9,14 +9,14 @@ x_speed = 0;
 y_speed = 0;
 
 target = noone;
-magnet_range = 128;
 magnetized = false;
+magnet_range = 64;
 follow_speed = 0.1875;
 turn_speed = 0.75;
 
 lost = false;
 lifespan = 256;
-gravity_force = 0.09375;
+gravity_force = 18 / 256;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);

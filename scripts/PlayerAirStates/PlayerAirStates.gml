@@ -34,6 +34,7 @@ function player_is_falling(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -105,6 +106,7 @@ function player_is_jumping(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -170,7 +172,7 @@ function player_is_hurt(phase)
             // Fall
             if (y_speed < gravity_cap)
             {
-                y_speed = min(y_speed + hurt_force, gravity_cap);
+                y_speed = min(y_speed + gravity_force, gravity_cap);
             }
             break;
         }
@@ -248,7 +250,7 @@ function player_is_aqua_bounding(phase)
         {
             // Bound
             x_speed = 0;
-            y_speed = 8;
+            y_speed = 6;
             
             // Animate
             animation_play(PLAYER_ANIMATION.ROLL);
@@ -270,6 +272,7 @@ function player_is_aqua_bounding(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -280,7 +283,7 @@ function player_is_aqua_bounding(phase)
             if (on_ground)
             {
                 player_perform(player_is_jumping);
-                y_speed = -8;
+                y_speed = -6;
                 jump_alternate++;
                 audio_play_single(sfxAquaBound);
             }

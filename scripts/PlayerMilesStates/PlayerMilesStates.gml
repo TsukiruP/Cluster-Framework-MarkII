@@ -21,7 +21,7 @@ function player_is_propeller_flying(phase)
             if (input_axis_x != 0)
             {
                 // Turn
-                if (image_xscale != input_axis_x and flight_time < PROPELLER_FLIGHT_DURATION and not flight_hammer)
+                if (image_xscale != input_axis_x and not flight_hammer and flight_time < PROPELLER_FLIGHT_DURATION)
                 {
                     animation_play(animation_data.index, 1);
                 }
@@ -37,6 +37,7 @@ function player_is_propeller_flying(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
@@ -49,39 +50,49 @@ function player_is_propeller_flying(phase)
             // Skill
             if (player_try_skill()) exit;
             
-            // Ignore inputs when hammer attacking
-            if (animation_data.index != MILES_ANIMATION.HAMMER_FLIGHT or animation_data.variant == 0)
+            // Hammer attacking disables certain inputs
+            var can_input = (animation_data.index != MILES_ANIMATION.HAMMER_FLIGHT or animation_data.variant == 0);
+            
+            // Cancel
+            if (input_button.jump.pressed and input_axis_y == 1 and can_input and (player_index == 0 or cpu_gamepad_time > 0))
             {
-                // Cancel
-                if ((player_index == 0 or cpu_gamepad_time > 0) and input_axis_y == 1 and input_button.jump.pressed)
+                animation_play(MILES_ANIMATION.FLIGHT_CANCEL);
+                return player_perform(player_is_falling, false);
+            }
+            
+            // Ascend
+            if (flight_reset_time != 1)
+            {
+                if (y_speed >= PROPELLER_FLIGHT_THRESHOLD)
                 {
-                    animation_play(MILES_ANIMATION.FLIGHT_CANCEL);
-                    return player_perform(player_is_falling, false);
+                    y_speed -= flight_ascent_force;
+                    if (++flight_reset_time == 32) flight_reset_time = 1;
+                }
+                else
+                {
+                    flight_reset_time = 1;
+                }
+            }
+            else
+            {
+                if (can_input)
+                {
+                    var flight_style_config = db_read(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_STYLE, "miles", "flight_style");
+                    var input_flight = input_button.jump.pressed or (flight_style_config and input_button.jump.check);
+                    if (input_flight and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
+                    {
+                        flight_reset_time = 2;
+                    }
                 }
                 
-                // Ascend
-                var flight_style_config = db_read(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_STYLE, "miles", "flight_style");
-                var input_flight = input_button.jump.pressed or (flight_style_config and input_button.jump.check);
-                if (input_flight and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
-                {
-                    flight_reset_time = 60;
-                    flight_force = -flight_ascent_force;
-                }
+                // Fall
+                y_speed += flight_base_force;
             }
             
             // Apply air resistance
             if (y_speed < 0 and y_speed > -4)
             {
                 x_speed -= x_speed / 32;
-            }
-            
-            // Fall
-            y_speed += flight_force;
-            
-            // Reset
-            if (y_speed < PROPELLER_FLIGHT_THRESHOLD or flight_reset_time == 0)
-            {
-                flight_force = flight_base_force;
             }
             
             // Ceiling cap
@@ -92,7 +103,6 @@ function player_is_propeller_flying(phase)
             
             // Timers
             if (flight_time < PROPELLER_FLIGHT_DURATION) flight_time++;
-            if (flight_reset_time > 0) flight_reset_time--;
             if (flight_carry_time > 0) flight_carry_time--;
             
             // Animate

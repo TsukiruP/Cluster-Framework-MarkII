@@ -9,8 +9,7 @@ flight_carry_time = 0;
 flight_carry = false;
 flight_hammer = false;
 flight_base_force = 0.03125;
-flight_ascent_force = 0.125;
-flight_force = flight_base_force;
+flight_ascent_force = 0.09375;
 flight_buddy = noone;
 flight_soundid = noone;
 

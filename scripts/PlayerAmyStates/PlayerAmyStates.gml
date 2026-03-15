@@ -28,6 +28,7 @@ function player_is_hammer_whirling(phase)
                 }
             }
             
+            // Apply speed cap
             if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
             
             // Move
