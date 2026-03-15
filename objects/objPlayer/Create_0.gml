@@ -55,5 +55,7 @@ animations =
 	idle: animSonicIdle,
 	walk: animSonicWalk,
 	run: animSonicRun,
-	roll: animSonicRoll
+	roll: animSonicRoll,
+	look: animSonicLook,
+	crouch: animSonicCrouch
 };
