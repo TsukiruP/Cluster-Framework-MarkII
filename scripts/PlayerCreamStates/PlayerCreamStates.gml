@@ -59,7 +59,7 @@ function player_is_fan_flying(phase)
             if (player_try_skill()) exit;
             
             // Cancel
-            if (input_axis_y == 1 and input_button.jump.pressed)
+            if (input_button.jump.pressed and input_axis_y == 1)
             {
                 animation_play(CREAM_ANIMATION.FLIGHT_CANCEL);
                 return player_perform(player_is_falling, false);
@@ -102,7 +102,7 @@ function player_is_fan_flying(phase)
             }
             
             // Timer
-            flight_time = min(++flight_time, FAN_FLIGHT_DURATION);
+            if (flight_time < FAN_FLIGHT_DURATION) flight_time++;
             
             // Animate
             if (flight_time < FAN_FLIGHT_DURATION)
