@@ -11,6 +11,9 @@ rolling = false;
 rotation_lock_time = 0;
 control_lock_time = 0;
 
+camera_look_delay = 120;
+camera_look_time = camera_look_delay;
+
 // Movement and collision
 x_speed = 0;
 y_speed = 0;

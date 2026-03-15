@@ -58,6 +58,10 @@ function player_is_standing(phase)
 			{
 				return player_perform(player_is_running);
 			}
+			
+			// Look / crouch
+			if (input_check(INPUT.UP)) return player_perform(player_is_looking);
+			if (input_check(INPUT.DOWN)) return player_perform(player_is_crouching);
 			break;
 		}
 		case PHASE.EXIT:
@@ -151,6 +155,118 @@ function player_is_running(phase)
 		}
 		case PHASE.EXIT:
 		{
+			break;
+		}
+	}
+}
+
+function player_is_looking(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			player_animate("look");
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Jump
+			if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_jumping);
+			
+			// Move
+			player_move_on_ground();
+			if (state_changed) exit;
+			
+			// Fall
+			if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+			{
+				return player_perform(player_is_falling);
+			}
+			
+			// Slide down steep slopes
+			if (local_direction >= 45 and local_direction <= 315)
+			{
+				control_lock_time = slide_duration;
+				return player_perform(player_is_running);
+			}
+			
+			// Run
+			if (x_speed != 0) return player_perform(player_is_running);
+			
+			// Stand
+			if (not input_check(INPUT.UP)) return player_perform(player_is_standing);
+			
+			// Ascend camera
+			if (camera_look_time > 0)
+			{
+				--camera_look_time;
+			}
+			else with (objCamera)
+			{
+				if (y_offset > -104) y_offset -= 2;
+			}
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			camera_look_time = camera_look_delay;
+			break;
+		}
+	}
+}
+
+function player_is_crouching(phase)
+{
+	switch (phase)
+	{
+		case PHASE.ENTER:
+		{
+			player_animate("crouch");
+			break;
+		}
+		case PHASE.STEP:
+		{
+			// Spindash
+			//if (input_check_pressed(INPUT.ACTION)) return player_perform(player_is_spindashing);
+			
+			// Move
+			player_move_on_ground();
+			if (state_changed) exit;
+			
+			// Fall
+			if (not on_ground or (local_direction >= 90 and local_direction <= 270))
+			{
+				return player_perform(player_is_falling);
+			}
+			
+			// Slide down steep slopes
+			if (local_direction >= 45 and local_direction <= 315)
+			{
+				control_lock_time = slide_duration;
+				return player_perform(player_is_running);
+			}
+			
+			// Run
+			if (x_speed != 0) return player_perform(player_is_running);
+			
+			// Stand
+			if (not input_check(INPUT.DOWN)) return player_perform(player_is_standing);
+			
+			// Descend camera
+			if (camera_look_time > 0)
+			{
+				--camera_look_time;
+			}
+			else with (objCamera)
+			{
+				if (y_offset < 88) y_offset += 2;
+			}
+			break;
+		}
+		case PHASE.EXIT:
+		{
+			camera_look_time = camera_look_delay;
 			break;
 		}
 	}
