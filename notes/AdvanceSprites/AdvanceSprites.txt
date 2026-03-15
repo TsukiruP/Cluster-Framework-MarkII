@@ -242,6 +242,8 @@
 | Air Hammer Jump | 696-0 |
 | Hammer Whirl | 733-0 |
 | Hammer Jump | (SA1) 373-0, 726-0 |
+| Leap | 704-0, 725-0, 725-1, 725-2, (SA1) 375-0, 375-1 |
+| Head Slide | (SA2) 380-0, 380-1, 380-2, 380-3 |
 
 # Cream
 

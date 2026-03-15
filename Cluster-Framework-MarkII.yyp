@@ -111,6 +111,7 @@
     {"$GMFolder":"","%Name":"Amy","folderPath":"folders/Sprites/Stage/Player/Characters/Amy.yy","name":"Amy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Brake","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Brake.yy","name":"Brake","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Crouch","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Crouch.yy","name":"Crouch","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Leap","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Leap.yy","name":"Leap","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hammer","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Hammer.yy","name":"Hammer","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hurt","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Hurt.yy","name":"Hurt","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Jump","folderPath":"folders/Sprites/Stage/Player/Characters/Amy/Jump.yy","name":"Jump","resourceType":"GMFolder","resourceVersion":"2.0",},
