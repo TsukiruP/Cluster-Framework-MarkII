@@ -16,7 +16,7 @@ turn_speed = 0.75;
 
 lost = false;
 lifespan = 256;
-gravity_force = 0.09375;
+gravity_force = 18 / 256;
 
 tilemaps = variable_clone(ctrlStage.tilemaps, 0);
 tilemap_count = array_length(tilemaps);

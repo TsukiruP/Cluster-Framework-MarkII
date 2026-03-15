@@ -250,7 +250,7 @@ function player_is_aqua_bounding(phase)
         {
             // Bound
             x_speed = 0;
-            y_speed = 8;
+            y_speed = 6;
             
             // Animate
             animation_play(PLAYER_ANIMATION.ROLL);
@@ -283,7 +283,7 @@ function player_is_aqua_bounding(phase)
             if (on_ground)
             {
                 player_perform(player_is_jumping);
-                y_speed = -8;
+                y_speed = -6;
                 jump_alternate++;
                 audio_play_single(sfxAquaBound);
             }

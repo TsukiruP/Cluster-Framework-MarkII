@@ -153,7 +153,7 @@ player_try_flight_assist = function()
                     {
                         with (partner)
                         {
-                            y_speed = max(y_speed, -2);
+                            y_speed = max(y_speed, -1.5);
                             cpu_state = CPU_STATE.FLIGHT_ASSIST;
                             cpu_state_time = 0;
                             flight_hammer = false;
@@ -217,7 +217,7 @@ player_try_shield_action = function()
         case SHIELD.FLAME:
         {
             // Dash
-            x_speed = image_xscale * 8;
+            x_speed = image_xscale * 6;
             y_speed = 0;
             
             // Perform
@@ -242,7 +242,7 @@ player_try_shield_action = function()
         case SHIELD.THUNDER:
         {
             // Leap
-            y_speed = -5.5;
+            y_speed = -4.125;
             
             // Perform
             player_perform(player_is_jumping, false);
