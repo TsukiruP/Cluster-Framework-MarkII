@@ -439,8 +439,9 @@ function player_is_rolling(phase)
             // Apply slope friction
             if (not (local_direction >= 135 and local_direction <= 225) and x_speed != 0)
             {
-                var slope_friction = 60 / 256;
-                if (sign(x_speed) == sign(dsin(local_direction))) slope_friction /= 4;
+                var friction_downhill = 60 / 256;
+                var friction_uphill = friction_downhill / 4;
+                var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
                 x_speed -= dsin(local_direction) * slope_friction;
                 
                 // Apply speed cap
