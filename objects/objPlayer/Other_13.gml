@@ -16,10 +16,10 @@ player_try_jump = function()
         if (player_check_ground_skill())
         {
             // Hammer Jump
-            if (input_button.aux.pressed and (input_axis_y == 1 or input_button.alt.check))
+            if (input_button.aux.pressed and ((input_axis_y == 1 and input_axis_x == 0) or input_button.alt.check))
             {
                 var hammer_jump_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
-                if (hammer_jump_config)
+                if (hammer_jump_save)
                 {
                     var hammer_jump_height = 6;
                     
@@ -51,10 +51,15 @@ player_try_jump = function()
             }
             
             // Leap
-            if (input_button.jump.pressed and input_axis_y == 1)
+            if (input_button.jump.pressed and input_axis_y == 1 and input_axis_x == 0)
             {
-                player_perform(player_is_leaping);
-                return true;
+                var spin_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
+                var spin_alt_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
+                if (spin_save == false and spin_alt_save == AMY_SPIN_ALT.LEAP)
+                {
+                    player_perform(player_is_leaping);
+                    return true;
+                }
             }
         }
     }
@@ -128,68 +133,71 @@ player_try_flight_assist = function()
         if (input_axis_y == -1)
         {
             var flight_assist_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_FLIGHT_ASSIST, "flight_assist");
-            if (flight_assist_config and array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
+            if (flight_assist_config)
             {
-                var partner = ctrlStage.stage_players[1];
-                var dx = partner.x - x;
-                var dy = partner.y - y;
-                
-                var sine = dsin(gravity_direction);
-                var cosine = dcos(gravity_direction);
-                var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
-                var y_dist = (sine == 0 ? cosine * dy : sine * dx);
-                
-                if (partner.cpu_gamepad_time == 0 and partner.cpu_state == CPU_STATE.FOLLOW and x_dist < 192 and y_dist < 128)
+                if (array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
                 {
-                    var start_flight = false;
-                    if (partner.state == player_is_jumping)
-                    {
-                        start_flight = true;
-                    }
-                    else if (partner.on_ground)
-                    {
-                        with (partner)
-                        {
-                            player_refresh_inputs();
-                            input_button.jump.pressed = true;
-                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
-                            cpu_state_time = 8;
-                        }
-                    }
+                    var partner = ctrlStage.stage_players[1];
+                    var dx = partner.x - x;
+                    var dy = partner.y - y;
                     
-                    if (start_flight)
+                    var sine = dsin(gravity_direction);
+                    var cosine = dcos(gravity_direction);
+                    var x_dist = (sine == 0 ? cosine * dx : -sine * dy);
+                    var y_dist = (sine == 0 ? cosine * dy : sine * dx);
+                    
+                    if (partner.cpu_gamepad_time == 0 and partner.cpu_state == CPU_STATE.FOLLOW and x_dist < 192 and y_dist < 128)
                     {
-                        with (partner)
+                        var start_flight = false;
+                        if (partner.state == player_is_jumping)
                         {
-                            y_speed = max(y_speed, -1.5);
-                            cpu_state = CPU_STATE.FLIGHT_ASSIST;
-                            cpu_state_time = 0;
-                            flight_hammer = false;
-                            player_perform(player_is_propeller_flying);
+                            start_flight = true;
                         }
-                        
-                        /*var can_skill = false;
-                        
-                        switch (object_index)
+                        else if (partner.on_ground)
                         {
-                            case objSonic:
+                            with (partner)
                             {
-                                // TODO: Check Sonic's skills.
-                                //var skill_save = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
-                                can_skill = true;
-                                break;
-                            }
-                            case objCream:
-                            {
-                                can_skill = true;
-                                break;
+                                player_refresh_inputs();
+                                input_button.jump.pressed = true;
+                                cpu_state = CPU_STATE.FLIGHT_ASSIST;
+                                cpu_state_time = 8;
                             }
                         }
                         
-                        return not can_skill;*/
-                        return false;
-                        
-                        /* AUTHOR NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
+                        if (start_flight)
+                        {
+                            with (partner)
+                            {
+                                y_speed = max(y_speed, -1.5);
+                                cpu_state = CPU_STATE.FLIGHT_ASSIST;
+                                cpu_state_time = 0;
+                                flight_hammer = false;
+                                player_perform(player_is_propeller_flying);
+                            }
+                            
+                            /*var can_skill = false;
+                            
+                            switch (object_index)
+                            {
+                                case objSonic:
+                                {
+                                    // TODO: Check Sonic's skills.
+                                    //var skill_save = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
+                                    can_skill = true;
+                                    break;
+                                }
+                                case objCream:
+                                {
+                                    can_skill = true;
+                                    break;
+                                }
+                            }
+                            
+                            return not can_skill;*/
+                            return false;
+                            
+                            /* AUTHOR NOTE: Sonic 3 AIR only checks for the Flame Dash, Aqua Bound, or glide. */
+                        }
                     }
                 }
             }
@@ -404,9 +412,9 @@ player_try_skill = function()
                             aerial_flags |= AERIAL_FLAG_HAMMER;
                             
                             // Hammer Whirl
-                            if (input_axis_y == 1)
+                            if (input_axis_y == 1 and input_axis_x == 0)
                             {
-                                var hammer_whirl_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL);
+                                var hammer_whirl_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
                                 if (hammer_whirl_save)
                                 {
                                     // Perform

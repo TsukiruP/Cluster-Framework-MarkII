@@ -8,6 +8,7 @@
 #macro AMY_DEFAULT_HAMMER_WHIRL true
 #macro AMY_DEFAULT_HAMMER_JUMP true
 #macro AMY_DEFAULT_SPIN false
+#macro AMY_DEFAULT_SPIN_ALT AMY_SPIN_ALT.LEAP
 
 enum MILES_GROUND_SKILL
 {
@@ -30,6 +31,12 @@ enum AMY_HAMMER_SKILL
     BIG_HAMMER_ATTACK
 }
 
+enum AMY_SPIN_ALT
+{
+    LEAP,
+    DASH
+}
+
 // Create
 global.save_database = db_create();
 
@@ -48,10 +55,10 @@ db_write(SAVE_DATABASE, CHARACTER.SONIC, "character", 0);
 
 // Miles
 db_write(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-db_write(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_ASSIST, "miles", "flight_assist");
 
 // Amy
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
 db_write(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
 db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
+db_write(SAVE_DATABASE, AMY_DEFAULT_SPIN_ALT, "amy", "spin_alt");
