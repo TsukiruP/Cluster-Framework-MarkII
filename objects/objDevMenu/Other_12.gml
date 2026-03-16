@@ -1,18 +1,18 @@
 /// @description Config
-visual_menu_option = new dev_option("Visuals");
-visual_menu_option.confirm = function() { dev_menu_goto(visuals_menu); };
+visual_goto_option = new dev_option("Visuals");
+visual_goto_option.confirm = function() { dev_menu_goto(visuals_menu); };
 
-gameplay_menu_option = new dev_option("Gameplay");
-gameplay_menu_option.confirm = function() { dev_menu_goto(gameplay_menu); };
+gameplay_goto_option = new dev_option("Gameplay");
+gameplay_goto_option.confirm = function() { dev_menu_goto(gameplay_menu); };
 
-controls_menu_option = new dev_option("Controls");
-controls_menu_option.confirm = function() { dev_menu_goto(controls_menu); };
+controls_goto_option = new dev_option("Controls");
+controls_goto_option.confirm = function() { dev_menu_goto(controls_menu); };
 
 var config_options =
 [
-    visual_menu_option,
-    gameplay_menu_option,
-    controls_menu_option
+    visual_goto_option,
+    gameplay_goto_option,
+    controls_goto_option
 ];
 
 config_menu.options = array_concat(config_menu.options, config_options);

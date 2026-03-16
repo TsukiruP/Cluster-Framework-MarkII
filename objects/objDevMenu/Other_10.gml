@@ -8,8 +8,8 @@ for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 player_0_option = new dev_option_player(0);
 player_1_option = new dev_option_player(1);
 
-config_menu_option = new dev_option("Config");
-config_menu_option.confirm = function() { dev_menu_goto(config_menu); };
+config_goto_option = new dev_option("Config");
+config_goto_option.confirm = function() { dev_menu_goto(config_menu); };
 
 room_option = new dev_option_array("Room");
 with (room_option)
@@ -25,7 +25,7 @@ with (room_option)
 
 var home_options =
 [
-    config_menu_option,
+    config_goto_option,
     room_option
 ];
 
