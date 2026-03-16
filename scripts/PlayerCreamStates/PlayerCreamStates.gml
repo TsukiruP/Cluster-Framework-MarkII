@@ -17,7 +17,7 @@ function player_is_fan_flying(_phase)
         case PHASE.STEP:
         {
             // Apply flight resistance
-            /*var boost_mode_config = db_read(SAVE_DATABASE, "true", "boost_mode");
+            /*var boost_mode_save = db_read(SAVE_DATABASE, "true", "boost_mode");
             if (boost_mode_config)
             {
                 if (abs(x_speed) > flight_drag_thresholds[boost_index])

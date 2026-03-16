@@ -18,7 +18,7 @@ player_try_jump = function()
             // Hammer Jump
             if (input_button.aux.pressed and (input_axis_y == 1 or input_button.alt.check))
             {
-                var hammer_jump_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
+                var hammer_jump_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_JUMP, "amy", "hammer_jump");
                 if (hammer_jump_config)
                 {
                     var hammer_jump_height = 6;
@@ -127,7 +127,7 @@ player_try_flight_assist = function()
     {
         if (input_axis_y == -1)
         {
-            var flight_assist_config = db_read(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_ASSIST, "miles", "flight_assist");
+            var flight_assist_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_FLIGHT_ASSIST, "flight_assist");
             if (flight_assist_config and array_length(ctrlStage.stage_players) > 1 and ctrlStage.stage_players[1].object_index == objMiles)
             {
                 var partner = ctrlStage.stage_players[1];
@@ -175,7 +175,7 @@ player_try_flight_assist = function()
                             case objSonic:
                             {
                                 // TODO: Check Sonic's skills.
-                                //var skill_config = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
+                                //var skill_save = db_read(SAVE_DATABASE, MILES_GROUND_SKILL.NONE, "sonic", "jump_skill");
                                 can_skill = true;
                                 break;
                             }
@@ -332,8 +332,8 @@ player_try_skill = function()
                         if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
                         {
                             // Set flags
-                            var ground_skill_config = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-                            flight_hammer = (ground_skill_config == MILES_GROUND_SKILL.HAMMER_ATTACK);
+                            var ground_skill_save = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
+                            flight_hammer = (ground_skill_save == MILES_GROUND_SKILL.HAMMER_ATTACK);
                             
                             // Perform
                             player_perform(player_is_propeller_flying);
@@ -406,8 +406,8 @@ player_try_skill = function()
                             // Hammer Whirl
                             if (input_axis_y == 1)
                             {
-                                var hammer_whirl_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL);
-                                if (hammer_whirl_config)
+                                var hammer_whirl_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL);
+                                if (hammer_whirl_save)
                                 {
                                     // Perform
                                     player_perform(player_is_hammer_whirling);
@@ -436,8 +436,8 @@ player_try_skill = function()
                         player_perform(player_is_hammer_attacking);
                         
                         // Animate
-                        var hammer_skill_config = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                        if (hammer_skill_config == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
+                        var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                        if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
                         {
                             animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
                         }
