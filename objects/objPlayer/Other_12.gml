@@ -337,14 +337,11 @@ player_resist_slope = function()
     if (local_direction >= 135 and local_direction <= 225) exit;
     
     // Apply (Sonic Advance method)
-    if (x_speed != 0)
-    {
-        var slope_factor = (dsin(local_direction) * 3) / 32;
-        x_speed -= slope_factor;
-        
-        // Apply speed cap
-        if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
-    }
+    var slope_factor = (dsin(local_direction) * 3) / 32;
+    x_speed -= slope_factor;
+    
+    // Apply speed cap
+    if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
 };
 
 /// @description Sets the player's Boost Mode, applying any modifiers afterward.
