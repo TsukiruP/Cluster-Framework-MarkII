@@ -253,7 +253,7 @@ if (input_button.swap.pressed)
 {
 	if (player_index == 0 and array_length(ctrlStage.stage_players) > 1 and state != player_is_hurt and state != player_is_dead)
 	{
-		var swap_config = db_read(SAVE_DATABASE, true, "swap");
+		var swap_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_SWAP, "swap");
 		var partner = (input_button.alt.check ? array_last(ctrlStage.stage_players) : ctrlStage.stage_players[1]);
 		if (swap_config and partner.cpu_gamepad_time == 0)
 		{

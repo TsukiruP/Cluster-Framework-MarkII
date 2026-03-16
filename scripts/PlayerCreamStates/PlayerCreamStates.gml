@@ -80,7 +80,9 @@ function player_is_fan_flying(_phase)
             }
             else
             {
-                if (input_button.jump.pressed and flight_time < FAN_FLIGHT_DURATION and y_speed >= FAN_FLIGHT_THRESHOLD)
+                var flight_style_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_FLIGHT_STYLE, "flight_style");
+                var input_flight = input_button.jump.pressed or (flight_style_config == CONFIG_FLIGHT_STYLE.ADVENTURE and input_button.jump.check);
+                if (input_flight and flight_time < FAN_FLIGHT_DURATION and y_speed >= FAN_FLIGHT_THRESHOLD)
                 {
                     flight_reset_time = 2;
                 }

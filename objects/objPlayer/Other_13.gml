@@ -86,7 +86,7 @@ player_try_trick_action = function(_time = 0)
 {
     if (input_button.tag.pressed)
     {
-        var trick_actions_config = db_read(SAVE_DATABASE, true, "trick_actions");
+        var trick_actions_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_TRICK_ACTIONS, "trick_actions");
         if (trick_actions_config and _time == 0)
         {
             trick_index = TRICK.BACK;

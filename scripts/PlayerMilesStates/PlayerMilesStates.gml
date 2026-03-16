@@ -77,8 +77,8 @@ function player_is_propeller_flying(_phase)
             {
                 if (can_input)
                 {
-                    var flight_style_config = db_read(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_STYLE, "miles", "flight_style");
-                    var input_flight = input_button.jump.pressed or (flight_style_config and input_button.jump.check);
+                    var flight_style_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_FLIGHT_STYLE, "flight_style");
+                    var input_flight = input_button.jump.pressed or (flight_style_config == CONFIG_FLIGHT_STYLE.ADVENTURE and input_button.jump.check);
                     if (input_flight and flight_time < PROPELLER_FLIGHT_DURATION and y_speed >= PROPELLER_FLIGHT_THRESHOLD)
                     {
                         flight_reset_time = 2;

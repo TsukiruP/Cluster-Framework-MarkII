@@ -2,7 +2,6 @@
 #macro SAVE_DATABASE global.save_database
 
 #macro MILES_DEFAULT_GROUND_SKILL MILES_GROUND_SKILL.NONE
-#macro MILES_DEFAULT_FLIGHT_STYLE MILES_FLIGHT_STYLE.CLASSIC
 #macro MILES_DEFAULT_FLIGHT_ASSIST true
 
 #macro AMY_DEFAULT_HAMMER_SKILL AMY_HAMMER_SKILL.HAMMER_ATTACK
@@ -39,12 +38,6 @@ db_write(SAVE_DATABASE, "", "name");
 db_write(SAVE_DATABASE, 0, "playtime");
 db_write(SAVE_DATABASE, room_get_name(rmTest), "stage");
 
-// Config
-db_write(SAVE_DATABASE, true, "boost_mode");
-db_write(SAVE_DATABASE, true, "trick_actions");
-db_write(SAVE_DATABASE, true, "tag_actions");
-db_write(SAVE_DATABASE, true, "swap");
-
 // Characters
 for (var i = 0; i < INPUT_MAX_PLAYERS; i++)
 {
@@ -55,7 +48,6 @@ db_write(SAVE_DATABASE, CHARACTER.SONIC, "character", 0);
 
 // Miles
 db_write(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-db_write(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_STYLE, "miles", "flight_style");
 db_write(SAVE_DATABASE, MILES_DEFAULT_FLIGHT_ASSIST, "miles", "flight_assist");
 
 // Amy

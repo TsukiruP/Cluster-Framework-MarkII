@@ -15,6 +15,9 @@ amy_menu = new dev_menu();
 cream_menu = new dev_menu([wip_option]);
 
 config_menu = new dev_menu();
+visuals_menu = new dev_menu();
+gameplay_menu = new dev_menu();
+controls_menu = new dev_menu();
 
 // Options
 var n = 0;
