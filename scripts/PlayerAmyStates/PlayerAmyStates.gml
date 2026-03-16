@@ -74,7 +74,10 @@ function player_is_leaping(_phase)
             player_ground(undefined);
             
             // Animate
-            animation_play(AMY_ANIMATION.LEAP, 0);
+            animation_play(AMY_ANIMATION.LEAP);
+            
+            // Sound
+            audio_play_single(sfxJump);
             break;
         }
         case PHASE.STEP:
@@ -86,6 +89,9 @@ function player_is_leaping(_phase)
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             
+            // Head Slide
+            if (input_button.aux.pressed) return player_perform(player_is_head_sliding);
+            
             // Apply air resistance
             if (y_speed < 0 and y_speed > -4)
             {
@@ -96,6 +102,94 @@ function player_is_leaping(_phase)
             if (y_speed < gravity_cap)
             {
                 y_speed = min(y_speed + gravity_force, gravity_cap);
+            }
+            break;
+        }
+        case PHASE.EXIT:
+        {
+            break;
+        }
+    }
+}
+
+function player_is_head_sliding(_phase)
+{
+    switch (_phase)
+    {
+        case PHASE.ENTER:
+        {
+            // Set flags
+            head_slide_state = 0;
+            
+            // Animate
+            animation_play(AMY_ANIMATION.HEAD_SLIDE);
+            break;
+        }
+        case PHASE.STEP:
+        {
+            if (on_ground)
+            {
+                // Move
+                player_move_on_ground();
+                if (state_changed) exit;
+                
+                if (on_ground)
+                {
+                    switch (head_slide_state)
+                    {
+                        case 0:
+                        {
+                            var head_slide_speed = 2;
+                            if (abs(x_speed) < head_slide_speed) x_speed = image_xscale * head_slide_speed;
+                            head_slide_state = 1;
+                            break;
+                        }
+                        case 1:
+                        {
+                            x_speed -= min(abs(x_speed), 24 / 256) * sign(x_speed);
+                            if (x_speed == 0)
+                            {
+                                head_slide_state = 2;
+                                animation_data.variant++;
+                                break;
+                            }
+                            
+                            if (animation_data.time mod 4 == 0)
+                            {
+                                // Create brake dust
+                                var ox = x + dsin(direction) * y_radius;
+                                var oy = y + dcos(direction) * y_radius;
+                                particle_create(ox, oy, global.ani_brake_dust_v0);
+                            }
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    if (head_slide_state == 1) head_slide_state = 0;
+                }
+            }
+            else
+            {
+                // Move
+                player_move_in_air();
+                if (state_changed) exit;
+                
+                // Fall
+                if (not on_ground)
+                {
+                    if (y_speed < gravity_cap)
+                    {
+                        y_speed = min(y_speed + gravity_force, gravity_cap);
+                    }
+                }
+            }
+            
+            // Stand
+            if (animation_data.variant == 2 and animation_is_finished())
+            {
+                return player_perform(player_is_standing);
             }
             break;
         }

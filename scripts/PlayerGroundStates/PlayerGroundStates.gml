@@ -578,7 +578,7 @@ function player_is_hammer_attacking(_phase)
                     {
                         x_speed = image_xscale * 3;
                         hammer_double = false;
-                        animation_data.variant = 1;
+                        animation_data.variant++;
                         amy_create_hammer_trail(HEART_PATTERN.DOUBLE_HAMMER_ATTACK);
                         exit;
                     }

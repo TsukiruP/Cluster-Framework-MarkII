@@ -437,6 +437,11 @@ global.ani_amy_heart_v0 = new animation(sprAmyHeart, 3, -1);
 
 global.ani_amy_leap_v0 = new animation(sprAmyLeap, [1, 1, 2, 2, 2, 2], 3);
 
+global.ani_amy_head_slide_v0 = new animation(sprAmyHeadSlide0, [2, 6, 6, 2], -1);
+global.ani_amy_head_slide_v1 = new animation(sprAmyHeadSlide1, 2);
+global.ani_amy_head_slide_v2 = new animation(sprAmyHeadSlide2, [2, 3, 2, 2, 2], -1);
+global.ani_amy_head_slide = [global.ani_amy_head_slide_v0, global.ani_amy_head_slide_v1, global.ani_amy_head_slide_v2];
+
 #endregion
 
 #region Cream

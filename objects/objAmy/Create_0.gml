@@ -1,7 +1,6 @@
 /// @description Initialize
 event_inherited();
 character_index = CHARACTER.AMY;
-hammer_double = false;
 
 // Hammer trail
 hammer_trail =
@@ -217,6 +216,9 @@ player_draw_after = function()
 };
 
 // Misc.
+hammer_double = false;
+head_slide_state = 0;
+
 trick_speed =
 [
     [0, -6],
@@ -895,6 +897,9 @@ player_animate = function()
         }
         case AMY_ANIMATION.HEAD_SLIDE:
         {
+            if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
+            player_set_animation(global.ani_amy_head_slide);
+            player_set_radii(6, 9);
             break;
         }
     }
