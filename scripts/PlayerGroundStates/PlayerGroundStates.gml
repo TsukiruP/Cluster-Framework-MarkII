@@ -25,8 +25,17 @@ function player_is_standing(phase)
 	{
 		case PHASE.ENTER:
 		{
+			// Check if on a cliff
+			var height = y_radius + y_tile_reach;
+			if (not player_raycast(hard_colliders, 0, height))
+			{
+				cliff_sign = player_raycast(hard_colliders, -x_radius, height) -
+					player_raycast(hard_colliders, x_radius, height);
+			}
+			else cliff_sign = 0;
+			
 			// Animate
-			player_animate("idle");
+			player_animate(cliff_sign == 0 ? "idle" : "teeter");
 			timeline_speed = 1;
 			image_angle = gravity_direction;
 			break;
@@ -60,8 +69,11 @@ function player_is_standing(phase)
 			}
 			
 			// Look / crouch
-			if (input_check(INPUT.UP)) return player_perform(player_is_looking);
-			if (input_check(INPUT.DOWN)) return player_perform(player_is_crouching);
+			if (cliff_sign == 0)
+			{
+				if (input_check(INPUT.UP)) return player_perform(player_is_looking);
+				if (input_check(INPUT.DOWN)) return player_perform(player_is_crouching);
+			}
 			break;
 		}
 		case PHASE.EXIT:

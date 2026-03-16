@@ -47,6 +47,8 @@ hard_colliders = [layer_tilemap_get_id("CollisionMain")];
 semisolid_tilemap = layer_tilemap_get_id("CollisionSemisolid");
 tilemap_count = array_length(hard_colliders);
 
+cliff_sign = 0;
+
 // Methods
 var n = 0;
 repeat (16) event_user(n++);
@@ -63,5 +65,6 @@ animations =
 	roll: animSonicRoll,
 	look: animSonicLook,
 	crouch: animSonicCrouch,
-	spindash: animSonicSpindash
+	spindash: animSonicSpindash,
+	teeter: animSonicTeeter
 };
