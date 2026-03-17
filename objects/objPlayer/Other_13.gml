@@ -470,8 +470,8 @@ player_try_air_skill = function()
     return false;
 };
 
-/// @description Resets aerial skills when grounded.
-player_refresh_aerials = function()
+/// @description Resets air skills when grounded.
+player_refresh_air_skills = function()
 {
     switch (object_index)
     {

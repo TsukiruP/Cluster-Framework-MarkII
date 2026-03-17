@@ -153,7 +153,7 @@ player_move_in_air = function()
             landed = false;
             on_ground = true;
             aerial_flags = 0;
-            player_refresh_aerials();
+            player_refresh_air_skills();
             break;
         }
     }
