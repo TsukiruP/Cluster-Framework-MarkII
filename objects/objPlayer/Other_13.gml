@@ -4,7 +4,7 @@
 /// @returns {Bool}
 player_check_ground_skill = function()
 {
-    return (on_ground and not (local_direction >= 45 and local_direction <= 315));
+    return (on_ground and not (local_direction >= 90 and local_direction <= 270));
 };
 
 /// @description Checks if the player performs a jump.
