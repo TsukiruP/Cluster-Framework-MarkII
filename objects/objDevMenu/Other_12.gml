@@ -136,15 +136,11 @@ gameplay_menu.options = array_concat(gameplay_menu.options, gameplay_options);
 device_option = new dev_option("Device Setup");
 device_option.confirm = function() { InputPartySetJoin(true); };
 
-air_skills_option = new dev_option_int("Air Skills");
+air_skills_option = new dev_option_bool("Aerial Mastery");
 with (air_skills_option)
 {
-    clampinv = true;
-    minimum = CONFIG_AIR_SKILLS.CLASSIC;
-    maximum = CONFIG_AIR_SKILLS.MODERN;
-    specifiers = ["Classic", "Modern"];
-    get = function() { return db_read(CONFIG_DATABASE, CONFIG_DEFAULT_AIR_SKILLS, "air_skills"); };
-    set = function(_val) { db_write(CONFIG_DATABASE, _val, "air_skills"); };
+    get = function() { return db_read(CONFIG_DATABASE, CONFIG_DEFAULT_AERIAL_MASTERY, "aerial_mastery"); };
+    set = function(_val) { db_write(CONFIG_DATABASE, _val, "aerial_mastery"); };
 }
 
 flight_style_option = new dev_option_int("Flight Style");

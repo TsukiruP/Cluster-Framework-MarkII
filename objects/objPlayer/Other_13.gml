@@ -323,13 +323,13 @@ player_try_air_skill = function()
     // Abort if not player controlled
     if (player_index != 0 and cpu_gamepad_time == 0) return false;
     
-    var air_skills_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_AIR_SKILLS, "air_skills");
+    var aerial_mastery_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_AERIAL_MASTERY, "aerial_mastery");
     
     switch (object_index)
     {
         case objSonic:
         {
-            if (state == player_is_jumping or air_skills_config)
+            if (state == player_is_jumping or aerial_mastery_config)
             {
                 if (input_button.jump.pressed and player_try_flight_assist())
                 {
@@ -368,7 +368,7 @@ player_try_air_skill = function()
         }
         case objMiles:
         {
-            if (state == player_is_jumping or air_skills_config)
+            if (state == player_is_jumping or state == player_is_propeller_flying or aerial_mastery_config)
             {
                 if (input_button.jump.pressed)
                 {
@@ -396,7 +396,7 @@ player_try_air_skill = function()
         }
         case objKnuckles:
         {
-            if (state == player_is_jumping or air_skills_config)
+            if (state == player_is_jumping or aerial_mastery_config)
             {
                 if (input_button.jump.pressed and player_try_flight_assist())
                 {
@@ -415,7 +415,7 @@ player_try_air_skill = function()
         }
         case objAmy:
         {
-            if (input_button.jump.pressed and player_try_flight_assist())
+            if (input_button.jump.pressed and player_try_flight_assist() and aerial_mastery_config)
             {
                 if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
                 {
@@ -458,7 +458,7 @@ player_try_air_skill = function()
         }
         case objCream:
         {
-            if (state == player_is_jumping or air_skills_config)
+            if (state == player_is_jumping or state == player_is_fan_flying or aerial_mastery_config)
             {
                 if (input_button.jump.pressed and player_try_flight_assist())
                 {
