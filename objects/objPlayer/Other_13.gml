@@ -294,20 +294,24 @@ player_try_ground_skill = function()
         {
             if (input_button.aux.pressed and player_check_ground_skill())
             {
-                // Perform
-                player_perform(player_is_hammer_attacking);
-                
-                // Animate
-                var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
+                if (not boost_mode)
                 {
-                    animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
+                    // Perform
+                    player_perform(player_is_hammer_attacking);
+                    
+                    // Animate
+                    var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                    if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
+                    {
+                        animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
+                    }
+                    else
+                    {
+                        amy_create_hammer_trail(HEART_PATTERN.HAMMER_ATTACK);
+                    }
+                    
+                    return true;
                 }
-                else
-                {
-                    amy_create_hammer_trail(HEART_PATTERN.HAMMER_ATTACK);
-                }
-                return true;
             }
             break;
         }
