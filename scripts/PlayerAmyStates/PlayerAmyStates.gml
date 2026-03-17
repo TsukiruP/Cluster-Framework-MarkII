@@ -143,8 +143,8 @@ function player_is_head_sliding(_phase)
                     player_ground(undefined);
                 }
                 
-                // Cancel on ceilings
-                if (local_direction == 180) x_speed = 0;
+                // Cancel on steep slopes
+                if (not player_check_ground_skill()) x_speed = 0;
                 
                 // Slide
                 switch (head_slide_state)
