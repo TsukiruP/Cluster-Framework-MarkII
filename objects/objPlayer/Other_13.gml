@@ -66,7 +66,11 @@ player_try_jump = function()
             player_perform(player_is_jumping);
             
             // Animate
-            animation_play(object_index == objAmy ? PLAYER_ANIMATION.SPRING : PLAYER_ANIMATION.JUMP);
+            if (object_index == objAmy)
+            {
+                var spin_save = db_read(SAVE_DATABASE, AMY_DEFAULT_SPIN, "amy", "spin");
+                animation_play(spin_save ? PLAYER_ANIMATION.JUMP : PLAYER_ANIMATION.SPRING);
+            }
             
             // Sound
             audio_play_single(sfxJump);
