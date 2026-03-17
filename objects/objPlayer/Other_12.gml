@@ -331,13 +331,14 @@ player_refresh_physics = function()
 };
 
 /// @description Applies slope friction to the player's horizontal speed, if appropriate.
-player_resist_slope = function()
+/// @param {Real} force Friction value to use (optional, defaults to 3 / 32).
+player_resist_slope = function(_force = 3 / 32)
 {
     // Abort if moving along a ceiling
     if (local_direction >= 135 and local_direction <= 225) exit;
     
     // Apply (Sonic Advance method)
-    var slope_factor = (dsin(local_direction) * 3) / 32;
+    var slope_factor = dsin(local_direction) * _force;
     x_speed -= slope_factor;
     
     // Apply speed cap

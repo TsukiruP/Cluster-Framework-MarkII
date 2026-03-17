@@ -437,16 +437,10 @@ function player_is_rolling(_phase)
             }
             
             // Apply slope friction
-            if (not (local_direction >= 135 and local_direction <= 225) and x_speed != 0)
-            {
-                var friction_downhill = 60 / 256;
-                var friction_uphill = friction_downhill / 4;
-                var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
-                x_speed -= dsin(local_direction) * slope_friction;
-                
-                // Apply speed cap
-                if (abs(x_speed) > speed_cap) x_speed = speed_cap * sign(x_speed);
-            }
+            var friction_downhill = 60 / 256;
+            var friction_uphill = friction_downhill / 4;
+            var slope_friction = (sign(x_speed) == sign(dsin(local_direction)) ? friction_uphill : friction_downhill);
+            player_resist_slope(slope_friction);
             
             // Unroll
             if (abs(x_speed) < 0.5) return player_perform(player_is_running);
