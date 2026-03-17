@@ -309,6 +309,12 @@ function player_is_trick_somersaulting(_phase)
                 // Move
                 player_move_on_ground();
                 if (state_changed) exit;
+                
+                // Detach from ground
+                if (not on_ground)
+                {
+                    player_ground(undefined);
+                }
             }
             else
             {

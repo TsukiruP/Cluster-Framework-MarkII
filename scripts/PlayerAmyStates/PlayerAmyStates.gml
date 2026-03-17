@@ -133,41 +133,48 @@ function player_is_head_sliding(_phase)
                 player_move_on_ground();
                 if (state_changed) exit;
                 
-                if (on_ground)
+                // Fall
+                if (not on_ground)
                 {
-                    switch (head_slide_state)
-                    {
-                        case 0:
-                        {
-                            var head_slide_speed = 2;
-                            if (abs(x_speed) < head_slide_speed) x_speed = image_xscale * head_slide_speed;
-                            head_slide_state = 1;
-                            break;
-                        }
-                        case 1:
-                        {
-                            x_speed -= min(abs(x_speed), 24 / 256) * sign(x_speed);
-                            if (x_speed == 0)
-                            {
-                                head_slide_state = 2;
-                                animation_data.variant++;
-                                break;
-                            }
-                            
-                            if (animation_data.time mod 4 == 0)
-                            {
-                                // Create brake dust
-                                var ox = x + dsin(direction) * y_radius;
-                                var oy = y + dcos(direction) * y_radius;
-                                particle_create(ox, oy, global.ani_brake_dust_v0);
-                            }
-                            break;
-                        }
-                    }
-                }
-                else
-                {
+                    // Set flags
                     if (head_slide_state == 1) head_slide_state = 0;
+                    
+                    // Detach from ground
+                    player_ground(undefined);
+                }
+                
+                // Cancel on ceilings
+                if (local_direction == 180) x_speed = 0;
+                
+                // Slide
+                switch (head_slide_state)
+                {
+                    case 0:
+                    {
+                        var head_slide_speed = 2;
+                        if (abs(x_speed) < head_slide_speed) x_speed = image_xscale * head_slide_speed;
+                        head_slide_state = 1;
+                        break;
+                    }
+                    case 1:
+                    {
+                        x_speed -= min(abs(x_speed), 24 / 256) * sign(x_speed);
+                        if (x_speed == 0)
+                        {
+                            head_slide_state = 2;
+                            animation_data.variant = 2;
+                            break;
+                        }
+                        
+                        if (animation_data.time mod 4 == 0)
+                        {
+                            // Create brake dust
+                            var ox = x + dsin(direction) * y_radius;
+                            var oy = y + dcos(direction) * y_radius;
+                            particle_create(ox, oy, global.ani_brake_dust_v0);
+                        }
+                        break;
+                    }
                 }
             }
             else

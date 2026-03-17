@@ -900,6 +900,52 @@ player_animate = function()
             if (animation_data.variant == 0 and animation_is_finished()) animation_data.variant = 1;
             player_set_animation(global.ani_amy_head_slide);
             player_set_radii(6, 9);
+            switch (animation_data.variant)
+            {
+                case 0:
+                {
+                    switch (image_index)
+                    {
+                        case 0:
+                        {
+                            hitboxes[0].set_size(-6, -17, 6, 11);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 1:
+                        {
+                            hitboxes[0].set_size(-6, -13, 6, 11);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                        case 3:
+                        {
+                            hitboxes[0].set_size(-6, -5, 6, 11);
+                            hitboxes[1].set_size();
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-8, -4, 6, 10);
+                        hitboxes[1].set_size(-1, -10, 18, 12);
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    if (image_index == 0)
+                    {
+                        hitboxes[0].set_size(-6, -9, 6, 11);
+                        hitboxes[1].set_size();
+                    }
+                    break;
+                }
+            }
             break;
         }
     }
