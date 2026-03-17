@@ -323,81 +323,92 @@ player_try_air_skill = function()
     // Abort if not player controlled
     if (player_index != 0 and cpu_gamepad_time == 0) return false;
     
+    var air_skills_config = db_read(CONFIG_DATABASE, CONFIG_DEFAULT_AIR_SKILLS, "air_skills");
+    
     switch (object_index)
     {
         case objSonic:
         {
-            if (input_button.jump.pressed and player_try_flight_assist())
+            if (state == player_is_jumping or air_skills_config)
             {
-                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                if (input_button.jump.pressed and player_try_flight_assist())
                 {
-                    return player_try_shield_action();
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    {
+                        return player_try_shield_action();
+                    }
                 }
-            }
-            
-            if (input_button.aux.pressed)
-            {
-                if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                
+                if (input_button.aux.pressed)
                 {
-                    var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
-                    
-                    // Set flags
-                    aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                    
-                    // Dash
-                    x_speed += image_xscale * 2.25;
-                    y_speed = 0;
-                    
-                    // Perform
-                    player_perform(player_is_falling, false);
-                    
-                    // Animate
-                    animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
-                    
-                    // Sound
-                    audio_play_single(sfxAirDash);
-                    return true;
+                    if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                    {
+                        var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
+                        
+                        // Set flags
+                        aerial_flags |= AERIAL_FLAG_AIR_DASH;
+                        
+                        // Dash
+                        x_speed += image_xscale * 2.25;
+                        y_speed = 0;
+                        
+                        // Perform
+                        player_perform(player_is_falling, false);
+                        
+                        // Animate
+                        animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                        
+                        // Sound
+                        audio_play_single(sfxAirDash);
+                        return true;
+                    }
                 }
             }
             break;
         }
         case objMiles:
         {
-            if (input_button.jump.pressed)
+            if (state == player_is_jumping or air_skills_config)
             {
-                if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
+                if (input_button.jump.pressed)
                 {
-                    // Set flags
-                    var ground_skill_save = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-                    flight_hammer = (ground_skill_save == MILES_GROUND_SKILL.HAMMER_ATTACK);
-                    
-                    // Perform
-                    player_perform(player_is_propeller_flying);
-                    return true;
+                    if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
+                    {
+                        // Set flags
+                        var ground_skill_save = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
+                        flight_hammer = (ground_skill_save == MILES_GROUND_SKILL.HAMMER_ATTACK);
+                        
+                        // Perform
+                        player_perform(player_is_propeller_flying);
+                        return true;
+                    }
                 }
-            }
-            
-            if (input_button.aux.pressed)
-            {
-                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                
+                if (input_button.aux.pressed)
                 {
-                    return player_try_shield_action();
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    {
+                        return player_try_shield_action();
+                    }
                 }
             }
             break;
         }
         case objKnuckles:
         {
-            if (input_button.jump.pressed and player_try_flight_assist())
+            if (state == player_is_jumping or air_skills_config)
             {
-                return false;
-            }
-            
-            if (input_button.aux.pressed)
-            {
-                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                if (input_button.jump.pressed and player_try_flight_assist())
                 {
-                    return player_try_shield_action();
+                    return false;
+                }
+                
+                if (input_button.aux.pressed)
+                {
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    {
+                        return player_try_shield_action();
+                    }
                 }
             }
             break;
@@ -447,20 +458,23 @@ player_try_air_skill = function()
         }
         case objCream:
         {
-            if (input_button.jump.pressed and player_try_flight_assist())
+            if (state == player_is_jumping or air_skills_config)
             {
-                if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
+                if (input_button.jump.pressed and player_try_flight_assist())
                 {
-                    player_perform(player_is_fan_flying);
-                    return true;
+                    if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
+                    {
+                        player_perform(player_is_fan_flying);
+                        return true;
+                    }
                 }
-            }
-            
-            if (input_button.aux.pressed)
-            {
-                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                
+                if (input_button.aux.pressed)
                 {
-                    return player_try_shield_action();
+                    if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                    {
+                        return player_try_shield_action();
+                    }
                 }
             }
             break;
