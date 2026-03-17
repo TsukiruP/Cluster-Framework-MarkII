@@ -42,8 +42,8 @@ function player_is_sprung(_phase)
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Air skill
+            if (player_try_air_skill()) exit;
             
             // Apply air resistance
             if (y_speed < 0 and y_speed > -4)

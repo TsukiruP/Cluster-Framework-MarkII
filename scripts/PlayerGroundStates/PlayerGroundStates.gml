@@ -88,8 +88,8 @@ function player_is_standing(_phase)
                 }
             }
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Ground skill
+            if (player_try_ground_skill()) exit;
             break;
         }
         case PHASE.EXIT:
@@ -203,8 +203,8 @@ function player_is_running(_phase)
             // Stand
             if (x_speed == 0 and input_axis_x == 0) return player_perform(player_is_standing);
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Ground skill
+            if (player_try_ground_skill()) exit;
             
             // Animate
             if (can_turn)
@@ -295,8 +295,8 @@ function player_is_looking(_phase)
                 return player_perform(player_is_standing);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Ground skill
+            if (player_try_ground_skill()) exit;
             break;
         }
         case PHASE.EXIT:
@@ -366,8 +366,8 @@ function player_is_crouching(_phase)
                 return player_perform(player_is_standing);
             }
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Ground skill
+            if (player_try_ground_skill()) exit;
             break;
         }
         case PHASE.EXIT:

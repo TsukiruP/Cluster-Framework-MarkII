@@ -1,12 +1,5 @@
 /// @description Actions
 
-/// @description Checks if the player can perform a ground skill.
-/// @returns {Bool}
-player_check_ground_skill = function()
-{
-    return (on_ground and not (local_direction >= 90 and local_direction <= 270));
-};
-
 /// @description Checks if the player performs a jump.
 /// @returns {Bool}
 player_try_jump = function()
@@ -281,209 +274,196 @@ player_try_shield_action = function()
     return false;
 };
 
-/// @description Checks if the player performs a skill.
+/// @description Checks if the player can perform a ground skill.
 /// @returns {Bool}
-player_try_skill = function()
+player_check_ground_skill = function()
 {
-    if (player_index == 0 or cpu_gamepad_time > 0)
+    return (on_ground and not (local_direction >= 90 and local_direction <= 270));
+};
+
+/// @description Check if the player performs a ground skill.
+/// @returns {Bool}
+player_try_ground_skill = function()
+{
+    // Abort if not player controlled
+    if (player_index != 0 and cpu_gamepad_time == 0) return false;
+    
+    switch (object_index)
     {
-        switch (object_index)
+        case objAmy:
         {
-            case objSonic:
+            if (input_button.aux.pressed and player_check_ground_skill())
             {
-                if (not on_ground)
+                // Perform
+                player_perform(player_is_hammer_attacking);
+                
+                // Animate
+                var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
+                if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
                 {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
+                    animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
+                }
+                else
+                {
+                    amy_create_hammer_trail(HEART_PATTERN.HAMMER_ATTACK);
+                }
+                return true;
+            }
+            break;
+        }
+    }
+    
+    return false;
+};
+
+/// @description Checks if the player performs an air skill.
+/// @returns {Bool}
+player_try_air_skill = function()
+{
+    // Abort if not player controlled
+    if (player_index != 0 and cpu_gamepad_time == 0) return false;
+    
+    switch (object_index)
+    {
+        case objSonic:
+        {
+            if (input_button.jump.pressed and player_try_flight_assist())
+            {
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                {
+                    return player_try_shield_action();
+                }
+            }
+            
+            if (input_button.aux.pressed)
+            {
+                if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                {
+                    var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
                     
-                    if (input_button.aux.pressed)
+                    // Set flags
+                    aerial_flags |= AERIAL_FLAG_AIR_DASH;
+                    
+                    // Dash
+                    x_speed += image_xscale * 2.25;
+                    y_speed = 0;
+                    
+                    // Perform
+                    player_perform(player_is_falling, false);
+                    
+                    // Animate
+                    animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
+                    
+                    // Sound
+                    audio_play_single(sfxAirDash);
+                    return true;
+                }
+            }
+            break;
+        }
+        case objMiles:
+        {
+            if (input_button.jump.pressed)
+            {
+                if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
+                {
+                    // Set flags
+                    var ground_skill_save = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
+                    flight_hammer = (ground_skill_save == MILES_GROUND_SKILL.HAMMER_ATTACK);
+                    
+                    // Perform
+                    player_perform(player_is_propeller_flying);
+                    return true;
+                }
+            }
+            
+            if (input_button.aux.pressed)
+            {
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                {
+                    return player_try_shield_action();
+                }
+            }
+            break;
+        }
+        case objKnuckles:
+        {
+            if (input_button.jump.pressed and player_try_flight_assist())
+            {
+                return false;
+            }
+            
+            if (input_button.aux.pressed)
+            {
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                {
+                    return player_try_shield_action();
+                }
+            }
+            break;
+        }
+        case objAmy:
+        {
+            if (input_button.jump.pressed and player_try_flight_assist())
+            {
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                {
+                    return player_try_shield_action();
+                }
+            }
+            
+            if (input_button.aux.pressed)
+            {
+                if (not (aerial_flags & AERIAL_FLAG_HAMMER))
+                {
+                    // Set flags
+                    aerial_flags |= AERIAL_FLAG_HAMMER;
+                    
+                    // Hammer Whirl
+                    if (input_axis_y == 1 and input_axis_x == 0)
                     {
-                        if (not (aerial_flags & AERIAL_FLAG_AIR_DASH))
+                        var hammer_whirl_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
+                        if (hammer_whirl_save)
                         {
-                            var uncurl = (not (animation_data.index == PLAYER_ANIMATION.ROLL or animation_data.index == PLAYER_ANIMATION.JUMP));
-                            
-                            // Set flags
-                            aerial_flags |= AERIAL_FLAG_AIR_DASH;
-                            
-                            // Dash
-                            x_speed += image_xscale * 2.25;
-                            y_speed = 0;
-                            
                             // Perform
-                            player_perform(player_is_falling, false);
-                            
-                            // Animate
-                            animation_play(SONIC_ANIMATION.AIR_DASH, uncurl);
-                            
-                            // Sound
-                            audio_play_single(sfxAirDash);
-                            return true;
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objMiles:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed)
-                    {
-                        if (state != player_is_propeller_flying and flight_time < PROPELLER_FLIGHT_DURATION)
-                        {
-                            // Set flags
-                            var ground_skill_save = db_read(SAVE_DATABASE, MILES_DEFAULT_GROUND_SKILL, "miles", "ground_skill");
-                            flight_hammer = (ground_skill_save == MILES_GROUND_SKILL.HAMMER_ATTACK);
-                            
-                            // Perform
-                            player_perform(player_is_propeller_flying);
+                            player_perform(player_is_hammer_whirling);
                             return true;
                         }
                     }
                     
-                    if (input_button.aux.pressed)
-                    {
-                        if (animation_data.index == MILES_ANIMATION.HAMMER_FLIGHT)
-                        {
-                            if (animation_data.variant == 0)
-                            {
-                                animation_data.variant = 1;
-                                return false;
-                            }
-                        }
-                        else if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objKnuckles:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        return false;
-                    }
+                    // Perform
+                    player_perform(player_is_falling, false);
                     
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
-                }
-                else
-                {
-                }
-                break;
-            }
-            case objAmy:
-            {
-                if (not on_ground)
-                {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
+                    // Animate
+                    animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
+                    amy_create_hammer_trail(HEART_PATTERN.AIR_HAMMER_ATTACK);
                     
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_HAMMER))
-                        {
-                            // Set flags
-                            aerial_flags |= AERIAL_FLAG_HAMMER;
-                            
-                            // Hammer Whirl
-                            if (input_axis_y == 1 and input_axis_x == 0)
-                            {
-                                var hammer_whirl_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_WHIRL, "amy", "hammer_whirl");
-                                if (hammer_whirl_save)
-                                {
-                                    // Perform
-                                    player_perform(player_is_hammer_whirling);
-                                    return true;
-                                }
-                            }
-                            
-                            // Perform
-                            player_perform(player_is_falling, false);
-                            
-                            // Animate
-                            animation_play(AMY_ANIMATION.AIR_HAMMER_ATTACK);
-                            amy_create_hammer_trail(HEART_PATTERN.AIR_HAMMER_ATTACK);
-                            
-                            // Sound
-                            audio_play_single(sfxAirHammerAttack);
-                            return true;
-                        }
-                    }
+                    // Sound
+                    audio_play_single(sfxAirHammerAttack);
+                    return true;
                 }
-                else
-                {
-                    if (input_button.aux.pressed and player_check_ground_skill())
-                    {
-                        // Perform
-                        player_perform(player_is_hammer_attacking);
-                        
-                        // Animate
-                        var hammer_skill_save = db_read(SAVE_DATABASE, AMY_DEFAULT_HAMMER_SKILL, "amy", "hammer_skill");
-                        if (hammer_skill_save == AMY_HAMMER_SKILL.BIG_HAMMER_ATTACK)
-                        {
-                            animation_play(AMY_ANIMATION.BIG_HAMMER_ATTACK);
-                        }
-                        else
-                        {
-                        	amy_create_hammer_trail(HEART_PATTERN.HAMMER_ATTACK);
-                        }
-                        return true;
-                    }
-                }
-                break;
             }
-            case objCream:
+            break;
+        }
+        case objCream:
+        {
+            if (input_button.jump.pressed and player_try_flight_assist())
             {
-                if (not on_ground)
+                if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
                 {
-                    if (input_button.jump.pressed and player_try_flight_assist())
-                    {
-                        if (state != player_is_fan_flying and flight_time < FAN_FLIGHT_DURATION)
-                        {
-                            player_perform(player_is_fan_flying);
-                            return true;
-                        }
-                    }
-                    
-                    if (input_button.aux.pressed)
-                    {
-                        if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
-                        {
-                            return player_try_shield_action();
-                        }
-                    }
+                    player_perform(player_is_fan_flying);
+                    return true;
                 }
-                else
-                {
-                }
-                break;
             }
+            
+            if (input_button.aux.pressed)
+            {
+                if (not (aerial_flags & AERIAL_FLAG_SHIELD_ACTION))
+                {
+                    return player_try_shield_action();
+                }
+            }
+            break;
         }
     }
     

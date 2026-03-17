@@ -55,8 +55,8 @@ function player_is_fan_flying(_phase)
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Air skill
+            if (player_try_air_skill()) exit;
             
             // Cancel
             if (input_button.jump.pressed and input_axis_y == 1)

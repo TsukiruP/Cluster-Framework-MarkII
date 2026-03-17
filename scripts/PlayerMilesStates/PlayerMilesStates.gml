@@ -47,11 +47,22 @@ function player_is_propeller_flying(_phase)
             // Land
             if (on_ground) return player_perform(x_speed != 0 ? player_is_running : player_is_standing);
             
-            // Skill
-            if (player_try_skill()) exit;
+            // Hammer attack
+            if (input_button.aux.pressed)
+            {
+                if (animation_data.index == MILES_ANIMATION.HAMMER_FLIGHT)
+                {
+                    animation_data.variant = 1;
+                }
+            }
             
-            // Hammer attacking disables certain inputs
             var can_input = (animation_data.index != MILES_ANIMATION.HAMMER_FLIGHT or animation_data.variant == 0);
+            
+            // Air skill
+            if (can_input)
+            {
+                if (player_try_air_skill()) exit;
+            }
             
             // Cancel
             if (input_button.jump.pressed and input_axis_y == 1 and can_input and (player_index == 0 or cpu_gamepad_time > 0))
