@@ -1,0 +1,45 @@
+/// @description Initialize
+image_speed = 0;
+
+// Global
+global_view = dbg_view("Global", false);
+dbg_section("Game");
+dbg_watch(ref_create(ctrlGame, "game_time"));
+dbg_text_input(ref_create(ctrlGame, "game_speed"), undefined, "r");
+dbg_drop_down(ref_create(ctrlGame, "game_mode"), "Single,Marathon,Time Attack");
+dbg_watch(ref_create(ctrlGame, "game_flags"));
+dbg_watch(ref_create(ctrlGame, "game_pause"));
+
+dbg_section("Stage");
+dbg_watch(ref_create(global, "score_count"));
+dbg_watch(ref_create(global, "ring_count"));
+dbg_watch(ref_create(global, "life_count"));
+dbg_watch(ref_create(global, "ring_life_threshold"));
+
+// Player
+player_views = [];
+
+/// @description Watches the given player.
+debug_watch_player = function(_pla)
+{
+    var character_names = ["Sonic", "Miles", "Knuckles", "Amy", "Cream"];
+    var character_view = dbg_view(character_names[_pla.character_index], false);
+    array_push(player_views, character_view);
+    
+    dbg_section("Metadata");
+    dbg_watch(ref_create(_pla, "player_index"));
+    dbg_watch(ref_create(_pla, "character_index"));
+    
+    dbg_section("State machine");
+    dbg_watch(ref_create(_pla, "state"));
+    dbg_watch(ref_create(_pla, "state_previous"));
+    
+    dbg_section("Movement and Collision");
+    dbg_watch(ref_create(_pla, "x_speed"));
+    dbg_watch(ref_create(_pla, "y_speed"));
+    dbg_slider_int(ref_create(_pla, "gravity_direction"), 0, 360, undefined, 90);
+    dbg_watch(ref_create(_pla, "direction"));
+    dbg_watch(ref_create(_pla, "local_direction"));
+    dbg_watch(ref_create(_pla, "mask_direction"));
+    dbg_watch(ref_create(_pla, "control_lock_time"));
+};

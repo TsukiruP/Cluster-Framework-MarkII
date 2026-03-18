@@ -125,6 +125,13 @@ input_button =
     select : new button(INPUT_VERB.SELECT)
 };
 
+// CPU
+cpu_state = CPU_STATE.FOLLOW;
+cpu_axis_x = array_create(CPU_RECORD_COUNT);
+cpu_axis_y = array_create(CPU_RECORD_COUNT);
+cpu_input_jump = array_create(CPU_RECORD_COUNT);
+cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
+
 // Animation
 animation_data = new animation_core();
 
@@ -195,13 +202,6 @@ with (speed_break)
         accelerations[i] = array_create(2);
     }
 }
-
-// CPU
-cpu_state = CPU_STATE.FOLLOW;
-cpu_axis_x = array_create(CPU_RECORD_COUNT);
-cpu_axis_y = array_create(CPU_RECORD_COUNT);
-cpu_input_jump = array_create(CPU_RECORD_COUNT);
-cpu_input_jump_pressed = array_create(CPU_RECORD_COUNT);
 
 // Methods
 var n = 0;

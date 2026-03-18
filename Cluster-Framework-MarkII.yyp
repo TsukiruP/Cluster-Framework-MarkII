@@ -218,6 +218,7 @@
     {"id":{"name":"RushSprites","path":"notes/RushSprites/RushSprites.yy",},},
     {"id":{"name":"Sounds","path":"notes/Sounds/Sounds.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
+    {"id":{"name":"ctrlDebug","path":"objects/ctrlDebug/ctrlDebug.yy",},},
     {"id":{"name":"ctrlGame","path":"objects/ctrlGame/ctrlGame.yy",},},
     {"id":{"name":"ctrlMusic","path":"objects/ctrlMusic/ctrlMusic.yy",},},
     {"id":{"name":"ctrlStage","path":"objects/ctrlStage/ctrlStage.yy",},},

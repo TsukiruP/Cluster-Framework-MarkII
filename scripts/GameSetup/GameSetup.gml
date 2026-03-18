@@ -156,6 +156,7 @@ audio_loop_points(bgmExtraDungeon1A, 814140 / 44100, 6676039 / 44100);
 audio_loop_points(bgmSunshineCoastline, 00450784 / 48000, 08694455 / 48000);
 
 // Misc.
+show_debug_overlay(true);
 surface_depth_disable(true);
 InputPartySetParams(INPUT_VERB.CONFIRM, 1, INPUT_MAX_PLAYERS, true, INPUT_VERB.CANCEL, undefined);
 randomize();
