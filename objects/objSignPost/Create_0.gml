@@ -2,9 +2,9 @@
 event_inherited();
 hitboxes[0].set_size(-24, -24, 24, 24);
 
-reaction = function(pla)
+reaction = function(_pla)
 {
-    if (collision_player(0, pla))
+    if (collision_player(0, _pla))
     {
         with (objCamera)
         {

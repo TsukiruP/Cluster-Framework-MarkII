@@ -9,42 +9,42 @@ sink_top = 0;
 sink_right = 0;
 sink_bottom = 0;
 
-reaction = function(pla)
+reaction = function(_pla)
 {
-    var hurtbox_flags = collision_player(0, pla);
+    var hurtbox_flags = collision_player(0, _pla);
     if (hurtbox_flags)
     {
         var hurtbox_direction = collision_direction(hurtbox_flags);
-        var hurtbox_difference = angle_wrap(hurtbox_direction - pla.gravity_direction);
+        var hurtbox_difference = angle_wrap(hurtbox_direction - _pla.gravity_direction);
         var x_dist = hex_to_dec((hurtbox_flags & 0x0FF00) >> 8);
         var y_dist = hex_to_dec(hurtbox_flags & 0x000FF);
-        pla.x += x_dist;
-        pla.y += y_dist;
+        _pla.x += x_dist;
+        _pla.y += y_dist;
         
         switch (hurtbox_difference)
         {
             case 90:
             {
-                if (pla.y_speed >= 0)
+                if (_pla.y_speed >= 0)
                 {
                     sink_direction |= (hurtbox_flags & 0xF0000);
-                    pla.solid_id = id;
+                    _pla.solid_id = id;
                 }
                 break;
             }
             case 180:
             {
-                if (pla.x_speed >= 0) pla.x_speed = 0;
+                if (_pla.x_speed >= 0) _pla.x_speed = 0;
                 break;
             }
             case 270:
             {
-                if (pla.y_speed <= 0) pla.y_speed = 0;
+                if (_pla.y_speed <= 0) _pla.y_speed = 0;
                 break;
             }
             case 0:
             {
-                if (pla.x_speed <= 0) pla.x_speed = 0;
+                if (_pla.x_speed <= 0) _pla.x_speed = 0;
                 break;
             }
         }

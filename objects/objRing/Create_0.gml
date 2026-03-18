@@ -36,11 +36,11 @@ if (tilemap_count >= 3)
     --tilemap_count;
 }
 
-reaction = function(pla)
+reaction = function(_pla)
 {
-	if (collision_player(0, pla) and pla.state != player_is_hurt and pla.recovery_time < 90)
+	if (collision_player(0, _pla) and _pla.state != player_is_hurt and _pla.recovery_time < 90)
     {
-        pla.player_gain_rings(value);
+        _pla.player_gain_rings(value);
         audio_play_single(super ? sfxRingSuper : sfxRing);
         particle_create(x, y, global.ani_ring_sparkle_v0);
 		instance_destroy();
