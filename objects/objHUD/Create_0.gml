@@ -28,9 +28,9 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     {
         update = function()
         {
-            var shield = ctrlStage.stage_players[0].shield.index;
-            icon = ITEM.BASIC + (shield > SHIELD.NONE ? shield - SHIELD.BASIC : 0);
-            active = (shield != SHIELD.NONE);
+            var shield_index = ctrlStage.stage_players[0].shield.index;
+            icon = ITEM.BASIC + (shield_index > SHIELD.NONE ? shield_index - SHIELD.BASIC : 0);
+            active = (shield_index != SHIELD.NONE);
         };
     }
     

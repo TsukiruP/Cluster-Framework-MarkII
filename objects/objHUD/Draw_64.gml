@@ -213,10 +213,10 @@ if (LIVES_ENABLED)
             var lives_x = interpolate(lives_xstart, lives_xend, active_time / active_duration, EASE_SMOOTHSTEP);
             var lives_y = hud_y;
             var lives_cap = 99;
-            var character_index = global.characters[0];
+            var character_element = global.characters[0];
             draw_sprite(sprHUDCluster, 2, lives_x, lives_y);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_element, lives_x + 18, lives_y + 4, -1, 1, 0, c_black, 1);
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_element, lives_x + 19, lives_y + 3, -1, 1, 0, c_white, 1);
             draw_text(lives_x + 29, lives_y + 5, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
         }
@@ -225,8 +225,8 @@ if (LIVES_ENABLED)
             var lives_x = 11;
             var lives_y = CAMERA_HEIGHT - 26;
             var lives_cap = 99;
-            var character_index = global.characters[0];
-            draw_sprite(sprHUDAdventureLifeIcon, character_index, lives_x, lives_y);
+            var character_element = global.characters[0];
+            draw_sprite(sprHUDAdventureLifeIcon, character_element, lives_x, lives_y);
             draw_set_font(global.font_hud_adventure);
             draw_text(lives_x + 17, lives_y + 7, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
@@ -236,8 +236,8 @@ if (LIVES_ENABLED)
             var lives_x = 22;
             var lives_y = CAMERA_HEIGHT - 20;
             var lives_cap = 99;
-            var character_index = global.characters[0];
-            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x, lives_y, -1, 1, 0, c_white, 1);
+            var character_element = global.characters[0];
+            draw_sprite_ext(sprHUDAdvance3LifeIcon, character_element, lives_x, lives_y, -1, 1, 0, c_white, 1);
             draw_set_font(global.font_hud_adventure_2_lives);
             draw_text(lives_x + 4, lives_y + 6, $"{global.life_count > lives_cap ? lives_cap : string_pad(global.life_count, 2)}");
             break;
@@ -247,8 +247,8 @@ if (LIVES_ENABLED)
             var lives_x = 6;
             var lives_y = CAMERA_HEIGHT - 18;
             var lives_cap = 9;
-            var character_index = global.characters[0];
-            draw_sprite(sprHUDAdvance2LifeIcon, character_index, lives_x, lives_y);
+            var character_element = global.characters[0];
+            draw_sprite(sprHUDAdvance2LifeIcon, character_element, lives_x, lives_y);
             draw_set_font(global.font_hud_advance_2);
             draw_text(lives_x + 24, lives_y - 2, $"{global.life_count > lives_cap ? lives_cap : global.life_count}");
             break;
@@ -260,8 +260,8 @@ if (LIVES_ENABLED)
             var lives_cap = 9;
             for (var i = array_length(global.characters) - 1; i >= 0; i--)
             {
-                var character_index = global.characters[i];
-                draw_sprite(sprHUDAdvance3LifeIcon, character_index, lives_x + i * 10, lives_y);
+                var character_element = global.characters[i];
+                draw_sprite(sprHUDAdvance3LifeIcon, character_element, lives_x + i * 10, lives_y);
             }
             
             draw_set_font(global.font_hud_advance_3);
@@ -278,14 +278,14 @@ if (LIVES_ENABLED)
             {
                 for (var i = 0; i < array_length(global.characters); i++)
                 {
-                    var character_index = global.characters[i];
-                    draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);
+                    var character_element = global.characters[i];
+                    draw_sprite_ext(sprHUDAdvance3LifeIcon, character_element, lives_x + i * 10, lives_y + i * 4, -1, 1, 0, c_white, 1);
                 }
             }
             else 
             {
-            	var character_index = global.characters[0];
-                draw_sprite_ext(sprHUDAdvance3LifeIcon, character_index, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
+            	var character_element = global.characters[0];
+                draw_sprite_ext(sprHUDAdvance3LifeIcon, character_element, lives_x + 10, lives_y + 4, -1, 1, 0, c_white, 1);
             }
             
             draw_set_font(global.font_hud_episode_ii);
@@ -304,15 +304,15 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
     var status_bar_y = hud_y + (LIVES_ENABLED ? 36 : 8);
     for (var i = 0; i < status_bar_count; i++)
     {
-        var status_index = status_bar[i];
-        var status_active = status_index.active;
+        var status_element = status_bar[i];
+        var status_active = status_element.active;
         if (status_bar_config == CONFIG_STATUS_BAR.ALL or status_active)
         {
-            if (status_index.visible)
+            if (status_element.visible)
             {
-                var icon_index = status_index.icon;
-                draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x - 1, status_bar_y + 1, 1, 1, 0, c_black, 1);
-                draw_sprite_ext(sprHUDItemIcon, icon_index, status_bar_x, status_bar_y, 1, 1, 0, status_bar_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
+                var status_icon = status_element.icon;
+                draw_sprite_ext(sprHUDItemIcon, status_icon, status_bar_x - 1, status_bar_y + 1, 1, 1, 0, c_black, 1);
+                draw_sprite_ext(sprHUDItemIcon, status_icon, status_bar_x, status_bar_y, 1, 1, 0, status_bar_config == CONFIG_STATUS_BAR.ALL and not status_active ? c_gray : c_white, 1);
             }
             
             status_bar_x -= ITEM_WIDTH;
@@ -325,10 +325,10 @@ if (item_feed_config)
 {
     for (var i = 0; i < array_length(item_feed); i++)
     {
-        var popup_index = item_feed[i];
-        var popup_x = popup_index.x;
-        var icon_index = popup_index.icon;
-        if (item_feed_time > 30 or item_feed_time mod 4 < 2) draw_sprite(sprHUDItemIcon, icon_index, popup_x, CAMERA_HEIGHT - 33);
+        var popup_element = item_feed[i];
+        var popup_x = popup_element.x;
+        var popup_icon = popup_element.icon;
+        if (item_feed_time > 30 or item_feed_time mod 4 < 2) draw_sprite(sprHUDItemIcon, popup_icon, popup_x, CAMERA_HEIGHT - 33);
     }
 }
 

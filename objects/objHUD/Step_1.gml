@@ -30,7 +30,7 @@ if (item_feed_config)
     
     for (var i = 0; i < array_length(item_feed); i++)
     {
-        var popup_index = item_feed[i];
-        if (popup_index.time < popup_duration) popup_index.time++;
+        var popup_element = item_feed[i];
+        if (popup_element.time < popup_duration) popup_element.time++;
     }
 }

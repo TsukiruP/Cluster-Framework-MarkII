@@ -10,7 +10,7 @@ sea_color = make_color_rgb(63, 138, 223);
 sea_height = sprite_get_height(sprSeasideHillBackgroundSea);
 
 // Rocks
-rock_index = [sprSeasideHillBackgroundRock0, sprSeasideHillBackgroundRock1, sprSeasideHillBackgroundRock2];
+rock_sprite = [sprSeasideHillBackgroundRock0, sprSeasideHillBackgroundRock1, sprSeasideHillBackgroundRock2];
 rock_oy = [78, 98, 94];
 rock_height = [sprite_get_height(sprSeasideHillBackgroundRock0), sprite_get_height(sprSeasideHillBackgroundRock1), sprite_get_height(sprSeasideHillBackgroundRock2)];
 rock_hsep = [94, 215, 155];

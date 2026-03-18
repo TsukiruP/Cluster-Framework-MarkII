@@ -4,12 +4,12 @@ if (not InputPartyGetJoin())
 {
     for (var i = 0; i < array_length(menu_index.options); i++)
     {
-        var option_index = menu_index.options[i];
-        var label = option_index.label;
+        var option_element = menu_index.options[i];
+        var label = option_element.label;
         
-        if (is_instanceof(option_index, dev_option_value))
+        if (is_instanceof(option_element, dev_option_value))
         {
-            label = $"{label}: {option_index.toString()}";
+            label = $"{label}: {option_element.toString()}";
         }
         draw_set_color(menu_index.cursor == i ? c_white : c_gray);
         draw_text(10, i * font_height, label);

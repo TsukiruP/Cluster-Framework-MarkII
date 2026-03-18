@@ -7,19 +7,19 @@ if (not InputPartyGetJoin())
     menu_index.cursor += input_axis_y;
     menu_index.cursor = clamp_inverse(menu_index.cursor, 0, array_length(menu_index.options) - 1);
     
-    var option_index = menu_index.options[menu_index.cursor];
+    var option_element = menu_index.options[menu_index.cursor];
 
     // Update
-    if (is_instanceof(option_index, dev_option_value))
+    if (is_instanceof(option_element, dev_option_value))
     {
         var input_axis_x = InputOpposingRepeat(INPUT_VERB.LEFT, INPUT_VERB.RIGHT);
-        if (input_axis_x != 0) option_index.update(input_axis_x);
+        if (input_axis_x != 0) option_element.update(input_axis_x);
     }
     
     // Confirm
     if (InputPressed(INPUT_VERB.CONFIRM))
     {
-        var confirm = option_index.confirm();
+        var confirm = option_element.confirm();
         // TODO: Play a sound depending on the return value of confirm
         // undefined obviously doesn't play anything.
     }
