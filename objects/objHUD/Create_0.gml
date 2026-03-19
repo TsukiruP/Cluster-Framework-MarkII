@@ -80,7 +80,7 @@ if (status_bar_config != CONFIG_STATUS_BAR.OFF)
 // Item Feed
 if (item_feed_config)
 {
-    /// @description Creates a new item post.
+    /// @description Creates a new item popup.
     popup = function(_icon) constructor
     {
         x = CAMERA_WIDTH / 2;
